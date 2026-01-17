@@ -2,8 +2,6 @@ name: Build Turnip
 
 on:
   workflow_dispatch: # Botão manual
-  schedule:
-    - cron: '0 */12 * * *' # Roda a cada 12h
 
 # Permissões necessárias para criar Releases
 permissions:
