@@ -5,20 +5,13 @@ green='\033[0;32m'
 red='\033[0;31m'
 nocolor='\033[0m'
 
-deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator patch"
+deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator python3"
 workdir="$(pwd)/turnip_workdir"
 
 ndkver="android-ndk-r28"
 target_sdk="36"
-
-# ALTERAÇÃO: Usando diretamente o repo e branch do Whitebelyash
-base_repo="https://github.com/whitebelyash/mesa-tu8.git"
-base_branch="gen8"
-
-bad_commit="2f0ea1c6"
-
-commit_hash=""
-version_str=""
+base_repo="https://gitlab.freedesktop.org/mesa/mesa.git"
+mr_id="39375" # ID da Merge Request
 
 check_deps(){
 	echo "Checking system dependencies ..."
@@ -56,32 +49,25 @@ prepare_source(){
 	cd "$workdir"
 	if [ -d mesa ]; then rm -rf mesa; fi
 	
-    # Clonando diretamente da branch gen8
-    echo -e "${green}Cloning Whitebelyash Mesa (Branch: $base_branch)...${nocolor}"
-	git clone --depth 100 --branch "$base_branch" "$base_repo" mesa
+    echo "Cloning Official Mesa Main..."
+	git clone --depth 100 "$base_repo" mesa
 	cd mesa
     
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # Correções básicas de sintaxe e registros (Mantido por segurança)
-    echo "Applying common fixes..."
-    perl -i -p0e 's/(\n\s*a8xx_825)/,$1/s' src/freedreno/common/freedreno_devices.py
-    sed -i '/REG_A8XX_GRAS_UNKNOWN_/d' src/freedreno/common/freedreno_devices.py
+    # === FETCH MERGE REQUEST ===
+    echo -e "${green}Fetching Merge Request !${mr_id}...${nocolor}"
+    
+    # Busca a referência específica da MR e cria uma branch local chamada 'mr-build'
+    git fetch "$base_repo" "refs/merge-requests/${mr_id}/head:mr-build"
+    
+    # Muda para essa branch
+    git checkout mr-build
+    
+    echo -e "${green}Current Commit: $(git log -1 --format='%h %s')${nocolor}"
 
-    # DXVK Fixes (Revert do commit problemático)
-    # Mesmo na branch Gen8, isso geralmente é necessário para Geometry/Tessellation no DXVK
-    echo -e "${green}Checking/Applying DXVK Fixes...${nocolor}"
-    if git revert --no-edit "$bad_commit" 2>/dev/null; then
-        echo -e "${green}SUCCESS: Reverted commit $bad_commit via Git.${nocolor}"
-    else
-        echo -e "${red}Git revert failed (maybe already reverted or not present). Applying manual fix just in case...${nocolor}"
-        git revert --abort || true
-        # Força a remoção das verificações de chip==8 que quebram o DXVK
-        find src/freedreno/vulkan -name "*.cc" -print0 | xargs -0 sed -i 's/ && (pdevice->info->chip != 8)//g'
-        find src/freedreno/vulkan -name "*.cc" -print0 | xargs -0 sed -i 's/ && (pdevice->info->chip == 8)//g'
-    fi
-
+    # Dependências do SPIRV
     echo "Cloning SPIRV dependencies..."
     mkdir -p subprojects
     cd subprojects
@@ -90,13 +76,13 @@ prepare_source(){
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
     cd .. 
     
-	commit_hash=$(git rev-parse HEAD)
-	version_str="Turnip-Whitebelyash-Gen8"
+	commit_hash=$(git rev-parse --short HEAD)
+	version_str="Turnip-MR${mr_id}"
 	cd "$workdir"
 }
 
 compile_mesa(){
-	echo -e "${green}Compiling Mesa for SDK $target_sdk...${nocolor}"
+	echo -e "${green}Compiling Mesa (MR ${mr_id}) for SDK $target_sdk...${nocolor}"
 
 	local source_dir="$workdir/mesa"
 	local build_dir="$source_dir/build"
@@ -126,7 +112,7 @@ EOF
 
 	cd "$source_dir"
 	
-    # Sem flags agressivas de CPU, apenas o padrão
+    # Flags padrão (Sem modificações agressivas para testar a MR fielmente)
 	export CFLAGS="-D__ANDROID__ -Wno-error"
 	export CXXFLAGS="-D__ANDROID__ -Wno-error"
 
@@ -171,19 +157,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-Whitebelyash-Gen8-${short_hash}"
+	local meta_name="Turnip-MR${mr_id}-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Turnip Gen8 (Whitebelyash Source). Commit $short_hash",
+  "description": "Turnip Mesa MR !${mr_id}. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-Whitebelyash-Gen8-${short_hash}.zip"
+	local zip_name="Turnip-MR${mr_id}-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -194,9 +180,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-Whitebelyash-Gen8-${date_tag}-${short_hash}" > tag
-    echo "Turnip (Whitebelyash Gen8) - ${date_tag}" > release
-    echo "Direct build from whitebelyash/mesa-tu8 branch gen8." > description
+    echo "Turnip-MR${mr_id}-${date_tag}-${short_hash}" > tag
+    echo "Turnip MR !${mr_id} - ${date_tag}" > release
+    echo "Specific build for Mesa Merge Request ${mr_id}. No HUD mods." > description
 }
 
 check_deps
