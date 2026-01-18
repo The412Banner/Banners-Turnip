@@ -10,8 +10,14 @@ workdir="$(pwd)/turnip_workdir"
 
 ndkver="android-ndk-r28"
 target_sdk="36"
-base_repo="https://gitlab.freedesktop.org/mesa/mesa.git"
-mr_id="39375" # ID da Merge Request
+
+# Repositório Base (Whitebelyash)
+base_repo="https://github.com/whitebelyash/mesa-tu8.git"
+base_branch="gen8"
+
+# Repositório Oficial para buscar a MR
+upstream_repo="https://gitlab.freedesktop.org/mesa/mesa.git"
+mr_id="39375"
 
 check_deps(){
 	echo "Checking system dependencies ..."
@@ -45,29 +51,38 @@ prepare_ndk(){
 }
 
 prepare_source(){
-	echo "Preparing Mesa source..."
+	echo "Preparing Mesa source (Whitebelyash Gen8)..."
 	cd "$workdir"
 	if [ -d mesa ]; then rm -rf mesa; fi
 	
-    echo "Cloning Official Mesa Main..."
-	git clone --depth 100 "$base_repo" mesa
+    echo "Cloning Whitebelyash Repo..."
+	git clone --depth 100 --branch "$base_branch" "$base_repo" mesa
 	cd mesa
     
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === FETCH MERGE REQUEST ===
-    echo -e "${green}Fetching Merge Request !${mr_id}...${nocolor}"
+    # === MERGE UPSTREAM MR ===
+    echo -e "${green}Fetching MR !${mr_id} from Upstream and Merging into Whitebelyash...${nocolor}"
     
-    # Busca a referência específica da MR e cria uma branch local chamada 'mr-build'
-    git fetch "$base_repo" "refs/merge-requests/${mr_id}/head:mr-build"
+    # 1. Adiciona o remoto oficial
+    git remote add upstream "$upstream_repo"
     
-    # Muda para essa branch
-    git checkout mr-build
+    # 2. Busca a MR específica
+    git fetch upstream "refs/merge-requests/${mr_id}/head:mr-${mr_id}"
+    
+    # 3. Tenta fazer o MERGE da MR no código do Whitebelyash
+    # Se houver conflitos graves, o script vai parar aqui.
+    if git merge --no-edit "mr-${mr_id}"; then
+        echo -e "${green}Merge Successful!${nocolor}"
+    else
+        echo -e "${red}Merge Failed due to conflicts between Whitebelyash and the MR.${nocolor}"
+        exit 1
+    fi
     
     echo -e "${green}Current Commit: $(git log -1 --format='%h %s')${nocolor}"
 
-    # Dependências do SPIRV
+    # Dependências SPIRV
     echo "Cloning SPIRV dependencies..."
     mkdir -p subprojects
     cd subprojects
@@ -77,12 +92,13 @@ prepare_source(){
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Turnip-MR${mr_id}"
+    # Identificador para o ZIP
+	version_str="Whitelabel-MR${mr_id}"
 	cd "$workdir"
 }
 
 compile_mesa(){
-	echo -e "${green}Compiling Mesa (MR ${mr_id}) for SDK $target_sdk...${nocolor}"
+	echo -e "${green}Compiling Mesa for SDK $target_sdk...${nocolor}"
 
 	local source_dir="$workdir/mesa"
 	local build_dir="$source_dir/build"
@@ -112,7 +128,7 @@ EOF
 
 	cd "$source_dir"
 	
-    # Flags padrão (Sem modificações agressivas para testar a MR fielmente)
+    # Sem flags agressivas, apenas o padrão
 	export CFLAGS="-D__ANDROID__ -Wno-error"
 	export CXXFLAGS="-D__ANDROID__ -Wno-error"
 
@@ -157,19 +173,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-MR${mr_id}-${short_hash}"
+	local meta_name="Turnip-Whitelabel-MR${mr_id}-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Turnip Mesa MR !${mr_id}. Commit $short_hash",
+  "description": "Whitebelyash Gen8 + MR !${mr_id}. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-MR${mr_id}-${short_hash}.zip"
+	local zip_name="Turnip-Whitelabel-MR${mr_id}-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -180,9 +196,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-MR${mr_id}-${date_tag}-${short_hash}" > tag
-    echo "Turnip MR !${mr_id} - ${date_tag}" > release
-    echo "Specific build for Mesa Merge Request ${mr_id}. No HUD mods." > description
+    echo "Whitelabel-MR${mr_id}-${date_tag}-${short_hash}" > tag
+    echo "Turnip Whitelabel + MR !${mr_id} - ${date_tag}" > release
+    echo "Based on Whitebelyash Gen8 with MR !${mr_id} merged. No HUD hacks." > description
 }
 
 check_deps
