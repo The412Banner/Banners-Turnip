@@ -15,10 +15,6 @@ target_sdk="36"
 base_repo="https://github.com/whitebelyash/mesa-tu8.git"
 base_branch="gen8"
 
-# Repositório Oficial para buscar a MR
-upstream_repo="https://gitlab.freedesktop.org/mesa/mesa.git"
-mr_id="39375"
-
 check_deps(){
 	echo "Checking system dependencies ..."
 	for dep in $deps; do
