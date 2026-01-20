@@ -1,7 +1,9 @@
-name: Build Turnip
+name: Build Turnip Driver
 
 on:
-  workflow_dispatch: # Botão manual
+  workflow_dispatch: # Botão para iniciar manualmente
+  schedule:
+    - cron: '0 */12 * * *' # Executa automaticamente a cada 12 horas
 
 # Permissões necessárias para criar Releases
 permissions:
@@ -27,22 +29,22 @@ jobs:
       - name: Compilar Driver
         run: ./turnip_builder.sh
 
-      # PASSO CORRIGIDO:
-      # Filtra para pegar apenas o ZIP que começa com "Turnip-"
-      # O '| head -n 1' garante que só uma linha seja passada, evitando erro de formato
+      # PASSO CRÍTICO CORRIGIDO:
+      # Usa '*.zip' para pegar o arquivo independente do nome (Turnip-..., Mesa-..., etc)
       - name: Ler Metadados da Release
         id: meta
         run: |
           echo "TAG_NAME=$(cat turnip_workdir/tag)" >> $GITHUB_ENV
           echo "RELEASE_NAME=$(cat turnip_workdir/release)" >> $GITHUB_ENV
-          echo "ZIP_PATH=$(ls turnip_workdir/Turnip-*.zip | head -n 1)" >> $GITHUB_ENV
+          echo "ZIP_PATH=$(ls turnip_workdir/*.zip | head -n 1)" >> $GITHUB_ENV
 
-      # Faz upload do arquivo como artefato (Backup no Actions)
+      # Faz upload do arquivo para a aba "Actions" (Backup)
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: driver-turnip-backup
+          name: turnip-driver-artifact
           path: ${{ env.ZIP_PATH }}
+          if-no-files-found: error
 
       # Cria a Release oficial na aba "Releases"
       - name: Publicar Release
