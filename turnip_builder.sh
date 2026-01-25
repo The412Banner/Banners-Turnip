@@ -57,8 +57,8 @@ prepare_source(){
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V7: FORCE INJECTION (Infalível) ===
-    echo -e "${green}Applying V7 Ultimate Injection (Maintenance 7/8, Strict Bypass, A7xx)...${nocolor}"
+    # === HACK V8: SMART INJECTION (Lê a função e insere no fim) ===
+    echo -e "${green}Applying V8 Smart Injection (Maintenance 7/8, Strict Bypass, A7xx)...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -66,7 +66,7 @@ import re
 
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
-# 1. FEATURES: Desbloqueio via substituição (Mantido pois funciona bem para features)
+# 1. FEATURES (Substituição simples via Regex - isso funciona bem)
 force_features_true = [
     "shaderFloat64", "shaderStorageImageMultisample",
     "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
@@ -104,67 +104,105 @@ force_features_true = [
     "integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"
 ]
 
-# 2. EXTENSIONS: Lista para Injeção Forçada (Atropela tudo)
-forced_extensions_code = """
-    // === V7 INJECTION: STRICT BYPASS & A7XX SPOOF ===
-    ext->KHR_maintenance5 = true;
-    ext->KHR_maintenance6 = true;
-    ext->KHR_maintenance7 = true;
-    ext->KHR_maintenance8 = true;
-    ext->EXT_primitives_generated_query = true;
-    ext->EXT_primitive_topology_list_restart = true;
-    ext->EXT_depth_clip_control = true;
-    ext->EXT_depth_clip_enable = true;
-    ext->EXT_attachment_feedback_loop_layout = true;
-    ext->EXT_attachment_feedback_loop_dynamic_state = true;
-    ext->KHR_compute_shader_derivatives = true;
-    ext->NV_compute_shader_derivatives = true;
-    ext->KHR_fragment_shading_rate = true;
-    ext->EXT_filter_cubic = true;
-    ext->IMG_filter_cubic = true;
-    ext->EXT_sample_locations = true;
-    ext->EXT_texture_compression_astc_hdr = true;
-    ext->EXT_calibrated_timestamps = true;
-    ext->EXT_conservative_rasterization = true;
-    ext->AMD_shader_fragment_mask = true;
-    ext->KHR_shader_atomic_int64 = true;
-    ext->KHR_8bit_storage = true;
-    ext->KHR_16bit_storage = true;
-"""
-
 try:
     with open(file_path, 'r') as f:
-        content = f.read()
+        lines = f.readlines()
+        content_str = "".join(lines)
 
-    # PATCH 1: Forçar Vulkan 1.4
+    # PATCH 1: Vulkan 1.4 Force (Regex na string inteira)
     version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
-    if re.search(version_regex, content):
-        content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
+    if re.search(version_regex, content_str):
+        content_str = re.sub(version_regex, r'\1TU_API_VERSION\3', content_str)
         print("Vulkan 1.4 Forced.")
 
-    # PATCH 2: Features (Regex Clássico)
+    # PATCH 2: Features Unlock (Regex na string inteira)
     feat_count = 0
     for prop in force_features_true:
         regex = rf'((?:p|features|props)->{prop}\s*=\s*)([^;]+)(;)'
-        if re.search(regex, content):
-            content = re.sub(regex, r'\1true\3', content)
+        if re.search(regex, content_str):
+            content_str = re.sub(regex, r'\1true\3', content_str)
             feat_count += 1
     print(f"Features Unlocked: {feat_count}")
-
-    # PATCH 3: Extensions (INJEÇÃO NO FIM DA FUNÇÃO)
-    # Procuramos o fechamento da struct "vk_device_extension_table" dentro de get_device_extensions
-    # O padrão no código é "} };" fechando o "*ext = (struct ...) { ... } };"
     
-    if "} };" in content:
-        # Inserimos nosso código logo após o fechamento da struct, antes de sair da função
-        content = content.replace("} };", "} };" + forced_extensions_code)
-        print("V7 Injection Applied: Extensions forced at end of get_device_extensions().")
+    # Atualiza as linhas com as modificações de features
+    lines = content_str.splitlines(keepends=True)
+
+    # PATCH 3: EXTENSIONS (Smart Injection)
+    # Procura a função get_device_extensions, descobre o nome da variável 'ext' e injeta no final.
+    
+    start_line = -1
+    var_name = "ext" # fallback
+
+    for i, line in enumerate(lines):
+        if "get_device_extensions" in line and "void" in line:
+            start_line = i
+            # Tenta achar o nome da variável struct vk_device_extension_table *NOME
+            # Junta algumas linhas caso a declaração seja quebrada
+            decl = "".join(lines[i:i+5]) 
+            match = re.search(r'struct\s+vk_device_extension_table\s*\*\s*(\w+)', decl)
+            if match:
+                var_name = match.group(1)
+                print(f"Detected extensions variable name: {var_name}")
+            break
+            
+    if start_line != -1:
+        # Conta chaves { } para achar o fim da função
+        brace_count = 0
+        found_start = False
+        end_line = -1
+        
+        for i in range(start_line, len(lines)):
+            line = lines[i]
+            brace_count += line.count('{')
+            brace_count -= line.count('}')
+            
+            if brace_count > 0:
+                found_start = True
+            
+            # Se já achou o começo e a contagem voltou a zero, é o fim da função
+            if found_start and brace_count == 0:
+                end_line = i
+                break
+        
+        if end_line != -1:
+            # INJEÇÃO: Insere ANTES da chave de fechamento '}'
+            injection = f"""
+    // === V8 ULTIMATE INJECTION ===
+    {var_name}->KHR_maintenance5 = true;
+    {var_name}->KHR_maintenance6 = true;
+    {var_name}->KHR_maintenance7 = true;
+    {var_name}->KHR_maintenance8 = true;
+    {var_name}->EXT_primitives_generated_query = true;
+    {var_name}->EXT_primitive_topology_list_restart = true;
+    {var_name}->EXT_depth_clip_control = true;
+    {var_name}->EXT_depth_clip_enable = true;
+    {var_name}->EXT_attachment_feedback_loop_layout = true;
+    {var_name}->EXT_attachment_feedback_loop_dynamic_state = true;
+    {var_name}->KHR_compute_shader_derivatives = true;
+    {var_name}->NV_compute_shader_derivatives = true;
+    {var_name}->KHR_fragment_shading_rate = true;
+    {var_name}->EXT_filter_cubic = true;
+    {var_name}->IMG_filter_cubic = true;
+    {var_name}->EXT_sample_locations = true;
+    {var_name}->EXT_texture_compression_astc_hdr = true;
+    {var_name}->EXT_calibrated_timestamps = true;
+    {var_name}->EXT_conservative_rasterization = true;
+    {var_name}->AMD_shader_fragment_mask = true;
+    {var_name}->KHR_shader_atomic_int64 = true;
+    {var_name}->KHR_8bit_storage = true;
+    {var_name}->KHR_16bit_storage = true;
+"""
+            lines.insert(end_line, injection)
+            print("Extensions Injection Successful!")
+        else:
+            print("ERROR: Could not find end of get_device_extensions function.")
+            sys.exit(1)
     else:
-        print("WARNING: Could not find injection point '} };' in tu_device.cc")
+        print("ERROR: Could not find get_device_extensions function.")
         sys.exit(1)
 
     with open(file_path, 'w') as f:
-        f.write(content)
+        f.writelines(lines)
 
 except Exception as e:
     print(f"PYTHON ERROR: {e}")
@@ -182,7 +220,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-V7-ForceInjection"
+	version_str="Mesa-V8-SmartInjection"
 	cd "$workdir"
 }
 
@@ -260,19 +298,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-V7-Injection-${short_hash}"
+	local meta_name="Turnip-V8-Injection-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Vulkan 1.4 + V7 Force Injection (Maintenance 7/8, Strict Bypass). Commit $short_hash",
+  "description": "Vulkan 1.4 + V8 Smart Injection (Maintenance 7/8, Strict Bypass). Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-V7-Injection-${short_hash}.zip"
+	local zip_name="Turnip-V8-Injection-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -283,9 +321,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-V7-Injection-${date_tag}-${short_hash}" > tag
-    echo "Turnip V7 (Force Injection) - ${date_tag}" > release
-    echo "Using direct code injection to force Maintenance 7/8 and Strict Mode extensions." > description
+    echo "Turnip-V8-Injection-${date_tag}-${short_hash}" > tag
+    echo "Turnip V8 (Smart Injection) - ${date_tag}" > release
+    echo "Code-aware injection of Maintenance 7/8 and Strict Mode extensions." > description
 }
 
 check_deps
