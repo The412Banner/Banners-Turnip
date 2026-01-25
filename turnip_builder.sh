@@ -57,138 +57,83 @@ prepare_source(){
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V9: ROBUST MULTI-LINE INJECTION ===
-    echo -e "${green}Applying V9 Ultimate Injection (A7xx Spoof + Strict Bypass + Maint 7/8)...${nocolor}"
+    # === HACK V10: THE REPLACER (Strict Killer + Force True) ===
+    echo -e "${green}Applying V10 Ultimate Patch (Strict Disable + Direct Replace)...${nocolor}"
 
-cat << 'EOF_PYTHON' > inject_ultimate.py
+cat << 'EOF_PYTHON' > patch_tu.py
 import sys
 import re
 
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
-# 1. FEATURES (Lista de funcionalidades para ativar)
-force_features_true = [
-    "shaderFloat64", "shaderStorageImageMultisample",
-    "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
-    "uniformAndStorageBuffer8BitAccess", "storagePushConstant8",
-    "shaderSharedInt64Atomics", "shaderBufferInt64Atomics",
-    "independentResolve", "independentResolveNone",
-    "shaderDenormPreserveFloat16", "shaderDenormFlushToZeroFloat16",
-    "shaderRoundingModeRTZFloat16", "shaderDenormPreserveFloat32",
-    "shaderRoundingModeRTZFloat32", "samplerFilterMinmax",
-    "fragmentDensityMapDynamic", "fragmentDensityInvocations",
-    "primitiveUnderestimation", "conservativePointAndLineRasterization",
-    "textureCompressionASTC_HDR",
-    "integerDotProduct8BitUnsignedAccelerated", "integerDotProduct8BitSignedAccelerated",
-    "integerDotProduct8BitMixedSignednessAccelerated", "integerDotProduct4x8BitPackedUnsignedAccelerated",
-    "integerDotProduct4x8BitPackedSignedAccelerated", "integerDotProduct4x8BitPackedMixedSignednessAccelerated",
-    "integerDotProduct16BitUnsignedAccelerated", "integerDotProduct16BitSignedAccelerated",
-    "integerDotProduct16BitMixedSignednessAccelerated", "integerDotProduct32BitUnsignedAccelerated",
-    "integerDotProduct32BitSignedAccelerated", "integerDotProduct32BitMixedSignednessAccelerated",
-    "integerDotProduct64BitUnsignedAccelerated", "integerDotProduct64BitSignedAccelerated",
-    "integerDotProduct64BitMixedSignednessAccelerated",
-    "integerDotProductAccumulatingSaturating8BitUnsignedAccelerated",
-    "integerDotProductAccumulatingSaturating8BitSignedAccelerated",
-    "integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated",
-    "integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated",
-    "integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated",
-    "integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated",
-    "integerDotProductAccumulatingSaturating16BitUnsignedAccelerated",
-    "integerDotProductAccumulatingSaturating16BitSignedAccelerated",
-    "integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated",
-    "integerDotProductAccumulatingSaturating32BitUnsignedAccelerated",
-    "integerDotProductAccumulatingSaturating32BitSignedAccelerated",
-    "integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated",
-    "integerDotProductAccumulatingSaturating64BitUnsignedAccelerated",
-    "integerDotProductAccumulatingSaturating64BitSignedAccelerated",
-    "integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"
+# Lista de Extensões para forçar 'true'
+# (Substitui a lógica existente pela atribuição direta)
+target_extensions = [
+    "KHR_maintenance5", "KHR_maintenance6", "KHR_maintenance7", "KHR_maintenance8",
+    "EXT_primitives_generated_query", "EXT_primitive_topology_list_restart",
+    "EXT_depth_clip_control", "EXT_depth_clip_enable",
+    "EXT_attachment_feedback_loop_layout", "EXT_attachment_feedback_loop_dynamic_state",
+    "KHR_compute_shader_derivatives", "NV_compute_shader_derivatives",
+    "KHR_fragment_shading_rate", "EXT_filter_cubic", "IMG_filter_cubic",
+    "EXT_sample_locations", "EXT_texture_compression_astc_hdr",
+    "EXT_calibrated_timestamps", "EXT_conservative_rasterization",
+    "AMD_shader_fragment_mask", "KHR_shader_atomic_int64",
+    "KHR_8bit_storage", "KHR_16bit_storage"
+]
+
+# Lista de Features para forçar 'true'
+target_features = [
+    "shaderFloat64", "shaderStorageImageMultisample", "uniformAndStorageBuffer16BitAccess",
+    "storagePushConstant16", "uniformAndStorageBuffer8BitAccess", "storagePushConstant8",
+    "shaderSharedInt64Atomics", "shaderBufferInt64Atomics", "independentResolve",
+    "shaderDenormPreserveFloat16", "shaderRoundingModeRTZFloat16",
+    "fragmentDensityMapDynamic", "textureCompressionASTC_HDR",
+    "integerDotProduct8BitUnsignedAccelerated" # (e derivados, via regex genérico abaixo)
 ]
 
 try:
     with open(file_path, 'r') as f:
         content = f.read()
 
-    # PATCH 1: Vulkan 1.4 Force
-    version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
-    if re.search(version_regex, content):
-        content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
-        print("Vulkan 1.4 Forced.")
+    # PASSO 1: Matar o "Android Strict Mode"
+    # Substitui qualquer menção a DETECT_OS_ANDROID por 'false'.
+    # Isso faz com que !DETECT_OS_ANDROID vire !false (true), liberando as extensões ocultas.
+    if "DETECT_OS_ANDROID" in content:
+        content = content.replace("DETECT_OS_ANDROID", "false")
+        print("SUCCESS: Android Strict Mode disabled (DETECT_OS_ANDROID -> false).")
+    else:
+        print("WARNING: DETECT_OS_ANDROID tag not found. Strict mode might differ.")
 
-    # PATCH 2: Features Unlock
-    feat_count = 0
-    for prop in force_features_true:
-        regex = rf'((?:p|features|props)->{prop}\s*=\s*)([^;]+)(;)'
+    # PASSO 2: Forçar Vulkan 1.4
+    version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
+    content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
+
+    # PASSO 3: Substituição Cirúrgica de Extensões
+    # Procura por: .NOME_EXTENSAO = (qualquer coisa),
+    # Substitui por: .NOME_EXTENSAO = true,
+    count_ext = 0
+    for ext in target_extensions:
+        # Regex procura a inicialização na struct
+        regex = rf'(\.{ext}\s*=\s*)([^,]+)(,)'
         if re.search(regex, content):
             content = re.sub(regex, r'\1true\3', content)
-            feat_count += 1
-    print(f"Features Unlocked: {feat_count}")
-    
-    # PATCH 3: EXTENSIONS (Smart Injection V9)
-    # Procura a função get_device_extensions usando Regex Multilinha (ignora quebras de linha)
-    # Captura também o nome da variável usada para a tabela de extensões (geralmente 'ext')
-    
-    print("Locating get_device_extensions function...")
-    
-    # Regex explica: Procure 'get_device_extensions', seguido de parenteses, 
-    # até achar 'struct vk_device_extension_table *NOME_VARIAVEL'.
-    func_regex = re.compile(r'get_device_extensions\s*\([^)]*struct\s+vk_device_extension_table\s*\*\s*(\w+)[^)]*\)\s*\{', re.MULTILINE | re.DOTALL)
-    
-    match = func_regex.search(content)
-    
-    if match:
-        var_name = match.group(1) # O nome da variavel, ex: 'ext'
-        start_pos = match.end() - 1 # Posição da chave '{' de abertura
-        
-        print(f"Function found! Variable name detected: '{var_name}'")
-        
-        # Algoritmo de balanceamento de chaves para achar o fim da função
-        brace_count = 1
-        i = start_pos + 1
-        
-        # Varre o arquivo caractere por caractere
-        while i < len(content) and brace_count > 0:
-            if content[i] == '{':
-                brace_count += 1
-            elif content[i] == '}':
-                brace_count -= 1
-            i += 1
+            count_ext += 1
+    print(f"Extensions Forced: {count_ext}")
+
+    # PASSO 4: Substituição Cirúrgica de Features
+    # Procura por: p->feature = ... ou features->feature = ...
+    count_feat = 0
+    for feat in target_features:
+        regex = rf'((?:p|features|props)->{feat}\s*=\s*)([^;]+)(;)'
+        if re.search(regex, content):
+            content = re.sub(regex, r'\1true\3', content)
+            count_feat += 1
             
-        insertion_point = i - 1 # Posição da última chave '}'
-        
-        # Código para injetar
-        injection_code = f"""
-    // === V9 ULTIMATE INJECTION ===
-    {var_name}->KHR_maintenance5 = true;
-    {var_name}->KHR_maintenance6 = true;
-    {var_name}->KHR_maintenance7 = true;
-    {var_name}->KHR_maintenance8 = true;
-    {var_name}->EXT_primitives_generated_query = true;
-    {var_name}->EXT_primitive_topology_list_restart = true;
-    {var_name}->EXT_depth_clip_control = true;
-    {var_name}->EXT_depth_clip_enable = true;
-    {var_name}->EXT_attachment_feedback_loop_layout = true;
-    {var_name}->EXT_attachment_feedback_loop_dynamic_state = true;
-    {var_name}->KHR_compute_shader_derivatives = true;
-    {var_name}->NV_compute_shader_derivatives = true;
-    {var_name}->KHR_fragment_shading_rate = true;
-    {var_name}->EXT_filter_cubic = true;
-    {var_name}->IMG_filter_cubic = true;
-    {var_name}->EXT_sample_locations = true;
-    {var_name}->EXT_texture_compression_astc_hdr = true;
-    {var_name}->EXT_calibrated_timestamps = true;
-    {var_name}->EXT_conservative_rasterization = true;
-    {var_name}->AMD_shader_fragment_mask = true;
-    {var_name}->KHR_shader_atomic_int64 = true;
-    {var_name}->KHR_8bit_storage = true;
-    {var_name}->KHR_16bit_storage = true;
-"""
-        # Insere o código antes da chave de fechamento
-        content = content[:insertion_point] + injection_code + content[insertion_point:]
-        print("SUCCESS: Extensions forced via direct code injection.")
-        
-    else:
-        print("ERROR: Could not find get_device_extensions signature with Regex.")
-        sys.exit(1)
+    # HACK EXTRA: Dot Product Massivo
+    # Substitui qualquer propriedade que comece com integerDotProduct... por true
+    dot_regex = r'((?:p|features|props)->integerDotProduct\w+\s*=\s*)([^;]+)(;)'
+    content, n = re.subn(dot_regex, r'\1true\3', content)
+    print(f"Dot Product Features Forced: {n}")
 
     with open(file_path, 'w') as f:
         f.write(content)
@@ -198,7 +143,7 @@ except Exception as e:
     sys.exit(1)
 EOF_PYTHON
 
-    python3 inject_ultimate.py || { echo -e "${red}Unlock Failed!${nocolor}"; exit 1; }
+    python3 patch_tu.py || { echo -e "${red}Patch Failed!${nocolor}"; exit 1; }
     
     echo "Cloning SPIRV dependencies..."
     mkdir -p subprojects
@@ -209,7 +154,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-V9-RobustInjection"
+	version_str="Mesa-V10-StrictKiller"
 	cd "$workdir"
 }
 
@@ -287,19 +232,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-V9-Robust-${short_hash}"
+	local meta_name="Turnip-V10-StrictKiller-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Vulkan 1.4 + V9 Robust Injection (Maintenance 7/8, Strict Bypass). Commit $short_hash",
+  "description": "Vulkan 1.4 + Strict Killer + Forced Extensions. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-V9-Robust-${short_hash}.zip"
+	local zip_name="Turnip-V10-StrictKiller-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -310,9 +255,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-V9-Robust-${date_tag}-${short_hash}" > tag
-    echo "Turnip V9 (Robust Injection) - ${date_tag}" > release
-    echo "Code-aware injection of Maintenance 7/8 and Strict Mode extensions." > description
+    echo "Turnip-V10-StrictKiller-${date_tag}-${short_hash}" > tag
+    echo "Turnip V10 (Strict Killer) - ${date_tag}" > release
+    echo "Replaced DETECT_OS_ANDROID with false. Forced Maintenance 7/8 via struct replacement." > description
 }
 
 check_deps
