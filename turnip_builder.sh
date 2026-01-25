@@ -57,8 +57,8 @@ prepare_source(){
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V8: SMART INJECTION (Lê a função e insere no fim) ===
-    echo -e "${green}Applying V8 Smart Injection (Maintenance 7/8, Strict Bypass, A7xx)...${nocolor}"
+    # === HACK V9: ROBUST MULTI-LINE INJECTION ===
+    echo -e "${green}Applying V9 Ultimate Injection (A7xx Spoof + Strict Bypass + Maint 7/8)...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -66,7 +66,7 @@ import re
 
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
-# 1. FEATURES (Substituição simples via Regex - isso funciona bem)
+# 1. FEATURES (Lista de funcionalidades para ativar)
 force_features_true = [
     "shaderFloat64", "shaderStorageImageMultisample",
     "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
@@ -106,68 +106,58 @@ force_features_true = [
 
 try:
     with open(file_path, 'r') as f:
-        lines = f.readlines()
-        content_str = "".join(lines)
+        content = f.read()
 
-    # PATCH 1: Vulkan 1.4 Force (Regex na string inteira)
+    # PATCH 1: Vulkan 1.4 Force
     version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
-    if re.search(version_regex, content_str):
-        content_str = re.sub(version_regex, r'\1TU_API_VERSION\3', content_str)
+    if re.search(version_regex, content):
+        content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
         print("Vulkan 1.4 Forced.")
 
-    # PATCH 2: Features Unlock (Regex na string inteira)
+    # PATCH 2: Features Unlock
     feat_count = 0
     for prop in force_features_true:
         regex = rf'((?:p|features|props)->{prop}\s*=\s*)([^;]+)(;)'
-        if re.search(regex, content_str):
-            content_str = re.sub(regex, r'\1true\3', content_str)
+        if re.search(regex, content):
+            content = re.sub(regex, r'\1true\3', content)
             feat_count += 1
     print(f"Features Unlocked: {feat_count}")
     
-    # Atualiza as linhas com as modificações de features
-    lines = content_str.splitlines(keepends=True)
-
-    # PATCH 3: EXTENSIONS (Smart Injection)
-    # Procura a função get_device_extensions, descobre o nome da variável 'ext' e injeta no final.
+    # PATCH 3: EXTENSIONS (Smart Injection V9)
+    # Procura a função get_device_extensions usando Regex Multilinha (ignora quebras de linha)
+    # Captura também o nome da variável usada para a tabela de extensões (geralmente 'ext')
     
-    start_line = -1
-    var_name = "ext" # fallback
-
-    for i, line in enumerate(lines):
-        if "get_device_extensions" in line and "void" in line:
-            start_line = i
-            # Tenta achar o nome da variável struct vk_device_extension_table *NOME
-            # Junta algumas linhas caso a declaração seja quebrada
-            decl = "".join(lines[i:i+5]) 
-            match = re.search(r'struct\s+vk_device_extension_table\s*\*\s*(\w+)', decl)
-            if match:
-                var_name = match.group(1)
-                print(f"Detected extensions variable name: {var_name}")
-            break
-            
-    if start_line != -1:
-        # Conta chaves { } para achar o fim da função
-        brace_count = 0
-        found_start = False
-        end_line = -1
+    print("Locating get_device_extensions function...")
+    
+    # Regex explica: Procure 'get_device_extensions', seguido de parenteses, 
+    # até achar 'struct vk_device_extension_table *NOME_VARIAVEL'.
+    func_regex = re.compile(r'get_device_extensions\s*\([^)]*struct\s+vk_device_extension_table\s*\*\s*(\w+)[^)]*\)\s*\{', re.MULTILINE | re.DOTALL)
+    
+    match = func_regex.search(content)
+    
+    if match:
+        var_name = match.group(1) # O nome da variavel, ex: 'ext'
+        start_pos = match.end() - 1 # Posição da chave '{' de abertura
         
-        for i in range(start_line, len(lines)):
-            line = lines[i]
-            brace_count += line.count('{')
-            brace_count -= line.count('}')
-            
-            if brace_count > 0:
-                found_start = True
-            
-            # Se já achou o começo e a contagem voltou a zero, é o fim da função
-            if found_start and brace_count == 0:
-                end_line = i
-                break
+        print(f"Function found! Variable name detected: '{var_name}'")
         
-        if end_line != -1:
-            # INJEÇÃO: Insere ANTES da chave de fechamento '}'
-            injection = f"""
-    // === V8 ULTIMATE INJECTION ===
+        # Algoritmo de balanceamento de chaves para achar o fim da função
+        brace_count = 1
+        i = start_pos + 1
+        
+        # Varre o arquivo caractere por caractere
+        while i < len(content) and brace_count > 0:
+            if content[i] == '{':
+                brace_count += 1
+            elif content[i] == '}':
+                brace_count -= 1
+            i += 1
+            
+        insertion_point = i - 1 # Posição da última chave '}'
+        
+        # Código para injetar
+        injection_code = f"""
+    // === V9 ULTIMATE INJECTION ===
     {var_name}->KHR_maintenance5 = true;
     {var_name}->KHR_maintenance6 = true;
     {var_name}->KHR_maintenance7 = true;
@@ -192,17 +182,16 @@ try:
     {var_name}->KHR_8bit_storage = true;
     {var_name}->KHR_16bit_storage = true;
 """
-            lines.insert(end_line, injection)
-            print("Extensions Injection Successful!")
-        else:
-            print("ERROR: Could not find end of get_device_extensions function.")
-            sys.exit(1)
+        # Insere o código antes da chave de fechamento
+        content = content[:insertion_point] + injection_code + content[insertion_point:]
+        print("SUCCESS: Extensions forced via direct code injection.")
+        
     else:
-        print("ERROR: Could not find get_device_extensions function.")
+        print("ERROR: Could not find get_device_extensions signature with Regex.")
         sys.exit(1)
 
     with open(file_path, 'w') as f:
-        f.writelines(lines)
+        f.write(content)
 
 except Exception as e:
     print(f"PYTHON ERROR: {e}")
@@ -220,7 +209,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-V8-SmartInjection"
+	version_str="Mesa-V9-RobustInjection"
 	cd "$workdir"
 }
 
@@ -298,19 +287,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-V8-Injection-${short_hash}"
+	local meta_name="Turnip-V9-Robust-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Vulkan 1.4 + V8 Smart Injection (Maintenance 7/8, Strict Bypass). Commit $short_hash",
+  "description": "Vulkan 1.4 + V9 Robust Injection (Maintenance 7/8, Strict Bypass). Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-V8-Injection-${short_hash}.zip"
+	local zip_name="Turnip-V9-Robust-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -321,8 +310,8 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-V8-Injection-${date_tag}-${short_hash}" > tag
-    echo "Turnip V8 (Smart Injection) - ${date_tag}" > release
+    echo "Turnip-V9-Robust-${date_tag}-${short_hash}" > tag
+    echo "Turnip V9 (Robust Injection) - ${date_tag}" > release
     echo "Code-aware injection of Maintenance 7/8 and Strict Mode extensions." > description
 }
 
