@@ -9,7 +9,7 @@ deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator"
 workdir="$(pwd)/turnip_workdir"
 
 ndkver="android-ndk-r28"
-target_sdk="35" 
+target_sdk="35" # Mantém 35 para o compilador (Compatibilidade)
 
 base_repo="https://gitlab.freedesktop.org/mesa/mesa.git"
 
@@ -59,9 +59,7 @@ prepare_source(){
 
     # === APPLY MR !37802 (Autotuner Overhaul) ===
     echo -e "${green}Fetching and Merging MR !37802 (Autotuner Overhaul)...${nocolor}"
-    # Busca a referência do Merge Request diretamente do GitLab
     git fetch https://gitlab.freedesktop.org/mesa/mesa.git refs/merge-requests/37802/head:mr-37802
-    # Funde o MR no código atual
     git merge mr-37802 --no-edit --allow-unrelated-histories || { 
         echo -e "${red}Merge Failed! Attempting rebase...${nocolor}"
         git rebase mr-37802 || { echo -e "${red}Critical Error applying MR 37802${nocolor}"; exit 1; }
@@ -76,7 +74,6 @@ import re
 
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
-# 1. FEATURES (Regex Simples)
 force_features_true = [
     "shaderFloat64", "shaderStorageImageMultisample",
     "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
@@ -93,13 +90,11 @@ try:
     with open(file_path, 'r') as f:
         content = f.read()
 
-    # PATCH 1: Vulkan 1.4 Force
     version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
     if re.search(version_regex, content):
         content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
         print("Vulkan 1.4 Forced.")
 
-    # PATCH 2: Features Unlock
     feat_count = 0
     for prop in force_features_true:
         if "integerDotProduct" in prop:
@@ -113,7 +108,6 @@ try:
                  feat_count += 1
     print(f"Features Unlocked: {feat_count}")
     
-    # PATCH 3: EXTENSIONS (INJEÇÃO LIMPA PÓS-INICIALIZAÇÃO)
     match = re.search(r'get_device_extensions\s*\([^{]*struct\s+vk_device_extension_table\s*\*\s*(\w+)', content, re.DOTALL)
     
     if match:
@@ -124,7 +118,6 @@ try:
         if closure_match:
             insert_pos = func_start + closure_match.end()
             
-            # Código de Injeção SEM COMENTÁRIOS
             injection = f"""
     {var_name}->KHR_maintenance5 = true;
     {var_name}->KHR_maintenance6 = true;
@@ -156,7 +149,6 @@ try:
             print("ERROR: Could not find struct closure '};'")
             sys.exit(1)
     else:
-        # Fallback simples
         if "get_device_extensions" in content:
              idx = content.find("get_device_extensions")
              idx_brace = content.find("};", idx)
@@ -190,21 +182,22 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-V13-Autotuner"
+	version_str="Mesa-V14-SDK36-Autotuner"
 	cd "$workdir"
 }
 
 compile_mesa(){
-	echo -e "${green}Compiling Mesa for SDK $target_sdk...${nocolor}"
+	# Aqui está o truque: Target SDK 35 para o Compilador, SDK 36 para o Meson
+	echo -e "${green}Compiling Mesa for SDK 36 (Spoofed) using SDK $target_sdk Compiler...${nocolor}"
 
 	local source_dir="$workdir/mesa"
 	local build_dir="$source_dir/build"
 	local ndk_bin_path="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
 	local ndk_sysroot_path="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
 
-    local compiler_ver="35"
+    local compiler_ver="$target_sdk"
     if [ ! -f "$ndk_bin_path/aarch64-linux-android${compiler_ver}-clang" ]; then compiler_ver="34"; fi
-    echo "Using compiler: Clang $compiler_ver"
+    echo "Using compiler: Clang $compiler_ver (NDK Target)"
 
 	local cross_file="$source_dir/android-aarch64-crossfile.txt"
 	cat <<EOF > "$cross_file"
@@ -228,10 +221,11 @@ EOF
 	export CFLAGS="-D__ANDROID__ -Wno-error"
 	export CXXFLAGS="-D__ANDROID__ -Wno-error"
 
+    # ALTERAÇÃO CRÍTICA: platform-sdk-version=36
 	meson setup "$build_dir" --cross-file "$cross_file" \
 		-Dbuildtype=release \
 		-Dplatforms=android \
-		-Dplatform-sdk-version=$target_sdk \
+		-Dplatform-sdk-version=36 \
 		-Dandroid-stub=true \
 		-Dgallium-drivers= \
 		-Dvulkan-drivers=freedreno \
@@ -268,19 +262,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-V13-Autotuner-${short_hash}"
+	local meta_name="Turnip-V14-SDK36-Autotuner-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Vulkan 1.4 + Autotuner Overhaul + Forced Extensions. Commit $short_hash",
+  "description": "SDK 36 (Spoof) + MR Autotuner + Forced Exts. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-V13-Autotuner-${short_hash}.zip"
+	local zip_name="Turnip-V14-SDK36-Autotuner-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -291,9 +285,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-V13-Autotuner-${date_tag}-${short_hash}" > tag
-    echo "Turnip V13 (Autotuner + Inject) - ${date_tag}" > release
-    echo "Includes MR 37802 (Autotuner Overhaul) and cleaned up extension injection." > description
+    echo "Turnip-V14-SDK36-Autotuner-${date_tag}-${short_hash}" > tag
+    echo "Turnip V14 (SDK 36 + Autotuner) - ${date_tag}" > release
+    echo "Built against NDK 35 (safe) but with Meson SDK 36 features enabled. Includes MR 37802." > description
 }
 
 check_deps
