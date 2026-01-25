@@ -57,8 +57,8 @@ prepare_source(){
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V10: THE REPLACER (Strict Killer + Force True) ===
-    echo -e "${green}Applying V10 Ultimate Patch (Strict Disable + Direct Replace)...${nocolor}"
+    # === HACK V11: SURGICAL HYBRID (A7xx + Strict + Maint) ===
+    echo -e "${green}Applying V11 Surgical Patch (Line-by-Line Force True)...${nocolor}"
 
 cat << 'EOF_PYTHON' > patch_tu.py
 import sys
@@ -66,77 +66,114 @@ import re
 
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
-# Lista de Extensões para forçar 'true'
-# (Substitui a lógica existente pela atribuição direta)
-target_extensions = [
-    "KHR_maintenance5", "KHR_maintenance6", "KHR_maintenance7", "KHR_maintenance8",
-    "EXT_primitives_generated_query", "EXT_primitive_topology_list_restart",
-    "EXT_depth_clip_control", "EXT_depth_clip_enable",
-    "EXT_attachment_feedback_loop_layout", "EXT_attachment_feedback_loop_dynamic_state",
-    "KHR_compute_shader_derivatives", "NV_compute_shader_derivatives",
-    "KHR_fragment_shading_rate", "EXT_filter_cubic", "IMG_filter_cubic",
-    "EXT_sample_locations", "EXT_texture_compression_astc_hdr",
-    "EXT_calibrated_timestamps", "EXT_conservative_rasterization",
-    "AMD_shader_fragment_mask", "KHR_shader_atomic_int64",
-    "KHR_8bit_storage", "KHR_16bit_storage"
+# Lista MESTRA de extensões para forçar 'true'
+# Combina A7xx (VRS, Derivatives) + Strict (Maintenance, Primitives)
+extensions_to_force = [
+    # --- MAINTENANCE PACK (Android Strict) ---
+    "KHR_maintenance5", 
+    "KHR_maintenance6", 
+    "KHR_maintenance7", 
+    "KHR_maintenance8",
+    "EXT_primitives_generated_query", 
+    "EXT_primitive_topology_list_restart",
+    "EXT_depth_clip_control", 
+    "EXT_depth_clip_enable",
+    "EXT_attachment_feedback_loop_layout", 
+    "EXT_attachment_feedback_loop_dynamic_state",
+    
+    # --- A7XX / HIGH-END PACK ---
+    "KHR_fragment_shading_rate",       # VRS
+    "KHR_compute_shader_derivatives",  # A7xx
+    "NV_compute_shader_derivatives",   # A7xx
+    "EXT_filter_cubic",                # Cubic
+    "IMG_filter_cubic",
+    "EXT_sample_locations",
+    "EXT_texture_compression_astc_hdr",
+    "EXT_calibrated_timestamps",
+    "EXT_conservative_rasterization",
+    "AMD_shader_fragment_mask",
+    
+    # --- STORAGE & ATOMICS ---
+    "KHR_shader_atomic_int64",
+    "KHR_8bit_storage", 
+    "KHR_16bit_storage"
 ]
 
 # Lista de Features para forçar 'true'
-target_features = [
-    "shaderFloat64", "shaderStorageImageMultisample", "uniformAndStorageBuffer16BitAccess",
-    "storagePushConstant16", "uniformAndStorageBuffer8BitAccess", "storagePushConstant8",
-    "shaderSharedInt64Atomics", "shaderBufferInt64Atomics", "independentResolve",
-    "shaderDenormPreserveFloat16", "shaderRoundingModeRTZFloat16",
-    "fragmentDensityMapDynamic", "textureCompressionASTC_HDR",
-    "integerDotProduct8BitUnsignedAccelerated" # (e derivados, via regex genérico abaixo)
+features_to_force = [
+    "shaderFloat64", 
+    "shaderStorageImageMultisample", 
+    "uniformAndStorageBuffer16BitAccess", 
+    "storagePushConstant16", 
+    "uniformAndStorageBuffer8BitAccess", 
+    "storagePushConstant8",
+    "shaderSharedInt64Atomics", 
+    "shaderBufferInt64Atomics", 
+    "independentResolve",
+    "independentResolveNone",
+    "shaderDenormPreserveFloat16", 
+    "shaderDenormFlushToZeroFloat16",
+    "shaderRoundingModeRTZFloat16",
+    "fragmentDensityMapDynamic", 
+    "textureCompressionASTC_HDR"
 ]
 
 try:
     with open(file_path, 'r') as f:
-        content = f.read()
+        lines = f.readlines()
 
-    # PASSO 1: Matar o "Android Strict Mode"
-    # Substitui qualquer menção a DETECT_OS_ANDROID por 'false'.
-    # Isso faz com que !DETECT_OS_ANDROID vire !false (true), liberando as extensões ocultas.
-    if "DETECT_OS_ANDROID" in content:
-        content = content.replace("DETECT_OS_ANDROID", "false")
-        print("SUCCESS: Android Strict Mode disabled (DETECT_OS_ANDROID -> false).")
-    else:
-        print("WARNING: DETECT_OS_ANDROID tag not found. Strict mode might differ.")
+    new_lines = []
+    ext_changes = 0
+    feat_changes = 0
 
-    # PASSO 2: Forçar Vulkan 1.4
-    version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
-    content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
+    for line in lines:
+        original_line = line
+        modified = False
+        
+        # 1. SUBSTITUIÇÃO CIRÚRGICA DE EXTENSÕES
+        # Procura por: .NOME = (qualquer coisa),
+        for ext in extensions_to_force:
+            # Regex: encontrar .EXTENSAO = ... ,
+            # Substituir por .EXTENSAO = true,
+            # Ignora espaços em branco antes ou depois
+            if f".{ext}" in line and "=" in line:
+                # Usa regex para garantir que não estamos mudando algo errado
+                # Captura: (espaços.NOME)(espaços=)(valor)(virgula/comentario)
+                replacement = re.sub(rf'(\.{ext}\s*=\s*)([^,]+)(,?)', r'\1true\3', line)
+                if replacement != line:
+                    line = replacement
+                    modified = True
+                    ext_changes += 1
+                    # Não quebra o loop, pois uma linha pode ter múltiplas (raro, mas possivel)
+        
+        # 2. SUBSTITUIÇÃO CIRÚRGICA DE FEATURES
+        # Procura por: p->feature = ... ou features->feature = ...
+        for feat in features_to_force:
+            if f"->{feat}" in line and "=" in line:
+                replacement = re.sub(rf'((?:p|features|props)->{feat}\s*=\s*)([^;]+)(;)', r'\1true\3', line)
+                if replacement != line:
+                    line = replacement
+                    modified = True
+                    feat_changes += 1
 
-    # PASSO 3: Substituição Cirúrgica de Extensões
-    # Procura por: .NOME_EXTENSAO = (qualquer coisa),
-    # Substitui por: .NOME_EXTENSAO = true,
-    count_ext = 0
-    for ext in target_extensions:
-        # Regex procura a inicialização na struct
-        regex = rf'(\.{ext}\s*=\s*)([^,]+)(,)'
-        if re.search(regex, content):
-            content = re.sub(regex, r'\1true\3', content)
-            count_ext += 1
-    print(f"Extensions Forced: {count_ext}")
+        # 3. DOT PRODUCT MASSIVO
+        if "integerDotProduct" in line and "=" in line:
+            replacement = re.sub(r'((?:p|features|props)->integerDotProduct\w+\s*=\s*)([^;]+)(;)', r'\1true\3', line)
+            if replacement != line:
+                line = replacement
+                modified = True
+                feat_changes += 1
 
-    # PASSO 4: Substituição Cirúrgica de Features
-    # Procura por: p->feature = ... ou features->feature = ...
-    count_feat = 0
-    for feat in target_features:
-        regex = rf'((?:p|features|props)->{feat}\s*=\s*)([^;]+)(;)'
-        if re.search(regex, content):
-            content = re.sub(regex, r'\1true\3', content)
-            count_feat += 1
-            
-    # HACK EXTRA: Dot Product Massivo
-    # Substitui qualquer propriedade que comece com integerDotProduct... por true
-    dot_regex = r'((?:p|features|props)->integerDotProduct\w+\s*=\s*)([^;]+)(;)'
-    content, n = re.subn(dot_regex, r'\1true\3', content)
-    print(f"Dot Product Features Forced: {n}")
+        # 4. FORÇAR VULKAN 1.4 (Na linha do apiVersion)
+        if "props->apiVersion =" in line:
+             line = re.sub(r'(props->apiVersion\s*=\s*)([^;]+)(;)', r'\1TU_API_VERSION\3', line)
+
+        new_lines.append(line)
+
+    print(f"Surgical Patch Applied: {ext_changes} extensions forced, {feat_changes} features forced.")
 
     with open(file_path, 'w') as f:
-        f.write(content)
+        f.writelines(new_lines)
 
 except Exception as e:
     print(f"PYTHON ERROR: {e}")
@@ -154,7 +191,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-V10-StrictKiller"
+	version_str="Mesa-V11-SurgicalHybrid"
 	cd "$workdir"
 }
 
@@ -232,19 +269,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-V10-StrictKiller-${short_hash}"
+	local meta_name="Turnip-V11-Surgical-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Vulkan 1.4 + Strict Killer + Forced Extensions. Commit $short_hash",
+  "description": "Vulkan 1.4 + A7xx + Strict Maint. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-V10-StrictKiller-${short_hash}.zip"
+	local zip_name="Turnip-V11-Surgical-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -255,9 +292,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-V10-StrictKiller-${date_tag}-${short_hash}" > tag
-    echo "Turnip V10 (Strict Killer) - ${date_tag}" > release
-    echo "Replaced DETECT_OS_ANDROID with false. Forced Maintenance 7/8 via struct replacement." > description
+    echo "Turnip-V11-Surgical-${date_tag}-${short_hash}" > tag
+    echo "Turnip V11 (Surgical Hybrid) - ${date_tag}" > release
+    echo "Line-by-line forced unlock of A7xx and Strict Maintenance extensions." > description
 }
 
 check_deps
