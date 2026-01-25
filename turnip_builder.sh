@@ -58,8 +58,8 @@ prepare_source(){
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V18: EXPERIMENTAL (NO MESH) ===
-    echo -e "${green}Applying Experimental Features (ShaderObject, Mutable) - No Mesh...${nocolor}"
+    # === HACK V19: ALL-IN (RAY TRACING + MESH + EXPERIMENTAL) ===
+    echo -e "${green}Applying TOTAL UNLOCK (Mesh, RayTracing, ShaderObject)...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -79,10 +79,13 @@ force_features_true = [
     "fragmentDensityMapDynamic", "textureCompressionASTC_HDR",
     "integerDotProduct8BitUnsignedAccelerated",
     
-    # --- EXPERIMENTAL FEATURES (SAFE) ---
-    # Removido: meshShader, taskShader
-    "shaderObject",       # Habilita Shader Objects (VK_EXT_shader_object)
-    "mutableDescriptorType", # Habilita Mutable Descriptors
+    # --- EXPERIMENTAL FEATURES (ALL ENABLED) ---
+    "meshShader",         # MESH SHADERS
+    "taskShader",         # TASK SHADERS
+    "shaderObject",       # SHADER OBJECTS
+    "mutableDescriptorType", # MUTABLE DESC
+    "rayQuery",           # RAY TRACING
+    "accelerationStructure", # RAY TRACING
 ]
 
 try:
@@ -121,7 +124,7 @@ try:
             insert_pos = func_start + closure_match.end()
             
             injection = f"""
-    // === V18 EXPERIMENTAL PACK (NO MESH) ===
+    // === V19 SCREENSHOT PACK ===
     // Maintenance & Strict Bypass
     {var_name}->KHR_maintenance5 = true;
     {var_name}->KHR_maintenance6 = true;
@@ -149,8 +152,14 @@ try:
     {var_name}->KHR_8bit_storage = true;
     {var_name}->KHR_16bit_storage = true;
 
-    // --- EXPERIMENTAL EXTENSIONS (SAFE) ---
-    // Removido: EXT_mesh_shader
+    // --- EXPERIMENTAL & FORBIDDEN ---
+    {var_name}->EXT_mesh_shader = true;            // MESH
+    {var_name}->KHR_ray_query = true;              // RT
+    {var_name}->KHR_acceleration_structure = true; // RT
+    {var_name}->KHR_ray_tracing_maintenance1 = true; // RT
+    {var_name}->KHR_deferred_host_operations = true; // RT dependency
+    {var_name}->KHR_pipeline_library = true;         // RT dependency
+    
     {var_name}->EXT_shader_object = true;
     {var_name}->VALVE_mutable_descriptor_type = true;
     {var_name}->EXT_vertex_attribute_divisor = true;
@@ -158,7 +167,7 @@ try:
     {var_name}->EXT_memory_budget = true;   
 """
             content = content[:insert_pos] + injection + content[insert_pos:]
-            print("SUCCESS: Experimental Extensions (No Mesh) injected.")
+            print("SUCCESS: ALL Extensions (Mesh + RT) injected.")
         else:
             print("ERROR: Could not find struct closure '};'")
             sys.exit(1)
@@ -170,7 +179,7 @@ try:
              if idx_brace != -1:
                  var_name = "ext"
                  insert_pos = idx_brace + 2
-                 injection = f"\n    {var_name}->KHR_maintenance5 = true; {var_name}->KHR_maintenance6 = true; {var_name}->EXT_shader_object = true;\n"
+                 injection = f"\n    {var_name}->KHR_maintenance5 = true; {var_name}->EXT_mesh_shader = true; {var_name}->KHR_ray_query = true; {var_name}->EXT_shader_object = true;\n"
                  content = content[:insert_pos] + injection + content[insert_pos:]
                  print("SUCCESS: Fallback injection applied.")
              else:
@@ -197,7 +206,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-V18-Exp-NoMesh"
+	version_str="Mesa-V19-ScreenshotBuild"
 	cd "$workdir"
 }
 
@@ -275,19 +284,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-V18-Exp-NoMesh-${short_hash}"
+	local meta_name="Turnip-V19-Screenshot-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Experimental: Shader Object, Mutable Desc. No Mesh. Commit $short_hash",
+  "description": "SCREENSHOT BUILD: Mesh + RayTracing + ShaderObject forced. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-V18-Exp-NoMesh-${short_hash}.zip"
+	local zip_name="Turnip-V19-Screenshot-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -298,9 +307,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-V18-Exp-NoMesh-${date_tag}-${short_hash}" > tag
-    echo "Turnip V18 (Experimental Safe) - ${date_tag}" > release
-    echo "Shader Objects + Mutable Descriptors enabled. Mesh Shaders disabled for stability." > description
+    echo "Turnip-V19-Screenshot-${date_tag}-${short_hash}" > tag
+    echo "Turnip V19 (MAX EXTENSIONS) - ${date_tag}" > release
+    echo "Everything enabled (Mesh, RT, Experimental) for maximum extension count." > description
 }
 
 check_deps
