@@ -2,7 +2,7 @@ name: Build Turnip Ultimate
 
 on:
   workflow_dispatch: # Botão para iniciar manualmente
-  schedule:
+  
      # Executa automaticamente a cada 12 horas
 
 # Permissões necessárias para criar Releases
