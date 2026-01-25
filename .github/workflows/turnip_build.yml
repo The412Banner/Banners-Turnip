@@ -1,9 +1,9 @@
-name: Build Turnip Driver
+name: Build Turnip Ultimate
 
 on:
   workflow_dispatch: # Botão para iniciar manualmente
   schedule:
-   # Executa automaticamente a cada 12 horas
+     # Executa automaticamente a cada 12 horas
 
 # Permissões necessárias para criar Releases
 permissions:
@@ -26,11 +26,10 @@ jobs:
       - name: Tornar o Script Executável
         run: chmod +x turnip_builder.sh
 
-      - name: Compilar Driver
+      - name: Compilar Driver (Ultimate Unlock)
         run: ./turnip_builder.sh
 
-      # PASSO CRÍTICO CORRIGIDO:
-      # Usa '*.zip' para pegar o arquivo independente do nome (Turnip-..., Mesa-..., etc)
+      # Identifica o ZIP gerado independentemente do nome (Mesa-Main, Turnip, etc)
       - name: Ler Metadados da Release
         id: meta
         run: |
@@ -42,7 +41,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: turnip-driver-artifact
+          name: Turnip-Ultimate-Driver
           path: ${{ env.ZIP_PATH }}
           if-no-files-found: error
 
