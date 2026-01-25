@@ -57,8 +57,18 @@ prepare_source(){
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V12: POST-INIT INJECTION (Atropela as definições) ===
-    echo -e "${green}Applying V12 Injection (Force Maintenance 7/8 + Strict Bypass)...${nocolor}"
+    # === APPLY MR !37802 (Autotuner Overhaul) ===
+    echo -e "${green}Fetching and Merging MR !37802 (Autotuner Overhaul)...${nocolor}"
+    # Busca a referência do Merge Request diretamente do GitLab
+    git fetch https://gitlab.freedesktop.org/mesa/mesa.git refs/merge-requests/37802/head:mr-37802
+    # Funde o MR no código atual
+    git merge mr-37802 --no-edit --allow-unrelated-histories || { 
+        echo -e "${red}Merge Failed! Attempting rebase...${nocolor}"
+        git rebase mr-37802 || { echo -e "${red}Critical Error applying MR 37802${nocolor}"; exit 1; }
+    }
+
+    # === HACK V13: CLEAN INJECTION (No Comments) ===
+    echo -e "${green}Applying V13 Clean Injection (Maintenance 7/8 + Strict Bypass)...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -66,7 +76,7 @@ import re
 
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
-# 1. FEATURES (Regex Simples - Funciona bem para features booleanas)
+# 1. FEATURES (Regex Simples)
 force_features_true = [
     "shaderFloat64", "shaderStorageImageMultisample",
     "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
@@ -76,7 +86,7 @@ force_features_true = [
     "shaderDenormPreserveFloat16", "shaderDenormFlushToZeroFloat16",
     "shaderRoundingModeRTZFloat16", "samplerFilterMinmax",
     "fragmentDensityMapDynamic", "textureCompressionASTC_HDR",
-    "integerDotProduct8BitUnsignedAccelerated", # Habilita todos os DotProducts
+    "integerDotProduct8BitUnsignedAccelerated",
 ]
 
 try:
@@ -92,7 +102,6 @@ try:
     # PATCH 2: Features Unlock
     feat_count = 0
     for prop in force_features_true:
-        # Pega qualquer propriedade de DotProduct se for genérica
         if "integerDotProduct" in prop:
              regex = r'((?:p|features|props)->integerDotProduct\w+\s*=\s*)([^;]+)(;)'
              content, n = re.subn(regex, r'\1true\3', content)
@@ -104,49 +113,29 @@ try:
                  feat_count += 1
     print(f"Features Unlocked: {feat_count}")
     
-    # PATCH 3: EXTENSIONS (INJEÇÃO SEGURA PÓS-INICIALIZAÇÃO)
-    # Estratégia: Encontrar 'get_device_extensions', achar o fechamento da struct '};'
-    # e injetar as correções logo depois.
-    
-    print("Searching for injection point inside get_device_extensions...")
-    
-    # Procura assinatura da função para pegar o nome da variável 'ext'
-    # Ex: get_device_extensions(..., struct vk_device_extension_table *ext)
+    # PATCH 3: EXTENSIONS (INJEÇÃO LIMPA PÓS-INICIALIZAÇÃO)
     match = re.search(r'get_device_extensions\s*\([^{]*struct\s+vk_device_extension_table\s*\*\s*(\w+)', content, re.DOTALL)
     
     if match:
         var_name = match.group(1)
-        print(f"Variable name detected: '{var_name}'")
-        
-        # Encontra o corpo da função
         func_start = match.end()
-        
-        # Procura o fechamento da inicialização da struct: "};"
-        # Isso geralmente acontece antes do fim da função.
-        # Vamos procurar a primeira ocorrência de "};" após o início da função.
         closure_match = re.search(r'\};', content[func_start:])
         
         if closure_match:
             insert_pos = func_start + closure_match.end()
             
-            # BLOCO DE INJEÇÃO (Força bruta nas extensões teimosas)
+            # Código de Injeção SEM COMENTÁRIOS
             injection = f"""
-    // === V12 OVERRIDE INJECTION ===
-    // Maintenance Pack
     {var_name}->KHR_maintenance5 = true;
     {var_name}->KHR_maintenance6 = true;
     {var_name}->KHR_maintenance7 = true;
     {var_name}->KHR_maintenance8 = true;
-    
-    // Android Strict Bypass
     {var_name}->EXT_primitives_generated_query = true;
     {var_name}->EXT_primitive_topology_list_restart = true;
     {var_name}->EXT_depth_clip_control = true;
     {var_name}->EXT_depth_clip_enable = true;
     {var_name}->EXT_attachment_feedback_loop_layout = true;
     {var_name}->EXT_attachment_feedback_loop_dynamic_state = true;
-    
-    // A7xx / High-End Features
     {var_name}->KHR_compute_shader_derivatives = true;
     {var_name}->NV_compute_shader_derivatives = true;
     {var_name}->KHR_fragment_shading_rate = true;
@@ -161,17 +150,14 @@ try:
     {var_name}->KHR_8bit_storage = true;
     {var_name}->KHR_16bit_storage = true;
 """
-            # Insere o código no arquivo
             content = content[:insert_pos] + injection + content[insert_pos:]
-            print("SUCCESS: Forced Extensions injected after struct initialization.")
+            print("SUCCESS: Forced Extensions injected.")
         else:
-            print("ERROR: Could not find struct closure '};' inside function.")
+            print("ERROR: Could not find struct closure '};'")
             sys.exit(1)
     else:
-        # Fallback: Se não achar com regex complexo, tenta achar só 'get_device_extensions' e assume 'ext'
-        print("WARNING: Complex signature match failed. Trying simple fallback...")
+        # Fallback simples
         if "get_device_extensions" in content:
-             # Assume 'ext' e procura o primeiro '};' depois de 'get_device_extensions'
              idx = content.find("get_device_extensions")
              idx_brace = content.find("};", idx)
              if idx_brace != -1:
@@ -181,10 +167,8 @@ try:
                  content = content[:insert_pos] + injection + content[insert_pos:]
                  print("SUCCESS: Fallback injection applied.")
              else:
-                 print("ERROR: Fallback failed. No '};' found.")
                  sys.exit(1)
         else:
-             print("ERROR: get_device_extensions not found.")
              sys.exit(1)
 
     with open(file_path, 'w') as f:
@@ -206,7 +190,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-V12-Injection"
+	version_str="Mesa-V13-Autotuner"
 	cd "$workdir"
 }
 
@@ -284,19 +268,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-V12-Injection-${short_hash}"
+	local meta_name="Turnip-V13-Autotuner-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Vulkan 1.4 + Forced Maintenance 7/8 Injection. Commit $short_hash",
+  "description": "Vulkan 1.4 + Autotuner Overhaul + Forced Extensions. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-V12-Injection-${short_hash}.zip"
+	local zip_name="Turnip-V13-Autotuner-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -307,9 +291,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-V12-Injection-${date_tag}-${short_hash}" > tag
-    echo "Turnip V12 (Post-Init Injection) - ${date_tag}" > release
-    echo "Forces Maintenance 7/8 by injecting code after struct initialization." > description
+    echo "Turnip-V13-Autotuner-${date_tag}-${short_hash}" > tag
+    echo "Turnip V13 (Autotuner + Inject) - ${date_tag}" > release
+    echo "Includes MR 37802 (Autotuner Overhaul) and cleaned up extension injection." > description
 }
 
 check_deps
