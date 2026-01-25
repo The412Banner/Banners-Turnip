@@ -57,130 +57,145 @@ prepare_source(){
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V11: SURGICAL HYBRID (A7xx + Strict + Maint) ===
-    echo -e "${green}Applying V11 Surgical Patch (Line-by-Line Force True)...${nocolor}"
+    # === HACK V12: POST-INIT INJECTION (Atropela as definições) ===
+    echo -e "${green}Applying V12 Injection (Force Maintenance 7/8 + Strict Bypass)...${nocolor}"
 
-cat << 'EOF_PYTHON' > patch_tu.py
+cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
 import re
 
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
-# Lista MESTRA de extensões para forçar 'true'
-# Combina A7xx (VRS, Derivatives) + Strict (Maintenance, Primitives)
-extensions_to_force = [
-    # --- MAINTENANCE PACK (Android Strict) ---
-    "KHR_maintenance5", 
-    "KHR_maintenance6", 
-    "KHR_maintenance7", 
-    "KHR_maintenance8",
-    "EXT_primitives_generated_query", 
-    "EXT_primitive_topology_list_restart",
-    "EXT_depth_clip_control", 
-    "EXT_depth_clip_enable",
-    "EXT_attachment_feedback_loop_layout", 
-    "EXT_attachment_feedback_loop_dynamic_state",
-    
-    # --- A7XX / HIGH-END PACK ---
-    "KHR_fragment_shading_rate",       # VRS
-    "KHR_compute_shader_derivatives",  # A7xx
-    "NV_compute_shader_derivatives",   # A7xx
-    "EXT_filter_cubic",                # Cubic
-    "IMG_filter_cubic",
-    "EXT_sample_locations",
-    "EXT_texture_compression_astc_hdr",
-    "EXT_calibrated_timestamps",
-    "EXT_conservative_rasterization",
-    "AMD_shader_fragment_mask",
-    
-    # --- STORAGE & ATOMICS ---
-    "KHR_shader_atomic_int64",
-    "KHR_8bit_storage", 
-    "KHR_16bit_storage"
-]
-
-# Lista de Features para forçar 'true'
-features_to_force = [
-    "shaderFloat64", 
-    "shaderStorageImageMultisample", 
-    "uniformAndStorageBuffer16BitAccess", 
-    "storagePushConstant16", 
-    "uniformAndStorageBuffer8BitAccess", 
-    "storagePushConstant8",
-    "shaderSharedInt64Atomics", 
-    "shaderBufferInt64Atomics", 
-    "independentResolve",
-    "independentResolveNone",
-    "shaderDenormPreserveFloat16", 
-    "shaderDenormFlushToZeroFloat16",
-    "shaderRoundingModeRTZFloat16",
-    "fragmentDensityMapDynamic", 
-    "textureCompressionASTC_HDR"
+# 1. FEATURES (Regex Simples - Funciona bem para features booleanas)
+force_features_true = [
+    "shaderFloat64", "shaderStorageImageMultisample",
+    "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
+    "uniformAndStorageBuffer8BitAccess", "storagePushConstant8",
+    "shaderSharedInt64Atomics", "shaderBufferInt64Atomics",
+    "independentResolve", "independentResolveNone",
+    "shaderDenormPreserveFloat16", "shaderDenormFlushToZeroFloat16",
+    "shaderRoundingModeRTZFloat16", "samplerFilterMinmax",
+    "fragmentDensityMapDynamic", "textureCompressionASTC_HDR",
+    "integerDotProduct8BitUnsignedAccelerated", # Habilita todos os DotProducts
 ]
 
 try:
     with open(file_path, 'r') as f:
-        lines = f.readlines()
+        content = f.read()
 
-    new_lines = []
-    ext_changes = 0
-    feat_changes = 0
+    # PATCH 1: Vulkan 1.4 Force
+    version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
+    if re.search(version_regex, content):
+        content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
+        print("Vulkan 1.4 Forced.")
 
-    for line in lines:
-        original_line = line
-        modified = False
+    # PATCH 2: Features Unlock
+    feat_count = 0
+    for prop in force_features_true:
+        # Pega qualquer propriedade de DotProduct se for genérica
+        if "integerDotProduct" in prop:
+             regex = r'((?:p|features|props)->integerDotProduct\w+\s*=\s*)([^;]+)(;)'
+             content, n = re.subn(regex, r'\1true\3', content)
+             feat_count += n
+        else:
+             regex = rf'((?:p|features|props)->{prop}\s*=\s*)([^;]+)(;)'
+             if re.search(regex, content):
+                 content = re.sub(regex, r'\1true\3', content)
+                 feat_count += 1
+    print(f"Features Unlocked: {feat_count}")
+    
+    # PATCH 3: EXTENSIONS (INJEÇÃO SEGURA PÓS-INICIALIZAÇÃO)
+    # Estratégia: Encontrar 'get_device_extensions', achar o fechamento da struct '};'
+    # e injetar as correções logo depois.
+    
+    print("Searching for injection point inside get_device_extensions...")
+    
+    # Procura assinatura da função para pegar o nome da variável 'ext'
+    # Ex: get_device_extensions(..., struct vk_device_extension_table *ext)
+    match = re.search(r'get_device_extensions\s*\([^{]*struct\s+vk_device_extension_table\s*\*\s*(\w+)', content, re.DOTALL)
+    
+    if match:
+        var_name = match.group(1)
+        print(f"Variable name detected: '{var_name}'")
         
-        # 1. SUBSTITUIÇÃO CIRÚRGICA DE EXTENSÕES
-        # Procura por: .NOME = (qualquer coisa),
-        for ext in extensions_to_force:
-            # Regex: encontrar .EXTENSAO = ... ,
-            # Substituir por .EXTENSAO = true,
-            # Ignora espaços em branco antes ou depois
-            if f".{ext}" in line and "=" in line:
-                # Usa regex para garantir que não estamos mudando algo errado
-                # Captura: (espaços.NOME)(espaços=)(valor)(virgula/comentario)
-                replacement = re.sub(rf'(\.{ext}\s*=\s*)([^,]+)(,?)', r'\1true\3', line)
-                if replacement != line:
-                    line = replacement
-                    modified = True
-                    ext_changes += 1
-                    # Não quebra o loop, pois uma linha pode ter múltiplas (raro, mas possivel)
+        # Encontra o corpo da função
+        func_start = match.end()
         
-        # 2. SUBSTITUIÇÃO CIRÚRGICA DE FEATURES
-        # Procura por: p->feature = ... ou features->feature = ...
-        for feat in features_to_force:
-            if f"->{feat}" in line and "=" in line:
-                replacement = re.sub(rf'((?:p|features|props)->{feat}\s*=\s*)([^;]+)(;)', r'\1true\3', line)
-                if replacement != line:
-                    line = replacement
-                    modified = True
-                    feat_changes += 1
-
-        # 3. DOT PRODUCT MASSIVO
-        if "integerDotProduct" in line and "=" in line:
-            replacement = re.sub(r'((?:p|features|props)->integerDotProduct\w+\s*=\s*)([^;]+)(;)', r'\1true\3', line)
-            if replacement != line:
-                line = replacement
-                modified = True
-                feat_changes += 1
-
-        # 4. FORÇAR VULKAN 1.4 (Na linha do apiVersion)
-        if "props->apiVersion =" in line:
-             line = re.sub(r'(props->apiVersion\s*=\s*)([^;]+)(;)', r'\1TU_API_VERSION\3', line)
-
-        new_lines.append(line)
-
-    print(f"Surgical Patch Applied: {ext_changes} extensions forced, {feat_changes} features forced.")
+        # Procura o fechamento da inicialização da struct: "};"
+        # Isso geralmente acontece antes do fim da função.
+        # Vamos procurar a primeira ocorrência de "};" após o início da função.
+        closure_match = re.search(r'\};', content[func_start:])
+        
+        if closure_match:
+            insert_pos = func_start + closure_match.end()
+            
+            # BLOCO DE INJEÇÃO (Força bruta nas extensões teimosas)
+            injection = f"""
+    // === V12 OVERRIDE INJECTION ===
+    // Maintenance Pack
+    {var_name}->KHR_maintenance5 = true;
+    {var_name}->KHR_maintenance6 = true;
+    {var_name}->KHR_maintenance7 = true;
+    {var_name}->KHR_maintenance8 = true;
+    
+    // Android Strict Bypass
+    {var_name}->EXT_primitives_generated_query = true;
+    {var_name}->EXT_primitive_topology_list_restart = true;
+    {var_name}->EXT_depth_clip_control = true;
+    {var_name}->EXT_depth_clip_enable = true;
+    {var_name}->EXT_attachment_feedback_loop_layout = true;
+    {var_name}->EXT_attachment_feedback_loop_dynamic_state = true;
+    
+    // A7xx / High-End Features
+    {var_name}->KHR_compute_shader_derivatives = true;
+    {var_name}->NV_compute_shader_derivatives = true;
+    {var_name}->KHR_fragment_shading_rate = true;
+    {var_name}->EXT_filter_cubic = true;
+    {var_name}->IMG_filter_cubic = true;
+    {var_name}->EXT_sample_locations = true;
+    {var_name}->EXT_texture_compression_astc_hdr = true;
+    {var_name}->EXT_calibrated_timestamps = true;
+    {var_name}->EXT_conservative_rasterization = true;
+    {var_name}->AMD_shader_fragment_mask = true;
+    {var_name}->KHR_shader_atomic_int64 = true;
+    {var_name}->KHR_8bit_storage = true;
+    {var_name}->KHR_16bit_storage = true;
+"""
+            # Insere o código no arquivo
+            content = content[:insert_pos] + injection + content[insert_pos:]
+            print("SUCCESS: Forced Extensions injected after struct initialization.")
+        else:
+            print("ERROR: Could not find struct closure '};' inside function.")
+            sys.exit(1)
+    else:
+        # Fallback: Se não achar com regex complexo, tenta achar só 'get_device_extensions' e assume 'ext'
+        print("WARNING: Complex signature match failed. Trying simple fallback...")
+        if "get_device_extensions" in content:
+             # Assume 'ext' e procura o primeiro '};' depois de 'get_device_extensions'
+             idx = content.find("get_device_extensions")
+             idx_brace = content.find("};", idx)
+             if idx_brace != -1:
+                 var_name = "ext"
+                 insert_pos = idx_brace + 2
+                 injection = f"\n    {var_name}->KHR_maintenance5 = true; {var_name}->KHR_maintenance6 = true; {var_name}->KHR_maintenance7 = true; {var_name}->KHR_maintenance8 = true; {var_name}->EXT_primitives_generated_query = true; {var_name}->EXT_primitive_topology_list_restart = true;\n"
+                 content = content[:insert_pos] + injection + content[insert_pos:]
+                 print("SUCCESS: Fallback injection applied.")
+             else:
+                 print("ERROR: Fallback failed. No '};' found.")
+                 sys.exit(1)
+        else:
+             print("ERROR: get_device_extensions not found.")
+             sys.exit(1)
 
     with open(file_path, 'w') as f:
-        f.writelines(new_lines)
+        f.write(content)
 
 except Exception as e:
     print(f"PYTHON ERROR: {e}")
     sys.exit(1)
 EOF_PYTHON
 
-    python3 patch_tu.py || { echo -e "${red}Patch Failed!${nocolor}"; exit 1; }
+    python3 inject_ultimate.py || { echo -e "${red}Unlock Failed!${nocolor}"; exit 1; }
     
     echo "Cloning SPIRV dependencies..."
     mkdir -p subprojects
@@ -191,7 +206,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-V11-SurgicalHybrid"
+	version_str="Mesa-V12-Injection"
 	cd "$workdir"
 }
 
@@ -269,19 +284,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-V11-Surgical-${short_hash}"
+	local meta_name="Turnip-V12-Injection-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Vulkan 1.4 + A7xx + Strict Maint. Commit $short_hash",
+  "description": "Vulkan 1.4 + Forced Maintenance 7/8 Injection. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-V11-Surgical-${short_hash}.zip"
+	local zip_name="Turnip-V12-Injection-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -292,9 +307,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-V11-Surgical-${date_tag}-${short_hash}" > tag
-    echo "Turnip V11 (Surgical Hybrid) - ${date_tag}" > release
-    echo "Line-by-line forced unlock of A7xx and Strict Maintenance extensions." > description
+    echo "Turnip-V12-Injection-${date_tag}-${short_hash}" > tag
+    echo "Turnip V12 (Post-Init Injection) - ${date_tag}" > release
+    echo "Forces Maintenance 7/8 by injecting code after struct initialization." > description
 }
 
 check_deps
