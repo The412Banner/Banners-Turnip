@@ -57,8 +57,8 @@ prepare_source(){
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK: ULTIMATE A6XX UNLOCK (Vulkan 1.4 + All Features) ===
-    echo -e "${green}Applying Ultimate A6xx Unlock (Vulkan 1.4 + Forced Features)...${nocolor}"
+    # === HACK V5: ADRENO 7XX "NEXT-GEN" SPOOF (A660 + A7xx Compute) ===
+    echo -e "${green}Applying Adreno 7xx Spoofing (VRS, Cubic, ASTC HDR, Compute Derivatives)...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -66,34 +66,31 @@ import re
 
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
-# Lista de propriedades para forçar como TRUE
-force_true = [
-    # --- Vulkan 1.0/1.1/1.2 Features ---
-    "shaderFloat64",
-    "shaderStorageImageMultisample",
-    "uniformAndStorageBuffer16BitAccess",
-    "storagePushConstant16",
-    "uniformAndStorageBuffer8BitAccess",
-    "storagePushConstant8",
-    "shaderSharedInt64Atomics",
-    "independentResolve",
-    "independentResolveNone",
+# 1. FEATURES (Funcionalidades internas do driver)
+force_features_true = [
+    # Core desbloqueado
+    "shaderFloat64", "shaderStorageImageMultisample",
+    "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
+    "uniformAndStorageBuffer8BitAccess", "storagePushConstant8",
+    "shaderSharedInt64Atomics", "shaderBufferInt64Atomics",
+    "independentResolve", "independentResolveNone",
     
-    # --- Dot Product (Core 1.3) ---
-    "integerDotProduct8BitUnsignedAccelerated",
-    "integerDotProduct8BitSignedAccelerated",
-    "integerDotProduct8BitMixedSignednessAccelerated",
-    "integerDotProduct4x8BitPackedUnsignedAccelerated",
-    "integerDotProduct4x8BitPackedSignedAccelerated",
-    "integerDotProduct4x8BitPackedMixedSignednessAccelerated",
-    "integerDotProduct16BitUnsignedAccelerated",
-    "integerDotProduct16BitSignedAccelerated",
-    "integerDotProduct16BitMixedSignednessAccelerated",
-    "integerDotProduct32BitUnsignedAccelerated",
-    "integerDotProduct32BitSignedAccelerated",
-    "integerDotProduct32BitMixedSignednessAccelerated",
-    "integerDotProduct64BitUnsignedAccelerated",
-    "integerDotProduct64BitSignedAccelerated",
+    # Core 1.2+ Extra Unlocks
+    "shaderDenormPreserveFloat16", "shaderDenormFlushToZeroFloat16",
+    "shaderRoundingModeRTZFloat16", "shaderDenormPreserveFloat32",
+    "shaderRoundingModeRTZFloat32", "samplerFilterMinmax",
+    "fragmentDensityMapDynamic", "fragmentDensityInvocations",
+    "primitiveUnderestimation", "conservativePointAndLineRasterization",
+    "textureCompressionASTC_HDR",
+    
+    # Dot Product (Core 1.3 completo)
+    "integerDotProduct8BitUnsignedAccelerated", "integerDotProduct8BitSignedAccelerated",
+    "integerDotProduct8BitMixedSignednessAccelerated", "integerDotProduct4x8BitPackedUnsignedAccelerated",
+    "integerDotProduct4x8BitPackedSignedAccelerated", "integerDotProduct4x8BitPackedMixedSignednessAccelerated",
+    "integerDotProduct16BitUnsignedAccelerated", "integerDotProduct16BitSignedAccelerated",
+    "integerDotProduct16BitMixedSignednessAccelerated", "integerDotProduct32BitUnsignedAccelerated",
+    "integerDotProduct32BitSignedAccelerated", "integerDotProduct32BitMixedSignednessAccelerated",
+    "integerDotProduct64BitUnsignedAccelerated", "integerDotProduct64BitSignedAccelerated",
     "integerDotProduct64BitMixedSignednessAccelerated",
     "integerDotProductAccumulatingSaturating8BitUnsignedAccelerated",
     "integerDotProductAccumulatingSaturating8BitSignedAccelerated",
@@ -109,65 +106,68 @@ force_true = [
     "integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated",
     "integerDotProductAccumulatingSaturating64BitUnsignedAccelerated",
     "integerDotProductAccumulatingSaturating64BitSignedAccelerated",
-    "integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated",
+    "integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"
+]
 
-    # --- Atomic & Memory Features ---
-    "shaderBufferFloat32AtomicAdd",
-    "shaderBufferFloat64Atomics",
-    "shaderBufferFloat64AtomicAdd",
-    "shaderSharedFloat32AtomicAdd",
-    "shaderSharedFloat64Atomics",
-    "shaderSharedFloat64AtomicAdd",
-    "shaderImageFloat32AtomicAdd",
-    "sparseImageFloat32Atomics",
-    "sparseImageFloat32AtomicAdd",
+# 2. EXTENSIONS (Adreno 7xx FULL Pack)
+force_extensions_true = [
+    # A7xx Exclusives (Derivadas em Compute Shaders)
+    "KHR_compute_shader_derivatives",
+    "NV_compute_shader_derivatives",
+
+    # A660+ High End Features
+    "KHR_fragment_shading_rate",      # VRS
+    "EXT_filter_cubic",               # Cubic Filtering
+    "IMG_filter_cubic",               # Cubic Filtering (Alias)
+    "EXT_sample_locations",           # Sample Locations
+    "EXT_texture_compression_astc_hdr", # ASTC HDR
+    "EXT_calibrated_timestamps",      # Timestamps precisos
+    "EXT_conservative_rasterization", # Rasterização conservadora (Nativa A7xx)
     
-    # --- Rasterization & Misc ---
-    "fragmentDensityMapDynamic",
-    "fragmentDensityInvocations",
-    "primitiveUnderestimation",
-    "conservativePointAndLineRasterization",
-    "degenerateLinesRasterized",
-    "fullyCoveredFragmentShaderInputVariable",
-    "conservativeRasterizationPostDepthCoverage",
-    "shaderDenormFlushToZeroFloat64",
-    "shaderDenormPreserveFloat64",
-    "shaderRoundingModeRTEFloat64",
-    "shaderRoundingModeRTZFloat64",
-    "shaderSignedZeroInfNanPreserveFloat64"
+    # Extra Core stuff
+    "KHR_shader_atomic_int64",        
+    "KHR_8bit_storage",               
+    "KHR_16bit_storage",              
+    "AMD_shader_fragment_mask"        
 ]
 
 try:
     with open(file_path, 'r') as f:
         content = f.read()
 
-    # 1. FORÇAR VULKAN 1.4 (Ignorar verificação de chip ou multiview)
+    # PATCH 1: Forçar Vulkan 1.4
     version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
     if re.search(version_regex, content):
         content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
-        print("Vulkan 1.4 Forced: apiVersion set to TU_API_VERSION.")
-    else:
-        print("WARNING: Could not find apiVersion assignment to patch!")
+        print("Vulkan 1.4 Forced.")
 
-    # 2. FORÇAR FEATURES PARA TRUE
-    count = 0
-    for prop in force_true:
-        regex = rf'((?:p|features)->{prop}\s*=\s*)([^;]+)(;)'
+    # PATCH 2: Forçar Features
+    feat_count = 0
+    for prop in force_features_true:
+        regex = rf'((?:p|features|props)->{prop}\s*=\s*)([^;]+)(;)'
         if re.search(regex, content):
             content = re.sub(regex, r'\1true\3', content)
-            count += 1
+            feat_count += 1
+    print(f"Features Unlocked: {feat_count}")
+
+    # PATCH 3: Forçar Extensions
+    ext_count = 0
+    for ext in force_extensions_true:
+        regex = rf'(\.{ext}\s*=\s*)([^,]+)(,)'
+        if re.search(regex, content):
+            content = re.sub(regex, r'\1true\3', content)
+            ext_count += 1
+    print(f"A7xx Extensions Spoofed: {ext_count}")
 
     with open(file_path, 'w') as f:
         f.write(content)
-        
-    print(f"Features Unlocked: {count} properties forced to TRUE.")
 
 except Exception as e:
     print(f"PYTHON ERROR: {e}")
     sys.exit(1)
 EOF_PYTHON
 
-    python3 inject_ultimate.py || { echo -e "${red}Ultimate Unlock Failed!${nocolor}"; exit 1; }
+    python3 inject_ultimate.py || { echo -e "${red}Unlock Failed!${nocolor}"; exit 1; }
     
     echo "Cloning SPIRV dependencies..."
     mkdir -p subprojects
@@ -178,7 +178,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-Main-Ultimate"
+	version_str="Mesa-Main-A7xx-Spoof"
 	cd "$workdir"
 }
 
@@ -256,19 +256,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Mesa-Main-Ultimate-${short_hash}"
+	local meta_name="Mesa-Main-A7xx-Spoof-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Mesa Main (Ultimate Unlock). Vulkan 1.4 + A6xx Features. Commit $short_hash",
+  "description": "Mesa Main. Spoofing A7xx Features (VRS, Compute Derivatives). No RT. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Mesa-Main-Ultimate-${short_hash}.zip"
+	local zip_name="Mesa-Main-A7xx-Spoof-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -279,9 +279,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Mesa-Main-Ultimate-${date_tag}-${short_hash}" > tag
-    echo "Mesa Main (Ultimate) - ${date_tag}" > release
-    echo "Unlocked A6xx features + Vulkan 1.4 spoofing." > description
+    echo "Mesa-A7xx-Spoof-${date_tag}-${short_hash}" > tag
+    echo "Turnip A7xx Spoof (VRS + Derivatives) - ${date_tag}" > release
+    echo "A610/619 masquerading as A7xx (Added Compute Derivatives). Ray Tracing disabled." > description
 }
 
 check_deps
