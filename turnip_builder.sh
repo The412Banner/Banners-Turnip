@@ -11,7 +11,7 @@ workdir="$(pwd)/turnip_workdir"
 ndkver="android-ndk-r28"
 target_sdk="35" 
 
-# MUDANÇA 1: Repositório do PixelyIon (Autotuner Branch)
+# Branch do PixelyIon (Autotuner)
 base_repo="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
 branch_name="tu-newat"
 
@@ -52,16 +52,14 @@ prepare_source(){
 	if [ -d mesa ]; then rm -rf mesa; fi
 	
     echo -e "${green}Cloning branch $branch_name...${nocolor}"
-    
-    # MUDANÇA 2: Clone específico da branch tu-newat
 	git clone --depth 1 -b "$branch_name" "$base_repo" mesa
 	cd mesa
     
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V15: CLEAN INJECTION (Aplicado sobre o Autotuner) ===
-    echo -e "${green}Applying Ultimate Unlock Injection...${nocolor}"
+    # === HACK V18: EXPERIMENTAL (NO MESH) ===
+    echo -e "${green}Applying Experimental Features (ShaderObject, Mutable) - No Mesh...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -70,6 +68,7 @@ import re
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
 force_features_true = [
+    # Core & Stability
     "shaderFloat64", "shaderStorageImageMultisample",
     "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
     "uniformAndStorageBuffer8BitAccess", "storagePushConstant8",
@@ -79,6 +78,11 @@ force_features_true = [
     "shaderRoundingModeRTZFloat16", "samplerFilterMinmax",
     "fragmentDensityMapDynamic", "textureCompressionASTC_HDR",
     "integerDotProduct8BitUnsignedAccelerated",
+    
+    # --- EXPERIMENTAL FEATURES (SAFE) ---
+    # Removido: meshShader, taskShader
+    "shaderObject",       # Habilita Shader Objects (VK_EXT_shader_object)
+    "mutableDescriptorType", # Habilita Mutable Descriptors
 ]
 
 try:
@@ -117,6 +121,8 @@ try:
             insert_pos = func_start + closure_match.end()
             
             injection = f"""
+    // === V18 EXPERIMENTAL PACK (NO MESH) ===
+    // Maintenance & Strict Bypass
     {var_name}->KHR_maintenance5 = true;
     {var_name}->KHR_maintenance6 = true;
     {var_name}->KHR_maintenance7 = true;
@@ -127,6 +133,8 @@ try:
     {var_name}->EXT_depth_clip_enable = true;
     {var_name}->EXT_attachment_feedback_loop_layout = true;
     {var_name}->EXT_attachment_feedback_loop_dynamic_state = true;
+    
+    // A7xx High-End Spoof
     {var_name}->KHR_compute_shader_derivatives = true;
     {var_name}->NV_compute_shader_derivatives = true;
     {var_name}->KHR_fragment_shading_rate = true;
@@ -140,9 +148,17 @@ try:
     {var_name}->KHR_shader_atomic_int64 = true;
     {var_name}->KHR_8bit_storage = true;
     {var_name}->KHR_16bit_storage = true;
+
+    // --- EXPERIMENTAL EXTENSIONS (SAFE) ---
+    // Removido: EXT_mesh_shader
+    {var_name}->EXT_shader_object = true;
+    {var_name}->VALVE_mutable_descriptor_type = true;
+    {var_name}->EXT_vertex_attribute_divisor = true;
+    {var_name}->EXT_display_control = true;
+    {var_name}->EXT_memory_budget = true;   
 """
             content = content[:insert_pos] + injection + content[insert_pos:]
-            print("SUCCESS: Forced Extensions injected.")
+            print("SUCCESS: Experimental Extensions (No Mesh) injected.")
         else:
             print("ERROR: Could not find struct closure '};'")
             sys.exit(1)
@@ -154,7 +170,7 @@ try:
              if idx_brace != -1:
                  var_name = "ext"
                  insert_pos = idx_brace + 2
-                 injection = f"\n    {var_name}->KHR_maintenance5 = true; {var_name}->KHR_maintenance6 = true; {var_name}->KHR_maintenance7 = true; {var_name}->KHR_maintenance8 = true; {var_name}->EXT_primitives_generated_query = true; {var_name}->EXT_primitive_topology_list_restart = true;\n"
+                 injection = f"\n    {var_name}->KHR_maintenance5 = true; {var_name}->KHR_maintenance6 = true; {var_name}->EXT_shader_object = true;\n"
                  content = content[:insert_pos] + injection + content[insert_pos:]
                  print("SUCCESS: Fallback injection applied.")
              else:
@@ -181,7 +197,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-PixelyIon-Autotuner"
+	version_str="Mesa-V18-Exp-NoMesh"
 	cd "$workdir"
 }
 
@@ -259,19 +275,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-Autotuner-SDK36-${short_hash}"
+	local meta_name="Turnip-V18-Exp-NoMesh-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "PixelyIon/tu-newat (Autotuner) + SDK 36 Spoof + Ultimate Exts. Commit $short_hash",
+  "description": "Experimental: Shader Object, Mutable Desc. No Mesh. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-Autotuner-SDK36-${short_hash}.zip"
+	local zip_name="Turnip-V18-Exp-NoMesh-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -282,9 +298,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-Autotuner-${date_tag}-${short_hash}" > tag
-    echo "Turnip Autotuner (PixelyIon) - ${date_tag}" > release
-    echo "Direct build from 'tu-newat' branch. SDK 36 features enabled + Extension Unlock." > description
+    echo "Turnip-V18-Exp-NoMesh-${date_tag}-${short_hash}" > tag
+    echo "Turnip V18 (Experimental Safe) - ${date_tag}" > release
+    echo "Shader Objects + Mutable Descriptors enabled. Mesh Shaders disabled for stability." > description
 }
 
 check_deps
