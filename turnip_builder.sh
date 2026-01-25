@@ -9,9 +9,11 @@ deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator"
 workdir="$(pwd)/turnip_workdir"
 
 ndkver="android-ndk-r28"
-target_sdk="35" # Mantém 35 para o compilador (Compatibilidade)
+target_sdk="35" 
 
-base_repo="https://gitlab.freedesktop.org/mesa/mesa.git"
+# MUDANÇA 1: Repositório do PixelyIon (Autotuner Branch)
+base_repo="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
+branch_name="tu-newat"
 
 check_deps(){
 	echo "Checking system dependencies ..."
@@ -45,28 +47,21 @@ prepare_ndk(){
 }
 
 prepare_source(){
-	echo "Preparing Mesa source (Official Main)..."
+	echo "Preparing Mesa source (PixelyIon Autotuner)..."
 	cd "$workdir"
 	if [ -d mesa ]; then rm -rf mesa; fi
 	
-    echo -e "${green}Cloning Mesa Main...${nocolor}"
+    echo -e "${green}Cloning branch $branch_name...${nocolor}"
     
-	git clone --depth 100 "$base_repo" mesa
+    # MUDANÇA 2: Clone específico da branch tu-newat
+	git clone --depth 1 -b "$branch_name" "$base_repo" mesa
 	cd mesa
     
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === APPLY MR !37802 (Autotuner Overhaul) ===
-    echo -e "${green}Fetching and Merging MR !37802 (Autotuner Overhaul)...${nocolor}"
-    git fetch https://gitlab.freedesktop.org/mesa/mesa.git refs/merge-requests/37802/head:mr-37802
-    git merge mr-37802 --no-edit --allow-unrelated-histories || { 
-        echo -e "${red}Merge Failed! Attempting rebase...${nocolor}"
-        git rebase mr-37802 || { echo -e "${red}Critical Error applying MR 37802${nocolor}"; exit 1; }
-    }
-
-    # === HACK V13: CLEAN INJECTION (No Comments) ===
-    echo -e "${green}Applying V13 Clean Injection (Maintenance 7/8 + Strict Bypass)...${nocolor}"
+    # === HACK V15: CLEAN INJECTION (Aplicado sobre o Autotuner) ===
+    echo -e "${green}Applying Ultimate Unlock Injection...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -90,11 +85,13 @@ try:
     with open(file_path, 'r') as f:
         content = f.read()
 
+    # 1. Force Vulkan 1.4
     version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
     if re.search(version_regex, content):
         content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
         print("Vulkan 1.4 Forced.")
 
+    # 2. Force Features
     feat_count = 0
     for prop in force_features_true:
         if "integerDotProduct" in prop:
@@ -108,6 +105,7 @@ try:
                  feat_count += 1
     print(f"Features Unlocked: {feat_count}")
     
+    # 3. Inject Extensions (Post-Init)
     match = re.search(r'get_device_extensions\s*\([^{]*struct\s+vk_device_extension_table\s*\*\s*(\w+)', content, re.DOTALL)
     
     if match:
@@ -149,6 +147,7 @@ try:
             print("ERROR: Could not find struct closure '};'")
             sys.exit(1)
     else:
+        # Fallback
         if "get_device_extensions" in content:
              idx = content.find("get_device_extensions")
              idx_brace = content.find("};", idx)
@@ -182,13 +181,12 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-V14-SDK36-Autotuner"
+	version_str="Mesa-PixelyIon-Autotuner"
 	cd "$workdir"
 }
 
 compile_mesa(){
-	# Aqui está o truque: Target SDK 35 para o Compilador, SDK 36 para o Meson
-	echo -e "${green}Compiling Mesa for SDK 36 (Spoofed) using SDK $target_sdk Compiler...${nocolor}"
+	echo -e "${green}Compiling Mesa (PixelyIon) for SDK 36 (Spoofed)...${nocolor}"
 
 	local source_dir="$workdir/mesa"
 	local build_dir="$source_dir/build"
@@ -221,7 +219,6 @@ EOF
 	export CFLAGS="-D__ANDROID__ -Wno-error"
 	export CXXFLAGS="-D__ANDROID__ -Wno-error"
 
-    # ALTERAÇÃO CRÍTICA: platform-sdk-version=36
 	meson setup "$build_dir" --cross-file "$cross_file" \
 		-Dbuildtype=release \
 		-Dplatforms=android \
@@ -262,19 +259,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-V14-SDK36-Autotuner-${short_hash}"
+	local meta_name="Turnip-Autotuner-SDK36-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "SDK 36 (Spoof) + MR Autotuner + Forced Exts. Commit $short_hash",
+  "description": "PixelyIon/tu-newat (Autotuner) + SDK 36 Spoof + Ultimate Exts. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-V14-SDK36-Autotuner-${short_hash}.zip"
+	local zip_name="Turnip-Autotuner-SDK36-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -285,9 +282,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-V14-SDK36-Autotuner-${date_tag}-${short_hash}" > tag
-    echo "Turnip V14 (SDK 36 + Autotuner) - ${date_tag}" > release
-    echo "Built against NDK 35 (safe) but with Meson SDK 36 features enabled. Includes MR 37802." > description
+    echo "Turnip-Autotuner-${date_tag}-${short_hash}" > tag
+    echo "Turnip Autotuner (PixelyIon) - ${date_tag}" > release
+    echo "Direct build from 'tu-newat' branch. SDK 36 features enabled + Extension Unlock." > description
 }
 
 check_deps
