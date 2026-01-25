@@ -11,9 +11,8 @@ workdir="$(pwd)/turnip_workdir"
 ndkver="android-ndk-r28"
 target_sdk="35" 
 
-# Branch do PixelyIon (Autotuner)
-base_repo="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
-branch_name="tu-newat"
+# Voltando para o MESA MAIN Oficial
+base_repo="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 check_deps(){
 	echo "Checking system dependencies ..."
@@ -47,19 +46,21 @@ prepare_ndk(){
 }
 
 prepare_source(){
-	echo "Preparing Mesa source (PixelyIon Autotuner)..."
+	echo "Preparing Mesa source (Official Main)..."
 	cd "$workdir"
 	if [ -d mesa ]; then rm -rf mesa; fi
 	
-    echo -e "${green}Cloning branch $branch_name...${nocolor}"
-	git clone --depth 1 -b "$branch_name" "$base_repo" mesa
+    echo -e "${green}Cloning Mesa Main...${nocolor}"
+    
+	git clone --depth 100 "$base_repo" mesa
 	cd mesa
     
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V19: ALL-IN (RAY TRACING + MESH + EXPERIMENTAL) ===
-    echo -e "${green}Applying TOTAL UNLOCK (Mesh, RayTracing, ShaderObject)...${nocolor}"
+    # === HACK V20: PERFORMANCE FOCUSED INJECTION ===
+    # Removemos RT e Mesh. Mantemos VRS, ShaderObject e Maintenance.
+    echo -e "${green}Applying Performance Hacks (VRS, ShaderObject, No RT)...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -68,7 +69,7 @@ import re
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
 force_features_true = [
-    # Core & Stability
+    # Core & Stability (Essencial para não crashar)
     "shaderFloat64", "shaderStorageImageMultisample",
     "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
     "uniformAndStorageBuffer8BitAccess", "storagePushConstant8",
@@ -79,13 +80,9 @@ force_features_true = [
     "fragmentDensityMapDynamic", "textureCompressionASTC_HDR",
     "integerDotProduct8BitUnsignedAccelerated",
     
-    # --- EXPERIMENTAL FEATURES (ALL ENABLED) ---
-    "meshShader",         # MESH SHADERS
-    "taskShader",         # TASK SHADERS
-    "shaderObject",       # SHADER OBJECTS
-    "mutableDescriptorType", # MUTABLE DESC
-    "rayQuery",           # RAY TRACING
-    "accelerationStructure", # RAY TRACING
+    # Performance Features
+    "shaderObject",       # Ajuda no stuttering
+    "mutableDescriptorType", # Essencial para emuladores
 ]
 
 try:
@@ -124,8 +121,8 @@ try:
             insert_pos = func_start + closure_match.end()
             
             injection = f"""
-    // === V19 SCREENSHOT PACK ===
-    // Maintenance & Strict Bypass
+    // === V20 PERFORMANCE PACK ===
+    // Maintenance & Strict Bypass (Compatibilidade)
     {var_name}->KHR_maintenance5 = true;
     {var_name}->KHR_maintenance6 = true;
     {var_name}->KHR_maintenance7 = true;
@@ -137,10 +134,15 @@ try:
     {var_name}->EXT_attachment_feedback_loop_layout = true;
     {var_name}->EXT_attachment_feedback_loop_dynamic_state = true;
     
-    // A7xx High-End Spoof
+    // Performance Boosters (VRS & Optimization)
+    {var_name}->KHR_fragment_shading_rate = true; // VRS: Ganho de FPS
+    {var_name}->EXT_shader_object = true;         // Menos stutter
+    {var_name}->VALVE_mutable_descriptor_type = true; // Menos CPU overhead
+    {var_name}->EXT_memory_budget = true;
+
+    // A7xx High-End Features (Qualidade visual sem custo absurdo)
     {var_name}->KHR_compute_shader_derivatives = true;
     {var_name}->NV_compute_shader_derivatives = true;
-    {var_name}->KHR_fragment_shading_rate = true;
     {var_name}->EXT_filter_cubic = true;
     {var_name}->IMG_filter_cubic = true;
     {var_name}->EXT_sample_locations = true;
@@ -152,22 +154,12 @@ try:
     {var_name}->KHR_8bit_storage = true;
     {var_name}->KHR_16bit_storage = true;
 
-    // --- EXPERIMENTAL & FORBIDDEN ---
-    {var_name}->EXT_mesh_shader = true;            // MESH
-    {var_name}->KHR_ray_query = true;              // RT
-    {var_name}->KHR_acceleration_structure = true; // RT
-    {var_name}->KHR_ray_tracing_maintenance1 = true; // RT
-    {var_name}->KHR_deferred_host_operations = true; // RT dependency
-    {var_name}->KHR_pipeline_library = true;         // RT dependency
-    
-    {var_name}->EXT_shader_object = true;
-    {var_name}->VALVE_mutable_descriptor_type = true;
-    {var_name}->EXT_vertex_attribute_divisor = true;
-    {var_name}->EXT_display_control = true;
-    {var_name}->EXT_memory_budget = true;   
+    // BLOQUEADOS PARA PERFORMANCE (NÃO HABILITE):
+    // Ray Tracing (RayQuery, AccelerationStructure) -> Causa lag extremo
+    // Mesh Shader -> Instável na A619
 """
             content = content[:insert_pos] + injection + content[insert_pos:]
-            print("SUCCESS: ALL Extensions (Mesh + RT) injected.")
+            print("SUCCESS: Performance Extensions injected.")
         else:
             print("ERROR: Could not find struct closure '};'")
             sys.exit(1)
@@ -179,7 +171,7 @@ try:
              if idx_brace != -1:
                  var_name = "ext"
                  insert_pos = idx_brace + 2
-                 injection = f"\n    {var_name}->KHR_maintenance5 = true; {var_name}->EXT_mesh_shader = true; {var_name}->KHR_ray_query = true; {var_name}->EXT_shader_object = true;\n"
+                 injection = f"\n    {var_name}->KHR_maintenance5 = true; {var_name}->EXT_shader_object = true; {var_name}->KHR_fragment_shading_rate = true;\n"
                  content = content[:insert_pos] + injection + content[insert_pos:]
                  print("SUCCESS: Fallback injection applied.")
              else:
@@ -206,12 +198,12 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-V19-ScreenshotBuild"
+	version_str="Mesa-Main-Performance"
 	cd "$workdir"
 }
 
 compile_mesa(){
-	echo -e "${green}Compiling Mesa (PixelyIon) for SDK 36 (Spoofed)...${nocolor}"
+	echo -e "${green}Compiling Mesa Main for SDK 36 (Spoofed)...${nocolor}"
 
 	local source_dir="$workdir/mesa"
 	local build_dir="$source_dir/build"
@@ -244,6 +236,7 @@ EOF
 	export CFLAGS="-D__ANDROID__ -Wno-error"
 	export CXXFLAGS="-D__ANDROID__ -Wno-error"
 
+    # SDK 36 libera otimizações de memória
 	meson setup "$build_dir" --cross-file "$cross_file" \
 		-Dbuildtype=release \
 		-Dplatforms=android \
@@ -284,19 +277,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-V19-Screenshot-${short_hash}"
+	local meta_name="Turnip-Main-Performance-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "SCREENSHOT BUILD: Mesh + RayTracing + ShaderObject forced. Commit $short_hash",
+  "description": "Mesa Main. Performance Focus (VRS, ShaderObject). No RT/Mesh. Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-V19-Screenshot-${short_hash}.zip"
+	local zip_name="Turnip-Main-Performance-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -307,9 +300,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-V19-Screenshot-${date_tag}-${short_hash}" > tag
-    echo "Turnip V19 (MAX EXTENSIONS) - ${date_tag}" > release
-    echo "Everything enabled (Mesh, RT, Experimental) for maximum extension count." > description
+    echo "Turnip-Main-Performance-${date_tag}-${short_hash}" > tag
+    echo "Turnip Performance (Mesa Main) - ${date_tag}" > release
+    echo "Official Mesa Main. Optimized for speed: VRS and ShaderObject enabled. RT/Mesh disabled." > description
 }
 
 check_deps
