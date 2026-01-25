@@ -1,4 +1,4 @@
-name: Build Turnip Ultimate
+name: Build Turnip 
 
 on:
   workflow_dispatch: # Botão para iniciar manualmente
