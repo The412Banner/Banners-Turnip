@@ -57,8 +57,8 @@ prepare_source(){
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V6: STRICT BYPASS + MAINTENANCE + A7XX SPOOF ===
-    echo -e "${green}Applying Ultimate Unlock (Strict Bypass, Maintenance 7/8, A7xx Spoof)...${nocolor}"
+    # === HACK V7: FORCE INJECTION (Infalível) ===
+    echo -e "${green}Applying V7 Ultimate Injection (Maintenance 7/8, Strict Bypass, A7xx)...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -66,24 +66,19 @@ import re
 
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
-# 1. FEATURES (Funcionalidades internas)
+# 1. FEATURES: Desbloqueio via substituição (Mantido pois funciona bem para features)
 force_features_true = [
-    # Core desbloqueado
     "shaderFloat64", "shaderStorageImageMultisample",
     "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
     "uniformAndStorageBuffer8BitAccess", "storagePushConstant8",
     "shaderSharedInt64Atomics", "shaderBufferInt64Atomics",
     "independentResolve", "independentResolveNone",
-    
-    # Core 1.2+ Extra Unlocks
     "shaderDenormPreserveFloat16", "shaderDenormFlushToZeroFloat16",
     "shaderRoundingModeRTZFloat16", "shaderDenormPreserveFloat32",
     "shaderRoundingModeRTZFloat32", "samplerFilterMinmax",
     "fragmentDensityMapDynamic", "fragmentDensityInvocations",
     "primitiveUnderestimation", "conservativePointAndLineRasterization",
     "textureCompressionASTC_HDR",
-    
-    # Dot Product (Core 1.3 completo)
     "integerDotProduct8BitUnsignedAccelerated", "integerDotProduct8BitSignedAccelerated",
     "integerDotProduct8BitMixedSignednessAccelerated", "integerDotProduct4x8BitPackedUnsignedAccelerated",
     "integerDotProduct4x8BitPackedSignedAccelerated", "integerDotProduct4x8BitPackedMixedSignednessAccelerated",
@@ -109,37 +104,33 @@ force_features_true = [
     "integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"
 ]
 
-# 2. EXTENSIONS (Lista completa: Strict Bypass + A7xx)
-force_extensions_true = [
-    # --- O que o "android-strict=false" habilitava ---
-    "KHR_maintenance5",
-    "KHR_maintenance6",
-    "KHR_maintenance7",               # Você pediu isso
-    "KHR_maintenance8",               # E isso
-    "EXT_primitives_generated_query",
-    "EXT_primitive_topology_list_restart",
-    "EXT_depth_clip_control",
-    "EXT_depth_clip_enable",
-    "EXT_attachment_feedback_loop_layout",
-    "EXT_attachment_feedback_loop_dynamic_state",
-    
-    # --- A7xx Spoof Pack (Gen 7 Features) ---
-    "KHR_compute_shader_derivatives",
-    "NV_compute_shader_derivatives",
-    "KHR_fragment_shading_rate",      # VRS
-    "EXT_filter_cubic",               # Cubic
-    "IMG_filter_cubic",
-    "EXT_sample_locations",
-    "EXT_texture_compression_astc_hdr",
-    "EXT_calibrated_timestamps",
-    "EXT_conservative_rasterization",
-    
-    # --- Extras Úteis ---
-    "KHR_shader_atomic_int64",        
-    "KHR_8bit_storage",               
-    "KHR_16bit_storage",              
-    "AMD_shader_fragment_mask"        
-]
+# 2. EXTENSIONS: Lista para Injeção Forçada (Atropela tudo)
+forced_extensions_code = """
+    // === V7 INJECTION: STRICT BYPASS & A7XX SPOOF ===
+    ext->KHR_maintenance5 = true;
+    ext->KHR_maintenance6 = true;
+    ext->KHR_maintenance7 = true;
+    ext->KHR_maintenance8 = true;
+    ext->EXT_primitives_generated_query = true;
+    ext->EXT_primitive_topology_list_restart = true;
+    ext->EXT_depth_clip_control = true;
+    ext->EXT_depth_clip_enable = true;
+    ext->EXT_attachment_feedback_loop_layout = true;
+    ext->EXT_attachment_feedback_loop_dynamic_state = true;
+    ext->KHR_compute_shader_derivatives = true;
+    ext->NV_compute_shader_derivatives = true;
+    ext->KHR_fragment_shading_rate = true;
+    ext->EXT_filter_cubic = true;
+    ext->IMG_filter_cubic = true;
+    ext->EXT_sample_locations = true;
+    ext->EXT_texture_compression_astc_hdr = true;
+    ext->EXT_calibrated_timestamps = true;
+    ext->EXT_conservative_rasterization = true;
+    ext->AMD_shader_fragment_mask = true;
+    ext->KHR_shader_atomic_int64 = true;
+    ext->KHR_8bit_storage = true;
+    ext->KHR_16bit_storage = true;
+"""
 
 try:
     with open(file_path, 'r') as f:
@@ -151,7 +142,7 @@ try:
         content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
         print("Vulkan 1.4 Forced.")
 
-    # PATCH 2: Forçar Features
+    # PATCH 2: Features (Regex Clássico)
     feat_count = 0
     for prop in force_features_true:
         regex = rf'((?:p|features|props)->{prop}\s*=\s*)([^;]+)(;)'
@@ -160,15 +151,17 @@ try:
             feat_count += 1
     print(f"Features Unlocked: {feat_count}")
 
-    # PATCH 3: Forçar Extensions
-    ext_count = 0
-    for ext in force_extensions_true:
-        # Regex para p->EXT ou .EXT = ...
-        regex = rf'(\.{ext}\s*=\s*)([^,]+)(,)'
-        if re.search(regex, content):
-            content = re.sub(regex, r'\1true\3', content)
-            ext_count += 1
-    print(f"Extensions Forced (Strict Bypass + A7xx): {ext_count}")
+    # PATCH 3: Extensions (INJEÇÃO NO FIM DA FUNÇÃO)
+    # Procuramos o fechamento da struct "vk_device_extension_table" dentro de get_device_extensions
+    # O padrão no código é "} };" fechando o "*ext = (struct ...) { ... } };"
+    
+    if "} };" in content:
+        # Inserimos nosso código logo após o fechamento da struct, antes de sair da função
+        content = content.replace("} };", "} };" + forced_extensions_code)
+        print("V7 Injection Applied: Extensions forced at end of get_device_extensions().")
+    else:
+        print("WARNING: Could not find injection point '} };' in tu_device.cc")
+        sys.exit(1)
 
     with open(file_path, 'w') as f:
         f.write(content)
@@ -189,7 +182,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-StrictBypass-Maintenance"
+	version_str="Mesa-V7-ForceInjection"
 	cd "$workdir"
 }
 
@@ -267,19 +260,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-Ultimate-StrictBypass-${short_hash}"
+	local meta_name="Turnip-V7-Injection-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Vulkan 1.4 + A7xx Spoof + Strict Bypass (Maintenance7/8). Commit $short_hash",
+  "description": "Vulkan 1.4 + V7 Force Injection (Maintenance 7/8, Strict Bypass). Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Turnip-Ultimate-StrictBypass-${short_hash}.zip"
+	local zip_name="Turnip-V7-Injection-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -290,9 +283,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Turnip-StrictBypass-${date_tag}-${short_hash}" > tag
-    echo "Turnip Ultimate (Strict Bypass) - ${date_tag}" > release
-    echo "Full Unlock: A7xx Spoof + Maintenance 7/8 + Strict Mode Bypass. No RT." > description
+    echo "Turnip-V7-Injection-${date_tag}-${short_hash}" > tag
+    echo "Turnip V7 (Force Injection) - ${date_tag}" > release
+    echo "Using direct code injection to force Maintenance 7/8 and Strict Mode extensions." > description
 }
 
 check_deps
