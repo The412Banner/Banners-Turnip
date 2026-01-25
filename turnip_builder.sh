@@ -57,8 +57,8 @@ prepare_source(){
     git config user.email "ci@turnip.builder"
     git config user.name "Turnip CI Builder"
 
-    # === HACK V5: ADRENO 7XX "NEXT-GEN" SPOOF (A660 + A7xx Compute) ===
-    echo -e "${green}Applying Adreno 7xx Spoofing (VRS, Cubic, ASTC HDR, Compute Derivatives)...${nocolor}"
+    # === HACK V6: STRICT BYPASS + MAINTENANCE + A7XX SPOOF ===
+    echo -e "${green}Applying Ultimate Unlock (Strict Bypass, Maintenance 7/8, A7xx Spoof)...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -66,7 +66,7 @@ import re
 
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
-# 1. FEATURES (Funcionalidades internas do driver)
+# 1. FEATURES (Funcionalidades internas)
 force_features_true = [
     # Core desbloqueado
     "shaderFloat64", "shaderStorageImageMultisample",
@@ -109,22 +109,32 @@ force_features_true = [
     "integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"
 ]
 
-# 2. EXTENSIONS (Adreno 7xx FULL Pack)
+# 2. EXTENSIONS (Lista completa: Strict Bypass + A7xx)
 force_extensions_true = [
-    # A7xx Exclusives (Derivadas em Compute Shaders)
+    # --- O que o "android-strict=false" habilitava ---
+    "KHR_maintenance5",
+    "KHR_maintenance6",
+    "KHR_maintenance7",               # Você pediu isso
+    "KHR_maintenance8",               # E isso
+    "EXT_primitives_generated_query",
+    "EXT_primitive_topology_list_restart",
+    "EXT_depth_clip_control",
+    "EXT_depth_clip_enable",
+    "EXT_attachment_feedback_loop_layout",
+    "EXT_attachment_feedback_loop_dynamic_state",
+    
+    # --- A7xx Spoof Pack (Gen 7 Features) ---
     "KHR_compute_shader_derivatives",
     "NV_compute_shader_derivatives",
-
-    # A660+ High End Features
     "KHR_fragment_shading_rate",      # VRS
-    "EXT_filter_cubic",               # Cubic Filtering
-    "IMG_filter_cubic",               # Cubic Filtering (Alias)
-    "EXT_sample_locations",           # Sample Locations
-    "EXT_texture_compression_astc_hdr", # ASTC HDR
-    "EXT_calibrated_timestamps",      # Timestamps precisos
-    "EXT_conservative_rasterization", # Rasterização conservadora (Nativa A7xx)
+    "EXT_filter_cubic",               # Cubic
+    "IMG_filter_cubic",
+    "EXT_sample_locations",
+    "EXT_texture_compression_astc_hdr",
+    "EXT_calibrated_timestamps",
+    "EXT_conservative_rasterization",
     
-    # Extra Core stuff
+    # --- Extras Úteis ---
     "KHR_shader_atomic_int64",        
     "KHR_8bit_storage",               
     "KHR_16bit_storage",              
@@ -153,11 +163,12 @@ try:
     # PATCH 3: Forçar Extensions
     ext_count = 0
     for ext in force_extensions_true:
+        # Regex para p->EXT ou .EXT = ...
         regex = rf'(\.{ext}\s*=\s*)([^,]+)(,)'
         if re.search(regex, content):
             content = re.sub(regex, r'\1true\3', content)
             ext_count += 1
-    print(f"A7xx Extensions Spoofed: {ext_count}")
+    print(f"Extensions Forced (Strict Bypass + A7xx): {ext_count}")
 
     with open(file_path, 'w') as f:
         f.write(content)
@@ -178,7 +189,7 @@ EOF_PYTHON
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-Main-A7xx-Spoof"
+	version_str="Mesa-StrictBypass-Maintenance"
 	cd "$workdir"
 }
 
@@ -256,19 +267,19 @@ package_driver(){
 	mv lib_temp.so "vulkan.ad07XX.so"
 
 	local short_hash=${commit_hash:0:7}
-	local meta_name="Mesa-Main-A7xx-Spoof-${short_hash}"
+	local meta_name="Turnip-Ultimate-StrictBypass-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "Mesa Main. Spoofing A7xx Features (VRS, Compute Derivatives). No RT. Commit $short_hash",
+  "description": "Vulkan 1.4 + A7xx Spoof + Strict Bypass (Maintenance7/8). Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
 
-	local zip_name="Mesa-Main-A7xx-Spoof-${short_hash}.zip"
+	local zip_name="Turnip-Ultimate-StrictBypass-${short_hash}.zip"
 	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
 	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
 }
@@ -279,9 +290,9 @@ generate_release_info() {
     local date_tag=$(date +'%Y%m%d')
 	local short_hash=${commit_hash:0:7}
 
-    echo "Mesa-A7xx-Spoof-${date_tag}-${short_hash}" > tag
-    echo "Turnip A7xx Spoof (VRS + Derivatives) - ${date_tag}" > release
-    echo "A610/619 masquerading as A7xx (Added Compute Derivatives). Ray Tracing disabled." > description
+    echo "Turnip-StrictBypass-${date_tag}-${short_hash}" > tag
+    echo "Turnip Ultimate (Strict Bypass) - ${date_tag}" > release
+    echo "Full Unlock: A7xx Spoof + Maintenance 7/8 + Strict Mode Bypass. No RT." > description
 }
 
 check_deps
