@@ -29,36 +29,35 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Main-Vanilla"
+    local build_name="Main-Vanilla-SDK35"
 
-    echo -e "${green}=== BUILDING: $build_name (CLEAN/NO-PATCHES) ===${nocolor}"
+    echo -e "${green}=== BUILDING: $build_name (CLEAN SDK 35) ===${nocolor}"
     
     cd "$workdir"
     if [ -d mesa ]; then rm -rf mesa; fi
     
-    # Clone do Repositório Oficial
+    # Clone Mesa Main
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
     # ==============================================================================
-    # NENHUM PATCH OU INJEÇÃO APLICADO AQUI
-    # O código fonte permanece intocado (Upstream Behavior)
+    # ZERO PATCHES - PURE UPSTREAM CODE
     # ==============================================================================
     
-    # Compilação das Dependências (SPIRV)
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
     cd ..
 
-    # Configuração de Cross-Compilation (Essencial para Android)
     local build_dir="$workdir/mesa/build"
     local ndk_bin="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
     local ndk_sys="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
-    local cver="$target_sdk"
-    [ ! -f "$ndk_bin/aarch64-linux-android${cver}-clang" ] && cver="34"
+    
+    # Compilador
+    local cver="$target_sdk" # Usa 35 aqui
+    [ ! -f "$ndk_bin/aarch64-linux-android${cver}-clang" ] && cver="34" # Fallback se o NDK não tiver o binário exato
 
     cat <<EOF > android-cross.txt
 [binaries]
@@ -74,7 +73,6 @@ cpu_family = 'aarch64'
 cpu = 'armv8'
 endian = 'little'
 [built-in options]
-# Apenas Linkagem Estatica (Obrigatorio para rodar no Winlator sem crashar)
 c_link_args = ['-static-libstdc++']
 cpp_link_args = ['-static-libstdc++']
 EOF
@@ -82,11 +80,21 @@ EOF
     export CFLAGS="-D__ANDROID__ -Wno-error"
     export CXXFLAGS="-D__ANDROID__ -Wno-error"
 
-    # Meson Setup Padrão
+    # Meson com SDK 35 Explicito
     meson setup "$build_dir" --cross-file android-cross.txt \
-        -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=36 -Dandroid-stub=true \
-        -Dgallium-drivers= -Dvulkan-drivers=freedreno -Dfreedreno-kmds=kgsl -Degl=disabled -Dglx=disabled \
-        -Dvulkan-beta=true -Ddefault_library=shared -Dzstd=disabled -Dwerror=false \
+        -Dbuildtype=release \
+        -Dplatforms=android \
+        -Dplatform-sdk-version=35 \
+        -Dandroid-stub=true \
+        -Dgallium-drivers= \
+        -Dvulkan-drivers=freedreno \
+        -Dfreedreno-kmds=kgsl \
+        -Degl=disabled \
+        -Dglx=disabled \
+        -Dvulkan-beta=true \
+        -Ddefault_library=shared \
+        -Dzstd=disabled \
+        -Dwerror=false \
         --force-fallback-for=spirv-tools,spirv-headers
     
     ninja -C "$build_dir"
@@ -101,14 +109,14 @@ EOF
     patchelf --set-soname "vulkan.adreno.so" vulkan.ad07XX.so
     
     local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
-    local desc="Mesa Main Official (Vanilla). No extensions forced. No patches."
+    local desc="Mesa Main Vanilla (SDK 35). No hacks."
 
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
   \"description\": \"$desc\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V38-Vanilla\",
+  \"driverVersion\": \"Mesa-V39-SDK35\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -116,7 +124,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V38 - Vanilla" > "$workdir/release"
+    echo "Turnip V39 - SDK 35" > "$workdir/release"
 }
 
 check_deps
