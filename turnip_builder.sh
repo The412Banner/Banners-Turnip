@@ -11,55 +11,38 @@ workdir="$(pwd)/turnip_workdir"
 ndkver="android-ndk-r28"
 target_sdk="35" 
 
-# REPOSITÓRIO: WhiteBelyash (Focado em Adreno 8xx)
-base_repo="https://github.com/whitebelyash/mesa-tu8.git"
-branch_name="gen8"
+# MESA MAIN
+base_repo="https://gitlab.freedesktop.org/mesa/mesa.git"
 
 check_deps(){
 	echo "Checking system dependencies ..."
 	for dep in $deps; do
-		if ! command -v $dep >/dev/null 2>&1; then
-			echo -e "$red Missing dependency binary: $dep$nocolor"
-			missing=1
-		else
-			echo -e "$green Found: $dep$nocolor"
-		fi
+		if ! command -v $dep >/dev/null 2>&1; then echo "Missing dep: $dep"; exit 1; fi
 	done
-	if [ "$missing" == "1" ]; then
-		echo "Please install missing dependencies." && exit 1
-	fi
-    
-	echo "Updating Meson via pip..."
-	pip install meson mako --break-system-packages &> /dev/null || pip install meson mako &> /dev/null || true
+	pip install meson mako --break-system-packages &> /dev/null || true
 }
 
 prepare_ndk(){
-	echo "Preparing NDK r28..."
+	echo "Preparing NDK..."
 	mkdir -p "$workdir"
 	cd "$workdir"
 	if [ ! -d "$ndkver" ]; then
-		echo "Downloading Android NDK $ndkver..."
 		curl -L "https://dl.google.com/android/repository/${ndkver}-linux.zip" --output "${ndkver}-linux.zip" &> /dev/null
-		echo "Extracting NDK..."
 		unzip -q "${ndkver}-linux.zip" &> /dev/null
 	fi
     export ANDROID_NDK_HOME="$workdir/$ndkver"
 }
 
 prepare_source(){
-	echo "Preparing Mesa source (WhiteBelyash Gen8)..."
+	echo "Preparing Mesa Main..."
 	cd "$workdir"
 	if [ -d mesa ]; then rm -rf mesa; fi
-	
-    echo -e "${green}Cloning branch $branch_name...${nocolor}"
-	git clone --depth 1 -b "$branch_name" "$base_repo" mesa
+	git clone --depth 100 "$base_repo" mesa
 	cd mesa
-    
-    git config user.email "ci@turnip.builder"
-    git config user.name "Turnip CI Builder"
+    git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
-    # === HACK V21: GEN8 FULL UNLOCK (RT + MESH ENABLED) ===
-    echo -e "${green}Applying Gen8 Full Unlock (Mesh + RayTracing + Maintenance)...${nocolor}"
+    # === HACK V23: MAIN CLEAN (RT NATURAL, NO MESH) ===
+    echo -e "${green}Applying Performance Patch (RT Native only, No Mesh)...${nocolor}"
 
 cat << 'EOF_PYTHON' > inject_ultimate.py
 import sys
@@ -68,7 +51,6 @@ import re
 file_path = 'src/freedreno/vulkan/tu_device.cc'
 
 force_features_true = [
-    # Core & Stability
     "shaderFloat64", "shaderStorageImageMultisample",
     "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
     "uniformAndStorageBuffer8BitAccess", "storagePushConstant8",
@@ -78,25 +60,17 @@ force_features_true = [
     "shaderRoundingModeRTZFloat16", "samplerFilterMinmax",
     "fragmentDensityMapDynamic", "textureCompressionASTC_HDR",
     "integerDotProduct8BitUnsignedAccelerated",
-    
-    # --- GEN8 EXPERIMENTAL FEATURES ---
-    "meshShader",         # MESH SHADERS (Gen8 branch usually handles this better)
-    "taskShader",         
-    "shaderObject",       
-    "mutableDescriptorType", 
-    "rayQuery",           # RAY TRACING
-    "accelerationStructure", 
+    "shaderObject", "mutableDescriptorType"
 ]
 
 try:
     with open(file_path, 'r') as f:
         content = f.read()
 
-    # 1. Force Vulkan 1.4
+    # 1. Force Vulkan 1.4 Standard
     version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
     if re.search(version_regex, content):
         content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
-        print("Vulkan 1.4 Forced.")
 
     # 2. Force Features
     feat_count = 0
@@ -104,15 +78,12 @@ try:
         if "integerDotProduct" in prop:
              regex = r'((?:p|features|props)->integerDotProduct\w+\s*=\s*)([^;]+)(;)'
              content, n = re.subn(regex, r'\1true\3', content)
-             feat_count += n
         else:
              regex = rf'((?:p|features|props)->{prop}\s*=\s*)([^;]+)(;)'
              if re.search(regex, content):
                  content = re.sub(regex, r'\1true\3', content)
-                 feat_count += 1
-    print(f"Features Unlocked: {feat_count}")
     
-    # 3. Inject Extensions (Post-Init)
+    # 3. Inject Extensions (NO MESH, NO RT FORCE)
     match = re.search(r'get_device_extensions\s*\([^{]*struct\s+vk_device_extension_table\s*\*\s*(\w+)', content, re.DOTALL)
     
     if match:
@@ -124,7 +95,7 @@ try:
             insert_pos = func_start + closure_match.end()
             
             injection = f"""
-    // === V21 GEN8 FULL PACK ===
+    // === V23 MAIN PACK (NATIVE RT) ===
     // Maintenance & Strict Bypass
     {var_name}->KHR_maintenance5 = true;
     {var_name}->KHR_maintenance6 = true;
@@ -137,9 +108,7 @@ try:
     {var_name}->EXT_attachment_feedback_loop_layout = true;
     {var_name}->EXT_attachment_feedback_loop_dynamic_state = true;
     
-    // A7xx/A8xx High-End Spoof
-    {var_name}->KHR_compute_shader_derivatives = true;
-    {var_name}->NV_compute_shader_derivatives = true;
+    // Performance & Quality (VRS, Cubic)
     {var_name}->KHR_fragment_shading_rate = true;
     {var_name}->EXT_filter_cubic = true;
     {var_name}->IMG_filter_cubic = true;
@@ -152,40 +121,18 @@ try:
     {var_name}->KHR_8bit_storage = true;
     {var_name}->KHR_16bit_storage = true;
 
-    // --- HEAVY FEATURES (REQUESTED) ---
-    {var_name}->EXT_mesh_shader = true;            // MESH ENABLED
-    {var_name}->KHR_ray_query = true;              // RT ENABLED
-    {var_name}->KHR_acceleration_structure = true; // RT ENABLED
-    {var_name}->KHR_ray_tracing_maintenance1 = true; 
-    {var_name}->KHR_deferred_host_operations = true; 
-    {var_name}->KHR_pipeline_library = true;         
-    
+    // Experimental Safe
     {var_name}->EXT_shader_object = true;
     {var_name}->VALVE_mutable_descriptor_type = true;
-    {var_name}->EXT_vertex_attribute_divisor = true;
-    {var_name}->EXT_display_control = true;
     {var_name}->EXT_memory_budget = true;   
+    
+    // NOT FORCING: EXT_mesh_shader, KHR_ray_query
 """
             content = content[:insert_pos] + injection + content[insert_pos:]
-            print("SUCCESS: Gen8 Full Extensions injected.")
         else:
-            print("ERROR: Could not find struct closure '};'")
             sys.exit(1)
     else:
-        # Fallback
-        if "get_device_extensions" in content:
-             idx = content.find("get_device_extensions")
-             idx_brace = content.find("};", idx)
-             if idx_brace != -1:
-                 var_name = "ext"
-                 insert_pos = idx_brace + 2
-                 injection = f"\n    {var_name}->KHR_maintenance5 = true; {var_name}->EXT_mesh_shader = true; {var_name}->KHR_ray_query = true; {var_name}->EXT_shader_object = true;\n"
-                 content = content[:insert_pos] + injection + content[insert_pos:]
-                 print("SUCCESS: Fallback injection applied.")
-             else:
-                 sys.exit(1)
-        else:
-             sys.exit(1)
+        sys.exit(1)
 
     with open(file_path, 'w') as f:
         f.write(content)
@@ -197,30 +144,27 @@ EOF_PYTHON
 
     python3 inject_ultimate.py || { echo -e "${red}Unlock Failed!${nocolor}"; exit 1; }
     
-    echo "Cloning SPIRV dependencies..."
-    mkdir -p subprojects
-    cd subprojects
+    echo "Cloning SPIRV..."
+    mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
     cd .. 
     
 	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-Gen8-FullUnlock"
+	version_str="Mesa-V23-Main-NoMesh"
 	cd "$workdir"
 }
 
 compile_mesa(){
-	echo -e "${green}Compiling Mesa (WhiteBelyash Gen8) for SDK 36...${nocolor}"
+	echo -e "${green}Compiling Mesa Main (SDK 36)...${nocolor}"
 
 	local source_dir="$workdir/mesa"
 	local build_dir="$source_dir/build"
 	local ndk_bin_path="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
 	local ndk_sysroot_path="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
-
     local compiler_ver="$target_sdk"
     if [ ! -f "$ndk_bin_path/aarch64-linux-android${compiler_ver}-clang" ]; then compiler_ver="34"; fi
-    echo "Using compiler: Clang $compiler_ver (NDK Target)"
 
 	local cross_file="$source_dir/android-aarch64-crossfile.txt"
 	cat <<EOF > "$cross_file"
@@ -240,7 +184,6 @@ endian = 'little'
 EOF
 
 	cd "$source_dir"
-	
 	export CFLAGS="-D__ANDROID__ -Wno-error"
 	export CXXFLAGS="-D__ANDROID__ -Wno-error"
 
@@ -269,47 +212,27 @@ package_driver(){
 	local build_dir="$source_dir/build"
 	local lib_path="$build_dir/src/freedreno/vulkan/libvulkan_freedreno.so"
 	local package_temp="$workdir/package_temp"
-
-	if [ ! -f "$lib_path" ]; then
-		echo -e "${red}Build failed: libvulkan_freedreno.so not found.${nocolor}"
-		exit 1
-	fi
-
-	rm -rf "$package_temp"
-	mkdir -p "$package_temp"
+	if [ ! -f "$lib_path" ]; then echo "Build failed"; exit 1; fi
+	rm -rf "$package_temp" && mkdir -p "$package_temp"
 	cp "$lib_path" "$package_temp/lib_temp.so"
-
 	cd "$package_temp"
 	patchelf --set-soname "vulkan.adreno.so" lib_temp.so
 	mv lib_temp.so "vulkan.ad07XX.so"
-
-	local short_hash=${commit_hash:0:7}
-	local meta_name="Turnip-Gen8-FullUnlock-${short_hash}"
+	
+    local short_hash=${commit_hash:0:7}
+	local meta_name="Turnip-Main-NoMesh-${short_hash}"
 	cat <<EOF > meta.json
 {
   "schemaVersion": 1,
   "name": "$meta_name",
-  "description": "WhiteBelyash Gen8 + Mesh + RT + SDK 36. Commit $short_hash",
+  "description": "Mesa Main. No Mesh. RT left to Native (A7xx only). Commit $short_hash",
   "author": "mesa-ci",
   "driverVersion": "$version_str",
   "libraryName": "vulkan.ad07XX.so"
 }
 EOF
-
-	local zip_name="Turnip-Gen8-FullUnlock-${short_hash}.zip"
-	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
-	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
-}
-
-generate_release_info() {
-    echo -e "${green}Generating release info...${nocolor}"
-    cd "$workdir"
-    local date_tag=$(date +'%Y%m%d')
-	local short_hash=${commit_hash:0:7}
-
-    echo "Turnip-Gen8-FullUnlock-${date_tag}-${short_hash}" > tag
-    echo "Turnip Gen8 (WhiteBelyash) - ${date_tag}" > release
-    echo "Experimental Gen8 branch with Mesh and RayTracing forced on." > description
+	zip -9 "$workdir/Turnip-Main-NoMesh-${short_hash}.zip" "vulkan.ad07XX.so" meta.json
+	echo -e "${green}Package ready.${nocolor}"
 }
 
 check_deps
@@ -317,4 +240,3 @@ prepare_ndk
 prepare_source
 compile_mesa
 package_driver
-generate_release_info
