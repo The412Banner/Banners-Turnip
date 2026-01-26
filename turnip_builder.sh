@@ -40,25 +40,10 @@ build_driver() {
     cd mesa
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
-    # ==============================================================================
-    # SURGICAL FIX: Reverter comportamento APENAS para Queries
-    # ==============================================================================
     echo -e "${green}Applying Surgical Fix: Force Uncached ONLY for Queries...${nocolor}"
-    
-    # Procura arquivos de query (tu_query.cc ou tu_query_pool.cc dependendo da versão)
-    # E substitui a chamada da função 'cached' pela função normal (uncached/default)
-    # Isso restaura o comportamento pré-merge request apenas para este componente.
-    
-    # O comando abaixo afeta tu_query.cc, tu_query_pool.cc, etc.
+
     grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
     
-    # NOTA: NÃO alteramos 'tu_device.cc'. 
-    # O driver continua reportando que suporta memória cacheada (has_cached_coherent_memory = true).
-    # Isso deve manter o frametime liso nos jogos que não travam.
-
-    # ==============================================================================
-    # COMPILAÇÃO
-    # ==============================================================================
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
