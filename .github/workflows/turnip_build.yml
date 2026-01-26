@@ -1,9 +1,7 @@
 name: Build Turnip Dual
 
 on:
-  workflow_dispatch: # Botão manual
-  schedule:
-    - cron: '0 */12 * * *' # Executa a cada 12h
+  workflow_dispatch: 
 
 permissions:
   contents: write
