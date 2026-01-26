@@ -49,12 +49,10 @@ file_path = 'src/freedreno/vulkan/tu_device.cc'
 try:
     with open(file_path, 'r') as f: content = f.read()
 
-    # GEN8: Header para setenv
     if inject_type == "gen8_env":
         if "#include <stdlib.h>" not in content:
             content = "#include <stdlib.h>\n" + content
 
-    # LISTA BASE DE FEATURES (SEM RT/MESH)
     feats = [
         "shaderFloat64", "shaderStorageImageMultisample",
         "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
@@ -82,7 +80,6 @@ try:
              if re.search(regex, content):
                  content = re.sub(regex, r'\1true\3', content)
 
-    # AUTO DETECT VAR NAME
     sig_regex = re.search(r'get_device_extensions\s*\([^)]*struct\s+tu_physical_device\s*\*\s*(\w+)[^)]*struct\s+vk_device_extension_table\s*\*\s*(\w+)', content, re.DOTALL)
     
     if sig_regex:
@@ -95,7 +92,6 @@ try:
         if closure:
             pos = func_start + closure.end()
             
-            # INJECAO COMUM (SEM RT/MESH)
             code = f"""
     {ext_var}->KHR_maintenance5 = true; {ext_var}->KHR_maintenance6 = true;
     {ext_var}->KHR_maintenance7 = true; {ext_var}->KHR_maintenance8 = true;
@@ -111,7 +107,6 @@ try:
     {ext_var}->EXT_shader_object = true; {ext_var}->VALVE_mutable_descriptor_type = true;
     {ext_var}->EXT_memory_budget = true; {ext_var}->EXT_display_control = true;
 """
-            # GEN8: Apenas injeta a variável de ambiente. RT/Mesh ficam padrão.
             if inject_type == "gen8_env":
                 code = f"""
     setenv("WRAPPER_VK_VERSION", "1.4.340", 1);
@@ -139,11 +134,12 @@ EOF_PYTHON
     local cver="$target_sdk"
     [ ! -f "$ndk_bin/aarch64-linux-android${cver}-clang" ] && cver="34"
 
+    # CORRECAO CRITICA: STATIC LINKING PARA EVITAR CRASH NO WINLATOR
     cat <<EOF > android-cross.txt
 [binaries]
 ar = '$ndk_bin/llvm-ar'
-c = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang', '--sysroot=$ndk_sysroot_path']
-cpp = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang++', '--sysroot=$ndk_sysroot_path']
+c = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang', '--sysroot=$ndk_sys']
+cpp = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang++', '--sysroot=$ndk_sys']
 c_ld = 'lld'
 cpp_ld = 'lld'
 strip = '$ndk_bin/aarch64-linux-android-strip'
@@ -152,6 +148,9 @@ system = 'android'
 cpu_family = 'aarch64'
 cpu = 'armv8'
 endian = 'little'
+[built-in options]
+c_link_args = ['-static-libstdc++']
+cpp_link_args = ['-static-libstdc++']
 EOF
     
     export CFLAGS="-D__ANDROID__ -Wno-error"
@@ -176,20 +175,31 @@ EOF
     
     local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
     local desc=""
-    if [ "$inject_type" == "gen8_env" ]; then desc="Gen8 + Maintenance 5-8 + Wrapper Var (RT/Mesh Default)"; fi
-    if [ "$inject_type" == "main_safe" ]; then desc="Main + Maintenance 5-8 (RT/Mesh Default)"; fi
+    if [ "$inject_type" == "gen8_env" ]; then desc="Gen8 + EnvVar 1.4.340 + StaticLink"; fi
+    if [ "$inject_type" == "main_safe" ]; then desc="Main + StaticLink + Default Behavior"; fi
 
-    echo "{\"schemaVersion\":1,\"name\":\"Turnip-${build_name}-${hash}\",\"description\":\"$desc\",\"author\":\"mesa-ci\",\"driverVersion\":\"Mesa-V31-DefaultBehavior\",\"libraryName\":\"vulkan.ad07XX.so\"}" > meta.json
+    echo "{
+  \"schemaVersion\": 1,
+  \"name\": \"Turnip-${build_name}-${hash}\",
+  \"description\": \"$desc\",
+  \"author\": \"mesa-ci\",
+  \"driverVersion\": \"Mesa-V33-Static\",
+  \"libraryName\": \"vulkan.ad07XX.so\"
+}" > meta.json
     
     zip -9 "$workdir/Turnip-${build_name}-${hash}.zip" vulkan.ad07XX.so meta.json
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
+    
+    # Gera arquivos para facilitar a criacao de release manual
+    echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
+    echo "Turnip V33 - $build_name" > "$workdir/release"
 }
 
 check_deps
 prepare_ndk
 
-# 1. Driver GEN8 (Com Variável no Código, RT/Mesh Padrão)
-build_driver "https://github.com/whitebelyash/mesa-tu8.git" "gen8" "Gen8-EnvVar" "gen8_env"
+# 1. Driver GEN8 (SetEnv 1.4.340 + Static Link)
+build_driver "https://github.com/whitebelyash/mesa-tu8.git" "gen8" "Gen8-Fix" "gen8_env"
 
-# 2. Driver MAIN (Tudo Padrão para RT/Mesh)
-build_driver "https://gitlab.freedesktop.org/mesa/mesa.git" "main" "Main-Default" "main_safe"
+# 2. Driver MAIN (Static Link + Default RT/Mesh)
+build_driver "https://gitlab.freedesktop.org/mesa/mesa.git" "main" "Main-Fix" "main_safe"
