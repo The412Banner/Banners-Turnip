@@ -54,6 +54,7 @@ try:
         if "#include <stdlib.h>" not in content:
             content = "#include <stdlib.h>\n" + content
 
+    # LISTA BASE DE FEATURES (SEM RT/MESH)
     feats = [
         "shaderFloat64", "shaderStorageImageMultisample",
         "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
@@ -64,11 +65,9 @@ try:
         "shaderRoundingModeRTZFloat16", "samplerFilterMinmax",
         "fragmentDensityMapDynamic", "textureCompressionASTC_HDR",
         "integerDotProduct8BitUnsignedAccelerated",
-        "shaderObject", "mutableDescriptorType"
+        "shaderObject", "mutableDescriptorType",
+        "maintenance5", "maintenance6", "maintenance7", "maintenance8"
     ]
-    
-    if inject_type == "gen8_env":
-        feats.extend(["meshShader", "taskShader", "rayQuery", "accelerationStructure"])
     
     version_regex = r'(props->apiVersion\s*=\s*)([^;]+)(;)'
     if re.search(version_regex, content):
@@ -83,19 +82,12 @@ try:
              if re.search(regex, content):
                  content = re.sub(regex, r'\1true\3', content)
 
-    # --- CORREÇÃO DE ERRO: DETECTAR NOME DA VARIÁVEL PHYSICAL DEVICE ---
-    # Procura a assinatura da função para pegar os DOIS nomes de variáveis:
-    # 1. O ponteiro do physical device
-    # 2. O ponteiro da tabela de extensões
-    
-    # Regex flexível para pegar: get_device_extensions(const struct tu_physical_device *NOME1, ..., struct vk_device_extension_table *NOME2)
+    # AUTO DETECT VAR NAME
     sig_regex = re.search(r'get_device_extensions\s*\([^)]*struct\s+tu_physical_device\s*\*\s*(\w+)[^)]*struct\s+vk_device_extension_table\s*\*\s*(\w+)', content, re.DOTALL)
     
     if sig_regex:
-        pdev_var = sig_regex.group(1) # Ex: physical_device ou pdev
-        ext_var = sig_regex.group(2)  # Ex: ext
-        
-        print(f"Detected variables -> PhysicalDevice: {pdev_var}, Extensions: {ext_var}")
+        pdev_var = sig_regex.group(1)
+        ext_var = sig_regex.group(2)
         
         func_start = sig_regex.end()
         closure = re.search(r'\};', content[func_start:])
@@ -103,7 +95,7 @@ try:
         if closure:
             pos = func_start + closure.end()
             
-            # Base Code (Sem Comentários)
+            # INJECAO COMUM (SEM RT/MESH)
             code = f"""
     {ext_var}->KHR_maintenance5 = true; {ext_var}->KHR_maintenance6 = true;
     {ext_var}->KHR_maintenance7 = true; {ext_var}->KHR_maintenance8 = true;
@@ -119,26 +111,12 @@ try:
     {ext_var}->EXT_shader_object = true; {ext_var}->VALVE_mutable_descriptor_type = true;
     {ext_var}->EXT_memory_budget = true; {ext_var}->EXT_display_control = true;
 """
+            # GEN8: Apenas injeta a variável de ambiente. RT/Mesh ficam padrão.
             if inject_type == "gen8_env":
                 code = f"""
     setenv("WRAPPER_VK_VERSION", "1.4.340", 1);
-""" + code + f"""
-    {ext_var}->EXT_mesh_shader = true;
-    {ext_var}->KHR_ray_query = true; {ext_var}->KHR_acceleration_structure = true;
-    {ext_var}->KHR_ray_tracing_maintenance1 = true; {ext_var}->KHR_deferred_host_operations = true;
-    {ext_var}->KHR_pipeline_library = true;
-"""
-            elif inject_type == "main_safe":
-                # Usa a variável detectada (pdev_var) para o check de Chip ID
-                code = code + f"""
-    if ({pdev_var}->info->chip >= 7) {{
-        {ext_var}->KHR_ray_query = true; 
-        {ext_var}->KHR_acceleration_structure = true;
-        {ext_var}->KHR_ray_tracing_maintenance1 = true; 
-        {ext_var}->KHR_deferred_host_operations = true;
-        {ext_var}->KHR_pipeline_library = true;
-    }}
-"""
+""" + code
+
             content = content[:pos] + code + content[pos:]
 
     with open(file_path, 'w') as f: f.write(content)
@@ -164,8 +142,8 @@ EOF_PYTHON
     cat <<EOF > android-cross.txt
 [binaries]
 ar = '$ndk_bin/llvm-ar'
-c = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang', '--sysroot=$ndk_sys']
-cpp = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang++', '--sysroot=$ndk_sys']
+c = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang', '--sysroot=$ndk_sysroot_path']
+cpp = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang++', '--sysroot=$ndk_sysroot_path']
 c_ld = 'lld'
 cpp_ld = 'lld'
 strip = '$ndk_bin/aarch64-linux-android-strip'
@@ -198,10 +176,10 @@ EOF
     
     local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
     local desc=""
-    if [ "$inject_type" == "gen8_env" ]; then desc="Gen8 + Mesh + RT + Maintenance 5/6/7/8 + Var 1.4.340"; fi
-    if [ "$inject_type" == "main_safe" ]; then desc="Main + Maintenance 5/6/7/8 + Smart RT (A7xx)"; fi
+    if [ "$inject_type" == "gen8_env" ]; then desc="Gen8 + Maintenance 5-8 + Wrapper Var (RT/Mesh Default)"; fi
+    if [ "$inject_type" == "main_safe" ]; then desc="Main + Maintenance 5-8 (RT/Mesh Default)"; fi
 
-    echo "{\"schemaVersion\":1,\"name\":\"Turnip-${build_name}-${hash}\",\"description\":\"$desc\",\"author\":\"mesa-ci\",\"driverVersion\":\"Mesa-V30-AutoDetect\",\"libraryName\":\"vulkan.ad07XX.so\"}" > meta.json
+    echo "{\"schemaVersion\":1,\"name\":\"Turnip-${build_name}-${hash}\",\"description\":\"$desc\",\"author\":\"mesa-ci\",\"driverVersion\":\"Mesa-V31-DefaultBehavior\",\"libraryName\":\"vulkan.ad07XX.so\"}" > meta.json
     
     zip -9 "$workdir/Turnip-${build_name}-${hash}.zip" vulkan.ad07XX.so meta.json
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
@@ -210,8 +188,8 @@ EOF
 check_deps
 prepare_ndk
 
-# 1. Driver GEN8
+# 1. Driver GEN8 (Com Variável no Código, RT/Mesh Padrão)
 build_driver "https://github.com/whitebelyash/mesa-tu8.git" "gen8" "Gen8-EnvVar" "gen8_env"
 
-# 2. Driver MAIN
-build_driver "https://gitlab.freedesktop.org/mesa/mesa.git" "main" "Main-SmartRT" "main_safe"
+# 2. Driver MAIN (Tudo Padrão para RT/Mesh)
+build_driver "https://gitlab.freedesktop.org/mesa/mesa.git" "main" "Main-Default" "main_safe"
