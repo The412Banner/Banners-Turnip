@@ -39,9 +39,7 @@ build_driver() {
     cd mesa
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
-    # ==============================================================================
-    # 1. PATCH A6XX STABILITY (FORCE UNCACHED MEMORY)
-    # ==============================================================================
+    
     echo -e "${green}Applying A6xx Stability Patch (Uncached Memory)...${nocolor}"
     
     if [ -f src/freedreno/vulkan/tu_query.cc ]; then
@@ -57,9 +55,7 @@ build_driver() {
         sed -i 's/VK_MEMORY_PROPERTY_HOST_CACHED_BIT/0/g' "$file" || true
     done
 
-    # ==============================================================================
-    # 2. INJEÇÃO PYTHON (FULL UNLOCK - SEM VERSÃO FORÇADA)
-    # ==============================================================================
+    
 cat << 'EOF_PYTHON' > inject.py
 import sys
 import re
@@ -148,9 +144,7 @@ EOF_PYTHON
 
     python3 inject.py || exit 1
     
-    # ==============================================================================
-    # 3. COMPILAÇÃO
-    # ==============================================================================
+    
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
