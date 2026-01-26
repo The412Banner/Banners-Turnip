@@ -134,7 +134,7 @@ EOF_PYTHON
     local cver="$target_sdk"
     [ ! -f "$ndk_bin/aarch64-linux-android${cver}-clang" ] && cver="34"
 
-    # CORRECAO CRITICA: STATIC LINKING PARA EVITAR CRASH NO WINLATOR
+    
     cat <<EOF > android-cross.txt
 [binaries]
 ar = '$ndk_bin/llvm-ar'
@@ -198,8 +198,8 @@ EOF
 check_deps
 prepare_ndk
 
-# 1. Driver GEN8 (SetEnv 1.4.340 + Static Link)
+# 
 build_driver "https://github.com/whitebelyash/mesa-tu8.git" "gen8" "Gen8-Fix" "gen8_env"
 
-# 2. Driver MAIN (Static Link + Default RT/Mesh)
+#
 build_driver "https://gitlab.freedesktop.org/mesa/mesa.git" "main" "Main-Fix" "main_safe"
