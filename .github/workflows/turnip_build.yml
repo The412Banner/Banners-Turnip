@@ -1,11 +1,10 @@
-name: Build Turnip 
+name: Build Turnip Dual
 
 on:
-  workflow_dispatch: # Botão para iniciar manualmente
-  
-     # Executa automaticamente a cada 12 horas
+  workflow_dispatch: # Botão manual
+  schedule:
+    - cron: '0 */12 * * *' # Executa a cada 12h
 
-# Permissões necessárias para criar Releases
 permissions:
   contents: write
 
@@ -26,34 +25,36 @@ jobs:
       - name: Tornar o Script Executável
         run: chmod +x turnip_builder.sh
 
-      - name: Compilar Driver (Ultimate Unlock)
+      - name: Compilar Drivers (Dual Build)
         run: ./turnip_builder.sh
 
-      # Identifica o ZIP gerado independentemente do nome (Mesa-Main, Turnip, etc)
-      - name: Ler Metadados da Release
+      # Lê o nome da Tag gerada pelo último driver compilado para usar no título da Release
+      - name: Ler Metadados
         id: meta
         run: |
           echo "TAG_NAME=$(cat turnip_workdir/tag)" >> $GITHUB_ENV
-          echo "RELEASE_NAME=$(cat turnip_workdir/release)" >> $GITHUB_ENV
-          echo "ZIP_PATH=$(ls turnip_workdir/*.zip | head -n 1)" >> $GITHUB_ENV
+          echo "RELEASE_NAME=Turnip Dual Release (Gen8 + Main)" >> $GITHUB_ENV
 
-      # Faz upload do arquivo para a aba "Actions" (Backup)
-      - name: Upload Artifact
+      # Upload na aba "Actions" (Salva todos os ZIPs encontrados)
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Turnip-Ultimate-Driver
-          path: ${{ env.ZIP_PATH }}
+          name: Turnip-Drivers-Pack
+          path: turnip_workdir/*.zip
           if-no-files-found: error
 
-      # Cria a Release oficial na aba "Releases"
+      # Cria a Release e anexa TODOS os ZIPs da pasta
       - name: Publicar Release
         uses: softprops/action-gh-release@v1
         if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
         with:
           tag_name: ${{ env.TAG_NAME }}
           name: ${{ env.RELEASE_NAME }}
-          body_path: turnip_workdir/description
-          files: ${{ env.ZIP_PATH }}
+          body: |
+            Build automática contendo dois drivers:
+            1. **Gen8 (WhiteBelyash):** Mesh/RT desbloqueados + Wrapper Variable Fix.
+            2. **Main (Official):** Ray Tracing Inteligente (A7xx) + Comportamento Padrão.
+          files: turnip_workdir/*.zip
           draft: false
           prerelease: false
         env:
