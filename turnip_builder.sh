@@ -29,9 +29,9 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Main-Uncached-Test"
+    local build_name="Main-SurgicalFix"
 
-    echo -e "${green}=== BUILDING: $build_name (VANILLA + UNCACHED FIX) ===${nocolor}"
+    echo -e "${green}=== BUILDING: $build_name (SMART UNCACHED) ===${nocolor}"
     
     cd "$workdir"
     if [ -d mesa ]; then rm -rf mesa; fi
@@ -41,31 +41,24 @@ build_driver() {
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
     # ==============================================================================
-    # APLICANDO APENAS O FIX DE MEMÓRIA (A6xx Stability / UE4 Fix)
+    # SURGICAL FIX: Reverter comportamento APENAS para Queries
     # ==============================================================================
-    echo -e "${green}Applying Uncached Memory Fix (Disabling Host Cached Bit)...${nocolor}"
+    echo -e "${green}Applying Surgical Fix: Force Uncached ONLY for Queries...${nocolor}"
     
-    # 1. Substitui alocação cacheada por não-cacheada no Query Pool
-    if [ -f src/freedreno/vulkan/tu_query.cc ]; then
-        sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' src/freedreno/vulkan/tu_query.cc
-    fi
+    # Procura arquivos de query (tu_query.cc ou tu_query_pool.cc dependendo da versão)
+    # E substitui a chamada da função 'cached' pela função normal (uncached/default)
+    # Isso restaura o comportamento pré-merge request apenas para este componente.
     
-    # 2. Força a flag interna de memória cacheada para false
-    if [ -f src/freedreno/vulkan/tu_device.cc ]; then
-        sed -i 's/physical_device->has_cached_coherent_memory = .*/physical_device->has_cached_coherent_memory = false;/' src/freedreno/vulkan/tu_device.cc || true
-    fi
+    # O comando abaixo afeta tu_query.cc, tu_query_pool.cc, etc.
+    grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
     
-    # 3. Remove a flag VK_MEMORY_PROPERTY_HOST_CACHED_BIT de todo o código Vulkan da Freedreno
-    # Isso impede que o driver anuncie suporte a esse tipo de memória para o jogo/DXVK
-    grep -rl "VK_MEMORY_PROPERTY_HOST_CACHED_BIT" src/freedreno/vulkan/ | while read file; do
-        sed -i 's/dev->physical_device->has_cached_coherent_memory ? VK_MEMORY_PROPERTY_HOST_CACHED_BIT : 0/0/g' "$file" || true
-        sed -i 's/VK_MEMORY_PROPERTY_HOST_CACHED_BIT/0/g' "$file" || true
-    done
-    
-    # ==============================================================================
-    # FIM DOS PATCHES - RESTO É VANILLA
-    # ==============================================================================
+    # NOTA: NÃO alteramos 'tu_device.cc'. 
+    # O driver continua reportando que suporta memória cacheada (has_cached_coherent_memory = true).
+    # Isso deve manter o frametime liso nos jogos que não travam.
 
+    # ==============================================================================
+    # COMPILAÇÃO
+    # ==============================================================================
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
@@ -127,14 +120,14 @@ EOF
     patchelf --set-soname "vulkan.adreno.so" vulkan.ad07XX.so
     
     local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
-    local desc="Mesa Main SDK36 + Uncached Fix Only (UE4 Stability Test)."
+    local desc="Mesa Main SDK36 + Surgical Query Fix (Smart Uncached)"
 
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
   \"description\": \"$desc\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V41-Uncached\",
+  \"driverVersion\": \"Mesa-V42-SmartFix\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -142,7 +135,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V41 - Uncached Only" > "$workdir/release"
+    echo "Turnip V42 - Smart Fix" > "$workdir/release"
 }
 
 check_deps
