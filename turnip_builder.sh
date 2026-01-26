@@ -54,7 +54,6 @@ try:
         if "#include <stdlib.h>" not in content:
             content = "#include <stdlib.h>\n" + content
 
-    # LISTA DE FEATURES (Bits internos)
     feats = [
         "shaderFloat64", "shaderStorageImageMultisample",
         "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
@@ -65,9 +64,7 @@ try:
         "shaderRoundingModeRTZFloat16", "samplerFilterMinmax",
         "fragmentDensityMapDynamic", "textureCompressionASTC_HDR",
         "integerDotProduct8BitUnsignedAccelerated",
-        "shaderObject", "mutableDescriptorType",
-        # MAINTENANCE FEATURES FORCADAS AQUI TAMBEM:
-        "maintenance5", "maintenance6", "maintenance7", "maintenance8"
+        "shaderObject", "mutableDescriptorType"
     ]
     
     if inject_type == "gen8_env":
@@ -77,7 +74,6 @@ try:
     if re.search(version_regex, content):
         content = re.sub(version_regex, r'\1TU_API_VERSION\3', content)
 
-    # LOOP DE FEATURES (Substitui ->feature = ...)
     for prop in feats:
         if "integerDotProduct" in prop:
              regex = r'((?:p|features|props)->integerDotProduct\w+\s*=\s*)([^;]+)(;)'
@@ -87,68 +83,68 @@ try:
              if re.search(regex, content):
                  content = re.sub(regex, r'\1true\3', content)
 
-    # EXTENSIONS INJECTION (Ativa a extensão na tabela)
-    match = re.search(r'get_device_extensions\s*\([^{]*struct\s+vk_device_extension_table\s*\*\s*(\w+)', content, re.DOTALL)
-    if match:
-        var = match.group(1)
-        func_start = match.end()
+    # --- CORREÇÃO DE ERRO: DETECTAR NOME DA VARIÁVEL PHYSICAL DEVICE ---
+    # Procura a assinatura da função para pegar os DOIS nomes de variáveis:
+    # 1. O ponteiro do physical device
+    # 2. O ponteiro da tabela de extensões
+    
+    # Regex flexível para pegar: get_device_extensions(const struct tu_physical_device *NOME1, ..., struct vk_device_extension_table *NOME2)
+    sig_regex = re.search(r'get_device_extensions\s*\([^)]*struct\s+tu_physical_device\s*\*\s*(\w+)[^)]*struct\s+vk_device_extension_table\s*\*\s*(\w+)', content, re.DOTALL)
+    
+    if sig_regex:
+        pdev_var = sig_regex.group(1) # Ex: physical_device ou pdev
+        ext_var = sig_regex.group(2)  # Ex: ext
+        
+        print(f"Detected variables -> PhysicalDevice: {pdev_var}, Extensions: {ext_var}")
+        
+        func_start = sig_regex.end()
         closure = re.search(r'\};', content[func_start:])
+        
         if closure:
             pos = func_start + closure.end()
             
-            # INJECAO DAS EXTENSOES (LINHA POR LINHA PARA GARANTIR)
+            # Base Code (Sem Comentários)
             code = f"""
-    {var}->KHR_maintenance5 = true;
-    {var}->KHR_maintenance6 = true;
-    {var}->KHR_maintenance7 = true;
-    {var}->KHR_maintenance8 = true;
-    {var}->EXT_primitives_generated_query = true;
-    {var}->EXT_primitive_topology_list_restart = true;
-    {var}->EXT_depth_clip_control = true;
-    {var}->EXT_depth_clip_enable = true;
-    {var}->EXT_attachment_feedback_loop_layout = true;
-    {var}->EXT_attachment_feedback_loop_dynamic_state = true;
-    {var}->KHR_fragment_shading_rate = true;
-    {var}->EXT_filter_cubic = true;
-    {var}->IMG_filter_cubic = true;
-    {var}->EXT_sample_locations = true;
-    {var}->EXT_texture_compression_astc_hdr = true;
-    {var}->EXT_calibrated_timestamps = true;
-    {var}->EXT_conservative_rasterization = true;
-    {var}->AMD_shader_fragment_mask = true;
-    {var}->KHR_shader_atomic_int64 = true;
-    {var}->KHR_8bit_storage = true;
-    {var}->KHR_16bit_storage = true;
-    {var}->EXT_shader_object = true;
-    {var}->VALVE_mutable_descriptor_type = true;
-    {var}->EXT_memory_budget = true;
-    {var}->EXT_display_control = true;
+    {ext_var}->KHR_maintenance5 = true; {ext_var}->KHR_maintenance6 = true;
+    {ext_var}->KHR_maintenance7 = true; {ext_var}->KHR_maintenance8 = true;
+    {ext_var}->EXT_primitives_generated_query = true; {ext_var}->EXT_primitive_topology_list_restart = true;
+    {ext_var}->EXT_depth_clip_control = true; {ext_var}->EXT_depth_clip_enable = true;
+    {ext_var}->EXT_attachment_feedback_loop_layout = true; {ext_var}->EXT_attachment_feedback_loop_dynamic_state = true;
+    {ext_var}->KHR_fragment_shading_rate = true;
+    {ext_var}->EXT_filter_cubic = true; {ext_var}->IMG_filter_cubic = true;
+    {ext_var}->EXT_sample_locations = true; {ext_var}->EXT_texture_compression_astc_hdr = true;
+    {ext_var}->EXT_calibrated_timestamps = true; {ext_var}->EXT_conservative_rasterization = true;
+    {ext_var}->AMD_shader_fragment_mask = true;
+    {ext_var}->KHR_shader_atomic_int64 = true; {ext_var}->KHR_8bit_storage = true; {ext_var}->KHR_16bit_storage = true;
+    {ext_var}->EXT_shader_object = true; {ext_var}->VALVE_mutable_descriptor_type = true;
+    {ext_var}->EXT_memory_budget = true; {ext_var}->EXT_display_control = true;
 """
             if inject_type == "gen8_env":
                 code = f"""
     setenv("WRAPPER_VK_VERSION", "1.4.340", 1);
 """ + code + f"""
-    {var}->EXT_mesh_shader = true;
-    {var}->KHR_ray_query = true;
-    {var}->KHR_acceleration_structure = true;
-    {var}->KHR_ray_tracing_maintenance1 = true;
-    {var}->KHR_deferred_host_operations = true;
-    {var}->KHR_pipeline_library = true;
+    {ext_var}->EXT_mesh_shader = true;
+    {ext_var}->KHR_ray_query = true; {ext_var}->KHR_acceleration_structure = true;
+    {ext_var}->KHR_ray_tracing_maintenance1 = true; {ext_var}->KHR_deferred_host_operations = true;
+    {ext_var}->KHR_pipeline_library = true;
 """
             elif inject_type == "main_safe":
+                # Usa a variável detectada (pdev_var) para o check de Chip ID
                 code = code + f"""
-    if (physical_device->info->chip >= 7) {{
-        {var}->KHR_ray_query = true;
-        {var}->KHR_acceleration_structure = true;
-        {var}->KHR_ray_tracing_maintenance1 = true;
-        {var}->KHR_deferred_host_operations = true;
-        {var}->KHR_pipeline_library = true;
+    if ({pdev_var}->info->chip >= 7) {{
+        {ext_var}->KHR_ray_query = true; 
+        {ext_var}->KHR_acceleration_structure = true;
+        {ext_var}->KHR_ray_tracing_maintenance1 = true; 
+        {ext_var}->KHR_deferred_host_operations = true;
+        {ext_var}->KHR_pipeline_library = true;
     }}
 """
             content = content[:pos] + code + content[pos:]
 
     with open(file_path, 'w') as f: f.write(content)
-except: sys.exit(1)
+except Exception as e:
+    print(e)
+    sys.exit(1)
 EOF_PYTHON
 
     python3 inject.py "$inject_type" || exit 1
@@ -203,9 +199,9 @@ EOF
     local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
     local desc=""
     if [ "$inject_type" == "gen8_env" ]; then desc="Gen8 + Mesh + RT + Maintenance 5/6/7/8 + Var 1.4.340"; fi
-    if [ "$inject_type" == "main_safe" ]; then desc="Main + Maintenance 5/6/7/8 + Smart RT"; fi
+    if [ "$inject_type" == "main_safe" ]; then desc="Main + Maintenance 5/6/7/8 + Smart RT (A7xx)"; fi
 
-    echo "{\"schemaVersion\":1,\"name\":\"Turnip-${build_name}-${hash}\",\"description\":\"$desc\",\"author\":\"mesa-ci\",\"driverVersion\":\"Mesa-V29-Dual\",\"libraryName\":\"vulkan.ad07XX.so\"}" > meta.json
+    echo "{\"schemaVersion\":1,\"name\":\"Turnip-${build_name}-${hash}\",\"description\":\"$desc\",\"author\":\"mesa-ci\",\"driverVersion\":\"Mesa-V30-AutoDetect\",\"libraryName\":\"vulkan.ad07XX.so\"}" > meta.json
     
     zip -9 "$workdir/Turnip-${build_name}-${hash}.zip" vulkan.ad07XX.so meta.json
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
@@ -214,8 +210,8 @@ EOF
 check_deps
 prepare_ndk
 
-# 1. Driver GEN8 (SetEnv + Full Unlock + Maint 5/6/7/8)
+# 1. Driver GEN8
 build_driver "https://github.com/whitebelyash/mesa-tu8.git" "gen8" "Gen8-EnvVar" "gen8_env"
 
-# 2. Driver MAIN (Smart RT + No Mesh + Maint 5/6/7/8)
+# 2. Driver MAIN
 build_driver "https://gitlab.freedesktop.org/mesa/mesa.git" "main" "Main-SmartRT" "main_safe"
