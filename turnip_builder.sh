@@ -29,9 +29,9 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Main-SDK36-FeatsOnly"
+    local build_name="Main-Uncached-Test"
 
-    echo -e "${green}=== BUILDING: $build_name ===${nocolor}"
+    echo -e "${green}=== BUILDING: $build_name (VANILLA + UNCACHED FIX) ===${nocolor}"
     
     cd "$workdir"
     if [ -d mesa ]; then rm -rf mesa; fi
@@ -41,74 +41,31 @@ build_driver() {
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
     # ==============================================================================
-    # INJEÇÃO DE FEATURES (SEM EXTENSÕES)
+    # APLICANDO APENAS O FIX DE MEMÓRIA (A6xx Stability / UE4 Fix)
     # ==============================================================================
-cat << 'EOF_PYTHON' > inject.py
-import sys
-import re
-
-file_path = 'src/freedreno/vulkan/tu_device.cc'
-
-try:
-    with open(file_path, 'r') as f: content = f.read()
-
-    # LISTA DE FEATURES ESSENCIAIS PARA DXVK/VKD3D
-    # (Forçamos o suporte interno, mas NÃO forçamos a extensão na lista pública)
-    feats = [
-        "shaderFloat64", 
-        "shaderStorageImageMultisample",
-        "uniformAndStorageBuffer16BitAccess", 
-        "storagePushConstant16",
-        "uniformAndStorageBuffer8BitAccess", 
-        "storagePushConstant8",
-        "shaderSharedInt64Atomics", 
-        "shaderBufferInt64Atomics",
-        "independentResolve", 
-        "independentResolveNone",
-        "shaderDenormPreserveFloat16", 
-        "shaderDenormFlushToZeroFloat16",
-        "shaderRoundingModeRTZFloat16", 
-        "samplerFilterMinmax",
-        "fragmentDensityMapDynamic", 
-        "textureCompressionASTC_HDR",
-        "integerDotProduct8BitUnsignedAccelerated",
-        # Features "Modernas" (Sem forçar a extensão, o driver só usa se o app pedir o feature bit)
-        "shaderObject", 
-        "mutableDescriptorType"
-    ]
+    echo -e "${green}Applying Uncached Memory Fix (Disabling Host Cached Bit)...${nocolor}"
     
-    # Nota: Removi RT e Mesh da lista de features forçadas para evitar instabilidade.
-
-    # Aplica o Force True nas Features
-    count = 0
-    for prop in feats:
-        if "integerDotProduct" in prop:
-             regex = r'((?:p|features|props)->integerDotProduct\w+\s*=\s*)([^;]+)(;)'
-             content, n = re.subn(regex, r'\1true\3', content)
-             count += n
-        else:
-             regex = rf'((?:p|features|props)->{prop}\s*=\s*)([^;]+)(;)'
-             if re.search(regex, content):
-                 content = re.sub(regex, r'\1true\3', content)
-                 count += 1
+    # 1. Substitui alocação cacheada por não-cacheada no Query Pool
+    if [ -f src/freedreno/vulkan/tu_query.cc ]; then
+        sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' src/freedreno/vulkan/tu_query.cc
+    fi
     
-    print(f"Features unlocked: {count}")
+    # 2. Força a flag interna de memória cacheada para false
+    if [ -f src/freedreno/vulkan/tu_device.cc ]; then
+        sed -i 's/physical_device->has_cached_coherent_memory = .*/physical_device->has_cached_coherent_memory = false;/' src/freedreno/vulkan/tu_device.cc || true
+    fi
     
-    # NÃO HÁ BLOCO DE INJEÇÃO DE EXTENSÕES AQUI.
-    # O driver vai reportar apenas as extensões que ele nativamente suporta.
-
-    with open(file_path, 'w') as f: f.write(content)
-
-except Exception as e:
-    print(f"Injection Error: {e}")
-    sys.exit(1)
-EOF_PYTHON
-
-    python3 inject.py || exit 1
+    # 3. Remove a flag VK_MEMORY_PROPERTY_HOST_CACHED_BIT de todo o código Vulkan da Freedreno
+    # Isso impede que o driver anuncie suporte a esse tipo de memória para o jogo/DXVK
+    grep -rl "VK_MEMORY_PROPERTY_HOST_CACHED_BIT" src/freedreno/vulkan/ | while read file; do
+        sed -i 's/dev->physical_device->has_cached_coherent_memory ? VK_MEMORY_PROPERTY_HOST_CACHED_BIT : 0/0/g' "$file" || true
+        sed -i 's/VK_MEMORY_PROPERTY_HOST_CACHED_BIT/0/g' "$file" || true
+    done
     
     # ==============================================================================
-    # COMPILAÇÃO (SDK 36 + STATIC LINK)
+    # FIM DOS PATCHES - RESTO É VANILLA
     # ==============================================================================
+
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
@@ -118,7 +75,7 @@ EOF_PYTHON
     local build_dir="$workdir/mesa/build"
     local ndk_bin="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
     local ndk_sys="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
-    local cver="35" # SDK 36 usa tools do 35/34 geralmente
+    local cver="35"
     [ ! -f "$ndk_bin/aarch64-linux-android${cver}-clang" ] && cver="34"
 
     cat <<EOF > android-cross.txt
@@ -170,14 +127,14 @@ EOF
     patchelf --set-soname "vulkan.adreno.so" vulkan.ad07XX.so
     
     local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
-    local desc="Mesa Main SDK36 + Features Unlocked (No Exts forced)."
+    local desc="Mesa Main SDK36 + Uncached Fix Only (UE4 Stability Test)."
 
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
   \"description\": \"$desc\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V40-FeatsOnly\",
+  \"driverVersion\": \"Mesa-V41-Uncached\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -185,7 +142,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V40 - Features Only" > "$workdir/release"
+    echo "Turnip V41 - Uncached Only" > "$workdir/release"
 }
 
 check_deps
