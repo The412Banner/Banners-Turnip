@@ -3,6 +3,7 @@ set -o pipefail
 
 green='\033[0;32m'
 nocolor='\033[0m'
+red='\033[0;31m'
 
 deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator"
 workdir="$(pwd)/turnip_workdir"
@@ -28,28 +29,43 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Main-26.1-Autotuner"
+    local build_name="Main-26.1-AutotunerPatch"
 
-    echo -e "${green}Building: $build_name${nocolor}"
+    echo -e "${green}Building: $build_name (Direct Patch Method)${nocolor}"
     
     cd "$workdir"
     if [ -d mesa ]; then rm -rf mesa; fi
     
+    # 1. Clona a MAIN (26.1.0)
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
-    git fetch origin merge-requests/37802/head:mr-autotuner
+    # 2. Baixa o DIFF do MR !37802 diretamente do GitLab
+    # Isso ignora histórico git e branches, pegando apenas as mudanças de código
+    echo -e "${green}Downloading Autotuner Patch (!37802.diff)...${nocolor}"
+    curl -L "https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/37802.diff" -o autotuner.patch
     
-    if git merge --no-edit mr-autotuner; then
-        echo -e "${green}Merge Success!${nocolor}"
+    # 3. Aplica o Patch
+    echo -e "${green}Applying Autotuner Patch...${nocolor}"
+    # Tenta aplicar. Se falhar (conflito de linha), continua mas avisa.
+    # O 'git apply' é mais inteligente que o 'patch' comum para lidar com arquivos novos/renomeados
+    if git apply --3way --ignore-space-change --ignore-whitespace autotuner.patch; then
+        echo -e "${green}Patch Applied Successfully!${nocolor}"
+        desc_extra="+ Autotuner Rewrite"
     else
-        echo "Merge Failed (Conflict). Using Main Branch."
-        git merge --abort
+        echo -e "${red}Patch Application Failed (Conflict). Skipping Autotuner.${nocolor}"
+        echo "Building clean Main 26.1.0 instead."
+        # Remove alterações parciais se falhou
+        git reset --hard HEAD
+        desc_extra="(Autotuner Skipped)"
     fi
 
+    # 4. Força a versão 26.1.0
     echo "26.1.0-devel" > VERSION
 
+    # 5. Aplica o UE4 Fix (Surgical)
+    # Remove cache apenas das Queries
     grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
 
     mkdir -p subprojects && cd subprojects
@@ -117,9 +133,9 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"Mesa 26.1.0 + Autotuner + UE4 Fix\",
+  \"description\": \"Mesa 26.1.0 ${desc_extra} + UE4 Fix\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V47-26.1.0\",
+  \"driverVersion\": \"Mesa-V48-26.1.0\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -127,7 +143,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V47" > "$workdir/release"
+    echo "Turnip V48" > "$workdir/release"
 }
 
 check_deps
