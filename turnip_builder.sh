@@ -28,34 +28,28 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Main-26.1-AutotunerFix"
+    local build_name="Main-26.1-Autotuner"
 
-    echo -e "${green}Building: $build_name (Merging Autotuner into Latest Main)${nocolor}"
+    echo -e "${green}Building: $build_name${nocolor}"
     
     cd "$workdir"
     if [ -d mesa ]; then rm -rf mesa; fi
     
-    # 1. Clona a branch MAIN mais recente (Provavelmente 26.1.0-devel)
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
-    
-    # Configuração necessária para o git permitir o merge
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
-    # 2. Baixa o Merge Request do Autotuner (!37802)
-    echo -e "${green}Fetching MR !37802...${nocolor}"
     git fetch origin merge-requests/37802/head:mr-autotuner
     
-    # 3. MESCLA o Autotuner dentro da Main atual
-    # Isso traz o código novo para a versão 26.1.0
-    echo -e "${green}Merging Autotuner into Main...${nocolor}"
-    if ! git merge --no-edit mr-autotuner; then
-        echo "Merge Failed! Using MR branch as fallback..."
-        git checkout mr-autotuner
+    if git merge --no-edit mr-autotuner; then
+        echo -e "${green}Merge Success!${nocolor}"
+    else
+        echo "Merge Failed (Conflict). Using Main Branch."
+        git merge --abort
     fi
 
-    # 4. Aplica o Surgical Fix (UE4 Freeze Fix)
-    # Remove cache apenas das Queries
+    echo "26.1.0-devel" > VERSION
+
     grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
 
     mkdir -p subprojects && cd subprojects
@@ -88,8 +82,8 @@ c_link_args = ['-static-libstdc++']
 cpp_link_args = ['-static-libstdc++']
 EOF
     
-    export CFLAGS="-D__ANDROID__ -Wno-error"
-    export CXXFLAGS="-D__ANDROID__ -Wno-error"
+    export CFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations"
+    export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations"
 
     meson setup "$build_dir" --cross-file android-cross.txt \
         -Dbuildtype=release \
@@ -120,18 +114,12 @@ EOF
     
     local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
     
-    # Tenta ler a versão do arquivo VERSION, se não, assume o padrão
-    local version_str="Mesa-V45-26.1"
-    if [ -f "$workdir/mesa/VERSION" ]; then
-        version_str="Mesa-$(cat $workdir/mesa/VERSION)-Autotuner"
-    fi
-
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"Mesa Latest (Merge Autotuner MR) + UE4 Fix\",
+  \"description\": \"Mesa 26.1.0 + Autotuner + UE4 Fix\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"$version_str\",
+  \"driverVersion\": \"Mesa-V47-26.1.0\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -139,7 +127,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V45 - Latest Merge" > "$workdir/release"
+    echo "Turnip V47" > "$workdir/release"
 }
 
 check_deps
