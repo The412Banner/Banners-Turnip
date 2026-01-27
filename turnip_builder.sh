@@ -28,21 +28,34 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Main-MR37802-Surgical"
+    local build_name="Main-26.1-AutotunerFix"
 
-    echo -e "${green}Building: $build_name (Autotuner MR + UE4 Fix)${nocolor}"
+    echo -e "${green}Building: $build_name (Merging Autotuner into Latest Main)${nocolor}"
     
     cd "$workdir"
     if [ -d mesa ]; then rm -rf mesa; fi
     
+    # 1. Clona a branch MAIN mais recente (Provavelmente 26.1.0-devel)
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
+    
+    # Configuração necessária para o git permitir o merge
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
-    echo -e "${green}Fetching MR !37802 (Autotuner Rewrite)...${nocolor}"
-    git fetch origin merge-requests/37802/head:autotuner_rewrite
-    git checkout autotuner_rewrite
+    # 2. Baixa o Merge Request do Autotuner (!37802)
+    echo -e "${green}Fetching MR !37802...${nocolor}"
+    git fetch origin merge-requests/37802/head:mr-autotuner
+    
+    # 3. MESCLA o Autotuner dentro da Main atual
+    # Isso traz o código novo para a versão 26.1.0
+    echo -e "${green}Merging Autotuner into Main...${nocolor}"
+    if ! git merge --no-edit mr-autotuner; then
+        echo "Merge Failed! Using MR branch as fallback..."
+        git checkout mr-autotuner
+    fi
 
+    # 4. Aplica o Surgical Fix (UE4 Freeze Fix)
+    # Remove cache apenas das Queries
     grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
 
     mkdir -p subprojects && cd subprojects
@@ -107,12 +120,18 @@ EOF
     
     local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
     
+    # Tenta ler a versão do arquivo VERSION, se não, assume o padrão
+    local version_str="Mesa-V45-26.1"
+    if [ -f "$workdir/mesa/VERSION" ]; then
+        version_str="Mesa-$(cat $workdir/mesa/VERSION)-Autotuner"
+    fi
+
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"Mesa Main + MR37802 (Autotuner Rewrite) + Surgical Query Fix\",
+  \"description\": \"Mesa Latest (Merge Autotuner MR) + UE4 Fix\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V44-Autotuner\",
+  \"driverVersion\": \"$version_str\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -120,7 +139,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V44 - Autotuner MR" > "$workdir/release"
+    echo "Turnip V45 - Latest Merge" > "$workdir/release"
 }
 
 check_deps
