@@ -3,7 +3,6 @@ set -o pipefail
 
 green='\033[0;32m'
 nocolor='\033[0m'
-red='\033[0;31m'
 
 deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator"
 workdir="$(pwd)/turnip_workdir"
@@ -12,7 +11,7 @@ target_sdk="36"
 
 check_deps(){
 	for dep in $deps; do
-		if ! command -v $dep >/dev/null 2>&1; then echo -e "$red Missing: $dep $nocolor"; exit 1; fi
+		if ! command -v $dep >/dev/null 2>&1; then echo "Missing: $dep"; exit 1; fi
 	done
 	pip install meson mako --break-system-packages &> /dev/null || true
 }
@@ -29,9 +28,9 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Main-SurgicalFix"
+    local build_name="Main-MR37802-Surgical"
 
-    echo -e "${green}=== BUILDING: $build_name (SMART UNCACHED) ===${nocolor}"
+    echo -e "${green}Building: $build_name (Autotuner MR + UE4 Fix)${nocolor}"
     
     cd "$workdir"
     if [ -d mesa ]; then rm -rf mesa; fi
@@ -40,10 +39,12 @@ build_driver() {
     cd mesa
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
-    echo -e "${green}Applying Surgical Fix: Force Uncached ONLY for Queries...${nocolor}"
+    echo -e "${green}Fetching MR !37802 (Autotuner Rewrite)...${nocolor}"
+    git fetch origin merge-requests/37802/head:autotuner_rewrite
+    git checkout autotuner_rewrite
 
     grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
-    
+
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
@@ -105,14 +106,13 @@ EOF
     patchelf --set-soname "vulkan.adreno.so" vulkan.ad07XX.so
     
     local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
-    local desc="Mesa Main SDK36 + Surgical Query Fix (Smart Uncached)"
-
+    
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"$desc\",
+  \"description\": \"Mesa Main + MR37802 (Autotuner Rewrite) + Surgical Query Fix\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V42-SmartFix\",
+  \"driverVersion\": \"Mesa-V44-Autotuner\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -120,7 +120,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V42 - Smart Fix" > "$workdir/release"
+    echo "Turnip V44 - Autotuner MR" > "$workdir/release"
 }
 
 check_deps
