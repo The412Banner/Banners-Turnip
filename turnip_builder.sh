@@ -26,33 +26,23 @@ prepare_ndk(){
 }
 
 build_driver() {
-    local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
-    local branch="main"
-    local build_name="Main-26.1-MergeFull"
+    # URL e Branch especificos do Fork com o Autotuner
+    local repo_url="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
+    local branch="tu-newat"
+    local build_name="PixelyIon-Autotuner"
 
-    echo -e "${green}Building: $build_name (Full History Merge)${nocolor}"
+    echo -e "${green}Building: $build_name (Branch: $branch)${nocolor}"
     
     cd "$workdir"
     if [ -d mesa ]; then rm -rf mesa; fi
     
-    # CLONE COMPLETO (Sem --depth) para corrigir erro de histórico não relacionado
-    echo -e "${green}Cloning full repository (this may take a while)...${nocolor}"
-    git clone -b "$branch" "$repo_url" mesa
+    # Clone direto da branch customizada
+    git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
-    echo -e "${green}Fetching MR !37802...${nocolor}"
-    git fetch origin merge-requests/37802/head:mr-autotuner
-    
-    echo -e "${green}Merging Autotuner into Main...${nocolor}"
-    if git merge --no-edit mr-autotuner; then
-        echo -e "${green}Merge Success!${nocolor}"
-        desc_merge="+ Autotuner (Merged)"
-    else
-        echo "Merge Failed (Conflict). Aborting build to inspect."
-        exit 1
-    fi
-
+    # Aplica o Fix da Unreal Engine (Surgical Uncached)
+    # Mantido por seguranca para evitar travamentos na Adreno 619
     grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
 
     mkdir -p subprojects && cd subprojects
@@ -120,9 +110,9 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"Mesa Main ${desc_merge} + UE4 Fix\",
+  \"description\": \"Branch tu-newat (Autotuner) + UE4 Fix\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V50-Merge\",
+  \"driverVersion\": \"Mesa-V51-PixelyIon\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -130,7 +120,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V50 - Full Merge" > "$workdir/release"
+    echo "Turnip V51 - PixelyIon" > "$workdir/release"
 }
 
 check_deps
