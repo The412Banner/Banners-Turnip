@@ -28,7 +28,7 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
     local branch="tu-newat"
-    local build_name="PixelyIon-Spoof618-Force"
+    local build_name="PixelyIon-TimelineHack"
 
     echo -e "${green}Building: $build_name${nocolor}"
     
@@ -40,7 +40,7 @@ build_driver() {
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
     # ==============================================================================
-    # 1. TIMELINE SEMAPHORE HACK
+    # TIMELINE SEMAPHORE HACK (Fix DXVK 2.4+ Perf)
     # ==============================================================================
     echo -e "${green}Applying Timeline Semaphore Hack...${nocolor}"
 
@@ -147,32 +147,15 @@ index 4df11d81bda..6119126932d 100644
 EOF_PATCH
 
     if patch -p1 --fuzz=3 --ignore-whitespace < timeline_hack.patch; then
-        echo -e "${green}Timeline Hack Applied!${nocolor}"
+        echo -e "${green}Timeline Hack Applied Successfully!${nocolor}"
     else
         echo "Patch Failed! Aborting."
         exit 1
     fi
 
     # ==============================================================================
-    # 2. SPOOF A618 (FORCED METHOD)
+    # COMPILAÇÃO
     # ==============================================================================
-    echo -e "${green}Applying A618 Spoofing (Forced Overlay)...${nocolor}"
-    
-    # Em vez de tentar adivinhar a estrutura exata, vamos interceptar a variavel pointer '*gpu_id'
-    # Esta variavel e usada em tu_knl_kgsl.cc para retornar o valor para o driver.
-    
-    # Procura por qualquer atribuição a *gpu_id e força 618 logo depois.
-    # Isso funciona tanto para KGSL quanto para DRM se usarem a interface padrao do Mesa.
-    
-    sed -i '/\*gpu_id =/a \   *gpu_id = 618; // FORCE SPOOF A618' src/freedreno/vulkan/tu_knl_kgsl.cc || true
-    sed -i '/\*gpu_id =/a \   *gpu_id = 618; // FORCE SPOOF A618' src/freedreno/vulkan/tu_knl_drm.cc || true
-    
-    # Caso o codigo use 'val' ou outra variavel temporaria antes de atribuir
-    # Vamos injetar tambem antes de qualquer 'return VK_SUCCESS' nas funcoes de get_gpu_id
-    # Mas o metodo acima (*gpu_id =) é o mais garantido pois é o output final.
-
-    echo -e "${green}Spoof applied. Driver will identify as 618 internally.${nocolor}"
-
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
@@ -238,9 +221,9 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"PixelyIon + Timeline Hack + Forced A618 Spoof\",
+  \"description\": \"PixelyIon (tu-newat) + Timeline Hack\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V64-ForceSpoof\",
+  \"driverVersion\": \"Mesa-V61-TimelineHack\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -248,7 +231,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V64 - Force Spoof" > "$workdir/release"
+    echo "Turnip V61 - Timeline Hack Only" > "$workdir/release"
 }
 
 check_deps
