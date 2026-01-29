@@ -28,7 +28,7 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Main-TimelineOpt-A6xx"
+    local build_name="Main-TimelineFixed-A6xx"
 
     echo -e "${green}Building: $build_name${nocolor}"
     
@@ -39,8 +39,11 @@ build_driver() {
     cd mesa
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
+    # Fix A6xx (Unreal Engine Freeze)
     grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
 
+    # Fix Timeline Semaphore (Performance Optimization)
+    # Agora aplica SOMENTE dentro de vk_sync_timeline_wait
 cat << 'EOF_PYTHON' > apply_timeline_fix.py
 import os
 import sys
@@ -57,16 +60,36 @@ if not target:
 with open(target, 'r') as f:
     content = f.read()
 
-search = "   mtx_lock(&state->mutex);"
-insert = "   if (p_atomic_read(&state->highest_past) >= wait_value) return VK_SUCCESS;\n   mtx_lock(&state->mutex);"
+# Procura pelo contexto exato da funcao vk_sync_timeline_wait
+search_block = """   if (wait_value == 0)
+      return VK_SUCCESS;
 
-if "p_atomic_read(&state->highest_past)" not in content:
-    new_content = content.replace(search, insert)
-    with open(target, 'w') as f:
-        f.write(new_content)
+   mtx_lock(&state->mutex);"""
+
+replace_block = """   if (wait_value == 0)
+      return VK_SUCCESS;
+
+   /* FAST PATH: Atomic check without lock */
+   if (p_atomic_read(&state->highest_past) >= wait_value)
+      return VK_SUCCESS;
+
+   mtx_lock(&state->mutex);"""
+
+if "p_atomic_read(&state->highest_past)" in content:
+    print("Optimization already present.")
+else:
+    if search_block in content:
+        new_content = content.replace(search_block, replace_block)
+        with open(target, 'w') as f:
+            f.write(new_content)
+        print("Applied Timeline fix successfully!")
+    else:
+        print("Error: Could not find exact injection point in vk_sync_timeline.c")
+        # Fallback: Tenta achar com espacamento diferente se falhar
+        sys.exit(1)
 EOF_PYTHON
 
-    python3 apply_timeline_fix.py || true
+    python3 apply_timeline_fix.py || exit 1
 
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
@@ -133,9 +156,9 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"Mesa Main + Timeline Fix (Atomic) + A6xx UE4 Fix\",
+  \"description\": \"Mesa Main + Timeline Fix (Corrected) + A6xx UE4 Fix\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V55-TimelineOpt\",
+  \"driverVersion\": \"Mesa-V56-TimelineFixed\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -143,7 +166,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V55 - Optimized" > "$workdir/release"
+    echo "Turnip V56 - Corrected" > "$workdir/release"
 }
 
 check_deps
