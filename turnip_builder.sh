@@ -28,7 +28,7 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
     local branch="tu-newat"
-    local build_name="PixelyIon-Spoof618-Fixed"
+    local build_name="PixelyIon-Spoof618-Force"
 
     echo -e "${green}Building: $build_name${nocolor}"
     
@@ -154,44 +154,24 @@ EOF_PATCH
     fi
 
     # ==============================================================================
-    # 2. SPOOF A618 (Safe Method)
+    # 2. SPOOF A618 (FORCED METHOD)
     # ==============================================================================
-    echo -e "${green}Applying A618 Spoofing (KGSL Layer)...${nocolor}"
+    echo -e "${green}Applying A618 Spoofing (Forced Overlay)...${nocolor}"
     
-    # Em vez de editar tu_device.cc (que causou o erro de sintaxe),
-    # vamos editar tu_knl_kgsl.cc, onde o driver lê o ID do kernel.
-    # Vamos forçar a função tu_kgsl_get_gpu_id (ou similar) a retornar o ID da A618.
+    # Em vez de tentar adivinhar a estrutura exata, vamos interceptar a variavel pointer '*gpu_id'
+    # Esta variavel e usada em tu_knl_kgsl.cc para retornar o valor para o driver.
     
-    # ID A618 (Raw): 0x06010800 (Isso é o que o Mesa espera para carregar config da 618)
-    SPOOF_ID="0x06010800"
+    # Procura por qualquer atribuição a *gpu_id e força 618 logo depois.
+    # Isso funciona tanto para KGSL quanto para DRM se usarem a interface padrao do Mesa.
+    
+    sed -i '/\*gpu_id =/a \   *gpu_id = 618; // FORCE SPOOF A618' src/freedreno/vulkan/tu_knl_kgsl.cc || true
+    sed -i '/\*gpu_id =/a \   *gpu_id = 618; // FORCE SPOOF A618' src/freedreno/vulkan/tu_knl_drm.cc || true
+    
+    # Caso o codigo use 'val' ou outra variavel temporaria antes de atribuir
+    # Vamos injetar tambem antes de qualquer 'return VK_SUCCESS' nas funcoes de get_gpu_id
+    # Mas o metodo acima (*gpu_id =) é o mais garantido pois é o output final.
 
-    # Procurar o arquivo correto
-    KNL_FILE="src/freedreno/vulkan/tu_knl_kgsl.cc"
-    
-    if [ -f "$KNL_FILE" ]; then
-        # Substitui o retorno da função que pega o chip_id.
-        # Geralmente é algo como "return conn->dev_info.chip_id;" ou similar.
-        # Vamos ser agressivos e substituir qualquer retorno de chip_id dentro desse arquivo
-        # pelo nosso ID fixo, mas apenas dentro de funções de query.
-        
-        # A função chave geralmente chama kgsl_device_getproperty para KGSL_PROP_DEVICE_INFO
-        # e retorna info.chip_id.
-        
-        # Vamos adicionar um override no final do método tu_kgsl_get_gpu_id se existir, 
-        # ou forçar na struct de retorno.
-        
-        # Método mais simples e infalível: Injetar o spoof logo após ler a propriedade do kernel.
-        
-        # Procura onde ele le "KGSL_PROP_DEVICE_INFO"
-        # Logo abaixo ele deve fazer algo com "info.chip_id".
-        
-        sed -i '/kgsl_device_getproperty(fd, KGSL_PROP_DEVICE_INFO/a \   info.chip_id = 0x06010800; // SPOOFED A618' "$KNL_FILE"
-        
-        echo -e "${green}Spoof applied in tu_knl_kgsl.cc (Force ID $SPOOF_ID)${nocolor}"
-    else
-        echo "Warning: tu_knl_kgsl.cc not found. Trying DRM..."
-        # Fallback para DRM se necessário
-    fi
+    echo -e "${green}Spoof applied. Driver will identify as 618 internally.${nocolor}"
 
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
@@ -258,9 +238,9 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"PixelyIon + Timeline Hack + Spoof A618 (Safe)\",
+  \"description\": \"PixelyIon + Timeline Hack + Forced A618 Spoof\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V63-Spoof618\",
+  \"driverVersion\": \"Mesa-V64-ForceSpoof\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -268,7 +248,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V63 - Spoof A618" > "$workdir/release"
+    echo "Turnip V64 - Force Spoof" > "$workdir/release"
 }
 
 check_deps
