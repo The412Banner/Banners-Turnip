@@ -1,4 +1,4 @@
-name: Build Turnip Dual
+name: Build Turnip 
 
 on:
   workflow_dispatch: 
@@ -50,8 +50,7 @@ jobs:
           name: ${{ env.RELEASE_NAME }}
           body: |
             Build automática contendo dois drivers:
-            1. **Gen8 (WhiteBelyash):** Mesh/RT desbloqueados + Wrapper Variable Fix.
-            2. **Main (Official):** Ray Tracing Inteligente (A7xx) + Comportamento Padrão.
+            1. **Turnip:** teste
           files: turnip_workdir/*.zip
           draft: false
           prerelease: false
