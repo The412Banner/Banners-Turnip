@@ -28,19 +28,21 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
     local branch="tu-newat"
-    local build_name="PixelyIon-Revert844d"
+    local build_name="PixelyIon-NewAutotuner-Pure"
 
     echo -e "${green}Building: $build_name${nocolor}"
     
     cd "$workdir"
     if [ -d mesa ]; then rm -rf mesa; fi
     
-    git clone -b "$branch" "$repo_url" mesa
+    # Clone direto da branch do Autotuner
+    # Isso garante que pegamos os commits mais recentes (aqueles 8 que apareceram no print)
+    git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
-    echo -e "${green}Reverting commit 844d7f8...${nocolor}"
-    git revert --no-edit 844d7f8b8f283476bc8fea7c07a40fab708e97f3
+    # SEM PATCHES, SEM REVERTS, SEM HACKS.
+    # Compilação 100% fiel ao código do desenvolvedor.
 
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
@@ -107,9 +109,9 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"PixelyIon (tu-newat) Revert 844d7f8\",
+  \"description\": \"PixelyIon (tu-newat) Pure Build - No Patches\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V57-Revert844d\",
+  \"driverVersion\": \"Mesa-V58-PureNewAT\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -117,7 +119,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V57 - Revert 844d" > "$workdir/release"
+    echo "Turnip V58 - Pure NewAT" > "$workdir/release"
 }
 
 check_deps
