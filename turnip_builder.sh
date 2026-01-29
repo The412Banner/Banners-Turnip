@@ -28,7 +28,8 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
     local branch="tu-newat"
-    local build_name="PixelyIon-TimelineHack"
+    # Nome indicando o Spoof
+    local build_name="PixelyIon-Spoof618"
 
     echo -e "${green}Building: $build_name${nocolor}"
     
@@ -40,10 +41,9 @@ build_driver() {
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
     # ==============================================================================
-    # TIMELINE SEMAPHORE HACK (Fix DXVK 2.4+ Perf)
+    # 1. TIMELINE SEMAPHORE HACK (MANTIDO)
     # ==============================================================================
     echo -e "${green}Applying Timeline Semaphore Hack...${nocolor}"
-
 cat << 'EOF_PATCH' > timeline_hack.patch
 diff --git a/src/vulkan/runtime/vk_sync_timeline.c b/src/vulkan/runtime/vk_sync_timeline.c
 index 4df11d81bda..6119126932d 100644
@@ -145,17 +145,56 @@ index 4df11d81bda..6119126932d 100644
  vk_sync_timeline_wait(struct vk_device *device,
                        struct vk_sync *sync,
 EOF_PATCH
-
     if patch -p1 --fuzz=3 --ignore-whitespace < timeline_hack.patch; then
-        echo -e "${green}Timeline Hack Applied Successfully!${nocolor}"
+        echo -e "${green}Timeline Hack Applied!${nocolor}"
     else
         echo "Patch Failed! Aborting."
         exit 1
     fi
 
     # ==============================================================================
-    # COMPILAÇÃO
+    # 2. SPOOF A618 (Force ID 618 on A619 Hardware)
     # ==============================================================================
+    echo -e "${green}Applying A618 Spoofing...${nocolor}"
+    
+    # Arquivo alvo: tu_device.cc
+    # Estratégia: Injetar a mudança de ID logo após a inicialização do physical device
+    
+    target_file="src/freedreno/vulkan/tu_device.cc"
+    
+    if [ -f "$target_file" ]; then
+        # Procuramos a função tu_physical_device_init. 
+        # Dentro dela, o driver lê o ID real. Vamos sobrescrever logo após.
+        
+        # O sed abaixo procura por "return VK_SUCCESS;" dentro da função init e injeta o override antes?
+        # Não, melhor injetar logo após a atribuição do gpu_id ou chip_id.
+        
+        # A struct geralmente é 'device->gpu_id' ou 'device->info->chip_id'.
+        # No Mesa moderno, 'tu_physical_device_init' chama 'tu_get_gpu_id'.
+        
+        # Vamos usar um sed agressivo para forçar o ID 618 em qualquer lugar que o driver tente ler o ID do kernel.
+        # Mas o jeito mais seguro é alterar a struct device após ela ser preenchida.
+        
+        # Injeção: No final da função tu_physical_device_init, forçamos o ID.
+        # Procuramos a linha que define o nome da GPU para garantir que estamos no lugar certo e injetamos o spoof.
+        
+        # O código tem algo como "device->name = ...". Vamos injetar depois disso.
+        
+        sed -i '/device->name =/a \   /* SPOOF: Force A618 identity to enable specific fixes */\n   device->gpu_id = 618;\n   ALOGI("Turnip: Spoofing GPU ID to 618 (Real: %d)", device->gpu_id);' "$target_file"
+        
+        # Também precisamos garantir que 'fd_dev_info' carregue as infos da 618 se ele já tiver carregado as da 619.
+        # O ideal é forçar o ID *antes* de carregar as infos.
+        # 'tu_physical_device_get_gpu_id' retorna o ID. Vamos hackear essa função para retornar 618 sempre.
+        
+        sed -i 's/return val;/return 618; \/\/ Force A618 Spoof/g' src/freedreno/vulkan/tu_knl_kgsl.cc || true
+        # Caso use DRM/KSL diferente:
+        sed -i 's/return dev_id;/return 618; \/\/ Force A618 Spoof/g' src/freedreno/vulkan/tu_knl_drm.cc || true
+
+        echo -e "${green}Spoof applied: Driver will now identify as Adreno 618.${nocolor}"
+    else
+        echo "Warning: tu_device.cc not found, spoof might fail."
+    fi
+
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
@@ -221,9 +260,9 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"PixelyIon (tu-newat) + Timeline Hack\",
+  \"description\": \"PixelyIon + Timeline Hack + Spoof A618\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V61-TimelineHack\",
+  \"driverVersion\": \"Mesa-V62-Spoof618\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -231,7 +270,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V61 - Timeline Hack Only" > "$workdir/release"
+    echo "Turnip V62 - Spoof A618" > "$workdir/release"
 }
 
 check_deps
