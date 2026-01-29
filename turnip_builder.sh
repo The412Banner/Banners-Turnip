@@ -26,70 +26,21 @@ prepare_ndk(){
 }
 
 build_driver() {
-    local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
-    local branch="main"
-    local build_name="Main-TimelineFixed-A6xx"
+    local repo_url="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
+    local branch="tu-newat"
+    local build_name="PixelyIon-Revert844d"
 
     echo -e "${green}Building: $build_name${nocolor}"
     
     cd "$workdir"
     if [ -d mesa ]; then rm -rf mesa; fi
     
-    git clone --depth 100 -b "$branch" "$repo_url" mesa
+    git clone -b "$branch" "$repo_url" mesa
     cd mesa
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
-    # Fix A6xx (Unreal Engine Freeze)
-    grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
-
-    # Fix Timeline Semaphore (Performance Optimization)
-    # Agora aplica SOMENTE dentro de vk_sync_timeline_wait
-cat << 'EOF_PYTHON' > apply_timeline_fix.py
-import os
-import sys
-
-target_files = [
-    'src/vulkan/runtime/vk_sync_timeline.c',
-    'src/vulkan/util/vk_sync_timeline.c'
-]
-
-target = next((f for f in target_files if os.path.exists(f)), None)
-if not target:
-    sys.exit(1)
-
-with open(target, 'r') as f:
-    content = f.read()
-
-# Procura pelo contexto exato da funcao vk_sync_timeline_wait
-search_block = """   if (wait_value == 0)
-      return VK_SUCCESS;
-
-   mtx_lock(&state->mutex);"""
-
-replace_block = """   if (wait_value == 0)
-      return VK_SUCCESS;
-
-   /* FAST PATH: Atomic check without lock */
-   if (p_atomic_read(&state->highest_past) >= wait_value)
-      return VK_SUCCESS;
-
-   mtx_lock(&state->mutex);"""
-
-if "p_atomic_read(&state->highest_past)" in content:
-    print("Optimization already present.")
-else:
-    if search_block in content:
-        new_content = content.replace(search_block, replace_block)
-        with open(target, 'w') as f:
-            f.write(new_content)
-        print("Applied Timeline fix successfully!")
-    else:
-        print("Error: Could not find exact injection point in vk_sync_timeline.c")
-        # Fallback: Tenta achar com espacamento diferente se falhar
-        sys.exit(1)
-EOF_PYTHON
-
-    python3 apply_timeline_fix.py || exit 1
+    echo -e "${green}Reverting commit 844d7f8...${nocolor}"
+    git revert --no-edit 844d7f8b8f283476bc8fea7c07a40fab708e97f3
 
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
@@ -156,9 +107,9 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"Mesa Main + Timeline Fix (Corrected) + A6xx UE4 Fix\",
+  \"description\": \"PixelyIon (tu-newat) Revert 844d7f8\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V56-TimelineFixed\",
+  \"driverVersion\": \"Mesa-V57-Revert844d\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -166,7 +117,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V56 - Corrected" > "$workdir/release"
+    echo "Turnip V57 - Revert 844d" > "$workdir/release"
 }
 
 check_deps
