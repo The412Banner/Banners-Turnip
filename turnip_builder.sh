@@ -2,180 +2,150 @@
 set -o pipefail
 
 green='\033[0;32m'
-red='\033[0;31m'
 nocolor='\033[0m'
 
-deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator"
+deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator python3"
 workdir="$(pwd)/turnip_workdir"
-
 ndkver="android-ndk-r28"
 target_sdk="36" 
 
-
-base_repo="https://gitlab.freedesktop.org/mesa/mesa.git"
-
 check_deps(){
-	echo "Checking system dependencies ..."
 	for dep in $deps; do
-		if ! command -v $dep >/dev/null 2>&1; then
-			echo -e "$red Missing dependency binary: $dep$nocolor"
-			missing=1
-		else
-			echo -e "$green Found: $dep$nocolor"
-		fi
+		if ! command -v $dep >/dev/null 2>&1; then echo "Missing: $dep"; exit 1; fi
 	done
-	if [ "$missing" == "1" ]; then
-		echo "Please install missing dependencies." && exit 1
-	fi
-    
-	echo "Updating Meson via pip..."
-	pip install meson mako --break-system-packages &> /dev/null || pip install meson mako &> /dev/null || true
+	pip install meson mako --break-system-packages &> /dev/null || true
 }
 
 prepare_ndk(){
-	echo "Preparing NDK r28..."
-	mkdir -p "$workdir"
-	cd "$workdir"
+	mkdir -p "$workdir" && cd "$workdir"
 	if [ ! -d "$ndkver" ]; then
-		echo "Downloading Android NDK $ndkver..."
 		curl -L "https://dl.google.com/android/repository/${ndkver}-linux.zip" --output "${ndkver}-linux.zip" &> /dev/null
-		echo "Extracting NDK..."
 		unzip -q "${ndkver}-linux.zip" &> /dev/null
 	fi
     export ANDROID_NDK_HOME="$workdir/$ndkver"
 }
 
-prepare_source(){
-	echo "Preparing Mesa source (Official Main)..."
-	cd "$workdir"
-	if [ -d mesa ]; then rm -rf mesa; fi
-	
-    echo -e "${green}Cloning Mesa Main...${nocolor}"
+build_driver() {
+    local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
+    local branch="main"
+    local build_name="Main-TimelineOpt-A6xx"
+
+    echo -e "${green}Building: $build_name${nocolor}"
     
-	git clone --depth 100 "$base_repo" mesa
-	cd mesa
+    cd "$workdir"
+    if [ -d mesa ]; then rm -rf mesa; fi
     
-    git config user.email "ci@turnip.builder"
-    git config user.name "Turnip CI Builder"
-    
-    echo "Cloning SPIRV dependencies..."
-    mkdir -p subprojects
-    cd subprojects
+    git clone --depth 100 -b "$branch" "$repo_url" mesa
+    cd mesa
+    git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
+
+    grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
+
+cat << 'EOF_PYTHON' > apply_timeline_fix.py
+import os
+import sys
+
+target_files = [
+    'src/vulkan/runtime/vk_sync_timeline.c',
+    'src/vulkan/util/vk_sync_timeline.c'
+]
+
+target = next((f for f in target_files if os.path.exists(f)), None)
+if not target:
+    sys.exit(1)
+
+with open(target, 'r') as f:
+    content = f.read()
+
+search = "   mtx_lock(&state->mutex);"
+insert = "   if (p_atomic_read(&state->highest_past) >= wait_value) return VK_SUCCESS;\n   mtx_lock(&state->mutex);"
+
+if "p_atomic_read(&state->highest_past)" not in content:
+    new_content = content.replace(search, insert)
+    with open(target, 'w') as f:
+        f.write(new_content)
+EOF_PYTHON
+
+    python3 apply_timeline_fix.py || true
+
+    mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
     git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
-    cd .. 
-    
-	commit_hash=$(git rev-parse --short HEAD)
-	version_str="Mesa-Main-Vanilla"
-	cd "$workdir"
-}
+    cd ..
 
-compile_mesa(){
-	echo -e "${green}Compiling Mesa for SDK $target_sdk...${nocolor}"
+    local build_dir="$workdir/mesa/build"
+    local ndk_bin="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
+    local ndk_sys="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
+    local cver="35"
+    [ ! -f "$ndk_bin/aarch64-linux-android${cver}-clang" ] && cver="34"
 
-	local source_dir="$workdir/mesa"
-	local build_dir="$source_dir/build"
-	local ndk_bin_path="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
-	local ndk_sysroot_path="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
-
-    local compiler_ver="35"
-    if [ ! -f "$ndk_bin_path/aarch64-linux-android${compiler_ver}-clang" ]; then compiler_ver="34"; fi
-    echo "Using compiler: Clang $compiler_ver"
-
-	local cross_file="$source_dir/android-aarch64-crossfile.txt"
-	cat <<EOF > "$cross_file"
+    cat <<EOF > android-cross.txt
 [binaries]
-ar = '$ndk_bin_path/llvm-ar'
-c = ['ccache', '$ndk_bin_path/aarch64-linux-android${compiler_ver}-clang', '--sysroot=$ndk_sysroot_path']
-cpp = ['ccache', '$ndk_bin_path/aarch64-linux-android${compiler_ver}-clang++', '--sysroot=$ndk_sysroot_path', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
+ar = '$ndk_bin/llvm-ar'
+c = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang', '--sysroot=$ndk_sys']
+cpp = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang++', '--sysroot=$ndk_sys']
 c_ld = 'lld'
 cpp_ld = 'lld'
-strip = '$ndk_bin_path/aarch64-linux-android-strip'
-
+strip = '$ndk_bin/aarch64-linux-android-strip'
 [host_machine]
 system = 'android'
 cpu_family = 'aarch64'
 cpu = 'armv8'
 endian = 'little'
+[built-in options]
+c_link_args = ['-static-libstdc++']
+cpp_link_args = ['-static-libstdc++']
 EOF
+    
+    export CFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations"
+    export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations"
 
-	cd "$source_dir"
-	
-	export CFLAGS="-D__ANDROID__ -Wno-error"
-	export CXXFLAGS="-D__ANDROID__ -Wno-error"
-
-	meson setup "$build_dir" --cross-file "$cross_file" \
-		-Dbuildtype=release \
-		-Dplatforms=android \
-		-Dplatform-sdk-version=$target_sdk \
-		-Dandroid-stub=true \
-		-Dgallium-drivers= \
-		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl \
-		-Degl=disabled \
-		-Dglx=disabled \
-		-Dvulkan-beta=false \
-		-Ddefault_library=shared \
+    meson setup "$build_dir" --cross-file android-cross.txt \
+        -Dbuildtype=release \
+        -Dplatforms=android \
+        -Dplatform-sdk-version=36 \
+        -Dandroid-stub=true \
+        -Dgallium-drivers= \
+        -Dvulkan-drivers=freedreno \
+        -Dfreedreno-kmds=kgsl \
+        -Degl=disabled \
+        -Dglx=disabled \
+        -Dvulkan-beta=true \
+        -Ddefault_library=shared \
         -Dzstd=disabled \
         -Dwerror=false \
-        --force-fallback-for=spirv-tools,spirv-headers \
-		2>&1 | tee "$workdir/meson_log"
+        --force-fallback-for=spirv-tools,spirv-headers
+    
+    ninja -C "$build_dir"
 
-	ninja -C "$build_dir" 2>&1 | tee "$workdir/ninja_log"
-}
-
-package_driver(){
-	local source_dir="$workdir/mesa"
-	local build_dir="$source_dir/build"
-	local lib_path="$build_dir/src/freedreno/vulkan/libvulkan_freedreno.so"
-	local package_temp="$workdir/package_temp"
-
-	if [ ! -f "$lib_path" ]; then
-		echo -e "${red}Build failed: libvulkan_freedreno.so not found.${nocolor}"
-		exit 1
-	fi
-
-	rm -rf "$package_temp"
-	mkdir -p "$package_temp"
-	cp "$lib_path" "$package_temp/lib_temp.so"
-
-	cd "$package_temp"
-	patchelf --set-soname "vulkan.adreno.so" lib_temp.so
-	mv lib_temp.so "vulkan.ad07XX.so"
-
-	local short_hash=${commit_hash:0:7}
-	local meta_name="Mesa-Main-Vanilla-${short_hash}"
-	cat <<EOF > meta.json
-{
-  "schemaVersion": 1,
-  "name": "$meta_name",
-  "description": "Official mesa. SDK $target_sdk. Commit $short_hash",
-  "author": "mesa-ci",
-  "driverVersion": "$version_str",
-  "libraryName": "vulkan.ad07XX.so"
-}
-EOF
-
-	local zip_name="Mesa-Main-Vanilla-${short_hash}.zip"
-	zip -9 "$workdir/$zip_name" "vulkan.ad07XX.so" meta.json
-	echo -e "${green}Package ready: $workdir/$zip_name${nocolor}"
-}
-
-generate_release_info() {
-    echo -e "${green}Generating release info...${nocolor}"
-    cd "$workdir"
-    local date_tag=$(date +'%Y%m%d')
-	local short_hash=${commit_hash:0:7}
-
-    echo "Mesa-Main-Vanilla-${date_tag}-${short_hash}" > tag
-    echo "Mesa Main (Vanilla) - ${date_tag}" > release
-    echo "Pure build from upstream Mesa Main. No patches, no hacks. SDK $target_sdk." > description
+    local lib="$build_dir/src/freedreno/vulkan/libvulkan_freedreno.so"
+    if [ ! -f "$lib" ]; then echo "Build Failed"; exit 1; fi
+    
+    local pkg_dir="$workdir/pkg_$build_name"
+    mkdir -p "$pkg_dir"
+    cp "$lib" "$pkg_dir/vulkan.ad07XX.so"
+    cd "$pkg_dir"
+    patchelf --set-soname "vulkan.adreno.so" vulkan.ad07XX.so
+    
+    local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
+    
+    echo "{
+  \"schemaVersion\": 1,
+  \"name\": \"Turnip-${build_name}-${hash}\",
+  \"description\": \"Mesa Main + Timeline Fix (Atomic) + A6xx UE4 Fix\",
+  \"author\": \"mesa-ci\",
+  \"driverVersion\": \"Mesa-V55-TimelineOpt\",
+  \"libraryName\": \"vulkan.ad07XX.so\"
+}" > meta.json
+    
+    zip -9 "$workdir/Turnip-${build_name}-${hash}.zip" vulkan.ad07XX.so meta.json
+    echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
+    
+    echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
+    echo "Turnip V55 - Optimized" > "$workdir/release"
 }
 
 check_deps
 prepare_ndk
-prepare_source
-compile_mesa
-package_driver
-generate_release_info
+build_driver
