@@ -28,7 +28,7 @@ prepare_ndk(){
 build_driver() {
     local repo_url="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
     local branch="tu-newat"
-    local build_name="PixelyIon-TimelineHack"
+    local build_name="PixelyIon-Timeline-A6xxFix"
 
     echo -e "${green}Building: $build_name${nocolor}"
     
@@ -40,7 +40,7 @@ build_driver() {
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
     # ==============================================================================
-    # TIMELINE SEMAPHORE HACK (Fix DXVK 2.4+ Perf)
+    # 1. TIMELINE SEMAPHORE HACK (Fix DXVK 2.4+ Perf)
     # ==============================================================================
     echo -e "${green}Applying Timeline Semaphore Hack...${nocolor}"
 
@@ -147,11 +147,20 @@ index 4df11d81bda..6119126932d 100644
 EOF_PATCH
 
     if patch -p1 --fuzz=3 --ignore-whitespace < timeline_hack.patch; then
-        echo -e "${green}Timeline Hack Applied Successfully!${nocolor}"
+        echo -e "${green}Timeline Hack Applied!${nocolor}"
     else
         echo "Patch Failed! Aborting."
         exit 1
     fi
+
+    # ==============================================================================
+    # 2. A6XX STABILITY FIX (Uncached Queries for UE4/Bioshock/Portal2)
+    # ==============================================================================
+    echo -e "${green}Applying A6xx Stability Fix (Uncached Queries)...${nocolor}"
+    # Substitui tu_bo_init_new_cached por tu_bo_init_new para evitar congelamento
+    grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
+    echo "Fix applied."
+
 
     # ==============================================================================
     # COMPILAÇÃO
@@ -221,9 +230,9 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"PixelyIon (tu-newat) + Timeline Hack\",
+  \"description\": \"PixelyIon + Timeline Hack + A6xx Fix\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V61-TimelineHack\",
+  \"driverVersion\": \"Mesa-V65-A6xxFix\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -231,7 +240,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V61 - Timeline Hack Only" > "$workdir/release"
+    echo "Turnip V65 - A6xx Fix" > "$workdir/release"
 }
 
 check_deps
