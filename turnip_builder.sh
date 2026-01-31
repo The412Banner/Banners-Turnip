@@ -26,9 +26,9 @@ prepare_ndk(){
 }
 
 build_driver() {
-    local repo_url="https://gitlab.freedesktop.org/PixelyIon/mesa.git"
-    local branch="tu-newat"
-    local build_name="PixelyIon-Timeline-A6xxFix"
+    local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
+    local branch="main"
+    local build_name="Main-MaxExtensions-V66"
 
     echo -e "${green}Building: $build_name${nocolor}"
     
@@ -40,7 +40,7 @@ build_driver() {
     git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
     # ==============================================================================
-    # 1. TIMELINE SEMAPHORE HACK (Fix DXVK 2.4+ Perf)
+    # 1. TIMELINE SEMAPHORE HACK (Fix DXVK 2.4+)
     # ==============================================================================
     echo -e "${green}Applying Timeline Semaphore Hack...${nocolor}"
 
@@ -154,13 +154,67 @@ EOF_PATCH
     fi
 
     # ==============================================================================
-    # 2. A6XX STABILITY FIX (Uncached Queries for UE4/Bioshock/Portal2)
+    # 2. A6XX STABILITY FIX (Uncached Queries)
     # ==============================================================================
-    echo -e "${green}Applying A6xx Stability Fix (Uncached Queries)...${nocolor}"
-    # Substitui tu_bo_init_new_cached por tu_bo_init_new para evitar congelamento
+    echo -e "${green}Applying A6xx Stability Fix...${nocolor}"
     grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
-    echo "Fix applied."
 
+
+    # ==============================================================================
+    # 3. MAX EXTENSIONS UNLOCKER (The "Greedy" Patch)
+    # ==============================================================================
+    echo -e "${green}Unlocking Hidden Extensions for A6xx...${nocolor}"
+    
+    # Arquivo alvo: tu_device.cc
+    DEVICE_FILE="src/freedreno/vulkan/tu_device.cc"
+
+    if [ -f "$DEVICE_FILE" ]; then
+        # ESTRATÉGIA:
+        # Muitas extensões são ativadas com condicionais do tipo:
+        # .extension_name = device->info->a6xx && ...
+        # Nós vamos remover as travas condicionais para extensões específicas que queremos.
+
+        # 1. VK_EXT_shader_object (Pode reduzir stutters drasticamente)
+        # Se estiver condicionado, forçamos para 'true'
+        # sed -i 's/\.EXT_shader_object = .*/.EXT_shader_object = true,/g' "$DEVICE_FILE"
+        # Nota: O nome interno da struct pode variar (ex: shader_object_ext), mas vamos tentar ativar via flags globais primeiro.
+        
+        # 2. VK_KHR_fragment_shader_barycentric
+        # Útil para jogos modernos. Geralmente travado.
+        # Vamos usar um sed inteligente que procura a linha da extensão e troca o valor booleano.
+        
+        # Lista de extensões para forçar 'true':
+        EXTENSIONS_TO_FORCE=(
+            "VK_EXT_attachment_feedback_loop_layout"
+            "VK_EXT_shader_object"
+            "VK_KHR_fragment_shader_barycentric"
+            "VK_EXT_legacy_vertex_attributes"
+            "VK_EXT_depth_clip_control"
+            "VK_EXT_primitives_generated_query"
+            "VK_EXT_non_seamless_cube_map"
+            "VK_EXT_border_color_swizzle"
+        )
+        
+        for ext in "${EXTENSIONS_TO_FORCE[@]}"; do
+            # Remove o "VK_" para achar o nome na struct (ex: EXT_shader_object)
+            short_name=${ext#VK_}
+            
+            # Tenta achar a linha na struct de extensões e forçar = true
+            # Exemplo de linha: .EXT_shader_object = device->info->a6xx,
+            # Substitui por: .EXT_shader_object = true,
+            
+            if grep -q "\.$short_name =" "$DEVICE_FILE"; then
+                echo "Forcing $ext to ENABLED..."
+                sed -i "s/\.$short_name = .*,/\.$short_name = true,/g" "$DEVICE_FILE"
+            else
+                echo "Extension $ext not found in struct (maybe already enabled or different name)."
+            fi
+        done
+        
+        echo -e "${green}Extensions Unlocked!${nocolor}"
+    else
+        echo "Warning: tu_device.cc not found. Extensions unchanged."
+    fi
 
     # ==============================================================================
     # COMPILAÇÃO
@@ -198,6 +252,7 @@ EOF
     export CFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations"
     export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations"
 
+    # Adicionado -Dxmlconfig=enabled para permitir ajustes finos via drirc
     meson setup "$build_dir" --cross-file android-cross.txt \
         -Dbuildtype=release \
         -Dplatforms=android \
@@ -211,6 +266,7 @@ EOF
         -Dvulkan-beta=true \
         -Ddefault_library=shared \
         -Dzstd=disabled \
+        -Dxmlconfig=enabled \
         -Dwerror=false \
         --force-fallback-for=spirv-tools,spirv-headers
     
@@ -230,9 +286,9 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${build_name}-${hash}\",
-  \"description\": \"PixelyIon + Timeline Hack + A6xx Fix\",
+  \"description\": \"Mesa Main + Max Extensions (Unlocked) + Timeline Hack + A6xx Fix\",
   \"author\": \"mesa-ci\",
-  \"driverVersion\": \"Mesa-V65-A6xxFix\",
+  \"driverVersion\": \"Mesa-V66-MaxExt\",
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
@@ -240,7 +296,7 @@ EOF
     echo -e "${green}Done: Turnip-${build_name}-${hash}.zip${nocolor}"
     
     echo "Turnip-${build_name}-${hash}" > "$workdir/tag"
-    echo "Turnip V65 - A6xx Fix" > "$workdir/release"
+    echo "Turnip V66 - Max Extensions" > "$workdir/release"
 }
 
 check_deps
