@@ -1,4 +1,4 @@
-name: Build Turnip 
+name: Build Turnip Trio
 
 on:
   workflow_dispatch:
@@ -20,17 +20,9 @@ jobs:
           sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools
           pip3 install --break-system-packages meson mako
 
-      - name: Setup Environment and Patches
+      - name: Setup Environment
         run: |
           mkdir -p turnip_workdir
-          
-          if [ -f tu_gen8_clean.patch ]; then
-            echo "Patch A8xx found, moving to workdir..."
-            cp tu_gen8_clean.patch turnip_workdir/
-          else
-            echo "WARNING: tu_gen8_clean.patch not found in repo root!"
-          fi
-
           chmod +x build_trio.sh
 
       - name: Build Drivers (Trio)
@@ -60,9 +52,9 @@ jobs:
             
             This release contains 3 driver variants:
             
-            1. **V68-A8xx-Timeline:** Mesa Main + A8xx Patch + Timeline Semaphore Fix.
-            2. **V68-Autotuner-Full:** Autotuner Branch (NewAT) + A8xx/A6xx Patches + Fixes.
-            3. **V68-Main-Vanilla:** Mesa Main Vanilla (Clean).
+            1. **V69-A8xx-Gen8:** Based on whitebelyash/mesa-tu8 (Gen8 Branch) + Timeline Fix.
+            2. **V69-Autotuner-A6xx:** Autotuner (NewAT) + Timeline + A6xx Fixes (NO A8xx Patch).
+            3. **V69-Main-Vanilla:** Mesa Main Vanilla (Clean).
             
             _Built via GitHub Actions._
           files: turnip_workdir/*.zip
