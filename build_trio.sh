@@ -26,7 +26,6 @@ prepare_ndk(){
 }
 
 apply_timeline_hack() {
-    echo -e "${green}[Patch] Applying Timeline Semaphore Hack...${nocolor}"
 cat << 'EOF_PATCH' > timeline_hack.patch
 diff --git a/src/vulkan/runtime/vk_sync_timeline.c b/src/vulkan/runtime/vk_sync_timeline.c
 index 4df11d81bda..6119126932d 100644
@@ -128,27 +127,17 @@ index 4df11d81bda..6119126932d 100644
  vk_sync_timeline_wait(struct vk_device *device,
                        struct vk_sync *sync,
 EOF_PATCH
-    patch -p1 --fuzz=3 --ignore-whitespace < timeline_hack.patch || echo "Warning: Timeline patch failed (maybe already applied?)"
-}
-
-apply_a8xx_patch() {
-    echo -e "${green}[Patch] Applying User A8xx Patch...${nocolor}"
-    if [ -f "$workdir/tu_gen8_clean.patch" ]; then
-        patch -p1 --fuzz=3 --ignore-whitespace < "$workdir/tu_gen8_clean.patch" || { echo "A8xx patch failed!"; exit 1; }
-    else
-        echo "ERROR: tu_gen8_clean.patch not found in $workdir"
-        exit 1
-    fi
+    patch -p1 --fuzz=3 --ignore-whitespace < timeline_hack.patch || true
 }
 
 apply_a6xx_fix() {
-    echo -e "${green}[Patch] Applying A6xx Uncached Fix...${nocolor}"
     grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
 }
 
 compile_mesa() {
     local build_name=$1
     local output_tag=$2
+    local build_desc=$3
     
     echo -e "${green}Building: $build_name${nocolor}"
     
@@ -214,12 +203,10 @@ EOF
     cd "$pkg_dir"
     patchelf --set-soname "vulkan.adreno.so" vulkan.ad07XX.so
     
-    local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
-    
     echo "{
   \"schemaVersion\": 1,
-  \"name\": \"Turnip-${output_tag}\",
-  \"description\": \"$build_name\",
+  \"name\": \"$build_name\",
+  \"description\": \"$build_desc\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
@@ -237,28 +224,26 @@ prepare_ndk
 
 cd "$workdir"
 if [ -d mesa ]; then rm -rf mesa; fi
-git clone --depth 100 -b main https://gitlab.freedesktop.org/mesa/mesa.git mesa
+git clone --depth 100 -b gen8 https://github.com/whitebelyash/mesa-tu8.git mesa
 cd mesa
 git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
-apply_a8xx_patch
 apply_timeline_hack
-compile_mesa "Mesa Main + A8xx + Timeline" "V68-A8xx-Timeline"
+compile_mesa "Turnip A8xx (Whitebelyash)" "V69-A8xx-Gen8" "Based on whitebelyash/mesa-tu8 gen8 + Timeline Hack"
 
 cd "$workdir"
 rm -rf mesa
 git clone --depth 100 -b tu-newat https://gitlab.freedesktop.org/PixelyIon/mesa.git mesa
 cd mesa
 git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
-apply_a8xx_patch
 apply_timeline_hack
 apply_a6xx_fix
-compile_mesa "PixelyIon Autotuner + A8xx + Timeline + A6xx Fix" "V68-Autotuner-Full"
+compile_mesa "Turnip Autotuner (No A8xx)" "V69-Autotuner-A6xx" "PixelyIon Autotuner + Timeline + A6xx Fix (No A8xx Patch)"
 
 cd "$workdir"
 rm -rf mesa
 git clone --depth 100 -b main https://gitlab.freedesktop.org/mesa/mesa.git mesa
 cd mesa
 git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
-compile_mesa "Mesa Main Vanilla" "V68-Main-Vanilla"
+compile_mesa "Turnip Main Vanilla" "V69-Main-Vanilla" "Pure Mesa Main (No patches)"
 
 echo -e "${green}ALL BUILDS COMPLETE!${nocolor}"
