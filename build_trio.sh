@@ -26,6 +26,7 @@ prepare_ndk(){
 }
 
 apply_timeline_hack() {
+    echo -e "${green}[Patch] Applying Timeline Semaphore Hack...${nocolor}"
 cat << 'EOF_PATCH' > timeline_hack.patch
 diff --git a/src/vulkan/runtime/vk_sync_timeline.c b/src/vulkan/runtime/vk_sync_timeline.c
 index 4df11d81bda..6119126932d 100644
@@ -127,19 +128,21 @@ index 4df11d81bda..6119126932d 100644
  vk_sync_timeline_wait(struct vk_device *device,
                        struct vk_sync *sync,
 EOF_PATCH
-    patch -p1 --fuzz=3 --ignore-whitespace < timeline_hack.patch || true
+    patch -p1 --fuzz=3 --ignore-whitespace < timeline_hack.patch || echo "Warning: Timeline patch failed (maybe already applied?)"
 }
 
 apply_a8xx_patch() {
+    echo -e "${green}[Patch] Applying User A8xx Patch...${nocolor}"
     if [ -f "$workdir/tu_gen8_clean.patch" ]; then
         patch -p1 --fuzz=3 --ignore-whitespace < "$workdir/tu_gen8_clean.patch" || { echo "A8xx patch failed!"; exit 1; }
     else
-        echo "Missing tu_gen8_clean.patch in $workdir"
+        echo "ERROR: tu_gen8_clean.patch not found in $workdir"
         exit 1
     fi
 }
 
 apply_a6xx_fix() {
+    echo -e "${green}[Patch] Applying A6xx Uncached Fix...${nocolor}"
     grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
 }
 
@@ -211,6 +214,8 @@ EOF
     cd "$pkg_dir"
     patchelf --set-soname "vulkan.adreno.so" vulkan.ad07XX.so
     
+    local hash=$(git -C "$workdir/mesa" rev-parse --short HEAD)
+    
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-${output_tag}\",
@@ -255,3 +260,5 @@ git clone --depth 100 -b main https://gitlab.freedesktop.org/mesa/mesa.git mesa
 cd mesa
 git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 compile_mesa "Mesa Main Vanilla" "V68-Main-Vanilla"
+
+echo -e "${green}ALL BUILDS COMPLETE!${nocolor}"
