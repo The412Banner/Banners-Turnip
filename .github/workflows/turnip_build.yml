@@ -1,7 +1,7 @@
 name: Build Turnip 
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -11,46 +11,60 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout do Repositório
-        uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Instalar Dependências
+      - name: Install Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools
-          pip3 install --upgrade meson mako
+          pip3 install --break-system-packages meson mako
 
-      - name: Tornar o Script Executável
-        run: chmod +x turnip_builder.sh
+      - name: Setup Environment and Patches
+        run: |
+          mkdir -p turnip_workdir
+          
+          if [ -f tu_gen8_clean.patch ]; then
+            echo "Patch A8xx found, moving to workdir..."
+            cp tu_gen8_clean.patch turnip_workdir/
+          else
+            echo "WARNING: tu_gen8_clean.patch not found in repo root!"
+          fi
 
-      - name: Compilar Drivers (Dual Build)
-        run: ./turnip_builder.sh
+          chmod +x build_trio.sh
 
-      # Lê o nome da Tag gerada pelo último driver compilado para usar no título da Release
-      - name: Ler Metadados
+      - name: Build Drivers (Trio)
+        run: ./build_trio.sh
+
+      - name: Generate Release Metadata
         id: meta
         run: |
-          echo "TAG_NAME=$(cat turnip_workdir/tag)" >> $GITHUB_ENV
-          echo "RELEASE_NAME=Turnip Dual Release (Gen8 + Main)" >> $GITHUB_ENV
+          echo "TAG_NAME=v$(date +'%Y.%m.%d-%H%M')" >> $GITHUB_ENV
+          echo "RELEASE_NAME=Turnip Trio Pack - $(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
-      # Upload na aba "Actions" (Salva todos os ZIPs encontrados)
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Turnip-Drivers-Pack
           path: turnip_workdir/*.zip
           if-no-files-found: error
+          compression-level: 0
 
-      # Cria a Release e anexa TODOS os ZIPs da pasta
-      - name: Publicar Release
-        uses: softprops/action-gh-release@v1
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.TAG_NAME }}
           name: ${{ env.RELEASE_NAME }}
           body: |
-            Build automática contendo dois drivers:
-            1. **Turnip:** teste
+            **Turnip Trio Automated Build**
+            
+            This release contains 3 driver variants:
+            
+            1. **V68-A8xx-Timeline:** Mesa Main + A8xx Patch + Timeline Semaphore Fix.
+            2. **V68-Autotuner-Full:** Autotuner Branch (NewAT) + A8xx/A6xx Patches + Fixes.
+            3. **V68-Main-Vanilla:** Mesa Main Vanilla (Clean).
+            
+            _Built via GitHub Actions._
           files: turnip_workdir/*.zip
           draft: false
           prerelease: false
