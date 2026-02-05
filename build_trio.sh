@@ -222,6 +222,7 @@ EOF
 check_deps
 prepare_ndk
 
+# 1. A8xx Build (Whitebelyash Repo)
 cd "$workdir"
 if [ -d mesa ]; then rm -rf mesa; fi
 git clone --depth 100 -b gen8 https://github.com/whitebelyash/mesa-tu8.git mesa
@@ -230,6 +231,7 @@ git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Bui
 apply_timeline_hack
 compile_mesa "Turnip A8xx (Whitebelyash)" "V69-A8xx-Gen8" "Based on whitebelyash/mesa-tu8 gen8 + Timeline Hack"
 
+# 2. Autotuner Build (PixelyIon Repo) - NO A8xx PATCH
 cd "$workdir"
 rm -rf mesa
 git clone --depth 100 -b tu-newat https://gitlab.freedesktop.org/PixelyIon/mesa.git mesa
@@ -239,6 +241,7 @@ apply_timeline_hack
 apply_a6xx_fix
 compile_mesa "Turnip Autotuner (No A8xx)" "V69-Autotuner-A6xx" "PixelyIon Autotuner + Timeline + A6xx Fix (No A8xx Patch)"
 
+# 3. Main Build (Vanilla)
 cd "$workdir"
 rm -rf mesa
 git clone --depth 100 -b main https://gitlab.freedesktop.org/mesa/mesa.git mesa
