@@ -1,4 +1,5 @@
-name: Build Turnip
+
+name: Build Turnip 
 
 on:
   workflow_dispatch:
@@ -23,14 +24,6 @@ jobs:
       - name: Setup Environment
         run: |
           mkdir -p turnip_workdir
-          
-          if [ -f tu_gen8.patch ]; then
-             cp tu_gen8.patch turnip_workdir/
-          else
-             echo "ERROR: tu_gen8.patch required!"
-             exit 1
-          fi
-
           chmod +x build_turnip.sh
 
       - name: Build Driver
@@ -40,7 +33,7 @@ jobs:
         id: meta
         run: |
           echo "TAG_NAME=v$(date +'%Y.%m.%d-%H%M')" >> $GITHUB_ENV
-          echo "RELEASE_NAME=Turnip A8xx Final - $(date +'%Y-%m-%d')" >> $GITHUB_ENV
+          echo "RELEASE_NAME=Turnip Zdobersek Clean - $(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -56,14 +49,11 @@ jobs:
           tag_name: ${{ env.TAG_NAME }}
           name: ${{ env.RELEASE_NAME }}
           body: |
-            **Turnip A8xx Final Build**
+            **Turnip Zdobersek Timeline Sync (Clean)**
             
-            * **Base:** Mesa Main
-            * **Patch:** `tu_gen8.patch` (A8xx Support + Timeline Hack)
-            * **Clean:** Driver versioning hack REMOVED.
-            * **Environment:** Injects `WRAPPER_VK_VERSION=1.4.340`.
-            * **Vulkan:** Forced 1.4.340.
-            * **Features:** All Vulkan 1.1/1.2/1.3 Features Unlocked.
+            * **Repo:** `zdobersek/mesa-fork`
+            * **Branch:** `work/tu_kgsl_timeline_sync`
+            * **Type:** Clean build, NO patches applied.
           files: turnip_workdir/*.zip
           draft: false
           prerelease: false
