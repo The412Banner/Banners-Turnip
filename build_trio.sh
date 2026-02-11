@@ -1,127 +1,60 @@
-#!/bin/bash -e
-set -o pipefail
+name: Build Turnip Zdobersek Branch
 
-green='\033[0;32m'
-nocolor='\033[0m'
+on:
+  workflow_dispatch:
 
-deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator python3"
-workdir="$(pwd)/turnip_workdir"
-ndkver="android-ndk-r28"
-target_sdk="36" 
+permissions:
+  contents: write
 
-check_deps(){
-	for dep in $deps; do
-		if ! command -v $dep >/dev/null 2>&1; then echo "Missing: $dep"; exit 1; fi
-	done
-	pip install meson mako --break-system-packages &> /dev/null || true
-}
-
-prepare_ndk(){
-	mkdir -p "$workdir" && cd "$workdir"
-	if [ ! -d "$ndkver" ]; then
-		curl -L "https://dl.google.com/android/repository/${ndkver}-linux.zip" --output "${ndkver}-linux.zip" &> /dev/null
-		unzip -q "${ndkver}-linux.zip" &> /dev/null
-	fi
-    export ANDROID_NDK_HOME="$workdir/$ndkver"
-}
-
-compile_mesa() {
-    local repo_url="https://gitlab.freedesktop.org/zdobersek/mesa-fork.git"
-    local branch="work/tu_kgsl_timeline_sync"
-    local build_name="Turnip-Zdobersek-Timeline"
-    local output_tag="V80-Zdobersek-TimelineSync"
-
-    echo -e "${green}Cloning Zdobersek Fork...${nocolor}"
-    echo -e "Repo: $repo_url"
-    echo -e "Branch: $branch"
+jobs:
+  build:
+    runs-on: ubuntu-latest
     
-    cd "$workdir"
-    if [ -d mesa ]; then rm -rf mesa; fi
-    
-    git clone --depth 100 -b "$branch" "$repo_url" mesa
-    cd mesa
-    git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    echo -e "${green}Building: $build_name${nocolor}"
-    
-    mkdir -p subprojects && cd subprojects
-    rm -rf spirv-tools spirv-headers
-    git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
-    git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
-    cd ..
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools
+          pip3 install --break-system-packages meson mako
 
-    local build_dir="$workdir/mesa/build"
-    rm -rf "$build_dir"
+      - name: Setup Environment
+        run: |
+          mkdir -p turnip_workdir
+          chmod +x build_zdobersek.sh
 
-    local ndk_bin="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
-    local ndk_sys="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
-    local cver="35"
-    [ ! -f "$ndk_bin/aarch64-linux-android${cver}-clang" ] && cver="34"
+      - name: Build Driver
+        run: ./build_zdobersek.sh
 
-    cat <<EOF > android-cross.txt
-[binaries]
-ar = '$ndk_bin/llvm-ar'
-c = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang', '--sysroot=$ndk_sys']
-cpp = ['ccache', '$ndk_bin/aarch64-linux-android${cver}-clang++', '--sysroot=$ndk_sys']
-c_ld = 'lld'
-cpp_ld = 'lld'
-strip = '$ndk_bin/aarch64-linux-android-strip'
-[host_machine]
-system = 'android'
-cpu_family = 'aarch64'
-cpu = 'armv8'
-endian = 'little'
-[built-in options]
-c_link_args = ['-static-libstdc++']
-cpp_link_args = ['-static-libstdc++']
-EOF
-    
-    export CFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations"
-    export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations"
+      - name: Generate Release Metadata
+        id: meta
+        run: |
+          echo "TAG_NAME=v$(date +'%Y.%m.%d-%H%M')" >> $GITHUB_ENV
+          echo "RELEASE_NAME=Turnip Zdobersek Timeline - $(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
-    meson setup "$build_dir" --cross-file android-cross.txt \
-        -Dbuildtype=release \
-        -Dplatforms=android \
-        -Dplatform-sdk-version=36 \
-        -Dandroid-stub=true \
-        -Dgallium-drivers= \
-        -Dvulkan-drivers=freedreno \
-        -Dfreedreno-kmds=kgsl \
-        -Degl=disabled \
-        -Dglx=disabled \
-        -Dvulkan-beta=true \
-        -Ddefault_library=shared \
-        -Dzstd=disabled \
-        -Dwerror=false \
-        --force-fallback-for=spirv-tools,spirv-headers
-    
-    ninja -C "$build_dir"
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Turnip-Drivers-Pack
+          path: turnip_workdir/*.zip
+          if-no-files-found: error
+          compression-level: 0
 
-    local lib="$build_dir/src/freedreno/vulkan/libvulkan_freedreno.so"
-    if [ ! -f "$lib" ]; then echo "Build Failed"; exit 1; fi
-    
-    local pkg_dir="$workdir/pkg_$output_tag"
-    mkdir -p "$pkg_dir"
-    cp "$lib" "$pkg_dir/vulkan.ad07XX.so"
-    cd "$pkg_dir"
-    patchelf --set-soname "vulkan.adreno.so" vulkan.ad07XX.so
-    
-    echo "{
-  \"schemaVersion\": 1,
-  \"name\": \"$build_name\",
-  \"description\": \"Zdobersek Fork - work/tu_kgsl_timeline_sync\",
-  \"author\": \"StevenMX\",
-  \"packageVersion\": \"1\",
-  \"vendor\": \"Mesa\",
-  \"driverVersion\": \"$output_tag\",
-  \"minApi\": 28,
-  \"libraryName\": \"vulkan.ad07XX.so\"
-}" > meta.json
-    
-    zip -9 "$workdir/Turnip-${output_tag}.zip" vulkan.ad07XX.so meta.json
-    echo -e "${green}Done: Turnip-${output_tag}.zip${nocolor}"
-}
-
-check_deps
-prepare_ndk
-compile_mesa
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG_NAME }}
+          name: ${{ env.RELEASE_NAME }}
+          body: |
+            **Turnip Zdobersek Timeline Sync**
+            
+            * **Repo:** `zdobersek/mesa-fork`
+            * **Branch:** `work/tu_kgsl_timeline_sync`
+            * **Changes:** Clean build of Zdobersek's timeline sync implementation for KGSL.
+          files: turnip_workdir/*.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
