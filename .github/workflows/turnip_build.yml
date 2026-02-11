@@ -1,4 +1,4 @@
-name: Build Turnip Trio
+name: Build Turnip
 
 on:
   workflow_dispatch:
@@ -23,16 +23,24 @@ jobs:
       - name: Setup Environment
         run: |
           mkdir -p turnip_workdir
-          chmod +x build_trio.sh
+          
+          if [ -f tu_gen8.patch ]; then
+             cp tu_gen8.patch turnip_workdir/
+          else
+             echo "ERROR: tu_gen8.patch required!"
+             exit 1
+          fi
 
-      - name: Build Drivers (Trio)
-        run: ./build_trio.sh
+          chmod +x build_turnip.sh
+
+      - name: Build Driver
+        run: ./build_turnip.sh
 
       - name: Generate Release Metadata
         id: meta
         run: |
           echo "TAG_NAME=v$(date +'%Y.%m.%d-%H%M')" >> $GITHUB_ENV
-          echo "RELEASE_NAME=Turnip Trio Pack - $(date +'%Y-%m-%d')" >> $GITHUB_ENV
+          echo "RELEASE_NAME=Turnip A8xx Final - $(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -48,15 +56,14 @@ jobs:
           tag_name: ${{ env.TAG_NAME }}
           name: ${{ env.RELEASE_NAME }}
           body: |
-            **Turnip Trio Automated Build**
+            **Turnip A8xx Final Build**
             
-            This release contains 3 driver variants:
-            
-            1. **V69-A8xx-Gen8:** Based on whitebelyash/mesa-tu8 (Gen8 Branch) + Timeline Fix.
-            2. **V69-Autotuner-A6xx:** Autotuner (NewAT) + Timeline + A6xx Fixes (NO A8xx Patch).
-            3. **V69-Main-Vanilla:** Mesa Main Vanilla (Clean).
-            
-            _Built via GitHub Actions._
+            * **Base:** Mesa Main
+            * **Patch:** `tu_gen8.patch` (A8xx Support + Timeline Hack)
+            * **Clean:** Driver versioning hack REMOVED.
+            * **Environment:** Injects `WRAPPER_VK_VERSION=1.4.340`.
+            * **Vulkan:** Forced 1.4.340.
+            * **Features:** All Vulkan 1.1/1.2/1.3 Features Unlocked.
           files: turnip_workdir/*.zip
           draft: false
           prerelease: false
