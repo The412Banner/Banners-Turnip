@@ -4,7 +4,7 @@ set -o pipefail
 green='\033[0;32m'
 nocolor='\033[0m'
 
-deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator python3 patch"
+deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator python3"
 workdir="$(pwd)/turnip_workdir"
 ndkver="android-ndk-r28"
 target_sdk="36" 
@@ -25,120 +25,23 @@ prepare_ndk(){
     export ANDROID_NDK_HOME="$workdir/$ndkver"
 }
 
-apply_timeline_hack() {
-cat << 'EOF_PATCH' > timeline_hack.patch
-diff --git a/src/vulkan/runtime/vk_sync_timeline.c b/src/vulkan/runtime/vk_sync_timeline.c
-index 4df11d81bda..6119126932d 100644
---- a/src/vulkan/runtime/vk_sync_timeline.c
-+++ b/src/vulkan/runtime/vk_sync_timeline.c
-@@ -507,46 +507,46 @@ vk_sync_timeline_wait_locked(struct vk_device *device,
-                              enum vk_sync_wait_flags wait_flags,
-                              uint64_t abs_timeout_ns)
- {
--   struct timespec abs_timeout_ts;
--   timespec_from_nsec(&abs_timeout_ts, abs_timeout_ns);
-+    struct timespec abs_timeout_ts;
-+    timespec_from_nsec(&abs_timeout_ts, abs_timeout_ns);
- 
--   /* Wait on the queue_submit condition variable until the timeline has a
--    * time point pending that's at least as high as wait_value.
--    */
--   while (state->highest_pending < wait_value) {
--      int ret = u_cnd_monotonic_timedwait(&state->cond, &state->mutex,
--                                          &abs_timeout_ts);
--      if (ret == thrd_timedout)
--         return VK_TIMEOUT;
--
--      if (ret != thrd_success)
--         return vk_errorf(device, VK_ERROR_UNKNOWN, "cnd_timedwait failed");
--   }
--
--   if (wait_flags & VK_SYNC_WAIT_PENDING)
--      return VK_SUCCESS;
--
--   VkResult result = vk_sync_timeline_gc_locked(device, state, false);
--   if (result != VK_SUCCESS)
--      return result;
--
--   while (state->highest_past < wait_value) {
--      struct vk_sync_timeline_point *point = vk_sync_timeline_first_point(state);
--
--      /* Drop the lock while we wait. */
--      vk_sync_timeline_ref_point_locked(point);
--      mtx_unlock(&state->mutex);
--
--      result = vk_sync_wait(device, &point->sync, 0,
--                            VK_SYNC_WAIT_COMPLETE,
--                            abs_timeout_ns);
-+    /* Wait until the timeline reaches the requested value */
-+    while (state->highest_past < wait_value) {
-+        struct vk_sync_timeline_point *point = NULL;
- 
--      /* Pick the mutex back up */
--      mtx_lock(&state->mutex);
--      vk_sync_timeline_unref_point_locked(device, state, point);
--
--      /* This covers both VK_TIMEOUT and VK_ERROR_DEVICE_LOST */
--      if (result != VK_SUCCESS)
--         return result;
--
--      vk_sync_timeline_complete_point_locked(device, state, point);
--   }
--
--   return VK_SUCCESS;
-+        /* Get the first pending point >= wait_value */
-+        list_for_each_entry(struct vk_sync_timeline_point, p,
-+                            &state->pending_points, link) {
-+            if (p->value >= wait_value) {
-+                vk_sync_timeline_ref_point_locked(p);
-+                point = p;
-+                break;
-+            }
-+        }
-+
-+        if (!point) {
-+            /* Nothing pending, just wait on condition variable */
-+            int ret = u_cnd_monotonic_timedwait(&state->cond, &state->mutex, &abs_timeout_ts);
-+            if (ret == thrd_timedout)
-+                return VK_TIMEOUT;
-+            if (ret != thrd_success)
-+                return vk_errorf(device, VK_ERROR_UNKNOWN, "cnd_timedwait failed");
-+            continue;
-+        }
-+
-+        /* Unlock while waiting on this specific timeline point */
-+        mtx_unlock(&state->mutex);
-+        VkResult r = vk_sync_wait(device, &point->sync, 0, VK_SYNC_WAIT_COMPLETE, abs_timeout_ns);
-+        mtx_lock(&state->mutex);
-+
-+        vk_sync_timeline_unref_point_locked(device, state, point);
-+
-+        if (r != VK_SUCCESS)
-+            return r;
-+
-+        vk_sync_timeline_complete_point_locked(device, state, point);
-+    }
-+
-+    return VK_SUCCESS;
- }
- 
-+
- static VkResult
- vk_sync_timeline_wait(struct vk_device *device,
-                       struct vk_sync *sync,
-EOF_PATCH
-    patch -p1 --fuzz=3 --ignore-whitespace < timeline_hack.patch || true
-}
-
-apply_a6xx_fix() {
-    grep -l "tu_bo_init_new_cached" src/freedreno/vulkan/tu_query*.cc | xargs sed -i 's/tu_bo_init_new_cached/tu_bo_init_new/g' || true
-}
-
 compile_mesa() {
-    local build_name=$1
-    local output_tag=$2
-    local build_desc=$3
+    local repo_url="https://gitlab.freedesktop.org/zdobersek/mesa-fork.git"
+    local branch="work/tu_kgsl_timeline_sync"
+    local build_name="Turnip-Zdobersek-Timeline"
+    local output_tag="V80-Zdobersek-TimelineSync"
+
+    echo -e "${green}Cloning Zdobersek Fork...${nocolor}"
+    echo -e "Repo: $repo_url"
+    echo -e "Branch: $branch"
     
+    cd "$workdir"
+    if [ -d mesa ]; then rm -rf mesa; fi
+    
+    git clone --depth 100 -b "$branch" "$repo_url" mesa
+    cd mesa
+    git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
+
     echo -e "${green}Building: $build_name${nocolor}"
     
     mkdir -p subprojects && cd subprojects
@@ -206,7 +109,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"$build_desc\",
+  \"description\": \"Zdobersek Fork - work/tu_kgsl_timeline_sync\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
@@ -221,32 +124,4 @@ EOF
 
 check_deps
 prepare_ndk
-
-# 1. A8xx Build (Whitebelyash Repo)
-cd "$workdir"
-if [ -d mesa ]; then rm -rf mesa; fi
-git clone --depth 100 -b gen8 https://github.com/whitebelyash/mesa-tu8.git mesa
-cd mesa
-git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
-apply_timeline_hack
-compile_mesa "Turnip A8xx (Whitebelyash)" "V69-A8xx-Gen8" "Based on whitebelyash/mesa-tu8 gen8 + Timeline Hack"
-
-# 2. Autotuner Build (PixelyIon Repo) - NO A8xx PATCH
-cd "$workdir"
-rm -rf mesa
-git clone --depth 100 -b tu-newat https://gitlab.freedesktop.org/PixelyIon/mesa.git mesa
-cd mesa
-git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
-apply_timeline_hack
-apply_a6xx_fix
-compile_mesa "Turnip Autotuner (No A8xx)" "V69-Autotuner-A6xx" "PixelyIon Autotuner + Timeline + A6xx Fix (No A8xx Patch)"
-
-# 3. Main Build (Vanilla)
-cd "$workdir"
-rm -rf mesa
-git clone --depth 100 -b main https://gitlab.freedesktop.org/mesa/mesa.git mesa
-cd mesa
-git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
-compile_mesa "Turnip Main Vanilla" "V69-Main-Vanilla" "Pure Mesa Main (No patches)"
-
-echo -e "${green}ALL BUILDS COMPLETE!${nocolor}"
+compile_mesa
