@@ -22,15 +22,12 @@ prepare_ndk(){
 }
 
 inject_mods() {
-    # Procura arquivos automaticamente
     DEV_FILE=$(find src/freedreno/vulkan -name "tu_device.c*" -print -quit)
 
     if [ -z "$DEV_FILE" ]; then
         echo "ERRO: Arquivo tu_device não encontrado."
         exit 1
     fi
-
-    echo "Injetando mods em: $DEV_FILE"
 
     cat << 'EOF_PYTHON' > injector.py
 import re
@@ -41,13 +38,14 @@ dev_file = sys.argv[1]
 with open(dev_file, 'r') as f:
     content = f.read()
 
-# 1. Limpeza de hacks antigos
 content = content.replace('#include "tu_version.h"', '')
 pattern_revert = r"char\s+devname\[128\];[\s\S]*?strcat\(devname,[\s\S]*?strcpy\(props->deviceName,\s*devname\);"
 if re.search(pattern_revert, content):
     content = re.sub(pattern_revert, "strcpy(props->deviceName, pdevice->name);", content)
 
-# 2. Injeção da Variável de Ambiente (WRAPPER_VK_VERSION)
+if 'tu_env.debug |= TU_DEBUG_FLUSHALL;' in content:
+    content = content.replace('tu_env.debug |= TU_DEBUG_FLUSHALL;', '// tu_env.debug |= TU_DEBUG_FLUSHALL; /* DISABLED */')
+
 if 'setenv("WRAPPER_VK_VERSION"' not in content:
     content = content.replace(
         "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,",
@@ -58,15 +56,11 @@ if 'setenv("WRAPPER_VK_VERSION"' not in content:
         ""
     )
 
-# 3. Desbloqueio de Features (1.1, 1.2, 1.3, 1.4)
-# Injeta assignments diretos na struct features dentro de tu_get_features
 features_to_enable = [
-    # 1.1
     "storageBuffer16BitAccess", "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
     "storageInputOutput16", "multiview", "multiviewGeometryShader", "multiviewTessellationShader",
     "variablePointersStorageBuffer", "variablePointers", "protectedMemory", "samplerYcbcrConversion",
     "shaderDrawParameters",
-    # 1.2
     "samplerMirrorClampToEdge", "drawIndirectCount", "storageBuffer8BitAccess", "uniformAndStorageBuffer8BitAccess",
     "storagePushConstant8", "shaderBufferInt64Atomics", "shaderSharedInt64Atomics", "shaderFloat16",
     "shaderInt8", "descriptorIndexing", "shaderInputAttachmentArrayDynamicIndexing",
@@ -84,24 +78,19 @@ features_to_enable = [
     "bufferDeviceAddress", "bufferDeviceAddressCaptureReplay", "bufferDeviceAddressMultiDevice",
     "vulkanMemoryModel", "vulkanMemoryModelDeviceScope", "vulkanMemoryModelAvailabilityVisibilityChains",
     "shaderOutputViewportIndex", "shaderOutputLayer", "subgroupBroadcastDynamicId",
-    # 1.3
     "robustImageAccess", "inlineUniformBlock", "descriptorBindingInlineUniformBlockUpdateAfterBind",
     "pipelineCreationCacheControl", "privateData", "shaderDemoteToHelperInvocation", "shaderTerminateInvocation",
     "subgroupSizeControl", "computeFullSubgroups", "synchronization2", "textureCompressionASTC_HDR",
     "shaderZeroInitializeWorkgroupMemory", "dynamicRendering", "shaderIntegerDotProduct", "maintenance4"
 ]
 
-unlock_code = "\n   /* Forced Features Unlock */\n"
+unlock_code = "\n"
 unlock_code += "".join([f"   features->{feat} = true;\n" for feat in features_to_enable])
 
-# Encontra a função tu_get_features e injeta antes de fechar
 if "static void\ntu_get_features" in content:
-    # Estratégia: Encontrar a próxima função (tu_get_physical_device_properties) e inserir antes
     pattern_func_end = r"(\n}\n\nstatic void\ntu_get_physical_device_properties)"
     if re.search(pattern_func_end, content):
         content = re.sub(pattern_func_end, unlock_code + r"\1", content, count=1)
-    else:
-        print("AVISO: Fim de tu_get_features não encontrado com padrão exato. Tentando append simples.")
 
 with open(dev_file, 'w') as f:
     f.write(content)
@@ -113,8 +102,8 @@ EOF_PYTHON
 compile_mesa() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Turnip-A8xx-Unlocked"
-    local output_tag="V95-A8xx-FeaturesUnlocked"
+    local build_name="Turnip-A8xx-NoFlush"
+    local output_tag="V96-A8xx-NoFlush"
 
     echo "Cloning Mesa..."
     cd "$workdir"
@@ -123,7 +112,6 @@ compile_mesa() {
     cd mesa
 
     if [ -f "$workdir/../tu_gen8.patch" ]; then
-        echo "Applying tu_gen8.patch..."
         patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../tu_gen8.patch" || true
     fi
 
@@ -194,7 +182,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"Mesa Main + A8xx Patch + All Features Unlocked\",
+  \"description\": \"Mesa Main + A8xx Patch + Features Unlocked + No FlushAll\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
