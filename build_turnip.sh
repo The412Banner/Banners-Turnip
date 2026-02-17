@@ -211,7 +211,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"Mesa Main + A8xx + Env Var 1.4.340 + All Feats\",
+  \"description\": \"Mesa Main + A8xx \",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
