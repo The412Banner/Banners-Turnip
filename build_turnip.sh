@@ -1,7 +1,6 @@
 #!/bin/bash -e
 set -o pipefail
 
-# Dependências
 deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator python3 patch"
 workdir="$(pwd)/turnip_workdir"
 ndkver="android-ndk-r28"
@@ -23,72 +22,51 @@ prepare_ndk(){
 }
 
 inject_mods() {
-    # Verificação de segurança antes de rodar o Python
-    if [ ! -f "src/freedreno/vulkan/tu_physical_device.cc" ]; then
-        echo "ERRO CRÍTICO: Código fonte do Mesa não encontrado em $(pwd)!"
-        echo "O git clone falhou ou estamos no diretório errado."
-        ls -F
+    # Procura arquivos automaticamente
+    DEV_FILE=$(find src/freedreno/vulkan -name "tu_device.c*" -print -quit)
+
+    if [ -z "$DEV_FILE" ]; then
+        echo "ERRO: Arquivo tu_device não encontrado."
         exit 1
     fi
 
+    echo "Injetando mods em: $DEV_FILE"
+
     cat << 'EOF_PYTHON' > injector.py
 import re
-import os
 import sys
 
-phys_dev_file = "src/freedreno/vulkan/tu_physical_device.cc"
-device_file = "src/freedreno/vulkan/tu_device.cc"
+dev_file = sys.argv[1]
 
-if not os.path.exists(phys_dev_file):
-    print(f"Erro: Arquivo {phys_dev_file} nao encontrado!")
-    sys.exit(1)
+with open(dev_file, 'r') as f:
+    content = f.read()
 
-# 1. Limpa Includes e Versoes Antigas
-with open(device_file, 'r') as f:
-    dev_content = f.read()
-
-dev_content = dev_content.replace('#include "tu_version.h"', '')
-
+# 1. Limpeza de hacks antigos
+content = content.replace('#include "tu_version.h"', '')
 pattern_revert = r"char\s+devname\[128\];[\s\S]*?strcat\(devname,[\s\S]*?strcpy\(props->deviceName,\s*devname\);"
-replacement_revert = "strcpy(props->deviceName, pdevice->name);"
+if re.search(pattern_revert, content):
+    content = re.sub(pattern_revert, "strcpy(props->deviceName, pdevice->name);", content)
 
-if re.search(pattern_revert, dev_content):
-    dev_content = re.sub(pattern_revert, replacement_revert, dev_content)
-
-# 2. Injeta Variavel de Ambiente
-if 'setenv("WRAPPER_VK_VERSION"' not in dev_content:
-    dev_content = dev_content.replace(
+# 2. Injeção da Variável de Ambiente (WRAPPER_VK_VERSION)
+if 'setenv("WRAPPER_VK_VERSION"' not in content:
+    content = content.replace(
         "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,",
         "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,\n   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)\n{\n   setenv(\"WRAPPER_VK_VERSION\", \"1.4.340\", 1);\n"
     )
-    # Limpa duplicata se houver
-    dev_content = dev_content.replace(
+    content = content.replace(
         "   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)\n{\n   setenv(\"WRAPPER_VK_VERSION\", \"1.4.340\", 1);\n\n   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)",
         ""
     )
 
-with open(device_file, 'w') as f:
-    f.write(dev_content)
-
-# 3. Forca Versao Vulkan 1.4.340
-with open(phys_dev_file, 'r') as f:
-    phys_content = f.read()
-
-phys_content = re.sub(
-    r"return VK_MAKE_VERSION\(1, [0-9]+, [0-9]+\);",
-    "return VK_MAKE_VERSION(1, 4, 340);",
-    phys_content
-)
-
-# 4. Desbloqueia Features
-features_1_1 = [
+# 3. Desbloqueio de Features (1.1, 1.2, 1.3, 1.4)
+# Injeta assignments diretos na struct features dentro de tu_get_features
+features_to_enable = [
+    # 1.1
     "storageBuffer16BitAccess", "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
     "storageInputOutput16", "multiview", "multiviewGeometryShader", "multiviewTessellationShader",
     "variablePointersStorageBuffer", "variablePointers", "protectedMemory", "samplerYcbcrConversion",
-    "shaderDrawParameters"
-]
-
-features_1_2 = [
+    "shaderDrawParameters",
+    # 1.2
     "samplerMirrorClampToEdge", "drawIndirectCount", "storageBuffer8BitAccess", "uniformAndStorageBuffer8BitAccess",
     "storagePushConstant8", "shaderBufferInt64Atomics", "shaderSharedInt64Atomics", "shaderFloat16",
     "shaderInt8", "descriptorIndexing", "shaderInputAttachmentArrayDynamicIndexing",
@@ -105,60 +83,51 @@ features_1_2 = [
     "shaderSubgroupExtendedTypes", "separateDepthStencilLayouts", "hostQueryReset", "timelineSemaphore",
     "bufferDeviceAddress", "bufferDeviceAddressCaptureReplay", "bufferDeviceAddressMultiDevice",
     "vulkanMemoryModel", "vulkanMemoryModelDeviceScope", "vulkanMemoryModelAvailabilityVisibilityChains",
-    "shaderOutputViewportIndex", "shaderOutputLayer", "subgroupBroadcastDynamicId"
-]
-
-features_1_3 = [
+    "shaderOutputViewportIndex", "shaderOutputLayer", "subgroupBroadcastDynamicId",
+    # 1.3
     "robustImageAccess", "inlineUniformBlock", "descriptorBindingInlineUniformBlockUpdateAfterBind",
     "pipelineCreationCacheControl", "privateData", "shaderDemoteToHelperInvocation", "shaderTerminateInvocation",
     "subgroupSizeControl", "computeFullSubgroups", "synchronization2", "textureCompressionASTC_HDR",
     "shaderZeroInitializeWorkgroupMemory", "dynamicRendering", "shaderIntegerDotProduct", "maintenance4"
 ]
 
-def inject_features(content, struct_name, feat_list, struct_type):
-    code = "".join([f"      f->{feat} = VK_TRUE;\n" for feat in feat_list])
-    pattern = rf"(case {struct_name}:[\s\S]*?)(\s+break;)"
-    replacement = f"\\1\n      {struct_type} *f = ({struct_type} *)ext;\n{code}\\2"
-    return re.sub(pattern, replacement, content, count=1)
+unlock_code = "\n   /* Forced Features Unlock */\n"
+unlock_code += "".join([f"   features->{feat} = true;\n" for feat in features_to_enable])
 
-phys_content = inject_features(phys_content, "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES", features_1_1, "VkPhysicalDeviceVulkan11Features")
-phys_content = inject_features(phys_content, "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES", features_1_2, "VkPhysicalDeviceVulkan12Features")
-phys_content = inject_features(phys_content, "VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES", features_1_3, "VkPhysicalDeviceVulkan13Features")
+# Encontra a função tu_get_features e injeta antes de fechar
+if "static void\ntu_get_features" in content:
+    # Estratégia: Encontrar a próxima função (tu_get_physical_device_properties) e inserir antes
+    pattern_func_end = r"(\n}\n\nstatic void\ntu_get_physical_device_properties)"
+    if re.search(pattern_func_end, content):
+        content = re.sub(pattern_func_end, unlock_code + r"\1", content, count=1)
+    else:
+        print("AVISO: Fim de tu_get_features não encontrado com padrão exato. Tentando append simples.")
 
-with open(phys_dev_file, 'w') as f:
-    f.write(phys_content)
+with open(dev_file, 'w') as f:
+    f.write(content)
 EOF_PYTHON
-    
-    python3 injector.py
+
+    python3 injector.py "$DEV_FILE"
 }
 
 compile_mesa() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Turnip-A8xx-Final"
-    local output_tag="V78-A8xx-Final-1.4.340"
+    local build_name="Turnip-A8xx-Unlocked"
+    local output_tag="V95-A8xx-FeaturesUnlocked"
 
     echo "Cloning Mesa..."
-    
     cd "$workdir"
     rm -rf mesa
-    
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
 
-    # Aplica o Patch se existir na raiz do workdir
     if [ -f "$workdir/../tu_gen8.patch" ]; then
         echo "Applying tu_gen8.patch..."
         patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../tu_gen8.patch" || true
-    else
-        echo "AVISO: tu_gen8.patch nao encontrado. Pulando."
     fi
 
     inject_mods
-
-    # Backup para garantir versão no device.cc caso o python tenha falhado
-    sed -i 's/VK_MAKE_VERSION(1, 3, [0-9]*)/VK_MAKE_VERSION(1, 4, 340)/g' src/freedreno/vulkan/tu_device.cc || true
-    sed -i 's/VK_MAKE_VERSION(1, 4, [0-9]*)/VK_MAKE_VERSION(1, 4, 340)/g' src/freedreno/vulkan/tu_device.cc || true
 
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
@@ -225,7 +194,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"Mesa Main + A8xx Patch + VK 1.4.340 + All Feats\",
+  \"description\": \"Mesa Main + A8xx Patch + All Features Unlocked\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
