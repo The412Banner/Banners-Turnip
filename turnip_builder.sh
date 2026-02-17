@@ -177,14 +177,14 @@ EOF
     echo "- **$variant_name**: $filename.zip" >> release_notes.txt
 }
 
-# --- EXECUÇÃO ---
+
 
 check_deps
 prepare_workdir
 echo "Automated Builds Report" > release_notes.txt
 echo "" >> release_notes.txt
 
-# 1. BUILD SYSMEM
+
 echo "--- Preparing Sysmem ---"
 cd "$workdir/mesa"
 git checkout .
@@ -192,7 +192,7 @@ git clean -fd
 apply_sysmem_patch
 build_variant "Sysmem" "sysmem"
 
-# 2. BUILD ONEUI / A740
+
 echo "--- Preparing OneUI ---"
 cd "$workdir/mesa"
 git checkout .
@@ -200,7 +200,7 @@ git clean -fd
 apply_oneui_patch
 build_variant "OneUI_Fix" "oneui"
 
-# 3. BUILD A6XX + SYSMEM
+
 echo "--- Preparing A6xx + Sysmem ---"
 cd "$workdir/mesa"
 git checkout .
