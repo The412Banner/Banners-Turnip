@@ -1,9 +1,10 @@
 #!/bin/bash -e
 set -o pipefail
 
-deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator python3 patch"
+deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator python3"
 workdir="$(pwd)/turnip_workdir"
 ndkver="android-ndk-r28"
+target_sdk="35"
 
 check_deps(){
 	for dep in $deps; do
@@ -21,101 +22,19 @@ prepare_ndk(){
     export ANDROID_NDK_HOME="$workdir/$ndkver"
 }
 
-inject_mods() {
-    DEV_FILE=$(find src/freedreno/vulkan -name "tu_device.c*" -print -quit)
-
-    if [ -z "$DEV_FILE" ]; then
-        echo "ERRO: Arquivo tu_device não encontrado."
-        exit 1
-    fi
-
-    cat << 'EOF_PYTHON' > injector.py
-import re
-import sys
-
-dev_file = sys.argv[1]
-
-with open(dev_file, 'r') as f:
-    content = f.read()
-
-content = content.replace('#include "tu_version.h"', '')
-pattern_revert = r"char\s+devname\[128\];[\s\S]*?strcat\(devname,[\s\S]*?strcpy\(props->deviceName,\s*devname\);"
-if re.search(pattern_revert, content):
-    content = re.sub(pattern_revert, "strcpy(props->deviceName, pdevice->name);", content)
-
-if 'tu_env.debug |= TU_DEBUG_FLUSHALL;' in content:
-    content = content.replace('tu_env.debug |= TU_DEBUG_FLUSHALL;', '// tu_env.debug |= TU_DEBUG_FLUSHALL; /* DISABLED */')
-
-if 'setenv("WRAPPER_VK_VERSION"' not in content:
-    content = content.replace(
-        "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,",
-        "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,\n   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)\n{\n   setenv(\"WRAPPER_VK_VERSION\", \"1.4.340\", 1);\n"
-    )
-    content = content.replace(
-        "   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)\n{\n   setenv(\"WRAPPER_VK_VERSION\", \"1.4.340\", 1);\n\n   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)",
-        ""
-    )
-
-features_to_enable = [
-    "storageBuffer16BitAccess", "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
-    "storageInputOutput16", "multiview", "multiviewGeometryShader", "multiviewTessellationShader",
-    "variablePointersStorageBuffer", "variablePointers", "protectedMemory", "samplerYcbcrConversion",
-    "shaderDrawParameters",
-    "samplerMirrorClampToEdge", "drawIndirectCount", "storageBuffer8BitAccess", "uniformAndStorageBuffer8BitAccess",
-    "storagePushConstant8", "shaderBufferInt64Atomics", "shaderSharedInt64Atomics", "shaderFloat16",
-    "shaderInt8", "descriptorIndexing", "shaderInputAttachmentArrayDynamicIndexing",
-    "shaderUniformTexelBufferArrayDynamicIndexing", "shaderStorageTexelBufferArrayDynamicIndexing",
-    "shaderUniformBufferArrayNonUniformIndexing", "shaderSampledImageArrayNonUniformIndexing",
-    "shaderStorageBufferArrayNonUniformIndexing", "shaderStorageImageArrayNonUniformIndexing",
-    "shaderInputAttachmentArrayNonUniformIndexing", "shaderUniformTexelBufferArrayNonUniformIndexing",
-    "shaderStorageTexelBufferArrayNonUniformIndexing", "descriptorBindingUniformBufferUpdateAfterBind",
-    "descriptorBindingSampledImageUpdateAfterBind", "descriptorBindingStorageImageUpdateAfterBind",
-    "descriptorBindingStorageBufferUpdateAfterBind", "descriptorBindingUniformTexelBufferUpdateAfterBind",
-    "descriptorBindingStorageTexelBufferUpdateAfterBind", "descriptorBindingUpdateUnusedWhilePending",
-    "descriptorBindingPartiallyBound", "descriptorBindingVariableDescriptorCount", "runtimeDescriptorArray",
-    "samplerFilterMinmax", "scalarBlockLayout", "imagelessFramebuffer", "uniformBufferStandardLayout",
-    "shaderSubgroupExtendedTypes", "separateDepthStencilLayouts", "hostQueryReset", "timelineSemaphore",
-    "bufferDeviceAddress", "bufferDeviceAddressCaptureReplay", "bufferDeviceAddressMultiDevice",
-    "vulkanMemoryModel", "vulkanMemoryModelDeviceScope", "vulkanMemoryModelAvailabilityVisibilityChains",
-    "shaderOutputViewportIndex", "shaderOutputLayer", "subgroupBroadcastDynamicId",
-    "robustImageAccess", "inlineUniformBlock", "descriptorBindingInlineUniformBlockUpdateAfterBind",
-    "pipelineCreationCacheControl", "privateData", "shaderDemoteToHelperInvocation", "shaderTerminateInvocation",
-    "subgroupSizeControl", "computeFullSubgroups", "synchronization2", "textureCompressionASTC_HDR",
-    "shaderZeroInitializeWorkgroupMemory", "dynamicRendering", "shaderIntegerDotProduct", "maintenance4"
-]
-
-unlock_code = "\n"
-unlock_code += "".join([f"   features->{feat} = true;\n" for feat in features_to_enable])
-
-if "static void\ntu_get_features" in content:
-    pattern_func_end = r"(\n}\n\nstatic void\ntu_get_physical_device_properties)"
-    if re.search(pattern_func_end, content):
-        content = re.sub(pattern_func_end, unlock_code + r"\1", content, count=1)
-
-with open(dev_file, 'w') as f:
-    f.write(content)
-EOF_PYTHON
-
-    python3 injector.py "$DEV_FILE"
-}
-
 compile_mesa() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Turnip-A8xx-NoFlush"
-    local output_tag="V96-A8xx-NoFlush"
+    local build_name="Turnip-Main-Clean-SDK35"
+    local output_tag="V97-Main-SDK35"
 
-    echo "Cloning Mesa..."
+    echo "Cloning Mesa Main..."
+    
     cd "$workdir"
     rm -rf mesa
+    
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
-
-    if [ -f "$workdir/../tu_gen8.patch" ]; then
-        patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../tu_gen8.patch" || true
-    fi
-
-    inject_mods
 
     mkdir -p subprojects && cd subprojects
     rm -rf spirv-tools spirv-headers
@@ -155,7 +74,7 @@ EOF
     meson setup "$build_dir" --cross-file android-cross.txt \
         -Dbuildtype=release \
         -Dplatforms=android \
-        -Dplatform-sdk-version=36 \
+        -Dplatform-sdk-version=35 \
         -Dandroid-stub=true \
         -Dgallium-drivers= \
         -Dvulkan-drivers=freedreno \
@@ -182,7 +101,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"Mesa Main + A8xx Patch + Features Unlocked + No FlushAll\",
+  \"description\": \"Mesa Main Clean Build (SDK 35)\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
