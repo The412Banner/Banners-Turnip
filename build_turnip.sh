@@ -1,13 +1,10 @@
 #!/bin/bash -e
 set -o pipefail
 
-green='\033[0;32m'
-nocolor='\033[0m'
-
+# Dependências
 deps="ninja patchelf unzip curl pip flex bison zip git perl glslangValidator python3 patch"
 workdir="$(pwd)/turnip_workdir"
 ndkver="android-ndk-r28"
-target_sdk="36" 
 
 check_deps(){
 	for dep in $deps; do
@@ -26,13 +23,27 @@ prepare_ndk(){
 }
 
 inject_mods() {
+    # Verificação de segurança antes de rodar o Python
+    if [ ! -f "src/freedreno/vulkan/tu_physical_device.cc" ]; then
+        echo "ERRO CRÍTICO: Código fonte do Mesa não encontrado em $(pwd)!"
+        echo "O git clone falhou ou estamos no diretório errado."
+        ls -F
+        exit 1
+    fi
+
     cat << 'EOF_PYTHON' > injector.py
 import re
 import os
+import sys
 
 phys_dev_file = "src/freedreno/vulkan/tu_physical_device.cc"
 device_file = "src/freedreno/vulkan/tu_device.cc"
 
+if not os.path.exists(phys_dev_file):
+    print(f"Erro: Arquivo {phys_dev_file} nao encontrado!")
+    sys.exit(1)
+
+# 1. Limpa Includes e Versoes Antigas
 with open(device_file, 'r') as f:
     dev_content = f.read()
 
@@ -44,11 +55,13 @@ replacement_revert = "strcpy(props->deviceName, pdevice->name);"
 if re.search(pattern_revert, dev_content):
     dev_content = re.sub(pattern_revert, replacement_revert, dev_content)
 
+# 2. Injeta Variavel de Ambiente
 if 'setenv("WRAPPER_VK_VERSION"' not in dev_content:
     dev_content = dev_content.replace(
         "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,",
         "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,\n   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)\n{\n   setenv(\"WRAPPER_VK_VERSION\", \"1.4.340\", 1);\n"
     )
+    # Limpa duplicata se houver
     dev_content = dev_content.replace(
         "   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)\n{\n   setenv(\"WRAPPER_VK_VERSION\", \"1.4.340\", 1);\n\n   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)",
         ""
@@ -57,6 +70,7 @@ if 'setenv("WRAPPER_VK_VERSION"' not in dev_content:
 with open(device_file, 'w') as f:
     f.write(dev_content)
 
+# 3. Forca Versao Vulkan 1.4.340
 with open(phys_dev_file, 'r') as f:
     phys_content = f.read()
 
@@ -66,6 +80,7 @@ phys_content = re.sub(
     phys_content
 )
 
+# 4. Desbloqueia Features
 features_1_1 = [
     "storageBuffer16BitAccess", "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
     "storageInputOutput16", "multiview", "multiviewGeometryShader", "multiviewTessellationShader",
@@ -123,26 +138,25 @@ compile_mesa() {
     local build_name="Turnip-A8xx-Final"
     local output_tag="V78-A8xx-Final-1.4.340"
 
-    echo -e "${green}Cloning Mesa Main...${nocolor}"
+    echo "Cloning Mesa..."
     
     cd "$workdir"
-    if [ -d mesa ]; then rm -rf mesa; fi
+    rm -rf mesa
     
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
-    git config user.email "ci@turnip.builder" && git config user.name "Turnip CI Builder"
 
+    # Aplica o Patch se existir na raiz do workdir
     if [ -f "$workdir/../tu_gen8.patch" ]; then
+        echo "Applying tu_gen8.patch..."
         patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../tu_gen8.patch" || true
-    elif [ -f "tu_gen8.patch" ]; then
-         patch -p1 --fuzz=4 --ignore-whitespace < "tu_gen8.patch" || true
     else
-        echo "Error: tu_gen8.patch not found."
-        exit 1
+        echo "AVISO: tu_gen8.patch nao encontrado. Pulando."
     fi
 
     inject_mods
 
+    # Backup para garantir versão no device.cc caso o python tenha falhado
     sed -i 's/VK_MAKE_VERSION(1, 3, [0-9]*)/VK_MAKE_VERSION(1, 4, 340)/g' src/freedreno/vulkan/tu_device.cc || true
     sed -i 's/VK_MAKE_VERSION(1, 4, [0-9]*)/VK_MAKE_VERSION(1, 4, 340)/g' src/freedreno/vulkan/tu_device.cc || true
 
@@ -211,7 +225,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"Mesa Main + A8xx \",
+  \"description\": \"Mesa Main + A8xx Patch + VK 1.4.340 + All Feats\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
@@ -221,7 +235,7 @@ EOF
 }" > meta.json
     
     zip -9 "$workdir/Turnip-${output_tag}.zip" vulkan.ad07XX.so meta.json
-    echo -e "${green}Done: Turnip-${output_tag}.zip${nocolor}"
+    echo "Done: Turnip-${output_tag}.zip"
 }
 
 check_deps
