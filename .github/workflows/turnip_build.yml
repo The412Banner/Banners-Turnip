@@ -9,16 +9,16 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Deps
+      - name: Install Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ninja-build patchelf flex bison glslang-tools git python3-pip
-          pip3 install meson mako --break-system-packages
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools
+          pip3 install --break-system-packages meson mako
 
       - name: Build
         run: |
