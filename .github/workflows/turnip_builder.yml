@@ -3,7 +3,7 @@ name: Build Turnip
 on:
   workflow_dispatch:
   schedule:
-    - cron: "20 5 1,15 * *"
+    
 
 jobs:
   build_and_release:
