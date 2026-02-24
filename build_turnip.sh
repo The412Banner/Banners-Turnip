@@ -21,6 +21,58 @@ prepare_ndk(){
     export ANDROID_NDK_HOME="$workdir/$ndkver"
 }
 
+fix_patch_rejects() {
+    echo "Verificando arquivos quebrados pelos patches e corrigindo..."
+    
+    # Este script Python verifica se a variável a8xx_830 está faltando no freedreno_devices.py
+    # e a injeta à força no local correto para evitar o NameError.
+    cat << 'EOF_PYTHON' > fix_devices.py
+import os
+import re
+
+file_path = "src/freedreno/common/freedreno_devices.py"
+if os.path.exists(file_path):
+    with open(file_path, 'r') as f:
+        content = f.read()
+
+    # Se usou a variável mas a definição falhou no patch
+    if "a8xx_830 =" not in content and "a8xx_830" in content:
+        print("🔧 Auto-Fix: Injetando definição ausente de a8xx_830...")
+        fix_code = """
+a8xx_830 = GPUProps(
+        sysmem_vpc_attr_buf_size = 131072,
+        sysmem_vpc_pos_buf_size = 65536,
+        sysmem_vpc_bv_pos_buf_size = 32768,
+        sysmem_ccu_color_cache_fraction = CCUColorCacheFraction.FULL.value,
+        sysmem_per_ccu_color_cache_size = 128 * 1024,
+        sysmem_ccu_depth_cache_fraction = CCUColorCacheFraction.THREE_QUARTER.value,
+        sysmem_per_ccu_depth_cache_size = 192 * 1024,
+        gmem_vpc_attr_buf_size = 49152,
+        gmem_vpc_pos_buf_size = 24576,
+        gmem_vpc_bv_pos_buf_size = 32768,
+        gmem_ccu_color_cache_fraction = CCUColorCacheFraction.EIGHTH.value,
+        gmem_per_ccu_color_cache_size = 16 * 1024,
+        gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
+        gmem_per_ccu_depth_cache_size = 256 * 1024,
+        has_fs_tex_prefetch = False,
+        disable_gmem = True,
+)
+"""
+        # Injeta o código forçadamente logo antes da declaração de suporte do chip 830
+        match = re.search(r"add_gpus\(\[\s*GPUId\(chip_id=0x44050000", content)
+        if match:
+            idx = match.start()
+            content = content[:idx] + fix_code + "\n" + content[idx:]
+            with open(file_path, 'w') as f:
+                f.write(content)
+            print("✔️ Auto-Fix aplicado com sucesso!")
+        else:
+            print("AVISO: Local de injeção não encontrado, a compilação pode falhar.")
+EOF_PYTHON
+
+    python3 fix_devices.py
+}
+
 inject_mods() {
     DEV_FILE=$(find src/freedreno/vulkan -name "tu_device.c*" -print -quit)
 
@@ -111,21 +163,19 @@ compile_mesa() {
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
 
-    # 1º - Aplica o patch Gen8 forçando a aplicação
+    
     if [ -f "$workdir/../tu_gen8.patch" ]; then
         echo "Applying tu_gen8.patch (Forced)..."
-        # O || true garante que o script não pare mesmo se houverem rejects
-        patch -p1 --fuzz=4 --force --ignore-whitespace < "$workdir/../tu_gen8.patch" || {
-            echo "AVISO: Houveram rejeições no tu_gen8.patch. Continuando a compilação mesmo assim..."
-        }
+        patch -p1 --fuzz=4 --force --ignore-whitespace < "$workdir/../tu_gen8.patch" || true
     fi
+    
+    
+    fix_patch_rejects
 
-    # 2º - Aplica o patch MR39751 logo em seguida
+    
     if [ -f "$workdir/../39751.patch" ]; then
         echo "Applying 39751.patch..."
-        patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../39751.patch" || {
-            echo "AVISO: Houveram rejeições no 39751.patch. Continuando a compilação..."
-        }
+        patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../39751.patch" || true
     fi
 
     inject_mods
@@ -195,7 +245,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"Mesa Main + A8xx (Forced) + MR 39751 + Feats Unlocked + No FlushAll\",
+  \"description\": \"Mesa Main + A8xx (Auto-Fixed) + MR 39751 + Feats Unlocked + No FlushAll\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
