@@ -26,17 +26,31 @@ fix_patch_rejects() {
     
     cat << 'EOF_PYTHON' > fix_devices.py
 import os
-import re
 
 file_path = "src/freedreno/common/freedreno_devices.py"
 if os.path.exists(file_path):
     with open(file_path, 'r') as f:
         content = f.read()
 
+    # Busca segura: encontra a primeira área de GPUs A8XX para injetar as variáveis ANTES dela.
+    # Usar "add_gpus([" com colchete previne quebrar o "def add_gpus("
+    a8xx_idx = content.find("CHIP.A8XX")
+    if a8xx_idx != -1:
+        insert_idx = content.rfind("add_gpus([", 0, a8xx_idx)
+        if insert_idx == -1:
+            insert_idx = a8xx_idx
+    else:
+        insert_idx = len(content)
+
+    def inject(code):
+        nonlocal content, insert_idx
+        content = content[:insert_idx] + code + "\n" + content[insert_idx:]
+        insert_idx += len(code) + 1
+
     # 1. Garante a existência do a8xx_830
-    if "a8xx_830 =" not in content and "a8xx_830" in content:
+    if "a8xx_830 =" not in content:
         print("🔧 Auto-Fix: Injetando a8xx_830...")
-        fix_code = """
+        inject("""
 a8xx_830 = GPUProps(
         sysmem_vpc_attr_buf_size = 131072,
         sysmem_vpc_pos_buf_size = 65536,
@@ -55,15 +69,12 @@ a8xx_830 = GPUProps(
         has_fs_tex_prefetch = False,
         disable_gmem = True,
 )
-"""
-        idx = content.find("add_gpus(")
-        if idx != -1:
-            content = content[:idx] + fix_code + "\n" + content[idx:]
+""")
 
     # 2. Garante a existência do a8xx_825
-    if "a8xx_825 =" not in content and "a8xx_825" in content:
+    if "a8xx_825 =" not in content:
         print("🔧 Auto-Fix: Injetando a8xx_825...")
-        fix_code = """
+        inject("""
 a8xx_825 = GPUProps(
         sysmem_vpc_attr_buf_size = 131072,
         sysmem_vpc_pos_buf_size = 65536,
@@ -80,15 +91,12 @@ a8xx_825 = GPUProps(
         gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
         gmem_per_ccu_depth_cache_size = 127 * 1024,
 )
-"""
-        idx = content.find("add_gpus(")
-        if idx != -1:
-            content = content[:idx] + fix_code + "\n" + content[idx:]
+""")
 
     # 3. Garante a existência do a8xx_810
-    if "a8xx_810 =" not in content and "a8xx_810" in content:
+    if "a8xx_810 =" not in content:
         print("🔧 Auto-Fix: Injetando a8xx_810...")
-        fix_code = """
+        inject("""
 a8xx_810 = GPUProps(
         sysmem_vpc_attr_buf_size = 131072,
         sysmem_vpc_pos_buf_size = 65536,
@@ -108,34 +116,25 @@ a8xx_810 = GPUProps(
         has_sw_fuse = False,
         disable_gmem = True,
 )
-"""
-        idx = content.find("add_gpus(")
-        if idx != -1:
-            content = content[:idx] + fix_code + "\n" + content[idx:]
+""")
 
     # 4. Garante a existência do a8xx_gen2
-    if "a8xx_gen2 =" not in content and "a8xx_gen2" in content:
+    if "a8xx_gen2 =" not in content:
         print("🔧 Auto-Fix: Injetando a8xx_gen2...")
-        fix_code = """
+        inject("""
 a8xx_gen2 = GPUProps(
         has_salu_int_narrowing_quirk = True
 )
-"""
-        idx = content.find("add_gpus(")
-        if idx != -1:
-            content = content[:idx] + fix_code + "\n" + content[idx:]
+""")
 
     # 5. Garante a existência dos registradores
-    if "a8xx_gen2_raw_magic_regs =" not in content and "a8xx_gen2_raw_magic_regs" in content:
+    if "a8xx_gen2_raw_magic_regs =" not in content:
         print("🔧 Auto-Fix: Injetando a8xx_gen2_raw_magic_regs...")
-        fix_code = """
+        inject("""
 a8xx_gen2_raw_magic_regs = [
         [A6XXRegs.REG_A8XX_PC_MODE_CNTL,    0x00003f00],
 ]
-"""
-        idx = content.find("add_gpus(")
-        if idx != -1:
-            content = content[:idx] + fix_code + "\n" + content[idx:]
+""")
 
     with open(file_path, 'w') as f:
         f.write(content)
@@ -235,7 +234,7 @@ compile_mesa() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
     local build_name="Turnip-A8xx-Classic-MR39751"
-    local output_tag="V101-A8xx-MR39751-Fixed"
+    local output_tag="V102-A8xx-FixSyntax"
 
     echo "Cloning Mesa..."
     cd "$workdir"
@@ -243,19 +242,34 @@ compile_mesa() {
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
 
-    # Aplica o MR39751 PRIMEIRO
+    # REVERT MR 39874 (AGORA PROTEGIDO)
+    echo "Revertendo MR 39874 (Adreno 830) para limpar caminho para os patches..."
+    # Disfarçado de navegador para o GitLab não bloquear
+    curl -sL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" "https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39874.patch" -o revert_39874.patch
+    
+    # Verifica se o arquivo baixado é um patch válido e não lixo (página HTML)
+    if grep -q "From " revert_39874.patch; then
+        echo "Patch de revert baixado com sucesso. Aplicando revert..."
+        patch -R -p1 --fuzz=4 --ignore-whitespace < revert_39874.patch || {
+            echo "AVISO: Falha ao reverter MR 39874 (talvez modificado). Continuando..."
+        }
+    else
+        echo "AVISO: Falha no download do Revert MR 39874. O script Auto-Fix corrigirá os erros a seguir."
+    fi
+
+    # Aplica o MR39751 (Timeline Sync) PRIMEIRO
     if [ -f "$workdir/../39751.patch" ]; then
         echo "Applying 39751.patch..."
         patch -p1 --fuzz=4 < "$workdir/../39751.patch" || true
     fi
 
-    # Aplica o patch Clássico (Aquele que tem 9 partes e renderiza direito)
+    # Aplica o patch Clássico A8xx (O primeiro, de 9 partes)
     if [ -f "$workdir/../tu_gen8.patch" ]; then
         echo "Applying tu_gen8.patch..."
         patch -p1 --fuzz=4 --force < "$workdir/../tu_gen8.patch" || true
     fi
     
-    # Costura o código blindado corrigindo qualquer falha do patch
+    # Costura o código blindado para variáveis que faltam (A8xx_830, etc)
     fix_patch_rejects
 
     # Aplica desativação do FlushAll e libera as features
