@@ -223,23 +223,23 @@ compile_mesa() {
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
 
-    # 1. Aplica o MR39751 (Timeline Sync)
+    
     if [ -f "$workdir/../39751.patch" ]; then
         echo "Applying 39751.patch..."
         patch -p1 --fuzz=4 < "$workdir/../39751.patch" || true
     fi
 
-    # 2. Aplica o patch Clássico (O que renderiza direito, sem glitches)
+    
     if [ -f "$workdir/../tu_gen8.patch" ]; then
         echo "Applying tu_gen8.patch..."
-        # Force continua mesmo se bater na configuração oficial da Mesa
+        
         patch -p1 --fuzz=4 --force < "$workdir/../tu_gen8.patch" || true
     fi
     
-    # 3. Costura o código blindado: DESTRÓI as configs oficiais bugadas e PÕE AS SUAS.
+    
     fix_patch_rejects
 
-    # 4. Aplica desativação do FlushAll e libera features
+    
     inject_mods
 
     mkdir -p subprojects && cd subprojects
