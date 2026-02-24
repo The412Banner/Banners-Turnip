@@ -26,7 +26,6 @@ fix_patch_rejects() {
     
     cat << 'EOF_PYTHON' > fix_devices.py
 import os
-import re
 
 file_path = "src/freedreno/common/freedreno_devices.py"
 if os.path.exists(file_path):
@@ -64,18 +63,28 @@ a8xx_gen2_raw_magic_regs = [
         [A6XXRegs.REG_A8XX_PC_MODE_CNTL,    0x00003f00],
 ]
 """
-        # Acha a primeira ocorrência onde o arquivo TENTA usar o a8xx_gen2_raw_magic_regs
-        # Normalmente isso ocorre dentro de um bloco `add_gpus([...])`.
-        # Vamos inserir o bloco faltando extamente ANTES desse `add_gpus`
-        match = re.search(r"add_gpus\(\[[\s\S]*?a8xx_gen2_raw_magic_regs", content)
-        if match:
-            idx = match.start()
-            content = content[:idx] + fix_code + "\n" + content[idx:]
+        # Acha onde o "a8xx_gen2_raw_magic_regs" foi chamado/utilizado na lista
+        usage_idx = content.find("raw_magic_regs = a8xx_gen2_raw_magic_regs")
+        if usage_idx == -1:
+            usage_idx = content.find("a8xx_gen2_raw_magic_regs")
+            
+        if usage_idx != -1:
+            # Procura a função add_gpus imediatamente anterior a esse uso
+            insert_idx = content.rfind("add_gpus", 0, usage_idx)
+            
+            # Pega o começo da linha para não quebrar a indentação
+            if insert_idx != -1:
+                insert_idx = content.rfind("\n", 0, insert_idx) + 1
+            else:
+                insert_idx = usage_idx
+            
+            content = content[:insert_idx] + fix_code + "\n" + content[insert_idx:]
+            
             with open(file_path, 'w') as f:
                 f.write(content)
-            print("✔️ Auto-Fix aplicado com sucesso!")
+            print("✔️ Auto-Fix aplicado com sucesso de forma inteligente!")
         else:
-            print("AVISO: Local de injeção não encontrado, a compilação pode falhar.")
+            print("AVISO: Local de uso não encontrado.")
 EOF_PYTHON
 
     python3 fix_devices.py
@@ -180,7 +189,7 @@ compile_mesa() {
     
     fix_patch_rejects
 
-    
+    # 3º - Aplica o patch MR39751
     if [ -f "$workdir/../39751.patch" ]; then
         echo "Applying 39751.patch..."
         patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../39751.patch" || true
