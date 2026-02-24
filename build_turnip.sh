@@ -44,15 +44,15 @@ if re.search(pattern_revert, content):
     content = re.sub(pattern_revert, "strcpy(props->deviceName, pdevice->name);", content)
 
 if 'tu_env.debug |= TU_DEBUG_FLUSHALL;' in content:
-    content = content.replace('tu_env.debug |= TU_DEBUG_FLUSHALL;', '// tu_env.debug |= TU_DEBUG_FLUSHALL; /* DISABLED */')
+    content = content.replace('tu_env.debug |= TU_DEBUG_FLUSHALL;', '')
 
 if 'setenv("WRAPPER_VK_VERSION"' not in content:
     content = content.replace(
         "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,",
-        "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,\n   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)\n{\n   setenv(\"WRAPPER_VK_VERSION\", \"1.4.340\", 1);\n"
+        "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,\n   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)\n{\n"
     )
     content = content.replace(
-        "   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)\n{\n   setenv(\"WRAPPER_VK_VERSION\", \"1.4.340\", 1);\n\n   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)",
+        "   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)\n{\n\n   const VkAllocationCallbacks *pAllocator,\n   VkInstance *pInstance)",
         ""
     )
 
@@ -102,8 +102,8 @@ EOF_PYTHON
 compile_mesa() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Turnip-A8xx-MR39751-NoFlush"
-    local output_tag="V98-A8xx-MR39751-NoFlush"
+    local build_name="Turnip-A8xx-Forced-MR39751"
+    local output_tag="V99-A8xx-Forced-MR39751"
 
     echo "Cloning Mesa..."
     cd "$workdir"
@@ -111,14 +111,21 @@ compile_mesa() {
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
 
-    if [ -f "$workdir/../39751.patch" ]; then
-        echo "Applying 39751.patch..."
-        patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../39751.patch" || true
+    # 1º - Aplica o patch Gen8 forçando a aplicação
+    if [ -f "$workdir/../tu_gen8.patch" ]; then
+        echo "Applying tu_gen8.patch (Forced)..."
+        # O || true garante que o script não pare mesmo se houverem rejects
+        patch -p1 --fuzz=4 --force --ignore-whitespace < "$workdir/../tu_gen8.patch" || {
+            echo "AVISO: Houveram rejeições no tu_gen8.patch. Continuando a compilação mesmo assim..."
+        }
     fi
 
-    if [ -f "$workdir/../tu_gen8.patch" ]; then
-        echo "Applying tu_gen8.patch..."
-        patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../tu_gen8.patch" || true
+    # 2º - Aplica o patch MR39751 logo em seguida
+    if [ -f "$workdir/../39751.patch" ]; then
+        echo "Applying 39751.patch..."
+        patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../39751.patch" || {
+            echo "AVISO: Houveram rejeições no 39751.patch. Continuando a compilação..."
+        }
     fi
 
     inject_mods
@@ -188,7 +195,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"Mesa Main + A8xx + MR 39751 + Feats Unlocked + No FlushAll\",
+  \"description\": \"Mesa Main + A8xx (Forced) + MR 39751 + Feats Unlocked + No FlushAll\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
