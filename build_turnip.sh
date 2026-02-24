@@ -170,13 +170,21 @@ compile_mesa() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
     local build_name="Turnip-A8xx-Classic-MR39751"
-    local output_tag="V100-A8xx-Classic-MR39751"
+    local output_tag="V101-A8xx-Reverted39874"
 
     echo "Cloning Mesa..."
     cd "$workdir"
     rm -rf mesa
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
+
+    # REVERT MR 39874 PARA EVITAR CONFLITOS COM SEU PATCH
+    echo "Revertendo MR 39874 (Adreno 830) para limpar caminho para os patches..."
+    curl -L -s "https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39874.diff" -o revert_39874.diff
+    # patch -R aplica o patch "ao contrário", efetivamente revertendo o código
+    patch -R -p1 --fuzz=4 --ignore-whitespace < revert_39874.diff || {
+        echo "AVISO: Falha ao reverter MR 39874 (talvez já revertido ou muito modificado). Continuando..."
+    }
 
     # Aplica o MR39751 PRIMEIRO para garantir que a performance do Timeline Sync seja baseada no Mesa limpo
     if [ -f "$workdir/../39751.patch" ]; then
@@ -261,7 +269,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"A8xx (Classic Patch) + MR39751 + No FlushAll\",
+  \"description\": \"A8xx (Classic Patch) + MR39751 + Reverted 39874\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
