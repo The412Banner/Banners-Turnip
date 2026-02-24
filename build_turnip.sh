@@ -22,22 +22,22 @@ prepare_ndk(){
 }
 
 fix_patch_rejects() {
-    echo "Verificando arquivos e garantindo injeção do A8xx..."
+    echo "Verificando arquivos e garantindo injeção robusta do A8xx..."
     
     cat << 'EOF_PYTHON' > fix_devices.py
 import os
 import re
 
-# 1. Conserta o freedreno_devices.py se o patch rejeitou
 file_path = "src/freedreno/common/freedreno_devices.py"
 if os.path.exists(file_path):
     with open(file_path, 'r') as f:
         content = f.read()
 
-    if "a8xx_gen2_raw_magic_regs =" not in content and "a8xx_gen2_raw_magic_regs" in content:
+    # 1. Garante a existência do a8xx_830
+    if "a8xx_830 =" not in content and "a8xx_830" in content:
+        print("🔧 Auto-Fix: Injetando a8xx_830...")
         fix_code = """
-a8xx_gen2 = GPUProps(
-        reg_size_vec4 = 128,
+a8xx_830 = GPUProps(
         sysmem_vpc_attr_buf_size = 131072,
         sysmem_vpc_pos_buf_size = 65536,
         sysmem_vpc_bv_pos_buf_size = 32768,
@@ -53,29 +53,94 @@ a8xx_gen2 = GPUProps(
         gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
         gmem_per_ccu_depth_cache_size = 256 * 1024,
         has_fs_tex_prefetch = False,
+        disable_gmem = True,
+)
+"""
+        idx = content.find("add_gpus(")
+        if idx != -1:
+            content = content[:idx] + fix_code + "\n" + content[idx:]
+
+    # 2. Garante a existência do a8xx_825
+    if "a8xx_825 =" not in content and "a8xx_825" in content:
+        print("🔧 Auto-Fix: Injetando a8xx_825...")
+        fix_code = """
+a8xx_825 = GPUProps(
+        sysmem_vpc_attr_buf_size = 131072,
+        sysmem_vpc_pos_buf_size = 65536,
+        sysmem_vpc_bv_pos_buf_size = 32768,
+        sysmem_ccu_color_cache_fraction = CCUColorCacheFraction.FULL.value,
+        sysmem_per_ccu_color_cache_size = 128 * 1024,
+        sysmem_ccu_depth_cache_fraction = CCUColorCacheFraction.THREE_QUARTER.value,
+        sysmem_per_ccu_depth_cache_size = 96 * 1024,
+        gmem_vpc_attr_buf_size = 49152,
+        gmem_vpc_pos_buf_size = 24576,
+        gmem_vpc_bv_pos_buf_size = 32768,
+        gmem_ccu_color_cache_fraction = CCUColorCacheFraction.EIGHTH.value,
+        gmem_per_ccu_color_cache_size = 16 * 1024,
+        gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
+        gmem_per_ccu_depth_cache_size = 127 * 1024,
+)
+"""
+        idx = content.find("add_gpus(")
+        if idx != -1:
+            content = content[:idx] + fix_code + "\n" + content[idx:]
+
+    # 3. Garante a existência do a8xx_810
+    if "a8xx_810 =" not in content and "a8xx_810" in content:
+        print("🔧 Auto-Fix: Injetando a8xx_810...")
+        fix_code = """
+a8xx_810 = GPUProps(
+        sysmem_vpc_attr_buf_size = 131072,
+        sysmem_vpc_pos_buf_size = 65536,
+        sysmem_vpc_bv_pos_buf_size = 32768,
+        sysmem_ccu_color_cache_fraction = CCUColorCacheFraction.FULL.value,
+        sysmem_per_ccu_color_cache_size = 32 * 1024,
+        sysmem_ccu_depth_cache_fraction = CCUColorCacheFraction.THREE_QUARTER.value,
+        sysmem_per_ccu_depth_cache_size = 32 * 1024,
+        gmem_vpc_attr_buf_size = 49152,
+        gmem_vpc_pos_buf_size = 24576,
+        gmem_vpc_bv_pos_buf_size = 32768,
+        gmem_ccu_color_cache_fraction = CCUColorCacheFraction.EIGHTH.value,
+        gmem_per_ccu_color_cache_size = 16 * 1024,
+        gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
+        gmem_per_ccu_depth_cache_size = 64 * 1024,
+        has_ray_intersection = False,
+        has_sw_fuse = False,
+        disable_gmem = True,
+)
+"""
+        idx = content.find("add_gpus(")
+        if idx != -1:
+            content = content[:idx] + fix_code + "\n" + content[idx:]
+
+    # 4. Garante a existência do a8xx_gen2
+    if "a8xx_gen2 =" not in content and "a8xx_gen2" in content:
+        print("🔧 Auto-Fix: Injetando a8xx_gen2...")
+        fix_code = """
+a8xx_gen2 = GPUProps(
         has_salu_int_narrowing_quirk = True
 )
+"""
+        idx = content.find("add_gpus(")
+        if idx != -1:
+            content = content[:idx] + fix_code + "\n" + content[idx:]
 
+    # 5. Garante a existência dos registradores
+    if "a8xx_gen2_raw_magic_regs =" not in content and "a8xx_gen2_raw_magic_regs" in content:
+        print("🔧 Auto-Fix: Injetando a8xx_gen2_raw_magic_regs...")
+        fix_code = """
 a8xx_gen2_raw_magic_regs = [
         [A6XXRegs.REG_A8XX_PC_MODE_CNTL,    0x00003f00],
 ]
 """
-        usage_idx = content.find("raw_magic_regs = a8xx_gen2_raw_magic_regs")
-        if usage_idx == -1:
-            usage_idx = content.find("a8xx_gen2_raw_magic_regs")
-            
-        if usage_idx != -1:
-            insert_idx = content.rfind("add_gpus", 0, usage_idx)
-            if insert_idx != -1:
-                insert_idx = content.rfind("\n", 0, insert_idx) + 1
-            else:
-                insert_idx = usage_idx
-            
-            content = content[:insert_idx] + fix_code + "\n" + content[insert_idx:]
-            with open(file_path, 'w') as f:
-                f.write(content)
+        idx = content.find("add_gpus(")
+        if idx != -1:
+            content = content[:idx] + fix_code + "\n" + content[idx:]
 
-# 2. Conserta o KGSL Backend se o UBWC_5 falhou ao aplicar
+    with open(file_path, 'w') as f:
+        f.write(content)
+
+# 6. Conserta o KGSL Backend se o UBWC_5 falhou ao aplicar
 kgsl_file = "src/freedreno/vulkan/tu_knl_kgsl.cc"
 if os.path.exists(kgsl_file):
     with open(kgsl_file, 'r') as f:
@@ -170,7 +235,7 @@ compile_mesa() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
     local build_name="Turnip-A8xx-Classic-MR39751"
-    local output_tag="V101-A8xx-Reverted39874"
+    local output_tag="V101-A8xx-MR39751-Fixed"
 
     echo "Cloning Mesa..."
     cd "$workdir"
@@ -178,15 +243,7 @@ compile_mesa() {
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
 
-    # REVERT MR 39874 PARA EVITAR CONFLITOS COM SEU PATCH
-    echo "Revertendo MR 39874 (Adreno 830) para limpar caminho para os patches..."
-    curl -L -s "https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39874.diff" -o revert_39874.diff
-    # patch -R aplica o patch "ao contrário", efetivamente revertendo o código
-    patch -R -p1 --fuzz=4 --ignore-whitespace < revert_39874.diff || {
-        echo "AVISO: Falha ao reverter MR 39874 (talvez já revertido ou muito modificado). Continuando..."
-    }
-
-    # Aplica o MR39751 PRIMEIRO para garantir que a performance do Timeline Sync seja baseada no Mesa limpo
+    # Aplica o MR39751 PRIMEIRO
     if [ -f "$workdir/../39751.patch" ]; then
         echo "Applying 39751.patch..."
         patch -p1 --fuzz=4 < "$workdir/../39751.patch" || true
@@ -198,7 +255,7 @@ compile_mesa() {
         patch -p1 --fuzz=4 --force < "$workdir/../tu_gen8.patch" || true
     fi
     
-    # Costura o código caso os dois patches tenham trombado
+    # Costura o código blindado corrigindo qualquer falha do patch
     fix_patch_rejects
 
     # Aplica desativação do FlushAll e libera as features
@@ -269,7 +326,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"A8xx (Classic Patch) + MR39751 + Reverted 39874\",
+  \"description\": \"A8xx (Classic Patch) + MR39751 + No FlushAll\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
