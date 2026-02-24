@@ -1,4 +1,4 @@
-name: Build Turnip A8xx MR39751
+name: Build Turnip A8xx 
 
 on:
   workflow_dispatch:
