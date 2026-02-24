@@ -24,8 +24,6 @@ prepare_ndk(){
 fix_patch_rejects() {
     echo "Verificando arquivos quebrados pelos patches e corrigindo..."
     
-    # Este script Python verifica se a variável a8xx_830 está faltando no freedreno_devices.py
-    # e a injeta à força no local correto para evitar o NameError.
     cat << 'EOF_PYTHON' > fix_devices.py
 import os
 import re
@@ -35,10 +33,14 @@ if os.path.exists(file_path):
     with open(file_path, 'r') as f:
         content = f.read()
 
-    # Se usou a variável mas a definição falhou no patch
-    if "a8xx_830 =" not in content and "a8xx_830" in content:
-        print("🔧 Auto-Fix: Injetando definição ausente de a8xx_830...")
+    # Se a variável é usada no arquivo mas não foi definida (falha do patch)
+    if "a8xx_gen2_raw_magic_regs =" not in content and "a8xx_gen2_raw_magic_regs" in content:
+        print("🔧 Auto-Fix: Injetando definições ausentes (a8xx_gen2, a8xx_830 e raw_magic_regs)...")
         fix_code = """
+a8xx_gen2 = GPUProps(
+        has_salu_int_narrowing_quirk = True
+)
+
 a8xx_830 = GPUProps(
         sysmem_vpc_attr_buf_size = 131072,
         sysmem_vpc_pos_buf_size = 65536,
@@ -57,9 +59,15 @@ a8xx_830 = GPUProps(
         has_fs_tex_prefetch = False,
         disable_gmem = True,
 )
+
+a8xx_gen2_raw_magic_regs = [
+        [A6XXRegs.REG_A8XX_PC_MODE_CNTL,    0x00003f00],
+]
 """
-        # Injeta o código forçadamente logo antes da declaração de suporte do chip 830
-        match = re.search(r"add_gpus\(\[\s*GPUId\(chip_id=0x44050000", content)
+        # Acha a primeira ocorrência onde o arquivo TENTA usar o a8xx_gen2_raw_magic_regs
+        # Normalmente isso ocorre dentro de um bloco `add_gpus([...])`.
+        # Vamos inserir o bloco faltando extamente ANTES desse `add_gpus`
+        match = re.search(r"add_gpus\(\[[\s\S]*?a8xx_gen2_raw_magic_regs", content)
         if match:
             idx = match.start()
             content = content[:idx] + fix_code + "\n" + content[idx:]
