@@ -22,35 +22,31 @@ prepare_ndk(){
 }
 
 fix_patch_rejects() {
-    echo "Verificando arquivos e garantindo injeção robusta do A8xx..."
+    echo "Limpando configs oficiais da Mesa e injetando configs CLÁSSICAS do A8xx..."
     
     cat << 'EOF_PYTHON' > fix_devices.py
 import os
+import re
 
 file_path = "src/freedreno/common/freedreno_devices.py"
 if os.path.exists(file_path):
     with open(file_path, 'r') as f:
         content = f.read()
 
-    # Busca segura: encontra a primeira área de GPUs A8XX para injetar as variáveis ANTES dela.
-    # Usar "add_gpus([" com colchete previne quebrar o "def add_gpus("
-    a8xx_idx = content.find("CHIP.A8XX")
-    if a8xx_idx != -1:
-        insert_idx = content.rfind("add_gpus([", 0, a8xx_idx)
-        if insert_idx == -1:
-            insert_idx = a8xx_idx
-    else:
-        insert_idx = len(content)
+    # 1. DELETA as definições oficiais/bugadas da Mesa para evitar conflitos e glitches de SYSMEM
+    content = re.sub(r'a8xx_830\s*=\s*GPUProps\([\s\S]*?\)\n', '', content)
+    content = re.sub(r'a8xx_825\s*=\s*GPUProps\([\s\S]*?\)\n', '', content)
+    content = re.sub(r'a8xx_810\s*=\s*GPUProps\([\s\S]*?\)\n', '', content)
+    content = re.sub(r'a8xx_gen2\s*=\s*GPUProps\([\s\S]*?\)\n', '', content)
+    content = re.sub(r'a8xx_gen2_raw_magic_regs\s*=\s*\[[\s\S]*?\]\n', '', content)
+    content = re.sub(r'a8xx_base_raw_magic_regs\s*=\s*\[[\s\S]*?\]\n', '', content)
 
-    def inject(code):
-        nonlocal content, insert_idx
-        content = content[:insert_idx] + code + "\n" + content[insert_idx:]
-        insert_idx += len(code) + 1
+    # 2. INJETA o código clássico (do tu_gen8.patch original) puro e sem glitches visuais
+    classic_code = """
+a8xx_gen2 = GPUProps(
+        has_salu_int_narrowing_quirk = True
+)
 
-    # 1. Garante a existência do a8xx_830
-    if "a8xx_830 =" not in content:
-        print("🔧 Auto-Fix: Injetando a8xx_830...")
-        inject("""
 a8xx_830 = GPUProps(
         sysmem_vpc_attr_buf_size = 131072,
         sysmem_vpc_pos_buf_size = 65536,
@@ -69,12 +65,7 @@ a8xx_830 = GPUProps(
         has_fs_tex_prefetch = False,
         disable_gmem = True,
 )
-""")
 
-    # 2. Garante a existência do a8xx_825
-    if "a8xx_825 =" not in content:
-        print("🔧 Auto-Fix: Injetando a8xx_825...")
-        inject("""
 a8xx_825 = GPUProps(
         sysmem_vpc_attr_buf_size = 131072,
         sysmem_vpc_pos_buf_size = 65536,
@@ -90,13 +81,9 @@ a8xx_825 = GPUProps(
         gmem_per_ccu_color_cache_size = 16 * 1024,
         gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
         gmem_per_ccu_depth_cache_size = 127 * 1024,
+        disable_gmem = True,
 )
-""")
 
-    # 3. Garante a existência do a8xx_810
-    if "a8xx_810 =" not in content:
-        print("🔧 Auto-Fix: Injetando a8xx_810...")
-        inject("""
 a8xx_810 = GPUProps(
         sysmem_vpc_attr_buf_size = 131072,
         sysmem_vpc_pos_buf_size = 65536,
@@ -116,30 +103,26 @@ a8xx_810 = GPUProps(
         has_sw_fuse = False,
         disable_gmem = True,
 )
-""")
 
-    # 4. Garante a existência do a8xx_gen2
-    if "a8xx_gen2 =" not in content:
-        print("🔧 Auto-Fix: Injetando a8xx_gen2...")
-        inject("""
-a8xx_gen2 = GPUProps(
-        has_salu_int_narrowing_quirk = True
-)
-""")
-
-    # 5. Garante a existência dos registradores
-    if "a8xx_gen2_raw_magic_regs =" not in content:
-        print("🔧 Auto-Fix: Injetando a8xx_gen2_raw_magic_regs...")
-        inject("""
 a8xx_gen2_raw_magic_regs = [
         [A6XXRegs.REG_A8XX_PC_MODE_CNTL,    0x00003f00],
 ]
-""")
+"""
+    # Encontra o local exato da classe A8XX e injeta o bloco Clássico antes
+    a8xx_idx = content.find("CHIP.A8XX")
+    if a8xx_idx != -1:
+        insert_idx = content.rfind("add_gpus([", 0, a8xx_idx)
+        if insert_idx == -1: 
+            insert_idx = a8xx_idx
+        content = content[:insert_idx] + classic_code + "\n" + content[insert_idx:]
+
+    # Protege contra dependências do magic_regs oficial
+    content = content.replace("raw_magic_regs = a8xx_base_raw_magic_regs", "raw_magic_regs = a8xx_gen2_raw_magic_regs")
 
     with open(file_path, 'w') as f:
         f.write(content)
 
-# 6. Conserta o KGSL Backend se o UBWC_5 falhou ao aplicar
+# 3. Conserta o KGSL Backend para o UBWC_5
 kgsl_file = "src/freedreno/vulkan/tu_knl_kgsl.cc"
 if os.path.exists(kgsl_file):
     with open(kgsl_file, 'r') as f:
@@ -165,18 +148,16 @@ dev_file = sys.argv[1]
 with open(dev_file, 'r') as f:
     content = f.read()
 
-# Remove a inclusão de versão
+# Remove a inclusão de versão e aplica correção do nome
 content = content.replace('#include "tu_version.h"', '')
-
-# Correção do nome do device
 pattern_revert = r"char\s+devname\[128\];[\s\S]*?strcat\(devname,[\s\S]*?strcpy\(props->deviceName,\s*devname\);"
 if re.search(pattern_revert, content):
     content = re.sub(pattern_revert, "strcpy(props->deviceName, pdevice->name);", content)
 
-# REMOÇÃO GARANTIDA DO FLUSHALL VIA REGEX (Pega qualquer formatação)
-content = re.sub(r'tu_env\.debug\s*\|=\s*TU_DEBUG_FLUSHALL;', '/* FLUSHALL REMOVED FOR PERF */', content)
+# Remove FlushAll para Performance Máxima
+content = re.sub(r'tu_env\.debug\s*\|=\s*TU_DEBUG_FLUSHALL;', '/* FLUSHALL REMOVED */', content)
 
-# Remove setenv existente se houver para evitar duplicatas
+# Limpa o setenv
 if 'setenv("WRAPPER_VK_VERSION"' not in content:
     content = content.replace(
         "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,",
@@ -233,8 +214,8 @@ EOF_PYTHON
 compile_mesa() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Turnip-A8xx-Classic-MR39751"
-    local output_tag="V102-A8xx-FixSyntax"
+    local build_name="Turnip-A8xx-Ultimate-MR39751"
+    local output_tag="V104-A8xx-Ultimate"
 
     echo "Cloning Mesa..."
     cd "$workdir"
@@ -242,37 +223,23 @@ compile_mesa() {
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
 
-    # REVERT MR 39874 (AGORA PROTEGIDO)
-    echo "Revertendo MR 39874 (Adreno 830) para limpar caminho para os patches..."
-    # Disfarçado de navegador para o GitLab não bloquear
-    curl -sL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" "https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39874.patch" -o revert_39874.patch
-    
-    # Verifica se o arquivo baixado é um patch válido e não lixo (página HTML)
-    if grep -q "From " revert_39874.patch; then
-        echo "Patch de revert baixado com sucesso. Aplicando revert..."
-        patch -R -p1 --fuzz=4 --ignore-whitespace < revert_39874.patch || {
-            echo "AVISO: Falha ao reverter MR 39874 (talvez modificado). Continuando..."
-        }
-    else
-        echo "AVISO: Falha no download do Revert MR 39874. O script Auto-Fix corrigirá os erros a seguir."
-    fi
-
-    # Aplica o MR39751 (Timeline Sync) PRIMEIRO
+    # 1. Aplica o MR39751 (Timeline Sync)
     if [ -f "$workdir/../39751.patch" ]; then
         echo "Applying 39751.patch..."
         patch -p1 --fuzz=4 < "$workdir/../39751.patch" || true
     fi
 
-    # Aplica o patch Clássico A8xx (O primeiro, de 9 partes)
+    # 2. Aplica o patch Clássico (O que renderiza direito, sem glitches)
     if [ -f "$workdir/../tu_gen8.patch" ]; then
         echo "Applying tu_gen8.patch..."
+        # Force continua mesmo se bater na configuração oficial da Mesa
         patch -p1 --fuzz=4 --force < "$workdir/../tu_gen8.patch" || true
     fi
     
-    # Costura o código blindado para variáveis que faltam (A8xx_830, etc)
+    # 3. Costura o código blindado: DESTRÓI as configs oficiais bugadas e PÕE AS SUAS.
     fix_patch_rejects
 
-    # Aplica desativação do FlushAll e libera as features
+    # 4. Aplica desativação do FlushAll e libera features
     inject_mods
 
     mkdir -p subprojects && cd subprojects
@@ -340,7 +307,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"A8xx (Classic Patch) + MR39751 + No FlushAll\",
+  \"description\": \"A8xx (Classic Props) + MR39751 + No FlushAll\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
