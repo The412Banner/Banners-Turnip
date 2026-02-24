@@ -22,25 +22,22 @@ prepare_ndk(){
 }
 
 fix_patch_rejects() {
-    echo "Verificando arquivos quebrados pelos patches e corrigindo..."
+    echo "Verificando arquivos e garantindo injeção do A8xx..."
     
     cat << 'EOF_PYTHON' > fix_devices.py
 import os
+import re
 
+# 1. Conserta o freedreno_devices.py se o patch rejeitou
 file_path = "src/freedreno/common/freedreno_devices.py"
 if os.path.exists(file_path):
     with open(file_path, 'r') as f:
         content = f.read()
 
-    # Se a variável é usada no arquivo mas não foi definida (falha do patch)
     if "a8xx_gen2_raw_magic_regs =" not in content and "a8xx_gen2_raw_magic_regs" in content:
-        print("🔧 Auto-Fix: Injetando definições ausentes (a8xx_gen2, a8xx_830 e raw_magic_regs)...")
         fix_code = """
 a8xx_gen2 = GPUProps(
-        has_salu_int_narrowing_quirk = True
-)
-
-a8xx_830 = GPUProps(
+        reg_size_vec4 = 128,
         sysmem_vpc_attr_buf_size = 131072,
         sysmem_vpc_pos_buf_size = 65536,
         sysmem_vpc_bv_pos_buf_size = 32768,
@@ -56,35 +53,37 @@ a8xx_830 = GPUProps(
         gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
         gmem_per_ccu_depth_cache_size = 256 * 1024,
         has_fs_tex_prefetch = False,
-        disable_gmem = True,
+        has_salu_int_narrowing_quirk = True
 )
 
 a8xx_gen2_raw_magic_regs = [
         [A6XXRegs.REG_A8XX_PC_MODE_CNTL,    0x00003f00],
 ]
 """
-        # Acha onde o "a8xx_gen2_raw_magic_regs" foi chamado/utilizado na lista
         usage_idx = content.find("raw_magic_regs = a8xx_gen2_raw_magic_regs")
         if usage_idx == -1:
             usage_idx = content.find("a8xx_gen2_raw_magic_regs")
             
         if usage_idx != -1:
-            # Procura a função add_gpus imediatamente anterior a esse uso
             insert_idx = content.rfind("add_gpus", 0, usage_idx)
-            
-            # Pega o começo da linha para não quebrar a indentação
             if insert_idx != -1:
                 insert_idx = content.rfind("\n", 0, insert_idx) + 1
             else:
                 insert_idx = usage_idx
             
             content = content[:insert_idx] + fix_code + "\n" + content[insert_idx:]
-            
             with open(file_path, 'w') as f:
                 f.write(content)
-            print("✔️ Auto-Fix aplicado com sucesso de forma inteligente!")
-        else:
-            print("AVISO: Local de uso não encontrado.")
+
+# 2. Conserta o KGSL Backend se o UBWC_5 falhou ao aplicar
+kgsl_file = "src/freedreno/vulkan/tu_knl_kgsl.cc"
+if os.path.exists(kgsl_file):
+    with open(kgsl_file, 'r') as f:
+        kgsl_content = f.read()
+    if "case KGSL_UBWC_4_0:" in kgsl_content and "case 5:" not in kgsl_content:
+        kgsl_content = kgsl_content.replace("case KGSL_UBWC_4_0:", "case KGSL_UBWC_4_0:\n   case 5:\n   case 6:")
+        with open(kgsl_file, 'w') as f:
+            f.write(kgsl_content)
 EOF_PYTHON
 
     python3 fix_devices.py
@@ -92,11 +91,6 @@ EOF_PYTHON
 
 inject_mods() {
     DEV_FILE=$(find src/freedreno/vulkan -name "tu_device.c*" -print -quit)
-
-    if [ -z "$DEV_FILE" ]; then
-        echo "ERRO: Arquivo tu_device não encontrado."
-        exit 1
-    fi
 
     cat << 'EOF_PYTHON' > injector.py
 import re
@@ -107,14 +101,18 @@ dev_file = sys.argv[1]
 with open(dev_file, 'r') as f:
     content = f.read()
 
+# Remove a inclusão de versão
 content = content.replace('#include "tu_version.h"', '')
+
+# Correção do nome do device
 pattern_revert = r"char\s+devname\[128\];[\s\S]*?strcat\(devname,[\s\S]*?strcpy\(props->deviceName,\s*devname\);"
 if re.search(pattern_revert, content):
     content = re.sub(pattern_revert, "strcpy(props->deviceName, pdevice->name);", content)
 
-if 'tu_env.debug |= TU_DEBUG_FLUSHALL;' in content:
-    content = content.replace('tu_env.debug |= TU_DEBUG_FLUSHALL;', '')
+# REMOÇÃO GARANTIDA DO FLUSHALL VIA REGEX (Pega qualquer formatação)
+content = re.sub(r'tu_env\.debug\s*\|=\s*TU_DEBUG_FLUSHALL;', '/* FLUSHALL REMOVED FOR PERF */', content)
 
+# Remove setenv existente se houver para evitar duplicatas
 if 'setenv("WRAPPER_VK_VERSION"' not in content:
     content = content.replace(
         "VkResult\ntu_CreateInstance(const VkInstanceCreateInfo *pCreateInfo,",
@@ -129,28 +127,28 @@ features_to_enable = [
     "storageBuffer16BitAccess", "uniformAndStorageBuffer16BitAccess", "storagePushConstant16",
     "storageInputOutput16", "multiview", "multiviewGeometryShader", "multiviewTessellationShader",
     "variablePointersStorageBuffer", "variablePointers", "protectedMemory", "samplerYcbcrConversion",
-    "shaderDrawParameters",
-    "samplerMirrorClampToEdge", "drawIndirectCount", "storageBuffer8BitAccess", "uniformAndStorageBuffer8BitAccess",
-    "storagePushConstant8", "shaderBufferInt64Atomics", "shaderSharedInt64Atomics", "shaderFloat16",
-    "shaderInt8", "descriptorIndexing", "shaderInputAttachmentArrayDynamicIndexing",
-    "shaderUniformTexelBufferArrayDynamicIndexing", "shaderStorageTexelBufferArrayDynamicIndexing",
-    "shaderUniformBufferArrayNonUniformIndexing", "shaderSampledImageArrayNonUniformIndexing",
-    "shaderStorageBufferArrayNonUniformIndexing", "shaderStorageImageArrayNonUniformIndexing",
-    "shaderInputAttachmentArrayNonUniformIndexing", "shaderUniformTexelBufferArrayNonUniformIndexing",
-    "shaderStorageTexelBufferArrayNonUniformIndexing", "descriptorBindingUniformBufferUpdateAfterBind",
-    "descriptorBindingSampledImageUpdateAfterBind", "descriptorBindingStorageImageUpdateAfterBind",
-    "descriptorBindingStorageBufferUpdateAfterBind", "descriptorBindingUniformTexelBufferUpdateAfterBind",
-    "descriptorBindingStorageTexelBufferUpdateAfterBind", "descriptorBindingUpdateUnusedWhilePending",
-    "descriptorBindingPartiallyBound", "descriptorBindingVariableDescriptorCount", "runtimeDescriptorArray",
-    "samplerFilterMinmax", "scalarBlockLayout", "imagelessFramebuffer", "uniformBufferStandardLayout",
-    "shaderSubgroupExtendedTypes", "separateDepthStencilLayouts", "hostQueryReset", "timelineSemaphore",
-    "bufferDeviceAddress", "bufferDeviceAddressCaptureReplay", "bufferDeviceAddressMultiDevice",
-    "vulkanMemoryModel", "vulkanMemoryModelDeviceScope", "vulkanMemoryModelAvailabilityVisibilityChains",
-    "shaderOutputViewportIndex", "shaderOutputLayer", "subgroupBroadcastDynamicId",
-    "robustImageAccess", "inlineUniformBlock", "descriptorBindingInlineUniformBlockUpdateAfterBind",
-    "pipelineCreationCacheControl", "privateData", "shaderDemoteToHelperInvocation", "shaderTerminateInvocation",
-    "subgroupSizeControl", "computeFullSubgroups", "synchronization2", "textureCompressionASTC_HDR",
-    "shaderZeroInitializeWorkgroupMemory", "dynamicRendering", "shaderIntegerDotProduct", "maintenance4"
+    "shaderDrawParameters", "samplerMirrorClampToEdge", "drawIndirectCount", "storageBuffer8BitAccess", 
+    "uniformAndStorageBuffer8BitAccess", "storagePushConstant8", "shaderBufferInt64Atomics", 
+    "shaderSharedInt64Atomics", "shaderFloat16", "shaderInt8", "descriptorIndexing", 
+    "shaderInputAttachmentArrayDynamicIndexing", "shaderUniformTexelBufferArrayDynamicIndexing", 
+    "shaderStorageTexelBufferArrayDynamicIndexing", "shaderUniformBufferArrayNonUniformIndexing", 
+    "shaderSampledImageArrayNonUniformIndexing", "shaderStorageBufferArrayNonUniformIndexing", 
+    "shaderStorageImageArrayNonUniformIndexing", "shaderInputAttachmentArrayNonUniformIndexing", 
+    "shaderUniformTexelBufferArrayNonUniformIndexing", "shaderStorageTexelBufferArrayNonUniformIndexing", 
+    "descriptorBindingUniformBufferUpdateAfterBind", "descriptorBindingSampledImageUpdateAfterBind", 
+    "descriptorBindingStorageImageUpdateAfterBind", "descriptorBindingStorageBufferUpdateAfterBind", 
+    "descriptorBindingUniformTexelBufferUpdateAfterBind", "descriptorBindingStorageTexelBufferUpdateAfterBind", 
+    "descriptorBindingUpdateUnusedWhilePending", "descriptorBindingPartiallyBound", 
+    "descriptorBindingVariableDescriptorCount", "runtimeDescriptorArray", "samplerFilterMinmax", 
+    "scalarBlockLayout", "imagelessFramebuffer", "uniformBufferStandardLayout", "shaderSubgroupExtendedTypes", 
+    "separateDepthStencilLayouts", "hostQueryReset", "timelineSemaphore", "bufferDeviceAddress", 
+    "bufferDeviceAddressCaptureReplay", "bufferDeviceAddressMultiDevice", "vulkanMemoryModel", 
+    "vulkanMemoryModelDeviceScope", "vulkanMemoryModelAvailabilityVisibilityChains", "shaderOutputViewportIndex", 
+    "shaderOutputLayer", "subgroupBroadcastDynamicId", "robustImageAccess", "inlineUniformBlock", 
+    "descriptorBindingInlineUniformBlockUpdateAfterBind", "pipelineCreationCacheControl", "privateData", 
+    "shaderDemoteToHelperInvocation", "shaderTerminateInvocation", "subgroupSizeControl", "computeFullSubgroups", 
+    "synchronization2", "textureCompressionASTC_HDR", "shaderZeroInitializeWorkgroupMemory", "dynamicRendering", 
+    "shaderIntegerDotProduct", "maintenance4"
 ]
 
 unlock_code = "\n"
@@ -171,8 +169,8 @@ EOF_PYTHON
 compile_mesa() {
     local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
     local branch="main"
-    local build_name="Turnip-A8xx-Forced-MR39751"
-    local output_tag="V99-A8xx-Forced-MR39751"
+    local build_name="Turnip-A8xx-Classic-MR39751"
+    local output_tag="V100-A8xx-Classic-MR39751"
 
     echo "Cloning Mesa..."
     cd "$workdir"
@@ -180,21 +178,22 @@ compile_mesa() {
     git clone --depth 100 -b "$branch" "$repo_url" mesa
     cd mesa
 
-    
-    if [ -f "$workdir/../tu_gen8.patch" ]; then
-        echo "Applying tu_gen8.patch (Forced)..."
-        patch -p1 --fuzz=4 --force --ignore-whitespace < "$workdir/../tu_gen8.patch" || true
-    fi
-    
-    
-    fix_patch_rejects
-
-    # 3º - Aplica o patch MR39751
+    # Aplica o MR39751 PRIMEIRO para garantir que a performance do Timeline Sync seja baseada no Mesa limpo
     if [ -f "$workdir/../39751.patch" ]; then
         echo "Applying 39751.patch..."
-        patch -p1 --fuzz=4 --ignore-whitespace < "$workdir/../39751.patch" || true
+        patch -p1 --fuzz=4 < "$workdir/../39751.patch" || true
     fi
 
+    # Aplica o patch Clássico (Aquele que tem 9 partes e renderiza direito)
+    if [ -f "$workdir/../tu_gen8.patch" ]; then
+        echo "Applying tu_gen8.patch..."
+        patch -p1 --fuzz=4 --force < "$workdir/../tu_gen8.patch" || true
+    fi
+    
+    # Costura o código caso os dois patches tenham trombado
+    fix_patch_rejects
+
+    # Aplica desativação do FlushAll e libera as features
     inject_mods
 
     mkdir -p subprojects && cd subprojects
@@ -262,7 +261,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"$build_name\",
-  \"description\": \"Mesa Main + A8xx (Auto-Fixed) + MR 39751 + Feats Unlocked + No FlushAll\",
+  \"description\": \"A8xx (Classic Patch) + MR39751 + No FlushAll\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
