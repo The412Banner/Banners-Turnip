@@ -22,31 +22,20 @@ prepare_ndk(){
 }
 
 build_driver() {
-    local repo_url=$1
-    local branch=$2
-    local patch_file=$3
-    local output_name=$4
-    local mesa_dir="$workdir/mesa_$output_name"
-    local build_dir="$mesa_dir/build"
+    local patch_mode=$1
+    local output_name=$2
+    local build_dir="$workdir/mesa/build_$patch_mode"
 
-    cd "$workdir"
-    rm -rf "$mesa_dir"
-    git clone --depth 100 -b "$branch" "$repo_url" "$mesa_dir"
-    cd "$mesa_dir"
+    cd "$workdir/mesa"
 
     sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
+    sed -i 's/hnd->handle/(void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
 
-    if [ -n "$patch_file" ]; then
-        if [ -f "$workdir/../$patch_file" ]; then
-            patch -p1 --fuzz=4 --force < "$workdir/../$patch_file" || true
+    if [ "$patch_mode" == "patched" ]; then
+        if [ -f "$workdir/../tu_gen8.patch" ]; then
+            patch -p1 --fuzz=4 --force < "$workdir/../tu_gen8.patch" || true
         fi
     fi
-
-    mkdir -p subprojects && cd subprojects
-    rm -rf spirv-tools spirv-headers
-    git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
-    git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
-    cd ..
 
     local ndk_bin="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
     local ndk_sys="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
@@ -71,8 +60,8 @@ c_link_args = ['-static-libstdc++']
 cpp_link_args = ['-static-libstdc++']
 EOF
     
-    export CFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations"
-    export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations"
+    export CFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
+    export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
 
     meson setup "$build_dir" --cross-file android-cross.txt \
         -Dbuildtype=release \
@@ -104,7 +93,7 @@ EOF
     echo "{
   \"schemaVersion\": 1,
   \"name\": \"Turnip-$output_name\",
-  \"description\": \"$output_name\",
+  \"description\": \"Mesa zdobersek work/tu_gen8 ($output_name)\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
@@ -116,8 +105,30 @@ EOF
     zip -9 "$workdir/Turnip-${output_name}.zip" vulkan.ad07XX.so meta.json
 }
 
+compile_mesa() {
+    local repo_url="https://gitlab.freedesktop.org/zdobersek/mesa-fork.git"
+    local branch="work/tu_gen8"
+
+    cd "$workdir"
+    rm -rf mesa
+    
+    git clone --depth 100 -b "$branch" "$repo_url" mesa
+    cd mesa
+
+    mkdir -p subprojects && cd subprojects
+    rm -rf spirv-tools spirv-headers
+    git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
+    git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
+    cd ..
+
+    build_driver "unpatched" "Zdobersek-Unpatched"
+    
+    git reset --hard HEAD
+    git clean -fd
+
+    build_driver "patched" "Zdobersek-Patched"
+}
+
 check_deps
 prepare_ndk
-
-build_driver "https://gitlab.freedesktop.org/zdobersek/mesa-fork.git" "work/tu_gen8" "" "Zdobersek-Pure"
-build_driver "https://gitlab.freedesktop.org/mesa/mesa.git" "main" "tu_gen8.patch" "Main-Gen8-Patched"
+compile_mesa
