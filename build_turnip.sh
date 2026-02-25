@@ -15,7 +15,6 @@ srcfolder="mesa"
 
 clear
 
-
 run_all(){
 	echo "====== Begin building TU V$BUILD_VERSION! ======"
 	check_deps
@@ -52,20 +51,26 @@ prepare_workdir(){
 	echo "Downloading android-ndk from google server ..." $'\n'
 		curl https://dl.google.com/android/repository/"$ndkver"-linux.zip --output "$ndkver"-linux.zip &> /dev/null
 	echo "Exracting android-ndk ..." $'\n'
-		unzip "$ndkver"-linux.zip &> /dev/null
+		unzip -q "$ndkver"-linux.zip &> /dev/null
 
 	echo "Downloading mesa source ..." $'\n'
 		git clone $mesasrc --depth=1 -b main $srcfolder
 		cd $srcfolder
 
+	echo "Downloading and applying extra commits from zdobersek ..." $'\n'
+		curl -sL "https://gitlab.freedesktop.org/zdobersek/mesa-fork/-/commit/5fdab63975dbe4a39a11676c340be1c3fe7679e2.patch" -o zdobersek_1.patch
+		curl -sL "https://gitlab.freedesktop.org/zdobersek/mesa-fork/-/commit/f8478f2a96bb4757186d4982c0eb9294587567cf.patch" -o zdobersek_2.patch
+		
+		# Usando patch -p1 para maior flexibilidade caso o upstream mude linhas de lugar
+		patch -p1 --fuzz=4 < zdobersek_1.patch || echo -e "$red Aviso: Falha parcial no commit 1 $nocolor"
+		patch -p1 --fuzz=4 < zdobersek_2.patch || echo -e "$red Aviso: Falha parcial no commit 2 $nocolor"
 }
-
 
 build_lib_for_android(){
 	echo "==== Building Mesa on $1 branch ===="
 	#git reset --hard
 	echo "Applying patches... ($2)"
-    	wget https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head/$2
+    	wget -q https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head/$2
 		if ! git apply --check $2; then
 			echo "Failed to apply $2!"
 			exit 1
