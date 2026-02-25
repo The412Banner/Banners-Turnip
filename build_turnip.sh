@@ -13,8 +13,6 @@ sdkver="34"
 mesasrc="https://gitlab.freedesktop.org/mesa/mesa"
 srcfolder="mesa"
 
-clear
-
 run_all(){
 	echo "====== Begin building TU V$BUILD_VERSION! ======"
 	check_deps
@@ -61,7 +59,6 @@ prepare_workdir(){
 		curl -sL "https://gitlab.freedesktop.org/zdobersek/mesa-fork/-/commit/5fdab63975dbe4a39a11676c340be1c3fe7679e2.patch" -o zdobersek_1.patch
 		curl -sL "https://gitlab.freedesktop.org/zdobersek/mesa-fork/-/commit/f8478f2a96bb4757186d4982c0eb9294587567cf.patch" -o zdobersek_2.patch
 		
-		# Usando patch -p1 para maior flexibilidade caso o upstream mude linhas de lugar
 		patch -p1 --fuzz=4 < zdobersek_1.patch || echo -e "$red Aviso: Falha parcial no commit 1 $nocolor"
 		patch -p1 --fuzz=4 < zdobersek_2.patch || echo -e "$red Aviso: Falha parcial no commit 2 $nocolor"
 }
