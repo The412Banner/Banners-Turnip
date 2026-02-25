@@ -1,6 +1,5 @@
 #!/bin/bash -e
 
-#Define variables
 green='\033[0;32m'
 red='\033[0;31m'
 nocolor='\033[0m'
@@ -10,15 +9,14 @@ magiskdir="$workdir/turnip_module"
 ndkver="android-ndk-r29"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 sdkver="34"
-mesasrc="https://gitlab.freedesktop.org/mesa/mesa"
+mesasrc="https://github.com/whitebelyash/mesa-tu8"
 srcfolder="mesa"
 
 run_all(){
 	echo "====== Begin building TU V$BUILD_VERSION! ======"
 	check_deps
 	prepare_workdir
-	build_lib_for_android main-flushall tu8_kgsl.patch
-	build_lib_for_android main-noflushall 0001-HACK-tu-disable-force-enabled-flushall.patch
+	build_lib_for_android gen8
 }
 
 check_deps(){
@@ -39,7 +37,7 @@ check_deps(){
 		fi
 
 	echo "Installing python Mako dependency (if missing) ..." $'\n'
-		pip install mako &> /dev/null
+		pip install mako &> /dev/null || true
 }
 
 prepare_workdir(){
@@ -47,33 +45,32 @@ prepare_workdir(){
 		mkdir -p "$workdir" && cd "$_"
 
 	echo "Downloading android-ndk from google server ..." $'\n'
-		curl https://dl.google.com/android/repository/"$ndkver"-linux.zip --output "$ndkver"-linux.zip &> /dev/null
+		curl -sL https://dl.google.com/android/repository/"$ndkver"-linux.zip --output "$ndkver"-linux.zip &> /dev/null
 	echo "Exracting android-ndk ..." $'\n'
 		unzip -q "$ndkver"-linux.zip &> /dev/null
 
 	echo "Downloading mesa source ..." $'\n'
-		git clone $mesasrc --depth=1 -b main $srcfolder
+		git clone $mesasrc --depth=1 --no-single-branch $srcfolder
 		cd $srcfolder
-
-	echo "Downloading and applying extra commits from zdobersek ..." $'\n'
-		curl -sL "https://gitlab.freedesktop.org/zdobersek/mesa-fork/-/commit/5fdab63975dbe4a39a11676c340be1c3fe7679e2.patch" -o zdobersek_1.patch
-		curl -sL "https://gitlab.freedesktop.org/zdobersek/mesa-fork/-/commit/f8478f2a96bb4757186d4982c0eb9294587567cf.patch" -o zdobersek_2.patch
-		
-		patch -p1 --fuzz=4 < zdobersek_1.patch || echo -e "$red Aviso: Falha parcial no commit 1 $nocolor"
-		patch -p1 --fuzz=4 < zdobersek_2.patch || echo -e "$red Aviso: Falha parcial no commit 2 $nocolor"
+	echo "Pushing TU_VERSION..."
+		echo "#define TUGEN8_DRV_VERSION \"v$BUILD_VERSION\"" > ./src/freedreno/vulkan/tu_version.h
 }
 
 build_lib_for_android(){
 	echo "==== Building Mesa on $1 branch ===="
-	#git reset --hard
-	echo "Applying patches... ($2)"
-    	wget -q https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head/$2
-		if ! git apply --check $2; then
-			echo "Failed to apply $2!"
-			exit 1
-		fi
-    	git apply $2
+	git checkout origin/$1
+
+	echo "Downloading and applying extra commits from zdobersek ..." $'\n'
+	curl -sL "https://gitlab.freedesktop.org/zdobersek/mesa-fork/-/commit/5fdab63975dbe4a39a11676c340be1c3fe7679e2.patch" -o zdobersek_1.patch
+	curl -sL "https://gitlab.freedesktop.org/zdobersek/mesa-fork/-/commit/f8478f2a96bb4757186d4982c0eb9294587567cf.patch" -o zdobersek_2.patch
 	
+	patch -p1 --fuzz=4 < zdobersek_1.patch || true
+	patch -p1 --fuzz=4 < zdobersek_2.patch || true
+
+	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
+	sed -i 's/, hnd->handle/, (void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
+	sed -i 's/native_buffer->handle->/((const native_handle_t \*)native_buffer->handle)->/g' src/vulkan/runtime/vk_android.c || true
+
 	mkdir -p "$workdir/bin"
 	ln -sf "$ndk/clang" "$workdir/bin/cc"
 	ln -sf "$ndk/clang++" "$workdir/bin/c++"
@@ -86,7 +83,8 @@ build_lib_for_android(){
 	export OBJDUMP=llvm-objdump
 	export OBJCOPY=llvm-objcopy
 	export LDFLAGS="-fuse-ld=lld"
-	GITHASH=$(git rev-parse --short HEAD)
+	export CFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
+	export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
 
 	echo "Generating build files ..." $'\n'
 		cat <<EOF >"android-aarch64.txt"
@@ -125,6 +123,8 @@ EOF
 			--native-file "native.txt" \
 			--prefix /tmp/turnip-$1 \
 			-Dbuildtype=release \
+			-Db_lto=true \
+   			-Db_lto_mode=thin \
 			-Dstrip=true \
 			-Dplatforms=android \
 			-Dvideo-codecs= \
@@ -150,20 +150,22 @@ EOF
 	cat <<EOF >"meta.json"
 {
   "schemaVersion": 1,
-  "name": "Mesa Turnip v$BUILD_VERSION-$GITHASH",
-  "description": "Mesa-git Freedreno/Turnip adapted for AdrenoTools (git $GITHASH)",
-  "author": "StevenMzx",
+  "name": "A8XX MR v$BUILD_VERSION",
+  "description": "A8xx support MR with A830/A825/A810/A829/UBWC-on-KGSL hacks. Built from $1 branch",
+  "author": "StevenMX",
   "packageVersion": "1",
   "vendor": "Mesa",
-  "driverVersion": "Vulkan 1.4.344",
+  "driverVersion": "Vulkan 1.4.335",
   "minApi": 28,
   "libraryName": "libvulkan_freedreno.so"
 }
 EOF
-zip /tmp/mesa-turnip-$1-V$BUILD_VERSION.zip libvulkan_freedreno.so meta.json
+zip -q /tmp/a8xx-$1-V$BUILD_VERSION.zip libvulkan_freedreno.so meta.json
 cd -
-if ! [ -a /tmp/mesa-turnip-$1-V$BUILD_VERSION.zip ]; then
+if ! [ -a /tmp/a8xx-$1-V$BUILD_VERSION.zip ]; then
 	echo -e "$red Failed to pack the archive! $nocolor"
+else
+	cp /tmp/a8xx-$1-V$BUILD_VERSION.zip "$workdir/"
 fi
 }
 
