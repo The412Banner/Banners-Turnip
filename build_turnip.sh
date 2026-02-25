@@ -7,7 +7,7 @@ ndkver="android-ndk-r28"
 
 check_deps(){
 	for dep in $deps; do
-		if ! command -v $dep >/dev/null 2>&1; then echo "Missing: $dep"; exit 1; fi
+		if ! command -v $dep >/dev/null 2>&1; then exit 1; fi
 	done
 	pip install meson mako --break-system-packages &> /dev/null || true
 }
@@ -21,33 +21,18 @@ prepare_ndk(){
     export ANDROID_NDK_HOME="$workdir/$ndkver"
 }
 
-compile_mesa() {
-    local repo_url="https://gitlab.freedesktop.org/mesa/mesa.git"
-    local branch="main"
-    local build_name="Turnip-MR39751-Pure"
-    local output_tag="V106-MR39751-Pure"
+build_driver() {
+    local patch_mode=$1
+    local output_name=$2
+    local build_dir="$workdir/mesa/build_$patch_mode"
 
-    cd "$workdir"
-    rm -rf mesa
-    
-    echo "Baixando o MR 39751 diretamente do GitLab..."
-    curl -sL "https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/39751.patch" -o 39751.patch
+    cd "$workdir/mesa"
 
-    echo "Clonando Mesa Main..."
-    git clone --depth 100 -b "$branch" "$repo_url" mesa
-    cd mesa
-
-    echo "Aplicando MR 39751..."
-    patch -p1 --fuzz=4 < ../39751.patch || true
-
-    mkdir -p subprojects && cd subprojects
-    rm -rf spirv-tools spirv-headers
-    git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
-    git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
-    cd ..
-
-    local build_dir="$workdir/mesa/build"
-    rm -rf "$build_dir"
+    if [ "$patch_mode" == "patched" ]; then
+        if [ -f "$workdir/../tu_gen8.patch" ]; then
+            patch -p1 --fuzz=4 --force < "$workdir/../tu_gen8.patch" || true
+        fi
+    fi
 
     local ndk_bin="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
     local ndk_sys="$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
@@ -94,9 +79,9 @@ EOF
     ninja -C "$build_dir"
 
     local lib="$build_dir/src/freedreno/vulkan/libvulkan_freedreno.so"
-    if [ ! -f "$lib" ]; then echo "Build Failed"; exit 1; fi
+    if [ ! -f "$lib" ]; then exit 1; fi
     
-    local pkg_dir="$workdir/pkg_$output_tag"
+    local pkg_dir="$workdir/pkg_$output_name"
     mkdir -p "$pkg_dir"
     cp "$lib" "$pkg_dir/vulkan.ad07XX.so"
     cd "$pkg_dir"
@@ -104,18 +89,41 @@ EOF
     
     echo "{
   \"schemaVersion\": 1,
-  \"name\": \"$build_name\",
-  \"description\": \"Mesa Main + MR 39751 (Pure)\",
+  \"name\": \"Turnip-$output_name\",
+  \"description\": \"Mesa zdobersek work/tu_gen8 ($output_name)\",
   \"author\": \"StevenMX\",
   \"packageVersion\": \"1\",
   \"vendor\": \"Mesa\",
-  \"driverVersion\": \"$output_tag\",
+  \"driverVersion\": \"$output_name\",
   \"minApi\": 28,
   \"libraryName\": \"vulkan.ad07XX.so\"
 }" > meta.json
     
-    zip -9 "$workdir/Turnip-${output_tag}.zip" vulkan.ad07XX.so meta.json
-    echo "Done: Turnip-${output_tag}.zip"
+    zip -9 "$workdir/Turnip-${output_name}.zip" vulkan.ad07XX.so meta.json
+}
+
+compile_mesa() {
+    local repo_url="https://gitlab.freedesktop.org/zdobersek/mesa-fork.git"
+    local branch="work/tu_gen8"
+
+    cd "$workdir"
+    rm -rf mesa
+    
+    git clone --depth 100 -b "$branch" "$repo_url" mesa
+    cd mesa
+
+    mkdir -p subprojects && cd subprojects
+    rm -rf spirv-tools spirv-headers
+    git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Tools.git spirv-tools
+    git clone --depth=1 https://github.com/KhronosGroup/SPIRV-Headers.git spirv-headers
+    cd ..
+
+    build_driver "unpatched" "Zdobersek-Unpatched"
+    
+    git reset --hard HEAD
+    git clean -fd
+
+    build_driver "patched" "Zdobersek-Patched"
 }
 
 check_deps
