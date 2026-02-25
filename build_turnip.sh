@@ -28,6 +28,8 @@ build_driver() {
 
     cd "$workdir/mesa"
 
+    sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
+
     if [ "$patch_mode" == "patched" ]; then
         if [ -f "$workdir/../tu_gen8.patch" ]; then
             patch -p1 --fuzz=4 --force < "$workdir/../tu_gen8.patch" || true
