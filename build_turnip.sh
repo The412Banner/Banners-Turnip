@@ -36,11 +36,12 @@ build_driver() {
 
     sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
     sed -i 's/, hnd->handle/, (void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
-    sed -i 's/native_buffer->handle->/((native_handle_t \*)native_buffer->handle)->/g' src/vulkan/runtime/vk_android.c || true
 
     if [ -n "$patch_file" ]; then
         if [ -f "$workdir/../$patch_file" ]; then
             patch -p1 --fuzz=4 --force < "$workdir/../$patch_file" || true
+            sed -i '/case 5:/d' src/freedreno/vulkan/tu_knl_kgsl.cc || true
+            sed -i '/case 6:/d' src/freedreno/vulkan/tu_knl_kgsl.cc || true
         fi
     fi
 
