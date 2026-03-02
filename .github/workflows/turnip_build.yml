@@ -1,4 +1,4 @@
-name: Build Turnip 
+name: Build Turnip
 
 on:
   workflow_dispatch:
@@ -17,12 +17,13 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip
           pip3 install --break-system-packages meson mako
 
       - name: Build Drivers
         run: |
           chmod +x build_turnip.sh
+          export BUILD_VERSION="${{ github.run_number }}"
           ./build_turnip.sh
 
       - name: Upload Artifacts
