@@ -152,12 +152,12 @@ EOF
 	cat <<EOF >"meta.json"
 {
   "schemaVersion": 1,
-  "name": "Mesa Turnip v$BUILD_VERSION-$GITHASH",
+  "name": "Mesa Turnip Gen8 V26",
   "description": "Mesa-git Freedreno/Turnip adapted for AdrenoTools by StevenMX (git $GITHASH)",
   "author": "StevenMX",
   "packageVersion": "1",
   "vendor": "Mesa",
-  "driverVersion": "Vulkan 1.4.335",
+  "driverVersion": "Vulkan 1.4.344",
   "minApi": 28,
   "libraryName": "libvulkan_freedreno.so"
 }
