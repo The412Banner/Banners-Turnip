@@ -15,7 +15,7 @@ run_all(){
 	echo -e "${green}====== Begin building TU V${BUILD_VERSION}! ======${nocolor}"
 	check_deps
 	prepare_workdir
-	# Chama a build usando o novo patch
+
 	build_lib_for_android main tu8_kgsl_26.patch
 }
 
