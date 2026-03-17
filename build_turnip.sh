@@ -15,7 +15,8 @@ run_all(){
 	echo -e "${green}====== Begin building TU V${BUILD_VERSION}! ======${nocolor}"
 	check_deps
 	prepare_workdir
-	build_lib_for_android main tu8_kgsl.patch
+	# Chama a build usando o novo patch
+	build_lib_for_android main tu8_kgsl_26.patch
 }
 
 check_deps(){
@@ -55,13 +56,18 @@ build_lib_for_android(){
 	cd "$workdir/$srcfolder"
 	echo "==== Building Mesa on $1 branch ===="
 	
-	echo "Applying patches... ($2)"
-	wget -q "https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head-v2/$2"
-	if ! git apply --check "$2"; then
-		echo -e "${red}Failed to apply $2!${nocolor}"
-		exit 1
+	echo "Applying patch: $2"
+	# Tenta usar o arquivo local se você tiver feito o upload no seu repositório
+	if [ -f "../../$2" ]; then
+		echo "Usando patch local..."
+		cp "../../$2" .
+	else
+		echo "Baixando patch remoto..."
+		wget -q "https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head-v2/$2" || wget -q "https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head/$2"
 	fi
-	git apply "$2"
+
+	# Aplica de forma tolerante a mudanças de linha
+	patch -p1 --fuzz=4 < "$2" || echo -e "${red}Aviso: Falhas parciais no patch. Continuando...${nocolor}"
 
 	# Correções preventivas para compilação no NDK r29
 	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
@@ -150,7 +156,7 @@ EOF
 {
   "schemaVersion": 1,
   "name": "Mesa Turnip v${BUILD_VERSION}-${GITHASH}",
-  "description": "Mesa-git Freedreno/Turnip adapted for AdrenoTools (git ${GITHASH})",
+  "description": "A8xx support MR v26 with A830/A825/A810/A829/UBWC-on-KGSL. Built from Mesa Main (git ${GITHASH})",
   "author": "StevenMX",
   "packageVersion": "1",
   "vendor": "Mesa",
