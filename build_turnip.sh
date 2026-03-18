@@ -77,7 +77,7 @@ build_lib_for_android(){
 	export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
 	
 	GITHASH=$(git rev-parse --short HEAD)
-	MESA_VERSION=$(cat VERSION 2>/dev/null | tr -d '[:space:]' || echo "unknown")
+	MESA_VERSION=$(cat VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
 	BUILD_DATE=$(date +%Y%m%d)
 	export MESA_VERSION BUILD_DATE
 
