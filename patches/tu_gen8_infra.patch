@@ -1,0 +1,150 @@
+From 7e0ab82c9a70689f015c7f222c7348704c9475f9 Mon Sep 17 00:00:00 2001
+From: Rob Clark <rob.clark@oss.qualcomm.com>
+Date: Tue, 13 Jan 2026 10:58:51 -0800
+Subject: [PATCH 1/8] WIP: tu/kgsl: Add UBWC_5 and UBWC_6 support
+
+The #defines seem to map 1:1, so we can add support even without an
+updated kgsl uabi header.
+
+Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index 4af568298d9..c261bf3a1e2 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -1849,6 +1849,8 @@ tu_knl_kgsl_load(struct tu_instance *instance, int fd)
+       device->ubwc_config.macrotile_mode = FDL_MACROTILE_4_CHANNEL;
+       break;
+    case KGSL_UBWC_4_0:
++   case 5:
++   case 6:
+       device->ubwc_config.bank_swizzle_levels = 0x6;
+       device->ubwc_config.macrotile_mode = FDL_MACROTILE_8_CHANNEL;
+       break;
+-- 
+2.53.0
+
+
+From 8caf3fa833298b248dbefc1537c93588991d4caa Mon Sep 17 00:00:00 2001
+From: whitebelyash <whbexiumwork@gmail.com>
+Date: Fri, 16 Jan 2026 22:41:23 +0400
+Subject: [PATCH 2/8] HACK: u_gralloc: always use ubwc detection path
+
+u_gralloc checks if the current buffer was allocated by the Qualcomm vendor gralloc by comparing 'gmsm' magic with the buffer data. Since newer gralloc versions this way isn't working anymore, causing the condition to never success - essentially skipping setting proper DRM format modifier. This caused huge distorted picture on the screen because the allocated buffer never got a proper modifier as it should have
+
+Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
+---
+ src/util/u_gralloc/u_gralloc_fallback.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/util/u_gralloc/u_gralloc_fallback.c b/src/util/u_gralloc/u_gralloc_fallback.c
+index 44fb32d8cfd..bb6459c2e29 100644
+--- a/src/util/u_gralloc/u_gralloc_fallback.c
++++ b/src/util/u_gralloc/u_gralloc_fallback.c
+@@ -148,12 +148,16 @@ fallback_gralloc_get_buffer_info(struct u_gralloc *gralloc,
+    out->strides[0] = stride;
+ 
+ #ifdef HAS_FREEDRENO
+-   uint32_t gmsm = ('g' << 24) | ('m' << 16) | ('s' << 8) | 'm';
++  /* uint32_t gmsm = ('g' << 24) | ('m' << 16) | ('s' << 8) | 'm';
+    if (hnd->handle->numInts >= 2 && hnd->handle->data[hnd->handle->numFds] == gmsm) {
+-      /* This UBWC flag was introduced in a5xx. */
+-      bool ubwc = hnd->handle->data[hnd->handle->numFds + 1] & 0x08000000;
+-      out->modifier = ubwc ? DRM_FORMAT_MOD_QCOM_COMPRESSED : DRM_FORMAT_MOD_LINEAR;
++
+    }
++   */
++   
++   /* TODO: Actually find a way to detect a Qualcomm vendor allocated buffer */
++   /* This UBWC flag was introduced in a5xx. */
++   bool ubwc = hnd->handle->data[hnd->handle->numFds + 1] & 0x08000000;
++   out->modifier = ubwc ? DRM_FORMAT_MOD_QCOM_COMPRESSED : DRM_FORMAT_MOD_LINEAR;
+ #endif
+ 
+    return 0;
+-- 
+2.53.0
+
+
+From 1b0b1a1046fc62c6c7ddebe910898739bb82a2ab Mon Sep 17 00:00:00 2001
+From: whitebelyash <whbexiumwork@gmail.com>
+Date: Fri, 16 Jan 2026 22:55:20 +0400
+Subject: [PATCH 3/8] tu/freedreno: add disable_gmem GPU property
+
+Disables GMEM usage completely, effectively same thing as TU_DEBUG=sysmem
+
+Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
+---
+ src/freedreno/common/freedreno_dev_info.h | 3 ++-
+ src/freedreno/vulkan/tu_cmd_buffer.cc     | 6 ++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/freedreno/common/freedreno_dev_info.h b/src/freedreno/common/freedreno_dev_info.h
+index 6d1e6ebdbce..0d97d460823 100644
+--- a/src/freedreno/common/freedreno_dev_info.h
++++ b/src/freedreno/common/freedreno_dev_info.h
+@@ -467,9 +467,10 @@ struct fd_dev_info {
+        * expected:
+        */
+       bool has_salu_int_narrowing_quirk;
+-
+       /* Whether the device supports the image processing opcode */
+       bool has_image_processing;
++      /* If GMEM needs to be disabled for this GPU */
++      bool disable_gmem;
+    } props;
+ };
+ 
+diff --git a/src/freedreno/vulkan/tu_cmd_buffer.cc b/src/freedreno/vulkan/tu_cmd_buffer.cc
+index 9cc4b7b400c..01d057bab5c 100644
+--- a/src/freedreno/vulkan/tu_cmd_buffer.cc
++++ b/src/freedreno/vulkan/tu_cmd_buffer.cc
+@@ -1326,6 +1326,12 @@ use_sysmem_rendering(struct tu_cmd_buffer *cmd,
+       return true;
+    }
+ 
++   bool no_gmem = cmd->device->physical_device->dev_info.props.disable_gmem;
++   if (no_gmem) {
++       cmd->state.rp.gmem_disable_reason = "Unsupported GPU";
++       return true;
++    }
++
+    /* can't fit attachments into gmem */
+    if (!cmd->state.tiling->possible) {
+       cmd->state.rp.gmem_disable_reason = "Can't fit attachments into gmem";
+-- 
+2.53.0
+
+
+From cbd766aedca30ec7ebf94508aa46a4db733c6d08 Mon Sep 17 00:00:00 2001
+From: whitebelyash <whbexiumwork@gmail.com>
+Date: Fri, 16 Jan 2026 22:45:16 +0400
+Subject: [PATCH 4/8] HACK: freedreno: force initial gmem offset only for 2+
+ slice GPUs
+
+On A810 this additional offset caused integer underflows because the remaining number was very small due to size of A810 GMEM cache (576K)
+
+Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
+---
+ src/freedreno/common/fd6_gmem_cache.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/freedreno/common/fd6_gmem_cache.h b/src/freedreno/common/fd6_gmem_cache.h
+index c2243d3cb25..560890630f0 100644
+--- a/src/freedreno/common/fd6_gmem_cache.h
++++ b/src/freedreno/common/fd6_gmem_cache.h
+@@ -43,7 +43,7 @@ __calc_gmem_cache_offsets(const struct fd_dev_info *info, unsigned offset,
+    unsigned num_ccu = info->num_ccu;
+ 
+    /* This seems not to be load bearing, but keeping it for now to match blob: */
+-   if (info->chip >= 8)
++   if (info->chip >= 8 && info->num_slices > 1)
+       offset -= 0x78000;
+ 
+    config->vpc_bv_pos_buf_offset = offset - (num_ccu * config->vpc_bv_pos_buf_size);
+-- 
+2.53.0
+
