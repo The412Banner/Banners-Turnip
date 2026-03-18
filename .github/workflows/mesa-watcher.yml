@@ -1,0 +1,65 @@
+name: Mesa Upstream Watcher
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Every hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  check-upstream:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check Mesa main for new commits
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          HASH_FILE="mesa_hash.txt"
+          touch "$HASH_FILE"
+
+          MESA_HASH=$(git ls-remote https://gitlab.freedesktop.org/mesa/mesa HEAD | awk '{print $1}')
+          OLD_HASH=$(cat "$HASH_FILE" 2>/dev/null || echo "")
+
+          echo "Current:  ${MESA_HASH:0:7}"
+          echo "Previous: ${OLD_HASH:0:7}"
+
+          if [ -z "$MESA_HASH" ]; then
+            echo "WARNING: could not fetch mesa/mesa HEAD"
+            echo "changed=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          if [ -n "$OLD_HASH" ] && [ "$MESA_HASH" != "$OLD_HASH" ]; then
+            echo "Mesa main changed: ${OLD_HASH:0:7} -> ${MESA_HASH:0:7}"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          elif [ -z "$OLD_HASH" ]; then
+            echo "First run -- recording hash, no build triggered"
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "No change."
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+          echo "$MESA_HASH" > "$HASH_FILE"
+
+      - name: Commit updated hash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mesa_hash.txt
+          git diff --staged --quiet || git commit -m "chore: update mesa_hash.txt"
+          git push
+
+      - name: Trigger Turnip Build
+        if: steps.check.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run "Build Turnip"
