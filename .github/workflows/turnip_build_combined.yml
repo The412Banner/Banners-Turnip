@@ -121,7 +121,7 @@ jobs:
           MESA_URL="https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}"
           {
             printf "> ⚠️ **AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**\n\n"
-            printf "---\n\n"
+            printf '%s\n\n' '---'
             printf "### Mesa Upstream\n\n"
             printf "| | |\n"
             printf "| :--- | :--- |\n"
@@ -130,14 +130,14 @@ jobs:
             printf "| **Commit date** | %s |\n"   "${COMMIT_DATE}"
             printf "| **Commit title** | %s |\n"  "${COMMIT_TITLE}"
             printf "| **Build date** | %s |\n\n"  "${BUILD_DATE}"
-            printf "---\n\n"
+            printf '%s\n\n' '---'
             printf "### Adreno GPU Support\n\n"
             printf "| Series | File | Notes |\n"
             printf "| :--- | :--- | :--- |\n"
             printf "| A6xx / A7xx | \`%s\` | Pure Mesa main — Snapdragon 600–800 series, 7/8 Gen 1–3 |\n" "${ZIP_REGULAR}"
             printf "| A8xx | \`%s\` | Experimental — Snapdragon 8 Elite (A810/A825/A829/A830) |\n\n" "${ZIP_A8XX}"
             printf "> **Which file?**  A6xx/A7xx → standard ZIP · A8xx (Snapdragon 8 Elite) → A8xx ZIP\n\n"
-            printf "---\n\n"
+            printf '%s\n\n' '---'
             printf "### Installation\n\n"
             printf "- **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP\n"
             printf "- **Winlator / adrenotools:** load the ZIP in GPU driver settings\n"
