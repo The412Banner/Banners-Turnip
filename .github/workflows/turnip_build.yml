@@ -1,0 +1,65 @@
+name: Build Turnip
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip ccache
+          pip3 install --break-system-packages meson mako
+
+      - name: Build Drivers
+        run: |
+          chmod +x build_turnip.sh
+          export BUILD_VERSION="${{ github.run_number }}"
+          ./build_turnip.sh
+
+      - name: Get release info
+        id: info
+        run: |
+          ZIP=$(ls turnip_workdir/Turnip-*.zip | head -1)
+          FILENAME=$(basename "$ZIP")
+          # Extract version and date from filename: Turnip-vX.Y.Z-YYYYMMDD-HASH.zip
+          MESA_VER=$(echo "$FILENAME" | sed 's/Turnip-v\([^-]*\)-.*/\1/')
+          BUILD_DATE=$(echo "$FILENAME" | sed 's/Turnip-v[^-]*-\([0-9]*\)-.*/\1/')
+          GITHASH=$(echo "$FILENAME" | sed 's/.*-\([a-f0-9]*\)\.zip/\1/')
+          echo "tag=v${MESA_VER}-${BUILD_DATE}" >> $GITHUB_OUTPUT
+          echo "mesa_ver=${MESA_VER}" >> $GITHUB_OUTPUT
+          echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
+          echo "githash=${GITHASH}" >> $GITHUB_OUTPUT
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Turnip-${{ steps.info.outputs.tag }}
+          path: turnip_workdir/*.zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.info.outputs.tag }}
+          name: Turnip ${{ steps.info.outputs.mesa_ver }} — ${{ steps.info.outputs.build_date }}
+          body: |
+            ## Turnip Vulkan Driver — Mesa ${{ steps.info.outputs.mesa_ver }}
+
+            Built from Mesa `main` branch (commit `${{ steps.info.outputs.githash }}`).
+
+            **Targets:** Adreno A6xx / A7xx / A8xx
+            **Build type:** KGSL (no root required)
+            **Patch:** `tu8_kgsl_26.patch`
+
+            ### Installation
+            Load the `.zip` directly in Winlator → Settings → Turnip driver, or inject via BannersComponentInjector / BannerHub Component Manager.
+          files: turnip_workdir/*.zip
