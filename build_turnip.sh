@@ -156,8 +156,8 @@ EOF
 {
   "schemaVersion": 1,
   "name": "Mesa Turnip v${BUILD_VERSION}-${GITHASH}",
-  "description": "A8xx support MR v26 with A830/A825/A810/A829/UBWC-on-KGSL. Built from Mesa Main (git ${GITHASH})",
-  "author": "StevenMX",
+  "description": "A6xx/A7xx Turnip driver from Mesa main (git ${GITHASH}). KGSL build. A8xx experimental.",
+  "author": "The412Banner",
   "packageVersion": "1",
   "vendor": "Mesa",
   "driverVersion": "Vulkan 1.4.335",
@@ -177,3 +177,4 @@ EOF
 }
 
 run_all
+
