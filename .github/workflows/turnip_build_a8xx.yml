@@ -24,7 +24,7 @@ jobs:
         run: |
           chmod +x build_turnip.sh
           export BUILD_VERSION="${{ github.run_number }}"
-          export EXTRA_PATCH="patches/tu_gen8_clean.patch"
+          export EXTRA_PATCH="patches/tu_gen8.patch"
           ./build_turnip.sh
 
       - name: Read build info
@@ -69,7 +69,7 @@ jobs:
           | **Commit title** | ${{ steps.info.outputs.commit_title }} |
           | **Mesa version** | ${{ steps.info.outputs.mesa_version }} |
           | **Build date** | ${{ steps.info.outputs.build_date }} |
-          | **Patches applied** | `tu_gen8_clean.patch` — A8xx KGSL gen support, UBWC fix, disable_gmem flag |
+          | **Patches applied** | `tu_gen8.patch` — 8-part: UBWC 5/6 KGSL, gralloc fix, disable_gmem, A810/A825/A829/A830 GPU configs |
 
           ---
 
