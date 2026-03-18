@@ -163,3 +163,21 @@ jobs:
             --title "Turnip ${MESA_VERSION} — ${BUILD_DATE}" \
             --notes-file release_body.md \
             zips/*.zip
+
+      - name: Delete releases older than 24 hours
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CUTOFF=$(date -d '24 hours ago' +%s)
+          gh release list --repo "$GITHUB_REPOSITORY" --limit 50 --json tagName,createdAt \
+            --jq '.[] | "\(.tagName) \(.createdAt)"' | \
+          while read TAG CREATED; do
+            CREATED_EPOCH=$(date -d "$CREATED" +%s 2>/dev/null || continue)
+            if [ "$CREATED_EPOCH" -lt "$CUTOFF" ]; then
+              # Only delete auto-built Turnip releases (v*.*.*-* pattern), not permanent ones
+              if echo "$TAG" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+-[0-9]'; then
+                echo "Deleting old release: $TAG (created $CREATED)"
+                gh release delete "$TAG" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag || true
+              fi
+            fi
+          done
