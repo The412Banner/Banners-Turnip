@@ -62,4 +62,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh workflow run "Build Turnip"
+          gh workflow run "Build Turnip (Combined)"

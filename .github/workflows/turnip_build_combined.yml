@@ -7,17 +7,20 @@ permissions:
   contents: write
 
 jobs:
-  build-regular:
+  build:
     runs-on: ubuntu-latest
-    outputs:
-      githash: ${{ steps.info.outputs.githash }}
-      githash_full: ${{ steps.info.outputs.githash_full }}
-      commit_date: ${{ steps.info.outputs.commit_date }}
-      commit_title: ${{ steps.info.outputs.commit_title }}
-      mesa_version: ${{ steps.info.outputs.mesa_version }}
-      build_date: ${{ steps.info.outputs.build_date }}
-      tag: ${{ steps.info.outputs.tag }}
-      zip_name: ${{ steps.info.outputs.zip_name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variant: regular
+            suffix: ""
+            extra_patch: ""
+            extra_script: ""
+          - variant: a8xx
+            suffix: "-A8xx"
+            extra_patch: "patches/tu_gen8_infra.patch"
+            extra_script: "patches/apply_a8xx_gpus.py"
 
     steps:
       - name: Checkout
@@ -29,155 +32,141 @@ jobs:
           sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
           pip3 install --break-system-packages meson mako
 
-      - name: Build Drivers
+      - name: Build
         run: |
           chmod +x build_turnip.sh
           export BUILD_VERSION="${{ github.run_number }}"
+          [[ -n "${{ matrix.extra_patch }}" ]] && export EXTRA_PATCH="${{ matrix.extra_patch }}"
+          [[ -n "${{ matrix.extra_script }}" ]] && export EXTRA_SCRIPT="${{ matrix.extra_script }}"
           ./build_turnip.sh
 
-      - name: Read build info
+      - name: Rename ZIP
         id: info
         run: |
+          MESA_VERSION=$(cat turnip_workdir/mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
+          BUILD_DATE=$(date +%Y%m%d)
           GITHASH=$(git -C turnip_workdir/mesa rev-parse --short HEAD 2>/dev/null || echo "unknown")
           GITHASH_FULL=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo "")
           COMMIT_DATE=$(git -C turnip_workdir/mesa log -1 --format="%ci" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
           COMMIT_TITLE=$(git -C turnip_workdir/mesa log -1 --format="%s" 2>/dev/null || echo "")
-          MESA_VERSION=$(cat turnip_workdir/mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
-          BUILD_DATE=$(date +%Y%m%d)
           TAG="v${MESA_VERSION}-${BUILD_DATE}"
-          ZIP_NAME="Turnip-${TAG}.zip"
-          SRC=$(ls turnip_workdir/*.zip | head -1)
+          ZIP_NAME="Turnip-${TAG}${{ matrix.suffix }}.zip"
+
+          # Use specific glob to avoid the ~700 MB android-ndk-*.zip in the same workdir
+          SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
           cp "$SRC" "turnip_workdir/${ZIP_NAME}"
+
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "mesa_version=${MESA_VERSION}" >> $GITHUB_OUTPUT
+          echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
           echo "githash=${GITHASH}" >> $GITHUB_OUTPUT
           echo "githash_full=${GITHASH_FULL}" >> $GITHUB_OUTPUT
           echo "commit_date=${COMMIT_DATE}" >> $GITHUB_OUTPUT
           echo "commit_title=${COMMIT_TITLE}" >> $GITHUB_OUTPUT
-          echo "mesa_version=${MESA_VERSION}" >> $GITHUB_OUTPUT
-          echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
-          echo "tag=${TAG}" >> $GITHUB_OUTPUT
-          echo "zip_name=${ZIP_NAME}" >> $GITHUB_OUTPUT
 
-      - name: Upload artifact
+      - name: Save release info
+        if: matrix.variant == 'regular'
+        run: |
+          mkdir -p release-info
+          echo "${{ steps.info.outputs.tag }}"          > release-info/tag.txt
+          echo "${{ steps.info.outputs.mesa_version }}" > release-info/mesa_version.txt
+          echo "${{ steps.info.outputs.build_date }}"   > release-info/build_date.txt
+          echo "${{ steps.info.outputs.githash }}"      > release-info/githash.txt
+          echo "${{ steps.info.outputs.githash_full }}" > release-info/githash_full.txt
+          echo "${{ steps.info.outputs.commit_date }}"  > release-info/commit_date.txt
+          echo "${{ steps.info.outputs.commit_title }}" > release-info/commit_title.txt
+
+      - name: Upload release info
+        if: matrix.variant == 'regular'
         uses: actions/upload-artifact@v4
         with:
-          name: turnip-regular
+          name: release-info
+          path: release-info/
+
+      - name: Upload driver ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: turnip-${{ matrix.variant }}
           path: turnip_workdir/Turnip-*.zip
-
-  build-a8xx:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
-          pip3 install --break-system-packages meson mako
-
-      - name: Build Drivers
-        run: |
-          chmod +x build_turnip.sh
-          export BUILD_VERSION="${{ github.run_number }}"
-          export EXTRA_PATCH="patches/tu_gen8_infra.patch"
-          export EXTRA_SCRIPT="patches/apply_a8xx_gpus.py"
-          ./build_turnip.sh
-
-      - name: Rename A8xx ZIP
-        run: |
-          MESA_VERSION=$(cat turnip_workdir/mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
-          BUILD_DATE=$(date +%Y%m%d)
-          SRC=$(ls turnip_workdir/*.zip | head -1)
-          cp "$SRC" "turnip_workdir/Turnip-v${MESA_VERSION}-${BUILD_DATE}-A8xx.zip"
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: turnip-a8xx
-          path: turnip_workdir/Turnip-*-A8xx.zip
 
   release:
     runs-on: ubuntu-latest
-    needs: [build-regular, build-a8xx]
+    needs: build
 
     steps:
-      - name: Download regular artifact
+      - name: Download driver ZIPs
         uses: actions/download-artifact@v4
         with:
-          name: turnip-regular
+          pattern: turnip-*
+          merge-multiple: true
           path: ./zips
 
-      - name: Download A8xx artifact
+      - name: Download release info
         uses: actions/download-artifact@v4
         with:
-          name: turnip-a8xx
-          path: ./zips
+          name: release-info
+          path: ./release-info
 
       - name: Write release body
         run: |
-          TAG="${{ needs.build-regular.outputs.tag }}"
-          GITHASH="${{ needs.build-regular.outputs.githash }}"
-          GITHASH_FULL="${{ needs.build-regular.outputs.githash_full }}"
-          COMMIT_DATE="${{ needs.build-regular.outputs.commit_date }}"
-          COMMIT_TITLE="${{ needs.build-regular.outputs.commit_title }}"
-          MESA_VERSION="${{ needs.build-regular.outputs.mesa_version }}"
-          BUILD_DATE="${{ needs.build-regular.outputs.build_date }}"
+          python3 << 'PYEOF'
+          tag          = open('release-info/tag.txt').read().strip()
+          mesa_version = open('release-info/mesa_version.txt').read().strip()
+          build_date   = open('release-info/build_date.txt').read().strip()
+          githash      = open('release-info/githash.txt').read().strip()
+          githash_full = open('release-info/githash_full.txt').read().strip()
+          commit_date  = open('release-info/commit_date.txt').read().strip()
+          commit_title = open('release-info/commit_title.txt').read().strip()
 
-          cat > release_body.md << BODYEOF
-          > ⚠️ **AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**
+          zip_regular = f"Turnip-{tag}.zip"
+          zip_a8xx    = f"Turnip-{tag}-A8xx.zip"
+          mesa_url    = f"https://gitlab.freedesktop.org/mesa/mesa/-/commit/{githash_full}"
 
-          ---
+          body = f"""> ⚠️ **AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**
 
-          ### 🚀 Turnip Vulkan Driver: ${TAG}
+---
 
-          ---
+### Mesa Upstream
 
-          ### 📊 Mesa Upstream Status
+| | |
+| :--- | :--- |
+| **Version** | {mesa_version} |
+| **Commit** | [`{githash}`]({mesa_url}) |
+| **Commit date** | {commit_date} |
+| **Commit title** | {commit_title} |
+| **Build date** | {build_date} |
 
-          | | Details |
-          | :--- | :--- |
-          | **Source** | [mesa/mesa · main](https://gitlab.freedesktop.org/mesa/mesa) |
-          | **Commit** | [\`${GITHASH}\`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}) |
-          | **Commit date** | ${COMMIT_DATE} |
-          | **Commit title** | ${COMMIT_TITLE} |
-          | **Mesa version** | ${MESA_VERSION} |
-          | **Build date** | ${BUILD_DATE} |
+---
 
-          ---
+### Adreno GPU Support
 
-          ### 📱 Adreno GPU Support
+| Series | File | Notes |
+| :--- | :--- | :--- |
+| A6xx / A7xx | `{zip_regular}` | Pure Mesa main — Snapdragon 600–800 series, 7/8 Gen 1–3 |
+| A8xx | `{zip_a8xx}` | Experimental — Snapdragon 8 Elite (A810/A825/A829/A830) |
 
-          | Series | Status | Devices |
-          | :--- | :--- | :--- |
-          | **A6xx** | ✅ Supported | Snapdragon 600–800 series (2019–2022) |
-          | **A7xx** | ✅ Supported | Snapdragon 7/8 Gen 1–3 (2022–2024) |
-          | **A8xx** | ⚠️ Experimental | Snapdragon 8 Elite (2024–2025) |
+> **Which file?**  A6xx/A7xx → standard ZIP · A8xx (Snapdragon 8 Elite) → A8xx ZIP
 
-          ---
+---
 
-          ### ⬇️ Download
+### Installation
 
-          | File | Description |
-          | :--- | :--- |
-          | \`Turnip-${TAG}.zip\` | Standard build — A6xx/A7xx (pure Mesa main, no patches) |
-          | \`Turnip-${TAG}-A8xx.zip\` | A8xx experimental — A825/A810/A829/A830 GPU configs patched in |
-
-          > **Which file should I use?**
-          > - **A6xx / A7xx device** → use the standard ZIP
-          > - **A8xx device (Snapdragon 8 Elite)** → use the A8xx ZIP
-
-          **How to install:**
-          - **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP
-          - **Winlator / adrenotools:** Load the ZIP in driver settings
-          BODYEOF
+- **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP
+- **Winlator / adrenotools:** load the ZIP in GPU driver settings
+"""
+          open('release_body.md', 'w').write(body)
+          PYEOF
 
       - name: Create release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ needs.build-regular.outputs.tag }}
-          name: "Turnip ${{ needs.build-regular.outputs.mesa_version }} — ${{ needs.build-regular.outputs.build_date }}"
-          prerelease: false
-          make_latest: true
-          body_path: release_body.md
-          files: zips/*.zip
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG=$(cat release-info/tag.txt)
+          MESA_VERSION=$(cat release-info/mesa_version.txt)
+          BUILD_DATE=$(cat release-info/build_date.txt)
+
+          gh release create "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Turnip ${MESA_VERSION} — ${BUILD_DATE}" \
+            --notes-file release_body.md \
+            zips/*.zip
