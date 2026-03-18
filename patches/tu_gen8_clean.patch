@@ -211,7 +211,7 @@ index 4f811ef107a..1c18d84ccba 100644
  
  # For a8xx, the chicken bit and most other non-ctx reg
  # programming moves into the kernel, and what remains
-@@ -1521,6 +1518,28 @@ a8xx_gen2_raw_magic_regs = [
+@@ -1521,6 +1518,28 @@ a8xx_base_raw_magic_regs = [
          [A6XXRegs.REG_A8XX_PC_MODE_CNTL,    0x00003f00],
      ]
  
@@ -234,7 +234,7 @@ index 4f811ef107a..1c18d84ccba 100644
 +        fibers_per_sp = 128 * 2 * 16,
 +        magic_regs = dict(
 +        ),
-+        raw_magic_regs = a8xx_gen2_raw_magic_regs,
++        raw_magic_regs = a8xx_base_raw_magic_regs,
 +    ))
 +
  add_gpus([
@@ -283,7 +283,7 @@ index 1c18d84ccba..0f7945a454a 100644
  # programming moves into the kernel, and what remains
  # should be easier to share between devices
 @@ -1540,6 +1557,28 @@ add_gpus([
-         raw_magic_regs = a8xx_gen2_raw_magic_regs,
+         raw_magic_regs = a8xx_base_raw_magic_regs,
      ))
  
 +# gen8_6_0
@@ -304,7 +304,7 @@ index 1c18d84ccba..0f7945a454a 100644
 +        fibers_per_sp = 128 * 2 * 16,
 +        magic_regs = dict(
 +        ),
-+        raw_magic_regs = a8xx_gen2_raw_magic_regs,
++        raw_magic_regs = a8xx_base_raw_magic_regs,
 +    ))
 +
 +
@@ -383,7 +383,7 @@ index 0f7945a454a..703def0e8f0 100644
 +        fibers_per_sp = 128 * 2 * 16,
 +        magic_regs = dict(
 +        ),
-+        raw_magic_regs = a8xx_gen2_raw_magic_regs,
++        raw_magic_regs = a8xx_base_raw_magic_regs,
 +    ))
 +
  add_gpus([
@@ -435,7 +435,7 @@ index 703def0e8f0..010418e476a 100644
  # programming moves into the kernel, and what remains
  # should be easier to share between devices
 @@ -1625,6 +1645,31 @@ add_gpus([
-         raw_magic_regs = a8xx_gen2_raw_magic_regs,
+         raw_magic_regs = a8xx_base_raw_magic_regs,
      ))
  
 +
@@ -460,7 +460,7 @@ index 703def0e8f0..010418e476a 100644
 +        fibers_per_sp = 128 * 2 * 16,
 +        magic_regs = dict(
 +        ),
-+        raw_magic_regs = a8xx_gen2_raw_magic_regs,
++        raw_magic_regs = a8xx_base_raw_magic_regs,
 +    ))
 +
  add_gpus([
