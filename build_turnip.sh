@@ -44,7 +44,7 @@ prepare_workdir(){
 
 	echo "Downloading android-ndk from google server..."
 	curl -sL https://dl.google.com/android/repository/"$ndkver"-linux.zip --output "$ndkver"-linux.zip &> /dev/null
-	
+
 	echo "Extracting android-ndk..."
 	unzip -q "$ndkver"-linux.zip &> /dev/null
 
@@ -56,13 +56,19 @@ build_lib_for_android(){
 	cd "$workdir/$srcfolder"
 	echo "==== Building Mesa on $1 branch ===="
 
-	# Apply optional patch if EXTRA_PATCH is set (e.g. patches/tu_gen8_clean.patch)
+	# Apply optional patch if EXTRA_PATCH is set (e.g. patches/tu_gen8_infra.patch)
 	if [ -n "$EXTRA_PATCH" ] && [ -f "../../$EXTRA_PATCH" ]; then
 		echo "Applying patch: $EXTRA_PATCH"
-		patch -p1 --fuzz=4 < "../../$EXTRA_PATCH" || echo -e "${red}Warning: partial patch failures, continuing...${nocolor}"
+		patch -p1 -N --fuzz=4 < "../../$EXTRA_PATCH" || echo -e "${red}Warning: partial patch failures, continuing...${nocolor}"
 	fi
 
-	# Correções preventivas para compilação no NDK r29
+	# Apply optional Python script if EXTRA_SCRIPT is set (e.g. patches/apply_a8xx_gpus.py)
+	if [ -n "$EXTRA_SCRIPT" ] && [ -f "../../$EXTRA_SCRIPT" ]; then
+		echo "Running script: $EXTRA_SCRIPT"
+		python3 "../../$EXTRA_SCRIPT" || { echo -e "${red}Script failed, aborting!${nocolor}"; exit 1; }
+	fi
+
+	# Preventive fixes for NDK r29 compilation
 	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
 	sed -i 's/, hnd->handle/, (void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
 	sed -i 's/native_buffer->handle->/((const native_handle_t \*)native_buffer->handle)->/g' src/vulkan/runtime/vk_android.c || true
@@ -81,7 +87,7 @@ build_lib_for_android(){
 	export LDFLAGS="-fuse-ld=lld"
 	export CFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
 	export CXXFLAGS="-D__ANDROID__ -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
-	
+
 	GITHASH=$(git rev-parse --short HEAD)
 
 	echo "Generating build files..."
@@ -141,10 +147,10 @@ EOF
 	if ! [ -f /tmp/turnip-$1/lib/libvulkan_freedreno.so ]; then
 		echo -e "${red}Build failed!${nocolor}" && exit 1
 	fi
-	
+
 	echo "Making the archive..."
 	cd /tmp/turnip-$1/lib
-	
+
 	cat <<EOF >"meta.json"
 {
   "schemaVersion": 1,
@@ -160,7 +166,7 @@ EOF
 EOF
 	zip -q "/tmp/mesa-turnip-$1-V${BUILD_VERSION}.zip" libvulkan_freedreno.so meta.json
 	cd - > /dev/null
-	
+
 	if ! [ -f "/tmp/mesa-turnip-$1-V${BUILD_VERSION}.zip" ]; then
 		echo -e "${red}Failed to pack the archive!${nocolor}"
 	else
@@ -170,6 +176,3 @@ EOF
 }
 
 run_all
-
-
-
