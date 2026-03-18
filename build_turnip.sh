@@ -56,7 +56,12 @@ build_lib_for_android(){
 	cd "$workdir/$srcfolder"
 	echo "==== Building Mesa on $1 branch ===="
 
-	# No patches — pure Mesa main
+	# Apply optional patch if EXTRA_PATCH is set (e.g. patches/tu_gen8_clean.patch)
+	if [ -n "$EXTRA_PATCH" ] && [ -f "../../$EXTRA_PATCH" ]; then
+		echo "Applying patch: $EXTRA_PATCH"
+		patch -p1 --fuzz=4 < "../../$EXTRA_PATCH" || echo -e "${red}Warning: partial patch failures, continuing...${nocolor}"
+	fi
+
 	# Correções preventivas para compilação no NDK r29
 	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
 	sed -i 's/, hnd->handle/, (void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
@@ -165,5 +170,6 @@ EOF
 }
 
 run_all
+
 
 
