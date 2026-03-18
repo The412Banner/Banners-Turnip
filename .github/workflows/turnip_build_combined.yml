@@ -42,6 +42,8 @@ jobs:
 
       - name: Rename ZIP
         id: info
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           MESA_VERSION=$(cat turnip_workdir/mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
           BUILD_DATE=$(date +%Y%m%d)
@@ -50,6 +52,11 @@ jobs:
           COMMIT_DATE=$(git -C turnip_workdir/mesa log -1 --format="%ci" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
           COMMIT_TITLE=$(git -C turnip_workdir/mesa log -1 --format="%s" 2>/dev/null || echo "")
           TAG="v${MESA_VERSION}-${BUILD_DATE}"
+          # Avoid overwriting an existing release on same-day rebuilds
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" &>/dev/null; then
+            TAG="${TAG}-r${{ github.run_number }}"
+            echo "Tag already exists — using ${TAG}"
+          fi
           ZIP_NAME="Turnip-${TAG}${{ matrix.suffix }}.zip"
 
           # Use specific glob to avoid the ~700 MB android-ndk-*.zip in the same workdir
