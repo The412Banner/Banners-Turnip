@@ -1,0 +1,114 @@
+name: Build Turnip A8xx (Experimental)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
+          pip3 install --break-system-packages meson mako
+
+      - name: Build Drivers
+        run: |
+          chmod +x build_turnip.sh
+          export BUILD_VERSION="${{ github.run_number }}"
+          export EXTRA_PATCH="patches/tu_gen8_clean.patch"
+          ./build_turnip.sh
+
+      - name: Read build info
+        id: info
+        run: |
+          GITHASH=$(git -C turnip_workdir/mesa rev-parse --short HEAD 2>/dev/null || echo "unknown")
+          GITHASH_FULL=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo "")
+          COMMIT_DATE=$(git -C turnip_workdir/mesa log -1 --format="%ci" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
+          COMMIT_TITLE=$(git -C turnip_workdir/mesa log -1 --format="%s" 2>/dev/null || echo "")
+          MESA_VERSION=$(cat turnip_workdir/mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
+          BUILD_DATE=$(date +%Y%m%d)
+          ZIP=$(ls turnip_workdir/*.zip 2>/dev/null | head -1)
+          FILENAME=$(basename "$ZIP")
+          TAG="v${MESA_VERSION}-${BUILD_DATE}-a8xx"
+          echo "githash=${GITHASH}" >> $GITHUB_OUTPUT
+          echo "githash_full=${GITHASH_FULL}" >> $GITHUB_OUTPUT
+          echo "commit_date=${COMMIT_DATE}" >> $GITHUB_OUTPUT
+          echo "commit_title=${COMMIT_TITLE}" >> $GITHUB_OUTPUT
+          echo "mesa_version=${MESA_VERSION}" >> $GITHUB_OUTPUT
+          echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
+          echo "filename=${FILENAME}" >> $GITHUB_OUTPUT
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+
+      - name: Write release body
+        run: |
+          cat > release_body.md << 'BODYEOF'
+          > ⚠️ **EXPERIMENTAL A8xx BUILD — Patches applied. Not guaranteed stable. Use at your own risk.**
+
+          ---
+
+          ### 🚀 Turnip Vulkan Driver (A8xx Experimental): ${{ steps.info.outputs.tag }}
+
+          ---
+
+          ### 📊 Mesa Upstream Status
+
+          | | Details |
+          | :--- | :--- |
+          | **Source** | [mesa/mesa · main](https://gitlab.freedesktop.org/mesa/mesa) |
+          | **Commit** | [`${{ steps.info.outputs.githash }}`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/${{ steps.info.outputs.githash_full }}) |
+          | **Commit date** | ${{ steps.info.outputs.commit_date }} |
+          | **Commit title** | ${{ steps.info.outputs.commit_title }} |
+          | **Mesa version** | ${{ steps.info.outputs.mesa_version }} |
+          | **Build date** | ${{ steps.info.outputs.build_date }} |
+          | **Patches applied** | `tu_gen8_clean.patch` — A8xx KGSL gen support, UBWC fix, disable_gmem flag |
+
+          ---
+
+          ### 📱 Adreno GPU Support
+
+          | Series | Status | Devices |
+          | :--- | :--- | :--- |
+          | **A6xx** | ✅ Supported | Snapdragon 600–800 series (2019–2022) |
+          | **A7xx** | ✅ Supported | Snapdragon 7/8 Gen 1–3 (2022–2024) |
+          | **A8xx** | ⚠️ Experimental | Snapdragon 8 Elite (2024–2025) — target of this build |
+
+          > This build exists specifically to test A8xx support. If you have an A8xx device, please report your results in issues.
+
+          ---
+
+          ### ⬇️ Download
+
+          | File | Description |
+          | :--- | :--- |
+          | `${{ steps.info.outputs.filename }}` | ZIP for adrenotools / BannerHub / BCI injection |
+
+          **How to install:**
+          - **BannerHub / BCI:** Inject via Component Manager → Add New Component
+          - **Winlator:** Settings → Turnip driver → load the `.zip`
+          - **adrenotools:** Load the `.zip` in any adrenotools-compatible app
+          BODYEOF
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Turnip-A8xx-${{ steps.info.outputs.tag }}
+          path: turnip_workdir/*.zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.info.outputs.tag }}
+          name: "Turnip ${{ steps.info.outputs.mesa_version }} A8xx Experimental — ${{ steps.info.outputs.build_date }}"
+          prerelease: true
+          make_latest: false
+          body_path: release_body.md
+          files: turnip_workdir/*.zip
