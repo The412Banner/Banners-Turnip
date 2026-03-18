@@ -26,19 +26,91 @@ jobs:
           export BUILD_VERSION="${{ github.run_number }}"
           ./build_turnip.sh
 
-      - name: Get release info
+      - name: Load build info
         id: info
         run: |
+          source turnip_workdir/build_info.env
           ZIP=$(ls turnip_workdir/Turnip-*.zip | head -1)
           FILENAME=$(basename "$ZIP")
-          # Extract version and date from filename: Turnip-vX.Y.Z-YYYYMMDD-HASH.zip
-          MESA_VER=$(echo "$FILENAME" | sed 's/Turnip-v\([^-]*\)-.*/\1/')
-          BUILD_DATE=$(echo "$FILENAME" | sed 's/Turnip-v[^-]*-\([0-9]*\)-.*/\1/')
-          GITHASH=$(echo "$FILENAME" | sed 's/.*-\([a-f0-9]*\)\.zip/\1/')
-          echo "tag=v${MESA_VER}-${BUILD_DATE}" >> $GITHUB_OUTPUT
-          echo "mesa_ver=${MESA_VER}" >> $GITHUB_OUTPUT
+          TAG="v${MESA_VERSION}-${BUILD_DATE}"
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "mesa_version=${MESA_VERSION}" >> $GITHUB_OUTPUT
           echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
           echo "githash=${GITHASH}" >> $GITHUB_OUTPUT
+          echo "githash_full=${GITHASH_FULL}" >> $GITHUB_OUTPUT
+          echo "commit_date=${COMMIT_DATE}" >> $GITHUB_OUTPUT
+          echo "commit_title=${COMMIT_TITLE}" >> $GITHUB_OUTPUT
+          echo "filename=${FILENAME}" >> $GITHUB_OUTPUT
+
+      - name: Write release body
+        run: |
+          TAG="${{ steps.info.outputs.tag }}"
+          MESA_VERSION="${{ steps.info.outputs.mesa_version }}"
+          BUILD_DATE="${{ steps.info.outputs.build_date }}"
+          GITHASH="${{ steps.info.outputs.githash }}"
+          GITHASH_FULL="${{ steps.info.outputs.githash_full }}"
+          COMMIT_DATE="${{ steps.info.outputs.commit_date }}"
+          COMMIT_TITLE="${{ steps.info.outputs.commit_title }}"
+          FILENAME="${{ steps.info.outputs.filename }}"
+
+          cat > release_body.md << BODYEOF
+          > ⚠️ **NIGHTLY / MANUAL BUILD — Not guaranteed stable. Use at your own risk.**
+
+          ---
+
+          ### 🚀 Turnip Vulkan Driver: ${TAG}
+
+          ---
+
+          ### 📊 Mesa Upstream Status
+
+          | | Details |
+          | :--- | :--- |
+          | **Source** | [mesa/mesa · main](https://gitlab.freedesktop.org/mesa/mesa) |
+          | **Commit** | [\`${GITHASH}\`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}) |
+          | **Commit date** | ${COMMIT_DATE} |
+          | **Commit title** | ${COMMIT_TITLE} |
+          | **Mesa version** | ${MESA_VERSION} |
+          | **Build date** | ${BUILD_DATE} |
+          | **Patches applied** | None — pure Mesa main |
+
+          ---
+
+          ### 📦 Built Components
+
+          | Component | Details |
+          | :--- | :--- |
+          | **Turnip (Freedreno Vulkan)** | Mesa ${MESA_VERSION} · commit [\`${GITHASH}\`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}) |
+          | **Build type** | KGSL (no root required) |
+          | **Target arch** | Android aarch64 |
+          | **Min API** | 28 (Android 9) |
+          | **Vulkan** | 1.4 |
+
+          ---
+
+          ### 📱 Compatible Adreno Devices
+
+          | Series | GPUs |
+          | :--- | :--- |
+          | **A6xx** | 610, 612, 615, 616, 618, 620, 630, 640, 642, 642L, 643, 644, 650, 660, 675, 680, 685, 690 |
+          | **A7xx** | 710, 720, 725, 730, 732, 735, 740, 750 |
+          | **A8xx** | 810, 820, 825, 830 |
+
+          > **Which series is my phone?** Check your SoC — Snapdragon 7/8 Gen 1–2 → A7xx · Snapdragon 8 Gen 3+ → A8xx · Snapdragon 600–800 series (2019–2021) → A6xx
+
+          ---
+
+          ### ⬇️ Download
+
+          | File | Description |
+          | :--- | :--- |
+          | \`${FILENAME}\` | ZIP for BannerHub / BannersComponentInjector injection or adrenotools |
+
+          **How to install:**
+          - **BannerHub / BCI:** Inject the `.zip` directly via Component Manager → Add New Component
+          - **Winlator:** Settings → Turnip driver → load the `.zip`
+          - **adrenotools:** Load the `.zip` in any adrenotools-compatible app
+          BODYEOF
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
@@ -46,20 +118,12 @@ jobs:
           name: Turnip-${{ steps.info.outputs.tag }}
           path: turnip_workdir/*.zip
 
-      - name: Release
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.info.outputs.tag }}
-          name: Turnip ${{ steps.info.outputs.mesa_ver }} — ${{ steps.info.outputs.build_date }}
-          body: |
-            ## Turnip Vulkan Driver — Mesa ${{ steps.info.outputs.mesa_ver }}
-
-            Built from Mesa `main` branch (commit `${{ steps.info.outputs.githash }}`).
-
-            **Targets:** Adreno A6xx / A7xx / A8xx
-            **Build type:** KGSL (no root required)
-            **Patch:** `tu8_kgsl_26.patch`
-
-            ### Installation
-            Load the `.zip` directly in Winlator → Settings → Turnip driver, or inject via BannersComponentInjector / BannerHub Component Manager.
+          name: "Turnip ${{ steps.info.outputs.mesa_version }} — ${{ steps.info.outputs.build_date }}"
+          prerelease: false
+          make_latest: true
+          body_path: ${{ github.workspace }}/release_body.md
           files: turnip_workdir/*.zip
