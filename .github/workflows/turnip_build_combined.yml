@@ -146,8 +146,8 @@ jobs:
             printf "> **Which file?**  A6xx/A7xx → standard ZIP · A8xx (Snapdragon 8 Elite) → A8xx ZIP\n\n"
             printf '%s\n\n' '---'
             printf "### Installation\n\n"
-            printf "- **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP\n"
-            printf "- **Winlator / adrenotools:** load the ZIP in GPU driver settings\n"
+            printf '%s\n' "- **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP"
+            printf '%s\n' "- **Winlator / adrenotools:** load the ZIP in GPU driver settings"
           } > release_body.md
 
       - name: Create release
