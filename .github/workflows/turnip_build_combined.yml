@@ -109,53 +109,39 @@ jobs:
 
       - name: Write release body
         run: |
-          python3 << 'PYEOF'
-          tag          = open('release-info/tag.txt').read().strip()
-          mesa_version = open('release-info/mesa_version.txt').read().strip()
-          build_date   = open('release-info/build_date.txt').read().strip()
-          githash      = open('release-info/githash.txt').read().strip()
-          githash_full = open('release-info/githash_full.txt').read().strip()
-          commit_date  = open('release-info/commit_date.txt').read().strip()
-          commit_title = open('release-info/commit_title.txt').read().strip()
-
-          zip_regular = f"Turnip-{tag}.zip"
-          zip_a8xx    = f"Turnip-{tag}-A8xx.zip"
-          mesa_url    = f"https://gitlab.freedesktop.org/mesa/mesa/-/commit/{githash_full}"
-
-          body = f"""> ⚠️ **AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**
-
----
-
-### Mesa Upstream
-
-| | |
-| :--- | :--- |
-| **Version** | {mesa_version} |
-| **Commit** | [`{githash}`]({mesa_url}) |
-| **Commit date** | {commit_date} |
-| **Commit title** | {commit_title} |
-| **Build date** | {build_date} |
-
----
-
-### Adreno GPU Support
-
-| Series | File | Notes |
-| :--- | :--- | :--- |
-| A6xx / A7xx | `{zip_regular}` | Pure Mesa main — Snapdragon 600–800 series, 7/8 Gen 1–3 |
-| A8xx | `{zip_a8xx}` | Experimental — Snapdragon 8 Elite (A810/A825/A829/A830) |
-
-> **Which file?**  A6xx/A7xx → standard ZIP · A8xx (Snapdragon 8 Elite) → A8xx ZIP
-
----
-
-### Installation
-
-- **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP
-- **Winlator / adrenotools:** load the ZIP in GPU driver settings
-"""
-          open('release_body.md', 'w').write(body)
-          PYEOF
+          TAG=$(cat release-info/tag.txt)
+          MESA_VERSION=$(cat release-info/mesa_version.txt)
+          BUILD_DATE=$(cat release-info/build_date.txt)
+          GITHASH=$(cat release-info/githash.txt)
+          GITHASH_FULL=$(cat release-info/githash_full.txt)
+          COMMIT_DATE=$(cat release-info/commit_date.txt)
+          COMMIT_TITLE=$(cat release-info/commit_title.txt)
+          ZIP_REGULAR="Turnip-${TAG}.zip"
+          ZIP_A8XX="Turnip-${TAG}-A8xx.zip"
+          MESA_URL="https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}"
+          {
+            printf "> ⚠️ **AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**\n\n"
+            printf "---\n\n"
+            printf "### Mesa Upstream\n\n"
+            printf "| | |\n"
+            printf "| :--- | :--- |\n"
+            printf "| **Version** | %s |\n"       "${MESA_VERSION}"
+            printf "| **Commit** | [\`%s\`](%s) |\n" "${GITHASH}" "${MESA_URL}"
+            printf "| **Commit date** | %s |\n"   "${COMMIT_DATE}"
+            printf "| **Commit title** | %s |\n"  "${COMMIT_TITLE}"
+            printf "| **Build date** | %s |\n\n"  "${BUILD_DATE}"
+            printf "---\n\n"
+            printf "### Adreno GPU Support\n\n"
+            printf "| Series | File | Notes |\n"
+            printf "| :--- | :--- | :--- |\n"
+            printf "| A6xx / A7xx | \`%s\` | Pure Mesa main — Snapdragon 600–800 series, 7/8 Gen 1–3 |\n" "${ZIP_REGULAR}"
+            printf "| A8xx | \`%s\` | Experimental — Snapdragon 8 Elite (A810/A825/A829/A830) |\n\n" "${ZIP_A8XX}"
+            printf "> **Which file?**  A6xx/A7xx → standard ZIP · A8xx (Snapdragon 8 Elite) → A8xx ZIP\n\n"
+            printf "---\n\n"
+            printf "### Installation\n\n"
+            printf "- **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP\n"
+            printf "- **Winlator / adrenotools:** load the ZIP in GPU driver settings\n"
+          } > release_body.md
 
       - name: Create release
         env:
