@@ -16,7 +16,7 @@ run_all(){
 	check_deps
 	prepare_workdir
 
-	build_lib_for_android main tu8_kgsl_26.patch
+	build_lib_for_android main
 }
 
 check_deps(){
@@ -54,22 +54,7 @@ prepare_workdir(){
 
 build_lib_for_android(){
 	cd "$workdir/$srcfolder"
-	echo "==== Building Mesa on $1 branch ===="
-	
-	echo "Applying patch: $2"
-	echo "Downloading latest patch from whitebelyash/mesa-tu8..."
-	wget -q "https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head-v2/$2" || \
-	wget -q "https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head/$2" || \
-	{ echo -e "${red}Failed to download patch $2${nocolor}"; exit 1; }
-
-	# Aplica de forma tolerante a mudanças de linha
-	patch -p1 --fuzz=4 < "$2" || echo -e "${red}Aviso: Falhas parciais no patch. Continuando...${nocolor}"
-
-	# If freedreno_devices.py has syntax errors from a partial patch, revert it
-	python3 -m py_compile src/freedreno/common/freedreno_devices.py 2>/dev/null || {
-		echo -e "${red}freedreno_devices.py has syntax errors after patch — reverting to clean Mesa version${nocolor}"
-		git checkout src/freedreno/common/freedreno_devices.py
-	}
+	echo "==== Building Mesa on $1 branch (pure Mesa main, no external patches) ===="
 
 	# Correções preventivas para compilação no NDK r29
 	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
