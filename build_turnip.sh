@@ -57,14 +57,10 @@ build_lib_for_android(){
 	echo "==== Building Mesa on $1 branch ===="
 	
 	echo "Applying patch: $2"
-	# Tenta usar o arquivo local se você tiver feito o upload no seu repositório
-	if [ -f "../../$2" ]; then
-		echo "Usando patch local..."
-		cp "../../$2" .
-	else
-		echo "Baixando patch remoto..."
-		wget -q "https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head-v2/$2" || wget -q "https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head/$2"
-	fi
+	echo "Downloading latest patch from whitebelyash/mesa-tu8..."
+	wget -q "https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head-v2/$2" || \
+	wget -q "https://github.com/whitebelyash/mesa-tu8/releases/download/patchset-head/$2" || \
+	{ echo -e "${red}Failed to download patch $2${nocolor}"; exit 1; }
 
 	# Aplica de forma tolerante a mudanças de linha
 	patch -p1 --fuzz=4 < "$2" || echo -e "${red}Aviso: Falhas parciais no patch. Continuando...${nocolor}"
