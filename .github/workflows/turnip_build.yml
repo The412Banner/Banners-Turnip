@@ -9,7 +9,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,14 +26,88 @@ jobs:
           export BUILD_VERSION="${{ github.run_number }}"
           ./build_turnip.sh
 
+      - name: Read build info
+        id: info
+        run: |
+          GITHASH=$(git -C turnip_workdir/mesa rev-parse --short HEAD 2>/dev/null || echo "unknown")
+          GITHASH_FULL=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo "")
+          COMMIT_DATE=$(git -C turnip_workdir/mesa log -1 --format="%ci" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
+          COMMIT_TITLE=$(git -C turnip_workdir/mesa log -1 --format="%s" 2>/dev/null || echo "")
+          MESA_VERSION=$(cat turnip_workdir/mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
+          BUILD_DATE=$(date +%Y%m%d)
+          ZIP=$(ls turnip_workdir/*.zip 2>/dev/null | head -1)
+          FILENAME=$(basename "$ZIP")
+          TAG="v${MESA_VERSION}-${BUILD_DATE}"
+          echo "githash=${GITHASH}" >> $GITHUB_OUTPUT
+          echo "githash_full=${GITHASH_FULL}" >> $GITHUB_OUTPUT
+          echo "commit_date=${COMMIT_DATE}" >> $GITHUB_OUTPUT
+          echo "commit_title=${COMMIT_TITLE}" >> $GITHUB_OUTPUT
+          echo "mesa_version=${MESA_VERSION}" >> $GITHUB_OUTPUT
+          echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
+          echo "filename=${FILENAME}" >> $GITHUB_OUTPUT
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+
+      - name: Write release body
+        run: |
+          cat > release_body.md << 'BODYEOF'
+          > ⚠️ **NIGHTLY / AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**
+
+          ---
+
+          ### 🚀 Turnip Vulkan Driver: ${{ steps.info.outputs.tag }}
+
+          ---
+
+          ### 📊 Mesa Upstream Status
+
+          | | Details |
+          | :--- | :--- |
+          | **Source** | [mesa/mesa · main](https://gitlab.freedesktop.org/mesa/mesa) |
+          | **Commit** | [`${{ steps.info.outputs.githash }}`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/${{ steps.info.outputs.githash_full }}) |
+          | **Commit date** | ${{ steps.info.outputs.commit_date }} |
+          | **Commit title** | ${{ steps.info.outputs.commit_title }} |
+          | **Mesa version** | ${{ steps.info.outputs.mesa_version }} |
+          | **Build date** | ${{ steps.info.outputs.build_date }} |
+          | **Patches** | None — pure Mesa main |
+
+          ---
+
+          ### 📱 Adreno GPU Support
+
+          | Series | Status | Devices |
+          | :--- | :--- | :--- |
+          | **A6xx** | ✅ Supported | Snapdragon 600–800 series (2019–2022) |
+          | **A7xx** | ✅ Supported | Snapdragon 7/8 Gen 1–3 (2022–2024) |
+          | **A8xx** | ⚠️ Experimental | Snapdragon 8 Elite (2024–2025) — may work, untested |
+
+          > A8xx support is present in Mesa's codebase but has not been verified. Report results in issues.
+
+          ---
+
+          ### ⬇️ Download
+
+          | File | Description |
+          | :--- | :--- |
+          | `${{ steps.info.outputs.filename }}` | ZIP for adrenotools / BannerHub / BCI injection |
+
+          **How to install:**
+          - **BannerHub / BCI:** Inject via Component Manager → Add New Component
+          - **Winlator:** Settings → Turnip driver → load the `.zip`
+          - **adrenotools:** Load the `.zip` in any adrenotools-compatible app
+          BODYEOF
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Turnip-Drivers
+          name: Turnip-${{ steps.info.outputs.tag }}
           path: turnip_workdir/*.zip
 
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ github.run_number }}
+          tag_name: ${{ steps.info.outputs.tag }}
+          name: "Turnip ${{ steps.info.outputs.mesa_version }} — ${{ steps.info.outputs.build_date }}"
+          prerelease: false
+          make_latest: true
+          body_path: release_body.md
           files: turnip_workdir/*.zip
