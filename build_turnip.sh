@@ -84,15 +84,15 @@ build_lib_for_android(){
 	BUILD_DATE=$(date +%Y%m%d)
 	export MESA_VERSION BUILD_DATE GITHASH GITHASH_FULL COMMIT_DATE COMMIT_TITLE
 
-	# Write build info for workflow steps
-	cat > "$workdir/build_info.env" << EOF
-MESA_VERSION=${MESA_VERSION}
-BUILD_DATE=${BUILD_DATE}
-GITHASH=${GITHASH}
-GITHASH_FULL=${GITHASH_FULL}
-COMMIT_DATE=${COMMIT_DATE}
-COMMIT_TITLE=${COMMIT_TITLE}
-EOF
+	# Write build info for workflow steps (quoted to handle special chars in commit titles)
+	{
+		printf 'MESA_VERSION=%q\n' "$MESA_VERSION"
+		printf 'BUILD_DATE=%q\n' "$BUILD_DATE"
+		printf 'GITHASH=%q\n' "$GITHASH"
+		printf 'GITHASH_FULL=%q\n' "$GITHASH_FULL"
+		printf 'COMMIT_DATE=%q\n' "$COMMIT_DATE"
+		printf 'COMMIT_TITLE=%q\n' "$COMMIT_TITLE"
+	} > "$workdir/build_info.env"
 
 	echo "Generating build files..."
 	cat <<EOF >"android-aarch64.txt"
