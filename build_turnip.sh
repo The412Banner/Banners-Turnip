@@ -65,6 +65,12 @@ build_lib_for_android(){
 	# Aplica de forma tolerante a mudanças de linha
 	patch -p1 --fuzz=4 < "$2" || echo -e "${red}Aviso: Falhas parciais no patch. Continuando...${nocolor}"
 
+	# If freedreno_devices.py has syntax errors from a partial patch, revert it
+	python3 -m py_compile src/freedreno/common/freedreno_devices.py 2>/dev/null || {
+		echo -e "${red}freedreno_devices.py has syntax errors after patch — reverting to clean Mesa version${nocolor}"
+		git checkout src/freedreno/common/freedreno_devices.py
+	}
+
 	# Correções preventivas para compilação no NDK r29
 	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
 	sed -i 's/, hnd->handle/, (void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
