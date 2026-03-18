@@ -116,7 +116,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Turnip-${{ steps.info.outputs.tag }}
-          path: turnip_workdir/*.zip
+          path: turnip_workdir/Turnip-*.zip
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -126,4 +126,4 @@ jobs:
           prerelease: false
           make_latest: true
           body_path: ${{ github.workspace }}/release_body.md
-          files: turnip_workdir/*.zip
+          files: turnip_workdir/Turnip-*.zip
