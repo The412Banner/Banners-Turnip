@@ -155,10 +155,10 @@ jobs:
             printf "  - \`native_buffer->handle\` cast fix (\`vk_android.c\`)\n\n"
             printf "**A8xx (experimental)**\n\n"
             printf "Same NDK r29 fixes as above, plus:\n\n"
-            printf "- \`patches/tu8_kgsl_26.patch\` — [whitebelyash/mesa-tu8 patchset-head-v2](https://github.com/whitebelyash/mesa-tu8/releases/tag/patchset-head-v2) (%s commits):\n" "${A8XX_PATCH_COUNT}"
+            printf '%s\n' "- \`patches/tu8_kgsl_26.patch\` — [whitebelyash/mesa-tu8 patchset-head-v2](https://github.com/whitebelyash/mesa-tu8/releases/tag/patchset-head-v2) (${A8XX_PATCH_COUNT} commits):"
             printf "%s\n" "${A8XX_PATCH_LINES}"
-            printf "- \`patches/fix_a8xx_dev_info.py\` — re-adds only \`disable_gmem\` to \`freedreno_dev_info.h\` (skips \`has_image_processing\` already merged upstream)\n"
-            printf "- \`patches/apply_a8xx_gpus.py\` — ensures A810/A825/A829 GPU entries in \`freedreno_devices.py\` (fallback if patch hunks drift)\n\n"
+            printf '%s\n' "- \`patches/fix_a8xx_dev_info.py\` — re-adds only \`disable_gmem\` to \`freedreno_dev_info.h\` (skips \`has_image_processing\` already merged upstream)"
+            printf '%s\n\n' "- \`patches/apply_a8xx_gpus.py\` — ensures A810/A825/A829 GPU entries in \`freedreno_devices.py\` (fallback if patch hunks drift)"
             printf '%s\n\n' '---'
             printf "### Adreno GPU Support\n\n"
             printf "| Series | File | Notes |\n"
