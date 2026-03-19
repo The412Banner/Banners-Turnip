@@ -62,6 +62,17 @@ build_lib_for_android(){
 		patch -p1 -N --fuzz=4 < "../../$EXTRA_PATCH" || echo -e "${red}Warning: partial patch failures, continuing...${nocolor}"
 	fi
 
+	# Apply optional Python script if EXTRA_SCRIPT is set (e.g. patches/apply_a8xx_gpus.py)
+	# If the patch left freedreno_devices.py with a syntax error, reset it first so the script can apply cleanly
+	if [ -n "$EXTRA_SCRIPT" ] && [ -f "../../$EXTRA_SCRIPT" ]; then
+		if ! python3 -c "compile(open('src/freedreno/common/freedreno_devices.py').read(),'f','exec')" 2>/dev/null; then
+			echo -e "${red}freedreno_devices.py has syntax errors after patching — resetting and re-applying via script${nocolor}"
+			git checkout -- src/freedreno/common/freedreno_devices.py
+		fi
+		echo "Running script: $EXTRA_SCRIPT"
+		python3 "../../$EXTRA_SCRIPT" || { echo -e "${red}Script failed, aborting!${nocolor}"; exit 1; }
+	fi
+
 	# Preventive fixes for NDK r29 compilation
 	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
 	sed -i 's/, hnd->handle/, (void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true

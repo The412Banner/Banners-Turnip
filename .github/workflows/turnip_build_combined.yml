@@ -19,6 +19,7 @@ jobs:
           - variant: a8xx
             suffix: "-A8xx"
             extra_patch: "patches/tu8_kgsl_26.patch"
+            extra_script: "patches/apply_a8xx_gpus.py"
 
     steps:
       - name: Checkout
@@ -35,6 +36,7 @@ jobs:
           chmod +x build_turnip.sh
           export BUILD_VERSION="${{ github.run_number }}"
           [[ -n "${{ matrix.extra_patch }}" ]] && export EXTRA_PATCH="${{ matrix.extra_patch }}"
+          [[ -n "${{ matrix.extra_script }}" ]] && export EXTRA_SCRIPT="${{ matrix.extra_script }}"
           ./build_turnip.sh
 
       - name: Rename ZIP
@@ -154,7 +156,8 @@ jobs:
             printf "**A8xx (experimental)**\n\n"
             printf "Same NDK r29 fixes as above, plus:\n\n"
             printf "- \`patches/tu8_kgsl_26.patch\` — [whitebelyash/mesa-tu8 patchset-head-v2](https://github.com/whitebelyash/mesa-tu8/releases/tag/patchset-head-v2) (%s commits):\n" "${A8XX_PATCH_COUNT}"
-            printf "%s\n\n" "${A8XX_PATCH_LINES}"
+            printf "%s\n" "${A8XX_PATCH_LINES}"
+            printf "- \`patches/apply_a8xx_gpus.py\` — ensures A810/A825/A829 GPU entries in \`freedreno_devices.py\` (fallback if patch hunks drift)\n\n"
             printf '%s\n\n' '---'
             printf "### Adreno GPU Support\n\n"
             printf "| Series | File | Notes |\n"
