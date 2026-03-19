@@ -114,6 +114,9 @@ jobs:
           name: release-info
           path: ./release-info
 
+      - name: Checkout repo (for patch list)
+        uses: actions/checkout@v4
+
       - name: Write release body
         run: |
           TAG=$(cat release-info/tag.txt)
@@ -126,6 +129,12 @@ jobs:
           ZIP_REGULAR="Turnip-${TAG}.zip"
           ZIP_A8XX="Turnip-${TAG}-A8xx.zip"
           MESA_URL="https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}"
+
+          # Collect patch subjects from tu_gen8_infra.patch
+          A8XX_PATCH_LINES=$(grep "^Subject:" patches/tu_gen8_infra.patch \
+            | sed 's/^Subject: \[PATCH [0-9]*\/[0-9]*\] //' \
+            | while read -r line; do printf "  - %s\n" "$line"; done)
+
           {
             printf "> ⚠️ **AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**\n\n"
             printf '%s\n\n' '---'
@@ -137,6 +146,18 @@ jobs:
             printf "| **Commit date** | %s |\n"   "${COMMIT_DATE}"
             printf "| **Commit title** | %s |\n"  "${COMMIT_TITLE}"
             printf "| **Build date** | %s |\n\n"  "${BUILD_DATE}"
+            printf '%s\n\n' '---'
+            printf "### Patches Applied\n\n"
+            printf "**A6xx / A7xx (standard)**\n\n"
+            printf "Pure Mesa \`main\` — no source patches. Three inline NDK r29 compatibility fixes applied at build time:\n\n"
+            printf "  - \`buffer_handle_t\` typedef fix (\`native_handle.h\`)\n"
+            printf "  - \`hnd->handle\` void-cast fix (\`u_gralloc_fallback.c\`)\n"
+            printf "  - \`native_buffer->handle\` cast fix (\`vk_android.c\`)\n\n"
+            printf "**A8xx (experimental)**\n\n"
+            printf "Same NDK r29 fixes as above, plus:\n\n"
+            printf "- \`patches/tu_gen8_infra.patch\` — A8xx infrastructure (4 commits):\n"
+            printf "%s\n" "${A8XX_PATCH_LINES}"
+            printf "- \`patches/apply_a8xx_gpus.py\` — adds A810/A825/A829 GPU entries to \`freedreno_devices.py\` (A830 already in Mesa main)\n\n"
             printf '%s\n\n' '---'
             printf "### Adreno GPU Support\n\n"
             printf "| Series | File | Notes |\n"
