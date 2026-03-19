@@ -59,6 +59,8 @@ build_lib_for_android(){
 	# Apply optional patch series if EXTRA_PATCH is set (e.g. patches/tu8_kgsl_26.patch)
 	if [ -n "$EXTRA_PATCH" ] && [ -f "../../$EXTRA_PATCH" ]; then
 		echo "Applying patch series: $EXTRA_PATCH"
+		git config user.email "ci@build.local"
+		git config user.name "CI"
 		git am --3way "../../$EXTRA_PATCH" || { echo -e "${red}Patch series failed, aborting!${nocolor}"; git am --abort; exit 1; }
 	fi
 
