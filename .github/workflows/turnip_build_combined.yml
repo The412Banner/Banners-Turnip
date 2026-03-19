@@ -100,6 +100,9 @@ jobs:
     needs: build
 
     steps:
+      - name: Checkout repo (for patch list)
+        uses: actions/checkout@v4
+
       - name: Download driver ZIPs
         uses: actions/download-artifact@v4
         with:
@@ -112,9 +115,6 @@ jobs:
         with:
           name: release-info
           path: ./release-info
-
-      - name: Checkout repo (for patch list)
-        uses: actions/checkout@v4
 
       - name: Write release body
         run: |
