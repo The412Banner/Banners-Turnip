@@ -16,11 +16,9 @@ jobs:
           - variant: regular
             suffix: ""
             extra_patch: ""
-            extra_script: ""
           - variant: a8xx
             suffix: "-A8xx"
-            extra_patch: "patches/tu_gen8_infra.patch"
-            extra_script: "patches/apply_a8xx_gpus.py"
+            extra_patch: "patches/tu8_kgsl_26.patch"
 
     steps:
       - name: Checkout
@@ -37,7 +35,6 @@ jobs:
           chmod +x build_turnip.sh
           export BUILD_VERSION="${{ github.run_number }}"
           [[ -n "${{ matrix.extra_patch }}" ]] && export EXTRA_PATCH="${{ matrix.extra_patch }}"
-          [[ -n "${{ matrix.extra_script }}" ]] && export EXTRA_SCRIPT="${{ matrix.extra_script }}"
           ./build_turnip.sh
 
       - name: Rename ZIP
@@ -130,8 +127,9 @@ jobs:
           ZIP_A8XX="Turnip-${TAG}-A8xx.zip"
           MESA_URL="https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}"
 
-          # Collect patch subjects from tu_gen8_infra.patch
-          A8XX_PATCH_LINES=$(grep "^Subject:" patches/tu_gen8_infra.patch \
+          # Collect patch subjects from tu8_kgsl_26.patch
+          A8XX_PATCH_COUNT=$(grep -c "^Subject:" patches/tu8_kgsl_26.patch || echo "?")
+          A8XX_PATCH_LINES=$(grep "^Subject:" patches/tu8_kgsl_26.patch \
             | sed 's/^Subject: \[PATCH [0-9]*\/[0-9]*\] //' \
             | while read -r line; do printf "  - %s\n" "$line"; done)
 
@@ -155,9 +153,8 @@ jobs:
             printf "  - \`native_buffer->handle\` cast fix (\`vk_android.c\`)\n\n"
             printf "**A8xx (experimental)**\n\n"
             printf "Same NDK r29 fixes as above, plus:\n\n"
-            printf "- \`patches/tu_gen8_infra.patch\` — A8xx infrastructure (4 commits):\n"
-            printf "%s\n" "${A8XX_PATCH_LINES}"
-            printf "- \`patches/apply_a8xx_gpus.py\` — adds A810/A825/A829 GPU entries to \`freedreno_devices.py\` (A830 already in Mesa main)\n\n"
+            printf "- \`patches/tu8_kgsl_26.patch\` — [whitebelyash/mesa-tu8 patchset-head-v2](https://github.com/whitebelyash/mesa-tu8/releases/tag/patchset-head-v2) (%s commits):\n" "${A8XX_PATCH_COUNT}"
+            printf "%s\n\n" "${A8XX_PATCH_LINES}"
             printf '%s\n\n' '---'
             printf "### Adreno GPU Support\n\n"
             printf "| Series | File | Notes |\n"

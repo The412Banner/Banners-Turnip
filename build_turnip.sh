@@ -56,16 +56,10 @@ build_lib_for_android(){
 	cd "$workdir/$srcfolder"
 	echo "==== Building Mesa on $1 branch ===="
 
-	# Apply optional patch if EXTRA_PATCH is set (e.g. patches/tu_gen8_infra.patch)
+	# Apply optional patch series if EXTRA_PATCH is set (e.g. patches/tu8_kgsl_26.patch)
 	if [ -n "$EXTRA_PATCH" ] && [ -f "../../$EXTRA_PATCH" ]; then
-		echo "Applying patch: $EXTRA_PATCH"
-		patch -p1 -N --fuzz=4 < "../../$EXTRA_PATCH" || echo -e "${red}Warning: partial patch failures, continuing...${nocolor}"
-	fi
-
-	# Apply optional Python script if EXTRA_SCRIPT is set (e.g. patches/apply_a8xx_gpus.py)
-	if [ -n "$EXTRA_SCRIPT" ] && [ -f "../../$EXTRA_SCRIPT" ]; then
-		echo "Running script: $EXTRA_SCRIPT"
-		python3 "../../$EXTRA_SCRIPT" || { echo -e "${red}Script failed, aborting!${nocolor}"; exit 1; }
+		echo "Applying patch series: $EXTRA_PATCH"
+		git am --3way "../../$EXTRA_PATCH" || { echo -e "${red}Patch series failed, aborting!${nocolor}"; git am --abort; exit 1; }
 	fi
 
 	# Preventive fixes for NDK r29 compilation
