@@ -16,7 +16,6 @@ Safe to run multiple times (idempotent).
 
 import subprocess
 import sys
-import os
 import re
 
 DEV_INFO_H = "src/freedreno/common/freedreno_dev_info.h"
@@ -104,9 +103,7 @@ def fix_tu_cmd():
 # ── main ─────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    os.chdir(os.path.dirname(os.path.abspath(__file__)) + "/../..")
-    # Adjust path: script lives in patches/, called from mesa source root
-    # The build script calls this from inside turnip_workdir/mesa, so paths are relative
+    # Script is called from turnip_workdir/mesa — paths are relative to that directory
     fix_dev_info()
     fix_tu_cmd()
     print("fix_a8xx_dev_info.py: done")
