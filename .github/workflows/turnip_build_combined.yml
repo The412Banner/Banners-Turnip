@@ -19,7 +19,7 @@ jobs:
           - variant: a8xx
             suffix: "-A8xx"
             extra_patch: "patches/tu8_kgsl_26.patch"
-            extra_script: "patches/apply_a8xx_gpus.py"
+            extra_script: "patches/fix_a8xx_dev_info.py:patches/apply_a8xx_gpus.py"
 
     steps:
       - name: Checkout
@@ -157,6 +157,7 @@ jobs:
             printf "Same NDK r29 fixes as above, plus:\n\n"
             printf "- \`patches/tu8_kgsl_26.patch\` — [whitebelyash/mesa-tu8 patchset-head-v2](https://github.com/whitebelyash/mesa-tu8/releases/tag/patchset-head-v2) (%s commits):\n" "${A8XX_PATCH_COUNT}"
             printf "%s\n" "${A8XX_PATCH_LINES}"
+            printf "- \`patches/fix_a8xx_dev_info.py\` — re-adds only \`disable_gmem\` to \`freedreno_dev_info.h\` (skips \`has_image_processing\` already merged upstream)\n"
             printf "- \`patches/apply_a8xx_gpus.py\` — ensures A810/A825/A829 GPU entries in \`freedreno_devices.py\` (fallback if patch hunks drift)\n\n"
             printf '%s\n\n' '---'
             printf "### Adreno GPU Support\n\n"
