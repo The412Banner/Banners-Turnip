@@ -1,33 +1,3 @@
-From da0467ceb17058cf6f4e827c3303f8c61bada0aa Mon Sep 17 00:00:00 2001
-From: Rob Clark <rob.clark@oss.qualcomm.com>
-Date: Tue, 13 Jan 2026 10:58:51 -0800
-Subject: [PATCH 01/10] WIP: tu/kgsl: Add UBWC_5 and UBWC_6 support
-
-The #defines seem to map 1:1, so we can add support even without an
-updated kgsl uabi header.
-
-Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
----
- src/freedreno/vulkan/tu_knl_kgsl.cc | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
-index 20c51f93650..0e3dab17e3c 100644
---- a/src/freedreno/vulkan/tu_knl_kgsl.cc
-+++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
-@@ -1842,6 +1842,8 @@ tu_knl_kgsl_load(struct tu_instance *instance, int fd)
-       device->ubwc_config.macrotile_mode = FDL_MACROTILE_4_CHANNEL;
-       break;
-    case KGSL_UBWC_4_0:
-+   case 5:
-+   case 6:
-       device->ubwc_config.bank_swizzle_levels = 0x6;
-       device->ubwc_config.macrotile_mode = FDL_MACROTILE_8_CHANNEL;
-       break;
--- 
-2.53.0
-
-
 From 34cd389d9edaa2a5900559b389cb568fbb9a0415 Mon Sep 17 00:00:00 2001
 From: whitebelyash <whbexiumwork@gmail.com>
 Date: Fri, 16 Jan 2026 22:41:23 +0400
