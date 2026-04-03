@@ -50,6 +50,14 @@ prepare_workdir(){
 
 	echo "Downloading mesa source..."
 	git clone $mesasrc --depth=1 -b main $srcfolder
+
+	# Pin to the commit tu8_kgsl_26.patch was written against.
+	# Update this alongside the patch when whitebelyash releases a new patchset.
+	if [ -n "$EXTRA_PATCH" ]; then
+		echo "Pinning Mesa to commit 20c51f93650 (tu8_kgsl_26.patch baseline)..."
+		git -C "$srcfolder" fetch --depth=1 origin 20c51f93650
+		git -C "$srcfolder" checkout 20c51f93650
+	fi
 }
 
 build_lib_for_android(){
