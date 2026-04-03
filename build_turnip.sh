@@ -48,15 +48,17 @@ prepare_workdir(){
 	echo "Extracting android-ndk..."
 	unzip -q "$ndkver"-linux.zip &> /dev/null
 
-	echo "Downloading mesa source..."
-	git clone $mesasrc --depth=1 -b main $srcfolder
-
-	# Pin to the commit tu8_kgsl_26.patch was written against.
-	# Update this alongside the patch when whitebelyash releases a new patchset.
 	if [ -n "$EXTRA_PATCH" ]; then
+		# Blobless clone: fetches all commits (so any SHA is reachable) but blobs lazily.
+		# Needed to pin to the exact commit tu8_kgsl_26.patch was written against.
+		# Update the pinned SHA alongside the patch when whitebelyash releases a new patchset.
+		echo "Downloading mesa source (blobless clone for A8xx pin)..."
+		git clone $mesasrc --filter=blob:none -b main $srcfolder
 		echo "Pinning Mesa to commit 20c51f93650 (tu8_kgsl_26.patch baseline)..."
-		git -C "$srcfolder" fetch --depth=1 origin 20c51f93650
 		git -C "$srcfolder" checkout 20c51f93650
+	else
+		echo "Downloading mesa source..."
+		git clone $mesasrc --depth=1 -b main $srcfolder
 	fi
 }
 
