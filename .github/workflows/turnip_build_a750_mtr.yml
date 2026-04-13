@@ -54,88 +54,12 @@ jobs:
           MESA_VERSION=$(cat turnip_workdir/mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
           BUILD_DATE=$(date +%Y%m%d)
           TAG="v${MESA_VERSION}-${BUILD_DATE}-a750-mtr"
-          ZIP_B=$(ls turnip_workdir/*a750-mtr-b*.zip 2>/dev/null | head -1)
-          ZIP_P=$(ls turnip_workdir/*a750-mtr-p*.zip 2>/dev/null | head -1)
-          echo "githash=${GITHASH}" >> $GITHUB_OUTPUT
-          echo "githash_full=${GITHASH_FULL}" >> $GITHUB_OUTPUT
-          echo "commit_date=${COMMIT_DATE}" >> $GITHUB_OUTPUT
-          echo "commit_title=${COMMIT_TITLE}" >> $GITHUB_OUTPUT
           echo "mesa_version=${MESA_VERSION}" >> $GITHUB_OUTPUT
           echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
           echo "tag=${TAG}" >> $GITHUB_OUTPUT
-          echo "zip_b=$(basename $ZIP_B)" >> $GITHUB_OUTPUT
-          echo "zip_p=$(basename $ZIP_P)" >> $GITHUB_OUTPUT
-
-      - name: Write release body
-        run: |
-          cat > release_body.md << 'BODYEOF'
-          > ⚠️ **EXPERIMENTAL — Custom patches applied. Not guaranteed stable. Use at your own risk.**
-
-          ---
-
-          ### Turnip A750 MTR — ${{ steps.info.outputs.tag }}
-
-          Custom Turnip builds targeting **Adreno A750** (Snapdragon 8 Gen 2) with MTR-style performance patches.
-          Based on Mesa upstream `main`. Two variants ship with every build:
-
-          ---
-
-          ### Variants
-
-          | Variant | File | Patches |
-          | :--- | :--- | :--- |
-          | **Balanced (-b)** | `${{ steps.info.outputs.zip_b }}` | Force GMEM tile rendering |
-          | **Performance (-p)** | `${{ steps.info.outputs.zip_p }}` | Force GMEM + PWR_MAX GPU clock lock |
-
-          **Force GMEM:** Disables the autotuner — always uses on-chip tile memory instead of falling back to system RAM. Reduces bandwidth usage and improves frame consistency. Safe on most games; may rarely cause issues on render passes that exceed tile memory.
-
-          **PWR_MAX:** Issues `KGSL_PROP_PWR_CONSTRAINT` to lock the GPU to its highest frequency tier. Refreshed every 1000 command buffer submissions to keep clocks from throttling. Increases performance and power draw. Battery impact is significant under sustained load.
-
-          > **Recommendation:** Start with **balanced** (-b). Switch to **performance** (-p) if you need higher sustained FPS and are OK with the extra heat/battery drain. The `-b` variant is safer for longer sessions.
-
-          ---
-
-          ### Mesa Upstream Info
-
-          | | Details |
-          | :--- | :--- |
-          | **Source** | [mesa/mesa · main](https://gitlab.freedesktop.org/mesa/mesa) |
-          | **Commit** | [`${{ steps.info.outputs.githash }}`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/${{ steps.info.outputs.githash_full }}) |
-          | **Commit date** | ${{ steps.info.outputs.commit_date }} |
-          | **Commit title** | ${{ steps.info.outputs.commit_title }} |
-          | **Mesa version** | ${{ steps.info.outputs.mesa_version }} |
-          | **Build date** | ${{ steps.info.outputs.build_date }} |
-
-          ---
-
-          ### GPU Support
-
-          | Series | Status | Notes |
-          | :--- | :--- | :--- |
-          | **A7xx** | ✅ Primary target | A750 (SD 8 Gen 2), A740, A730, A725 |
-          | **A6xx** | ✅ Supported | Mesa upstream support, patches still apply |
-          | **A8xx** | ⚠️ Untested | No A8xx-specific patches in this build |
-
-          ---
-
-          ### How to Install
-          - **BannerHub / BCI:** Component Manager → Add New Component → load the `.zip`
-          - **Winlator:** Settings → Turnip driver → load the `.zip`
-          - **adrenotools:** Load the `.zip` in any adrenotools-compatible app
-          BODYEOF
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Turnip-A750-MTR-${{ steps.info.outputs.tag }}
           path: turnip_workdir/*a750-mtr*.zip
-
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.info.outputs.tag }}
-          name: "Turnip ${{ steps.info.outputs.mesa_version }} A750 MTR — ${{ steps.info.outputs.build_date }}"
-          prerelease: true
-          make_latest: false
-          body_path: release_body.md
-          files: turnip_workdir/*a750-mtr*.zip
