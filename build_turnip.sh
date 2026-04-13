@@ -42,6 +42,16 @@ prepare_workdir(){
 	echo "Preparing work directory..."
 	mkdir -p "$workdir" && cd "$_"
 
+	if [ "${SKIP_SOURCE_DOWNLOAD}" = "1" ]; then
+		echo "Skipping NDK + Mesa download (reusing existing source)..."
+		# Reset Mesa source to clean state before re-patching
+		if [ -d "$srcfolder/.git" ]; then
+			echo "Resetting Mesa source tree..."
+			git -C "$srcfolder" checkout .
+		fi
+		return
+	fi
+
 	echo "Downloading android-ndk from google server..."
 	curl -sL https://dl.google.com/android/repository/"$ndkver"-linux.zip --output "$ndkver"-linux.zip &> /dev/null
 
@@ -161,11 +171,16 @@ EOF
 	echo "Making the archive..."
 	cd /tmp/turnip-$1/lib
 
+	_meta_name="${META_NAME:-Mesa Turnip v${BUILD_VERSION}-${GITHASH}}"
+	_meta_desc="${META_DESC:-A6xx/A7xx Turnip driver from Mesa main (git ${GITHASH}). KGSL build. A8xx experimental.}"
+	_zip_suffix="${BUILD_SUFFIX:+-${BUILD_SUFFIX}}"
+	_zip_name="mesa-turnip-$1${_zip_suffix}-V${BUILD_VERSION}.zip"
+
 	cat <<EOF >"meta.json"
 {
   "schemaVersion": 1,
-  "name": "Mesa Turnip v${BUILD_VERSION}-${GITHASH}",
-  "description": "A6xx/A7xx Turnip driver from Mesa main (git ${GITHASH}). KGSL build. A8xx experimental.",
+  "name": "${_meta_name}",
+  "description": "${_meta_desc}",
   "author": "The412Banner",
   "packageVersion": "1",
   "vendor": "Mesa",
@@ -174,14 +189,14 @@ EOF
   "libraryName": "libvulkan_freedreno.so"
 }
 EOF
-	zip -q "/tmp/mesa-turnip-$1-V${BUILD_VERSION}.zip" libvulkan_freedreno.so meta.json
+	zip -q "/tmp/${_zip_name}" libvulkan_freedreno.so meta.json
 	cd - > /dev/null
 
-	if ! [ -f "/tmp/mesa-turnip-$1-V${BUILD_VERSION}.zip" ]; then
+	if ! [ -f "/tmp/${_zip_name}" ]; then
 		echo -e "${red}Failed to pack the archive!${nocolor}"
 	else
-		cp "/tmp/mesa-turnip-$1-V${BUILD_VERSION}.zip" "$workdir/"
-		echo -e "${green}Build completed successfully!${nocolor}"
+		cp "/tmp/${_zip_name}" "$workdir/"
+		echo -e "${green}Build completed successfully! → ${_zip_name}${nocolor}"
 	fi
 }
 
