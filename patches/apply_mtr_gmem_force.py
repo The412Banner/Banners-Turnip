@@ -17,23 +17,37 @@ if GUARD in content:
     print("MTR GMEM force already applied, skipping.")
     sys.exit(0)
 
-# Find the opening of use_sysmem_rendering function body.
-# The function signature is:
+# Find the function DEFINITION specifically, not a call site.
+# The definition is preceded by the return type on the previous line:
 #   static bool
-#   use_sysmem_rendering(struct tu_cmd_buffer *cmd,
-#                        struct tu_renderpass_result **autotune_result)
+#   use_sysmem_rendering(...)
 #   {
-FN = "use_sysmem_rendering"
-fn_idx = content.find(FN)
-if fn_idx == -1:
-    print(f"ERROR: '{FN}' not found in {PATH}", file=sys.stderr)
-    sys.exit(1)
+# We search for "static bool" followed (within ~300 chars) by "use_sysmem_rendering".
+import re
 
-# Find the opening brace of the function body (first '{' after the function name)
-brace_idx = content.find("{", fn_idx)
-if brace_idx == -1:
-    print(f"ERROR: Opening brace not found after '{FN}'", file=sys.stderr)
-    sys.exit(1)
+# Match the pattern: static bool <whitespace> use_sysmem_rendering ... {
+m = re.search(
+    r'static\s+bool\s+use_sysmem_rendering\s*\([^)]*\)\s*\{',
+    content,
+    re.DOTALL
+)
+if not m:
+    # Fallback: multiline signature (params span multiple lines)
+    m = re.search(
+        r'static\s+bool\s*\n\s*use_sysmem_rendering\b',
+        content
+    )
+    if not m:
+        print("ERROR: use_sysmem_rendering function definition not found", file=sys.stderr)
+        sys.exit(1)
+    # Find the opening brace of this definition
+    brace_idx = content.find("{", m.start())
+    if brace_idx == -1:
+        print("ERROR: Opening brace not found after use_sysmem_rendering", file=sys.stderr)
+        sys.exit(1)
+else:
+    # m matched through the opening brace — inject after it
+    brace_idx = m.end() - 1  # position of '{'
 
 inject = (
     "\n"
