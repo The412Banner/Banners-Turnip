@@ -3,7 +3,9 @@
 MTR PWR_MAX patch for tu_knl_kgsl.cc.
 
 Uses KGSL's KGSL_PROP_PWR_CONSTRAINT ioctl to lock the GPU to its maximum
-power level. Refreshed every 1000 command buffer submissions.
+power level. Applied once at KGSL context creation (device init). Sufficient
+for Winlator's always-active GPU context; KGSL will hold the constraint for
+the lifetime of the context.
 
 Idempotent — safe to run multiple times.
 """
@@ -20,29 +22,28 @@ if GUARD in content:
     print("MTR PWR_MAX already applied, skipping.")
     sys.exit(0)
 
-# ── Step 1: add #include <atomic> if not already present ────────────────────
+# ── Step 1: add #include <atomic> if needed ──────────────────────────────────
 
 if "#include <atomic>" not in content:
-    # Inject after the first #include line
     m = re.search(r'^#include\s+[<"]', content, re.MULTILINE)
     if m:
         end = content.find("\n", m.start()) + 1
         content = content[:end] + "#include <atomic>\n" + content[end:]
 
-# ── Step 2: inject defines + helper after the last #include ─────────────────
+# ── Step 2: inject defines + helper after the last #include ──────────────────
 
 DEFINES = """
-/* MTR: PWR_MAX — KGSL power constraint definitions */
-#define MTR_KGSL_PROP_PWR_CONSTRAINT    0x18
-#define MTR_KGSL_CONSTRAINT_PWRLEVEL    0x1
-#define MTR_KGSL_CONSTRAINT_PWR_MAX     0x1
-#define MTR_IOCTL_KGSL_DEVICE_SETPROPERTY _IOW(0x09, 0x14, struct mtr_kgsl_setprop)
+/* MTR: PWR_MAX — KGSL power constraint */
+#define MTR_KGSL_PROP_PWR_CONSTRAINT       0x18
+#define MTR_KGSL_CONSTRAINT_PWRLEVEL       0x1
+#define MTR_KGSL_CONSTRAINT_PWR_MAX        0x1
+#define MTR_IOCTL_KGSL_DEVICE_SETPROPERTY  _IOW(0x09, 0x14, struct mtr_kgsl_setprop)
 
 struct mtr_kgsl_pwr_constraint {
    unsigned int type;
    unsigned int sub_type;
    unsigned int level;
-   unsigned int id;  /* context id — 0 applies to all contexts */
+   unsigned int id;
 };
 
 struct mtr_kgsl_setprop {
@@ -51,16 +52,14 @@ struct mtr_kgsl_setprop {
    size_t       sizebytes;
 };
 
-/* MTR: per-process submission counter */
-static std::atomic<uint32_t> mtr_submit_count{0};
-
 static void
 mtr_kgsl_set_pwr_max(int kgsl_fd, unsigned int ctx_id)
 {
+   /* MTR: PWR_MAX — lock GPU to highest frequency via KGSL power constraint */
    struct mtr_kgsl_pwr_constraint pwr = {};
    pwr.type     = MTR_KGSL_CONSTRAINT_PWRLEVEL;
    pwr.sub_type = MTR_KGSL_CONSTRAINT_PWR_MAX;
-   pwr.level    = 0;   /* 0 = highest frequency tier */
+   pwr.level    = 0;
    pwr.id       = ctx_id;
 
    struct mtr_kgsl_setprop prop = {};
@@ -69,16 +68,13 @@ mtr_kgsl_set_pwr_max(int kgsl_fd, unsigned int ctx_id)
    prop.sizebytes = sizeof(pwr);
 
    if (ioctl(kgsl_fd, MTR_IOCTL_KGSL_DEVICE_SETPROPERTY, &prop) != 0) {
-      static bool warned = false;
-      if (!warned) {
-         mesa_logw("MTR: Failed to set initial PWR_MAX constraint: %s", strerror(errno));
-         warned = true;
-      }
+      mesa_logw("MTR: Failed to set initial PWR_MAX constraint: %s", strerror(errno));
+   } else {
+      mesa_logi("MTR: PWR_MAX constraint set (ctx=%u)", ctx_id);
    }
 }
 """
 
-# Find last #include and inject after it
 last_include_end = 0
 for m in re.finditer(r'^#include\s+[<"].*?[>"]\s*$', content, re.MULTILINE):
     last_include_end = m.end()
@@ -89,26 +85,34 @@ if last_include_end == 0:
 
 content = content[:last_include_end] + "\n" + DEFINES + content[last_include_end:]
 
-# ── Step 3: find the actual ioctl() submit call site ─────────────────────────
+# ── Step 3: inject PWR_MAX call after KGSL context creation ──────────────────
 #
-# We look for ioctl() or drmIoctl() calls that contain IOCTL_KGSL_GPU_COMMAND
-# on the SAME line (not a #define). The submit function uses a local 'req'
-# struct of type kgsl_gpu_command; req.context_id holds the KGSL context id.
+# After IOCTL_KGSL_DRAWCTXT_CREATE succeeds, the drawctxt_id field of the
+# request struct holds the new context id. We inject our PWR_MAX call right
+# after the ioctl call that creates the context.
 #
-# Pattern: optional_whitespace ioctl/drmIoctl ( ... IOCTL_KGSL_GPU_COMMAND ... ) ;
+# We look for the statement containing IOCTL_KGSL_DRAWCTXT_CREATE.
+# It may span multiple lines so we use DOTALL matching.
 
 m = re.search(
-    r'^([ \t]+(?:ret\s*=\s*)?(?:ioctl|drmIoctl)\s*\([^;]*IOCTL_KGSL_GPU_COMMAND[^;]*;)',
+    r'(IOCTL_KGSL_DRAWCTXT_CREATE[^;]*;)',
     content,
-    re.MULTILINE
+    re.DOTALL
 )
 if not m:
-    print(f"ERROR: ioctl call with IOCTL_KGSL_GPU_COMMAND not found in {PATH}",
-          file=sys.stderr)
+    print(f"ERROR: IOCTL_KGSL_DRAWCTXT_CREATE not found in {PATH}", file=sys.stderr)
     sys.exit(1)
 
-# Get indentation of the ioctl line
-line_start = m.start()
+# Find the end of this statement and the line ending after it
+stmt_end = m.end()  # position after the semicolon
+
+# Find the newline at end of this statement
+nl = content.find("\n", stmt_end)
+if nl == -1:
+    nl = len(content)
+
+# Get indentation of the line containing the ioctl call
+line_start = content.rfind("\n", 0, m.start()) + 1
 indent = ""
 for ch in content[line_start:]:
     if ch in (" ", "\t"):
@@ -116,29 +120,29 @@ for ch in content[line_start:]:
     else:
         break
 
-# We need the fd argument. In Mesa KGSL backend the ioctl is called as:
-#   ioctl(fd, IOCTL_KGSL_GPU_COMMAND, &req)
-# or
-#   drmIoctl(dev->fd, IOCTL_KGSL_GPU_COMMAND, &req)
-# Extract the first argument name by looking at the call.
-call_text = m.group(1)
-fd_match = re.search(r'(?:ioctl|drmIoctl)\s*\(\s*([^,]+?)\s*,', call_text)
-fd_expr = fd_match.group(1).strip() if fd_match else "queue->device->fd"
+# The req struct field for the new context id differs across Mesa versions.
+# Try to detect which field name is used near the DRAWCTXT_CREATE call.
+ctx_field = "drawctxt_id"  # most common
+nearby = content[max(0, m.start() - 400):m.end() + 400]
+if "context_id" in nearby and "drawctxt_id" not in nearby:
+    ctx_field = "context_id"
 
-REFRESH_CODE = (
-    f"{indent}/* MTR: PWR_MAX refresh every 1000 submissions */\n"
-    f"{indent}{{\n"
-    f"{indent}   auto _mtr_n = mtr_submit_count.fetch_add(1, std::memory_order_relaxed);\n"
-    f"{indent}   if (_mtr_n % 1000 == 0)\n"
-    f"{indent}      mtr_kgsl_set_pwr_max({fd_expr}, req.context_id);\n"
-    f"{indent}}}\n"
+# We also need the fd variable name — look for the ioctl first arg
+ioctl_line = content[line_start:stmt_end]
+fd_match = re.search(r'(?:ioctl|drmIoctl)\s*\(\s*([^,\n]+?)\s*,', ioctl_line)
+fd_expr = fd_match.group(1).strip() if fd_match else "device->fd"
+
+INJECT = (
+    f"\n{indent}/* MTR: PWR_MAX — set power constraint right after context creation */\n"
+    f"{indent}mtr_kgsl_set_pwr_max({fd_expr}, req.{ctx_field});\n"
 )
 
-content = content[:line_start] + REFRESH_CODE + content[line_start:]
+content = content[:nl] + INJECT + content[nl:]
 
 with open(PATH, "w") as f:
     f.write(content)
 
 print(f"MTR: Applied PWR_MAX patch to {PATH}")
-print(f"     Defines + helper injected after last #include")
-print(f"     Submit refresh injected before ioctl call (fd={fd_expr}, ctx=req.context_id)")
+print(f"     Helper injected after last #include")
+print(f"     PWR_MAX call injected after IOCTL_KGSL_DRAWCTXT_CREATE "
+      f"(fd={fd_expr}, ctx=req.{ctx_field})")
