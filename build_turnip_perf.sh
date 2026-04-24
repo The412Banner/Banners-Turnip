@@ -81,8 +81,8 @@ build_lib_for_android(){
 	export OBJDUMP=llvm-objdump
 	export OBJCOPY=llvm-objcopy
 	export LDFLAGS="-fuse-ld=lld -flto=thin"
-	export CFLAGS="-D__ANDROID__ -O3 -fno-plt -fvisibility=hidden -flto=thin -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
-	export CXXFLAGS="-D__ANDROID__ -O3 -fno-plt -fvisibility=hidden -flto=thin -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
+	export CFLAGS="-D__ANDROID__ -O3 -fno-plt -flto=thin -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
+	export CXXFLAGS="-D__ANDROID__ -O3 -fno-plt -flto=thin -Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
 
 	GITHASH=$(git rev-parse --short HEAD)
 
