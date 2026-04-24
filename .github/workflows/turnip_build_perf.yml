@@ -155,7 +155,7 @@ jobs:
             printf '%s\n\n' '---'
             printf "### Build Configuration\n\n"
             printf "Pure Mesa \`main\` — no source patches. Performance-optimized build for A6xx/A7xx.\n\n"
-            printf "**Compiler flags:** \`-O3 -fno-plt -fvisibility=hidden -flto=thin\`\n\n"
+            printf "**Compiler flags:** \`-O3 -fno-plt -flto=thin\`\n\n"
             printf "**Meson:** \`-Db_ndebug=true\` (assertions stripped)\n\n"
             printf "Three inline NDK r29 compatibility fixes applied at build time:\n\n"
             printf "  - \`buffer_handle_t\` typedef fix (\`native_handle.h\`)\n"
