@@ -1,0 +1,188 @@
+name: Build Turnip (Perf 6xx/7xx)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
+          pip3 install --break-system-packages meson mako
+
+      - name: Build
+        run: |
+          chmod +x build_turnip_perf.sh
+          export BUILD_VERSION="${{ github.run_number }}"
+          ./build_turnip_perf.sh
+
+      - name: Package and rename
+        id: info
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RELEASE_NUM="r1"
+          BUILD_NUM=$(cat perf_build_number.txt | tr -d '[:space:]')
+          MESA_VERSION=$(cat turnip_workdir/mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
+          BUILD_DATE=$(date +%Y%m%d)
+          GITHASH=$(git -C turnip_workdir/mesa rev-parse --short HEAD 2>/dev/null || echo "unknown")
+          GITHASH_FULL=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo "")
+          COMMIT_DATE=$(git -C turnip_workdir/mesa log -1 --format="%ci" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
+          COMMIT_TITLE=$(git -C turnip_workdir/mesa log -1 --format="%s" 2>/dev/null || echo "")
+
+          FULL_NAME="Banners Turnip Perf ${MESA_VERSION} ${RELEASE_NUM}-b${BUILD_NUM}"
+          ZIP_NAME="Banners-Turnip-Perf-${MESA_VERSION}-${RELEASE_NUM}-b${BUILD_NUM}.zip"
+          TAG="perf-${MESA_VERSION}-${RELEASE_NUM}-b${BUILD_NUM}"
+
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" &>/dev/null; then
+            TAG="${TAG}-retry${{ github.run_number }}"
+            echo "Tag already exists — using ${TAG}"
+          fi
+
+          # Repack ZIP with updated meta.json
+          SRC=$(ls turnip_workdir/mesa-turnip-perf-*.zip | head -1)
+          mkdir -p /tmp/turnip-repack && cd /tmp/turnip-repack
+          unzip -q "$GITHUB_WORKSPACE/$SRC"
+          cat > meta.json << METAEOF
+          {
+            "schemaVersion": 1,
+            "name": "${FULL_NAME}",
+            "description": "A6xx/A7xx performance build — Mesa main (git ${GITHASH}). O3 + ThinLTO. KGSL.",
+            "author": "The412Banner",
+            "packageVersion": "1",
+            "vendor": "Mesa",
+            "driverVersion": "Vulkan 1.4.335",
+            "minApi": 28,
+            "libraryName": "libvulkan_freedreno.so"
+          }
+          METAEOF
+          zip -q "$GITHUB_WORKSPACE/turnip_workdir/${ZIP_NAME}" libvulkan_freedreno.so meta.json
+          cd "$GITHUB_WORKSPACE"
+
+          # Increment build number and commit
+          echo $((BUILD_NUM + 1)) > perf_build_number.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add perf_build_number.txt
+          git commit -m "ci: bump perf build number to $((BUILD_NUM + 1))"
+          git push
+
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "full_name=${FULL_NAME}" >> $GITHUB_OUTPUT
+          echo "zip_name=${ZIP_NAME}" >> $GITHUB_OUTPUT
+          echo "mesa_version=${MESA_VERSION}" >> $GITHUB_OUTPUT
+          echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
+          echo "githash=${GITHASH}" >> $GITHUB_OUTPUT
+          echo "githash_full=${GITHASH_FULL}" >> $GITHUB_OUTPUT
+          echo "commit_date=${COMMIT_DATE}" >> $GITHUB_OUTPUT
+          echo "commit_title=${COMMIT_TITLE}" >> $GITHUB_OUTPUT
+
+      - name: Save release info
+        run: |
+          mkdir -p release-info
+          echo "${{ steps.info.outputs.tag }}"          > release-info/tag.txt
+          echo "${{ steps.info.outputs.full_name }}"    > release-info/full_name.txt
+          echo "${{ steps.info.outputs.zip_name }}"     > release-info/zip_name.txt
+          echo "${{ steps.info.outputs.mesa_version }}" > release-info/mesa_version.txt
+          echo "${{ steps.info.outputs.build_date }}"   > release-info/build_date.txt
+          echo "${{ steps.info.outputs.githash }}"      > release-info/githash.txt
+          echo "${{ steps.info.outputs.githash_full }}" > release-info/githash_full.txt
+          echo "${{ steps.info.outputs.commit_date }}"  > release-info/commit_date.txt
+          echo "${{ steps.info.outputs.commit_title }}" > release-info/commit_title.txt
+
+      - name: Upload release info
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-info
+          path: release-info/
+
+      - name: Upload driver ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: turnip-perf
+          path: turnip_workdir/Banners-Turnip-Perf-*.zip
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download driver ZIP
+        uses: actions/download-artifact@v4
+        with:
+          name: turnip-perf
+          path: ./zips
+
+      - name: Download release info
+        uses: actions/download-artifact@v4
+        with:
+          name: release-info
+          path: ./release-info
+
+      - name: Write release body
+        run: |
+          TAG=$(cat release-info/tag.txt)
+          FULL_NAME=$(cat release-info/full_name.txt)
+          MESA_VERSION=$(cat release-info/mesa_version.txt)
+          BUILD_DATE=$(cat release-info/build_date.txt)
+          GITHASH=$(cat release-info/githash.txt)
+          GITHASH_FULL=$(cat release-info/githash_full.txt)
+          COMMIT_DATE=$(cat release-info/commit_date.txt)
+          COMMIT_TITLE=$(cat release-info/commit_title.txt)
+          MESA_URL="https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}"
+
+          {
+            printf "> ⚠️ **AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**\n\n"
+            printf '%s\n\n' '---'
+            printf "### Mesa Upstream\n\n"
+            printf "| | |\n"
+            printf "| :--- | :--- |\n"
+            printf "| **Version** | %s |\n"              "${MESA_VERSION}"
+            printf "| **Commit** | [\`%s\`](%s) |\n"    "${GITHASH}" "${MESA_URL}"
+            printf "| **Commit date** | %s |\n"          "${COMMIT_DATE}"
+            printf "| **Commit title** | %s |\n"         "${COMMIT_TITLE}"
+            printf "| **Build date** | %s |\n\n"         "${BUILD_DATE}"
+            printf '%s\n\n' '---'
+            printf "### Build Configuration\n\n"
+            printf "Pure Mesa \`main\` — no source patches. Performance-optimized build for A6xx/A7xx.\n\n"
+            printf "**Compiler flags:** \`-O3 -fno-plt -fvisibility=hidden -flto=thin\`\n\n"
+            printf "**Meson:** \`-Db_ndebug=true\` (assertions stripped)\n\n"
+            printf "Three inline NDK r29 compatibility fixes applied at build time:\n\n"
+            printf "  - \`buffer_handle_t\` typedef fix (\`native_handle.h\`)\n"
+            printf "  - \`hnd->handle\` void-cast fix (\`u_gralloc_fallback.c\`)\n"
+            printf "  - \`native_buffer->handle\` cast fix (\`vk_android.c\`)\n\n"
+            printf '%s\n\n' '---'
+            printf "### Adreno GPU Support\n\n"
+            printf "| Series | Notes |\n"
+            printf "| :--- | :--- |\n"
+            printf "| **A6xx** | Snapdragon 600–800 series (SD835, SD845, SD855, SD865) |\n"
+            printf "| **A7xx** | Snapdragon 8 Gen 1 / Gen 2 (SD8450, SD8475, SD8550) |\n\n"
+            printf "> A8xx (Snapdragon 8 Elite) is **not supported** by this build.\n\n"
+            printf '%s\n\n' '---'
+            printf "### Installation\n\n"
+            printf '%s\n' "- **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP"
+            printf '%s\n' "- **Winlator / adrenotools:** load the ZIP in GPU driver settings"
+          } > release_body.md
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG=$(cat release-info/tag.txt)
+          FULL_NAME=$(cat release-info/full_name.txt)
+
+          gh release create "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "${FULL_NAME}" \
+            --notes-file release_body.md \
+            zips/*.zip
