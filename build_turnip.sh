@@ -176,9 +176,9 @@ EOF
 	_zip_suffix="${BUILD_SUFFIX:+-${BUILD_SUFFIX}}"
 	_zip_name="mesa-turnip-$1${_zip_suffix}-V${BUILD_VERSION}.zip"
 
-	_vk_header="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/vulkan/vulkan_core.h"
-	_vk_patch=$(grep '^#define VK_HEADER_VERSION ' "$_vk_header" | awk '{print $3}')
-	_vk_minor=$(grep 'define VK_HEADER_VERSION_COMPLETE' "$_vk_header" | grep -oP 'VK_MAKE_API_VERSION\(0,\s*[0-9]+,\s*\K[0-9]+')
+	_mesa_vk_header="$workdir/$srcfolder/include/vulkan/vulkan_core.h"
+	_vk_patch=$(grep '^#define VK_HEADER_VERSION ' "$_mesa_vk_header" | awk '{print $3}')
+	_vk_minor=$(grep 'define TU_API_VERSION' "$workdir/$srcfolder/src/freedreno/vulkan/tu_device.cc" | grep -oP 'VK_MAKE_VERSION\(\s*[0-9]+,\s*\K[0-9]+')
 	_driver_version="Vulkan 1.${_vk_minor}.${_vk_patch}"
 
 	cat <<EOF >"meta.json"
