@@ -186,3 +186,91 @@ jobs:
             --notes-file release_body.md \
             zips/*.zip
 
+      - name: Update README with build info
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin A8xx
+          git checkout A8xx
+          git pull --rebase origin A8xx
+
+          export BT_TAG=$(cat release-info/tag.txt)
+          export BT_MESA_VERSION=$(cat release-info/mesa_version.txt)
+          export BT_BUILD_DATE=$(cat release-info/build_date.txt)
+          export BT_GITHASH=$(cat release-info/githash.txt)
+          export BT_GITHASH_FULL=$(cat release-info/githash_full.txt)
+          export BT_COMMIT_DATE=$(cat release-info/commit_date.txt)
+          export BT_COMMIT_TITLE=$(cat release-info/commit_title.txt)
+          export BT_REPO="$GITHUB_REPOSITORY"
+
+          python3 <<'PYEOF'
+import re, json, os, subprocess
+from datetime import datetime, timezone, timedelta
+
+tag        = os.environ["BT_TAG"]
+mesa_ver   = os.environ["BT_MESA_VERSION"]
+build_date = os.environ["BT_BUILD_DATE"]
+githash    = os.environ["BT_GITHASH"]
+githash_f  = os.environ["BT_GITHASH_FULL"]
+c_date     = os.environ["BT_COMMIT_DATE"]
+c_title    = os.environ["BT_COMMIT_TITLE"]
+repo       = os.environ["BT_REPO"]
+
+release_url = f"https://github.com/{repo}/releases/tag/{tag}"
+mesa_url    = f"https://gitlab.freedesktop.org/mesa/mesa/-/commit/{githash_f}"
+
+latest = (
+    "| | |\n"
+    "| :--- | :--- |\n"
+    f"| **Mesa version** | {mesa_ver} |\n"
+    f"| **Commit** | [`{githash}`]({mesa_url}) |\n"
+    f"| **Commit date** | {c_date} |\n"
+    f"| **Commit title** | {c_title} |\n"
+    f"| **Build date** | {build_date} |\n"
+    f"| **Release** | [{tag}]({release_url}) |"
+)
+
+result = subprocess.run(
+    ["gh", "release", "list", "--repo", repo, "--limit", "50",
+     "--json", "tagName,name,publishedAt"],
+    capture_output=True, text=True
+)
+releases = json.loads(result.stdout)
+since = datetime.now(timezone.utc) - timedelta(hours=24)
+rows = []
+for r in releases:
+    pub = datetime.fromisoformat(r["publishedAt"].replace("Z", "+00:00"))
+    if pub >= since:
+        t = r["tagName"]
+        url = f"https://github.com/{repo}/releases/tag/{t}"
+        rows.append(f"| [{t}]({url}) | {r[\"name\"]} | {r[\"publishedAt\"][:10]} |")
+
+if rows:
+    recent = "| Tag | Title | Date |\n| :--- | :--- | :--- |\n" + "\n".join(rows)
+else:
+    recent = "_No builds in the last 24 hours._"
+
+with open("README.md") as f:
+    content = f.read()
+
+content = re.sub(
+    r"<!-- LATEST_BUILD_START -->.*?<!-- LATEST_BUILD_END -->",
+    f"<!-- LATEST_BUILD_START -->\n{latest}\n<!-- LATEST_BUILD_END -->",
+    content, flags=re.DOTALL
+)
+content = re.sub(
+    r"<!-- RECENT_BUILDS_START -->.*?<!-- RECENT_BUILDS_END -->",
+    f"<!-- RECENT_BUILDS_START -->\n{recent}\n<!-- RECENT_BUILDS_END -->",
+    content, flags=re.DOTALL
+)
+
+with open("README.md", "w") as f:
+    f.write(content)
+print("README updated")
+PYEOF
+
+          git add README.md
+          git diff --staged --quiet || git commit -m "docs: update build info [$BT_TAG]"
+          git push origin A8xx
