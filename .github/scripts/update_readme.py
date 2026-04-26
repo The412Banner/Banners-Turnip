@@ -1,14 +1,15 @@
 import re, json, os, subprocess
 from datetime import datetime, timezone, timedelta
 
-tag        = os.environ["BT_TAG"]
-mesa_ver   = os.environ["BT_MESA_VERSION"]
-build_date = os.environ["BT_BUILD_DATE"]
-githash    = os.environ["BT_GITHASH"]
-githash_f  = os.environ["BT_GITHASH_FULL"]
-c_date     = os.environ["BT_COMMIT_DATE"]
-c_title    = os.environ["BT_COMMIT_TITLE"]
-repo       = os.environ["BT_REPO"]
+tag          = os.environ["BT_TAG"]
+mesa_ver     = os.environ["BT_MESA_VERSION"]
+build_date   = os.environ["BT_BUILD_DATE"]
+githash      = os.environ["BT_GITHASH"]
+githash_f    = os.environ["BT_GITHASH_FULL"]
+c_date       = os.environ["BT_COMMIT_DATE"]
+c_title      = os.environ["BT_COMMIT_TITLE"]
+vulkan_ver   = os.environ["BT_VULKAN_VERSION"]
+repo         = os.environ["BT_REPO"]
 
 release_url = f"https://github.com/{repo}/releases/tag/{tag}"
 mesa_url    = f"https://gitlab.freedesktop.org/mesa/mesa/-/commit/{githash_f}"
@@ -17,6 +18,7 @@ latest = (
     "| | |\n"
     "| :--- | :--- |\n"
     f"| **Mesa version** | {mesa_ver} |\n"
+    f"| **Vulkan version** | {vulkan_ver} |\n"
     f"| **Commit** | [`{githash}`]({mesa_url}) |\n"
     f"| **Commit date** | {c_date} |\n"
     f"| **Commit title** | {c_title} |\n"
@@ -48,8 +50,9 @@ for r in recent_releases:
     )
     body = json.loads(body_result.stdout).get("body", "")
 
-    commit_cell = ""
-    title_cell  = ""
+    commit_cell  = ""
+    title_cell   = ""
+    vulkan_cell  = ""
 
     m = re.search(r"\*\*Commit\*\*\s*\|\s*(\[`[^`]+`\]\([^)]+\))", body)
     if m:
@@ -59,12 +62,16 @@ for r in recent_releases:
     if m:
         title_cell = m.group(1).strip()
 
-    rows.append(f"| [{t}]({rel_url}) | {pub_date} | {commit_cell} | {title_cell} |")
+    m = re.search(r"\*\*Vulkan version\*\*\s*\|\s*(.+)", body)
+    if m:
+        vulkan_cell = m.group(1).strip()
+
+    rows.append(f"| [{t}]({rel_url}) | {pub_date} | {commit_cell} | {title_cell} | {vulkan_cell} |")
 
 if rows:
     header = (
-        "| Tag | Date | Commit | Description |\n"
-        "| :--- | :--- | :--- | :--- |"
+        "| Tag | Date | Commit | Description | Vulkan |\n"
+        "| :--- | :--- | :--- | :--- | :--- |"
     )
     recent = header + "\n" + "\n".join(rows)
 else:
