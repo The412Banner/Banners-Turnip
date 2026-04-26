@@ -20,12 +20,12 @@ jobs:
           sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
           pip3 install --break-system-packages meson mako
 
-      - name: Build Drivers
+      - name: Build
         run: |
           chmod +x build_turnip.sh
           export BUILD_VERSION="${{ github.run_number }}"
-          export EXTRA_PATCH="patches/tu_gen8_infra.patch"
-          export EXTRA_SCRIPT="patches/apply_a8xx_gpus.py"
+          export EXTRA_PATCH="patches/tu8_kgsl_26.patch"
+          export EXTRA_SCRIPT="patches/fix_a8xx_dev_info.py:patches/apply_a8xx_gpus.py"
           ./build_turnip.sh
 
       - name: Read build info
@@ -39,7 +39,11 @@ jobs:
           BUILD_DATE=$(date +%Y%m%d)
           ZIP=$(ls turnip_workdir/*.zip 2>/dev/null | head -1)
           FILENAME=$(basename "$ZIP")
-          TAG="v${MESA_VERSION}-${BUILD_DATE}-a8xx"
+          TAG="v${MESA_VERSION}-${BUILD_DATE}-a8xx-test"
+          VK_PATCH=$(grep '^#define VK_HEADER_VERSION ' turnip_workdir/mesa/include/vulkan/vulkan_core.h | awk '{print $3}')
+          VK_MINOR=$(grep 'define TU_API_VERSION' turnip_workdir/mesa/src/freedreno/vulkan/tu_device.cc | grep -oP 'VK_MAKE_VERSION\(\s*[0-9]+,\s*\K[0-9]+')
+          VULKAN_VERSION="Vulkan 1.${VK_MINOR}.${VK_PATCH}"
+          A8XX_PATCH_COUNT=$(grep -c "^Subject:" patches/tu8_kgsl_26.patch || echo "?")
           echo "githash=${GITHASH}" >> $GITHUB_OUTPUT
           echo "githash_full=${GITHASH_FULL}" >> $GITHUB_OUTPUT
           echo "commit_date=${COMMIT_DATE}" >> $GITHUB_OUTPUT
@@ -48,55 +52,37 @@ jobs:
           echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
           echo "filename=${FILENAME}" >> $GITHUB_OUTPUT
           echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "vulkan_version=${VULKAN_VERSION}" >> $GITHUB_OUTPUT
+          echo "a8xx_patch_count=${A8XX_PATCH_COUNT}" >> $GITHUB_OUTPUT
 
       - name: Write release body
         run: |
-          cat > release_body.md << 'BODYEOF'
-          > ⚠️ **EXPERIMENTAL A8xx BUILD — Patches applied. Not guaranteed stable. Use at your own risk.**
-
-          ---
-
-          ### 🚀 Turnip Vulkan Driver (A8xx Experimental): ${{ steps.info.outputs.tag }}
-
-          ---
-
-          ### 📊 Mesa Upstream Status
-
-          | | Details |
-          | :--- | :--- |
-          | **Source** | [mesa/mesa · main](https://gitlab.freedesktop.org/mesa/mesa) |
-          | **Commit** | [`${{ steps.info.outputs.githash }}`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/${{ steps.info.outputs.githash_full }}) |
-          | **Commit date** | ${{ steps.info.outputs.commit_date }} |
-          | **Commit title** | ${{ steps.info.outputs.commit_title }} |
-          | **Mesa version** | ${{ steps.info.outputs.mesa_version }} |
-          | **Build date** | ${{ steps.info.outputs.build_date }} |
-          | **Patches applied** | `tu_gen8_infra.patch` — Parts 1-4: UBWC 5/6 KGSL, gralloc fix, disable_gmem, A810/gmem offset; `apply_a8xx_gpus.py` — idempotent A825/A810/A829 GPU configs |
-
-          ---
-
-          ### 📱 Adreno GPU Support
-
-          | Series | Status | Devices |
-          | :--- | :--- | :--- |
-          | **A6xx** | ✅ Supported | Snapdragon 600–800 series (2019–2022) |
-          | **A7xx** | ✅ Supported | Snapdragon 7/8 Gen 1–3 (2022–2024) |
-          | **A8xx** | ⚠️ Experimental | Snapdragon 8 Elite (2024–2025) — target of this build |
-
-          > This build exists specifically to test A8xx support. If you have an A8xx device, please report your results in issues.
-
-          ---
-
-          ### ⬇️ Download
-
-          | File | Description |
-          | :--- | :--- |
-          | `${{ steps.info.outputs.filename }}` | ZIP for adrenotools / BannerHub / BCI injection |
-
-          **How to install:**
-          - **BannerHub / BCI:** Inject via Component Manager → Add New Component
-          - **Winlator:** Settings → Turnip driver → load the `.zip`
-          - **adrenotools:** Load the `.zip` in any adrenotools-compatible app
-          BODYEOF
+          A8XX_PATCH_LINES=$(grep "^Subject:" patches/tu8_kgsl_26.patch \
+            | sed 's/^Subject: \[PATCH [0-9]*\/[0-9]*\] //' \
+            | while read -r line; do printf "  - %s\n" "$line"; done)
+          {
+            printf "> ⚠️ **EXPERIMENTAL A8xx BUILD — Not guaranteed stable. Use at your own risk.**\n\n"
+            printf '%s\n\n' '---'
+            printf "### Mesa Upstream\n\n"
+            printf "| | |\n"
+            printf "| :--- | :--- |\n"
+            printf "| **Version** | %s |\n"       "${{ steps.info.outputs.mesa_version }}"
+            printf "| **Commit** | [\`%s\`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/%s) |\n" "${{ steps.info.outputs.githash }}" "${{ steps.info.outputs.githash_full }}"
+            printf "| **Vulkan version** | %s |\n" "${{ steps.info.outputs.vulkan_version }}"
+            printf "| **Commit date** | %s |\n"   "${{ steps.info.outputs.commit_date }}"
+            printf "| **Commit title** | %s |\n"  "${{ steps.info.outputs.commit_title }}"
+            printf "| **Build date** | %s |\n\n"  "${{ steps.info.outputs.build_date }}"
+            printf '%s\n\n' '---'
+            printf "### Patches Applied\n\n"
+            printf "\`patches/tu8_kgsl_26.patch\` — [whitebelyash/mesa-tu8 patchset-head-v2](https://github.com/whitebelyash/mesa-tu8/releases/tag/patchset-head-v2) (${{ steps.info.outputs.a8xx_patch_count }} commits):\n\n"
+            printf "%s\n\n" "${A8XX_PATCH_LINES}"
+            printf '%s\n' "\`patches/fix_a8xx_dev_info.py\` — re-adds only \`disable_gmem\` to \`freedreno_dev_info.h\` (skips \`has_image_processing\` already merged upstream)"
+            printf '%s\n\n' "\`patches/apply_a8xx_gpus.py\` — ensures A810/A825/A829 GPU entries in \`freedreno_devices.py\` (fallback if patch hunks drift)"
+            printf '%s\n\n' '---'
+            printf "### Installation\n\n"
+            printf '%s\n' "- **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP"
+            printf '%s\n' "- **Winlator / adrenotools:** load the ZIP in GPU driver settings"
+          } > release_body.md
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
