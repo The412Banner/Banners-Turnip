@@ -57,7 +57,7 @@ Includes the [whitebelyash/mesa-tu8](https://github.com/whitebelyash/mesa-tu8) p
 | **Commit date** | 2026-04-25 |
 | **Commit title** | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. |
 | **Build date** | 20260426 |
-| **Release** | [v26.2.0-20260426-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426-r2) |
+| **Release** | [v26.2.0-20260426-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -67,7 +67,7 @@ Includes the [whitebelyash/mesa-tu8](https://github.com/whitebelyash/mesa-tu8) p
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.2.0-20260426-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426-r2) | 2026-04-26 | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. | Vulkan 1.4.348 |
+| [v26.2.0-20260426-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426-r3) | 2026-04-26 | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
 ---
