@@ -222,7 +222,7 @@ jobs:
           BUILD_DATE=$(cat release-info/build_date.txt)
           gh release create "$TAG" \
             --repo "$GITHUB_REPOSITORY" \
-            --title "Turnip ${MESA_VERSION} — ${BUILD_DATE}" \
+            --title "Turnip ${TAG}" \
             --notes-file release_body.md \
             zips/*.zip
 
