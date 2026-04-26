@@ -16,10 +16,12 @@ jobs:
           - variant: regular
             suffix: ""
             extra_patch: ""
+            meta_desc: ""
           - variant: a8xx
             suffix: "-A8xx"
             extra_patch: "patches/tu8_kgsl_26.patch"
             extra_script: "patches/fix_a8xx_dev_info.py:patches/apply_a8xx_gpus.py"
+            meta_desc: "A8xx experimental Turnip driver for Snapdragon 8 Elite (A810/A825/A829/A830). Includes A8xx-specific patches on top of Mesa main. KGSL build."
 
     steps:
       - name: Checkout
@@ -70,7 +72,18 @@ jobs:
           SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
           UNZIP_DIR=$(mktemp -d)
           unzip -q "$SRC" -d "$UNZIP_DIR"
-          python3 -c "import json; p='${UNZIP_DIR}/meta.json'; m=json.load(open(p)); m['name']='Mesa Turnip ${TAG}'; m['packageVersion']='${DAY_NUM}'; json.dump(m,open(p,'w'),indent=2); print('meta.json:',m['name'],'| packageVersion:',m['packageVersion'])"
+          META_NAME="Mesa Turnip ${TAG}${{ matrix.suffix }}"
+          META_DESC="${{ matrix.meta_desc }}"
+          python3 -c "
+import json
+p='${UNZIP_DIR}/meta.json'
+m=json.load(open(p))
+m['name']='${META_NAME}'
+m['packageVersion']='${DAY_NUM}'
+if '${META_DESC}': m['description']='${META_DESC}'
+json.dump(m,open(p,'w'),indent=2)
+print('meta.json:',m['name'],'| packageVersion:',m['packageVersion'])
+"
           (cd "$UNZIP_DIR" && zip -q - *) > "turnip_workdir/${ZIP_NAME}"
           VK_PATCH=$(grep '^#define VK_HEADER_VERSION ' turnip_workdir/mesa/include/vulkan/vulkan_core.h | awk '{print $3}')
           VK_MINOR=$(grep 'define TU_API_VERSION' turnip_workdir/mesa/src/freedreno/vulkan/tu_device.cc | grep -oP 'VK_MAKE_VERSION\(\s*[0-9]+,\s*\K[0-9]+')
@@ -140,39 +153,62 @@ jobs:
           GITHASH_FULL=$(cat release-info/githash_full.txt)
           COMMIT_DATE=$(cat release-info/commit_date.txt)
           COMMIT_TITLE=$(cat release-info/commit_title.txt)
+          VULKAN_VERSION=$(cat release-info/vulkan_version.txt)
           ZIP_REGULAR="Turnip-${TAG}.zip"
           ZIP_A8XX="Turnip-${TAG}-A8xx.zip"
-          VULKAN_VERSION=$(cat release-info/vulkan_version.txt)
           MESA_URL="https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}"
-          A8XX_PATCH_COUNT=$(grep -c "^Subject:" patches/tu8_kgsl_26.patch || echo "?")
-          A8XX_PATCH_LINES=$(grep "^Subject:" patches/tu8_kgsl_26.patch \
-            | sed 's/^Subject: \[PATCH [0-9]*\/[0-9]*\] //' \
-            | while read -r line; do printf "  - %s\n" "$line"; done)
           {
             printf "> ⚠️ **AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**\n\n"
             printf '%s\n\n' '---'
             printf "### Mesa Upstream\n\n"
             printf "| | |\n"
             printf "| :--- | :--- |\n"
-            printf "| **Version** | %s |\n"       "${MESA_VERSION}"
+            printf "| **Version** | %s |\n"        "${MESA_VERSION}"
             printf "| **Commit** | [\`%s\`](%s) |\n" "${GITHASH}" "${MESA_URL}"
-            printf "| **Vulkan version** | %s |\n" "${VULKAN_VERSION}"
-            printf "| **Commit date** | %s |\n"   "${COMMIT_DATE}"
-            printf "| **Commit title** | %s |\n"  "${COMMIT_TITLE}"
-            printf "| **Build date** | %s |\n\n"  "${BUILD_DATE}"
+            printf "| **Vulkan version** | %s |\n"  "${VULKAN_VERSION}"
+            printf "| **Commit date** | %s |\n"    "${COMMIT_DATE}"
+            printf "| **Commit title** | %s |\n"   "${COMMIT_TITLE}"
+            printf "| **Build date** | %s |\n\n"   "${BUILD_DATE}"
             printf '%s\n\n' '---'
-            printf "### Patches Applied\n\n"
-            printf "**A6xx / A7xx (standard)**\n\n"
-            printf "Pure Mesa \`main\` — no source patches. Three inline NDK r29 compatibility fixes applied at build time:\n\n"
-            printf "  - \`buffer_handle_t\` typedef fix (\`native_handle.h\`)\n"
-            printf "  - \`hnd->handle\` void-cast fix (\`u_gralloc_fallback.c\`)\n"
-            printf "  - \`native_buffer->handle\` cast fix (\`vk_android.c\`)\n\n"
-            printf "**A8xx (experimental)**\n\n"
-            printf "Same NDK r29 fixes as above, plus:\n\n"
-            printf '%s\n' "- \`patches/tu8_kgsl_26.patch\` — [whitebelyash/mesa-tu8 patchset-head-v2](https://github.com/whitebelyash/mesa-tu8/releases/tag/patchset-head-v2) (${A8XX_PATCH_COUNT} commits):"
-            printf "%s\n" "${A8XX_PATCH_LINES}"
-            printf '%s\n' "- \`patches/fix_a8xx_dev_info.py\` — re-adds only \`disable_gmem\` to \`freedreno_dev_info.h\` (skips \`has_image_processing\` already merged upstream)"
-            printf '%s\n\n' "- \`patches/apply_a8xx_gpus.py\` — ensures A810/A825/A829 GPU entries in \`freedreno_devices.py\` (fallback if patch hunks drift)"
+            printf "### A6xx / A7xx — What's In This Driver\n\n"
+            printf "Pure Mesa \`main\` — built directly from the latest upstream commit with no source patches.\n\n"
+            printf "Three inline NDK r29 compatibility fixes are applied at build time:\n\n"
+            printf '%s\n' "- \`buffer_handle_t\` typedef fix (\`native_handle.h\`)"
+            printf '%s\n' "- \`hnd->handle\` void-cast fix (\`u_gralloc_fallback.c\`)"
+            printf '%s\n\n' "- \`native_buffer->handle\` cast fix (\`vk_android.c\`)"
+            printf "Targets Snapdragon 600–800 series, 7 Gen and 8 Gen 1–3 (Adreno 600–700 series).\n\n"
+            printf '%s\n\n' '---'
+            printf "### A8xx — What's In This Driver\n\n"
+            printf "Same NDK r29 fixes as above, plus the following A8xx-specific changes on top of Mesa \`main\`:\n\n"
+            printf "**Applied via patch (\`tu8_kgsl_26.patch\`):**\n\n"
+            printf '%s\n' "- **u_gralloc UBWC fix** — disables the \`gmsm\` magic check for Qualcomm gralloc buffer detection, which stopped working in newer gralloc versions. Without this, UBWC detection fails and you get a distorted or broken picture on screen."
+            printf '%s\n\n' "- **drm-shim entries** — adds A810/A825/A829 to the Mesa drm-shim device table (used for offline tracing/testing, not runtime critical)."
+            printf "**Applied via \`fix_a8xx_dev_info.py\`:**\n\n"
+            printf '%s\n' "- Adds \`disable_gmem\` property to \`freedreno_dev_info.h\` — a flag that tells the driver to skip GMEM entirely for GPUs that can't use it reliably (specifically A810)."
+            printf '%s\n\n' "- Adds the GMEM disable check in \`tu_cmd_buffer.cc\` so A810 uses the sysmem path instead of crashing."
+            printf "**Applied via \`apply_a8xx_gpus.py\`:**\n\n"
+            printf '%s\n' "- Adds **A825** GPU entry — completely missing from mesa/main."
+            printf '%s\n' "- Adds \`chip_id=0x44010000\` to A810 so KGSL can identify the device."
+            printf '%s\n' "- Adds \`disable_gmem = True\` to A810's GPU props."
+            printf '%s\n\n' "- Adds \`chip_id=0x44030A00\` and \`chip_id=0xffff44030A00\` to A829 so additional device revisions are recognised."
+            printf "**Already in mesa/main (no patching needed):**\n\n"
+            printf "UBWC 5/6 KGSL support, A830/A829/A810 base entries, A8xx magic regs, reg_size fixes, and TU_DEBUG_FLUSHALL removal are all upstreamed and included automatically.\n\n"
+            printf '%s\n\n' '---'
+            printf "### Compared to the Original whitebelyash/mesa-tu8 Patchset\n\n"
+            printf "Based on [patchset-head-v2](https://github.com/whitebelyash/mesa-tu8/releases/tag/patchset-head-v2). The original had 11 commits — most have since been merged into mesa/main, so this build uses only 2 of them directly:\n\n"
+            printf "| Original Patch | Status |\n"
+            printf "| :--- | :--- |\n"
+            printf '%s\n' "| UBWC_5/6 KGSL support | ✅ Already in mesa/main — merged upstream |"
+            printf '%s\n' "| u_gralloc UBWC fix | ✅ **Applied** — still needed |"
+            printf '%s\n' "| disable_gmem property | ✅ **Applied** via Python script — context drifted too far to patch cleanly |"
+            printf '%s\n' "| Remove TU_DEBUG_FLUSHALL | ✅ Already in mesa/main — merged upstream |"
+            printf '%s\n' "| A8xx magic regs common | ❌ Dropped — register renamed (\`VPC_UNKNOWN_9313\` → \`VPC_UNKNOWN_CNTL\`), caused build failure |"
+            printf '%s\n' "| A830 properties | ✅ Already in mesa/main — merged upstream |"
+            printf '%s\n' "| reg_size for a8xx_gen1 | ✅ Already in mesa/main — merged upstream |"
+            printf '%s\n' "| gmem cache offset | ✅ Already in mesa/main — already removed |"
+            printf '%s\n' "| Enable A810/A825/A829 | ✅ **Applied** via Python script — GPU entries partially in mesa/main, script handles the rest |"
+            printf '%s\n' "| drm-shim A810/A825/A829 | ✅ **Applied** — still needed |"
+            printf '%s\n\n' "| Comment dual_wave_dispatch | ❌ Dropped — context drifted, upstream has it enabled |"
             printf '%s\n\n' '---'
             printf "### Adreno GPU Support\n\n"
             printf "| Series | File | Notes |\n"
