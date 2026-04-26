@@ -176,6 +176,11 @@ EOF
 	_zip_suffix="${BUILD_SUFFIX:+-${BUILD_SUFFIX}}"
 	_zip_name="mesa-turnip-$1${_zip_suffix}-V${BUILD_VERSION}.zip"
 
+	_vk_header="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/vulkan/vulkan_core.h"
+	_vk_patch=$(grep '^#define VK_HEADER_VERSION ' "$_vk_header" | awk '{print $3}')
+	_vk_minor=$(grep 'VK_HEADER_VERSION_COMPLETE' "$_vk_header" | sed 's/.*VK_MAKE_API_VERSION(0, *[0-9]*, *\([0-9]*\),.*//')
+	_driver_version="Vulkan 1.${_vk_minor}.${_vk_patch}"
+
 	cat <<EOF >"meta.json"
 {
   "schemaVersion": 1,
@@ -184,7 +189,7 @@ EOF
   "author": "The412Banner",
   "packageVersion": "1",
   "vendor": "Mesa",
-  "driverVersion": "Vulkan 1.4.335",
+  "driverVersion": "${_driver_version}",
   "minApi": 28,
   "libraryName": "libvulkan_freedreno.so"
 }
