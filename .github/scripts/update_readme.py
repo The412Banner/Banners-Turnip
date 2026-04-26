@@ -39,6 +39,7 @@ recent_releases = [
 rows = []
 for r in recent_releases:
     t = r["tagName"]
+    pub_date = r["publishedAt"][:10]
     rel_url = f"https://github.com/{repo}/releases/tag/{t}"
 
     body_result = subprocess.run(
@@ -58,10 +59,7 @@ for r in recent_releases:
     if m:
         title_cell = m.group(1).strip()
 
-    rows.append(
-        f"| [{t}]({rel_url}) | {r[\"publishedAt\"][:10]} "
-        f"| {commit_cell} | {title_cell} |"
-    )
+    rows.append(f"| [{t}]({rel_url}) | {pub_date} | {commit_cell} | {title_cell} |")
 
 if rows:
     header = (
