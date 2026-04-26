@@ -70,15 +70,7 @@ jobs:
           SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
           UNZIP_DIR=$(mktemp -d)
           unzip -q "$SRC" -d "$UNZIP_DIR"
-          python3 -c "
-import json
-path = '${UNZIP_DIR}/meta.json'
-m = json.load(open(path))
-m['name'] = 'Mesa Turnip ${TAG}'
-m['packageVersion'] = '${DAY_NUM}'
-json.dump(m, open(path, 'w'), indent=2)
-print('meta.json:', m['name'], '| packageVersion:', m['packageVersion'])
-"
+          python3 -c "import json; p='${UNZIP_DIR}/meta.json'; m=json.load(open(p)); m['name']='Mesa Turnip ${TAG}'; m['packageVersion']='${DAY_NUM}'; json.dump(m,open(p,'w'),indent=2); print('meta.json:',m['name'],'| packageVersion:',m['packageVersion'])"
           (cd "$UNZIP_DIR" && zip -q - *) > "turnip_workdir/${ZIP_NAME}"
           VK_PATCH=$(grep '^#define VK_HEADER_VERSION ' turnip_workdir/mesa/include/vulkan/vulkan_core.h | awk '{print $3}')
           VK_MINOR=$(grep 'define TU_API_VERSION' turnip_workdir/mesa/src/freedreno/vulkan/tu_device.cc | grep -oP 'VK_MAKE_VERSION\(\s*[0-9]+,\s*\K[0-9]+')
