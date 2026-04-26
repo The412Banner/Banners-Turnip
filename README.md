@@ -14,6 +14,33 @@ Each release ships two driver ZIPs — pick the one for your GPU:
 
 ---
 
+## Latest Build
+
+<!-- LATEST_BUILD_START -->
+| | |
+| :--- | :--- |
+| **Mesa version** | 26.2.0 |
+| **Commit** | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) |
+| **Commit date** | 2026-04-25 |
+| **Commit title** | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. |
+| **Build date** | 20260426 |
+| **Release** | [v26.2.0-20260426](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426) |
+<!-- LATEST_BUILD_END -->
+
+---
+
+## Recent Builds (Last 24 Hours)
+
+<!-- RECENT_BUILDS_START -->
+| Tag | Title | Date |
+| :--- | :--- | :--- |
+| [v26.2.0-20260426](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426) | Turnip 26.2.0 — 20260426 | 2026-04-26 |
+| [v26.2.0-20260425-r369](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260425-r369) | Turnip 26.2.0 — 20260425 | 2026-04-25 |
+| [v26.2.0-20260425](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260425) | Turnip 26.2.0 — 20260425 | 2026-04-25 |
+<!-- RECENT_BUILDS_END -->
+
+---
+
 ## What Is This?
 
 [Turnip](https://docs.mesa3d.org/drivers/freedreno.html) is the open-source Mesa Vulkan driver for Qualcomm Adreno GPUs. This repo provides automated, pre-packaged builds ready to load in any [AdrenoTools](https://github.com/K11MCH1/AdrenoToolsDrivers)-compatible app (BannerHub/BCI, Winlator, etc.).
