@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="Banners-Turnip" width="160"/>
+</p>
+
 # Banners-Turnip
 
 > Automated, bleeding-edge builds of the [Mesa Turnip](https://docs.mesa3d.org/drivers/freedreno.html) Vulkan driver — compiled directly from the latest upstream Mesa commits and packaged for [AdrenoTools](https://github.com/K11MCH1/AdrenoToolsDrivers)-compatible apps on Qualcomm Adreno GPUs.
