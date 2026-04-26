@@ -24,7 +24,7 @@ Each release ships two driver ZIPs — pick the one for your GPU:
 | **Commit date** | 2026-04-25 |
 | **Commit title** | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. |
 | **Build date** | 20260426 |
-| **Release** | [v26.2.0-20260426](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426) |
+| **Release** | [v26.2.0-20260426-r378](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426-r378) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -34,6 +34,7 @@ Each release ships two driver ZIPs — pick the one for your GPU:
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description |
 | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260426-r378](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426-r378) | 2026-04-26 | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. | |
 | [v26.2.0-20260426](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426) | 2026-04-26 | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. | |
 | [v26.2.0-20260426-r376](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426-r376) | 2026-04-26 | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. | |
 | [v26.2.0-20260425](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260425) | 2026-04-25 | [`5bfbb7b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bfbb7b1a792e3cc79afb3a5d8464c2623e9aced) | ir3/ra: fix killed src detection while spilling | |
