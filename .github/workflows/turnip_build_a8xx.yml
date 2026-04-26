@@ -90,7 +90,7 @@ jobs:
             printf '%s\n\n' '---'
             printf "### What's In This Driver\n\n"
             printf "This build is Mesa \`main\` plus the following A8xx-specific changes on top:\n\n"
-            printf "**Applied via patch (\`tu8_kgsl_26.patch\`):**\n\n"
+            printf "**Applied via [tu8_kgsl_26.patch](https://github.com/The412Banner/Banners-Turnip/blob/A8xx/patches/tu8_kgsl_26.patch):**\n\n"
             printf '%s\n' "- **u_gralloc UBWC fix** — disables the \`gmsm\` magic check for Qualcomm gralloc buffer detection, which stopped working in newer gralloc versions. Without this, UBWC detection fails and you get a distorted or broken picture on screen."
             printf '%s\n\n' "- **drm-shim entries** — adds A810/A825/A829 to the Mesa drm-shim device table (used for offline tracing/testing, not runtime critical)."
             printf "**Applied via \`fix_a8xx_dev_info.py\`:**\n\n"
