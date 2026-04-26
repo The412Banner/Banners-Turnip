@@ -15,21 +15,19 @@
 
 [Turnip](https://docs.mesa3d.org/drivers/freedreno.html) is the open-source Mesa Vulkan driver for Qualcomm Adreno GPUs — developed as part of the [Mesa](https://gitlab.freedesktop.org/mesa/mesa) project and maintained by the Freedreno community. Unlike the proprietary Qualcomm driver, Turnip is fully open-source and often ships fixes and feature support ahead of official Qualcomm releases.
 
-This repo automatically builds Turnip from the absolute latest commit on `mesa/main` — no waiting for official Mesa releases. Every time a new commit lands upstream, a fresh build is compiled and published as a release within minutes. The result is an [AdrenoTools](https://github.com/K11MCH1/AdrenoToolsDrivers)-compatible ZIP you can drop straight into any compatible app (BannerHub/BCI, Winlator, etc.) to get the most up-to-date driver available.
-
-A [Mesa upstream watcher](.github/workflows/mesa-watcher.yml) polls for new Mesa commits every hour and triggers a fresh build automatically whenever `mesa/main` advances — so the latest build listed here is always as close to bleeding-edge as possible.
+This repo automatically builds Turnip from the absolute latest commit on `mesa/main` — no waiting for official Mesa releases. A [Mesa upstream watcher](.github/workflows/mesa-watcher.yml) polls for new commits every hour and triggers a fresh build automatically whenever `mesa/main` advances. The result is an [AdrenoTools](https://github.com/K11MCH1/AdrenoToolsDrivers)-compatible ZIP you can drop straight into any compatible app (BannerHub/BCI, Winlator, etc.) to get the most up-to-date driver available.
 
 ---
 
 ## Driver Variants & Downloads
 
-Each release ships two driver ZIPs — pick the one matching your GPU:
+Each release ships two driver ZIPs — pick the one matching your GPU.
+
+[**Download latest →**](https://github.com/The412Banner/Banners-Turnip/releases/latest)
 
 ### A6xx / A7xx — Standard
 
 Pure Mesa `main`, no source patches. Compatible with Adreno 600–700 series GPUs (Snapdragon 600–800 series, including 7 Gen and 8 Gen 1–3).
-
-[**Download latest →**](https://github.com/The412Banner/Banners-Turnip/releases/latest)
 
 ### A8xx — Experimental
 
@@ -38,12 +36,10 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | Patch | What it does |
 | :--- | :--- |
 | `tu8_kgsl_26.patch` | 9 commits from [whitebelyash/mesa-tu8](https://github.com/whitebelyash/mesa-tu8): UBWC gralloc detection, `disable_gmem` GPU property, A8xx magic regs, A810/A825/A829/A830 GPU configs, gmem cache fixes |
-| `fix_a8xx_dev_info.py` | Idempotent: re-adds `disable_gmem` to `freedreno_dev_info.h` and `tu_cmd_buffer.cc` if the patch hunk drifts |
-| `apply_a8xx_gpus.py` | Idempotent: ensures A810/A825/A829 GPU entries are present in `freedreno_devices.py` if the patch hunk drifts |
+| `fix_a8xx_dev_info.py` | Re-adds `disable_gmem` to `freedreno_dev_info.h` and `tu_cmd_buffer.cc` — safeguard if the patch hunk drifts on a new Mesa commit |
+| `apply_a8xx_gpus.py` | Ensures A810/A825/A829 GPU entries are present in `freedreno_devices.py` — safeguard if the patch hunk drifts on a new Mesa commit |
 
 **Use at your own risk.**
-
-[**Download latest →**](https://github.com/The412Banner/Banners-Turnip/releases/latest)
 
 ---
 
@@ -60,8 +56,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 ## Installation
 
 - **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP
-- **Winlator / adrenotools:** load the ZIP in GPU driver settings
-- **Other adrenotools apps:** load the ZIP in driver settings
+- **AdrenoTools-compatible apps (Winlator, etc.):** load the ZIP in GPU driver settings
 
 ---
 
