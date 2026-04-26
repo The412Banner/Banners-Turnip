@@ -33,9 +33,27 @@ Pure Mesa `main`, no source patches. Compatible with Adreno 600–700 series GPU
 
 ### A8xx — Experimental
 
-Includes the [whitebelyash/mesa-tu8](https://github.com/whitebelyash/mesa-tu8) patchset on top of Mesa `main`, targeting Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). **Use at your own risk.**
+Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built from Mesa `main` with the following patches on top:
+
+| Patch | What it does |
+| :--- | :--- |
+| `tu8_kgsl_26.patch` | 9 commits from [whitebelyash/mesa-tu8](https://github.com/whitebelyash/mesa-tu8): UBWC gralloc detection, `disable_gmem` GPU property, A8xx magic regs, A810/A825/A829/A830 GPU configs, gmem cache fixes |
+| `fix_a8xx_dev_info.py` | Idempotent: re-adds `disable_gmem` to `freedreno_dev_info.h` and `tu_cmd_buffer.cc` if the patch hunk drifts |
+| `apply_a8xx_gpus.py` | Idempotent: ensures A810/A825/A829 GPU entries are present in `freedreno_devices.py` if the patch hunk drifts |
+
+**Use at your own risk.**
 
 [**Download latest →**](https://github.com/The412Banner/Banners-Turnip/releases/latest)
+
+---
+
+## Workflows
+
+| Workflow | Trigger | What it builds |
+| :--- | :--- | :--- |
+| **Build Turnip (Combined)** | Auto (mesa-watcher) or manual | Standard + A8xx in parallel; published as a single tagged release |
+| **Build Turnip A8xx (Experimental)** | Manual | Standalone A8xx test build — faster iteration outside the release cycle |
+| **Build Turnip (Perf 6xx/7xx)** | Manual | A6xx/A7xx only, compiled with `-O3` + ThinLTO for performance testing |
 
 ---
 
@@ -43,6 +61,7 @@ Includes the [whitebelyash/mesa-tu8](https://github.com/whitebelyash/mesa-tu8) p
 
 - **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP
 - **Winlator / adrenotools:** load the ZIP in GPU driver settings
+- **Other adrenotools apps:** load the ZIP in driver settings
 
 ---
 
@@ -83,23 +102,6 @@ Tags follow the format `v{mesa-version}-{YYYYMMDD}`:
 | `v26.2.0-20260427-r3` | Third build of the same day |
 
 The `-r` counter starts fresh each day. Multiple builds on the same day happen when Mesa receives more than one commit within 24 hours — each new upstream commit triggers a new build.
-
----
-
-## Building Locally
-
-If you prefer to build yourself, grab the upstream script:
-
-- Download [`turnip_builder.sh`](https://raw.githubusercontent.com/Weab-chan/freedreno_turnip-CI/main/turnip_builder.sh) on a Linux environment
-- Run: `bash ./turnip_builder.sh`
-
----
-
-## References
-
-- [XDA — Freedreno/Turnip on Poco F3](https://forum.xda-developers.com/t/getting-freedreno-turnip-mesa-vulkan-driver-on-a-poco-f3.4323871/)
-- [ilhan-athn7/freedreno_turnip-CI](https://github.com/ilhan-athn7/freedreno_turnip-CI)
-- [Mesa issue #6802](https://gitlab.freedesktop.org/mesa/mesa/-/issues/6802)
 
 ---
 
