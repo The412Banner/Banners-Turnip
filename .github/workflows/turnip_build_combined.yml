@@ -232,6 +232,7 @@ latest = (
     f"| **Release** | [{tag}]({release_url}) |"
 )
 
+# Fetch recent releases list
 result = subprocess.run(
     ["gh", "release", "list", "--repo", repo, "--limit", "50",
      "--json", "tagName,name,publishedAt"],
@@ -239,16 +240,47 @@ result = subprocess.run(
 )
 releases = json.loads(result.stdout)
 since = datetime.now(timezone.utc) - timedelta(hours=24)
+recent_releases = [
+    r for r in releases
+    if datetime.fromisoformat(r["publishedAt"].replace("Z", "+00:00")) >= since
+]
+
+# For each recent release fetch its body and extract commit info
 rows = []
-for r in releases:
-    pub = datetime.fromisoformat(r["publishedAt"].replace("Z", "+00:00"))
-    if pub >= since:
-        t = r["tagName"]
-        url = f"https://github.com/{repo}/releases/tag/{t}"
-        rows.append(f"| [{t}]({url}) | {r[\"name\"]} | {r[\"publishedAt\"][:10]} |")
+for r in recent_releases:
+    t = r["tagName"]
+    rel_url = f"https://github.com/{repo}/releases/tag/{t}"
+
+    body_result = subprocess.run(
+        ["gh", "release", "view", t, "--repo", repo, "--json", "body"],
+        capture_output=True, text=True
+    )
+    body = json.loads(body_result.stdout).get("body", "")
+
+    commit_cell  = ""
+    title_cell   = ""
+
+    # Extract commit markdown link: [`abc1234`](url)
+    m = re.search(r"\*\*Commit\*\*\s*\|\s*(\[`[^`]+`\]\([^)]+\))", body)
+    if m:
+        commit_cell = m.group(1)
+
+    # Extract commit title
+    m = re.search(r"\*\*Commit title\*\*\s*\|\s*(.+)", body)
+    if m:
+        title_cell = m.group(1).strip()
+
+    rows.append(
+        f"| [{t}]({rel_url}) | {r[\"publishedAt\"][:10]} "
+        f"| {commit_cell} | {title_cell} |"
+    )
 
 if rows:
-    recent = "| Tag | Title | Date |\n| :--- | :--- | :--- |\n" + "\n".join(rows)
+    header = (
+        "| Tag | Date | Commit | Description |\n"
+        "| :--- | :--- | :--- | :--- |"
+    )
+    recent = header + "\n" + "\n".join(rows)
 else:
     recent = "_No builds in the last 24 hours._"
 
