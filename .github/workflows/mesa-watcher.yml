@@ -49,12 +49,62 @@ jobs:
 
           echo "$MESA_HASH" > "$HASH_FILE"
 
-      - name: Commit updated hash
+      - name: Check StevenMXZ for new release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          LAST_FILE="steven_last_tag.txt"
+          touch "$LAST_FILE"
+          LAST_TAG=$(cat "$LAST_FILE" 2>/dev/null || echo "")
+
+          STEVEN_TAG=$(gh release list --repo StevenMXZ/Adreno-Tools-Drivers --limit 1 --json tagName --jq '.[0].tagName' 2>/dev/null || echo "")
+          if [ -z "$STEVEN_TAG" ]; then
+            echo "Could not fetch StevenMXZ releases"
+            exit 0
+          fi
+
+          echo "Steven latest: $STEVEN_TAG (last seen: ${LAST_TAG:-none})"
+
+          if [ "$STEVEN_TAG" = "$LAST_TAG" ]; then
+            echo "No new Steven release."
+            exit 0
+          fi
+
+          STEVEN_BODY=$(gh release view "$STEVEN_TAG" --repo StevenMXZ/Adreno-Tools-Drivers --json body --jq '.body' 2>/dev/null || echo "")
+          STEVEN_URL="https://github.com/StevenMXZ/Adreno-Tools-Drivers/releases/tag/$STEVEN_TAG"
+
+          STEVEN_COMMIT=$(echo "$STEVEN_BODY" | grep -oP 'mesa/-/commit/\K[a-f0-9]{7,40}' | head -1)
+          if [ -z "$STEVEN_COMMIT" ]; then
+            echo "Could not extract commit hash from Steven's release body"
+          else
+            echo "Steven's Mesa commit: $STEVEN_COMMIT"
+
+            OUR_TAGS=$(gh release list --repo "$GITHUB_REPOSITORY" --limit 50 --json tagName --jq '.[].tagName')
+            for tag in $OUR_TAGS; do
+              BODY=$(gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json body --jq '.body')
+              if echo "$BODY" | grep -qi "$STEVEN_COMMIT"; then
+                echo "Match: our release $tag shares commit $STEVEN_COMMIT with Steven's $STEVEN_TAG"
+                if echo "$BODY" | grep -q "StevenMXZ"; then
+                  echo "Note already present, skipping"
+                else
+                  printf '> ℹ️ **Same Mesa commit as [StevenMXZ %s](%s)**\n\n---\n\n%s' \
+                    "$STEVEN_TAG" "$STEVEN_URL" "$BODY" > /tmp/updated_body.md
+                  gh release edit "$tag" --repo "$GITHUB_REPOSITORY" --notes-file /tmp/updated_body.md
+                  echo "Updated release $tag with Steven match note"
+                fi
+                break
+              fi
+            done
+          fi
+
+          echo "$STEVEN_TAG" > "$LAST_FILE"
+
+      - name: Commit updated tracking files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mesa_hash.txt
-          git diff --staged --quiet || git commit -m "chore: update mesa_hash.txt"
+          git add mesa_hash.txt steven_last_tag.txt
+          git diff --staged --quiet || git commit -m "chore: update tracked hashes"
           git push
 
       - name: Trigger Turnip Build
