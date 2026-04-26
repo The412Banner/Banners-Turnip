@@ -49,6 +49,20 @@ A [Mesa upstream watcher](.github/workflows/mesa-watcher.yml) polls for new Mesa
 
 ---
 
+## Release Tags
+
+Tags follow the format `v{mesa-version}-{YYYYMMDD}`:
+
+| Tag | Meaning |
+| :--- | :--- |
+| `v26.2.0-20260427` | First build of the day |
+| `v26.2.0-20260427-r2` | Second build of the same day |
+| `v26.2.0-20260427-r3` | Third build of the same day |
+
+The `-r` counter starts fresh each day. Multiple builds on the same day happen when Mesa receives more than one commit within 24 hours — each new upstream commit triggers a new build.
+
+---
+
 ## Driver Variants
 
 ### A6xx / A7xx — Standard
