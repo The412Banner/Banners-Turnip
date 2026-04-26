@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="Banners-Turnip" width="280"/>
+  <img src="logo.png" alt="Banners-Turnip" width="420"/>
 </p>
 
 # Banners-Turnip
