@@ -178,7 +178,7 @@ EOF
 
 	_vk_header="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/vulkan/vulkan_core.h"
 	_vk_patch=$(grep '^#define VK_HEADER_VERSION ' "$_vk_header" | awk '{print $3}')
-	_vk_minor=$(grep 'VK_HEADER_VERSION_COMPLETE' "$_vk_header" | sed 's/.*VK_MAKE_API_VERSION(0, *[0-9]*, *\([0-9]*\),.*//')
+	_vk_minor=$(grep -oP 'VK_MAKE_API_VERSION\(0,\s*[0-9]+,\s*\K[0-9]+' "$_vk_header" | head -1)
 	_driver_version="Vulkan 1.${_vk_minor}.${_vk_patch}"
 
 	cat <<EOF >"meta.json"
