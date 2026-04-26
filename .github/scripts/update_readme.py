@@ -38,7 +38,13 @@ recent_releases = [
     if datetime.fromisoformat(r["publishedAt"].replace("Z", "+00:00")) >= since
 ]
 
+def extract_cell(pattern, body):
+    m = re.search(pattern, body)
+    return m.group(1).strip().rstrip("|").strip() if m else ""
+
 rows = []
+seen_commits = set()
+
 for r in recent_releases:
     t = r["tagName"]
     pub_date = r["publishedAt"][:10]
@@ -50,21 +56,17 @@ for r in recent_releases:
     )
     body = json.loads(body_result.stdout).get("body", "")
 
-    commit_cell  = ""
-    title_cell   = ""
-    vulkan_cell  = ""
+    commit_cell  = extract_cell(r"\*\*Commit\*\*\s*\|\s*(\[`[^`]+`\]\([^)]+\))", body)
+    title_cell   = extract_cell(r"\*\*Commit title\*\*\s*\|\s*(.+)", body)
+    vulkan_cell  = extract_cell(r"\*\*Vulkan version\*\*\s*\|\s*(.+)", body)
 
-    m = re.search(r"\*\*Commit\*\*\s*\|\s*(\[`[^`]+`\]\([^)]+\))", body)
-    if m:
-        commit_cell = m.group(1)
+    # Extract raw commit hash for dedup
+    m = re.search(r"\*\*Commit\*\*\s*\|\s*\[`([^`]+)`\]", body)
+    commit_hash = m.group(1) if m else t
 
-    m = re.search(r"\*\*Commit title\*\*\s*\|\s*(.+)", body)
-    if m:
-        title_cell = m.group(1).strip()
-
-    m = re.search(r"\*\*Vulkan version\*\*\s*\|\s*(.+)", body)
-    if m:
-        vulkan_cell = m.group(1).strip()
+    if commit_hash in seen_commits:
+        continue
+    seen_commits.add(commit_hash)
 
     rows.append(f"| [{t}]({rel_url}) | {pub_date} | {commit_cell} | {title_cell} | {vulkan_cell} |")
 
