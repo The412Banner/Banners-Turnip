@@ -32,11 +32,11 @@ Each release ships two driver ZIPs — pick the one for your GPU:
 ## Recent Builds (Last 24 Hours)
 
 <!-- RECENT_BUILDS_START -->
-| Tag | Title | Date |
-| :--- | :--- | :--- |
-| [v26.2.0-20260426](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426) | Turnip 26.2.0 — 20260426 | 2026-04-26 |
-| [v26.2.0-20260425-r369](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260425-r369) | Turnip 26.2.0 — 20260425 | 2026-04-25 |
-| [v26.2.0-20260425](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260425) | Turnip 26.2.0 — 20260425 | 2026-04-25 |
+| Tag | Date | Commit | Description |
+| :--- | :--- | :--- | :--- |
+| [v26.2.0-20260426](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426) | 2026-04-26 | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. |
+| [v26.2.0-20260425-r369](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260425-r369) | 2026-04-25 | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. |
+| [v26.2.0-20260425](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260425) | 2026-04-25 | [`5bfbb7b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bfbb7b1a792e3cc79afb3a5d8464c2623e9aced) | ir3/ra: fix killed src detection while spilling |
 <!-- RECENT_BUILDS_END -->
 
 ---
