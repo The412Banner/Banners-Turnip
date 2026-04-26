@@ -58,6 +58,9 @@ jobs:
           ZIP_NAME="Turnip-${TAG}${{ matrix.suffix }}.zip"
           SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
           cp "$SRC" "turnip_workdir/${ZIP_NAME}"
+          VK_PATCH=$(grep '^#define VK_HEADER_VERSION ' turnip_workdir/mesa/include/vulkan/vulkan_core.h | awk '{print $3}')
+          VK_MINOR=$(grep 'define TU_API_VERSION' turnip_workdir/mesa/src/freedreno/vulkan/tu_device.cc | grep -oP 'VK_MAKE_VERSION\(\s*[0-9]+,\s*\K[0-9]+')
+          VULKAN_VERSION="Vulkan 1.${VK_MINOR}.${VK_PATCH}"
           echo "tag=${TAG}" >> $GITHUB_OUTPUT
           echo "mesa_version=${MESA_VERSION}" >> $GITHUB_OUTPUT
           echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
@@ -65,6 +68,7 @@ jobs:
           echo "githash_full=${GITHASH_FULL}" >> $GITHUB_OUTPUT
           echo "commit_date=${COMMIT_DATE}" >> $GITHUB_OUTPUT
           echo "commit_title=${COMMIT_TITLE}" >> $GITHUB_OUTPUT
+          echo "vulkan_version=${VULKAN_VERSION}" >> $GITHUB_OUTPUT
 
       - name: Save release info
         if: matrix.variant == 'regular'
@@ -76,7 +80,8 @@ jobs:
           echo "${{ steps.info.outputs.githash }}"      > release-info/githash.txt
           echo "${{ steps.info.outputs.githash_full }}" > release-info/githash_full.txt
           echo "${{ steps.info.outputs.commit_date }}"  > release-info/commit_date.txt
-          echo "${{ steps.info.outputs.commit_title }}" > release-info/commit_title.txt
+          echo "${{ steps.info.outputs.commit_title }}"    > release-info/commit_title.txt
+          echo "${{ steps.info.outputs.vulkan_version }}"  > release-info/vulkan_version.txt
 
       - name: Upload release info
         if: matrix.variant == 'regular'
@@ -123,6 +128,7 @@ jobs:
           COMMIT_TITLE=$(cat release-info/commit_title.txt)
           ZIP_REGULAR="Turnip-${TAG}.zip"
           ZIP_A8XX="Turnip-${TAG}-A8xx.zip"
+          VULKAN_VERSION=$(cat release-info/vulkan_version.txt)
           MESA_URL="https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}"
           A8XX_PATCH_COUNT=$(grep -c "^Subject:" patches/tu8_kgsl_26.patch || echo "?")
           A8XX_PATCH_LINES=$(grep "^Subject:" patches/tu8_kgsl_26.patch \
@@ -136,6 +142,7 @@ jobs:
             printf "| :--- | :--- |\n"
             printf "| **Version** | %s |\n"       "${MESA_VERSION}"
             printf "| **Commit** | [\`%s\`](%s) |\n" "${GITHASH}" "${MESA_URL}"
+            printf "| **Vulkan version** | %s |\n" "${VULKAN_VERSION}"
             printf "| **Commit date** | %s |\n"   "${COMMIT_DATE}"
             printf "| **Commit title** | %s |\n"  "${COMMIT_TITLE}"
             printf "| **Build date** | %s |\n\n"  "${BUILD_DATE}"
@@ -194,6 +201,7 @@ jobs:
           export BT_GITHASH_FULL=$(cat release-info/githash_full.txt)
           export BT_COMMIT_DATE=$(cat release-info/commit_date.txt)
           export BT_COMMIT_TITLE=$(cat release-info/commit_title.txt)
+          export BT_VULKAN_VERSION=$(cat release-info/vulkan_version.txt)
           export BT_REPO="$GITHUB_REPOSITORY"
           python3 .github/scripts/update_readme.py
           git add README.md
