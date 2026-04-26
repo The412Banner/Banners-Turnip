@@ -52,7 +52,13 @@ jobs:
           COMMIT_TITLE=$(git -C turnip_workdir/mesa log -1 --format="%s" 2>/dev/null || echo "")
           TAG="v${MESA_VERSION}-${BUILD_DATE}"
           if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" &>/dev/null; then
-            TAG="${TAG}-r${{ github.run_number }}"
+            EXISTING=$(gh release list --repo "$GITHUB_REPOSITORY" --limit 100 --json tagName \
+              | jq -r '.[].tagName' \
+              | grep -oP "^v${MESA_VERSION}-${BUILD_DATE}-r\K[0-9]+$" \
+              | sort -n \
+              | tail -1)
+            NEXT_R=$(( ${EXISTING:-1} + 1 ))
+            TAG="${TAG}-r${NEXT_R}"
             echo "Tag already exists — using ${TAG}"
           fi
           ZIP_NAME="Turnip-${TAG}${{ matrix.suffix }}.zip"
