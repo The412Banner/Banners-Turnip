@@ -74,7 +74,7 @@ jobs:
 import json
 path = '${UNZIP_DIR}/meta.json'
 m = json.load(open(path))
-m['name'] = 'Mesa Turnip v${DAY_NUM}-${GITHASH}'
+m['name'] = 'Mesa Turnip ${TAG}'
 m['packageVersion'] = '${DAY_NUM}'
 json.dump(m, open(path, 'w'), indent=2)
 print('meta.json:', m['name'], '| packageVersion:', m['packageVersion'])
