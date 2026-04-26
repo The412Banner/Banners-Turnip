@@ -1,7 +1,37 @@
-From 34cd389d9edaa2a5900559b389cb568fbb9a0415 Mon Sep 17 00:00:00 2001
+From 0457ca4e491491754d95b6ec4cd652c7f997269b Mon Sep 17 00:00:00 2001
+From: Rob Clark <rob.clark@oss.qualcomm.com>
+Date: Tue, 13 Jan 2026 10:58:51 -0800
+Subject: [PATCH 01/11] WIP: tu/kgsl: Add UBWC_5 and UBWC_6 support
+
+The #defines seem to map 1:1, so we can add support even without an
+updated kgsl uabi header.
+
+Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index 1de7e652414..e75e5728b4a 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -1882,6 +1882,8 @@ tu_knl_kgsl_load(struct tu_instance *instance, int fd)
+       device->ubwc_config.macrotile_mode = FDL_MACROTILE_4_CHANNEL;
+       break;
+    case KGSL_UBWC_4_0:
++   case 5:
++   case 6:
+       device->ubwc_config.bank_swizzle_levels = 0x6;
+       device->ubwc_config.macrotile_mode = FDL_MACROTILE_8_CHANNEL;
+       break;
+-- 
+2.53.0
+
+
+From af5d32343ffef1d17b4b83199934ddf426c8c507 Mon Sep 17 00:00:00 2001
 From: whitebelyash <whbexiumwork@gmail.com>
 Date: Fri, 16 Jan 2026 22:41:23 +0400
-Subject: [PATCH 02/10] HACK: u_gralloc: always use ubwc detection path
+Subject: [PATCH 02/11] HACK: u_gralloc: always use ubwc detection path
 
 u_gralloc checks if the current buffer was allocated by the Qualcomm vendor gralloc by comparing 'gmsm' magic with the buffer data. Since newer gralloc versions this way isn't working anymore, causing the condition to never success - essentially skipping setting proper DRM format modifier. This caused huge distorted picture on the screen because the allocated buffer never got a proper modifier as it should have
 
@@ -39,10 +69,10 @@ index 44fb32d8cfd..bb6459c2e29 100644
 2.53.0
 
 
-From 493c93973c8c1c46fc510ab4f7c398224d2d765a Mon Sep 17 00:00:00 2001
+From fdb8f9e5fafbbb0bfe65fe0ce2dbe44c0aeb1223 Mon Sep 17 00:00:00 2001
 From: whitebelyash <whbexiumwork@gmail.com>
 Date: Fri, 16 Jan 2026 22:55:20 +0400
-Subject: [PATCH 03/10] tu/freedreno: add disable_gmem GPU property
+Subject: [PATCH 03/11] tu/freedreno: add disable_gmem GPU property
 
 Disables GMEM usage completely, effectively same thing as TU_DEBUG=sysmem
 
@@ -88,10 +118,10 @@ index 82a7ab35016..f5e7b62523d 100644
 2.53.0
 
 
-From b8dde28a0f973d24124134855c979f5ec7b8bbc5 Mon Sep 17 00:00:00 2001
+From 64f798305cc60954f12a2babfeca5cc1c735ccf3 Mon Sep 17 00:00:00 2001
 From: Zan Dobersek <zdobersek@igalia.com>
 Date: Sat, 21 Feb 2026 11:35:43 +0100
-Subject: [PATCH 04/10] tu/a8xx: remove general TU_DEBUG_FLUSHALL
+Subject: [PATCH 04/11] tu/a8xx: remove general TU_DEBUG_FLUSHALL
 
 Instead, enable draw_wfm on two additional indirect draw commands, matching
 the quirk for early a6xx gens.
@@ -140,10 +170,10 @@ index a57dfe5b6ce..f6f69080c7b 100644
 2.53.0
 
 
-From 978dff2d95662857799d26d6a2ee4b8283998456 Mon Sep 17 00:00:00 2001
+From 2e7c07f11a85bc5618328f5abbeda9ab7ef84023 Mon Sep 17 00:00:00 2001
 From: Zan Dobersek <zdobersek@igalia.com>
 Date: Sat, 14 Feb 2026 08:25:10 +0100
-Subject: [PATCH 05/10] freedreno/common: make a8xx magic regs common between
+Subject: [PATCH 05/11] freedreno/common: make a8xx magic regs common between
  all such devices
 
 With a8xx a lot of chicken bit and other device-specific magic register
@@ -265,10 +295,10 @@ index 742fd1f1df9..c2279950467 100644
 2.53.0
 
 
-From d5b09965fb171e89c9bf36da4ecba9c32d1b9c22 Mon Sep 17 00:00:00 2001
+From cd32168f36ab93b5b92c59c4e4509d0c20f76b12 Mon Sep 17 00:00:00 2001
 From: Zan Dobersek <zdobersek@igalia.com>
 Date: Sat, 14 Feb 2026 08:29:18 +0100
-Subject: [PATCH 06/10] freedreno/common: set up a830 properties
+Subject: [PATCH 06/11] freedreno/common: set up a830 properties
 
 Adjust or fill out various properties for the a830 GPU, setting up a gen1
 base. So far these mostly mirror the gen2 properties, except for gmem
@@ -355,10 +385,10 @@ index c2279950467..3999cc42ab5 100644
 2.53.0
 
 
-From 335cafb5c7ff50b5630a75ec37958f663a79dd8c Mon Sep 17 00:00:00 2001
+From 5ae9a70230eaec293d6ace72bd8200f99dae09e0 Mon Sep 17 00:00:00 2001
 From: whitebelyash <whbexiumwork@gmail.com>
 Date: Mon, 2 Mar 2026 13:13:55 +0400
-Subject: [PATCH 07/10] freedreno/common: force smaller reg_size for a8xx_gen1
+Subject: [PATCH 07/11] freedreno/common: force smaller reg_size for a8xx_gen1
 
 per https://gitlab.freedesktop.org/zdobersek/mesa-fork/-/commit/f8478f2a96bb4757186d4982c0eb9294587567cf
 
@@ -384,165 +414,10 @@ index 3999cc42ab5..86b3ade90c7 100644
 2.53.0
 
 
-From 43ed4ec41b22bf9a75606bd8cbb58b9be1c0dd42 Mon Sep 17 00:00:00 2001
-From: whitebelyash <whbexiumwork@gmail.com>
-Date: Mon, 2 Mar 2026 13:32:14 +0400
-Subject: [PATCH 08/10] freedreno/common: enable Adreno 810/825/829
-
-Re-added from my older patches and squashed into single commit. Changed
-some cache sizes, needs testing
-
-Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
----
- src/freedreno/common/freedreno_devices.py | 120 ++++++++++++++++++++++
- 1 file changed, 120 insertions(+)
-
-diff --git a/src/freedreno/common/freedreno_devices.py b/src/freedreno/common/freedreno_devices.py
-index 86b3ade90c7..0e6d411a529 100644
---- a/src/freedreno/common/freedreno_devices.py
-+++ b/src/freedreno/common/freedreno_devices.py
-@@ -1516,6 +1516,63 @@ a8xx_gen2 = GPUProps(
-         has_salu_int_narrowing_quirk = True
- )
- 
-+a8xx_825 = GPUProps(
-+        sysmem_vpc_attr_buf_size = 131072,
-+        sysmem_vpc_pos_buf_size = 65536,
-+        sysmem_vpc_bv_pos_buf_size = 32768,
-+        sysmem_ccu_color_cache_fraction = CCUColorCacheFraction.FULL.value,
-+        sysmem_per_ccu_color_cache_size = 128 * 1024,
-+        sysmem_ccu_depth_cache_fraction = CCUColorCacheFraction.THREE_QUARTER.value,
-+        sysmem_per_ccu_depth_cache_size = 96 * 1024,
-+        gmem_vpc_attr_buf_size = 49152,
-+        gmem_vpc_pos_buf_size = 24576,
-+        gmem_vpc_bv_pos_buf_size = 32768,
-+        gmem_ccu_color_cache_fraction = CCUColorCacheFraction.EIGHTH.value,
-+        gmem_per_ccu_color_cache_size = 16 * 1024,
-+        gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
-+        gmem_per_ccu_depth_cache_size = 256 * 1024,
-+)
-+
-+a8xx_829 = GPUProps(
-+        sysmem_vpc_attr_buf_size = 131072,
-+        sysmem_vpc_pos_buf_size = 65536,
-+        sysmem_vpc_bv_pos_buf_size = 32768,
-+        sysmem_ccu_color_cache_fraction = CCUColorCacheFraction.FULL.value,
-+        sysmem_per_ccu_color_cache_size = 128 * 1024,
-+        sysmem_ccu_depth_cache_fraction = CCUColorCacheFraction.THREE_QUARTER.value,
-+        sysmem_per_ccu_depth_cache_size = 96 * 1024,
-+        gmem_vpc_attr_buf_size = 49152,
-+        gmem_vpc_pos_buf_size = 24576,
-+        gmem_vpc_bv_pos_buf_size = 32768,
-+        gmem_ccu_color_cache_fraction = CCUColorCacheFraction.EIGHTH.value,
-+        gmem_per_ccu_color_cache_size = 16 * 1024,
-+        gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
-+        gmem_per_ccu_depth_cache_size = 256 * 1024,
-+)
-+
-+a8xx_810 = GPUProps(
-+        sysmem_vpc_attr_buf_size = 131072,
-+        sysmem_vpc_pos_buf_size = 65536,
-+        sysmem_vpc_bv_pos_buf_size = 32768,
-+        # These values are maximum size of depth/color cache for current A8XX Gen2 sysmem configuration
-+        # Bigger values cause an integer underflow in freedreno gmem calculations
-+        sysmem_ccu_color_cache_fraction = CCUColorCacheFraction.FULL.value,
-+        sysmem_per_ccu_color_cache_size = 32 * 1024,
-+        sysmem_ccu_depth_cache_fraction = CCUColorCacheFraction.THREE_QUARTER.value,
-+        sysmem_per_ccu_depth_cache_size = 32 * 1024,
-+        gmem_vpc_attr_buf_size = 49152,
-+        gmem_vpc_pos_buf_size = 24576,
-+        gmem_vpc_bv_pos_buf_size = 32768,
-+        gmem_ccu_color_cache_fraction = CCUColorCacheFraction.EIGHTH.value,
-+        gmem_per_ccu_color_cache_size = 16 * 1024,
-+        gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
-+        gmem_per_ccu_depth_cache_size = 64 * 1024,
-+        # FD810 does not support ray tracing
-+        has_ray_intersection = False,
-+        has_sw_fuse = False, # ????
-+        disable_gmem = True,
-+)
-+
- add_gpus([
-         GPUId(chip_id=0x44050000, name="FD830"),
-         GPUId(chip_id=0x44050001, name="FD830"), # KGSL
-@@ -1536,6 +1593,69 @@ add_gpus([
-         raw_magic_regs = a8xx_base_raw_magic_regs,
-     ))
- 
-+# gen8_3_0
-+add_gpus([
-+        GPUId(chip_id=0x44010000, name="FD810"),
-+    ], A6xxGPUInfo(
-+        CHIP.A8XX,
-+        [a7xx_base, a7xx_gen3, a8xx_base, a8xx_810],
-+        num_ccu = 2,
-+        num_slices = 1,
-+        tile_align_w = 96,
-+        tile_align_h = 32,
-+        tile_max_w = 16416,
-+        tile_max_h = 16384,
-+        num_vsc_pipes = 32,
-+        cs_shared_mem_size = 32 * 1024,
-+        wave_granularity = 2,
-+        fibers_per_sp = 128 * 2 * 16,
-+        magic_regs = dict(),
-+        raw_magic_regs = a8xx_base_raw_magic_regs,
-+    ))
-+
-+# gen8_6_0
-+add_gpus([
-+        GPUId(chip_id=0x44030000, name="FD825"),
-+    ], A6xxGPUInfo(
-+        CHIP.A8XX,
-+        [a7xx_base, a7xx_gen3, a8xx_base, a8xx_825],
-+        num_ccu = 4,
-+        num_slices = 2,
-+        tile_align_w = 96,
-+        tile_align_h = 32,
-+        tile_max_w = 16416,
-+        tile_max_h = 16384,
-+        num_vsc_pipes = 32,
-+        cs_shared_mem_size = 32 * 1024,
-+        wave_granularity = 2,
-+        fibers_per_sp = 128 * 2 * 16,
-+        magic_regs = dict(),
-+        raw_magic_regs = a8xx_base_raw_magic_regs,
-+    ))
-+
-+# TODO: Properly fill all values for this GPU
-+add_gpus([
-+    GPUId(chip_id=0x44030A00, name="FD829"), # kgsl id???
-+    GPUId(chip_id=0x44030A20, name="FD829"), # found by testing, another revision?
-+    GPUId(chip_id=0xffff44030A00, name="FD829"),
-+    ], A6xxGPUInfo(
-+        CHIP.A8XX,
-+        [a7xx_base, a7xx_gen3, a8xx_base, a8xx_829],
-+        num_ccu = 4,
-+        num_slices = 2,
-+        tile_align_w = 96,
-+        tile_align_h = 32,
-+        tile_max_w = 16416,
-+        tile_max_h = 16384,
-+        num_vsc_pipes = 32,
-+        cs_shared_mem_size = 32 * 1024,
-+        wave_granularity = 2,
-+        fibers_per_sp = 128 * 2 * 16,
-+        magic_regs = dict(),
-+        raw_magic_regs = a8xx_base_raw_magic_regs,
-+    ))
-+
-+
- add_gpus([
-         GPUId(chip_id=0xffff44050A31, name="Adreno (TM) 840"),
-     ], A6xxGPUInfo(
--- 
-2.53.0
-
-
-From ae4012522db5203fd4fb730ef2fdbe6824b9830c Mon Sep 17 00:00:00 2001
+From 3772effb791285e2ffe36a8fd19e0d2d40e504d8 Mon Sep 17 00:00:00 2001
 From: whitebelyash <whbexiumwork@gmail.com>
 Date: Mon, 2 Mar 2026 13:33:03 +0400
-Subject: [PATCH 09/10] freedreno/gmem: do not apply gmem cache offset
+Subject: [PATCH 08/11] freedreno/gmem: do not apply gmem cache offset
 
 Causes assertion on A8XX GPUs with lower cache size (2MB>). Needs
 investigating.
@@ -573,41 +448,217 @@ index c2243d3cb25..b5930309967 100644
 2.53.0
 
 
-From 9f47fad2d70ac224c6f7a07d9807496ac2207a66 Mon Sep 17 00:00:00 2001
+From 5d721587fa9c21ef06ac47a277419d74d5892d48 Mon Sep 17 00:00:00 2001
 From: whitebelyash <whbexiumwork@gmail.com>
-Date: Mon, 2 Mar 2026 13:52:06 +0400
-Subject: [PATCH 10/10] freedreno/common: lower gmem depth cache size for
- A825/829
+Date: Mon, 2 Mar 2026 13:32:14 +0400
+Subject: [PATCH 09/11] freedreno/common: enable Adreno 810/825/829
 
-Fixes artifacts.
+Based on upstream MR patches and some of my work. Pretty much untested
+as I don't have neither of those GPUs
 
 Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
 ---
- src/freedreno/common/freedreno_devices.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ src/freedreno/common/freedreno_devices.py | 90 +++++++++++++++++++++--
+ 1 file changed, 83 insertions(+), 7 deletions(-)
 
 diff --git a/src/freedreno/common/freedreno_devices.py b/src/freedreno/common/freedreno_devices.py
-index 0e6d411a529..6c52015cec5 100644
+index 86b3ade90c7..54656a15185 100644
 --- a/src/freedreno/common/freedreno_devices.py
 +++ b/src/freedreno/common/freedreno_devices.py
-@@ -1530,7 +1530,7 @@ a8xx_825 = GPUProps(
-         gmem_ccu_color_cache_fraction = CCUColorCacheFraction.EIGHTH.value,
+@@ -1438,7 +1438,9 @@ a8xx_base = GPUProps(
+         has_dp2acc = False,
+         reg_size_vec4 = 96,
+         has_rt_workaround = False,
+-        supports_double_threadsize = False
++        supports_double_threadsize = False,
++        has_dual_wave_dispatch = True,
++        has_salu_int_narrowing_quirk = True,
+     )
+ 
+ # For a8xx, the chicken bit and most other non-ctx reg
+@@ -1491,8 +1493,6 @@ a8xx_gen1 = GPUProps(
          gmem_per_ccu_color_cache_size = 16 * 1024,
          gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
--        gmem_per_ccu_depth_cache_size = 256 * 1024,
-+        gmem_per_ccu_depth_cache_size = 128 * 1024,
+         gmem_per_ccu_depth_cache_size = 256 * 1024,
+-
+-        has_salu_int_narrowing_quirk = True
  )
  
- a8xx_829 = GPUProps(
-@@ -1547,7 +1547,7 @@ a8xx_829 = GPUProps(
-         gmem_ccu_color_cache_fraction = CCUColorCacheFraction.EIGHTH.value,
-         gmem_per_ccu_color_cache_size = 16 * 1024,
+ a8xx_gen2 = GPUProps(
+@@ -1512,13 +1512,11 @@ a8xx_gen2 = GPUProps(
          gmem_ccu_depth_cache_fraction = CCUColorCacheFraction.FULL.value,
--        gmem_per_ccu_depth_cache_size = 256 * 1024,
-+        gmem_per_ccu_depth_cache_size = 128 * 1024,
+         gmem_per_ccu_depth_cache_size = 256 * 1024,
+         has_fs_tex_prefetch = False,
+-
+-        has_salu_int_narrowing_quirk = True
  )
  
- a8xx_810 = GPUProps(
+ add_gpus([
+-        GPUId(chip_id=0x44050000, name="FD830"),
+-        GPUId(chip_id=0x44050001, name="FD830"), # KGSL
++        GPUId(chip_id=0x44050000, name="Adreno (TM) 830"),
++        GPUId(chip_id=0x44050001, name="Adreno (TM) 830"), # KGSL
+     ], A6xxGPUInfo(
+         CHIP.A8XX,
+         [a7xx_base, a7xx_gen3, a8xx_base, a8xx_gen1],
+@@ -1536,6 +1534,84 @@ add_gpus([
+         raw_magic_regs = a8xx_base_raw_magic_regs,
+     ))
+ 
++# gen8_3_0
++add_gpus([
++        GPUId(chip_id=0x44010000, name="Adreno (TM) 810"),
++    ], A6xxGPUInfo(
++        CHIP.A8XX,
++        [a7xx_base, a7xx_gen3, a8xx_base, a8xx_gen2, GPUProps(
++            gmem_vpc_attr_buf_size = 16384,
++            gmem_vpc_pos_buf_size = 12288,
++            gmem_vpc_bv_pos_buf_size = 20480,
++            # Don't show "raytracing disabled"
++            has_ray_intersection = False,
++            has_sw_fuse = False,
++         )],
++        num_ccu = 1, # I'm not sure about this
++        num_slices = 1,
++        tile_align_w = 32,
++        tile_align_h = 16,
++        tile_max_w = 16384,
++        tile_max_h = 16384,
++        num_vsc_pipes = 32,
++        cs_shared_mem_size = 32 * 1024,
++        wave_granularity = 2,
++        fibers_per_sp = 128 * 2 * 16,
++        magic_regs = dict(),
++        raw_magic_regs = a8xx_base_raw_magic_regs,
++    ))
++
++# gen8_6_0
++add_gpus([
++        GPUId(chip_id=0x44030000, name="Adreno (TM) 825"),
++    ], A6xxGPUInfo(
++        CHIP.A8XX,
++        [a7xx_base, a7xx_gen3, a8xx_base, a8xx_gen1, GPUProps(
++            # This is probably not an optimal config for gmem/sysmem, but it was working before and I don't have any a825 device to test (neither I have any trace info)
++            sysmem_ccu_color_cache_fraction = CCUColorCacheFraction.FULL.value,
++            sysmem_per_ccu_color_cache_size = 128 * 1024,
++            sysmem_ccu_depth_cache_fraction = CCUColorCacheFraction.THREE_QUARTER.value,
++            sysmem_per_ccu_depth_cache_size = 96 * 1024,
++        )],
++        num_ccu = 4,
++        num_slices = 2,
++        tile_align_w = 96,
++        tile_align_h = 32,
++        tile_max_w = 16416,
++        tile_max_h = 16384,
++        num_vsc_pipes = 32,
++        cs_shared_mem_size = 32 * 1024,
++        wave_granularity = 2,
++        fibers_per_sp = 128 * 2 * 16,
++        magic_regs = dict(),
++        raw_magic_regs = a8xx_base_raw_magic_regs,
++    ))
++
++# ??????
++add_gpus([
++    GPUId(chip_id=0x44030A00, name="Adreno (TM) 829"), # KGSL
++    GPUId(chip_id=0x44030A20, name="Adreno (TM) 829"), # KGSL - found by testing, another revision?
++    GPUId(chip_id=0xffff44030A00, name="Adreno (TM) 829"),
++    ], A6xxGPUInfo(
++        CHIP.A8XX,
++        [a7xx_base, a7xx_gen3, a8xx_base, a8xx_gen2, GPUProps(
++            sysmem_vpc_bv_pos_buf_size = 24576,
++        )],
++        num_ccu = 4,
++        num_slices = 2,
++        tile_align_w = 64,
++        tile_align_h = 32,
++        tile_max_w = 16384,
++        tile_max_h = 16384,
++        num_vsc_pipes = 32,
++        cs_shared_mem_size = 32 * 1024,
++        wave_granularity = 2,
++        fibers_per_sp = 128 * 2 * 16,
++        magic_regs = dict(),
++        raw_magic_regs = a8xx_base_raw_magic_regs,
++    ))
++
++
+ add_gpus([
+         GPUId(chip_id=0xffff44050A31, name="Adreno (TM) 840"),
+     ], A6xxGPUInfo(
+-- 
+2.53.0
+
+
+From 50e50fac699b4921d3574d8fb96e8371a80cd684 Mon Sep 17 00:00:00 2001
+From: whitebelyash <whbexiumwork@gmail.com>
+Date: Mon, 2 Mar 2026 13:34:05 +0400
+Subject: [PATCH 10/11] freedreno/shim: enable drm-shim support for Adreno
+ 810/825/829
+
+Cache sizes for 810&825 should be valid. 829 is unknown, but works so
+far(?)
+
+Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
+---
+ src/freedreno/drm-shim/freedreno_noop.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/src/freedreno/drm-shim/freedreno_noop.c b/src/freedreno/drm-shim/freedreno_noop.c
+index 4c3e817fce7..fff7f4f3251 100644
+--- a/src/freedreno/drm-shim/freedreno_noop.c
++++ b/src/freedreno/drm-shim/freedreno_noop.c
+@@ -281,6 +281,21 @@ static const struct msm_device_info device_infos[] = {
+       .chip_id = 0x44050000,
+       .gmem_size = 12 * 1024 * 1024,
+    },
++   {
++      .gpu_id = 825,
++      .chip_id = 0x44030000,
++      .gmem_size = 2 * 1024 * 1024,
++   },
++   {
++      .gpu_id = 829,
++      .chip_id = 0x44030A20,
++      .gmem_size = 2 * 1024 * 1024,
++   },
++   {
++      .gpu_id = 810,
++      .chip_id = 0x44010000,
++      .gmem_size = 576 * 1024,
++   }
+ };
+ 
+ static void
+-- 
+2.53.0
+
+
+From fbce1406da9fb810052bd71739fcf2d600a2c602 Mon Sep 17 00:00:00 2001
+From: whitebelyash <whbexiumwork@gmail.com>
+Date: Sat, 4 Apr 2026 20:33:10 +0400
+Subject: [PATCH 11/11] freedreno/common: comment dual wave dispatch
+
+Not present on 26.0 branch
+
+Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
+---
+ src/freedreno/common/freedreno_devices.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/freedreno/common/freedreno_devices.py b/src/freedreno/common/freedreno_devices.py
+index 54656a15185..7509dc7bc1f 100644
+--- a/src/freedreno/common/freedreno_devices.py
++++ b/src/freedreno/common/freedreno_devices.py
+@@ -1439,7 +1439,7 @@ a8xx_base = GPUProps(
+         reg_size_vec4 = 96,
+         has_rt_workaround = False,
+         supports_double_threadsize = False,
+-        has_dual_wave_dispatch = True,
++       # has_dual_wave_dispatch = True,
+         has_salu_int_narrowing_quirk = True,
+     )
+ 
 -- 
 2.53.0
 
