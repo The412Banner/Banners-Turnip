@@ -1,6 +1,6 @@
 # Banners-Turnip
 
-> Automated builds of the Mesa Turnip Vulkan driver as an [AdrenoTools](https://github.com/K11MCH1/AdrenoToolsDrivers) package for Adreno GPUs.
+> Automated, bleeding-edge builds of the [Mesa Turnip](https://docs.mesa3d.org/drivers/freedreno.html) Vulkan driver — compiled directly from the latest upstream Mesa commits and packaged for [AdrenoTools](https://github.com/K11MCH1/AdrenoToolsDrivers)-compatible apps on Qualcomm Adreno GPUs.
 
 [![Build Turnip (Combined)](https://github.com/The412Banner/Banners-Turnip/actions/workflows/turnip_build_combined.yml/badge.svg?branch=A8xx)](https://github.com/The412Banner/Banners-Turnip/actions/workflows/turnip_build_combined.yml)
 [![Latest Release](https://img.shields.io/github/v/release/The412Banner/Banners-Turnip?label=latest%20release&color=blue)](https://github.com/The412Banner/Banners-Turnip/releases/latest)
@@ -42,9 +42,11 @@ Each release ships two driver ZIPs — pick the one for your GPU:
 
 ## What Is This?
 
-[Turnip](https://docs.mesa3d.org/drivers/freedreno.html) is the open-source Mesa Vulkan driver for Qualcomm Adreno GPUs. This repo provides automated, pre-packaged builds ready to load in any [AdrenoTools](https://github.com/K11MCH1/AdrenoToolsDrivers)-compatible app (BannerHub/BCI, Winlator, etc.).
+[Turnip](https://docs.mesa3d.org/drivers/freedreno.html) is the open-source Mesa Vulkan driver for Qualcomm Adreno GPUs — developed as part of the [Mesa](https://gitlab.freedesktop.org/mesa/mesa) project and maintained by the Freedreno community. Unlike the proprietary Qualcomm driver, Turnip is fully open-source and often ships fixes and feature support ahead of official Qualcomm releases.
 
-A [Mesa upstream watcher](.github/workflows/mesa-watcher.yml) polls for new Mesa commits every hour and triggers a fresh build automatically whenever `mesa/main` advances.
+This repo automatically builds Turnip from the absolute latest commit on `mesa/main` — no waiting for official Mesa releases. Every time a new commit lands upstream, a fresh build is compiled and published as a release within minutes. The result is an [AdrenoTools](https://github.com/K11MCH1/AdrenoToolsDrivers)-compatible ZIP you can drop straight into any compatible app (BannerHub/BCI, Winlator, etc.) to get the most up-to-date driver available.
+
+A [Mesa upstream watcher](.github/workflows/mesa-watcher.yml) polls for new Mesa commits every hour and triggers a fresh build automatically whenever `mesa/main` advances — so the latest build listed here is always as close to bleeding-edge as possible.
 
 ---
 
