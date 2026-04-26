@@ -28,32 +28,50 @@ jobs:
           export EXTRA_SCRIPT="patches/fix_a8xx_dev_info.py:patches/apply_a8xx_gpus.py"
           ./build_turnip.sh
 
-      - name: Read build info
+      - name: Rename ZIP
         id: info
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          MESA_VERSION=$(cat turnip_workdir/mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
+          BUILD_DATE=$(date +%Y%m%d)
           GITHASH=$(git -C turnip_workdir/mesa rev-parse --short HEAD 2>/dev/null || echo "unknown")
           GITHASH_FULL=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo "")
           COMMIT_DATE=$(git -C turnip_workdir/mesa log -1 --format="%ci" 2>/dev/null | cut -d' ' -f1 || echo "unknown")
           COMMIT_TITLE=$(git -C turnip_workdir/mesa log -1 --format="%s" 2>/dev/null || echo "")
-          MESA_VERSION=$(cat turnip_workdir/mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
-          BUILD_DATE=$(date +%Y%m%d)
-          ZIP=$(ls turnip_workdir/*.zip 2>/dev/null | head -1)
-          FILENAME=$(basename "$ZIP")
           TAG="v${MESA_VERSION}-${BUILD_DATE}-a8xx-test"
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" &>/dev/null; then
+            EXISTING=$(gh release list --repo "$GITHUB_REPOSITORY" --limit 100 --json tagName \
+              | jq -r '.[].tagName' \
+              | grep -oP "^v${MESA_VERSION}-${BUILD_DATE}-a8xx-test-r\K[0-9]+$" \
+              | sort -n \
+              | tail -1)
+            NEXT_R=$(( ${EXISTING:-1} + 1 ))
+            TAG="${TAG}-r${NEXT_R}"
+          fi
+          if [[ "$TAG" =~ -r([0-9]+)$ ]]; then
+            DAY_NUM="${BASH_REMATCH[1]}"
+          else
+            DAY_NUM="1"
+          fi
+          ZIP_NAME="Turnip-${TAG}-A8xx.zip"
+          SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
+          UNZIP_DIR=$(mktemp -d)
+          unzip -q "$SRC" -d "$UNZIP_DIR"
+          python3 -c "import json; p='${UNZIP_DIR}/meta.json'; m=json.load(open(p)); m['name']='Mesa Turnip ${TAG}'; m['packageVersion']='${DAY_NUM}'; json.dump(m,open(p,'w'),indent=2); print('meta.json:',m['name'],'| packageVersion:',m['packageVersion'])"
+          (cd "$UNZIP_DIR" && zip -q - *) > "turnip_workdir/${ZIP_NAME}"
           VK_PATCH=$(grep '^#define VK_HEADER_VERSION ' turnip_workdir/mesa/include/vulkan/vulkan_core.h | awk '{print $3}')
           VK_MINOR=$(grep 'define TU_API_VERSION' turnip_workdir/mesa/src/freedreno/vulkan/tu_device.cc | grep -oP 'VK_MAKE_VERSION\(\s*[0-9]+,\s*\K[0-9]+')
           VULKAN_VERSION="Vulkan 1.${VK_MINOR}.${VK_PATCH}"
-          A8XX_PATCH_COUNT=$(grep -c "^Subject:" patches/tu8_kgsl_26.patch || echo "?")
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "mesa_version=${MESA_VERSION}" >> $GITHUB_OUTPUT
+          echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
           echo "githash=${GITHASH}" >> $GITHUB_OUTPUT
           echo "githash_full=${GITHASH_FULL}" >> $GITHUB_OUTPUT
           echo "commit_date=${COMMIT_DATE}" >> $GITHUB_OUTPUT
           echo "commit_title=${COMMIT_TITLE}" >> $GITHUB_OUTPUT
-          echo "mesa_version=${MESA_VERSION}" >> $GITHUB_OUTPUT
-          echo "build_date=${BUILD_DATE}" >> $GITHUB_OUTPUT
-          echo "filename=${FILENAME}" >> $GITHUB_OUTPUT
-          echo "tag=${TAG}" >> $GITHUB_OUTPUT
           echo "vulkan_version=${VULKAN_VERSION}" >> $GITHUB_OUTPUT
-          echo "a8xx_patch_count=${A8XX_PATCH_COUNT}" >> $GITHUB_OUTPUT
+          echo "zip_name=${ZIP_NAME}" >> $GITHUB_OUTPUT
 
       - name: Write release body
         run: |
@@ -95,7 +113,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Turnip-A8xx-${{ steps.info.outputs.tag }}
-          path: turnip_workdir/*.zip
+          path: turnip_workdir/${{ steps.info.outputs.zip_name }}
 
       - name: Release
         uses: softprops/action-gh-release@v2
@@ -105,4 +123,4 @@ jobs:
           prerelease: true
           make_latest: false
           body_path: release_body.md
-          files: turnip_workdir/*.zip
+          files: turnip_workdir/${{ steps.info.outputs.zip_name }}
