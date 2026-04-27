@@ -67,11 +67,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`4f2de63`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f2de63a27c08598f10e6edb9e25ca996e27fa19) |
+| **Commit** | [`af1669d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af1669d9e25a346104d061ec05e89bd6a5a80c40) |
 | **Commit date** | 2026-04-27 |
-| **Commit title** | pan/ci: add a flake from nightly |
+| **Commit title** | pco: reserve additional outputs for trilinear sampled coeffs |
 | **Build date** | 20260427 |
-| **Release** | [v26.2.0-20260427-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r3) |
+| **Release** | [v26.2.0-20260427-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -81,6 +81,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260427-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r4) | 2026-04-27 | [`af1669d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af1669d9e25a346104d061ec05e89bd6a5a80c40) | pco: reserve additional outputs for trilinear sampled coeffs | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r3) | 2026-04-27 | [`4f2de63`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f2de63a27c08598f10e6edb9e25ca996e27fa19) | pan/ci: add a flake from nightly | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r2) | 2026-04-27 | [`2d78546`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2d78546d59c18b81a3c06df4a0e10130af4c79db) | radv: store the number of PS params heuristic to radv_compiler_info | Vulkan 1.4.348 |
 | [v26.2.0-20260427](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427) | 2026-04-27 | [`9225ba4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9225ba47d5dd338b2d25e71b77a3fddedb7da9df) | amd/vpelib: Support vpe 2.0 | Vulkan 1.4.348 |
