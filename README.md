@@ -67,11 +67,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) |
-| **Commit date** | 2026-04-25 |
-| **Commit title** | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. |
-| **Build date** | 20260426 |
-| **Release** | [v26.2.0-20260426-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426-r4) |
+| **Commit** | [`9225ba4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9225ba47d5dd338b2d25e71b77a3fddedb7da9df) |
+| **Commit date** | 2026-04-27 |
+| **Commit title** | amd/vpelib: Support vpe 2.0 |
+| **Build date** | 20260427 |
+| **Release** | [v26.2.0-20260427](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -81,7 +81,8 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.2.0-20260426-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426-r4) | 2026-04-26 | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. | Vulkan 1.4.348 |
+| [v26.2.0-20260427](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427) | 2026-04-27 | [`9225ba4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9225ba47d5dd338b2d25e71b77a3fddedb7da9df) | amd/vpelib: Support vpe 2.0 | Vulkan 1.4.348 |
+| [v26.2.0-20260426-a830-tuned-test](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260426-a830-tuned-test) | 2026-04-26 | [`642bed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/642bed9eba724132c5e0802fac99af11b9ef7841) | kk: Fix VK_CULL_MODE_FRONT_AND_BACK with points and lines. | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
 ---
