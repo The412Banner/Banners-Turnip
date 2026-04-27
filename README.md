@@ -67,11 +67,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`0684976`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0684976de8a4cfef193fea049dee0c82383869bb) |
+| **Commit** | [`a42c55d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a42c55da46fc8a3846b873231887073a57f39d56) |
 | **Commit date** | 2026-04-27 |
-| **Commit title** | ac/nir: add ac_nir_assign_fs_input_locations to set PS input locations in stone |
+| **Commit title** | amd/radeonsi: dont clamp packed user varyings |
 | **Build date** | 20260427 |
-| **Release** | [v26.2.0-20260427-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r10) |
+| **Release** | [v26.2.0-20260427-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -81,6 +81,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260427-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r11) | 2026-04-27 | [`a42c55d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a42c55da46fc8a3846b873231887073a57f39d56) | amd/radeonsi: dont clamp packed user varyings | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r10) | 2026-04-27 | [`0684976`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0684976de8a4cfef193fea049dee0c82383869bb) | ac/nir: add ac_nir_assign_fs_input_locations to set PS input locations in stone | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r9) | 2026-04-27 | [`4b0a0ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b0a0ed7b69dba64993689ddb31d1daac6164892) | nak: Use NIR_LOOP_PASS | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r8) | 2026-04-27 | [`e301817`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e3018177537014078c03e07dfce47d24bc91a1bd) | brw: Don't lower phis involved in DPAS instructions to scalar | Vulkan 1.4.348 |
