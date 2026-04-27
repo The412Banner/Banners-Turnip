@@ -67,11 +67,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`acba4c9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/acba4c9fd84ecf7de7e59c3463b9ac71ba812ccd) |
+| **Commit** | [`e301817`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e3018177537014078c03e07dfce47d24bc91a1bd) |
 | **Commit date** | 2026-04-27 |
-| **Commit title** | radv: expose VK_KHR_performance_query on GFX11 |
+| **Commit title** | brw: Don't lower phis involved in DPAS instructions to scalar |
 | **Build date** | 20260427 |
-| **Release** | [v26.2.0-20260427-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r7) |
+| **Release** | [v26.2.0-20260427-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -81,6 +81,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260427-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r8) | 2026-04-27 | [`e301817`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e3018177537014078c03e07dfce47d24bc91a1bd) | brw: Don't lower phis involved in DPAS instructions to scalar | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r7) | 2026-04-27 | [`acba4c9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/acba4c9fd84ecf7de7e59c3463b9ac71ba812ccd) | radv: expose VK_KHR_performance_query on GFX11 | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r6) | 2026-04-27 | [`2595940`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2595940b0def52f1eb9d3e8aadb88e3e363afe5c) | radv: fix UB in radv_format_pack_clear_color for snorm formats | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r5) | 2026-04-27 | [`630a4d2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/630a4d2249f0c359598cacef2b12dac554ec417f) | radeonsi: Always use 2D tiling for video dpb | Vulkan 1.4.348 |
