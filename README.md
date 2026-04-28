@@ -67,11 +67,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`4b66258`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b662587170196783ae0abd10fb34161d30db394) |
+| **Commit** | [`7d59c62`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7d59c62fded7638dbe8b7e0737a8ba491bf6438c) |
 | **Commit date** | 2026-04-28 |
-| **Commit title** | nak: call nir_opt_algebraic_distribute_src_mods |
+| **Commit title** | panvk: Wire up VK_EXT_conservative_rasterization on v11+ |
 | **Build date** | 20260428 |
-| **Release** | [v26.2.0-20260428](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428) |
+| **Release** | [v26.2.0-20260428-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -81,6 +81,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260428-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r2) | 2026-04-28 | [`7d59c62`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7d59c62fded7638dbe8b7e0737a8ba491bf6438c) | panvk: Wire up VK_EXT_conservative_rasterization on v11+ | Vulkan 1.4.348 |
 | [v26.2.0-20260428](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428) | 2026-04-28 | [`4b66258`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b662587170196783ae0abd10fb34161d30db394) | nak: call nir_opt_algebraic_distribute_src_mods | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r11) | 2026-04-27 | [`a42c55d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a42c55da46fc8a3846b873231887073a57f39d56) | amd/radeonsi: dont clamp packed user varyings | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r10) | 2026-04-27 | [`0684976`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0684976de8a4cfef193fea049dee0c82383869bb) | ac/nir: add ac_nir_assign_fs_input_locations to set PS input locations in stone | Vulkan 1.4.348 |
@@ -91,8 +92,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260427-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r5) | 2026-04-27 | [`630a4d2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/630a4d2249f0c359598cacef2b12dac554ec417f) | radeonsi: Always use 2D tiling for video dpb | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r4) | 2026-04-27 | [`af1669d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af1669d9e25a346104d061ec05e89bd6a5a80c40) | pco: reserve additional outputs for trilinear sampled coeffs | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r3) | 2026-04-27 | [`4f2de63`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f2de63a27c08598f10e6edb9e25ca996e27fa19) | pan/ci: add a flake from nightly | Vulkan 1.4.348 |
-| [v26.2.0-20260427-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r2) | 2026-04-27 | [`2d78546`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2d78546d59c18b81a3c06df4a0e10130af4c79db) | radv: store the number of PS params heuristic to radv_compiler_info | Vulkan 1.4.348 |
-| [v26.2.0-20260427](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427) | 2026-04-27 | [`9225ba4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9225ba47d5dd338b2d25e71b77a3fddedb7da9df) | amd/vpelib: Support vpe 2.0 | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
 ---
