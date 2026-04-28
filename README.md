@@ -118,9 +118,21 @@ You can fork this repo and get fully automated builds running with minimal setup
 **After forking:**
 
 1. **Enable Actions** — GitHub disables Actions on forks by default. Go to **Settings → Actions → General** and set it to *Allow all actions*.
-2. **Enable write permissions for Actions** — Under **Settings → Actions → General → Workflow permissions**, select *Read and write permissions*. This is required for the watcher to commit `mesa_hash.txt` and trigger builds.
-3. **Clear the watcher state files** — Delete or empty `mesa_hash.txt` and `steven_last_tag.txt` so the watcher starts fresh from your fork's first run rather than inheriting the upstream state.
-4. **Update hardcoded repo references** — A handful of cosmetic strings in the workflows reference the original repo (patch links in release notes, `"author"` in `meta.json`). Search for `The412Banner` in `.github/workflows/` and update to your own username/repo if desired.
+
+2. **Enable write permissions for Actions** — Under **Settings → Actions → General → Workflow permissions**, select *Read and write permissions*. This is required for the watcher to commit hash files, update the README, and trigger builds.
+
+3. **Reset state files** — The repo ships with state files that track upstream positions. Reset them so your fork starts clean:
+   - `mesa_hash.txt` — clear or delete (watcher records the current Mesa HEAD here; a stale value skips the first build trigger)
+   - `steven_last_tag.txt` — clear or delete (same, for the StevenMXZ release watcher)
+   - `perf_build_number.txt` — set to `1` (incremented and committed by the perf build workflow; leaving it at the current value just means your first perf build gets a higher number, which is harmless but confusing)
+
+4. **Keep the branch named `A8xx`** — The README auto-update step in `turnip_build_combined.yml` has `A8xx` hardcoded in four places (`git fetch/checkout/pull/push origin A8xx`). If you rename the branch, that step will fail and your README won't auto-update. Either keep the branch as `A8xx` or do a find-and-replace in `.github/workflows/turnip_build_combined.yml` to match your branch name.
+
+5. **Update cosmetic repo references** *(optional)* — A few strings in the workflows reference the original repo: patch links in release note bodies and `"author"` in `meta.json`. Search for `The412Banner` in `.github/workflows/` and update to your own username/repo if desired. These don't affect build functionality.
+
+6. **Kick off your first build** — GitHub Actions schedules don't fire automatically on forks until the repo sees some activity. Manually trigger either:
+   - **Mesa Upstream Watcher** → *Run workflow* — records the current Mesa HEAD and fires a combined build if it's new
+   - **Build Turnip (Combined)** → *Run workflow* — builds and publishes a release immediately without waiting for the watcher
 
 Once those steps are done, the watcher polls Mesa upstream every hour and triggers a fresh build automatically — no further maintenance needed.
 
