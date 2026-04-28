@@ -67,11 +67,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`11399b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/11399b15e0ef64bb5563eae9ac3ec8d15986e9d5) |
+| **Commit** | [`6b8d934`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b8d9344075630d3dc6893fd6a9379aa8ba833d2) |
 | **Commit date** | 2026-04-28 |
-| **Commit title** | pan/bi: Improve swizzle propagation |
+| **Commit title** | CODEOWNERS: update owners for Android components |
 | **Build date** | 20260428 |
-| **Release** | [v26.2.0-20260428-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r7) |
+| **Release** | [v26.2.0-20260428-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -81,6 +81,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260428-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r8) | 2026-04-28 | [`6b8d934`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b8d9344075630d3dc6893fd6a9379aa8ba833d2) | CODEOWNERS: update owners for Android components | Vulkan 1.4.348 |
 | [v26.2.0-20260428-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r7) | 2026-04-28 | [`11399b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/11399b15e0ef64bb5563eae9ac3ec8d15986e9d5) | pan/bi: Improve swizzle propagation | Vulkan 1.4.348 |
 | [v26.2.0-20260428-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r6) | 2026-04-28 | [`76a3951`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76a3951e03281acc8f5cd1093726d85f581b97ff) | kk: Fix issues with maximal reconvergence | Vulkan 1.4.348 |
 | [v26.2.0-20260428-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r5) | 2026-04-28 | [`669d391`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/669d3915c69a20f4d9d9e86f28236ff69466e800) | radv: slightly rework initializing the default graphics state | Vulkan 1.4.348 |
@@ -89,7 +90,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260428-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r2) | 2026-04-28 | [`7d59c62`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7d59c62fded7638dbe8b7e0737a8ba491bf6438c) | panvk: Wire up VK_EXT_conservative_rasterization on v11+ | Vulkan 1.4.348 |
 | [v26.2.0-20260428](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428) | 2026-04-28 | [`4b66258`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b662587170196783ae0abd10fb34161d30db394) | nak: call nir_opt_algebraic_distribute_src_mods | Vulkan 1.4.348 |
 | [v26.2.0-20260427-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r11) | 2026-04-27 | [`a42c55d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a42c55da46fc8a3846b873231887073a57f39d56) | amd/radeonsi: dont clamp packed user varyings | Vulkan 1.4.348 |
-| [v26.2.0-20260427-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260427-r10) | 2026-04-27 | [`0684976`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0684976de8a4cfef193fea049dee0c82383869bb) | ac/nir: add ac_nir_assign_fs_input_locations to set PS input locations in stone | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
 ---
