@@ -111,4 +111,19 @@ The `-r` counter starts fresh each day. Multiple builds on the same day happen w
 
 ---
 
+## Forking / Self-Hosting
+
+You can fork this repo and get fully automated builds running with minimal setup — no custom secrets or external accounts required. All CI uses the built-in `GITHUB_TOKEN`.
+
+**After forking:**
+
+1. **Enable Actions** — GitHub disables Actions on forks by default. Go to **Settings → Actions → General** and set it to *Allow all actions*.
+2. **Enable write permissions for Actions** — Under **Settings → Actions → General → Workflow permissions**, select *Read and write permissions*. This is required for the watcher to commit `mesa_hash.txt` and trigger builds.
+3. **Clear the watcher state files** — Delete or empty `mesa_hash.txt` and `steven_last_tag.txt` so the watcher starts fresh from your fork's first run rather than inheriting the upstream state.
+4. **Update hardcoded repo references** — A handful of cosmetic strings in the workflows reference the original repo (patch links in release notes, `"author"` in `meta.json`). Search for `The412Banner` in `.github/workflows/` and update to your own username/repo if desired.
+
+Once those steps are done, the watcher polls Mesa upstream every hour and triggers a fresh build automatically — no further maintenance needed.
+
+---
+
 <sub>☕ [Support on Ko-fi](https://ko-fi.com/the412banner)</sub>
