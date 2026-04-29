@@ -2,20 +2,25 @@
 """
 Idempotent A7xx GPU entry additions for freedreno_devices.py.
 
-Adds Adreno 710 and Adreno 720 chip IDs which are NOT in Mesa main.
+Adds Adreno 710, 720, and 722 chip IDs which are NOT in Mesa main.
 
-Chip IDs extracted from binary analysis of MrPurple666's T27-toasted driver:
-  A710: 0x07010000 + wildcard 0xffff07010000 (family=0x07, ADRENO_7XX_GEN1)
-  A720: 0x43020000 + wildcard 0xffff43020000 (family=0x43)
+Chip IDs:
+  A710: 0x07010000 + wildcard 0xffff07010000
+        (MrPurple666 T27-toasted binary + Vauzi-17/mesa-tu8 gen8-clean-26)
+  A720: 0x43020000 + wildcard 0xffff43020000
+        (MrPurple666 T27-toasted binary + whitebelyash/mesa-tu8 gen8)
+  A722: 0x43020100 + wildcard 0xffff43020100
+        (binary analysis of Vauzi-17/710 v2.5.2 release)
 
-GPU properties aligned with whitebelyash/mesa-tu8 gen8 branch, which notes:
-  "These hacks simply reuse A730 entry with different ids and looks like it works in some extent"
-  Both A710 and A720 → a7xx_gen1 template + a730_magic_regs, num_ccu=4
+GPU properties:
+  A710 → a7xx_gen1 + a730_magic_regs, num_ccu=2, tile_align_w=32
+          (tuned values from Vauzi-17/mesa-tu8 gen8-clean-26)
+  A720/A722 → a7xx_gen1 + a730_magic_regs, num_ccu=4, tile_align_w=64
+              (A730 reuse per whitebelyash/mesa-tu8 gen8)
 
 Safe to run multiple times.
 """
 import sys
-import re
 
 DEVICES_PY = "src/freedreno/common/freedreno_devices.py"
 
@@ -26,7 +31,8 @@ original = content
 changes = []
 
 # ── A710: Adreno 710 ─────────────────────────────────────────────────────
-# Both A710 and A720 reuse the A730 entry per whitebelyash/mesa-tu8 gen8.
+# num_ccu=2, tile_align_w=32 per Vauzi-17/mesa-tu8 gen8-clean-26 —
+# more hardware-specific than the simple A730 reuse in whitebelyash gen8.
 
 A710_BLOCK = """\
 add_gpus([
@@ -35,8 +41,8 @@ add_gpus([
     ], A6xxGPUInfo(
         CHIP.A7XX,
         [a7xx_base, a7xx_gen1],
-        num_ccu = 4,
-        tile_align_w = 64,
+        num_ccu = 2,
+        tile_align_w = 32,
         tile_align_h = 32,
         tile_max_w = 1024,
         tile_max_h = 1024,
@@ -51,13 +57,17 @@ add_gpus([
 
 """
 
-# ── A720: Adreno 720 ─────────────────────────────────────────────────────
-# Also reuses A730 entry per whitebelyash/mesa-tu8 gen8 (not gen2/a740).
+# ── A720 + A722: Adreno 720 / 722 ────────────────────────────────────────
+# A720: 0x43020000 (whitebelyash gen8 + MrPurple binary)
+# A722: 0x43020100 (Vauzi-17/710 v2.5.2 binary, same 0x43 family minor rev)
+# Both reuse A730 entry per whitebelyash/mesa-tu8 gen8.
 
 A720_BLOCK = """\
 add_gpus([
         GPUId(chip_id=0x43020000, name="FD720"), # KGSL, no speedbin data
         GPUId(chip_id=0xffff43020000, name="FD720"), # Default no-speedbin fallback
+        GPUId(chip_id=0x43020100, name="FD722"), # KGSL, no speedbin data
+        GPUId(chip_id=0xffff43020100, name="FD722"), # Default no-speedbin fallback
     ], A6xxGPUInfo(
         CHIP.A7XX,
         [a7xx_base, a7xx_gen1],
@@ -78,15 +88,13 @@ add_gpus([
 """
 
 def find_add_gpus_block_containing(content, anchor_str):
-    """Find the start offset of the add_gpus([...]) block containing anchor_str."""
     idx = content.find(anchor_str)
     if idx < 0:
         return -1
-    # Walk back to find the add_gpus([ that owns this anchor
     start = content.rfind("add_gpus([", 0, idx)
     return start
 
-# Insert A710 before the FD725 block (FD725 is the first existing A7xx gen1 above A702)
+# Insert A710 before the FD725 block
 if "chip_id=0x07010000" not in content:
     anchor = "chip_id=0x07030002"  # FD725
     block_start = find_add_gpus_block_containing(content, anchor)
@@ -98,17 +106,17 @@ if "chip_id=0x07010000" not in content:
 else:
     print("  A710 entries already present, skipping")
 
-# Insert A720 before FD725 (after A710, before A725)
+# Insert A720/A722 before FD725 (after A710)
 if "chip_id=0x43020000" not in content:
-    anchor = "chip_id=0x07030002"  # FD725 — still use same anchor, A710 is now above it
+    anchor = "chip_id=0x07030002"  # FD725
     block_start = find_add_gpus_block_containing(content, anchor)
     if block_start >= 0:
         content = content[:block_start] + A720_BLOCK + content[block_start:]
-        changes.append("inserted FD720 add_gpus block before FD725")
+        changes.append("inserted FD720/FD722 add_gpus block before FD725")
     else:
-        print("  WARNING: could not find FD725 anchor to insert A720", file=sys.stderr)
+        print("  WARNING: could not find FD725 anchor to insert A720/A722", file=sys.stderr)
 else:
-    print("  A720 entries already present, skipping")
+    print("  A720/A722 entries already present, skipping")
 
 if content != original:
     with open(DEVICES_PY, "w") as f:
@@ -117,4 +125,4 @@ if content != original:
         print(f"  ✓ {c}")
     print(f"  Wrote {DEVICES_PY}")
 else:
-    print("  No changes needed — A710/A720 already present")
+    print("  No changes needed — A710/A720/A722 already present")

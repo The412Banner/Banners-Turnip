@@ -26,7 +26,7 @@ jobs:
             suffix: "-710-720-Test"
             extra_patch: ""
             extra_script: "patches/a710-720.py"
-            meta_desc: "EXPERIMENTAL — Adds unverified Adreno 710 and 720 chip ID entries on top of Mesa main. GPU properties based on A730 reuse (per whitebelyash/mesa-tu8) — may hang or corrupt on A710/A720 hardware. All other GPUs unaffected."
+            meta_desc: "EXPERIMENTAL — Adds unverified Adreno 710, 720, and 722 chip ID entries on top of Mesa main. GPU properties based on A730 reuse (per whitebelyash/mesa-tu8) — may hang or corrupt on these GPUs. All other GPUs unaffected."
 
     steps:
       - name: Checkout
@@ -191,12 +191,13 @@ jobs:
             printf "**Already in mesa/main (no patching needed):**\n\n"
             printf "UBWC 5/6 KGSL support, A830/A829/A810 base entries, A8xx magic regs, reg_size fixes, and TU_DEBUG_FLUSHALL removal are all upstreamed and included automatically.\n\n"
             printf '%s\n\n' '---'
-            printf "### A710 / A720 Test Build — What's In This Driver\n\n"
-            printf "> ⚠️ **UNVERIFIED — Needs testing on real A710/A720 hardware before this is merged into the standard build.**\n\n"
-            printf "Pure Mesa \`main\` plus chip ID entries for Adreno 710 and 720 injected via [\`a710-720.py\`](https://github.com/The412Banner/Banners-Turnip/blob/A8xx/patches/a710-720.py):\n\n"
-            printf '%s\n' "- **A710** (\`chip_id=0x07010000\`) — chip IDs sourced from binary analysis of MrPurple666's T27-toasted driver; GPU properties reuse A730 entry (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`), confirmed by [whitebelyash/mesa-tu8 gen8](https://github.com/whitebelyash/mesa-tu8/blob/gen8/src/freedreno/common/freedreno_devices.py)"
-            printf '%s\n\n' "- **A720** (\`chip_id=0x43020000\`) — chip IDs sourced from binary analysis of MrPurple666's T27-toasted driver; GPU properties also reuse A730 entry (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`), confirmed by [whitebelyash/mesa-tu8 gen8](https://github.com/whitebelyash/mesa-tu8/blob/gen8/src/freedreno/common/freedreno_devices.py)"
-            printf "Neither chip ID exists in Mesa main or the Linux kernel device catalog. The standard ZIP is completely unaffected — this variant only activates on devices reporting exactly those chip IDs.\n\n"
+            printf "### A710 / A720 / A722 Test Build — What's In This Driver\n\n"
+            printf "> ⚠️ **UNVERIFIED — Needs testing on real hardware before this is merged into the standard build.**\n\n"
+            printf "Pure Mesa \`main\` plus chip ID entries for Adreno 710, 720, and 722 injected via [\`a710-720.py\`](https://github.com/The412Banner/Banners-Turnip/blob/A8xx/patches/a710-720.py):\n\n"
+            printf '%s\n' "- **A710** (\`chip_id=0x07010000\`) — chip IDs from binary analysis of MrPurple666's T27-toasted driver; GPU properties tuned from [Vauzi-17/mesa-tu8 gen8-clean-26](https://github.com/Vauzi-17/mesa-tu8/blob/gen8-clean-26/src/freedreno/common/freedreno_devices.py) (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=2\`, \`tile_align_w=32\`)"
+            printf '%s\n' "- **A720** (\`chip_id=0x43020000\`) — chip IDs from binary analysis of MrPurple666's T27-toasted driver; GPU properties reuse A730 entry per [whitebelyash/mesa-tu8 gen8](https://github.com/whitebelyash/mesa-tu8/blob/gen8/src/freedreno/common/freedreno_devices.py) (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`)"
+            printf '%s\n\n' "- **A722** (\`chip_id=0x43020100\`) — chip ID extracted from binary analysis of [Vauzi-17/710 v2.5.2](https://github.com/Vauzi-17/710/releases/tag/2.5.2); same 0x43 family as A720 (minor revision 0x01), shares A720 GPU properties"
+            printf "None of these chip IDs exist in Mesa main or the Linux kernel device catalog. The standard ZIP is completely unaffected — this variant only activates on devices reporting exactly those chip IDs.\n\n"
             printf '%s\n\n' '---'
             printf "### Compared to the Original whitebelyash/mesa-tu8 Patchset\n\n"
             printf "Based on [patchset-head-v2](https://github.com/whitebelyash/mesa-tu8/releases/tag/patchset-head-v2). The original had 11 commits — most have since been merged into mesa/main, so this build uses only 2 of them directly:\n\n"
@@ -219,8 +220,8 @@ jobs:
             printf "| :--- | :--- | :--- |\n"
             printf "| A6xx / A7xx | \`%s\` | Pure Mesa main — Snapdragon 600–800 series, 7/8 Gen 1–3 |\n" "${ZIP_REGULAR}"
             printf "| A8xx | \`%s\` | Experimental — Snapdragon 8 Elite (A810/A825/A829/A830) |\n" "${ZIP_A8XX}"
-            printf "| A710 / A720 | \`%s\` | ⚠️ UNVERIFIED — Adreno 710/720 test build, needs hardware testing |\n\n" "${ZIP_A7XX_TEST}"
-            printf "> **Which file?**  A6xx/A7xx → standard ZIP · A8xx (Snapdragon 8 Elite) → A8xx ZIP · A710/A720 owners → 710-720-Test ZIP\n\n"
+            printf "| A710 / A720 / A722 | \`%s\` | ⚠️ UNVERIFIED — Adreno 710/720/722 test build, needs hardware testing |\n\n" "${ZIP_A7XX_TEST}"
+            printf "> **Which file?**  A6xx/A7xx → standard ZIP · A8xx (Snapdragon 8 Elite) → A8xx ZIP · A710/A720/A722 owners → 710-720-Test ZIP\n\n"
             printf '%s\n\n' '---'
             printf "### Installation\n\n"
             printf '%s\n' "- **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP"
