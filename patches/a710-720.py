@@ -6,15 +6,11 @@ Adds Adreno 710 and Adreno 720 chip IDs which are NOT in Mesa main.
 
 Chip IDs extracted from binary analysis of MrPurple666's T27-toasted driver:
   A710: 0x07010000 + wildcard 0xffff07010000 (family=0x07, ADRENO_7XX_GEN1)
-  A720: 0x43020000 + wildcard 0xffff43020000 (family=0x43, ADRENO_7XX_GEN2)
+  A720: 0x43020000 + wildcard 0xffff43020000 (family=0x43)
 
-These match the kernel's chip_id scheme:
-  0x07 family = GEN1 A7xx (same as A730: 0x07030001)
-  0x43 family = GEN2 A7xx (same as A740: 0x43050a01, A735: 0x43030c00)
-
-GPU properties are approximated from the same generation:
-  A710 → a7xx_gen1 template + a730_magic_regs, num_ccu=2
-  A720 → a7xx_gen2 template + a740_magic_regs, num_ccu=2
+GPU properties aligned with whitebelyash/mesa-tu8 gen8 branch, which notes:
+  "These hacks simply reuse A730 entry with different ids and looks like it works in some extent"
+  Both A710 and A720 → a7xx_gen1 template + a730_magic_regs, num_ccu=4
 
 Safe to run multiple times.
 """
@@ -29,19 +25,17 @@ with open(DEVICES_PY, "r") as f:
 original = content
 changes = []
 
-# ── A710: Adreno 710 (ADRENO_7XX_GEN1) ───────────────────────────────────
-# Chip IDs from MrPurple's binary. Same gen1 family as A730 (0x07030001).
-# Uses a730_magic_regs as best approximation — same firmware generation.
-# num_ccu=2 based on hardware spec (smaller than A730's 4 CCU).
+# ── A710: Adreno 710 ─────────────────────────────────────────────────────
+# Both A710 and A720 reuse the A730 entry per whitebelyash/mesa-tu8 gen8.
 
 A710_BLOCK = """\
 add_gpus([
-        GPUId(chip_id=0x07010000, name="FD710"),
-        GPUId(chip_id=0xffff07010000, name="FD710"),
+        GPUId(chip_id=0x07010000, name="FD710"), # KGSL, no speedbin data
+        GPUId(chip_id=0xffff07010000, name="FD710"), # Default no-speedbin fallback
     ], A6xxGPUInfo(
         CHIP.A7XX,
         [a7xx_base, a7xx_gen1],
-        num_ccu = 2,
+        num_ccu = 4,
         tile_align_w = 64,
         tile_align_h = 32,
         tile_max_w = 1024,
@@ -57,19 +51,17 @@ add_gpus([
 
 """
 
-# ── A720: Adreno 720 (ADRENO_7XX_GEN2) ───────────────────────────────────
-# Chip IDs from MrPurple's binary. Same gen2 family as A740 (0x43050a01).
-# Uses a740_magic_regs as best approximation — same 0x43-family generation.
-# num_ccu=2 based on estimated hardware spec (smaller than A735's 3 CCU).
+# ── A720: Adreno 720 ─────────────────────────────────────────────────────
+# Also reuses A730 entry per whitebelyash/mesa-tu8 gen8 (not gen2/a740).
 
 A720_BLOCK = """\
 add_gpus([
-        GPUId(chip_id=0x43020000, name="FD720"),
-        GPUId(chip_id=0xffff43020000, name="FD720"),
+        GPUId(chip_id=0x43020000, name="FD720"), # KGSL, no speedbin data
+        GPUId(chip_id=0xffff43020000, name="FD720"), # Default no-speedbin fallback
     ], A6xxGPUInfo(
         CHIP.A7XX,
-        [a7xx_base, a7xx_gen2, GPUProps(enable_tp_ubwc_flag_hint = True)],
-        num_ccu = 2,
+        [a7xx_base, a7xx_gen1],
+        num_ccu = 4,
         tile_align_w = 64,
         tile_align_h = 32,
         tile_max_w = 1024,
@@ -79,8 +71,8 @@ add_gpus([
         wave_granularity = 2,
         fibers_per_sp = 128 * 2 * 16,
         highest_bank_bit = 16,
-        magic_regs = a740_magic_regs,
-        raw_magic_regs = a740_raw_magic_regs,
+        magic_regs = a730_magic_regs,
+        raw_magic_regs = a730_raw_magic_regs,
     ))
 
 """
