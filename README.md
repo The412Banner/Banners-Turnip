@@ -23,7 +23,7 @@ This repo automatically builds Turnip from the absolute latest commit on `mesa/m
 
 Each release ships two driver ZIPs — pick the one matching your GPU.
 
-[**Download latest →**](https://github.com/The412Banner/Banners-Turnip/releases/latest)
+[**Download latest →**](https://github.com/The412Banner/Banners-Turnip/releases/latest) · [**Full build history →**](Mesa-commit-history.md)
 
 ### A6xx / A7xx — Standard
 

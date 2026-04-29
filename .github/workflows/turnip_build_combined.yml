@@ -274,15 +274,15 @@ repo        = os.environ['BT_REPO']
 mesa_url    = f'https://gitlab.freedesktop.org/mesa/mesa/-/commit/{githash_full}'
 release_url = f'https://github.com/{repo}/releases/tag/{tag}'
 new_row     = f'| [{tag}]({release_url}) | {date} | [\`{githash}\`]({mesa_url}) | {title} | {vulkan} |'
-with open('BUILDS.md', 'r') as f:
+with open('Mesa-commit-history.md', 'r') as f:
     content = f.read()
 marker = '<!-- BUILDS_TABLE_START -->'
 header = '| Tag | Date | Mesa Commit | Commit Title | Vulkan |\n| :--- | :--- | :--- | :--- | :--- |'
 insert_after = marker + '\n' + header + '\n'
 content = content.replace(insert_after, insert_after + new_row + '\n')
-with open('BUILDS.md', 'w') as f:
+with open('Mesa-commit-history.md', 'w') as f:
     f.write(content)
 "
-          git add README.md BUILDS.md
+          git add README.md Mesa-commit-history.md
           git diff --staged --quiet || git commit -m "docs: update build info [$BT_TAG]"
           git push origin A8xx
