@@ -68,7 +68,6 @@ fd720_722_raw_magic_regs = [
 ]
 
 fd710_magic_regs = dict(
-        PC_DBG_ECO_CNTL      = 0x20100000,
         RB_DBG_ECO_CNTL      = 0x00000000,
         RB_DBG_ECO_CNTL_blit = 0x00000000,
         RB_RBP_CNTL          = 0x0,
