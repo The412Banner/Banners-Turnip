@@ -26,7 +26,7 @@ jobs:
             suffix: "-710-720-Test"
             extra_patch: ""
             extra_script: "patches/a710-720.py"
-            meta_desc: "EXPERIMENTAL — Adds unverified Adreno 710, 720, and 722 chip ID entries on top of Mesa main. GPU properties based on A730 reuse (per whitebelyash/mesa-tu8) — may hang or corrupt on these GPUs. All other GPUs unaffected."
+            meta_desc: "EXPERIMENTAL — Adds Adreno 710, 720, and 722 support on top of Mesa main with hardware-specific magic registers and tuned GPU properties. Unverified on real hardware — use sysmem mode. All other GPUs unaffected."
 
     steps:
       - name: Checkout
@@ -193,12 +193,12 @@ jobs:
             printf '%s\n\n' '---'
             printf "### A710 / A720 / A722 Test Build — What's In This Driver\n\n"
             printf "> ⚠️ **UNVERIFIED — Needs testing on real hardware before this is merged into the standard build.**\n\n"
-            printf "Pure Mesa \`main\` plus chip ID entries for Adreno 710, 720, and 722 injected via [\`a710-720.py\`](https://github.com/The412Banner/Banners-Turnip/blob/A8xx/patches/a710-720.py):\n\n"
-            printf '%s\n' "- **A710** (\`chip_id=0x07010000\`) — chip IDs from binary analysis of MrPurple666's T27-toasted driver; GPU properties tuned from [Vauzi-17/mesa-tu8 gen8-clean-26](https://github.com/Vauzi-17/mesa-tu8/blob/gen8-clean-26/src/freedreno/common/freedreno_devices.py) (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=2\`, \`tile_align_w=32\`)"
-            printf '%s\n' "- **A720** (\`chip_id=0x43020000\`) — chip IDs from binary analysis of MrPurple666's T27-toasted driver; GPU properties reuse A730 entry per [whitebelyash/mesa-tu8 gen8](https://github.com/whitebelyash/mesa-tu8/blob/gen8/src/freedreno/common/freedreno_devices.py) (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`)"
-            printf '%s\n\n' "- **A722** (\`chip_id=0x43020100\`) — chip ID extracted from binary analysis of [Vauzi-17/710 v2.5.2](https://github.com/Vauzi-17/710/releases/tag/2.5.2); same 0x43 family as A720 (minor revision 0x01), shares A720 GPU properties"
-            printf "None of these chip IDs exist in Mesa main or the Linux kernel device catalog. The standard ZIP is completely unaffected — this variant only activates on devices reporting exactly those chip IDs.\n\n"
-            printf "> **Recommended: use sysmem mode.** GMEM tile rendering is not disabled but relies on A730 magic registers which may not match your hardware — this can cause GPU hangs or corruption. Force sysmem via \`TU_DEBUG=sysmem\` in your emulator/app environment until GMEM is confirmed stable on real hardware.\n\n"
+            printf "Pure Mesa \`main\` plus hardware-specific GPU entries for Adreno 710, 720, and 722 injected via [\`a710-720.py\`](https://github.com/The412Banner/Banners-Turnip/blob/A8xx/patches/a710-720.py) (based on [Vauzi-17/710](https://github.com/Vauzi-17/710/blob/main/add_710_720_722.py)):\n\n"
+            printf '%s\n' "- **A710** (\`chip_id=0x07010000\`) — dedicated \`fd710_magic_regs\` with hardware-specific register values; \`num_ccu=3\`, \`tile_align_w=32\`, \`tile_align_h=16\`"
+            printf '%s\n' "- **A720** (\`chip_id=0x43020000\`) — dedicated \`fd720_722_magic_regs\` with hardware-specific register values; \`num_ccu=3\`, \`tile_align_w=64\`, \`tile_align_h=32\`"
+            printf '%s\n\n' "- **A722** (\`chip_id=0x43020100\`) — shares \`fd720_722_magic_regs\` with A720; \`num_ccu=4\`, \`tile_align_w=64\`, \`tile_align_h=32\`"
+            printf "All three entries include hardware-tuned sysmem cache sizes and VPC attribute buffer sizes. None of these chip IDs exist in Mesa main or the Linux kernel device catalog. The standard ZIP is completely unaffected — this variant only activates on devices reporting exactly those chip IDs.\n\n"
+            printf "> **Recommended: use sysmem mode.** Force sysmem via \`TU_DEBUG=sysmem\` in your emulator/app environment until GMEM is confirmed stable on real hardware.\n\n"
             printf "> **Winlator users:** set \`WRAPPER_BLIT=1\` in your environment variables.\n\n"
             printf '%s\n\n' '---'
             printf "### Compared to the Original whitebelyash/mesa-tu8 Patchset\n\n"
