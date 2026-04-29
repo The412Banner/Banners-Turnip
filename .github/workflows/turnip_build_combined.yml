@@ -26,7 +26,7 @@ jobs:
             suffix: "-710-720-Test"
             extra_patch: ""
             extra_script: "patches/a710-720.py"
-            meta_desc: "EXPERIMENTAL — Adds unverified Adreno 710 and 720 chip ID entries on top of Mesa main. GPU properties approximated from A730/A740 — may hang or corrupt on A710/A720 hardware. All other GPUs unaffected."
+            meta_desc: "EXPERIMENTAL — Adds unverified Adreno 710 and 720 chip ID entries on top of Mesa main. GPU properties based on A730 reuse (per whitebelyash/mesa-tu8) — may hang or corrupt on A710/A720 hardware. All other GPUs unaffected."
 
     steps:
       - name: Checkout
@@ -193,9 +193,9 @@ jobs:
             printf '%s\n\n' '---'
             printf "### A710 / A720 Test Build — What's In This Driver\n\n"
             printf "> ⚠️ **UNVERIFIED — Needs testing on real A710/A720 hardware before this is merged into the standard build.**\n\n"
-            printf "Pure Mesa \`main\` plus chip ID entries for Adreno 710 and 720 injected via \`apply_a7xx_gpus.py\`:\n\n"
-            printf '%s\n' "- **A710** (\`chip_id=0x07010000\`) — chip IDs extracted from binary analysis; GPU properties approximated from A730 (same GEN1 family, \`num_ccu=2\`)"
-            printf '%s\n\n' "- **A720** (\`chip_id=0x43020000\`) — chip IDs extracted from binary analysis; GPU properties approximated from A740 (same GEN2 family, \`num_ccu=2\`)"
+            printf "Pure Mesa \`main\` plus chip ID entries for Adreno 710 and 720 injected via \`a710-720.py\`:\n\n"
+            printf '%s\n' "- **A710** (\`chip_id=0x07010000\`) — chip IDs extracted from binary analysis; GPU properties reuse A730 entry (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`), confirmed by whitebelyash/mesa-tu8 gen8"
+            printf '%s\n\n' "- **A720** (\`chip_id=0x43020000\`) — chip IDs extracted from binary analysis; GPU properties also reuse A730 entry (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`), confirmed by whitebelyash/mesa-tu8 gen8"
             printf "Neither chip ID exists in Mesa main or the Linux kernel device catalog. The standard ZIP is completely unaffected — this variant only activates on devices reporting exactly those chip IDs.\n\n"
             printf '%s\n\n' '---'
             printf "### Compared to the Original whitebelyash/mesa-tu8 Patchset\n\n"
@@ -220,7 +220,7 @@ jobs:
             printf "| A6xx / A7xx | \`%s\` | Pure Mesa main — Snapdragon 600–800 series, 7/8 Gen 1–3 |\n" "${ZIP_REGULAR}"
             printf "| A8xx | \`%s\` | Experimental — Snapdragon 8 Elite (A810/A825/A829/A830) |\n" "${ZIP_A8XX}"
             printf "| A710 / A720 | \`%s\` | ⚠️ UNVERIFIED — Adreno 710/720 test build, needs hardware testing |\n\n" "${ZIP_A7XX_TEST}"
-            printf "> **Which file?**  A6xx/A7xx → standard ZIP · A8xx (Snapdragon 8 Elite) → A8xx ZIP · A710/A720 owners → A7xx-Test ZIP\n\n"
+            printf "> **Which file?**  A6xx/A7xx → standard ZIP · A8xx (Snapdragon 8 Elite) → A8xx ZIP · A710/A720 owners → 710-720-Test ZIP\n\n"
             printf '%s\n\n' '---'
             printf "### Installation\n\n"
             printf '%s\n' "- **BannerHub / BCI:** Component Manager → Add New Component → select the ZIP"
