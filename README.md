@@ -136,4 +136,17 @@ Once those steps are done, the watcher polls Mesa upstream every hour and trigge
 
 ---
 
+## Credits
+
+This project wouldn't exist without the hard work and dedication of these community members. A huge thank you to each of them for sharing their knowledge, publishing their work openly, and being available to help — they're the reason any of this is possible.
+
+| | |
+| :--- | :--- |
+| [**whitebelyash**](https://github.com/whitebelyash) | Author of the [mesa-tu8](https://github.com/whitebelyash/mesa-tu8) A8xx patchset — the foundation of our A8xx driver variant. His research into A810/A825/A829/A830 GPU enablement, KGSL support, and UBWC fixes made Snapdragon 8 Elite Turnip support possible. |
+| [**Vauzi**](https://github.com/Vauzi-17) | Author of the [A710/A720/A722 GPU enablement work](https://github.com/Vauzi-17/710) — hardware-specific magic registers, tuned GPU properties, and chip ID research that our experimental 710/720/722 test build is built on. |
+| [**Kimchi**](https://github.com/K11MCH1) | Creator of [AdrenoTools](https://github.com/K11MCH1/AdrenoToolsDrivers) — the driver loading framework that makes all of this usable on Android without root. Without AdrenoTools, custom Turnip builds would have no delivery mechanism. |
+| [**StevenMXZ**](https://github.com/StevenMXZ) | For his ongoing Turnip builds and releases that the community relies on, and for making his work openly available for others to build upon. |
+
+---
+
 <sub>☕ [Support on Ko-fi](https://ko-fi.com/the412banner)</sub>
