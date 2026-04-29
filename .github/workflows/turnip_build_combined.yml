@@ -22,8 +22,8 @@ jobs:
             extra_patch: "patches/tu8_kgsl_26.patch"
             extra_script: "patches/fix_a8xx_dev_info.py:patches/apply_a8xx_gpus.py"
             meta_desc: "A8xx experimental Turnip driver for Snapdragon 8 Elite (A810/A825/A829/A830). Includes A8xx-specific patches on top of Mesa main. KGSL build."
-          - variant: a7xx-test
-            suffix: "-A7xx-Test"
+          - variant: 710-720-test
+            suffix: "-710-720-Test"
             extra_patch: ""
             extra_script: "patches/apply_a7xx_gpus.py"
             meta_desc: "EXPERIMENTAL — Adds unverified Adreno 710 and 720 chip ID entries on top of Mesa main. GPU properties approximated from A730/A740 — may hang or corrupt on A710/A720 hardware. All other GPUs unaffected."
@@ -152,7 +152,7 @@ jobs:
           VULKAN_VERSION=$(cat release-info/vulkan_version.txt)
           ZIP_REGULAR="Turnip-${TAG}.zip"
           ZIP_A8XX="Turnip-${TAG}-A8xx.zip"
-          ZIP_A7XX_TEST="Turnip-${TAG}-A7xx-Test.zip"
+          ZIP_A7XX_TEST="Turnip-${TAG}-710-720-Test.zip"
           MESA_URL="https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}"
           {
             printf "> ⚠️ **AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**\n\n"
