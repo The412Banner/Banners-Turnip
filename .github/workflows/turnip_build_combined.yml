@@ -193,9 +193,9 @@ jobs:
             printf '%s\n\n' '---'
             printf "### A710 / A720 Test Build — What's In This Driver\n\n"
             printf "> ⚠️ **UNVERIFIED — Needs testing on real A710/A720 hardware before this is merged into the standard build.**\n\n"
-            printf "Pure Mesa \`main\` plus chip ID entries for Adreno 710 and 720 injected via \`a710-720.py\`:\n\n"
-            printf '%s\n' "- **A710** (\`chip_id=0x07010000\`) — chip IDs extracted from binary analysis; GPU properties reuse A730 entry (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`), confirmed by whitebelyash/mesa-tu8 gen8"
-            printf '%s\n\n' "- **A720** (\`chip_id=0x43020000\`) — chip IDs extracted from binary analysis; GPU properties also reuse A730 entry (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`), confirmed by whitebelyash/mesa-tu8 gen8"
+            printf "Pure Mesa \`main\` plus chip ID entries for Adreno 710 and 720 injected via [\`a710-720.py\`](https://github.com/The412Banner/Banners-Turnip/blob/A8xx/patches/a710-720.py):\n\n"
+            printf '%s\n' "- **A710** (\`chip_id=0x07010000\`) — chip IDs sourced from binary analysis of MrPurple666's T27-toasted driver; GPU properties reuse A730 entry (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`), confirmed by [whitebelyash/mesa-tu8 gen8](https://github.com/whitebelyash/mesa-tu8/blob/gen8/src/freedreno/common/freedreno_devices.py)"
+            printf '%s\n\n' "- **A720** (\`chip_id=0x43020000\`) — chip IDs sourced from binary analysis of MrPurple666's T27-toasted driver; GPU properties also reuse A730 entry (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`), confirmed by [whitebelyash/mesa-tu8 gen8](https://github.com/whitebelyash/mesa-tu8/blob/gen8/src/freedreno/common/freedreno_devices.py)"
             printf "Neither chip ID exists in Mesa main or the Linux kernel device catalog. The standard ZIP is completely unaffected — this variant only activates on devices reporting exactly those chip IDs.\n\n"
             printf '%s\n\n' '---'
             printf "### Compared to the Original whitebelyash/mesa-tu8 Patchset\n\n"
