@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`8292593`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82925935d425b4465bcede519a671045fb58d098) |
+| **Commit** | [`d433ea5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d433ea59eb0c17b59ebf17d428aa372ef043af05) |
 | **Commit date** | 2026-04-29 |
-| **Commit title** | pvr: wait for graphics jobs in CopyQueryPoolResults |
+| **Commit title** | docs: add sha sum for 26.0.6 |
 | **Build date** | 20260429 |
-| **Release** | [v26.2.0-20260429-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r9) |
+| **Release** | [v26.2.0-20260429-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r10) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260429-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r10) | 2026-04-29 | [`d433ea5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d433ea59eb0c17b59ebf17d428aa372ef043af05) | docs: add sha sum for 26.0.6 | Vulkan 1.4.348 |
 | [v26.2.0-20260429-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r9) | 2026-04-29 | [`8292593`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82925935d425b4465bcede519a671045fb58d098) | pvr: wait for graphics jobs in CopyQueryPoolResults | Vulkan 1.4.348 |
 | [v26.2.0-20260429-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r8) | 2026-04-29 | [`656b381`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/656b3814c28e514ef77379dac734890387c4761a) | radv/wsi: Re-use transfer queue if it exists | Vulkan 1.4.348 |
 | [v26.2.0-20260429-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r7) | 2026-04-29 | [`20b42f4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20b42f446667d01d7861b52f667bcd6b1569b9c2) | pvr: de-dup strncmp in pvrsrvkm winsys | Vulkan 1.4.348 |
@@ -93,9 +94,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260429-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r4) | 2026-04-29 | [`ca92f86`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca92f8697e81bc3a72a437c2b11e023228bf2b05) | panfrost/ci: Update kernel to pick up ZSTD support for ZRAM | Vulkan 1.4.348 |
 | [v26.2.0-20260429-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r3) | 2026-04-29 | [`72e0eda`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72e0eda2601beccf60ca4c0cde16e72b5a468050) | pan/bi: fix memory access alignment | Vulkan 1.4.348 |
 | [v26.2.0-20260428-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r9) | 2026-04-28 | [`a78634c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a78634ccb07354b26406f7803e98d32412a872b5) | jay/to_binary: rename grf -> phys_reg | Vulkan 1.4.348 |
-| [v26.2.0-20260428-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r8) | 2026-04-28 | [`6b8d934`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b8d9344075630d3dc6893fd6a9379aa8ba833d2) | CODEOWNERS: update owners for Android components | Vulkan 1.4.348 |
-| [v26.2.0-20260428-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r7) | 2026-04-28 | [`11399b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/11399b15e0ef64bb5563eae9ac3ec8d15986e9d5) | pan/bi: Improve swizzle propagation | Vulkan 1.4.348 |
-| [v26.2.0-20260428-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260428-r6) | 2026-04-28 | [`76a3951`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76a3951e03281acc8f5cd1093726d85f581b97ff) | kk: Fix issues with maximal reconvergence | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
 ---
