@@ -148,6 +148,8 @@ This project wouldn't exist without the hard work and dedication of these commun
 | [**Kimchi**](https://github.com/K11MCH1) | Creator of [AdrenoTools](https://github.com/K11MCH1/AdrenoToolsDrivers) — the driver loading framework that makes all of this usable on Android without root. Without AdrenoTools, custom Turnip builds would have no delivery mechanism. |
 | [**StevenMXZ**](https://github.com/StevenMXZ) | For his ongoing Turnip builds and releases that the community relies on, and for making his work openly available for others to build upon. |
 
+Also thanks to anyone I forgot and not listed — the Android GPU community is full of people whose contributions quietly make things work, and they deserve recognition too.
+
 ---
 
 <sub>☕ [Support on Ko-fi](https://ko-fi.com/the412banner)</sub>
