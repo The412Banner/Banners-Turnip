@@ -198,6 +198,7 @@ jobs:
             printf '%s\n' "- **A720** (\`chip_id=0x43020000\`) — chip IDs from binary analysis of MrPurple666's T27-toasted driver; GPU properties reuse A730 entry per [whitebelyash/mesa-tu8 gen8](https://github.com/whitebelyash/mesa-tu8/blob/gen8/src/freedreno/common/freedreno_devices.py) (\`a7xx_gen1\`, \`a730_magic_regs\`, \`num_ccu=4\`)"
             printf '%s\n\n' "- **A722** (\`chip_id=0x43020100\`) — chip ID extracted from binary analysis of [Vauzi-17/710 v2.5.2](https://github.com/Vauzi-17/710/releases/tag/2.5.2); same 0x43 family as A720 (minor revision 0x01), shares A720 GPU properties"
             printf "None of these chip IDs exist in Mesa main or the Linux kernel device catalog. The standard ZIP is completely unaffected — this variant only activates on devices reporting exactly those chip IDs.\n\n"
+            printf "> **Recommended: use sysmem mode.** GMEM tile rendering is not disabled but relies on A730 magic registers which may not match your hardware — this can cause GPU hangs or corruption. Force sysmem via \`TU_DEBUG=sysmem\` in your emulator/app environment until GMEM is confirmed stable on real hardware.\n\n"
             printf '%s\n\n' '---'
             printf "### Compared to the Original whitebelyash/mesa-tu8 Patchset\n\n"
             printf "Based on [patchset-head-v2](https://github.com/whitebelyash/mesa-tu8/releases/tag/patchset-head-v2). The original had 11 commits — most have since been merged into mesa/main, so this build uses only 2 of them directly:\n\n"
