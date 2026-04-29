@@ -25,7 +25,7 @@ jobs:
           - variant: 710-720-test
             suffix: "-710-720-Test"
             extra_patch: ""
-            extra_script: "patches/apply_a7xx_gpus.py"
+            extra_script: "patches/a710-720.py"
             meta_desc: "EXPERIMENTAL — Adds unverified Adreno 710 and 720 chip ID entries on top of Mesa main. GPU properties approximated from A730/A740 — may hang or corrupt on A710/A720 hardware. All other GPUs unaffected."
 
     steps:
