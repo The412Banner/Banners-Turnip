@@ -21,13 +21,17 @@ This repo automatically builds Turnip from the absolute latest commit on `mesa/m
 
 ## Driver Variants & Downloads
 
-Each release ships two driver ZIPs — pick the one matching your GPU.
+Each release ships three driver ZIPs — pick the one matching your GPU.
 
 [**Download latest →**](https://github.com/The412Banner/Banners-Turnip/releases/latest) · [**Full build history →**](Mesa-commit-history.md)
 
 ### A6xx / A7xx — Standard
 
 Pure Mesa `main`, no source patches. Compatible with Adreno 600–700 series GPUs (Snapdragon 600–800 series, including 7 Gen and 8 Gen 1–3).
+
+### A710 / A720 / A722 — Experimental / Work in Progress
+
+Injects hardware-specific GPU entries and magic registers for Adreno 710, 720, and 722 on top of Mesa `main` via [`a710-720.py`](patches/a710-720.py) — based on community research by [Vauzi-17](https://github.com/Vauzi-17/710). No upstream Mesa support exists for these GPUs yet. Early results are promising. Recommended: force sysmem mode via `TU_DEBUG=sysmem` until GMEM is confirmed stable. Winlator users: set `WRAPPER_BLIT=1`.
 
 ### A8xx — Experimental
 
@@ -47,7 +51,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 
 | Workflow | Trigger | What it builds |
 | :--- | :--- | :--- |
-| **Build Turnip (Combined)** | Auto (mesa-watcher) or manual | Standard + A8xx in parallel; published as a single tagged release |
+| **Build Turnip (Combined)** | Auto (mesa-watcher) or manual | Standard + A8xx + A710/A720/A722 in parallel; published as a single tagged release |
 | **Build Turnip A8xx (Experimental)** | Manual | Standalone A8xx test build — faster iteration outside the release cycle |
 | **Build Turnip (Perf 6xx/7xx)** | Manual | A6xx/A7xx only, compiled with `-O3` + ThinLTO for performance testing |
 
