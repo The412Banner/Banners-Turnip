@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260430-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r5) | 2026-04-30 | [`b795a1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b795a1a20c0c7867a51a65859f347d7ba585e120) | intel/tools: add eu stall viewer | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r4) | 2026-04-30 | [`b4591f4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b4591f4b30825f676214cd03efdc6584f5e13078) | radv/ci: update list of skipped tests | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r3) | 2026-04-30 | [`1027059`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1027059baa2554afa8fa3ca4aa222861f9863a04) | pvr: increase maxPerStageResources for new maxPerStageDescriptorStorageBuffers | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r2) | 2026-04-30 | [`b2aa92b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2aa92b52374066e9830672ef07bc4f6100a3508) | softfloat: make sign bit an unsigned int | Vulkan 1.4.348 |
