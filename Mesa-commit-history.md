@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260430-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r9) | 2026-04-30 | [`db27a10`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db27a10f38ff766ed2171aa8f5de2c37cd22bddd) | pan/compiler: Add better documentation for second lower_int64 | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r8) | 2026-04-30 | [`e092e94`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e092e945a71316c38cb6b67f63c0dded93501943) | radv: fix printing image format with RADV_DEBUG=img | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r7) | 2026-04-30 | [`f2ce286`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f2ce2868c5154673db763b0ef13bb06dfcfb9f12) | ci: uprev vkd3d | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r6) | 2026-04-30 | [`d95076e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d95076e581a6e07ea37d2ccfeb1696c81373812f) | v3dv: lower oversized compute workgroups to 256 invocations | Vulkan 1.4.348 |

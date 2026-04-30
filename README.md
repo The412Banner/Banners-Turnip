@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`e092e94`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e092e945a71316c38cb6b67f63c0dded93501943) |
+| **Commit** | [`db27a10`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db27a10f38ff766ed2171aa8f5de2c37cd22bddd) |
 | **Commit date** | 2026-04-30 |
-| **Commit title** | radv: fix printing image format with RADV_DEBUG=img |
+| **Commit title** | pan/compiler: Add better documentation for second lower_int64 |
 | **Build date** | 20260430 |
-| **Release** | [v26.2.0-20260430-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r8) |
+| **Release** | [v26.2.0-20260430-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260430-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r9) | 2026-04-30 | [`db27a10`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db27a10f38ff766ed2171aa8f5de2c37cd22bddd) | pan/compiler: Add better documentation for second lower_int64 | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r8) | 2026-04-30 | [`e092e94`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e092e945a71316c38cb6b67f63c0dded93501943) | radv: fix printing image format with RADV_DEBUG=img | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r7) | 2026-04-30 | [`f2ce286`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f2ce2868c5154673db763b0ef13bb06dfcfb9f12) | ci: uprev vkd3d | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r6) | 2026-04-30 | [`d95076e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d95076e581a6e07ea37d2ccfeb1696c81373812f) | v3dv: lower oversized compute workgroups to 256 invocations | Vulkan 1.4.348 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260430-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r2) | 2026-04-30 | [`b2aa92b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2aa92b52374066e9830672ef07bc4f6100a3508) | softfloat: make sign bit an unsigned int | Vulkan 1.4.348 |
 | [v26.2.0-20260430](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430) | 2026-04-30 | [`7c69f31`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c69f31eccb27b8294f48c76ab3b79669bb2813b) | radeonsi/ci/build: also fetch video decode/encode sample for VK CTS | Vulkan 1.4.348 |
 | [v26.2.0-20260429-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r10) | 2026-04-29 | [`d433ea5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d433ea59eb0c17b59ebf17d428aa372ef043af05) | docs: add sha sum for 26.0.6 | Vulkan 1.4.348 |
-| [v26.2.0-20260429-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r9) | 2026-04-29 | [`8292593`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82925935d425b4465bcede519a671045fb58d098) | pvr: wait for graphics jobs in CopyQueryPoolResults | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
 ---
