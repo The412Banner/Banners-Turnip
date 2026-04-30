@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260430](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430) | 2026-04-30 | [`7c69f31`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c69f31eccb27b8294f48c76ab3b79669bb2813b) | radeonsi/ci/build: also fetch video decode/encode sample for VK CTS | Vulkan 1.4.348 |
 | [v26.2.0-20260429-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r10) | 2026-04-29 | [`d433ea5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d433ea59eb0c17b59ebf17d428aa372ef043af05) | docs: add sha sum for 26.0.6 | Vulkan 1.4.348 |
 | [v26.2.0-20260429-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r9) | 2026-04-29 | [`8292593`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82925935d425b4465bcede519a671045fb58d098) | pvr: wait for graphics jobs in CopyQueryPoolResults | Vulkan 1.4.348 |
 | [v26.2.0-20260429-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260429-r8) | 2026-04-29 | [`656b381`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/656b3814c28e514ef77379dac734890387c4761a) | radv/wsi: Re-use transfer queue if it exists | Vulkan 1.4.348 |
