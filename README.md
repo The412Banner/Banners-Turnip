@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`6aabe54`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6aabe5482e51ec28126d4af5285936c04b247a34) |
+| **Commit** | [`645de2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/645de2b433f154203ff27ae30eb7b8db816e5843) |
 | **Commit date** | 2026-05-01 |
-| **Commit title** | anv: Fix support for indirect SBTs on Xe3+ |
+| **Commit title** | gallivm: handle llvm 22 scatter/gather intrinsic changes. |
 | **Build date** | 20260501 |
-| **Release** | [v26.2.0-20260501](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501) |
+| **Release** | [v26.2.0-20260501-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260501-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r2) | 2026-05-01 | [`645de2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/645de2b433f154203ff27ae30eb7b8db816e5843) | gallivm: handle llvm 22 scatter/gather intrinsic changes. | Vulkan 1.4.348 |
 | [v26.2.0-20260501](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501) | 2026-05-01 | [`6aabe54`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6aabe5482e51ec28126d4af5285936c04b247a34) | anv: Fix support for indirect SBTs on Xe3+ | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r12) | 2026-04-30 | [`d8b5254`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8b525466ca4d51a75d460f84697dd497d7c5a43) | ir3: Fix shared IMAD24 lowering. | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r11) | 2026-04-30 | [`608bc0e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/608bc0e5930ec2c75511eb818d787d8c1432e8e6) | radv/meta: fix expanding HTILE on compute with multisampling | Vulkan 1.4.348 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260430-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r5) | 2026-04-30 | [`b795a1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b795a1a20c0c7867a51a65859f347d7ba585e120) | intel/tools: add eu stall viewer | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r4) | 2026-04-30 | [`b4591f4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b4591f4b30825f676214cd03efdc6584f5e13078) | radv/ci: update list of skipped tests | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r3) | 2026-04-30 | [`1027059`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1027059baa2554afa8fa3ca4aa222861f9863a04) | pvr: increase maxPerStageResources for new maxPerStageDescriptorStorageBuffers | Vulkan 1.4.348 |
-| [v26.2.0-20260430-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r2) | 2026-04-30 | [`b2aa92b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2aa92b52374066e9830672ef07bc4f6100a3508) | softfloat: make sign bit an unsigned int | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
 ---
