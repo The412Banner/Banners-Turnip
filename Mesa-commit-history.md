@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260501-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r5) | 2026-05-01 | [`80e6b46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/80e6b468f435aea09c085b14efff9e70c32ec4dd) | panfrost: add helper function for checking for active queries | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r4) | 2026-05-01 | [`012d72f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/012d72f2b0314e91e3b8637e3390337a58366c62) | nir/opt_algebraic: add some imul24_relaxed pattern | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r3) | 2026-05-01 | [`fe067b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fe067b17d908d8f02e88ef3c4433ec5fbb66b2a9) | radv: split radv_compiler_info's family into debug::family and key::family | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r2) | 2026-05-01 | [`645de2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/645de2b433f154203ff27ae30eb7b8db816e5843) | gallivm: handle llvm 22 scatter/gather intrinsic changes. | Vulkan 1.4.348 |
