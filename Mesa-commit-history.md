@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260501](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501) | 2026-05-01 | [`6aabe54`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6aabe5482e51ec28126d4af5285936c04b247a34) | anv: Fix support for indirect SBTs on Xe3+ | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r12) | 2026-04-30 | [`d8b5254`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8b525466ca4d51a75d460f84697dd497d7c5a43) | ir3: Fix shared IMAD24 lowering. | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r11) | 2026-04-30 | [`608bc0e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/608bc0e5930ec2c75511eb818d787d8c1432e8e6) | radv/meta: fix expanding HTILE on compute with multisampling | Vulkan 1.4.348 |
 | [v26.2.0-20260430-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r10) | 2026-04-30 | [`c4b6df2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c4b6df29bf50aba7046ca42d569729f2cf8de1d7) | intel/isl: fix assert when surf->size_B is > UINT_MAX | Vulkan 1.4.348 |
