@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260501-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r8) | 2026-05-01 | [`95954b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95954b098190dc24f0c555db7dfbe0cb0f6feefb) | vk/cmd_queue: always ceil() param lens | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r7) | 2026-05-01 | [`216c5c6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/216c5c6dde9e2b239cfb550a2f860330bca12a21) | nvk: Re-enable zcull save/restore | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r6) | 2026-05-01 | [`ebe835e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ebe835e94cbf33495dd049d18ad4e6e80545fc53) | intel_hang_replay: Don't force scratch page on Xe KMD unless explicitly requested | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r5) | 2026-05-01 | [`80e6b46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/80e6b468f435aea09c085b14efff9e70c32ec4dd) | panfrost: add helper function for checking for active queries | Vulkan 1.4.348 |

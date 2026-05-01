@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`216c5c6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/216c5c6dde9e2b239cfb550a2f860330bca12a21) |
+| **Commit** | [`95954b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95954b098190dc24f0c555db7dfbe0cb0f6feefb) |
 | **Commit date** | 2026-05-01 |
-| **Commit title** | nvk: Re-enable zcull save/restore |
+| **Commit title** | vk/cmd_queue: always ceil() param lens |
 | **Build date** | 20260501 |
-| **Release** | [v26.2.0-20260501-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r7) |
+| **Release** | [v26.2.0-20260501-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260501-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r8) | 2026-05-01 | [`95954b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95954b098190dc24f0c555db7dfbe0cb0f6feefb) | vk/cmd_queue: always ceil() param lens | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r7) | 2026-05-01 | [`216c5c6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/216c5c6dde9e2b239cfb550a2f860330bca12a21) | nvk: Re-enable zcull save/restore | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r6) | 2026-05-01 | [`ebe835e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ebe835e94cbf33495dd049d18ad4e6e80545fc53) | intel_hang_replay: Don't force scratch page on Xe KMD unless explicitly requested | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r5) | 2026-05-01 | [`80e6b46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/80e6b468f435aea09c085b14efff9e70c32ec4dd) | panfrost: add helper function for checking for active queries | Vulkan 1.4.348 |
@@ -92,9 +93,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260501-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r3) | 2026-05-01 | [`fe067b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fe067b17d908d8f02e88ef3c4433ec5fbb66b2a9) | radv: split radv_compiler_info's family into debug::family and key::family | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r2) | 2026-05-01 | [`645de2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/645de2b433f154203ff27ae30eb7b8db816e5843) | gallivm: handle llvm 22 scatter/gather intrinsic changes. | Vulkan 1.4.348 |
 | [v26.2.0-20260501](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501) | 2026-05-01 | [`6aabe54`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6aabe5482e51ec28126d4af5285936c04b247a34) | anv: Fix support for indirect SBTs on Xe3+ | Vulkan 1.4.348 |
-| [v26.2.0-20260430-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r12) | 2026-04-30 | [`d8b5254`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8b525466ca4d51a75d460f84697dd497d7c5a43) | ir3: Fix shared IMAD24 lowering. | Vulkan 1.4.348 |
-| [v26.2.0-20260430-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r11) | 2026-04-30 | [`608bc0e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/608bc0e5930ec2c75511eb818d787d8c1432e8e6) | radv/meta: fix expanding HTILE on compute with multisampling | Vulkan 1.4.348 |
-| [v26.2.0-20260430-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260430-r10) | 2026-04-30 | [`c4b6df2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c4b6df29bf50aba7046ca42d569729f2cf8de1d7) | intel/isl: fix assert when surf->size_B is > UINT_MAX | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
 ---
