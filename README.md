@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`f583f6e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f583f6e717a3e5fb3948ff73bd1f1a406d229b3c) |
+| **Commit** | [`a0a88e3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a0a88e329de1ea5216736d1042b657adaa547e3e) |
 | **Commit date** | 2026-05-03 |
-| **Commit title** | nir: use nir_build_frag_coord everywhere |
+| **Commit title** | dri: try to enable GL_ARB_compatiblity when supported GL core version is 3.1 |
 | **Build date** | 20260503 |
-| **Release** | [v26.2.0-20260503](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260503) |
+| **Release** | [v26.2.0-20260503-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260503-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260503-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260503-r2) | 2026-05-03 | [`a0a88e3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a0a88e329de1ea5216736d1042b657adaa547e3e) | dri: try to enable GL_ARB_compatiblity when supported GL core version is 3.1 | Vulkan 1.4.348 |
 | [v26.2.0-20260503](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260503) | 2026-05-03 | [`f583f6e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f583f6e717a3e5fb3948ff73bd1f1a406d229b3c) | nir: use nir_build_frag_coord everywhere | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
