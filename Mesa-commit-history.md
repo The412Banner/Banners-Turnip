@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260503](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260503) | 2026-05-03 | [`f583f6e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f583f6e717a3e5fb3948ff73bd1f1a406d229b3c) | nir: use nir_build_frag_coord everywhere | Vulkan 1.4.348 |
 | [v26.2.0-20260502-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260502-r2) | 2026-05-02 | [`9cb688a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cb688af88a72aef8b40937899736561da44427c) | lavapipe: treat NULL pColorAttachmentLocations as no handles | Vulkan 1.4.348 |
 | [v26.2.0-20260502](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260502) | 2026-05-02 | [`be75ece`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/be75ece0952322444483e372b73c380cf7caff45) | kk: Workaround for GPU capture under Rosetta 2. | Vulkan 1.4.348 |
 | [v26.2.0-20260501-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r8) | 2026-05-01 | [`95954b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95954b098190dc24f0c555db7dfbe0cb0f6feefb) | vk/cmd_queue: always ceil() param lens | Vulkan 1.4.348 |

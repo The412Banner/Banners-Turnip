@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`9cb688a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cb688af88a72aef8b40937899736561da44427c) |
-| **Commit date** | 2026-05-02 |
-| **Commit title** | lavapipe: treat NULL pColorAttachmentLocations as no handles |
-| **Build date** | 20260502 |
-| **Release** | [v26.2.0-20260502-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260502-r2) |
+| **Commit** | [`f583f6e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f583f6e717a3e5fb3948ff73bd1f1a406d229b3c) |
+| **Commit date** | 2026-05-03 |
+| **Commit title** | nir: use nir_build_frag_coord everywhere |
+| **Build date** | 20260503 |
+| **Release** | [v26.2.0-20260503](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260503) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,14 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.2.0-20260502-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260502-r2) | 2026-05-02 | [`9cb688a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cb688af88a72aef8b40937899736561da44427c) | lavapipe: treat NULL pColorAttachmentLocations as no handles | Vulkan 1.4.348 |
-| [v26.2.0-20260502](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260502) | 2026-05-02 | [`be75ece`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/be75ece0952322444483e372b73c380cf7caff45) | kk: Workaround for GPU capture under Rosetta 2. | Vulkan 1.4.348 |
-| [v26.2.0-20260501-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r8) | 2026-05-01 | [`95954b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95954b098190dc24f0c555db7dfbe0cb0f6feefb) | vk/cmd_queue: always ceil() param lens | Vulkan 1.4.348 |
-| [v26.2.0-20260501-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r7) | 2026-05-01 | [`216c5c6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/216c5c6dde9e2b239cfb550a2f860330bca12a21) | nvk: Re-enable zcull save/restore | Vulkan 1.4.348 |
-| [v26.2.0-20260501-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r6) | 2026-05-01 | [`ebe835e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ebe835e94cbf33495dd049d18ad4e6e80545fc53) | intel_hang_replay: Don't force scratch page on Xe KMD unless explicitly requested | Vulkan 1.4.348 |
-| [v26.2.0-20260501-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r5) | 2026-05-01 | [`80e6b46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/80e6b468f435aea09c085b14efff9e70c32ec4dd) | panfrost: add helper function for checking for active queries | Vulkan 1.4.348 |
-| [v26.2.0-20260501-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r4) | 2026-05-01 | [`012d72f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/012d72f2b0314e91e3b8637e3390337a58366c62) | nir/opt_algebraic: add some imul24_relaxed pattern | Vulkan 1.4.348 |
-| [v26.2.0-20260501-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260501-r3) | 2026-05-01 | [`fe067b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fe067b17d908d8f02e88ef3c4433ec5fbb66b2a9) | radv: split radv_compiler_info's family into debug::family and key::family | Vulkan 1.4.348 |
+| [v26.2.0-20260503](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260503) | 2026-05-03 | [`f583f6e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f583f6e717a3e5fb3948ff73bd1f1a406d229b3c) | nir: use nir_build_frag_coord everywhere | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
 ---
