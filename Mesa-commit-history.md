@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260504-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r5) | 2026-05-04 | [`352a8d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/352a8d6beb61767406026b2e2db6628210115e80) | pan/compiler: Clamp fp16 ldexp exponent range | Vulkan 1.4.348 |
 | [v26.2.0-20260504-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r4) | 2026-05-04 | [`0ff1650`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0ff16506628216e06d876aab5cc498f71067b2af) | ac/nir/lower_tex_coord: fix moving wqm coordinates | Vulkan 1.4.348 |
 | [v26.2.0-20260504-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r3) | 2026-05-04 | [`2c19234`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c1923458c356e536443645882c34bfe97afeb48) | r600: update memory barrier operations | Vulkan 1.4.348 |
 | [v26.2.0-20260504-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r2) | 2026-05-04 | [`f4812dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f4812dc11d48204091260914d481784eb55a75eb) | nir/opt_constant_folding: constant-fold op(bcsel(), #c) -> bcsel(.., #c1, #c2) | Vulkan 1.4.348 |
