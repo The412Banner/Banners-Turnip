@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`a2175b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a2175b7ec365e1c52756f91e45fef3c3bd9af549) |
+| **Commit** | [`af746cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af746cc2a6498fd7acbbe8fc3b632d6f58d7ac86) |
 | **Commit date** | 2026-05-04 |
-| **Commit title** | iris: Improve and standardize the behavior of madvice in i915 |
+| **Commit title** | radv/rt: Use 64-bit keys for gfx11- |
 | **Build date** | 20260504 |
-| **Release** | [v26.2.0-20260504-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r6) |
+| **Release** | [v26.2.0-20260504-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260504-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r7) | 2026-05-04 | [`af746cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af746cc2a6498fd7acbbe8fc3b632d6f58d7ac86) | radv/rt: Use 64-bit keys for gfx11- | Vulkan 1.4.350 |
 | [v26.2.0-20260504-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r6) | 2026-05-04 | [`a2175b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a2175b7ec365e1c52756f91e45fef3c3bd9af549) | iris: Improve and standardize the behavior of madvice in i915 | Vulkan 1.4.350 |
 | [v26.2.0-20260504-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r5) | 2026-05-04 | [`352a8d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/352a8d6beb61767406026b2e2db6628210115e80) | pan/compiler: Clamp fp16 ldexp exponent range | Vulkan 1.4.348 |
 | [v26.2.0-20260504-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r4) | 2026-05-04 | [`0ff1650`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0ff16506628216e06d876aab5cc498f71067b2af) | ac/nir/lower_tex_coord: fix moving wqm coordinates | Vulkan 1.4.348 |
