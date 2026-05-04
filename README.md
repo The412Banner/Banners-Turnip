@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.348 |
-| **Commit** | [`f4812dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f4812dc11d48204091260914d481784eb55a75eb) |
+| **Commit** | [`2c19234`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c1923458c356e536443645882c34bfe97afeb48) |
 | **Commit date** | 2026-05-04 |
-| **Commit title** | nir/opt_constant_folding: constant-fold op(bcsel(), #c) -> bcsel(.., #c1, #c2) |
+| **Commit title** | r600: update memory barrier operations |
 | **Build date** | 20260504 |
-| **Release** | [v26.2.0-20260504-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r2) |
+| **Release** | [v26.2.0-20260504-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260504-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r3) | 2026-05-04 | [`2c19234`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c1923458c356e536443645882c34bfe97afeb48) | r600: update memory barrier operations | Vulkan 1.4.348 |
 | [v26.2.0-20260504-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r2) | 2026-05-04 | [`f4812dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f4812dc11d48204091260914d481784eb55a75eb) | nir/opt_constant_folding: constant-fold op(bcsel(), #c) -> bcsel(.., #c1, #c2) | Vulkan 1.4.348 |
 | [v26.2.0-20260504](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504) | 2026-05-04 | [`917058a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/917058a4c5a68ddf3befb899c7daa03171cceddf) | radeonsi/tests: update expectations | Vulkan 1.4.348 |
 | [v26.2.0-20260503-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260503-r3) | 2026-05-03 | [`38e691f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/38e691fc0a693fe338c9de4ab13ab3f48bbcaf92) | nir/opt_varyings: do no_signed_zero linking even for non removable stores | Vulkan 1.4.348 |
