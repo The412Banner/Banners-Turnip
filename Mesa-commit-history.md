@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260504-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r2) | 2026-05-04 | [`f4812dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f4812dc11d48204091260914d481784eb55a75eb) | nir/opt_constant_folding: constant-fold op(bcsel(), #c) -> bcsel(.., #c1, #c2) | Vulkan 1.4.348 |
 | [v26.2.0-20260504](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504) | 2026-05-04 | [`917058a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/917058a4c5a68ddf3befb899c7daa03171cceddf) | radeonsi/tests: update expectations | Vulkan 1.4.348 |
 | [v26.2.0-20260503-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260503-r3) | 2026-05-03 | [`38e691f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/38e691fc0a693fe338c9de4ab13ab3f48bbcaf92) | nir/opt_varyings: do no_signed_zero linking even for non removable stores | Vulkan 1.4.348 |
 | [v26.2.0-20260503-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260503-r2) | 2026-05-03 | [`a0a88e3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a0a88e329de1ea5216736d1042b657adaa547e3e) | dri: try to enable GL_ARB_compatiblity when supported GL core version is 3.1 | Vulkan 1.4.348 |
