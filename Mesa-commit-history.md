@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260505-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r9) | 2026-05-05 | [`099933f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/099933f00415707e948cae858d5c0dfcbb336536) | llvmpipe: always set view_index for linear rasterizer | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r8) | 2026-05-05 | [`844087c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/844087c6e7841811119a85ddb26ee1c197f5c5f3) | anv: enable EXT_descriptor_heap | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r7) | 2026-05-05 | [`1499236`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14992361a4ef6355443b774e8dd2888e6c365af4) | zink: relax build-id length assertion for Mach-O | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r6) | 2026-05-05 | [`ec42f87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec42f873e9f6dfc52bb5ea33c80c91780b236ce6) | tu: Fix tu_bo_make_zombie without queues | Vulkan 1.4.350 |
