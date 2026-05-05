@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260505-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r7) | 2026-05-05 | [`1499236`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14992361a4ef6355443b774e8dd2888e6c365af4) | zink: relax build-id length assertion for Mach-O | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r6) | 2026-05-05 | [`ec42f87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec42f873e9f6dfc52bb5ea33c80c91780b236ce6) | tu: Fix tu_bo_make_zombie without queues | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r5) | 2026-05-05 | [`27c870a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27c870a28359644363547cdc0b18e36fc230e4ba) | st/mesa: fix implicit conversion warning in st_atom_framebuffer | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r4) | 2026-05-05 | [`49c6589`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/49c658972f7614e9660fb86fe4303798b129f5b9) | ir3: mark __alias_n as UNUSED in foreach_src_in_alias_group_n | Vulkan 1.4.350 |
