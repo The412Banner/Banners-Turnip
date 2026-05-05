@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`099933f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/099933f00415707e948cae858d5c0dfcbb336536) |
+| **Commit** | [`e60e5fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e60e5fe5efb08cf9eb78b747a0143d148d175e41) |
 | **Commit date** | 2026-05-05 |
-| **Commit title** | llvmpipe: always set view_index for linear rasterizer |
+| **Commit title** | ir3/cf: fix rewriting uses with different dst types |
 | **Build date** | 20260505 |
-| **Release** | [v26.2.0-20260505-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r9) |
+| **Release** | [v26.2.0-20260505-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r10) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260505-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r10) | 2026-05-05 | [`e60e5fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e60e5fe5efb08cf9eb78b747a0143d148d175e41) | ir3/cf: fix rewriting uses with different dst types | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r9) | 2026-05-05 | [`099933f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/099933f00415707e948cae858d5c0dfcbb336536) | llvmpipe: always set view_index for linear rasterizer | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r8) | 2026-05-05 | [`844087c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/844087c6e7841811119a85ddb26ee1c197f5c5f3) | anv: enable EXT_descriptor_heap | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r7) | 2026-05-05 | [`1499236`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14992361a4ef6355443b774e8dd2888e6c365af4) | zink: relax build-id length assertion for Mach-O | Vulkan 1.4.350 |
@@ -95,7 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260505-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r2) | 2026-05-05 | [`a9b28b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a9b28b9838745814a2eead1e34c60b536c2cf099) | pan/nir: Lower texel buffers in nir_lower_tex() | Vulkan 1.4.350 |
 | [v26.2.0-20260505](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505) | 2026-05-05 | [`1883f30`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1883f3094fdf4bb4498fb0e778f96577b86342ea) | ci: uprev virglrenderer | Vulkan 1.4.350 |
 | [v26.2.0-20260504-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r7) | 2026-05-04 | [`af746cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af746cc2a6498fd7acbbe8fc3b632d6f58d7ac86) | radv/rt: Use 64-bit keys for gfx11- | Vulkan 1.4.350 |
-| [v26.2.0-20260504-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r6) | 2026-05-04 | [`a2175b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a2175b7ec365e1c52756f91e45fef3c3bd9af549) | iris: Improve and standardize the behavior of madvice in i915 | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
