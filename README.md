@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`a9b28b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a9b28b9838745814a2eead1e34c60b536c2cf099) |
+| **Commit** | [`87be392`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/87be392251ce04a7755dc05d2d186c2cbffc295f) |
 | **Commit date** | 2026-05-05 |
-| **Commit title** | pan/nir: Lower texel buffers in nir_lower_tex() |
+| **Commit title** | radv: fix determining needed dynamic states when rasterization is disabled |
 | **Build date** | 20260505 |
-| **Release** | [v26.2.0-20260505-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r2) |
+| **Release** | [v26.2.0-20260505-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260505-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r3) | 2026-05-05 | [`87be392`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/87be392251ce04a7755dc05d2d186c2cbffc295f) | radv: fix determining needed dynamic states when rasterization is disabled | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r2) | 2026-05-05 | [`a9b28b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a9b28b9838745814a2eead1e34c60b536c2cf099) | pan/nir: Lower texel buffers in nir_lower_tex() | Vulkan 1.4.350 |
 | [v26.2.0-20260505](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505) | 2026-05-05 | [`1883f30`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1883f3094fdf4bb4498fb0e778f96577b86342ea) | ci: uprev virglrenderer | Vulkan 1.4.350 |
 | [v26.2.0-20260504-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r7) | 2026-05-04 | [`af746cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af746cc2a6498fd7acbbe8fc3b632d6f58d7ac86) | radv/rt: Use 64-bit keys for gfx11- | Vulkan 1.4.350 |
