@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`87be392`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/87be392251ce04a7755dc05d2d186c2cbffc295f) |
+| **Commit** | [`49c6589`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/49c658972f7614e9660fb86fe4303798b129f5b9) |
 | **Commit date** | 2026-05-05 |
-| **Commit title** | radv: fix determining needed dynamic states when rasterization is disabled |
+| **Commit title** | ir3: mark __alias_n as UNUSED in foreach_src_in_alias_group_n |
 | **Build date** | 20260505 |
-| **Release** | [v26.2.0-20260505-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r3) |
+| **Release** | [v26.2.0-20260505-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260505-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r4) | 2026-05-05 | [`49c6589`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/49c658972f7614e9660fb86fe4303798b129f5b9) | ir3: mark __alias_n as UNUSED in foreach_src_in_alias_group_n | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r3) | 2026-05-05 | [`87be392`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/87be392251ce04a7755dc05d2d186c2cbffc295f) | radv: fix determining needed dynamic states when rasterization is disabled | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r2) | 2026-05-05 | [`a9b28b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a9b28b9838745814a2eead1e34c60b536c2cf099) | pan/nir: Lower texel buffers in nir_lower_tex() | Vulkan 1.4.350 |
 | [v26.2.0-20260505](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505) | 2026-05-05 | [`1883f30`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1883f3094fdf4bb4498fb0e778f96577b86342ea) | ci: uprev virglrenderer | Vulkan 1.4.350 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260504-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r4) | 2026-05-04 | [`0ff1650`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0ff16506628216e06d876aab5cc498f71067b2af) | ac/nir/lower_tex_coord: fix moving wqm coordinates | Vulkan 1.4.348 |
 | [v26.2.0-20260504-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r3) | 2026-05-04 | [`2c19234`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c1923458c356e536443645882c34bfe97afeb48) | r600: update memory barrier operations | Vulkan 1.4.348 |
 | [v26.2.0-20260504-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r2) | 2026-05-04 | [`f4812dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f4812dc11d48204091260914d481784eb55a75eb) | nir/opt_constant_folding: constant-fold op(bcsel(), #c) -> bcsel(.., #c1, #c2) | Vulkan 1.4.348 |
-| [v26.2.0-20260504](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504) | 2026-05-04 | [`917058a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/917058a4c5a68ddf3befb899c7daa03171cceddf) | radeonsi/tests: update expectations | Vulkan 1.4.348 |
 <!-- RECENT_BUILDS_END -->
 
 ---
