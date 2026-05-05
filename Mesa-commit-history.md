@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260505-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r2) | 2026-05-05 | [`a9b28b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a9b28b9838745814a2eead1e34c60b536c2cf099) | pan/nir: Lower texel buffers in nir_lower_tex() | Vulkan 1.4.350 |
 | [v26.2.0-20260505](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505) | 2026-05-05 | [`1883f30`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1883f3094fdf4bb4498fb0e778f96577b86342ea) | ci: uprev virglrenderer | Vulkan 1.4.350 |
 | [v26.2.0-20260504-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r7) | 2026-05-04 | [`af746cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af746cc2a6498fd7acbbe8fc3b632d6f58d7ac86) | radv/rt: Use 64-bit keys for gfx11- | Vulkan 1.4.350 |
 | [v26.2.0-20260504-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260504-r6) | 2026-05-04 | [`a2175b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a2175b7ec365e1c52756f91e45fef3c3bd9af549) | iris: Improve and standardize the behavior of madvice in i915 | Vulkan 1.4.350 |
