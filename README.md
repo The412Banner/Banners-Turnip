@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`653ef90`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/653ef9040385d5050f7368446271cd90a77cbe96) |
-| **Commit date** | 2026-05-05 |
-| **Commit title** | subprojects: update to rustix 1.1.4 + downstream patches |
-| **Build date** | 20260505 |
-| **Release** | [v26.2.0-20260505-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r11) |
+| **Commit** | [`4c46cd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c46cd8e9dea94a4b6d94fefa0d0f58730c1b16f) |
+| **Commit date** | 2026-05-06 |
+| **Commit title** | vulkan/screenshot-layer: initialize info to NULL |
+| **Build date** | 20260506 |
+| **Release** | [v26.2.0-20260506](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260506](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506) | 2026-05-06 | [`4c46cd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c46cd8e9dea94a4b6d94fefa0d0f58730c1b16f) | vulkan/screenshot-layer: initialize info to NULL | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r11) | 2026-05-05 | [`653ef90`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/653ef9040385d5050f7368446271cd90a77cbe96) | subprojects: update to rustix 1.1.4 + downstream patches | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r10) | 2026-05-05 | [`e60e5fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e60e5fe5efb08cf9eb78b747a0143d148d175e41) | ir3/cf: fix rewriting uses with different dst types | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r9) | 2026-05-05 | [`099933f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/099933f00415707e948cae858d5c0dfcbb336536) | llvmpipe: always set view_index for linear rasterizer | Vulkan 1.4.350 |

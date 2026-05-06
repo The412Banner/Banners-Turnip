@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260506](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506) | 2026-05-06 | [`4c46cd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c46cd8e9dea94a4b6d94fefa0d0f58730c1b16f) | vulkan/screenshot-layer: initialize info to NULL | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r11) | 2026-05-05 | [`653ef90`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/653ef9040385d5050f7368446271cd90a77cbe96) | subprojects: update to rustix 1.1.4 + downstream patches | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r10) | 2026-05-05 | [`e60e5fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e60e5fe5efb08cf9eb78b747a0143d148d175e41) | ir3/cf: fix rewriting uses with different dst types | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r9) | 2026-05-05 | [`099933f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/099933f00415707e948cae858d5c0dfcbb336536) | llvmpipe: always set view_index for linear rasterizer | Vulkan 1.4.350 |
