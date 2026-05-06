@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260506-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r10) | 2026-05-06 | [`718a5d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/718a5d48b8b1f0d4ba7be842602a7b724787bc42) | anv: add an option to disable push constant space reallocation | Vulkan 1.4.350 |
 | [v26.2.0-20260506-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r9) | 2026-05-06 | [`0f75fa5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0f75fa5bfd29770128a412f1fcf5c4121f95e1bb) | nir/tests: add partial unroll OOB tests | Vulkan 1.4.350 |
 | [v26.2.0-20260506-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r8) | 2026-05-06 | [`d15e1fd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d15e1fd10888abd76f8ebda139387ddde218a59b) | android_stub: sync Android 16 headers | Vulkan 1.4.350 |
 | [v26.2.0-20260506-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r7) | 2026-05-06 | [`e334894`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e33489420c63048c90e98c5ffbef12ab81f0aa5f) | ci: uprev vkd3d | Vulkan 1.4.350 |
