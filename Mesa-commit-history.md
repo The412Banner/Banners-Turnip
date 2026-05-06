@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260506-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r3) | 2026-05-06 | [`c50210b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c50210ba7c081bd6aabf74bd62ab7c0d13741fbf) | broadcom/qpu: add V3D 7.1 disasm tests | Vulkan 1.4.350 |
 | [v26.2.0-20260506-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r2) | 2026-05-06 | [`5674327`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5674327297af8d00d44871aff1a36abfc4465dcd) | screenshot-layer: Wait on the fence before fallible operations. | Vulkan 1.4.350 |
 | [v26.2.0-20260506](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506) | 2026-05-06 | [`4c46cd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c46cd8e9dea94a4b6d94fefa0d0f58730c1b16f) | vulkan/screenshot-layer: initialize info to NULL | Vulkan 1.4.350 |
 | [v26.2.0-20260505-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260505-r11) | 2026-05-05 | [`653ef90`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/653ef9040385d5050f7368446271cd90a77cbe96) | subprojects: update to rustix 1.1.4 + downstream patches | Vulkan 1.4.350 |
