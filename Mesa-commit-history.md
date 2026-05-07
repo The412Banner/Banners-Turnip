@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260507-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r4) | 2026-05-07 | [`4dbdd4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4dbdd4c0ee1c6737fe7d7b5758e3b369755b3ea2) | panvk: Advertise VK_EXT_extended_dynamic_state3 | Vulkan 1.4.350 |
 | [v26.2.0-20260507-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r3) | 2026-05-07 | [`3afc792`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3afc792dc8969abb21dfd3395a19a4478ffca39e) | pvr: setup viewindex if the shader wants it even when multiview disabled | Vulkan 1.4.350 |
 | [v26.2.0-20260507-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r2) | 2026-05-07 | [`e5e3755`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5e375593ba92f7a97dc2540a972c1d3eed2cac8) | radv/tests: add tests for global pipeline keys compatibility | Vulkan 1.4.350 |
 | [v26.2.0-20260507](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507) | 2026-05-07 | [`593e3b3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/593e3b3916da68e510e96678c678085db9846b07) | panvk: Let the compiler handle texture queries on v9+ | Vulkan 1.4.350 |
