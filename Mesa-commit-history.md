@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260507-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r6) | 2026-05-07 | [`ce4e54f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce4e54f7a0e5ee1af535451a5b79371818f350b2) | spirv2dxil: Replace UAV_FENCE_THREAD_GROUP usage with UAV_FENCE_GLOBAL. | Vulkan 1.4.350 |
 | [v26.2.0-20260507-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r5) | 2026-05-07 | [`109af1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/109af1b077a7ff52b22830848ea7d88fedd28d75) | pan/kmod: Fix uninitialized timestamp info | Vulkan 1.4.350 |
 | [v26.2.0-20260507-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r4) | 2026-05-07 | [`4dbdd4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4dbdd4c0ee1c6737fe7d7b5758e3b369755b3ea2) | panvk: Advertise VK_EXT_extended_dynamic_state3 | Vulkan 1.4.350 |
 | [v26.2.0-20260507-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r3) | 2026-05-07 | [`3afc792`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3afc792dc8969abb21dfd3395a19a4478ffca39e) | pvr: setup viewindex if the shader wants it even when multiview disabled | Vulkan 1.4.350 |
