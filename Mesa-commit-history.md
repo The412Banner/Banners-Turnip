@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260507-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r2) | 2026-05-07 | [`e5e3755`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5e375593ba92f7a97dc2540a972c1d3eed2cac8) | radv/tests: add tests for global pipeline keys compatibility | Vulkan 1.4.350 |
 | [v26.2.0-20260507](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507) | 2026-05-07 | [`593e3b3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/593e3b3916da68e510e96678c678085db9846b07) | panvk: Let the compiler handle texture queries on v9+ | Vulkan 1.4.350 |
 | [v26.2.0-20260506-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r11) | 2026-05-06 | [`2e9e8e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2e9e8e9a3667c0669bce34df2f9e29e313caf0ac) | lavapipe: fix setting colormasks when attachments get remapped | Vulkan 1.4.350 |
 | [v26.2.0-20260506-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r10) | 2026-05-06 | [`718a5d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/718a5d48b8b1f0d4ba7be842602a7b724787bc42) | anv: add an option to disable push constant space reallocation | Vulkan 1.4.350 |
