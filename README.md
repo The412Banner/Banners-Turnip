@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`e5e3755`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5e375593ba92f7a97dc2540a972c1d3eed2cac8) |
+| **Commit** | [`3afc792`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3afc792dc8969abb21dfd3395a19a4478ffca39e) |
 | **Commit date** | 2026-05-07 |
-| **Commit title** | radv/tests: add tests for global pipeline keys compatibility |
+| **Commit title** | pvr: setup viewindex if the shader wants it even when multiview disabled |
 | **Build date** | 20260507 |
-| **Release** | [v26.2.0-20260507-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r2) |
+| **Release** | [v26.2.0-20260507-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260507-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r3) | 2026-05-07 | [`3afc792`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3afc792dc8969abb21dfd3395a19a4478ffca39e) | pvr: setup viewindex if the shader wants it even when multiview disabled | Vulkan 1.4.350 |
 | [v26.2.0-20260507-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r2) | 2026-05-07 | [`e5e3755`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5e375593ba92f7a97dc2540a972c1d3eed2cac8) | radv/tests: add tests for global pipeline keys compatibility | Vulkan 1.4.350 |
 | [v26.2.0-20260507](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507) | 2026-05-07 | [`593e3b3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/593e3b3916da68e510e96678c678085db9846b07) | panvk: Let the compiler handle texture queries on v9+ | Vulkan 1.4.350 |
 | [v26.2.0-20260506-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r11) | 2026-05-06 | [`2e9e8e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2e9e8e9a3667c0669bce34df2f9e29e313caf0ac) | lavapipe: fix setting colormasks when attachments get remapped | Vulkan 1.4.350 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260506-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r7) | 2026-05-06 | [`e334894`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e33489420c63048c90e98c5ffbef12ab81f0aa5f) | ci: uprev vkd3d | Vulkan 1.4.350 |
 | [v26.2.0-20260506-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r6) | 2026-05-06 | [`2b9e491`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b9e491b6789f60a7993cc9b74fe5ac7fa60c9c5) | ddebug: Fix use of alloca() without #include c99_alloca.h | Vulkan 1.4.350 |
 | [v26.2.0-20260506-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r5) | 2026-05-06 | [`0d39d4e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d39d4e99ebb72a7f769deaf7da8a83ecaa99b9f) | anv: expose VK_KHR_maintenance11 | Vulkan 1.4.350 |
-| [v26.2.0-20260506-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260506-r4) | 2026-05-06 | [`567a65b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/567a65bbbf61fce2f8d3dd419bb018cbbceeaa08) | etnaviv: Use shader R/B swap for LINEAR_PE shared resources | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
