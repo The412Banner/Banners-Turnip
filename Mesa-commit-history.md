@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260508-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r5) | 2026-05-08 | [`1038877`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/103887766cb288a7ec097af8c9f774ef6b0e1591) | turnip: Add an override to uncached memory type | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r4) | 2026-05-08 | [`5f48aba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5f48aba9fa9b70712ede49568be0bd8281629af4) | tu: Fix double free of timestamp_copy_data->trace | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r3) | 2026-05-08 | [`e714e2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e714e2f88d5a38a3db266581422f36020ca7d91f) | panfrost: enable ARB_texture_query_lod on v9+ | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r2) | 2026-05-08 | [`2282220`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2282220fec7818fc3b3cf68f1a38511021600091) | radeonsi: gate format and rotate/flip support by VPE version | Vulkan 1.4.350 |
