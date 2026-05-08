@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`e714e2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e714e2f88d5a38a3db266581422f36020ca7d91f) |
+| **Commit** | [`5f48aba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5f48aba9fa9b70712ede49568be0bd8281629af4) |
 | **Commit date** | 2026-05-08 |
-| **Commit title** | panfrost: enable ARB_texture_query_lod on v9+ |
+| **Commit title** | tu: Fix double free of timestamp_copy_data->trace |
 | **Build date** | 20260508 |
-| **Release** | [v26.2.0-20260508-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r3) |
+| **Release** | [v26.2.0-20260508-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260508-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r4) | 2026-05-08 | [`5f48aba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5f48aba9fa9b70712ede49568be0bd8281629af4) | tu: Fix double free of timestamp_copy_data->trace | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r3) | 2026-05-08 | [`e714e2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e714e2f88d5a38a3db266581422f36020ca7d91f) | panfrost: enable ARB_texture_query_lod on v9+ | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r2) | 2026-05-08 | [`2282220`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2282220fec7818fc3b3cf68f1a38511021600091) | radeonsi: gate format and rotate/flip support by VPE version | Vulkan 1.4.350 |
 | [v26.2.0-20260508](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508) | 2026-05-08 | [`ccdcbde`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ccdcbde6dd7ae610f955dfb59ae19dc7997f0b15) | nak,compiler: Move FromVariants to common code | Vulkan 1.4.350 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260507-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r6) | 2026-05-07 | [`ce4e54f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce4e54f7a0e5ee1af535451a5b79371818f350b2) | spirv2dxil: Replace UAV_FENCE_THREAD_GROUP usage with UAV_FENCE_GLOBAL. | Vulkan 1.4.350 |
 | [v26.2.0-20260507-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r5) | 2026-05-07 | [`109af1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/109af1b077a7ff52b22830848ea7d88fedd28d75) | pan/kmod: Fix uninitialized timestamp info | Vulkan 1.4.350 |
 | [v26.2.0-20260507-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r4) | 2026-05-07 | [`4dbdd4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4dbdd4c0ee1c6737fe7d7b5758e3b369755b3ea2) | panvk: Advertise VK_EXT_extended_dynamic_state3 | Vulkan 1.4.350 |
-| [v26.2.0-20260507-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r3) | 2026-05-07 | [`3afc792`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3afc792dc8969abb21dfd3395a19a4478ffca39e) | pvr: setup viewindex if the shader wants it even when multiview disabled | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
