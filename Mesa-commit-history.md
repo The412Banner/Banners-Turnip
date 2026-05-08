@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260508-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r3) | 2026-05-08 | [`e714e2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e714e2f88d5a38a3db266581422f36020ca7d91f) | panfrost: enable ARB_texture_query_lod on v9+ | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r2) | 2026-05-08 | [`2282220`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2282220fec7818fc3b3cf68f1a38511021600091) | radeonsi: gate format and rotate/flip support by VPE version | Vulkan 1.4.350 |
 | [v26.2.0-20260508](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508) | 2026-05-08 | [`ccdcbde`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ccdcbde6dd7ae610f955dfb59ae19dc7997f0b15) | nak,compiler: Move FromVariants to common code | Vulkan 1.4.350 |
 | [v26.2.0-20260507-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r9) | 2026-05-07 | [`c6ddfe1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c6ddfe1a3ba666d0a64e3774ad2574441eee60ee) | amd: add a tool that prints tiling layouts for all shim devices | Vulkan 1.4.350 |
