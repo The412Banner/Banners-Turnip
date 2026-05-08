@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`41a3213`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41a3213dca16536688382ea723a44866076d107c) |
+| **Commit** | [`24aa771`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/24aa7715cb8852f4278f3168de9df37dbfcd2910) |
 | **Commit date** | 2026-05-08 |
-| **Commit title** | zink: remove remaining maint5 checks |
+| **Commit title** | intel/ds: Label selected draw events with vertex count |
 | **Build date** | 20260508 |
-| **Release** | [v26.2.0-20260508-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r7) |
+| **Release** | [v26.2.0-20260508-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,6 +85,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260508-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r8) | 2026-05-08 | [`24aa771`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/24aa7715cb8852f4278f3168de9df37dbfcd2910) | intel/ds: Label selected draw events with vertex count | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r7) | 2026-05-08 | [`41a3213`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41a3213dca16536688382ea723a44866076d107c) | zink: remove remaining maint5 checks | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r6) | 2026-05-08 | [`3eb5067`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3eb50679bb53df39ffa26474babf8feedcb13897) | rusticl: enable freedreno by default | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r5) | 2026-05-08 | [`1038877`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/103887766cb288a7ec097af8c9f774ef6b0e1591) | turnip: Add an override to uncached memory type | Vulkan 1.4.350 |
@@ -93,7 +94,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260508-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r2) | 2026-05-08 | [`2282220`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2282220fec7818fc3b3cf68f1a38511021600091) | radeonsi: gate format and rotate/flip support by VPE version | Vulkan 1.4.350 |
 | [v26.2.0-20260508](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508) | 2026-05-08 | [`ccdcbde`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ccdcbde6dd7ae610f955dfb59ae19dc7997f0b15) | nak,compiler: Move FromVariants to common code | Vulkan 1.4.350 |
 | [v26.2.0-20260507-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r9) | 2026-05-07 | [`c6ddfe1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c6ddfe1a3ba666d0a64e3774ad2574441eee60ee) | amd: add a tool that prints tiling layouts for all shim devices | Vulkan 1.4.350 |
-| [v26.2.0-20260507-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260507-r8) | 2026-05-07 | [`45706d3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/45706d39eae4d01cdc37494a5fd896f95569ff18) | ci: stop skipping HIC tests on lavapipe | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---

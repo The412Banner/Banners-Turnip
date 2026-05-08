@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260508-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r8) | 2026-05-08 | [`24aa771`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/24aa7715cb8852f4278f3168de9df37dbfcd2910) | intel/ds: Label selected draw events with vertex count | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r7) | 2026-05-08 | [`41a3213`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41a3213dca16536688382ea723a44866076d107c) | zink: remove remaining maint5 checks | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r6) | 2026-05-08 | [`3eb5067`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3eb50679bb53df39ffa26474babf8feedcb13897) | rusticl: enable freedreno by default | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r5) | 2026-05-08 | [`1038877`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/103887766cb288a7ec097af8c9f774ef6b0e1591) | turnip: Add an override to uncached memory type | Vulkan 1.4.350 |
