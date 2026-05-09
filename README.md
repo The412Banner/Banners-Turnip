@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`3e1f06b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e1f06b0794bd831cbcd5f5ddfe58801c5dbeb19) |
+| **Commit** | [`1538621`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1538621f4650c11108bd1eae52b7612df139068a) |
 | **Commit date** | 2026-05-09 |
-| **Commit title** | tu: Don't leak pre_chain.rp_trace, and correct u_trace_move |
+| **Commit title** | tu: Disable storage image support for depth/stencil. |
 | **Build date** | 20260509 |
-| **Release** | [v26.2.0-20260509](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509) |
+| **Release** | [v26.2.0-20260509-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,12 +85,9 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260509-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509-r2) | 2026-05-09 | [`1538621`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1538621f4650c11108bd1eae52b7612df139068a) | tu: Disable storage image support for depth/stencil. | Vulkan 1.4.350 |
 | [v26.2.0-20260509](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509) | 2026-05-09 | [`3e1f06b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e1f06b0794bd831cbcd5f5ddfe58801c5dbeb19) | tu: Don't leak pre_chain.rp_trace, and correct u_trace_move | Vulkan 1.4.350 |
 | [v26.2.0-20260508-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r8) | 2026-05-08 | [`24aa771`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/24aa7715cb8852f4278f3168de9df37dbfcd2910) | intel/ds: Label selected draw events with vertex count | Vulkan 1.4.350 |
-| [v26.2.0-20260508-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r7) | 2026-05-08 | [`41a3213`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41a3213dca16536688382ea723a44866076d107c) | zink: remove remaining maint5 checks | Vulkan 1.4.350 |
-| [v26.2.0-20260508-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r6) | 2026-05-08 | [`3eb5067`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3eb50679bb53df39ffa26474babf8feedcb13897) | rusticl: enable freedreno by default | Vulkan 1.4.350 |
-| [v26.2.0-20260508-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r5) | 2026-05-08 | [`1038877`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/103887766cb288a7ec097af8c9f774ef6b0e1591) | turnip: Add an override to uncached memory type | Vulkan 1.4.350 |
-| [v26.2.0-20260508-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r4) | 2026-05-08 | [`5f48aba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5f48aba9fa9b70712ede49568be0bd8281629af4) | tu: Fix double free of timestamp_copy_data->trace | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
