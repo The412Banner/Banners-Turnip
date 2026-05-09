@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`1538621`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1538621f4650c11108bd1eae52b7612df139068a) |
+| **Commit** | [`b1c3e36`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1c3e36fe322a7330d60d4f70c37b64aff33d723) |
 | **Commit date** | 2026-05-09 |
-| **Commit title** | tu: Disable storage image support for depth/stencil. |
+| **Commit title** | intel/dev: Expose list of known platform names |
 | **Build date** | 20260509 |
-| **Release** | [v26.2.0-20260509-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509-r2) |
+| **Release** | [v26.2.0-20260509-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,9 +85,9 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260509-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509-r3) | 2026-05-09 | [`b1c3e36`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1c3e36fe322a7330d60d4f70c37b64aff33d723) | intel/dev: Expose list of known platform names | Vulkan 1.4.350 |
 | [v26.2.0-20260509-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509-r2) | 2026-05-09 | [`1538621`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1538621f4650c11108bd1eae52b7612df139068a) | tu: Disable storage image support for depth/stencil. | Vulkan 1.4.350 |
 | [v26.2.0-20260509](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509) | 2026-05-09 | [`3e1f06b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e1f06b0794bd831cbcd5f5ddfe58801c5dbeb19) | tu: Don't leak pre_chain.rp_trace, and correct u_trace_move | Vulkan 1.4.350 |
-| [v26.2.0-20260508-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260508-r8) | 2026-05-08 | [`24aa771`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/24aa7715cb8852f4278f3168de9df37dbfcd2910) | intel/ds: Label selected draw events with vertex count | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
