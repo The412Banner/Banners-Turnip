@@ -71,11 +71,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`d8e5061`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8e50619ab3eadd041f30893f73e4d771f905f30) |
-| **Commit date** | 2026-05-10 |
-| **Commit title** | ci: lima farm maintenance |
-| **Build date** | 20260510 |
-| **Release** | [v26.2.0-20260510-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260510-r2) |
+| **Commit** | [`7d3b62e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7d3b62e13dbdea0509095108d466075cfeebba43) |
+| **Commit date** | 2026-05-11 |
+| **Commit title** | anv: only load fp64 software shader when needed |
+| **Build date** | 20260511 |
+| **Release** | [v26.2.0-20260511](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -85,10 +85,8 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260511](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511) | 2026-05-11 | [`7d3b62e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7d3b62e13dbdea0509095108d466075cfeebba43) | anv: only load fp64 software shader when needed | Vulkan 1.4.350 |
 | [v26.2.0-20260510-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260510-r2) | 2026-05-10 | [`d8e5061`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8e50619ab3eadd041f30893f73e4d771f905f30) | ci: lima farm maintenance | Vulkan 1.4.350 |
-| [v26.2.0-20260510](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260510) | 2026-05-10 | [`46cd7b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/46cd7b6e28e457447f2179f8dbf5fcfd73363874) | brw: Move brw_prog_data_init to a different file | Vulkan 1.4.350 |
-| [v26.2.0-20260509-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509-r3) | 2026-05-09 | [`b1c3e36`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1c3e36fe322a7330d60d4f70c37b64aff33d723) | intel/dev: Expose list of known platform names | Vulkan 1.4.350 |
-| [v26.2.0-20260509-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260509-r2) | 2026-05-09 | [`1538621`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1538621f4650c11108bd1eae52b7612df139068a) | tu: Disable storage image support for depth/stencil. | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
