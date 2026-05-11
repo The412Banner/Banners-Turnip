@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260511-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r2) | 2026-05-11 | [`e95626b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e95626b62a703c4a33e9da7b8fa0adcb31cc84b9) | radeonsi: don't init screen state functions twice | Vulkan 1.4.350 |
 | [v26.2.0-20260511](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511) | 2026-05-11 | [`7d3b62e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7d3b62e13dbdea0509095108d466075cfeebba43) | anv: only load fp64 software shader when needed | Vulkan 1.4.350 |
 | [v26.2.0-20260510-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260510-r2) | 2026-05-10 | [`d8e5061`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8e50619ab3eadd041f30893f73e4d771f905f30) | ci: lima farm maintenance | Vulkan 1.4.350 |
 | [v26.2.0-20260510](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260510) | 2026-05-10 | [`46cd7b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/46cd7b6e28e457447f2179f8dbf5fcfd73363874) | brw: Move brw_prog_data_init to a different file | Vulkan 1.4.350 |
