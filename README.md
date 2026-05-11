@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`d08d345`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d08d345686caf776ea03a09c0ad3bc2926112420) |
+| **Commit** | [`907cc49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/907cc49c3201170de01167a728bac0366066a6f2) |
 | **Commit date** | 2026-05-11 |
-| **Commit title** | brw: Remove references to SIMD4x2 |
+| **Commit title** | brw: Calcuate divergence before brw_from_nir |
 | **Build date** | 20260511 |
-| **Release** | [v26.2.0-20260511-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r5) |
+| **Release** | [v26.2.0-20260511-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260511-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r6) | 2026-05-11 | [`907cc49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/907cc49c3201170de01167a728bac0366066a6f2) | brw: Calcuate divergence before brw_from_nir | Vulkan 1.4.350 |
 | [v26.2.0-20260511-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r5) | 2026-05-11 | [`d08d345`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d08d345686caf776ea03a09c0ad3bc2926112420) | brw: Remove references to SIMD4x2 | Vulkan 1.4.350 |
 | [v26.2.0-20260511-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r4) | 2026-05-11 | [`d8e1409`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8e1409948af46cde76de50347b6d560cd434a89) | ir3: don't cache driver param instructions | Vulkan 1.4.350 |
 | [v26.2.0-20260511-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r3) | 2026-05-11 | [`8f86880`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8f86880450f5eea6309741395cd72a33e7e6693c) | Uprev VVL to 4acd00c7a0665c9b1d01604e5fe1454837f87134 | Vulkan 1.4.350 |
