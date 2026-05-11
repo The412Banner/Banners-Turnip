@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`8f86880`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8f86880450f5eea6309741395cd72a33e7e6693c) |
+| **Commit** | [`d8e1409`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8e1409948af46cde76de50347b6d560cd434a89) |
 | **Commit date** | 2026-05-11 |
-| **Commit title** | Uprev VVL to 4acd00c7a0665c9b1d01604e5fe1454837f87134 |
+| **Commit title** | ir3: don't cache driver param instructions |
 | **Build date** | 20260511 |
-| **Release** | [v26.2.0-20260511-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r3) |
+| **Release** | [v26.2.0-20260511-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,10 +87,10 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260511-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r4) | 2026-05-11 | [`d8e1409`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8e1409948af46cde76de50347b6d560cd434a89) | ir3: don't cache driver param instructions | Vulkan 1.4.350 |
 | [v26.2.0-20260511-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r3) | 2026-05-11 | [`8f86880`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8f86880450f5eea6309741395cd72a33e7e6693c) | Uprev VVL to 4acd00c7a0665c9b1d01604e5fe1454837f87134 | Vulkan 1.4.350 |
 | [v26.2.0-20260511-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r2) | 2026-05-11 | [`e95626b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e95626b62a703c4a33e9da7b8fa0adcb31cc84b9) | radeonsi: don't init screen state functions twice | Vulkan 1.4.350 |
 | [v26.2.0-20260511](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511) | 2026-05-11 | [`7d3b62e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7d3b62e13dbdea0509095108d466075cfeebba43) | anv: only load fp64 software shader when needed | Vulkan 1.4.350 |
-| [v26.2.0-20260510-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260510-r2) | 2026-05-10 | [`d8e5061`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8e50619ab3eadd041f30893f73e4d771f905f30) | ci: lima farm maintenance | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
