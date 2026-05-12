@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260512-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r4) | 2026-05-12 | [`6e5bfc6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6e5bfc678d9c37fbccbc056a859adb22ea6b1fd9) | nvk: Store available and timestamps packed together | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r3) | 2026-05-12 | [`bc84149`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bc841498f85fe40b10498072de38e40e9a96dda6) | meson: update libdrm wrap | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r2) | 2026-05-12 | [`7cbdb8e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7cbdb8e667b5d099479b12e460ab97a11a69e39b) | wsi/common: Report correct time domain in VkPresentTimingInfo. | Vulkan 1.4.350 |
 | [v26.2.0-20260512](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512) | 2026-05-12 | [`975ae01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/975ae012087a74491c75972583ab6d3197566b80) | spirv: preserve the explicit stride for untyped pointers with matrices | Vulkan 1.4.350 |
