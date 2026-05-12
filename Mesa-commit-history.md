@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260512-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r5) | 2026-05-12 | [`6b32238`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b3223895f9ac7fd0a6f76cc9b982b952f4b66c5) | radv: invalidate command buffer state after executing secondaries | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r4) | 2026-05-12 | [`6e5bfc6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6e5bfc678d9c37fbccbc056a859adb22ea6b1fd9) | nvk: Store available and timestamps packed together | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r3) | 2026-05-12 | [`bc84149`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bc841498f85fe40b10498072de38e40e9a96dda6) | meson: update libdrm wrap | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r2) | 2026-05-12 | [`7cbdb8e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7cbdb8e667b5d099479b12e460ab97a11a69e39b) | wsi/common: Report correct time domain in VkPresentTimingInfo. | Vulkan 1.4.350 |
