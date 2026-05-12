@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260512-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r8) | 2026-05-12 | [`db95df3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db95df3da453aa497715b7e07dfbecbcb0975afd) | jay/opt_propagate: propagate undefs | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r7) | 2026-05-12 | [`2f63d09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2f63d09270880fc790b6c5f065e53937c11e398b) | kk: Support shaderCullDistance | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r6) | 2026-05-12 | [`e81a292`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e81a292165add2997276dd30cd65381aa49ca72d) | nvk: Disable compression on Turing | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r5) | 2026-05-12 | [`6b32238`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b3223895f9ac7fd0a6f76cc9b982b952f4b66c5) | radv: invalidate command buffer state after executing secondaries | Vulkan 1.4.350 |

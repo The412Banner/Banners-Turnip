@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`2f63d09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2f63d09270880fc790b6c5f065e53937c11e398b) |
+| **Commit** | [`db95df3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db95df3da453aa497715b7e07dfbecbcb0975afd) |
 | **Commit date** | 2026-05-12 |
-| **Commit title** | kk: Support shaderCullDistance |
+| **Commit title** | jay/opt_propagate: propagate undefs |
 | **Build date** | 20260512 |
-| **Release** | [v26.2.0-20260512-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r7) |
+| **Release** | [v26.2.0-20260512-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260512-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r8) | 2026-05-12 | [`db95df3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db95df3da453aa497715b7e07dfbecbcb0975afd) | jay/opt_propagate: propagate undefs | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r7) | 2026-05-12 | [`2f63d09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2f63d09270880fc790b6c5f065e53937c11e398b) | kk: Support shaderCullDistance | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r6) | 2026-05-12 | [`e81a292`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e81a292165add2997276dd30cd65381aa49ca72d) | nvk: Disable compression on Turing | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r5) | 2026-05-12 | [`6b32238`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b3223895f9ac7fd0a6f76cc9b982b952f4b66c5) | radv: invalidate command buffer state after executing secondaries | Vulkan 1.4.350 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260512-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r3) | 2026-05-12 | [`bc84149`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bc841498f85fe40b10498072de38e40e9a96dda6) | meson: update libdrm wrap | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r2) | 2026-05-12 | [`7cbdb8e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7cbdb8e667b5d099479b12e460ab97a11a69e39b) | wsi/common: Report correct time domain in VkPresentTimingInfo. | Vulkan 1.4.350 |
 | [v26.2.0-20260512](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512) | 2026-05-12 | [`975ae01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/975ae012087a74491c75972583ab6d3197566b80) | spirv: preserve the explicit stride for untyped pointers with matrices | Vulkan 1.4.350 |
-| [v26.2.0-20260511-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260511-r6) | 2026-05-11 | [`907cc49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/907cc49c3201170de01167a728bac0366066a6f2) | brw: Calcuate divergence before brw_from_nir | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
