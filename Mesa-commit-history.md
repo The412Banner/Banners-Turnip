@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260513-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r6) | 2026-05-13 | [`4463f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4463f5d3b0e71b6df8b391038a0748b6a0ad65ff) | pan/nir/tex: use unsigned type for texture op lod_or_fetch | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r5) | 2026-05-13 | [`4660728`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/46607282f1ed96fb687aa6c002dda6fcabe134df) | Uprev VVL to 6a6182c0edb35cba7bab0abc61eaff82d11022fb | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r4) | 2026-05-13 | [`fb0123f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb0123f42ed099e348ca2ec7a55f20ba3570c9d4) | egl/dri2: require valid render fd before advertising EGL_WL_bind_wayland_display | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r3) | 2026-05-13 | [`98d07d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/98d07d53195b665a0415f4ea7e36d7ae17bc6a06) | pvr: preserve and pass more data for suspending render passes | Vulkan 1.4.350 |
