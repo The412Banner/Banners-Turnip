@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260513-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r2) | 2026-05-13 | [`c96e73a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c96e73aa9355c4254475e3fe2f246a0dd85f92c9) | Revert intel/decoder: make libvulkan_intel to depend on stub decoder when buildtyle=release. | Vulkan 1.4.350 |
 | [v26.2.0-20260513](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513) | 2026-05-13 | [`e3d5d13`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e3d5d13d6d642c5eba81f9848237b1cb08ae97da) | pan/bi: Use LOD_MODE_EXPLICIT for the 2nd half of textureGrad() on Bifrost | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r8) | 2026-05-12 | [`db95df3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db95df3da453aa497715b7e07dfbecbcb0975afd) | jay/opt_propagate: propagate undefs | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r7) | 2026-05-12 | [`2f63d09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2f63d09270880fc790b6c5f065e53937c11e398b) | kk: Support shaderCullDistance | Vulkan 1.4.350 |
