@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`4463f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4463f5d3b0e71b6df8b391038a0748b6a0ad65ff) |
+| **Commit** | [`a18c07d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a18c07dc36f1c8462728dce2f214c1f72b00973a) |
 | **Commit date** | 2026-05-13 |
-| **Commit title** | pan/nir/tex: use unsigned type for texture op lod_or_fetch |
+| **Commit title** | anv: allocate tile sized temporary copy instead of whole size |
 | **Build date** | 20260513 |
-| **Release** | [v26.2.0-20260513-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r6) |
+| **Release** | [v26.2.0-20260513-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260513-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r7) | 2026-05-13 | [`a18c07d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a18c07dc36f1c8462728dce2f214c1f72b00973a) | anv: allocate tile sized temporary copy instead of whole size | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r6) | 2026-05-13 | [`4463f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4463f5d3b0e71b6df8b391038a0748b6a0ad65ff) | pan/nir/tex: use unsigned type for texture op lod_or_fetch | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r5) | 2026-05-13 | [`4660728`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/46607282f1ed96fb687aa6c002dda6fcabe134df) | Uprev VVL to 6a6182c0edb35cba7bab0abc61eaff82d11022fb | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r4) | 2026-05-13 | [`fb0123f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb0123f42ed099e348ca2ec7a55f20ba3570c9d4) | egl/dri2: require valid render fd before advertising EGL_WL_bind_wayland_display | Vulkan 1.4.350 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260513-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r2) | 2026-05-13 | [`c96e73a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c96e73aa9355c4254475e3fe2f246a0dd85f92c9) | Revert intel/decoder: make libvulkan_intel to depend on stub decoder when buildtyle=release. | Vulkan 1.4.350 |
 | [v26.2.0-20260513](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513) | 2026-05-13 | [`e3d5d13`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e3d5d13d6d642c5eba81f9848237b1cb08ae97da) | pan/bi: Use LOD_MODE_EXPLICIT for the 2nd half of textureGrad() on Bifrost | Vulkan 1.4.350 |
 | [v26.2.0-20260512-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r8) | 2026-05-12 | [`db95df3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db95df3da453aa497715b7e07dfbecbcb0975afd) | jay/opt_propagate: propagate undefs | Vulkan 1.4.350 |
-| [v26.2.0-20260512-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r7) | 2026-05-12 | [`2f63d09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2f63d09270880fc790b6c5f065e53937c11e398b) | kk: Support shaderCullDistance | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
