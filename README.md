@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`a18c07d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a18c07dc36f1c8462728dce2f214c1f72b00973a) |
+| **Commit** | [`f6debb8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f6debb842d72203039e98900ec12fe7fd73944e6) |
 | **Commit date** | 2026-05-13 |
-| **Commit title** | anv: allocate tile sized temporary copy instead of whole size |
+| **Commit title** | jay: Gripe more clearly about dual source blending |
 | **Build date** | 20260513 |
-| **Release** | [v26.2.0-20260513-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r7) |
+| **Release** | [v26.2.0-20260513-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260513-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r8) | 2026-05-13 | [`f6debb8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f6debb842d72203039e98900ec12fe7fd73944e6) | jay: Gripe more clearly about dual source blending | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r7) | 2026-05-13 | [`a18c07d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a18c07dc36f1c8462728dce2f214c1f72b00973a) | anv: allocate tile sized temporary copy instead of whole size | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r6) | 2026-05-13 | [`4463f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4463f5d3b0e71b6df8b391038a0748b6a0ad65ff) | pan/nir/tex: use unsigned type for texture op lod_or_fetch | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r5) | 2026-05-13 | [`4660728`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/46607282f1ed96fb687aa6c002dda6fcabe134df) | Uprev VVL to 6a6182c0edb35cba7bab0abc61eaff82d11022fb | Vulkan 1.4.350 |
