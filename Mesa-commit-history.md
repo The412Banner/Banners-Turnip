@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260514](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514) | 2026-05-14 | [`771714a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/771714a0cec2ee6488dc76519be7c2a7e4c75811) | brw/tests: Stop using regions/type for non-null SEND sources in tests | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r8) | 2026-05-13 | [`f6debb8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f6debb842d72203039e98900ec12fe7fd73944e6) | jay: Gripe more clearly about dual source blending | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r7) | 2026-05-13 | [`a18c07d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a18c07dc36f1c8462728dce2f214c1f72b00973a) | anv: allocate tile sized temporary copy instead of whole size | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r6) | 2026-05-13 | [`4463f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4463f5d3b0e71b6df8b391038a0748b6a0ad65ff) | pan/nir/tex: use unsigned type for texture op lod_or_fetch | Vulkan 1.4.350 |

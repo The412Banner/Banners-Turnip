@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`f6debb8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f6debb842d72203039e98900ec12fe7fd73944e6) |
-| **Commit date** | 2026-05-13 |
-| **Commit title** | jay: Gripe more clearly about dual source blending |
-| **Build date** | 20260513 |
-| **Release** | [v26.2.0-20260513-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r8) |
+| **Commit** | [`771714a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/771714a0cec2ee6488dc76519be7c2a7e4c75811) |
+| **Commit date** | 2026-05-14 |
+| **Commit title** | brw/tests: Stop using regions/type for non-null SEND sources in tests |
+| **Build date** | 20260514 |
+| **Release** | [v26.2.0-20260514](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260514](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514) | 2026-05-14 | [`771714a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/771714a0cec2ee6488dc76519be7c2a7e4c75811) | brw/tests: Stop using regions/type for non-null SEND sources in tests | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r8) | 2026-05-13 | [`f6debb8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f6debb842d72203039e98900ec12fe7fd73944e6) | jay: Gripe more clearly about dual source blending | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r7) | 2026-05-13 | [`a18c07d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a18c07dc36f1c8462728dce2f214c1f72b00973a) | anv: allocate tile sized temporary copy instead of whole size | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r6) | 2026-05-13 | [`4463f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4463f5d3b0e71b6df8b391038a0748b6a0ad65ff) | pan/nir/tex: use unsigned type for texture op lod_or_fetch | Vulkan 1.4.350 |
@@ -95,7 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260513-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r3) | 2026-05-13 | [`98d07d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/98d07d53195b665a0415f4ea7e36d7ae17bc6a06) | pvr: preserve and pass more data for suspending render passes | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r2) | 2026-05-13 | [`c96e73a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c96e73aa9355c4254475e3fe2f246a0dd85f92c9) | Revert intel/decoder: make libvulkan_intel to depend on stub decoder when buildtyle=release. | Vulkan 1.4.350 |
 | [v26.2.0-20260513](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513) | 2026-05-13 | [`e3d5d13`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e3d5d13d6d642c5eba81f9848237b1cb08ae97da) | pan/bi: Use LOD_MODE_EXPLICIT for the 2nd half of textureGrad() on Bifrost | Vulkan 1.4.350 |
-| [v26.2.0-20260512-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260512-r8) | 2026-05-12 | [`db95df3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db95df3da453aa497715b7e07dfbecbcb0975afd) | jay/opt_propagate: propagate undefs | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
