@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260514-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r5) | 2026-05-14 | [`14a97c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14a97c83cc4d8dfa7be6d0c1fbc3662100bf7852) | ci: igalia farm maintenance | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r4) | 2026-05-14 | [`ccef881`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ccef88173b0e6fe200149b828d165d8811fe7808) | anv: add SIMD32 requirement heuristic for Dragon Dogma 2 | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r3) | 2026-05-14 | [`431ae2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/431ae2fe9eb53b7fb83a324eb6af06c21b3097bc) | docs: add sha sum for 26.0.7 | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r2) | 2026-05-14 | [`6a7a46a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a7a46ac210e9b7aae02f80aa1781bf484bb5a4c) | nir/coopmat: rename the box split variables. | Vulkan 1.4.350 |
