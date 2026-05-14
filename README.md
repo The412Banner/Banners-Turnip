@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`4938a80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4938a80c32c45a1a8dec020919751b0cae86e42b) |
+| **Commit** | [`f9e7b95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f9e7b9568b0b84e6b8bfe5d44413180b58a00048) |
 | **Commit date** | 2026-05-14 |
-| **Commit title** | Revert ci: igalia farm maintenance |
+| **Commit title** | util/format: add lower-bound assert on format |
 | **Build date** | 20260514 |
-| **Release** | [v26.2.0-20260514-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r6) |
+| **Release** | [v26.2.0-20260514-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260514-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r7) | 2026-05-14 | [`f9e7b95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f9e7b9568b0b84e6b8bfe5d44413180b58a00048) | util/format: add lower-bound assert on format | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r6) | 2026-05-14 | [`4938a80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4938a80c32c45a1a8dec020919751b0cae86e42b) | Revert ci: igalia farm maintenance | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r5) | 2026-05-14 | [`14a97c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14a97c83cc4d8dfa7be6d0c1fbc3662100bf7852) | ci: igalia farm maintenance | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r4) | 2026-05-14 | [`ccef881`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ccef88173b0e6fe200149b828d165d8811fe7808) | anv: add SIMD32 requirement heuristic for Dragon Dogma 2 | Vulkan 1.4.350 |
@@ -97,7 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260513-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r7) | 2026-05-13 | [`a18c07d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a18c07dc36f1c8462728dce2f214c1f72b00973a) | anv: allocate tile sized temporary copy instead of whole size | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r6) | 2026-05-13 | [`4463f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4463f5d3b0e71b6df8b391038a0748b6a0ad65ff) | pan/nir/tex: use unsigned type for texture op lod_or_fetch | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r5) | 2026-05-13 | [`4660728`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/46607282f1ed96fb687aa6c002dda6fcabe134df) | Uprev VVL to 6a6182c0edb35cba7bab0abc61eaff82d11022fb | Vulkan 1.4.350 |
-| [v26.2.0-20260513-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r4) | 2026-05-13 | [`fb0123f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb0123f42ed099e348ca2ec7a55f20ba3570c9d4) | egl/dri2: require valid render fd before advertising EGL_WL_bind_wayland_display | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
