@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260514-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r8) | 2026-05-14 | [`7f44fb2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f44fb2bf939cffd3ff10ce5574b41b536a9605d) | docs/features: updates for Anv | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r7) | 2026-05-14 | [`f9e7b95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f9e7b9568b0b84e6b8bfe5d44413180b58a00048) | util/format: add lower-bound assert on format | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r6) | 2026-05-14 | [`4938a80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4938a80c32c45a1a8dec020919751b0cae86e42b) | Revert ci: igalia farm maintenance | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r5) | 2026-05-14 | [`14a97c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14a97c83cc4d8dfa7be6d0c1fbc3662100bf7852) | ci: igalia farm maintenance | Vulkan 1.4.350 |
