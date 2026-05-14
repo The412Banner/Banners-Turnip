@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`6a7a46a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a7a46ac210e9b7aae02f80aa1781bf484bb5a4c) |
+| **Commit** | [`431ae2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/431ae2fe9eb53b7fb83a324eb6af06c21b3097bc) |
 | **Commit date** | 2026-05-14 |
-| **Commit title** | nir/coopmat: rename the box split variables. |
+| **Commit title** | docs: add sha sum for 26.0.7 |
 | **Build date** | 20260514 |
-| **Release** | [v26.2.0-20260514-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r2) |
+| **Release** | [v26.2.0-20260514-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260514-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r3) | 2026-05-14 | [`431ae2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/431ae2fe9eb53b7fb83a324eb6af06c21b3097bc) | docs: add sha sum for 26.0.7 | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r2) | 2026-05-14 | [`6a7a46a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a7a46ac210e9b7aae02f80aa1781bf484bb5a4c) | nir/coopmat: rename the box split variables. | Vulkan 1.4.350 |
 | [v26.2.0-20260514](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514) | 2026-05-14 | [`771714a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/771714a0cec2ee6488dc76519be7c2a7e4c75811) | brw/tests: Stop using regions/type for non-null SEND sources in tests | Vulkan 1.4.350 |
 | [v26.2.0-20260513-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260513-r8) | 2026-05-13 | [`f6debb8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f6debb842d72203039e98900ec12fe7fd73944e6) | jay: Gripe more clearly about dual source blending | Vulkan 1.4.350 |
