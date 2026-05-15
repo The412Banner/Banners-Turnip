@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`b24a4c3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b24a4c3cd0bcf649b360eca5f7614a07e457a404) |
+| **Commit** | [`bd465e7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bd465e710cc8cb152844776863e753140c69d61c) |
 | **Commit date** | 2026-05-15 |
-| **Commit title** | anv: temporarily reenable scratch page by default |
+| **Commit title** | Revert rusticl: link the C++ runtime statically |
 | **Build date** | 20260515 |
-| **Release** | [v26.2.0-20260515-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r7) |
+| **Release** | [v26.2.0-20260515-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260515-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r8) | 2026-05-15 | [`bd465e7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bd465e710cc8cb152844776863e753140c69d61c) | Revert rusticl: link the C++ runtime statically | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r7) | 2026-05-15 | [`b24a4c3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b24a4c3cd0bcf649b360eca5f7614a07e457a404) | anv: temporarily reenable scratch page by default | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r6) | 2026-05-15 | [`0281eb2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0281eb2e983eb163106ab251fc1987606900d065) | nir/instr_set: Fix multi-slot intrinsic index equality | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r5) | 2026-05-15 | [`f7fed3b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f7fed3bdf8532db9fe70e73da3d4dc4c42374836) | intel/perf: Use intel_perf_context as ralloc parent of sample buffers | Vulkan 1.4.350 |
@@ -95,7 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260515-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r2) | 2026-05-15 | [`f9d54da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f9d54dad8083e0037b35baf8eb51c2a1d1bf8fe4) | Uprev VVL to d55be6264a17cd28f436805973b12f12a5d22f2f | Vulkan 1.4.350 |
 | [v26.2.0-20260515](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515) | 2026-05-15 | [`a8e567c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8e567c0b70ecbc4b6b338a041f8b3f91d030e61) | nvk: enable subgroupQuadOperationsInAllStages | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r10) | 2026-05-14 | [`1ab8f1e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1ab8f1eb00acba8dcef75a96d5418ae12079559e) | nak: add more sizes to assert in bindless_image_sparse_load | Vulkan 1.4.350 |
-| [v26.2.0-20260514-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r9) | 2026-05-14 | [`3831935`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3831935818a7d686b55645922452b6b7c3f5e16a) | nir/opt_move_to_top: add an option to exclude moving at_offset/at_sample loads | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
