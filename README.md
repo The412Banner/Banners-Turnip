@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`f9d54da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f9d54dad8083e0037b35baf8eb51c2a1d1bf8fe4) |
+| **Commit** | [`dc398af`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc398afb2782a594e58382dcb918e28825b7aec8) |
 | **Commit date** | 2026-05-15 |
-| **Commit title** | Uprev VVL to d55be6264a17cd28f436805973b12f12a5d22f2f |
+| **Commit title** | nir: fix shuffling local IDs for quad derivatives with larger workgroup sizes |
 | **Build date** | 20260515 |
-| **Release** | [v26.2.0-20260515-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r2) |
+| **Release** | [v26.2.0-20260515-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260515-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r3) | 2026-05-15 | [`dc398af`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc398afb2782a594e58382dcb918e28825b7aec8) | nir: fix shuffling local IDs for quad derivatives with larger workgroup sizes | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r2) | 2026-05-15 | [`f9d54da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f9d54dad8083e0037b35baf8eb51c2a1d1bf8fe4) | Uprev VVL to d55be6264a17cd28f436805973b12f12a5d22f2f | Vulkan 1.4.350 |
 | [v26.2.0-20260515](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515) | 2026-05-15 | [`a8e567c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8e567c0b70ecbc4b6b338a041f8b3f91d030e61) | nvk: enable subgroupQuadOperationsInAllStages | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r10) | 2026-05-14 | [`1ab8f1e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1ab8f1eb00acba8dcef75a96d5418ae12079559e) | nak: add more sizes to assert in bindless_image_sparse_load | Vulkan 1.4.350 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260514-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r6) | 2026-05-14 | [`4938a80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4938a80c32c45a1a8dec020919751b0cae86e42b) | Revert ci: igalia farm maintenance | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r5) | 2026-05-14 | [`14a97c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14a97c83cc4d8dfa7be6d0c1fbc3662100bf7852) | ci: igalia farm maintenance | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r4) | 2026-05-14 | [`ccef881`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ccef88173b0e6fe200149b828d165d8811fe7808) | anv: add SIMD32 requirement heuristic for Dragon Dogma 2 | Vulkan 1.4.350 |
-| [v26.2.0-20260514-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r3) | 2026-05-14 | [`431ae2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/431ae2fe9eb53b7fb83a324eb6af06c21b3097bc) | docs: add sha sum for 26.0.7 | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---

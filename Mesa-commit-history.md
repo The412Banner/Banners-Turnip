@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260515-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r3) | 2026-05-15 | [`dc398af`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc398afb2782a594e58382dcb918e28825b7aec8) | nir: fix shuffling local IDs for quad derivatives with larger workgroup sizes | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r2) | 2026-05-15 | [`f9d54da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f9d54dad8083e0037b35baf8eb51c2a1d1bf8fe4) | Uprev VVL to d55be6264a17cd28f436805973b12f12a5d22f2f | Vulkan 1.4.350 |
 | [v26.2.0-20260515](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515) | 2026-05-15 | [`a8e567c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8e567c0b70ecbc4b6b338a041f8b3f91d030e61) | nvk: enable subgroupQuadOperationsInAllStages | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r10) | 2026-05-15 | [`1ab8f1e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1ab8f1eb00acba8dcef75a96d5418ae12079559e) | nak: add more sizes to assert in bindless_image_sparse_load | Vulkan 1.4.350 |
