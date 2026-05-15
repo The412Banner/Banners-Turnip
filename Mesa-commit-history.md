@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260515](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515) | 2026-05-15 | [`a8e567c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8e567c0b70ecbc4b6b338a041f8b3f91d030e61) | nvk: enable subgroupQuadOperationsInAllStages | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r10) | 2026-05-15 | [`1ab8f1e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1ab8f1eb00acba8dcef75a96d5418ae12079559e) | nak: add more sizes to assert in bindless_image_sparse_load | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r9) | 2026-05-14 | [`3831935`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3831935818a7d686b55645922452b6b7c3f5e16a) | nir/opt_move_to_top: add an option to exclude moving at_offset/at_sample loads | Vulkan 1.4.350 |
 | [v26.2.0-20260514-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260514-r8) | 2026-05-14 | [`7f44fb2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f44fb2bf939cffd3ff10ce5574b41b536a9605d) | docs/features: updates for Anv | Vulkan 1.4.350 |
