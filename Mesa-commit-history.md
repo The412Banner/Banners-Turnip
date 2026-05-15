@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260515-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r7) | 2026-05-15 | [`b24a4c3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b24a4c3cd0bcf649b360eca5f7614a07e457a404) | anv: temporarily reenable scratch page by default | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r6) | 2026-05-15 | [`0281eb2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0281eb2e983eb163106ab251fc1987606900d065) | nir/instr_set: Fix multi-slot intrinsic index equality | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r5) | 2026-05-15 | [`f7fed3b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f7fed3bdf8532db9fe70e73da3d4dc4c42374836) | intel/perf: Use intel_perf_context as ralloc parent of sample buffers | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r4) | 2026-05-15 | [`0be2d71`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0be2d71ad16cf07ac5dac2d3f4cc4fbe069bacfd) | nir/opt_uniform_subgroup: preserve divergence during optimization | Vulkan 1.4.350 |
