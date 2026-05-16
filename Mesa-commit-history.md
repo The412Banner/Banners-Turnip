@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260516](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260516) | 2026-05-15 | [`e76abd1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e76abd1e3a69a10481cc5f5a1c9c3002551f27d3) | nir/opt_constant_folding: Don't fight with nir_lower_bit_size | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r8) | 2026-05-15 | [`bd465e7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bd465e710cc8cb152844776863e753140c69d61c) | Revert rusticl: link the C++ runtime statically | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r7) | 2026-05-15 | [`b24a4c3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b24a4c3cd0bcf649b360eca5f7614a07e457a404) | anv: temporarily reenable scratch page by default | Vulkan 1.4.350 |
 | [v26.2.0-20260515-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r6) | 2026-05-15 | [`0281eb2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0281eb2e983eb163106ab251fc1987606900d065) | nir/instr_set: Fix multi-slot intrinsic index equality | Vulkan 1.4.350 |
