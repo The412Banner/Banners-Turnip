@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`f22587a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f22587abc3d47ec4878df9b4347927055bff57cc) |
-| **Commit date** | 2026-05-16 |
-| **Commit title** | docs/ci: ignore docs.redhat.com & registry.khronos.org links |
-| **Build date** | 20260516 |
-| **Release** | [v26.2.0-20260516-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260516-r2) |
+| **Commit** | [`968a13a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/968a13a916bf2ae292ab5ba3f94e309d3a1b0d37) |
+| **Commit date** | 2026-05-17 |
+| **Commit title** | llvmpipe: fix UB and incorrect value in compute caps shift |
+| **Build date** | 20260517 |
+| **Release** | [v26.2.0-20260517](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.2.0-20260516-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260516-r2) | 2026-05-16 | [`f22587a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f22587abc3d47ec4878df9b4347927055bff57cc) | docs/ci: ignore docs.redhat.com & registry.khronos.org links | Vulkan 1.4.350 |
-| [v26.2.0-20260516](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260516) | 2026-05-16 | [`e76abd1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e76abd1e3a69a10481cc5f5a1c9c3002551f27d3) | nir/opt_constant_folding: Don't fight with nir_lower_bit_size | Vulkan 1.4.350 |
-| [v26.2.0-20260515-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r8) | 2026-05-15 | [`bd465e7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bd465e710cc8cb152844776863e753140c69d61c) | Revert rusticl: link the C++ runtime statically | Vulkan 1.4.350 |
-| [v26.2.0-20260515-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r7) | 2026-05-15 | [`b24a4c3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b24a4c3cd0bcf649b360eca5f7614a07e457a404) | anv: temporarily reenable scratch page by default | Vulkan 1.4.350 |
-| [v26.2.0-20260515-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r6) | 2026-05-15 | [`0281eb2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0281eb2e983eb163106ab251fc1987606900d065) | nir/instr_set: Fix multi-slot intrinsic index equality | Vulkan 1.4.350 |
-| [v26.2.0-20260515-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r5) | 2026-05-15 | [`f7fed3b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f7fed3bdf8532db9fe70e73da3d4dc4c42374836) | intel/perf: Use intel_perf_context as ralloc parent of sample buffers | Vulkan 1.4.350 |
-| [v26.2.0-20260515-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260515-r4) | 2026-05-15 | [`0be2d71`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0be2d71ad16cf07ac5dac2d3f4cc4fbe069bacfd) | nir/opt_uniform_subgroup: preserve divergence during optimization | Vulkan 1.4.350 |
+| [v26.2.0-20260517](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517) | 2026-05-17 | [`968a13a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/968a13a916bf2ae292ab5ba3f94e309d3a1b0d37) | llvmpipe: fix UB and incorrect value in compute caps shift | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
