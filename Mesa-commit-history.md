@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260517-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r2) | 2026-05-17 | [`3f8a083`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3f8a083f28a90bc23e0d138f87c98b8caf89dacb) | intel/perf: Show type, data type and units in intel_perf_query_layout | Vulkan 1.4.350 |
 | [v26.2.0-20260517](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517) | 2026-05-17 | [`968a13a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/968a13a916bf2ae292ab5ba3f94e309d3a1b0d37) | llvmpipe: fix UB and incorrect value in compute caps shift | Vulkan 1.4.350 |
 | [v26.2.0-20260516-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260516-r2) | 2026-05-16 | [`f22587a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f22587abc3d47ec4878df9b4347927055bff57cc) | docs/ci: ignore docs.redhat.com & registry.khronos.org links | Vulkan 1.4.350 |
 | [v26.2.0-20260516](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260516) | 2026-05-15 | [`e76abd1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e76abd1e3a69a10481cc5f5a1c9c3002551f27d3) | nir/opt_constant_folding: Don't fight with nir_lower_bit_size | Vulkan 1.4.350 |

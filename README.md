@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`968a13a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/968a13a916bf2ae292ab5ba3f94e309d3a1b0d37) |
+| **Commit** | [`3f8a083`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3f8a083f28a90bc23e0d138f87c98b8caf89dacb) |
 | **Commit date** | 2026-05-17 |
-| **Commit title** | llvmpipe: fix UB and incorrect value in compute caps shift |
+| **Commit title** | intel/perf: Show type, data type and units in intel_perf_query_layout |
 | **Build date** | 20260517 |
-| **Release** | [v26.2.0-20260517](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517) |
+| **Release** | [v26.2.0-20260517-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260517-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r2) | 2026-05-17 | [`3f8a083`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3f8a083f28a90bc23e0d138f87c98b8caf89dacb) | intel/perf: Show type, data type and units in intel_perf_query_layout | Vulkan 1.4.350 |
 | [v26.2.0-20260517](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517) | 2026-05-17 | [`968a13a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/968a13a916bf2ae292ab5ba3f94e309d3a1b0d37) | llvmpipe: fix UB and incorrect value in compute caps shift | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
