@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`3f8a083`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3f8a083f28a90bc23e0d138f87c98b8caf89dacb) |
+| **Commit** | [`f60749f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f60749ff3c4b9b9e39b8ea18212ea18df571a74c) |
 | **Commit date** | 2026-05-17 |
-| **Commit title** | intel/perf: Show type, data type and units in intel_perf_query_layout |
+| **Commit title** | brw: Add support for ACCESS_CAN_REORDER memory ordering |
 | **Build date** | 20260517 |
-| **Release** | [v26.2.0-20260517-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r2) |
+| **Release** | [v26.2.0-20260517-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260517-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r3) | 2026-05-17 | [`f60749f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f60749ff3c4b9b9e39b8ea18212ea18df571a74c) | brw: Add support for ACCESS_CAN_REORDER memory ordering | Vulkan 1.4.350 |
 | [v26.2.0-20260517-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r2) | 2026-05-17 | [`3f8a083`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3f8a083f28a90bc23e0d138f87c98b8caf89dacb) | intel/perf: Show type, data type and units in intel_perf_query_layout | Vulkan 1.4.350 |
 | [v26.2.0-20260517](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517) | 2026-05-17 | [`968a13a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/968a13a916bf2ae292ab5ba3f94e309d3a1b0d37) | llvmpipe: fix UB and incorrect value in compute caps shift | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
