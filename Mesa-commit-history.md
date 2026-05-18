@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260518-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r5) | 2026-05-18 | [`4cd9ccd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4cd9ccd943d3312f312359b568f9d9324766cc8d) | gfxstream: allow VK_GOOGLE_display_timing | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r4) | 2026-05-18 | [`6b8d8a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b8d8a70de59993bb6e420a8d0e5568a8d4123b6) | pan/decode: Support INTERLEAVED_64K Z/S target dumps | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r3) | 2026-05-18 | [`90c4720`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/90c47206c598fb27b3af97a543d0ca87dd79af85) | glx/windows: Drop static from driwindowsCreateScreen() | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r2) | 2026-05-18 | [`e47ed60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e47ed60ee6133ef562f7fb04b4bfb81296ac9c75) | intel/dev: fix timebase_scale ticks-to-ns precision loss across 2^32 | Vulkan 1.4.350 |
