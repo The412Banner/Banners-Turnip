@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260518-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r4) | 2026-05-18 | [`6b8d8a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b8d8a70de59993bb6e420a8d0e5568a8d4123b6) | pan/decode: Support INTERLEAVED_64K Z/S target dumps | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r3) | 2026-05-18 | [`90c4720`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/90c47206c598fb27b3af97a543d0ca87dd79af85) | glx/windows: Drop static from driwindowsCreateScreen() | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r2) | 2026-05-18 | [`e47ed60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e47ed60ee6133ef562f7fb04b4bfb81296ac9c75) | intel/dev: fix timebase_scale ticks-to-ns precision loss across 2^32 | Vulkan 1.4.350 |
 | [v26.2.0-20260518](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518) | 2026-05-18 | [`aaec108`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aaec1086376a4ba97d639a35f2f6d24be82bcdec) | ci: disable Collabora's farm due to maintenance | Vulkan 1.4.350 |
