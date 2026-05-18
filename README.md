@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`e47ed60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e47ed60ee6133ef562f7fb04b4bfb81296ac9c75) |
+| **Commit** | [`90c4720`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/90c47206c598fb27b3af97a543d0ca87dd79af85) |
 | **Commit date** | 2026-05-18 |
-| **Commit title** | intel/dev: fix timebase_scale ticks-to-ns precision loss across 2^32 |
+| **Commit title** | glx/windows: Drop static from driwindowsCreateScreen() |
 | **Build date** | 20260518 |
-| **Release** | [v26.2.0-20260518-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r2) |
+| **Release** | [v26.2.0-20260518-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260518-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r3) | 2026-05-18 | [`90c4720`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/90c47206c598fb27b3af97a543d0ca87dd79af85) | glx/windows: Drop static from driwindowsCreateScreen() | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r2) | 2026-05-18 | [`e47ed60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e47ed60ee6133ef562f7fb04b4bfb81296ac9c75) | intel/dev: fix timebase_scale ticks-to-ns precision loss across 2^32 | Vulkan 1.4.350 |
 | [v26.2.0-20260518](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518) | 2026-05-18 | [`aaec108`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aaec1086376a4ba97d639a35f2f6d24be82bcdec) | ci: disable Collabora's farm due to maintenance | Vulkan 1.4.350 |
 | [v26.2.0-20260517-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r4) | 2026-05-17 | [`01a36c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/01a36c15405ae66e5903cf52f1f42b171d16e022) | radeonsi/video: Cleanup dpb buffer | Vulkan 1.4.350 |
