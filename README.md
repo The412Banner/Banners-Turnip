@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`01a36c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/01a36c15405ae66e5903cf52f1f42b171d16e022) |
-| **Commit date** | 2026-05-17 |
-| **Commit title** | radeonsi/video: Cleanup dpb buffer |
-| **Build date** | 20260517 |
-| **Release** | [v26.2.0-20260517-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r4) |
+| **Commit** | [`aaec108`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aaec1086376a4ba97d639a35f2f6d24be82bcdec) |
+| **Commit date** | 2026-05-18 |
+| **Commit title** | ci: disable Collabora's farm due to maintenance |
+| **Build date** | 20260518 |
+| **Release** | [v26.2.0-20260518](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260518](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518) | 2026-05-18 | [`aaec108`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aaec1086376a4ba97d639a35f2f6d24be82bcdec) | ci: disable Collabora's farm due to maintenance | Vulkan 1.4.350 |
 | [v26.2.0-20260517-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r4) | 2026-05-17 | [`01a36c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/01a36c15405ae66e5903cf52f1f42b171d16e022) | radeonsi/video: Cleanup dpb buffer | Vulkan 1.4.350 |
 | [v26.2.0-20260517-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r3) | 2026-05-17 | [`f60749f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f60749ff3c4b9b9e39b8ea18212ea18df571a74c) | brw: Add support for ACCESS_CAN_REORDER memory ordering | Vulkan 1.4.350 |
 | [v26.2.0-20260517-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260517-r2) | 2026-05-17 | [`3f8a083`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3f8a083f28a90bc23e0d138f87c98b8caf89dacb) | intel/perf: Show type, data type and units in intel_perf_query_layout | Vulkan 1.4.350 |
