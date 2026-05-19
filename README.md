@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`52d57d9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52d57d98a2948214a2d029f2f4e8b476bf39ada3) |
-| **Commit date** | 2026-05-18 |
-| **Commit title** | Revert ci: vmware farm is offline, stop using it |
-| **Build date** | 20260518 |
-| **Release** | [v26.2.0-20260518-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r7) |
+| **Commit** | [`2d44e1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2d44e1b9072ee4ce98b534cfd48cb16cd9e915a7) |
+| **Commit date** | 2026-05-19 |
+| **Commit title** | nir/tests: use ASSERT_EQ instead of ASSERT_TRUE in nir_opt_varyings tests |
+| **Build date** | 20260519 |
+| **Release** | [v26.2.0-20260519](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260519](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519) | 2026-05-19 | [`2d44e1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2d44e1b9072ee4ce98b534cfd48cb16cd9e915a7) | nir/tests: use ASSERT_EQ instead of ASSERT_TRUE in nir_opt_varyings tests | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r7) | 2026-05-18 | [`52d57d9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52d57d98a2948214a2d029f2f4e8b476bf39ada3) | Revert ci: vmware farm is offline, stop using it | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r6) | 2026-05-18 | [`28f3f25`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/28f3f2569d2a57f8b746eede6c33ea3f08898cb3) | meson/intel: only build libblorp_elk when requested | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r5) | 2026-05-18 | [`4cd9ccd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4cd9ccd943d3312f312359b568f9d9324766cc8d) | gfxstream: allow VK_GOOGLE_display_timing | Vulkan 1.4.350 |
