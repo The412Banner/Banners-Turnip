@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260519-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r5) | 2026-05-19 | [`29b8687`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29b86874c31774b24faddc765d6d7f6a43b80123) | radv: move radv_GetDeviceFaultInfoEXT() to radv_device.c | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r4) | 2026-05-19 | [`ec40c95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec40c9538565ab2eb373d72e454f507d85f7d267) | anv: Add transfer_src usage for ANDROID_external_format_resolve | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r3) | 2026-05-19 | [`b108319`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1083190d02cb244718816dded908088959d8054) | radv: enable radv_wait_for_vm_map_updates for Forza Horizon 6 | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r2) | 2026-05-19 | [`3bb3474`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3bb34744fc93e6ff8ce69501b2b481acc6f6059c) | ci/build: restore riscv64 build as it works again | Vulkan 1.4.350 |
