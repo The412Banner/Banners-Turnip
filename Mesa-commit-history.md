@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260519-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r7) | 2026-05-19 | [`617da94`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/617da94f822fe3e5910f2c6f9700d6ce47c7721e) | u_trace: Lazy init ut->linear_alloc | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r6) | 2026-05-19 | [`180d8cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/180d8cb5448c6958093477274c7e2dbe40fface6) | intel/brw: Fix nir_intrinsic_load_inline_data_intel register offset calculation | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r5) | 2026-05-19 | [`29b8687`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29b86874c31774b24faddc765d6d7f6a43b80123) | radv: move radv_GetDeviceFaultInfoEXT() to radv_device.c | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r4) | 2026-05-19 | [`ec40c95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec40c9538565ab2eb373d72e454f507d85f7d267) | anv: Add transfer_src usage for ANDROID_external_format_resolve | Vulkan 1.4.350 |

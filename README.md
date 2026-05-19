@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`180d8cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/180d8cb5448c6958093477274c7e2dbe40fface6) |
+| **Commit** | [`617da94`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/617da94f822fe3e5910f2c6f9700d6ce47c7721e) |
 | **Commit date** | 2026-05-19 |
-| **Commit title** | intel/brw: Fix nir_intrinsic_load_inline_data_intel register offset calculation |
+| **Commit title** | u_trace: Lazy init ut->linear_alloc |
 | **Build date** | 20260519 |
-| **Release** | [v26.2.0-20260519-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r6) |
+| **Release** | [v26.2.0-20260519-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260519-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r7) | 2026-05-19 | [`617da94`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/617da94f822fe3e5910f2c6f9700d6ce47c7721e) | u_trace: Lazy init ut->linear_alloc | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r6) | 2026-05-19 | [`180d8cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/180d8cb5448c6958093477274c7e2dbe40fface6) | intel/brw: Fix nir_intrinsic_load_inline_data_intel register offset calculation | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r5) | 2026-05-19 | [`29b8687`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29b86874c31774b24faddc765d6d7f6a43b80123) | radv: move radv_GetDeviceFaultInfoEXT() to radv_device.c | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r4) | 2026-05-19 | [`ec40c95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec40c9538565ab2eb373d72e454f507d85f7d267) | anv: Add transfer_src usage for ANDROID_external_format_resolve | Vulkan 1.4.350 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260519-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r2) | 2026-05-19 | [`3bb3474`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3bb34744fc93e6ff8ce69501b2b481acc6f6059c) | ci/build: restore riscv64 build as it works again | Vulkan 1.4.350 |
 | [v26.2.0-20260519](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519) | 2026-05-19 | [`2d44e1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2d44e1b9072ee4ce98b534cfd48cb16cd9e915a7) | nir/tests: use ASSERT_EQ instead of ASSERT_TRUE in nir_opt_varyings tests | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r7) | 2026-05-18 | [`52d57d9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52d57d98a2948214a2d029f2f4e8b476bf39ada3) | Revert ci: vmware farm is offline, stop using it | Vulkan 1.4.350 |
-| [v26.2.0-20260518-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r6) | 2026-05-18 | [`28f3f25`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/28f3f2569d2a57f8b746eede6c33ea3f08898cb3) | meson/intel: only build libblorp_elk when requested | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
