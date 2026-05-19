@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260519-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r3) | 2026-05-19 | [`b108319`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1083190d02cb244718816dded908088959d8054) | radv: enable radv_wait_for_vm_map_updates for Forza Horizon 6 | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r2) | 2026-05-19 | [`3bb3474`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3bb34744fc93e6ff8ce69501b2b481acc6f6059c) | ci/build: restore riscv64 build as it works again | Vulkan 1.4.350 |
 | [v26.2.0-20260519](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519) | 2026-05-19 | [`2d44e1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2d44e1b9072ee4ce98b534cfd48cb16cd9e915a7) | nir/tests: use ASSERT_EQ instead of ASSERT_TRUE in nir_opt_varyings tests | Vulkan 1.4.350 |
 | [v26.2.0-20260518-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r7) | 2026-05-18 | [`52d57d9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52d57d98a2948214a2d029f2f4e8b476bf39ada3) | Revert ci: vmware farm is offline, stop using it | Vulkan 1.4.350 |
