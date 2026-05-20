@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`3d71e65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d71e6553ed8ff5fc02e2c4a6681b72a037e7ae0) |
+| **Commit** | [`26752e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/26752e00b516c154929115ea459f00d1ef15fe74) |
 | **Commit date** | 2026-05-19 |
-| **Commit title** | wsi: correct the erroneous assertion |
-| **Build date** | 20260519 |
-| **Release** | [v26.2.0-20260519-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r8) |
+| **Commit title** | gfxstream: remove android conditioning for sampler extensions |
+| **Build date** | 20260520 |
+| **Release** | [v26.2.0-20260520](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260520](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520) | 2026-05-20 | [`26752e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/26752e00b516c154929115ea459f00d1ef15fe74) | gfxstream: remove android conditioning for sampler extensions | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r8) | 2026-05-19 | [`3d71e65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d71e6553ed8ff5fc02e2c4a6681b72a037e7ae0) | wsi: correct the erroneous assertion | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r7) | 2026-05-19 | [`617da94`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/617da94f822fe3e5910f2c6f9700d6ce47c7721e) | u_trace: Lazy init ut->linear_alloc | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r6) | 2026-05-19 | [`180d8cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/180d8cb5448c6958093477274c7e2dbe40fface6) | intel/brw: Fix nir_intrinsic_load_inline_data_intel register offset calculation | Vulkan 1.4.350 |
@@ -95,7 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260519-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r3) | 2026-05-19 | [`b108319`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1083190d02cb244718816dded908088959d8054) | radv: enable radv_wait_for_vm_map_updates for Forza Horizon 6 | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r2) | 2026-05-19 | [`3bb3474`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3bb34744fc93e6ff8ce69501b2b481acc6f6059c) | ci/build: restore riscv64 build as it works again | Vulkan 1.4.350 |
 | [v26.2.0-20260519](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519) | 2026-05-19 | [`2d44e1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2d44e1b9072ee4ce98b534cfd48cb16cd9e915a7) | nir/tests: use ASSERT_EQ instead of ASSERT_TRUE in nir_opt_varyings tests | Vulkan 1.4.350 |
-| [v26.2.0-20260518-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260518-r7) | 2026-05-18 | [`52d57d9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52d57d98a2948214a2d029f2f4e8b476bf39ada3) | Revert ci: vmware farm is offline, stop using it | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
