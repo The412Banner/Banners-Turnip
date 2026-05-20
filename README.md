@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`26752e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/26752e00b516c154929115ea459f00d1ef15fe74) |
-| **Commit date** | 2026-05-19 |
-| **Commit title** | gfxstream: remove android conditioning for sampler extensions |
+| **Commit** | [`992b357`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/992b35704efc027844d84bd582a6e76d98d34c3b) |
+| **Commit date** | 2026-05-20 |
+| **Commit title** | nir/instr_set: Consider normalization when calculating hash |
 | **Build date** | 20260520 |
-| **Release** | [v26.2.0-20260520](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520) |
+| **Release** | [v26.2.0-20260520-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260520-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r2) | 2026-05-20 | [`992b357`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/992b35704efc027844d84bd582a6e76d98d34c3b) | nir/instr_set: Consider normalization when calculating hash | Vulkan 1.4.350 |
 | [v26.2.0-20260520](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520) | 2026-05-20 | [`26752e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/26752e00b516c154929115ea459f00d1ef15fe74) | gfxstream: remove android conditioning for sampler extensions | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r8) | 2026-05-19 | [`3d71e65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d71e6553ed8ff5fc02e2c4a6681b72a037e7ae0) | wsi: correct the erroneous assertion | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r7) | 2026-05-19 | [`617da94`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/617da94f822fe3e5910f2c6f9700d6ce47c7721e) | u_trace: Lazy init ut->linear_alloc | Vulkan 1.4.350 |
