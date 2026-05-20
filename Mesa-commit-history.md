@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260520-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r6) | 2026-05-20 | [`65b7513`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/65b75137b4e463f76af2b8c89cf1c09a724baa04) | zink: disable implicit sync handling for qcom proprietary | Vulkan 1.4.352 |
 | [v26.2.0-20260520-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r5) | 2026-05-20 | [`8b4ea1d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b4ea1d6581293a794e2528f824871cf90921de3) | pan/kmod: Don't pass drmVersionPtr objects around | Vulkan 1.4.350 |
 | [v26.2.0-20260520-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r4) | 2026-05-20 | [`5bbde67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bbde670dd6414882b88dae404f73dd947cc0755) | panvk/csf: Allow 256 layers per tiler descriptor on v14+ | Vulkan 1.4.350 |
 | [v26.2.0-20260520-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r3) | 2026-05-20 | [`a1c3715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1c371517cdbd7bf3088c5aeab29ca1209610701) | broadcom/ci: update kernel for nightly runs | Vulkan 1.4.350 |

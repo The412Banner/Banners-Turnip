@@ -72,12 +72,12 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | | |
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
-| **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`8b4ea1d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b4ea1d6581293a794e2528f824871cf90921de3) |
+| **Vulkan version** | Vulkan 1.4.352 |
+| **Commit** | [`65b7513`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/65b75137b4e463f76af2b8c89cf1c09a724baa04) |
 | **Commit date** | 2026-05-20 |
-| **Commit title** | pan/kmod: Don't pass drmVersionPtr objects around |
+| **Commit title** | zink: disable implicit sync handling for qcom proprietary |
 | **Build date** | 20260520 |
-| **Release** | [v26.2.0-20260520-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r5) |
+| **Release** | [v26.2.0-20260520-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260520-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r6) | 2026-05-20 | [`65b7513`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/65b75137b4e463f76af2b8c89cf1c09a724baa04) | zink: disable implicit sync handling for qcom proprietary | Vulkan 1.4.352 |
 | [v26.2.0-20260520-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r5) | 2026-05-20 | [`8b4ea1d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b4ea1d6581293a794e2528f824871cf90921de3) | pan/kmod: Don't pass drmVersionPtr objects around | Vulkan 1.4.350 |
 | [v26.2.0-20260520-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r4) | 2026-05-20 | [`5bbde67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bbde670dd6414882b88dae404f73dd947cc0755) | panvk/csf: Allow 256 layers per tiler descriptor on v14+ | Vulkan 1.4.350 |
 | [v26.2.0-20260520-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r3) | 2026-05-20 | [`a1c3715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1c371517cdbd7bf3088c5aeab29ca1209610701) | broadcom/ci: update kernel for nightly runs | Vulkan 1.4.350 |
@@ -95,7 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260519-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r8) | 2026-05-19 | [`3d71e65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d71e6553ed8ff5fc02e2c4a6681b72a037e7ae0) | wsi: correct the erroneous assertion | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r7) | 2026-05-19 | [`617da94`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/617da94f822fe3e5910f2c6f9700d6ce47c7721e) | u_trace: Lazy init ut->linear_alloc | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r6) | 2026-05-19 | [`180d8cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/180d8cb5448c6958093477274c7e2dbe40fface6) | intel/brw: Fix nir_intrinsic_load_inline_data_intel register offset calculation | Vulkan 1.4.350 |
-| [v26.2.0-20260519-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r5) | 2026-05-19 | [`29b8687`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29b86874c31774b24faddc765d6d7f6a43b80123) | radv: move radv_GetDeviceFaultInfoEXT() to radv_device.c | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
