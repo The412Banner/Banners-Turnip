@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`65b7513`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/65b75137b4e463f76af2b8c89cf1c09a724baa04) |
+| **Commit** | [`7eba054`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7eba054c5ba82b8a2366e5a340ec0b6376cc314c) |
 | **Commit date** | 2026-05-20 |
-| **Commit title** | zink: disable implicit sync handling for qcom proprietary |
+| **Commit title** | anv: Add compute only divergent atomics fusion optimization for Blender Blender uses atomic operations as part of its virtual shadow mapping implementation. Virtual shadow mapping page tagging in compute shaders benefits from divergent atomics fusion, while fragment shaders doing the atomic raster step in general have worse performance with this optimization turned on. Thus, an option is added to only apply divergent atomics fusion to compute shaders in ANV, and this option is enabled for Blender. |
 | **Build date** | 20260520 |
-| **Release** | [v26.2.0-20260520-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r6) |
+| **Release** | [v26.2.0-20260520-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260520-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r7) | 2026-05-20 | [`7eba054`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7eba054c5ba82b8a2366e5a340ec0b6376cc314c) | anv: Add compute only divergent atomics fusion optimization for Blender Blender uses atomic operations as part of its virtual shadow mapping implementation. Virtual shadow mapping page tagging in compute shaders benefits from divergent atomics fusion, while fragment shaders doing the atomic raster step in general have worse performance with this optimization turned on. Thus, an option is added to only apply divergent atomics fusion to compute shaders in ANV, and this option is enabled for Blender. | Vulkan 1.4.352 |
 | [v26.2.0-20260520-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r6) | 2026-05-20 | [`65b7513`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/65b75137b4e463f76af2b8c89cf1c09a724baa04) | zink: disable implicit sync handling for qcom proprietary | Vulkan 1.4.352 |
 | [v26.2.0-20260520-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r5) | 2026-05-20 | [`8b4ea1d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b4ea1d6581293a794e2528f824871cf90921de3) | pan/kmod: Don't pass drmVersionPtr objects around | Vulkan 1.4.350 |
 | [v26.2.0-20260520-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r4) | 2026-05-20 | [`5bbde67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bbde670dd6414882b88dae404f73dd947cc0755) | panvk/csf: Allow 256 layers per tiler descriptor on v14+ | Vulkan 1.4.350 |
@@ -95,7 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260520](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520) | 2026-05-20 | [`26752e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/26752e00b516c154929115ea459f00d1ef15fe74) | gfxstream: remove android conditioning for sampler extensions | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r8) | 2026-05-19 | [`3d71e65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d71e6553ed8ff5fc02e2c4a6681b72a037e7ae0) | wsi: correct the erroneous assertion | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r7) | 2026-05-19 | [`617da94`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/617da94f822fe3e5910f2c6f9700d6ce47c7721e) | u_trace: Lazy init ut->linear_alloc | Vulkan 1.4.350 |
-| [v26.2.0-20260519-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r6) | 2026-05-19 | [`180d8cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/180d8cb5448c6958093477274c7e2dbe40fface6) | intel/brw: Fix nir_intrinsic_load_inline_data_intel register offset calculation | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
