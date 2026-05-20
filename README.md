@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.350 |
-| **Commit** | [`a1c3715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1c371517cdbd7bf3088c5aeab29ca1209610701) |
+| **Commit** | [`5bbde67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bbde670dd6414882b88dae404f73dd947cc0755) |
 | **Commit date** | 2026-05-20 |
-| **Commit title** | broadcom/ci: update kernel for nightly runs |
+| **Commit title** | panvk/csf: Allow 256 layers per tiler descriptor on v14+ |
 | **Build date** | 20260520 |
-| **Release** | [v26.2.0-20260520-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r3) |
+| **Release** | [v26.2.0-20260520-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260520-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r4) | 2026-05-20 | [`5bbde67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bbde670dd6414882b88dae404f73dd947cc0755) | panvk/csf: Allow 256 layers per tiler descriptor on v14+ | Vulkan 1.4.350 |
 | [v26.2.0-20260520-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r3) | 2026-05-20 | [`a1c3715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1c371517cdbd7bf3088c5aeab29ca1209610701) | broadcom/ci: update kernel for nightly runs | Vulkan 1.4.350 |
 | [v26.2.0-20260520-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r2) | 2026-05-20 | [`992b357`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/992b35704efc027844d84bd582a6e76d98d34c3b) | nir/instr_set: Consider normalization when calculating hash | Vulkan 1.4.350 |
 | [v26.2.0-20260520](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520) | 2026-05-20 | [`26752e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/26752e00b516c154929115ea459f00d1ef15fe74) | gfxstream: remove android conditioning for sampler extensions | Vulkan 1.4.350 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260519-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r5) | 2026-05-19 | [`29b8687`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29b86874c31774b24faddc765d6d7f6a43b80123) | radv: move radv_GetDeviceFaultInfoEXT() to radv_device.c | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r4) | 2026-05-19 | [`ec40c95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec40c9538565ab2eb373d72e454f507d85f7d267) | anv: Add transfer_src usage for ANDROID_external_format_resolve | Vulkan 1.4.350 |
 | [v26.2.0-20260519-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r3) | 2026-05-19 | [`b108319`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1083190d02cb244718816dded908088959d8054) | radv: enable radv_wait_for_vm_map_updates for Forza Horizon 6 | Vulkan 1.4.350 |
-| [v26.2.0-20260519-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260519-r2) | 2026-05-19 | [`3bb3474`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3bb34744fc93e6ff8ce69501b2b481acc6f6059c) | ci/build: restore riscv64 build as it works again | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
