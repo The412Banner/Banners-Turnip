@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260521-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r8) | 2026-05-21 | [`3522f0f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3522f0f24c98a3f9bd04ee74c7dfb9efc4675d51) | llvmpipe: stub other functions inside compute shaders for ORCJIT | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r7) | 2026-05-21 | [`952b984`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/952b984ecaa95f5beef1f059f0759489cfe2f278) | freedreno/common: Fix X2-90, add X2-85 | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r6) | 2026-05-21 | [`7b286ab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7b286abe33679ea23b85303b2ab0aa72d3997257) | nir: Add print for other cmat_description slots | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r5) | 2026-05-21 | [`821a812`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/821a812c7d9758f5dcaa46d9997adddbbac95f25) | brw: Don't directly use regs_read/regs_written/size_read as bound for non-trivial loops | Vulkan 1.4.352 |
