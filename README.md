@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`ca88f85`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca88f851c8b3f4063c15da725d35720ba524dbba) |
+| **Commit** | [`b1c7222`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1c72223af95281c35e95c70bc7111e9223e2719) |
 | **Commit date** | 2026-05-21 |
-| **Commit title** | ac/nir/lower_tex_coord: basic lower tex coord test |
+| **Commit title** | kk: Support VK_KHR_unified_image_layouts |
 | **Build date** | 20260521 |
-| **Release** | [v26.2.0-20260521](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521) |
+| **Release** | [v26.2.0-20260521-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,15 +87,13 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260521-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r2) | 2026-05-21 | [`b1c7222`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1c72223af95281c35e95c70bc7111e9223e2719) | kk: Support VK_KHR_unified_image_layouts | Vulkan 1.4.352 |
 | [v26.2.0-20260521](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521) | 2026-05-21 | [`ca88f85`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca88f851c8b3f4063c15da725d35720ba524dbba) | ac/nir/lower_tex_coord: basic lower tex coord test | Vulkan 1.4.352 |
 | [v26.2.0-20260520-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r8) | 2026-05-20 | [`18ba81e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/18ba81e5b635be0b901e6cdb7e5c8c14a9b406e4) | Uprev Piglit to 6fd29fe44f8857b876a67bee962919635f22ecc8 | Vulkan 1.4.352 |
 | [v26.2.0-20260520-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r7) | 2026-05-20 | [`7eba054`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7eba054c5ba82b8a2366e5a340ec0b6376cc314c) | anv: Add compute only divergent atomics fusion optimization for Blender Blender uses atomic operations as part of its virtual shadow mapping implementation. Virtual shadow mapping page tagging in compute shaders benefits from divergent atomics fusion, while fragment shaders doing the atomic raster step in general have worse performance with this optimization turned on. Thus, an option is added to only apply divergent atomics fusion to compute shaders in ANV, and this option is enabled for Blender. | Vulkan 1.4.352 |
 | [v26.2.0-20260520-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r6) | 2026-05-20 | [`65b7513`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/65b75137b4e463f76af2b8c89cf1c09a724baa04) | zink: disable implicit sync handling for qcom proprietary | Vulkan 1.4.352 |
 | [v26.2.0-20260520-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r5) | 2026-05-20 | [`8b4ea1d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b4ea1d6581293a794e2528f824871cf90921de3) | pan/kmod: Don't pass drmVersionPtr objects around | Vulkan 1.4.350 |
 | [v26.2.0-20260520-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r4) | 2026-05-20 | [`5bbde67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bbde670dd6414882b88dae404f73dd947cc0755) | panvk/csf: Allow 256 layers per tiler descriptor on v14+ | Vulkan 1.4.350 |
-| [v26.2.0-20260520-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r3) | 2026-05-20 | [`a1c3715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1c371517cdbd7bf3088c5aeab29ca1209610701) | broadcom/ci: update kernel for nightly runs | Vulkan 1.4.350 |
-| [v26.2.0-20260520-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r2) | 2026-05-20 | [`992b357`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/992b35704efc027844d84bd582a6e76d98d34c3b) | nir/instr_set: Consider normalization when calculating hash | Vulkan 1.4.350 |
-| [v26.2.0-20260520](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520) | 2026-05-20 | [`26752e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/26752e00b516c154929115ea459f00d1ef15fe74) | gfxstream: remove android conditioning for sampler extensions | Vulkan 1.4.350 |
 <!-- RECENT_BUILDS_END -->
 
 ---
