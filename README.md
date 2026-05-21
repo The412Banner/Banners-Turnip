@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`7b286ab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7b286abe33679ea23b85303b2ab0aa72d3997257) |
+| **Commit** | [`952b984`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/952b984ecaa95f5beef1f059f0759489cfe2f278) |
 | **Commit date** | 2026-05-21 |
-| **Commit title** | nir: Add print for other cmat_description slots |
+| **Commit title** | freedreno/common: Fix X2-90, add X2-85 |
 | **Build date** | 20260521 |
-| **Release** | [v26.2.0-20260521-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r6) |
+| **Release** | [v26.2.0-20260521-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260521-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r7) | 2026-05-21 | [`952b984`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/952b984ecaa95f5beef1f059f0759489cfe2f278) | freedreno/common: Fix X2-90, add X2-85 | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r6) | 2026-05-21 | [`7b286ab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7b286abe33679ea23b85303b2ab0aa72d3997257) | nir: Add print for other cmat_description slots | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r5) | 2026-05-21 | [`821a812`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/821a812c7d9758f5dcaa46d9997adddbbac95f25) | brw: Don't directly use regs_read/regs_written/size_read as bound for non-trivial loops | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r4) | 2026-05-21 | [`d445a95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d445a950fd0a620a224f71af06d73ac51b86af62) | docs/zink: add maint5 to the list of required extensions | Vulkan 1.4.352 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260521-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r2) | 2026-05-21 | [`b1c7222`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1c72223af95281c35e95c70bc7111e9223e2719) | kk: Support VK_KHR_unified_image_layouts | Vulkan 1.4.352 |
 | [v26.2.0-20260521](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521) | 2026-05-21 | [`ca88f85`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca88f851c8b3f4063c15da725d35720ba524dbba) | ac/nir/lower_tex_coord: basic lower tex coord test | Vulkan 1.4.352 |
 | [v26.2.0-20260520-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r8) | 2026-05-20 | [`18ba81e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/18ba81e5b635be0b901e6cdb7e5c8c14a9b406e4) | Uprev Piglit to 6fd29fe44f8857b876a67bee962919635f22ecc8 | Vulkan 1.4.352 |
-| [v26.2.0-20260520-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260520-r7) | 2026-05-20 | [`7eba054`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7eba054c5ba82b8a2366e5a340ec0b6376cc314c) | anv: Add compute only divergent atomics fusion optimization for Blender Blender uses atomic operations as part of its virtual shadow mapping implementation. Virtual shadow mapping page tagging in compute shaders benefits from divergent atomics fusion, while fragment shaders doing the atomic raster step in general have worse performance with this optimization turned on. Thus, an option is added to only apply divergent atomics fusion to compute shaders in ANV, and this option is enabled for Blender. | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---
