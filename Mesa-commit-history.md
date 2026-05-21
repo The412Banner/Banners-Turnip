@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260521-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r4) | 2026-05-21 | [`d445a95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d445a950fd0a620a224f71af06d73ac51b86af62) | docs/zink: add maint5 to the list of required extensions | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r3) | 2026-05-21 | [`91cf0a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/91cf0a6e6d2dc522bc3e5b2c726d455669b88afc) | radv: use the new generation script for drirc | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r2) | 2026-05-21 | [`b1c7222`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b1c72223af95281c35e95c70bc7111e9223e2719) | kk: Support VK_KHR_unified_image_layouts | Vulkan 1.4.352 |
 | [v26.2.0-20260521](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521) | 2026-05-21 | [`ca88f85`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca88f851c8b3f4063c15da725d35720ba524dbba) | ac/nir/lower_tex_coord: basic lower tex coord test | Vulkan 1.4.352 |
