@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`998e2a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/998e2a70e7d7585cb821a1a32d845ed413a3a0dc) |
+| **Commit** | [`fd11e4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd11e4b4d31adde062b9f19a8eec82f06f832f00) |
 | **Commit date** | 2026-05-22 |
-| **Commit title** | radeonsi: Add RADEON_FLUSH_FORCE and use it to force flush |
+| **Commit title** | intel: switch shader hash to 64bit value |
 | **Build date** | 20260522 |
-| **Release** | [v26.2.0-20260522-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r4) |
+| **Release** | [v26.2.0-20260522-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260522-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r5) | 2026-05-22 | [`fd11e4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd11e4b4d31adde062b9f19a8eec82f06f832f00) | intel: switch shader hash to 64bit value | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r4) | 2026-05-22 | [`998e2a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/998e2a70e7d7585cb821a1a32d845ed413a3a0dc) | radeonsi: Add RADEON_FLUSH_FORCE and use it to force flush | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r2) | 2026-05-22 | [`e46b430`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e46b43080bbe6f0c6aac9a748eec9712e1cb0d9e) | iris: Simplify code that calls brw/jay | Vulkan 1.4.352 |
 | [v26.2.0-20260522](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522) | 2026-05-22 | [`73382c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73382c8126356c0344b7323d7555d8e4ba7af7db) | brw/rt: Update committed hit leaf type properly | Vulkan 1.4.352 |
@@ -95,7 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260521-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r6) | 2026-05-21 | [`7b286ab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7b286abe33679ea23b85303b2ab0aa72d3997257) | nir: Add print for other cmat_description slots | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r5) | 2026-05-21 | [`821a812`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/821a812c7d9758f5dcaa46d9997adddbbac95f25) | brw: Don't directly use regs_read/regs_written/size_read as bound for non-trivial loops | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r4) | 2026-05-21 | [`d445a95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d445a950fd0a620a224f71af06d73ac51b86af62) | docs/zink: add maint5 to the list of required extensions | Vulkan 1.4.352 |
-| [v26.2.0-20260521-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r3) | 2026-05-21 | [`91cf0a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/91cf0a6e6d2dc522bc3e5b2c726d455669b88afc) | radv: use the new generation script for drirc | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---

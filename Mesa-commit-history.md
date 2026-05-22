@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260522-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r5) | 2026-05-22 | [`fd11e4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd11e4b4d31adde062b9f19a8eec82f06f832f00) | intel: switch shader hash to 64bit value | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r4) | 2026-05-22 | [`998e2a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/998e2a70e7d7585cb821a1a32d845ed413a3a0dc) | radeonsi: Add RADEON_FLUSH_FORCE and use it to force flush | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r3) | 2026-05-22 | [`998e2a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/998e2a70e7d7585cb821a1a32d845ed413a3a0dc) | radeonsi: Add RADEON_FLUSH_FORCE and use it to force flush | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r2) | 2026-05-22 | [`e46b430`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e46b43080bbe6f0c6aac9a748eec9712e1cb0d9e) | iris: Simplify code that calls brw/jay | Vulkan 1.4.352 |
