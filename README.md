@@ -77,7 +77,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | **Commit date** | 2026-05-22 |
 | **Commit title** | radeonsi: Add RADEON_FLUSH_FORCE and use it to force flush |
 | **Build date** | 20260522 |
-| **Release** | [v26.2.0-20260522-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r3) |
+| **Release** | [v26.2.0-20260522-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,7 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.2.0-20260522-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r3) | 2026-05-22 | [`998e2a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/998e2a70e7d7585cb821a1a32d845ed413a3a0dc) | radeonsi: Add RADEON_FLUSH_FORCE and use it to force flush | Vulkan 1.4.352 |
+| [v26.2.0-20260522-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r4) | 2026-05-22 | [`998e2a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/998e2a70e7d7585cb821a1a32d845ed413a3a0dc) | radeonsi: Add RADEON_FLUSH_FORCE and use it to force flush | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r2) | 2026-05-22 | [`e46b430`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e46b43080bbe6f0c6aac9a748eec9712e1cb0d9e) | iris: Simplify code that calls brw/jay | Vulkan 1.4.352 |
 | [v26.2.0-20260522](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522) | 2026-05-22 | [`73382c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73382c8126356c0344b7323d7555d8e4ba7af7db) | brw/rt: Update committed hit leaf type properly | Vulkan 1.4.352 |
 | [v26.2.0-20260521-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260521-r8) | 2026-05-21 | [`3522f0f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3522f0f24c98a3f9bd04ee74c7dfb9efc4675d51) | llvmpipe: stub other functions inside compute shaders for ORCJIT | Vulkan 1.4.352 |
