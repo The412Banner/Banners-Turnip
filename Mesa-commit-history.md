@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260522-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r8) | 2026-05-22 | [`d74a03a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d74a03a70d8e978423dc0d9339b4a55a291e5b92) | anv: Flush previous aux-mode changes | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r7) | 2026-05-22 | [`d90cbf2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d90cbf263fbc19dfa4e47a52c836f38e6a57bcf7) | panvk/csf: Inline the SPD addr helpers | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r6) | 2026-05-22 | [`319011d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/319011d690eb85e5d3af5840e472a39e46f6f96a) | zink: stop find_good_mod from mutating ici in place | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r5) | 2026-05-22 | [`fd11e4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd11e4b4d31adde062b9f19a8eec82f06f832f00) | intel: switch shader hash to 64bit value | Vulkan 1.4.352 |
