@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260523](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260523) | 2026-05-23 | [`3ded848`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3ded84870f6cb693b7b862ace4e2dbe7705874a7) | spirv: Stop warning about ignored invalid ArrayStride decorations | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r8) | 2026-05-22 | [`d74a03a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d74a03a70d8e978423dc0d9339b4a55a291e5b92) | anv: Flush previous aux-mode changes | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r7) | 2026-05-22 | [`d90cbf2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d90cbf263fbc19dfa4e47a52c836f38e6a57bcf7) | panvk/csf: Inline the SPD addr helpers | Vulkan 1.4.352 |
 | [v26.2.0-20260522-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r6) | 2026-05-22 | [`319011d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/319011d690eb85e5d3af5840e472a39e46f6f96a) | zink: stop find_good_mod from mutating ici in place | Vulkan 1.4.352 |
