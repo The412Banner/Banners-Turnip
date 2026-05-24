@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`e0eefe5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e0eefe5999929039480de8515c2fe26f4ad6402c) |
-| **Commit date** | 2026-05-23 |
-| **Commit title** | gfxstream: codegen: drop const from let-param scalar cast |
-| **Build date** | 20260523 |
-| **Release** | [v26.2.0-20260523-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260523-r2) |
+| **Commit** | [`b8fa4fd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b8fa4fd2581166e5fcbaef7471dad11556572d4f) |
+| **Commit date** | 2026-05-24 |
+| **Commit title** | nak: Allow YY swizzle for SM20 and SM32 asserts |
+| **Build date** | 20260524 |
+| **Release** | [v26.2.0-20260524](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260524) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,14 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.2.0-20260523-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260523-r2) | 2026-05-23 | [`e0eefe5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e0eefe5999929039480de8515c2fe26f4ad6402c) | gfxstream: codegen: drop const from let-param scalar cast | Vulkan 1.4.352 |
-| [v26.2.0-20260523](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260523) | 2026-05-23 | [`3ded848`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3ded84870f6cb693b7b862ace4e2dbe7705874a7) | spirv: Stop warning about ignored invalid ArrayStride decorations | Vulkan 1.4.352 |
-| [v26.2.0-20260522-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r8) | 2026-05-22 | [`d74a03a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d74a03a70d8e978423dc0d9339b4a55a291e5b92) | anv: Flush previous aux-mode changes | Vulkan 1.4.352 |
-| [v26.2.0-20260522-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r7) | 2026-05-22 | [`d90cbf2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d90cbf263fbc19dfa4e47a52c836f38e6a57bcf7) | panvk/csf: Inline the SPD addr helpers | Vulkan 1.4.352 |
-| [v26.2.0-20260522-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r6) | 2026-05-22 | [`319011d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/319011d690eb85e5d3af5840e472a39e46f6f96a) | zink: stop find_good_mod from mutating ici in place | Vulkan 1.4.352 |
-| [v26.2.0-20260522-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r5) | 2026-05-22 | [`fd11e4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd11e4b4d31adde062b9f19a8eec82f06f832f00) | intel: switch shader hash to 64bit value | Vulkan 1.4.352 |
-| [v26.2.0-20260522-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r4) | 2026-05-22 | [`998e2a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/998e2a70e7d7585cb821a1a32d845ed413a3a0dc) | radeonsi: Add RADEON_FLUSH_FORCE and use it to force flush | Vulkan 1.4.352 |
-| [v26.2.0-20260522-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260522-r2) | 2026-05-22 | [`e46b430`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e46b43080bbe6f0c6aac9a748eec9712e1cb0d9e) | iris: Simplify code that calls brw/jay | Vulkan 1.4.352 |
+| [v26.2.0-20260524](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260524) | 2026-05-24 | [`b8fa4fd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b8fa4fd2581166e5fcbaef7471dad11556572d4f) | nak: Allow YY swizzle for SM20 and SM32 asserts | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---
