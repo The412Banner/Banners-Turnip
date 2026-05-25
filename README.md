@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`b8fa4fd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b8fa4fd2581166e5fcbaef7471dad11556572d4f) |
-| **Commit date** | 2026-05-24 |
-| **Commit title** | nak: Allow YY swizzle for SM20 and SM32 asserts |
-| **Build date** | 20260524 |
-| **Release** | [v26.2.0-20260524](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260524) |
+| **Commit** | [`64eba87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64eba87a676ddb294f0b3eafc4325ea55343603e) |
+| **Commit date** | 2026-05-25 |
+| **Commit title** | rusticl: more intel compat stuff |
+| **Build date** | 20260525 |
+| **Release** | [v26.2.0-20260525](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260525](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525) | 2026-05-25 | [`64eba87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64eba87a676ddb294f0b3eafc4325ea55343603e) | rusticl: more intel compat stuff | Vulkan 1.4.352 |
 | [v26.2.0-20260524](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260524) | 2026-05-24 | [`b8fa4fd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b8fa4fd2581166e5fcbaef7471dad11556572d4f) | nak: Allow YY swizzle for SM20 and SM32 asserts | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
