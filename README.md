@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`22f61a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/22f61a4eb5f6c8bb336667bf2241511474e1ce22) |
+| **Commit** | [`e2631ec`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2631eca0f5ffa85529e6076ea51248e1a5432c5) |
 | **Commit date** | 2026-05-25 |
-| **Commit title** | kk: Fix pre-compiled compute grid size |
+| **Commit title** | radv: close the local fd immediately after the winsys is created |
 | **Build date** | 20260525 |
-| **Release** | [v26.2.0-20260525-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r3) |
+| **Release** | [v26.2.0-20260525-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260525-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r4) | 2026-05-25 | [`e2631ec`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2631eca0f5ffa85529e6076ea51248e1a5432c5) | radv: close the local fd immediately after the winsys is created | Vulkan 1.4.352 |
 | [v26.2.0-20260525-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r3) | 2026-05-25 | [`22f61a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/22f61a4eb5f6c8bb336667bf2241511474e1ce22) | kk: Fix pre-compiled compute grid size | Vulkan 1.4.352 |
 | [v26.2.0-20260525-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r2) | 2026-05-25 | [`37faa2c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/37faa2c56f82f0da78502e443de9d0e6b74897e8) | kk: Fix some missed NIR debug asserts | Vulkan 1.4.352 |
 | [v26.2.0-20260525](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525) | 2026-05-25 | [`64eba87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64eba87a676ddb294f0b3eafc4325ea55343603e) | rusticl: more intel compat stuff | Vulkan 1.4.352 |
