@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260526-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r2) | 2026-05-26 | [`ff6f82c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ff6f82c83474d6dd4ecb3cdd342ada56a807c9af) | Uprev ANGLE to a793c75398c746f3f8a08fd2e74dfc4dff07a0c9 | Vulkan 1.4.352 |
 | [v26.2.0-20260526](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526) | 2026-05-25 | [`af8c3eb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af8c3eb3d6537eeda79258dd9fcc4178933d2ad8) | ac/nir: Fix SMEM workaround with emulated RT | Vulkan 1.4.352 |
 | [v26.2.0-20260525-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r6) | 2026-05-25 | [`7f2130c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f2130c86e17f936be66fa6ad8eda85746b5fc6b) | nir/opt_algebraic: add more ffract/ffloor/ftrunc/f2u/f2i patterns | Vulkan 1.4.352 |
 | [v26.2.0-20260525-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r5) | 2026-05-25 | [`e824c30`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e824c30460449da57a67919d606415cf3e17cd87) | mesa/st: remove redundant has_hw_atomics from st_context | Vulkan 1.4.352 |
