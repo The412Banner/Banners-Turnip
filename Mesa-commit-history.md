@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260526-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r5) | 2026-05-26 | [`7683d55`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7683d552be07d149ee34a7f9be242e441659b26c) | docs: Add many missing features | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r4) | 2026-05-26 | [`f0a6360`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a6360e0547dd9863586a7b3bfc79609bd8d65b) | vulkan/wsi/win32: Prefer the more popular surface format on Windows | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r3) | 2026-05-26 | [`14be25c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14be25c5fa88695282dbb6b3efa3541d0e9eb748) | tu: Merge tu_image_init and tu_image_update_layout | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r2) | 2026-05-26 | [`ff6f82c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ff6f82c83474d6dd4ecb3cdd342ada56a807c9af) | Uprev ANGLE to a793c75398c746f3f8a08fd2e74dfc4dff07a0c9 | Vulkan 1.4.352 |
