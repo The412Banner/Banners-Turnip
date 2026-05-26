@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`14be25c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14be25c5fa88695282dbb6b3efa3541d0e9eb748) |
+| **Commit** | [`f0a6360`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a6360e0547dd9863586a7b3bfc79609bd8d65b) |
 | **Commit date** | 2026-05-26 |
-| **Commit title** | tu: Merge tu_image_init and tu_image_update_layout |
+| **Commit title** | vulkan/wsi/win32: Prefer the more popular surface format on Windows |
 | **Build date** | 20260526 |
-| **Release** | [v26.2.0-20260526-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r3) |
+| **Release** | [v26.2.0-20260526-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,12 +87,12 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260526-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r4) | 2026-05-26 | [`f0a6360`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a6360e0547dd9863586a7b3bfc79609bd8d65b) | vulkan/wsi/win32: Prefer the more popular surface format on Windows | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r3) | 2026-05-26 | [`14be25c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14be25c5fa88695282dbb6b3efa3541d0e9eb748) | tu: Merge tu_image_init and tu_image_update_layout | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r2) | 2026-05-26 | [`ff6f82c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ff6f82c83474d6dd4ecb3cdd342ada56a807c9af) | Uprev ANGLE to a793c75398c746f3f8a08fd2e74dfc4dff07a0c9 | Vulkan 1.4.352 |
 | [v26.2.0-20260526](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526) | 2026-05-26 | [`af8c3eb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af8c3eb3d6537eeda79258dd9fcc4178933d2ad8) | ac/nir: Fix SMEM workaround with emulated RT | Vulkan 1.4.352 |
 | [v26.2.0-20260525-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r6) | 2026-05-25 | [`7f2130c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f2130c86e17f936be66fa6ad8eda85746b5fc6b) | nir/opt_algebraic: add more ffract/ffloor/ftrunc/f2u/f2i patterns | Vulkan 1.4.352 |
 | [v26.2.0-20260525-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r5) | 2026-05-25 | [`e824c30`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e824c30460449da57a67919d606415cf3e17cd87) | mesa/st: remove redundant has_hw_atomics from st_context | Vulkan 1.4.352 |
-| [v26.2.0-20260525-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r4) | 2026-05-25 | [`e2631ec`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2631eca0f5ffa85529e6076ea51248e1a5432c5) | radv: close the local fd immediately after the winsys is created | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---
