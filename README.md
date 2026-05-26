@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`a1d6a34`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1d6a341541e5170c7dcd147fd0a535a3b5b074a) |
+| **Commit** | [`bec5d3f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bec5d3fff51702fdf76cc397fec2b1a89a37a698) |
 | **Commit date** | 2026-05-26 |
-| **Commit title** | panvk: fix executable properties handling for IDVS varying shaders |
+| **Commit title** | anv: Add workaround for vertex explosions in Split Fiction |
 | **Build date** | 20260526 |
-| **Release** | [v26.2.0-20260526-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r6) |
+| **Release** | [v26.2.0-20260526-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,13 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260526-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r7) | 2026-05-26 | [`bec5d3f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bec5d3fff51702fdf76cc397fec2b1a89a37a698) | anv: Add workaround for vertex explosions in Split Fiction | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r6) | 2026-05-26 | [`a1d6a34`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1d6a341541e5170c7dcd147fd0a535a3b5b074a) | panvk: fix executable properties handling for IDVS varying shaders | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r5) | 2026-05-26 | [`7683d55`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7683d552be07d149ee34a7f9be242e441659b26c) | docs: Add many missing features | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r4) | 2026-05-26 | [`f0a6360`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a6360e0547dd9863586a7b3bfc79609bd8d65b) | vulkan/wsi/win32: Prefer the more popular surface format on Windows | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r3) | 2026-05-26 | [`14be25c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14be25c5fa88695282dbb6b3efa3541d0e9eb748) | tu: Merge tu_image_init and tu_image_update_layout | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r2) | 2026-05-26 | [`ff6f82c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ff6f82c83474d6dd4ecb3cdd342ada56a807c9af) | Uprev ANGLE to a793c75398c746f3f8a08fd2e74dfc4dff07a0c9 | Vulkan 1.4.352 |
 | [v26.2.0-20260526](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526) | 2026-05-26 | [`af8c3eb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af8c3eb3d6537eeda79258dd9fcc4178933d2ad8) | ac/nir: Fix SMEM workaround with emulated RT | Vulkan 1.4.352 |
-| [v26.2.0-20260525-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260525-r6) | 2026-05-25 | [`7f2130c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f2130c86e17f936be66fa6ad8eda85746b5fc6b) | nir/opt_algebraic: add more ffract/ffloor/ftrunc/f2u/f2i patterns | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---

@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260526-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r7) | 2026-05-26 | [`bec5d3f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bec5d3fff51702fdf76cc397fec2b1a89a37a698) | anv: Add workaround for vertex explosions in Split Fiction | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r6) | 2026-05-26 | [`a1d6a34`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1d6a341541e5170c7dcd147fd0a535a3b5b074a) | panvk: fix executable properties handling for IDVS varying shaders | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r5) | 2026-05-26 | [`7683d55`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7683d552be07d149ee34a7f9be242e441659b26c) | docs: Add many missing features | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r4) | 2026-05-26 | [`f0a6360`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a6360e0547dd9863586a7b3bfc79609bd8d65b) | vulkan/wsi/win32: Prefer the more popular surface format on Windows | Vulkan 1.4.352 |
