@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`a5ade6f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5ade6f8144ff5a3304ca3bafbc37c821f007818) |
+| **Commit** | [`4c03db9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c03db9ec832da2d7de171cbe3e83821ac88819a) |
 | **Commit date** | 2026-05-27 |
-| **Commit title** | radeonsi/mm: Disable variable slices when bad input is found |
+| **Commit title** | tu: Disable 128-wide subgroups on No Man's Sky. |
 | **Build date** | 20260527 |
-| **Release** | [v26.2.0-20260527-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r3) |
+| **Release** | [v26.2.0-20260527-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,13 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260527-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r4) | 2026-05-27 | [`4c03db9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c03db9ec832da2d7de171cbe3e83821ac88819a) | tu: Disable 128-wide subgroups on No Man's Sky. | Vulkan 1.4.352 |
 | [v26.2.0-20260527-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r3) | 2026-05-27 | [`a5ade6f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5ade6f8144ff5a3304ca3bafbc37c821f007818) | radeonsi/mm: Disable variable slices when bad input is found | Vulkan 1.4.352 |
 | [v26.2.0-20260527-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r2) | 2026-05-27 | [`617d481`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/617d4810c1c3c7d430873a23185eedbefd40d558) | pan/bi: Fix function temp lowering with 64-bit pointers | Vulkan 1.4.352 |
 | [v26.2.0-20260527](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527) | 2026-05-27 | [`8444977`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8444977b875da5480fb654ae3f4e7b8f3332c75d) | radv: rename master_fd to wsi_master_fd | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r7) | 2026-05-26 | [`bec5d3f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bec5d3fff51702fdf76cc397fec2b1a89a37a698) | anv: Add workaround for vertex explosions in Split Fiction | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r6) | 2026-05-26 | [`a1d6a34`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1d6a341541e5170c7dcd147fd0a535a3b5b074a) | panvk: fix executable properties handling for IDVS varying shaders | Vulkan 1.4.352 |
 | [v26.2.0-20260526-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r5) | 2026-05-26 | [`7683d55`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7683d552be07d149ee34a7f9be242e441659b26c) | docs: Add many missing features | Vulkan 1.4.352 |
-| [v26.2.0-20260526-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260526-r4) | 2026-05-26 | [`f0a6360`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a6360e0547dd9863586a7b3bfc79609bd8d65b) | vulkan/wsi/win32: Prefer the more popular surface format on Windows | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---

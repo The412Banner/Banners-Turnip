@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260527-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r4) | 2026-05-27 | [`4c03db9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c03db9ec832da2d7de171cbe3e83821ac88819a) | tu: Disable 128-wide subgroups on No Man's Sky. | Vulkan 1.4.352 |
 | [v26.2.0-20260527-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r3) | 2026-05-27 | [`a5ade6f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5ade6f8144ff5a3304ca3bafbc37c821f007818) | radeonsi/mm: Disable variable slices when bad input is found | Vulkan 1.4.352 |
 | [v26.2.0-20260527-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r2) | 2026-05-27 | [`617d481`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/617d4810c1c3c7d430873a23185eedbefd40d558) | pan/bi: Fix function temp lowering with 64-bit pointers | Vulkan 1.4.352 |
 | [v26.2.0-20260527](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527) | 2026-05-27 | [`8444977`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8444977b875da5480fb654ae3f4e7b8f3332c75d) | radv: rename master_fd to wsi_master_fd | Vulkan 1.4.352 |
