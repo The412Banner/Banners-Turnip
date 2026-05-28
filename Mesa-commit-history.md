@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260528-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528-r3) | 2026-05-28 | [`a5d34f8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5d34f85f83da516af5c72fcbfadc6bf98b43754) | radv/sqtt: forward zero-submit-count vkQueueSubmit2 for SQTT capture | Vulkan 1.4.352 |
 | [v26.2.0-20260528-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528-r2) | 2026-05-28 | [`969aaf3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/969aaf30614e1899ae7afe25e1e65ab91adae268) | Update docs regarding anv shader dumps Reviewed-by: Lionel Landwerlin <lionel.g.landwerlin@intel.com> | Vulkan 1.4.352 |
 | [v26.2.0-20260528](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528) | 2026-05-27 | [`e5d9cdb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5d9cdb62afffdb4156079544ff7af6cd502393f) | radeonsi/tests: add an ordered append bandwidth test | Vulkan 1.4.352 |
 | [v26.2.0-20260527-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r5) | 2026-05-27 | [`addd09f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/addd09fb764a437ba45187f8884042396a197529) | lavapipe: correctly disable depth/stencil in secondaries | Vulkan 1.4.352 |
