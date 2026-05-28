@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`e5d9cdb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5d9cdb62afffdb4156079544ff7af6cd502393f) |
-| **Commit date** | 2026-05-27 |
-| **Commit title** | radeonsi/tests: add an ordered append bandwidth test |
+| **Commit** | [`969aaf3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/969aaf30614e1899ae7afe25e1e65ab91adae268) |
+| **Commit date** | 2026-05-28 |
+| **Commit title** | Update docs regarding anv shader dumps Reviewed-by: Lionel Landwerlin <lionel.g.landwerlin@intel.com> |
 | **Build date** | 20260528 |
-| **Release** | [v26.2.0-20260528](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528) |
+| **Release** | [v26.2.0-20260528-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,12 +87,12 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260528-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528-r2) | 2026-05-28 | [`969aaf3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/969aaf30614e1899ae7afe25e1e65ab91adae268) | Update docs regarding anv shader dumps Reviewed-by: Lionel Landwerlin <lionel.g.landwerlin@intel.com> | Vulkan 1.4.352 |
 | [v26.2.0-20260528](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528) | 2026-05-28 | [`e5d9cdb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5d9cdb62afffdb4156079544ff7af6cd502393f) | radeonsi/tests: add an ordered append bandwidth test | Vulkan 1.4.352 |
 | [v26.2.0-20260527-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r5) | 2026-05-27 | [`addd09f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/addd09fb764a437ba45187f8884042396a197529) | lavapipe: correctly disable depth/stencil in secondaries | Vulkan 1.4.352 |
 | [v26.2.0-20260527-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r4) | 2026-05-27 | [`4c03db9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c03db9ec832da2d7de171cbe3e83821ac88819a) | tu: Disable 128-wide subgroups on No Man's Sky. | Vulkan 1.4.352 |
 | [v26.2.0-20260527-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r3) | 2026-05-27 | [`a5ade6f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5ade6f8144ff5a3304ca3bafbc37c821f007818) | radeonsi/mm: Disable variable slices when bad input is found | Vulkan 1.4.352 |
 | [v26.2.0-20260527-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527-r2) | 2026-05-27 | [`617d481`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/617d4810c1c3c7d430873a23185eedbefd40d558) | pan/bi: Fix function temp lowering with 64-bit pointers | Vulkan 1.4.352 |
-| [v26.2.0-20260527](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260527) | 2026-05-27 | [`8444977`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8444977b875da5480fb654ae3f4e7b8f3332c75d) | radv: rename master_fd to wsi_master_fd | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---
