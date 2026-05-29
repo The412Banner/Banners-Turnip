@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260529-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r5) | 2026-05-29 | [`bef2148`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bef2148ab7ab10c7b2713baf827600168cd5db30) | llvmpipe: Fix sparse binding large areas | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r4) | 2026-05-29 | [`c501f3b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c501f3b4c966555c4b8c6a12df3ea0a0e3a0070a) | pvr: re-enable {EXT,KHR}_index_type_uint8 | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r3) | 2026-05-29 | [`76fdc60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76fdc606c8d6d486e5dda89398e04921cfbed76a) | ac/nir,radv: lower task payload to zeroes when the mesh shader has no task | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r2) | 2026-05-29 | [`eb17e7b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/eb17e7b102acf6edb063a6e1ab827c90cbe9cf9b) | util: rust: minor fixups | Vulkan 1.4.352 |
