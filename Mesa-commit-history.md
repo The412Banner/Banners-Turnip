@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260529-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r7) | 2026-05-29 | [`2263576`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2263576f59a0fa33fb051c4bcf9bc44cbfabe865) | v3dv: close display_fd on incompatible_driver path | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r6) | 2026-05-29 | [`2a60e9e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2a60e9e7697b59750ca15dcc4f292bb23ccdde55) | intel/mda: Change the default output directory | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r5) | 2026-05-29 | [`bef2148`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bef2148ab7ab10c7b2713baf827600168cd5db30) | llvmpipe: Fix sparse binding large areas | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r4) | 2026-05-29 | [`c501f3b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c501f3b4c966555c4b8c6a12df3ea0a0e3a0070a) | pvr: re-enable {EXT,KHR}_index_type_uint8 | Vulkan 1.4.352 |
