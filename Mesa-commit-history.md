@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260529-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r4) | 2026-05-29 | [`c501f3b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c501f3b4c966555c4b8c6a12df3ea0a0e3a0070a) | pvr: re-enable {EXT,KHR}_index_type_uint8 | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r3) | 2026-05-29 | [`76fdc60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76fdc606c8d6d486e5dda89398e04921cfbed76a) | ac/nir,radv: lower task payload to zeroes when the mesh shader has no task | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r2) | 2026-05-29 | [`eb17e7b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/eb17e7b102acf6edb063a6e1ab827c90cbe9cf9b) | util: rust: minor fixups | Vulkan 1.4.352 |
 | [v26.2.0-20260529](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529) | 2026-05-28 | [`825df24`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/825df24023a3cf1af2758786f6e18f1d712e1470) | nvk: Implement VK_EXT_shader_atomic_float | Vulkan 1.4.352 |

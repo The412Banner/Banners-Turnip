@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`76fdc60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76fdc606c8d6d486e5dda89398e04921cfbed76a) |
+| **Commit** | [`c501f3b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c501f3b4c966555c4b8c6a12df3ea0a0e3a0070a) |
 | **Commit date** | 2026-05-29 |
-| **Commit title** | ac/nir,radv: lower task payload to zeroes when the mesh shader has no task |
+| **Commit title** | pvr: re-enable {EXT,KHR}_index_type_uint8 |
 | **Build date** | 20260529 |
-| **Release** | [v26.2.0-20260529-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r3) |
+| **Release** | [v26.2.0-20260529-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260529-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r4) | 2026-05-29 | [`c501f3b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c501f3b4c966555c4b8c6a12df3ea0a0e3a0070a) | pvr: re-enable {EXT,KHR}_index_type_uint8 | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r3) | 2026-05-29 | [`76fdc60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76fdc606c8d6d486e5dda89398e04921cfbed76a) | ac/nir,radv: lower task payload to zeroes when the mesh shader has no task | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r2) | 2026-05-29 | [`eb17e7b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/eb17e7b102acf6edb063a6e1ab827c90cbe9cf9b) | util: rust: minor fixups | Vulkan 1.4.352 |
 | [v26.2.0-20260529](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529) | 2026-05-29 | [`825df24`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/825df24023a3cf1af2758786f6e18f1d712e1470) | nvk: Implement VK_EXT_shader_atomic_float | Vulkan 1.4.352 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260528-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528-r5) | 2026-05-28 | [`6de0025`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6de00252ff769445a8141b103f9f6f0496797d35) | tu: Fix TU_CMD_DIRTY_DRAW_STATE value collision | Vulkan 1.4.352 |
 | [v26.2.0-20260528-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528-r4) | 2026-05-28 | [`feb9ac1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/feb9ac168b4fa5411aefea06e207c76b3bf862f5) | jay: allow npot operands in RA | Vulkan 1.4.352 |
 | [v26.2.0-20260528-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528-r3) | 2026-05-28 | [`a5d34f8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5d34f85f83da516af5c72fcbfadc6bf98b43754) | radv/sqtt: forward zero-submit-count vkQueueSubmit2 for SQTT capture | Vulkan 1.4.352 |
-| [v26.2.0-20260528-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528-r2) | 2026-05-28 | [`969aaf3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/969aaf30614e1899ae7afe25e1e65ab91adae268) | Update docs regarding anv shader dumps Reviewed-by: Lionel Landwerlin <lionel.g.landwerlin@intel.com> | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---
