@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`2263576`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2263576f59a0fa33fb051c4bcf9bc44cbfabe865) |
+| **Commit** | [`e24dc5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e24dc5bd1e7fe6101bdc866fb16a15a8fcae1aae) |
 | **Commit date** | 2026-05-29 |
-| **Commit title** | v3dv: close display_fd on incompatible_driver path |
+| **Commit title** | anv: fake VK_EXT_image_compression_control on Xe2+ |
 | **Build date** | 20260529 |
-| **Release** | [v26.2.0-20260529-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r7) |
+| **Release** | [v26.2.0-20260529-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260529-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r8) | 2026-05-29 | [`e24dc5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e24dc5bd1e7fe6101bdc866fb16a15a8fcae1aae) | anv: fake VK_EXT_image_compression_control on Xe2+ | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r7) | 2026-05-29 | [`2263576`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2263576f59a0fa33fb051c4bcf9bc44cbfabe865) | v3dv: close display_fd on incompatible_driver path | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r6) | 2026-05-29 | [`2a60e9e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2a60e9e7697b59750ca15dcc4f292bb23ccdde55) | intel/mda: Change the default output directory | Vulkan 1.4.352 |
 | [v26.2.0-20260529-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r5) | 2026-05-29 | [`bef2148`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bef2148ab7ab10c7b2713baf827600168cd5db30) | llvmpipe: Fix sparse binding large areas | Vulkan 1.4.352 |
