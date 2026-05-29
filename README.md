@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`825df24`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/825df24023a3cf1af2758786f6e18f1d712e1470) |
-| **Commit date** | 2026-05-28 |
-| **Commit title** | nvk: Implement VK_EXT_shader_atomic_float |
+| **Commit** | [`eb17e7b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/eb17e7b102acf6edb063a6e1ab827c90cbe9cf9b) |
+| **Commit date** | 2026-05-29 |
+| **Commit title** | util: rust: minor fixups |
 | **Build date** | 20260529 |
-| **Release** | [v26.2.0-20260529](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529) |
+| **Release** | [v26.2.0-20260529-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260529-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r2) | 2026-05-29 | [`eb17e7b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/eb17e7b102acf6edb063a6e1ab827c90cbe9cf9b) | util: rust: minor fixups | Vulkan 1.4.352 |
 | [v26.2.0-20260529](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529) | 2026-05-29 | [`825df24`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/825df24023a3cf1af2758786f6e18f1d712e1470) | nvk: Implement VK_EXT_shader_atomic_float | Vulkan 1.4.352 |
 | [v26.2.0-20260528-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528-r6) | 2026-05-28 | [`23f94c6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/23f94c692cb1d41a2193a80fa531922d386e8d5d) | freedreno: Update A6XX_PC_MODE_CNTL definition and values | Vulkan 1.4.352 |
 | [v26.2.0-20260528-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260528-r5) | 2026-05-28 | [`6de0025`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6de00252ff769445a8141b103f9f6f0496797d35) | tu: Fix TU_CMD_DIRTY_DRAW_STATE value collision | Vulkan 1.4.352 |
