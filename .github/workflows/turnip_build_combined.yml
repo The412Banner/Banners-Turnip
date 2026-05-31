@@ -95,16 +95,25 @@ jobs:
 
       - name: Save release info
         if: matrix.variant == 'regular'
+        env:
+          RI_TAG: ${{ steps.info.outputs.tag }}
+          RI_MESA_VERSION: ${{ steps.info.outputs.mesa_version }}
+          RI_BUILD_DATE: ${{ steps.info.outputs.build_date }}
+          RI_GITHASH: ${{ steps.info.outputs.githash }}
+          RI_GITHASH_FULL: ${{ steps.info.outputs.githash_full }}
+          RI_COMMIT_DATE: ${{ steps.info.outputs.commit_date }}
+          RI_COMMIT_TITLE: ${{ steps.info.outputs.commit_title }}
+          RI_VULKAN_VERSION: ${{ steps.info.outputs.vulkan_version }}
         run: |
           mkdir -p release-info
-          echo "${{ steps.info.outputs.tag }}"          > release-info/tag.txt
-          echo "${{ steps.info.outputs.mesa_version }}" > release-info/mesa_version.txt
-          echo "${{ steps.info.outputs.build_date }}"   > release-info/build_date.txt
-          echo "${{ steps.info.outputs.githash }}"      > release-info/githash.txt
-          echo "${{ steps.info.outputs.githash_full }}" > release-info/githash_full.txt
-          echo "${{ steps.info.outputs.commit_date }}"  > release-info/commit_date.txt
-          echo "${{ steps.info.outputs.commit_title }}"    > release-info/commit_title.txt
-          echo "${{ steps.info.outputs.vulkan_version }}"  > release-info/vulkan_version.txt
+          printf '%s\n' "$RI_TAG"          > release-info/tag.txt
+          printf '%s\n' "$RI_MESA_VERSION" > release-info/mesa_version.txt
+          printf '%s\n' "$RI_BUILD_DATE"   > release-info/build_date.txt
+          printf '%s\n' "$RI_GITHASH"      > release-info/githash.txt
+          printf '%s\n' "$RI_GITHASH_FULL" > release-info/githash_full.txt
+          printf '%s\n' "$RI_COMMIT_DATE"  > release-info/commit_date.txt
+          printf '%s\n' "$RI_COMMIT_TITLE" > release-info/commit_title.txt
+          printf '%s\n' "$RI_VULKAN_VERSION" > release-info/vulkan_version.txt
 
       - name: Upload release info
         if: matrix.variant == 'regular'
