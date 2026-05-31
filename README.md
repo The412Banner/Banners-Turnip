@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`154d3b5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/154d3b581246613beff1dea1bc6b47824bf3a7ad) |
+| **Commit** | [`e22cdeb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e22cdebfdce9afc9de86d1949c365950d5a11318) |
 | **Commit date** | 2026-05-30 |
-| **Commit title** | nak: Simplify SSARef construction with try_push() |
-| **Build date** | 20260530 |
-| **Release** | [v26.2.0-20260530-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260530-r2) |
+| **Commit title** | brw: nir_lower_constant_convert_alu_types only once |
+| **Build date** | 20260531 |
+| **Release** | [v26.2.0-20260531](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,14 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.2.0-20260530-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260530-r2) | 2026-05-30 | [`154d3b5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/154d3b581246613beff1dea1bc6b47824bf3a7ad) | nak: Simplify SSARef construction with try_push() | Vulkan 1.4.352 |
-| [v26.2.0-20260530](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260530) | 2026-05-30 | [`87b5340`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/87b5340831ebc870df47fd1d9194b4ff60581400) | nir/opt_dead_write_vars: cache is_entrypoint of the function | Vulkan 1.4.352 |
-| [v26.2.0-20260529-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r8) | 2026-05-29 | [`e24dc5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e24dc5bd1e7fe6101bdc866fb16a15a8fcae1aae) | anv: fake VK_EXT_image_compression_control on Xe2+ | Vulkan 1.4.352 |
-| [v26.2.0-20260529-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r7) | 2026-05-29 | [`2263576`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2263576f59a0fa33fb051c4bcf9bc44cbfabe865) | v3dv: close display_fd on incompatible_driver path | Vulkan 1.4.352 |
-| [v26.2.0-20260529-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r6) | 2026-05-29 | [`2a60e9e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2a60e9e7697b59750ca15dcc4f292bb23ccdde55) | intel/mda: Change the default output directory | Vulkan 1.4.352 |
-| [v26.2.0-20260529-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r5) | 2026-05-29 | [`bef2148`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bef2148ab7ab10c7b2713baf827600168cd5db30) | llvmpipe: Fix sparse binding large areas | Vulkan 1.4.352 |
-| [v26.2.0-20260529-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r4) | 2026-05-29 | [`c501f3b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c501f3b4c966555c4b8c6a12df3ea0a0e3a0070a) | pvr: re-enable {EXT,KHR}_index_type_uint8 | Vulkan 1.4.352 |
-| [v26.2.0-20260529-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260529-r3) | 2026-05-29 | [`76fdc60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76fdc606c8d6d486e5dda89398e04921cfbed76a) | ac/nir,radv: lower task payload to zeroes when the mesh shader has no task | Vulkan 1.4.352 |
+| [v26.2.0-20260531](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531) | 2026-05-31 | [`e22cdeb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e22cdebfdce9afc9de86d1949c365950d5a11318) | brw: nir_lower_constant_convert_alu_types only once | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---
