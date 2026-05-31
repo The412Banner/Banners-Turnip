@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`f48f681`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f48f681fb5c5000afb190c96f09070671a034d30) |
+| **Commit** | [`40087f9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/40087f9be2c5c7065c65b29408af12414f497c50) |
 | **Commit date** | 2026-05-31 |
-| **Commit title** | nir: Duplicate the name in nir_def_set_name |
+| **Commit title** | lavapipe: Perform shader object compatibility check early |
 | **Build date** | 20260531 |
-| **Release** | [v26.2.0-20260531-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531-r2) |
+| **Release** | [v26.2.0-20260531-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260531-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531-r3) | 2026-05-31 | [`40087f9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/40087f9be2c5c7065c65b29408af12414f497c50) | lavapipe: Perform shader object compatibility check early | Vulkan 1.4.352 |
 | [v26.2.0-20260531-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531-r2) | 2026-05-31 | [`f48f681`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f48f681fb5c5000afb190c96f09070671a034d30) | nir: Duplicate the name in nir_def_set_name | Vulkan 1.4.352 |
 | [v26.2.0-20260531](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531) | 2026-05-31 | [`e22cdeb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e22cdebfdce9afc9de86d1949c365950d5a11318) | brw: nir_lower_constant_convert_alu_types only once | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->

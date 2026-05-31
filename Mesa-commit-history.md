@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260531-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531-r3) | 2026-05-31 | [`40087f9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/40087f9be2c5c7065c65b29408af12414f497c50) | lavapipe: Perform shader object compatibility check early | Vulkan 1.4.352 |
 | [v26.2.0-20260531-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531-r2) | 2026-05-31 | [`f48f681`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f48f681fb5c5000afb190c96f09070671a034d30) | nir: Duplicate the name in nir_def_set_name | Vulkan 1.4.352 |
 | [v26.2.0-20260531](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531) | 2026-05-30 | [`e22cdeb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e22cdebfdce9afc9de86d1949c365950d5a11318) | brw: nir_lower_constant_convert_alu_types only once | Vulkan 1.4.352 |
 | [v26.2.0-20260530-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260530-r2) | 2026-05-30 | [`154d3b5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/154d3b581246613beff1dea1bc6b47824bf3a7ad) | nak: Simplify SSARef construction with try_push() | Vulkan 1.4.352 |
