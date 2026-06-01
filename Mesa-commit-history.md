@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260601](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601) | 2026-06-01 | [`88577c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88577c5e54e39844626c2dd003ae138f2c54cacf) | ac/parse_ib: Add VCN timestamp command | Vulkan 1.4.352 |
 | [v26.2.0-20260531-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531-r4) | 2026-05-31 | [`364ae96`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/364ae9647756d9045a632c32370181fd1606fd82) | Revert "lavapipe: Don't advertise support for multiplane drm formats" | Vulkan 1.4.352 |
 | [v26.2.0-20260531-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531-r3) | 2026-05-31 | [`40087f9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/40087f9be2c5c7065c65b29408af12414f497c50) | lavapipe: Perform shader object compatibility check early | Vulkan 1.4.352 |
 | [v26.2.0-20260531-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531-r2) | 2026-05-31 | [`f48f681`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f48f681fb5c5000afb190c96f09070671a034d30) | nir: Duplicate the name in nir_def_set_name | Vulkan 1.4.352 |
