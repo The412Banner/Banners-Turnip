@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`10c227e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/10c227e9347de3477226e11f1dcac0059de94dbb) |
+| **Commit** | [`b4cd442`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b4cd4428b3b819c2054c5b7155a20a6cc5ff4f50) |
 | **Commit date** | 2026-06-01 |
-| **Commit title** | tu: Always set the kernel's name for BOs. |
+| **Commit title** | intel/gen: drop noisy build spam |
 | **Build date** | 20260601 |
-| **Release** | [v26.2.0-20260601-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601-r3) |
+| **Release** | [v26.2.0-20260601-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,10 +87,10 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260601-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601-r4) | 2026-06-01 | [`b4cd442`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b4cd4428b3b819c2054c5b7155a20a6cc5ff4f50) | intel/gen: drop noisy build spam | Vulkan 1.4.352 |
 | [v26.2.0-20260601-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601-r3) | 2026-06-01 | [`10c227e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/10c227e9347de3477226e11f1dcac0059de94dbb) | tu: Always set the kernel's name for BOs. | Vulkan 1.4.352 |
 | [v26.2.0-20260601-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601-r2) | 2026-06-01 | [`05a6b19`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/05a6b192a5e5879e729bc89923f841109d853c9c) | asahi: fix fdiv lowering | Vulkan 1.4.352 |
 | [v26.2.0-20260601](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601) | 2026-06-01 | [`88577c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88577c5e54e39844626c2dd003ae138f2c54cacf) | ac/parse_ib: Add VCN timestamp command | Vulkan 1.4.352 |
-| [v26.2.0-20260531-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260531-r4) | 2026-05-31 | [`364ae96`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/364ae9647756d9045a632c32370181fd1606fd82) | Revert "lavapipe: Don't advertise support for multiplane drm formats" | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---
