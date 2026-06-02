@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260602-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r3) | 2026-06-02 | [`b0ee951`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0ee9510d75aa7781ffdc8fb9ebe382e39a694d7) | radv: advertise VK_KHR_device_fault | Vulkan 1.4.352 |
 | [v26.2.0-20260602-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r2) | 2026-06-02 | [`c4a1d95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c4a1d9583cafed8d1e106138840542ec89513510) | etnaviv/ml: derive stride-2 destriding offsets from padding | Vulkan 1.4.352 |
 | [v26.2.0-20260602](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602) | 2026-06-01 | [`ff67b27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ff67b27f485a944963ce0a0e83e53b68f100701a) | gfxstream: disallow maintenance6 extension due to serialization bugs | Vulkan 1.4.352 |
 | [v26.2.0-20260601-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601-r4) | 2026-06-01 | [`b4cd442`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b4cd4428b3b819c2054c5b7155a20a6cc5ff4f50) | intel/gen: drop noisy build spam | Vulkan 1.4.352 |
