@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`b0ee951`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0ee9510d75aa7781ffdc8fb9ebe382e39a694d7) |
+| **Commit** | [`0972ef7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0972ef7d33d2b6171b1bd9bf5d48508ad83831d3) |
 | **Commit date** | 2026-06-02 |
-| **Commit title** | radv: advertise VK_KHR_device_fault |
+| **Commit title** | ethosu: Add performance counter debug output |
 | **Build date** | 20260602 |
-| **Release** | [v26.2.0-20260602-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r3) |
+| **Release** | [v26.2.0-20260602-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,12 +87,12 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260602-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r4) | 2026-06-02 | [`0972ef7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0972ef7d33d2b6171b1bd9bf5d48508ad83831d3) | ethosu: Add performance counter debug output | Vulkan 1.4.352 |
 | [v26.2.0-20260602-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r3) | 2026-06-02 | [`b0ee951`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0ee9510d75aa7781ffdc8fb9ebe382e39a694d7) | radv: advertise VK_KHR_device_fault | Vulkan 1.4.352 |
 | [v26.2.0-20260602-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r2) | 2026-06-02 | [`c4a1d95`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c4a1d9583cafed8d1e106138840542ec89513510) | etnaviv/ml: derive stride-2 destriding offsets from padding | Vulkan 1.4.352 |
 | [v26.2.0-20260602](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602) | 2026-06-02 | [`ff67b27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ff67b27f485a944963ce0a0e83e53b68f100701a) | gfxstream: disallow maintenance6 extension due to serialization bugs | Vulkan 1.4.352 |
 | [v26.2.0-20260601-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601-r4) | 2026-06-01 | [`b4cd442`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b4cd4428b3b819c2054c5b7155a20a6cc5ff4f50) | intel/gen: drop noisy build spam | Vulkan 1.4.352 |
 | [v26.2.0-20260601-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601-r3) | 2026-06-01 | [`10c227e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/10c227e9347de3477226e11f1dcac0059de94dbb) | tu: Always set the kernel's name for BOs. | Vulkan 1.4.352 |
-| [v26.2.0-20260601-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260601-r2) | 2026-06-01 | [`05a6b19`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/05a6b192a5e5879e729bc89923f841109d853c9c) | asahi: fix fdiv lowering | Vulkan 1.4.352 |
 <!-- RECENT_BUILDS_END -->
 
 ---
