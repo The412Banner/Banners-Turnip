@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260602-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r6) | 2026-06-02 | [`990d76e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/990d76eae6342bc14df998ec8723162a79a103e4) | v3dv: Implement and enable nullDescriptor support | Vulkan 1.4.352 |
 | [v26.2.0-20260602-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r5) | 2026-06-02 | [`6ae0114`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6ae0114b0588da0ff43a4aa7aa8709ad61a2725e) | Rename the CACHE_LINE_SIZE define to MESA_CACHE_LINE_SIZE | Vulkan 1.4.352 |
 | [v26.2.0-20260602-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r4) | 2026-06-02 | [`0972ef7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0972ef7d33d2b6171b1bd9bf5d48508ad83831d3) | ethosu: Add performance counter debug output | Vulkan 1.4.352 |
 | [v26.2.0-20260602-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r3) | 2026-06-02 | [`b0ee951`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0ee9510d75aa7781ffdc8fb9ebe382e39a694d7) | radv: advertise VK_KHR_device_fault | Vulkan 1.4.352 |
