@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260603-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r6) | 2026-06-03 | [`75a0cd6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/75a0cd6e2cdcb32b0ff12be42175c0c4ba286459) | mesa: Allow GL_TEXTURE_IMMUTABLE_LEVELS query on GLES3 | Vulkan 1.4.352 |
 | [v26.2.0-20260603-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r5) | 2026-06-03 | [`4373a48`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4373a4845706983fec4f435609c7705a96a301b8) | radv: don't leave SPI_PS_INPUT_ENA uninitialized with NULL PS to fix a hang | Vulkan 1.4.352 |
 | [v26.2.0-20260603-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r4) | 2026-06-03 | [`9631af9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9631af9ce6cb87e49588de1f8b6c304a6a54b6bf) | kk: Accurately declare supported samples in image format properties | Vulkan 1.4.352 |
 | [v26.2.0-20260603-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r3) | 2026-06-03 | [`0998c81`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0998c810584f7d4df6165c4eb5c2cb6f682f2be7) | pan/csf: Fix incremental rendering on v14+ | Vulkan 1.4.352 |
