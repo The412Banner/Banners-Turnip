@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`e68c9b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e68c9b791cad118effe20643715d70ab32d79e6e) |
-| **Commit date** | 2026-06-02 |
-| **Commit title** | compiler/rust: Fix inline wrapper include dir |
+| **Commit** | [`f1c30d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f1c30d65e155effa4a746b89e038fc246ae3a23e) |
+| **Commit date** | 2026-06-03 |
+| **Commit title** | pan/v13: implement CS udiv |
 | **Build date** | 20260603 |
-| **Release** | [v26.2.0-20260603](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603) |
+| **Release** | [v26.2.0-20260603-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260603-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r2) | 2026-06-03 | [`f1c30d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f1c30d65e155effa4a746b89e038fc246ae3a23e) | pan/v13: implement CS udiv | Vulkan 1.4.352 |
 | [v26.2.0-20260603](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603) | 2026-06-03 | [`e68c9b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e68c9b791cad118effe20643715d70ab32d79e6e) | compiler/rust: Fix inline wrapper include dir | Vulkan 1.4.352 |
 | [v26.2.0-20260602-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r6) | 2026-06-02 | [`990d76e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/990d76eae6342bc14df998ec8723162a79a103e4) | v3dv: Implement and enable nullDescriptor support | Vulkan 1.4.352 |
 | [v26.2.0-20260602-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260602-r5) | 2026-06-02 | [`6ae0114`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6ae0114b0588da0ff43a4aa7aa8709ad61a2725e) | Rename the CACHE_LINE_SIZE define to MESA_CACHE_LINE_SIZE | Vulkan 1.4.352 |
