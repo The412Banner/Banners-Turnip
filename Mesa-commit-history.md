@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260603-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r4) | 2026-06-03 | [`9631af9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9631af9ce6cb87e49588de1f8b6c304a6a54b6bf) | kk: Accurately declare supported samples in image format properties | Vulkan 1.4.352 |
 | [v26.2.0-20260603-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r3) | 2026-06-03 | [`0998c81`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0998c810584f7d4df6165c4eb5c2cb6f682f2be7) | pan/csf: Fix incremental rendering on v14+ | Vulkan 1.4.352 |
 | [v26.2.0-20260603-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r2) | 2026-06-03 | [`f1c30d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f1c30d65e155effa4a746b89e038fc246ae3a23e) | pan/v13: implement CS udiv | Vulkan 1.4.352 |
 | [v26.2.0-20260603](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603) | 2026-06-02 | [`e68c9b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e68c9b791cad118effe20643715d70ab32d79e6e) | compiler/rust: Fix inline wrapper include dir | Vulkan 1.4.352 |
