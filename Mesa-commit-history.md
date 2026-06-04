@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260604-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r2) | 2026-06-04 | [`27a8ca7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27a8ca79b151f4e26dbd5c82472d0b8613fc45c2) | freedreno/perfcntrs: Expose gen8 counters | Vulkan 1.4.352 |
 | [v26.2.0-20260604](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604) | 2026-06-04 | [`095e4f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/095e4f5f1bbf1c7cfd6fd3a34993347bfe03dbf4) | brw: control cache_mode through bypass_{l1,l3} variables | Vulkan 1.4.352 |
 | [v26.2.0-20260603-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r6) | 2026-06-03 | [`75a0cd6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/75a0cd6e2cdcb32b0ff12be42175c0c4ba286459) | mesa: Allow GL_TEXTURE_IMMUTABLE_LEVELS query on GLES3 | Vulkan 1.4.352 |
 | [v26.2.0-20260603-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260603-r5) | 2026-06-03 | [`4373a48`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4373a4845706983fec4f435609c7705a96a301b8) | radv: don't leave SPI_PS_INPUT_ENA uninitialized with NULL PS to fix a hang | Vulkan 1.4.352 |
