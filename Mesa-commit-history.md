@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260604-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r8) | 2026-06-04 | [`3a815a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3a815a596935c2ec9ba218829861d948ce2a17d1) | nir: preserve infinities and signed zero during atan2 | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r7) | 2026-06-04 | [`c634bf1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c634bf11ce0124a87405ff196fc953799a365e0b) | drm-shim/freedreno: Report VM_BIND support. | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r6) | 2026-06-04 | [`1375ba2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1375ba209d9ec225f65a0f0ccd9e824304c39b4f) | ac: add basic HTILE dword printing | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r5) | 2026-06-04 | [`364b5f8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/364b5f806ccc7f27e97caef6a5abf995fb6c2b7f) | compiler/rust/smallvec: Optimize extend() | Vulkan 1.4.352 |
