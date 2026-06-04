@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260604-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r6) | 2026-06-04 | [`1375ba2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1375ba209d9ec225f65a0f0ccd9e824304c39b4f) | ac: add basic HTILE dword printing | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r5) | 2026-06-04 | [`364b5f8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/364b5f806ccc7f27e97caef6a5abf995fb6c2b7f) | compiler/rust/smallvec: Optimize extend() | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r4) | 2026-06-04 | [`bea1212`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bea1212ee710d36bddb08b720734cc2eefc871b1) | anv/video: Change size of the cached array of recently decoded AV1 frames. | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r3) | 2026-06-04 | [`94295fd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/94295fda67e2acbf216b57b29660d5c1c962ab68) | kk: Support VK_EXT_external_memory_host | Vulkan 1.4.352 |
