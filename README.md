@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`1375ba2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1375ba209d9ec225f65a0f0ccd9e824304c39b4f) |
+| **Commit** | [`c634bf1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c634bf11ce0124a87405ff196fc953799a365e0b) |
 | **Commit date** | 2026-06-04 |
-| **Commit title** | ac: add basic HTILE dword printing |
+| **Commit title** | drm-shim/freedreno: Report VM_BIND support. |
 | **Build date** | 20260604 |
-| **Release** | [v26.2.0-20260604-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r6) |
+| **Release** | [v26.2.0-20260604-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260604-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r7) | 2026-06-04 | [`c634bf1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c634bf11ce0124a87405ff196fc953799a365e0b) | drm-shim/freedreno: Report VM_BIND support. | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r6) | 2026-06-04 | [`1375ba2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1375ba209d9ec225f65a0f0ccd9e824304c39b4f) | ac: add basic HTILE dword printing | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r5) | 2026-06-04 | [`364b5f8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/364b5f806ccc7f27e97caef6a5abf995fb6c2b7f) | compiler/rust/smallvec: Optimize extend() | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r4) | 2026-06-04 | [`bea1212`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bea1212ee710d36bddb08b720734cc2eefc871b1) | anv/video: Change size of the cached array of recently decoded AV1 frames. | Vulkan 1.4.352 |
