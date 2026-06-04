@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`3a815a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3a815a596935c2ec9ba218829861d948ce2a17d1) |
+| **Commit** | [`a6172f1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6172f19a0915fc690104a02e894b263d982e247) |
 | **Commit date** | 2026-06-04 |
-| **Commit title** | nir: preserve infinities and signed zero during atan2 |
+| **Commit title** | vtn/opencl: fix edge case behavior for tanpi |
 | **Build date** | 20260604 |
-| **Release** | [v26.2.0-20260604-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r8) |
+| **Release** | [v26.2.0-20260604-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260604-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r9) | 2026-06-04 | [`a6172f1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6172f19a0915fc690104a02e894b263d982e247) | vtn/opencl: fix edge case behavior for tanpi | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r8) | 2026-06-04 | [`3a815a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3a815a596935c2ec9ba218829861d948ce2a17d1) | nir: preserve infinities and signed zero during atan2 | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r7) | 2026-06-04 | [`c634bf1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c634bf11ce0124a87405ff196fc953799a365e0b) | drm-shim/freedreno: Report VM_BIND support. | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r6) | 2026-06-04 | [`1375ba2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1375ba209d9ec225f65a0f0ccd9e824304c39b4f) | ac: add basic HTILE dword printing | Vulkan 1.4.352 |
