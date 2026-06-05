@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260605-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r6) | 2026-06-05 | [`a9b8c4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a9b8c4b5cc3d51ff19b57fcb15d1cc7aa79b25e0) | r600/sfn: run additional optimization only after successful address split | Vulkan 1.4.353 |
 | [v26.2.0-20260605-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r5) | 2026-06-05 | [`6a16319`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a16319133d3d172f1c8fe5e213394ef831805e0) | radv/rt: Cache stack sizes of ahit/isec shaders from imported NIR | Vulkan 1.4.353 |
 | [v26.2.0-20260605-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r4) | 2026-06-05 | [`9f7f5a2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9f7f5a27a7edc49487af3cd10633896934a47295) | mesa/main: Auto-generate MESA_VERBOSE=api trace dispatch | Vulkan 1.4.352 |
 | [v26.2.0-20260605-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r3) | 2026-06-05 | [`b6661df`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b6661df5f055ae66898e5a4facb5d4e1b501a1ec) | vulkan: Enable GOOGLE_display_timing on KHR_display across multiple drivers. | Vulkan 1.4.352 |
