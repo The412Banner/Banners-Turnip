@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.352 |
-| **Commit** | [`e84e9dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e84e9dc582797b5e586ea4ff3ae7b5f3656968ee) |
+| **Commit** | [`e984014`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e984014d56f55b5d9f8b641e10ad3cc43e1b4e0c) |
 | **Commit date** | 2026-06-05 |
-| **Commit title** | gallivm: Fix armhf build against LLVM 22 |
+| **Commit title** | turnip: declare common VK drirc options using the helper |
 | **Build date** | 20260605 |
-| **Release** | [v26.2.0-20260605](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605) |
+| **Release** | [v26.2.0-20260605-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260605-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r2) | 2026-06-05 | [`e984014`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e984014d56f55b5d9f8b641e10ad3cc43e1b4e0c) | turnip: declare common VK drirc options using the helper | Vulkan 1.4.352 |
 | [v26.2.0-20260605](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605) | 2026-06-05 | [`e84e9dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e84e9dc582797b5e586ea4ff3ae7b5f3656968ee) | gallivm: Fix armhf build against LLVM 22 | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r9) | 2026-06-04 | [`a6172f1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6172f19a0915fc690104a02e894b263d982e247) | vtn/opencl: fix edge case behavior for tanpi | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r8) | 2026-06-04 | [`3a815a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3a815a596935c2ec9ba218829861d948ce2a17d1) | nir: preserve infinities and signed zero during atan2 | Vulkan 1.4.352 |
