@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260605](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605) | 2026-06-05 | [`e84e9dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e84e9dc582797b5e586ea4ff3ae7b5f3656968ee) | gallivm: Fix armhf build against LLVM 22 | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r9) | 2026-06-04 | [`a6172f1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6172f19a0915fc690104a02e894b263d982e247) | vtn/opencl: fix edge case behavior for tanpi | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r8) | 2026-06-04 | [`3a815a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3a815a596935c2ec9ba218829861d948ce2a17d1) | nir: preserve infinities and signed zero during atan2 | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r7) | 2026-06-04 | [`c634bf1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c634bf11ce0124a87405ff196fc953799a365e0b) | drm-shim/freedreno: Report VM_BIND support. | Vulkan 1.4.352 |
