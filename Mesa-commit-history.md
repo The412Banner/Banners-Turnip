@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260605-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r3) | 2026-06-05 | [`b6661df`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b6661df5f055ae66898e5a4facb5d4e1b501a1ec) | vulkan: Enable GOOGLE_display_timing on KHR_display across multiple drivers. | Vulkan 1.4.352 |
 | [v26.2.0-20260605-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r2) | 2026-06-05 | [`e984014`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e984014d56f55b5d9f8b641e10ad3cc43e1b4e0c) | turnip: declare common VK drirc options using the helper | Vulkan 1.4.352 |
 | [v26.2.0-20260605](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605) | 2026-06-05 | [`e84e9dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e84e9dc582797b5e586ea4ff3ae7b5f3656968ee) | gallivm: Fix armhf build against LLVM 22 | Vulkan 1.4.352 |
 | [v26.2.0-20260604-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260604-r9) | 2026-06-04 | [`a6172f1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6172f19a0915fc690104a02e894b263d982e247) | vtn/opencl: fix edge case behavior for tanpi | Vulkan 1.4.352 |
