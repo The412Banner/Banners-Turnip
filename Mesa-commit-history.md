@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260606-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r2) | 2026-06-05 | [`bd40215`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bd402153afb2a5279414d156e34d23010af4e460) | mesa/main: cast GLhandleARB to unsigned int in api trace | Vulkan 1.4.353 |
 | [v26.2.0-20260606](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606) | 2026-06-05 | [`31db17f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/31db17f653cbba464e432b3c4e2a144e2785425d) | ir3: Implement round-robin workaround | Vulkan 1.4.353 |
 | [v26.2.0-20260605-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r6) | 2026-06-05 | [`a9b8c4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a9b8c4b5cc3d51ff19b57fcb15d1cc7aa79b25e0) | r600/sfn: run additional optimization only after successful address split | Vulkan 1.4.353 |
 | [v26.2.0-20260605-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r5) | 2026-06-05 | [`6a16319`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a16319133d3d172f1c8fe5e213394ef831805e0) | radv/rt: Cache stack sizes of ahit/isec shaders from imported NIR | Vulkan 1.4.353 |
