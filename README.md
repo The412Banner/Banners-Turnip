@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`b9c7634`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9c763454e6642dc90e47506d5b56f00c4b9b773) |
+| **Commit** | [`3515c52`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3515c52e8cf31549b6068ef43c23c89830b6db46) |
 | **Commit date** | 2026-06-06 |
-| **Commit title** | etnaviv: Use integer texture formats for R32/RG32 integer textures |
-| **Build date** | 20260606 |
-| **Release** | [v26.2.0-20260606-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r6) |
+| **Commit title** | ethosu/mlw_codec: silence -Wunused-const-variable in vendored encoder |
+| **Build date** | 20260607 |
+| **Release** | [v26.2.0-20260607](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260607) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260607](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260607) | 2026-06-07 | [`3515c52`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3515c52e8cf31549b6068ef43c23c89830b6db46) | ethosu/mlw_codec: silence -Wunused-const-variable in vendored encoder | Vulkan 1.4.353 |
 | [v26.2.0-20260606-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r6) | 2026-06-06 | [`b9c7634`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9c763454e6642dc90e47506d5b56f00c4b9b773) | etnaviv: Use integer texture formats for R32/RG32 integer textures | Vulkan 1.4.353 |
 | [v26.2.0-20260606-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r5) | 2026-06-06 | [`7089c67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7089c6710a954af8841689bac20f2c2bb63299ab) | etnaviv: Use the full 64-bit clear value for 64bpp render targets | Vulkan 1.4.353 |
 | [v26.2.0-20260606-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r4) | 2026-06-06 | [`e92c7ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e92c7efa21e38b8977b447fdc46819d994f8370f) | rusticl: Drop custom `addr` implementation | Vulkan 1.4.353 |
 | [v26.2.0-20260606-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r3) | 2026-06-06 | [`25930db`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/25930dbc34f69450bae553c35d7c7c60b21ec3f2) | ethosu/mlw_codec: silence warnings in the vendored Regor encoder | Vulkan 1.4.353 |
-| [v26.2.0-20260606-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r2) | 2026-06-06 | [`bd40215`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bd402153afb2a5279414d156e34d23010af4e460) | mesa/main: cast GLhandleARB to unsigned int in api trace | Vulkan 1.4.353 |
-| [v26.2.0-20260606](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606) | 2026-06-06 | [`31db17f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/31db17f653cbba464e432b3c4e2a144e2785425d) | ir3: Implement round-robin workaround | Vulkan 1.4.353 |
-| [v26.2.0-20260605-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260605-r6) | 2026-06-05 | [`a9b8c4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a9b8c4b5cc3d51ff19b57fcb15d1cc7aa79b25e0) | r600/sfn: run additional optimization only after successful address split | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---

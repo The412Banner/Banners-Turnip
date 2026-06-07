@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260607](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260607) | 2026-06-06 | [`3515c52`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3515c52e8cf31549b6068ef43c23c89830b6db46) | ethosu/mlw_codec: silence -Wunused-const-variable in vendored encoder | Vulkan 1.4.353 |
 | [v26.2.0-20260606-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r6) | 2026-06-06 | [`b9c7634`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9c763454e6642dc90e47506d5b56f00c4b9b773) | etnaviv: Use integer texture formats for R32/RG32 integer textures | Vulkan 1.4.353 |
 | [v26.2.0-20260606-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r5) | 2026-06-06 | [`7089c67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7089c6710a954af8841689bac20f2c2bb63299ab) | etnaviv: Use the full 64-bit clear value for 64bpp render targets | Vulkan 1.4.353 |
 | [v26.2.0-20260606-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r4) | 2026-06-06 | [`e92c7ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e92c7efa21e38b8977b447fdc46819d994f8370f) | rusticl: Drop custom `addr` implementation | Vulkan 1.4.353 |
