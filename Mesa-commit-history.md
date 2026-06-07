@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260607-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260607-r3) | 2026-06-07 | [`9ec5e9a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ec5e9a34ec58fe212918f340a6083cc80a4ab2e) | etnaviv: blt: Don't sRGB-roundtrip same-encoding copies | Vulkan 1.4.353 |
 | [v26.2.0-20260607-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260607-r2) | 2026-06-07 | [`6094bed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6094bed5a47f526a8bd3479e6d21ae4f6f53e0b5) | llvmpipe: create a zeroed payload for use without task shaders | Vulkan 1.4.353 |
 | [v26.2.0-20260607](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260607) | 2026-06-06 | [`3515c52`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3515c52e8cf31549b6068ef43c23c89830b6db46) | ethosu/mlw_codec: silence -Wunused-const-variable in vendored encoder | Vulkan 1.4.353 |
 | [v26.2.0-20260606-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260606-r6) | 2026-06-06 | [`b9c7634`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9c763454e6642dc90e47506d5b56f00c4b9b773) | etnaviv: Use integer texture formats for R32/RG32 integer textures | Vulkan 1.4.353 |
