@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`301a1f9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/301a1f9a61fca7d6d883c3ff923f015800603c49) |
+| **Commit** | [`b340a00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b340a00c29c512432e012e7fd1b753edb2c56ce1) |
 | **Commit date** | 2026-06-08 |
-| **Commit title** | anv: fix lock scope in anv_ensure_fp64_shader |
+| **Commit title** | tu: Un-open-code RB_A2D_PIXEL_CNTL |
 | **Build date** | 20260608 |
-| **Release** | [v26.2.0-20260608-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r11) |
+| **Release** | [v26.2.0-20260608-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r12) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260608-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r12) | 2026-06-08 | [`b340a00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b340a00c29c512432e012e7fd1b753edb2c56ce1) | tu: Un-open-code RB_A2D_PIXEL_CNTL | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r11) | 2026-06-08 | [`301a1f9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/301a1f9a61fca7d6d883c3ff923f015800603c49) | anv: fix lock scope in anv_ensure_fp64_shader | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r10) | 2026-06-08 | [`8245187`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/824518737a25af7378b8afd8a5303d1893f12c67) | zink: always return DMA_BUF type handles from resource_get_handle | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r9) | 2026-06-08 | [`e6f5d0c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6f5d0c69136063448104d238c7f34e0ca749d3d) | gfxstream: support testing d32 s8 | Vulkan 1.4.353 |
