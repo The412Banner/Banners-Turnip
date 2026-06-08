@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260608-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r4) | 2026-06-08 | [`c9c48f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c9c48f79a127cc0f8c0f440b2e963977f8315def) | doc/ci: Add custom-kernel testing workflow | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r3) | 2026-06-08 | [`1160606`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/116060607472be26eeed18412a6816e61b718399) | broadcom/compiler: fix payload-register liveness condition | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r2) | 2026-06-08 | [`76e600a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76e600a868d7b063050acd5a6468b8116b8b62a0) | tu/ci: Add coverage for emulated second graphics queue | Vulkan 1.4.353 |
 | [v26.2.0-20260608](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608) | 2026-06-08 | [`2cf1f6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2cf1f6cb5088dcbe0523616169630e2e1f1de574) | venus: fix unbound malloc leak in vn_ring_get_submits | Vulkan 1.4.353 |
