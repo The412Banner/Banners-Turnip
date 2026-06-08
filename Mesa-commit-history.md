@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260608-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r9) | 2026-06-08 | [`e6f5d0c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6f5d0c69136063448104d238c7f34e0ca749d3d) | gfxstream: support testing d32 s8 | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r8) | 2026-06-08 | [`bcae3b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bcae3b8005bb22bd6cef38c5785bcbb8b5ce6989) | radv: handle errors correctly when creating gang waits | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r7) | 2026-06-08 | [`718236e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/718236ebb8f90eda2e08da0b8a9dfbd193040bff) | ethosu: use FALLTHROUGH macro in ethosu_emit_operation_accesses | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r6) | 2026-06-08 | [`f171793`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f17179357a50601e9f384b4db8f363c6a84e2022) | radv/ci: run vkd3d jobs with ASAN by default | Vulkan 1.4.353 |
