@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`e6f5d0c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6f5d0c69136063448104d238c7f34e0ca749d3d) |
+| **Commit** | [`8245187`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/824518737a25af7378b8afd8a5303d1893f12c67) |
 | **Commit date** | 2026-06-08 |
-| **Commit title** | gfxstream: support testing d32 s8 |
+| **Commit title** | zink: always return DMA_BUF type handles from resource_get_handle |
 | **Build date** | 20260608 |
-| **Release** | [v26.2.0-20260608-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r9) |
+| **Release** | [v26.2.0-20260608-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r10) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260608-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r10) | 2026-06-08 | [`8245187`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/824518737a25af7378b8afd8a5303d1893f12c67) | zink: always return DMA_BUF type handles from resource_get_handle | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r9) | 2026-06-08 | [`e6f5d0c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6f5d0c69136063448104d238c7f34e0ca749d3d) | gfxstream: support testing d32 s8 | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r8) | 2026-06-08 | [`bcae3b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bcae3b8005bb22bd6cef38c5785bcbb8b5ce6989) | radv: handle errors correctly when creating gang waits | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r7) | 2026-06-08 | [`718236e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/718236ebb8f90eda2e08da0b8a9dfbd193040bff) | ethosu: use FALLTHROUGH macro in ethosu_emit_operation_accesses | Vulkan 1.4.353 |
@@ -97,7 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260608-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r2) | 2026-06-08 | [`76e600a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76e600a868d7b063050acd5a6468b8116b8b62a0) | tu/ci: Add coverage for emulated second graphics queue | Vulkan 1.4.353 |
 | [v26.2.0-20260608](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608) | 2026-06-08 | [`2cf1f6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2cf1f6cb5088dcbe0523616169630e2e1f1de574) | venus: fix unbound malloc leak in vn_ring_get_submits | Vulkan 1.4.353 |
 | [v26.2.0-20260607-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260607-r3) | 2026-06-07 | [`9ec5e9a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ec5e9a34ec58fe212918f340a6083cc80a4ab2e) | etnaviv: blt: Don't sRGB-roundtrip same-encoding copies | Vulkan 1.4.353 |
-| [v26.2.0-20260607-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260607-r2) | 2026-06-07 | [`6094bed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6094bed5a47f526a8bd3479e6d21ae4f6f53e0b5) | llvmpipe: create a zeroed payload for use without task shaders | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---
