@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`76e600a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76e600a868d7b063050acd5a6468b8116b8b62a0) |
+| **Commit** | [`1160606`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/116060607472be26eeed18412a6816e61b718399) |
 | **Commit date** | 2026-06-08 |
-| **Commit title** | tu/ci: Add coverage for emulated second graphics queue |
+| **Commit title** | broadcom/compiler: fix payload-register liveness condition |
 | **Build date** | 20260608 |
-| **Release** | [v26.2.0-20260608-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r2) |
+| **Release** | [v26.2.0-20260608-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260608-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r3) | 2026-06-08 | [`1160606`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/116060607472be26eeed18412a6816e61b718399) | broadcom/compiler: fix payload-register liveness condition | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r2) | 2026-06-08 | [`76e600a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76e600a868d7b063050acd5a6468b8116b8b62a0) | tu/ci: Add coverage for emulated second graphics queue | Vulkan 1.4.353 |
 | [v26.2.0-20260608](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608) | 2026-06-08 | [`2cf1f6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2cf1f6cb5088dcbe0523616169630e2e1f1de574) | venus: fix unbound malloc leak in vn_ring_get_submits | Vulkan 1.4.353 |
 | [v26.2.0-20260607-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260607-r3) | 2026-06-07 | [`9ec5e9a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ec5e9a34ec58fe212918f340a6083cc80a4ab2e) | etnaviv: blt: Don't sRGB-roundtrip same-encoding copies | Vulkan 1.4.353 |
