@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`718236e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/718236ebb8f90eda2e08da0b8a9dfbd193040bff) |
+| **Commit** | [`bcae3b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bcae3b8005bb22bd6cef38c5785bcbb8b5ce6989) |
 | **Commit date** | 2026-06-08 |
-| **Commit title** | ethosu: use FALLTHROUGH macro in ethosu_emit_operation_accesses |
+| **Commit title** | radv: handle errors correctly when creating gang waits |
 | **Build date** | 20260608 |
-| **Release** | [v26.2.0-20260608-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r7) |
+| **Release** | [v26.2.0-20260608-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260608-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r8) | 2026-06-08 | [`bcae3b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bcae3b8005bb22bd6cef38c5785bcbb8b5ce6989) | radv: handle errors correctly when creating gang waits | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r7) | 2026-06-08 | [`718236e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/718236ebb8f90eda2e08da0b8a9dfbd193040bff) | ethosu: use FALLTHROUGH macro in ethosu_emit_operation_accesses | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r6) | 2026-06-08 | [`f171793`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f17179357a50601e9f384b4db8f363c6a84e2022) | radv/ci: run vkd3d jobs with ASAN by default | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r5) | 2026-06-08 | [`127e5b5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/127e5b567c0fa7e801ae9a99a7e3c59cdd76e66d) | broadcom/ci: update kernel for nightly jobs | Vulkan 1.4.353 |
