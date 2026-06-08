@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`f171793`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f17179357a50601e9f384b4db8f363c6a84e2022) |
+| **Commit** | [`718236e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/718236ebb8f90eda2e08da0b8a9dfbd193040bff) |
 | **Commit date** | 2026-06-08 |
-| **Commit title** | radv/ci: run vkd3d jobs with ASAN by default |
+| **Commit title** | ethosu: use FALLTHROUGH macro in ethosu_emit_operation_accesses |
 | **Build date** | 20260608 |
-| **Release** | [v26.2.0-20260608-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r6) |
+| **Release** | [v26.2.0-20260608-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260608-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r7) | 2026-06-08 | [`718236e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/718236ebb8f90eda2e08da0b8a9dfbd193040bff) | ethosu: use FALLTHROUGH macro in ethosu_emit_operation_accesses | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r6) | 2026-06-08 | [`f171793`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f17179357a50601e9f384b4db8f363c6a84e2022) | radv/ci: run vkd3d jobs with ASAN by default | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r5) | 2026-06-08 | [`127e5b5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/127e5b567c0fa7e801ae9a99a7e3c59cdd76e66d) | broadcom/ci: update kernel for nightly jobs | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r4) | 2026-06-08 | [`c9c48f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c9c48f79a127cc0f8c0f440b2e963977f8315def) | doc/ci: Add custom-kernel testing workflow | Vulkan 1.4.353 |
