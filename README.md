@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`c9c48f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c9c48f79a127cc0f8c0f440b2e963977f8315def) |
+| **Commit** | [`127e5b5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/127e5b567c0fa7e801ae9a99a7e3c59cdd76e66d) |
 | **Commit date** | 2026-06-08 |
-| **Commit title** | doc/ci: Add custom-kernel testing workflow |
+| **Commit title** | broadcom/ci: update kernel for nightly jobs |
 | **Build date** | 20260608 |
-| **Release** | [v26.2.0-20260608-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r4) |
+| **Release** | [v26.2.0-20260608-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260608-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r5) | 2026-06-08 | [`127e5b5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/127e5b567c0fa7e801ae9a99a7e3c59cdd76e66d) | broadcom/ci: update kernel for nightly jobs | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r4) | 2026-06-08 | [`c9c48f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c9c48f79a127cc0f8c0f440b2e963977f8315def) | doc/ci: Add custom-kernel testing workflow | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r3) | 2026-06-08 | [`1160606`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/116060607472be26eeed18412a6816e61b718399) | broadcom/compiler: fix payload-register liveness condition | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r2) | 2026-06-08 | [`76e600a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76e600a868d7b063050acd5a6468b8116b8b62a0) | tu/ci: Add coverage for emulated second graphics queue | Vulkan 1.4.353 |
