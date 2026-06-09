@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260609-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r8) | 2026-06-09 | [`09df2ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09df2ee2ba97f76d4da244bc98e843f807bfa99f) | nir/opt_sink: sink more Intel block instructions | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r7) | 2026-06-09 | [`36f3175`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/36f31751872d0110a7e13d1db25f0472f55785eb) | radv/amdgpu: defer allocating the NULL PRT BO | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r6) | 2026-06-09 | [`371ed09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/371ed096596ace82f5bac36a2db6cd737ac7743c) | kk: Work around crash with multiple concurrent MTL4Compiler | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r5) | 2026-06-09 | [`6b06f70`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b06f70af0eb1b03ab0625199a2191f3e5f2f5cf) | kk: Remove unused deprecated Metal APIs | Vulkan 1.4.353 |
