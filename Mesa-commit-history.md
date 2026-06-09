@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260609-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r3) | 2026-06-09 | [`9da4fb5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9da4fb526aa5ae465736aa5ede0797674440f28c) | nir/lower_tex: skip external texture YUV lowering for query instructions | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r2) | 2026-06-09 | [`9d858b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9d858b6719f5d5b0ed426cf6d136e8f0fd81c0c1) | rusticl/program: implement CL_PROGRAM_BUILD_LOG without a copy | Vulkan 1.4.353 |
 | [v26.2.0-20260609](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609) | 2026-06-08 | [`2a1588c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2a1588c09e05e96d18c1bab6ea003fa944540261) | bin: add drm-shim script | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r12) | 2026-06-08 | [`b340a00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b340a00c29c512432e012e7fd1b753edb2c56ce1) | tu: Un-open-code RB_A2D_PIXEL_CNTL | Vulkan 1.4.353 |
