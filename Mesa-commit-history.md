@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260609-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r6) | 2026-06-09 | [`371ed09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/371ed096596ace82f5bac36a2db6cd737ac7743c) | kk: Work around crash with multiple concurrent MTL4Compiler | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r5) | 2026-06-09 | [`6b06f70`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b06f70af0eb1b03ab0625199a2191f3e5f2f5cf) | kk: Remove unused deprecated Metal APIs | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r4) | 2026-06-09 | [`fbd9c67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fbd9c67e2afb0d4447ff6097eb9bd37fd9294ee9) | drm-shim/freedreno: Fix VM_BIND support. | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r3) | 2026-06-09 | [`9da4fb5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9da4fb526aa5ae465736aa5ede0797674440f28c) | nir/lower_tex: skip external texture YUV lowering for query instructions | Vulkan 1.4.353 |
