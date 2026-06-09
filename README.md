@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`fbd9c67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fbd9c67e2afb0d4447ff6097eb9bd37fd9294ee9) |
+| **Commit** | [`6b06f70`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b06f70af0eb1b03ab0625199a2191f3e5f2f5cf) |
 | **Commit date** | 2026-06-09 |
-| **Commit title** | drm-shim/freedreno: Fix VM_BIND support. |
+| **Commit title** | kk: Remove unused deprecated Metal APIs |
 | **Build date** | 20260609 |
-| **Release** | [v26.2.0-20260609-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r4) |
+| **Release** | [v26.2.0-20260609-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260609-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r5) | 2026-06-09 | [`6b06f70`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b06f70af0eb1b03ab0625199a2191f3e5f2f5cf) | kk: Remove unused deprecated Metal APIs | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r4) | 2026-06-09 | [`fbd9c67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fbd9c67e2afb0d4447ff6097eb9bd37fd9294ee9) | drm-shim/freedreno: Fix VM_BIND support. | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r3) | 2026-06-09 | [`9da4fb5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9da4fb526aa5ae465736aa5ede0797674440f28c) | nir/lower_tex: skip external texture YUV lowering for query instructions | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r2) | 2026-06-09 | [`9d858b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9d858b6719f5d5b0ed426cf6d136e8f0fd81c0c1) | rusticl/program: implement CL_PROGRAM_BUILD_LOG without a copy | Vulkan 1.4.353 |
@@ -101,8 +102,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260608-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r5) | 2026-06-08 | [`127e5b5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/127e5b567c0fa7e801ae9a99a7e3c59cdd76e66d) | broadcom/ci: update kernel for nightly jobs | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r4) | 2026-06-08 | [`c9c48f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c9c48f79a127cc0f8c0f440b2e963977f8315def) | doc/ci: Add custom-kernel testing workflow | Vulkan 1.4.353 |
 | [v26.2.0-20260608-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r3) | 2026-06-08 | [`1160606`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/116060607472be26eeed18412a6816e61b718399) | broadcom/compiler: fix payload-register liveness condition | Vulkan 1.4.353 |
-| [v26.2.0-20260608-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608-r2) | 2026-06-08 | [`76e600a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76e600a868d7b063050acd5a6468b8116b8b62a0) | tu/ci: Add coverage for emulated second graphics queue | Vulkan 1.4.353 |
-| [v26.2.0-20260608](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260608) | 2026-06-08 | [`2cf1f6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2cf1f6cb5088dcbe0523616169630e2e1f1de574) | venus: fix unbound malloc leak in vn_ring_get_submits | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---
