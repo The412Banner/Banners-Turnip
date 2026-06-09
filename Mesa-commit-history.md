@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260609-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r10) | 2026-06-09 | [`f6dd632`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f6dd632b313bad941118529ad68167f4c0572128) | v3dv: drop legacy CPU queue fallback paths | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r9) | 2026-06-09 | [`0752d8b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0752d8b08d1774b9b45547e751ccb75fd3f3df21) | zink: Set can_do_invalid_linear_modifier workaround for QCOM blob driver | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r8) | 2026-06-09 | [`09df2ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09df2ee2ba97f76d4da244bc98e843f807bfa99f) | nir/opt_sink: sink more Intel block instructions | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r7) | 2026-06-09 | [`36f3175`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/36f31751872d0110a7e13d1db25f0472f55785eb) | radv/amdgpu: defer allocating the NULL PRT BO | Vulkan 1.4.353 |
