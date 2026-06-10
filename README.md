@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`38a98a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/38a98a48035aa25d6187fcd01eb69d28b0f98fbd) |
+| **Commit** | [`5882459`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5882459c451c348d09ce1c24488a30d1f0c1ec2e) |
 | **Commit date** | 2026-06-10 |
-| **Commit title** | v3d: remove duplicate util_blitter_save_so_targets() call |
+| **Commit title** | kk,wsi/metal: Support VK_EXT_hdr_metadata |
 | **Build date** | 20260610 |
-| **Release** | [v26.2.0-20260610-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r6) |
+| **Release** | [v26.2.0-20260610-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260610-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r7) | 2026-06-10 | [`5882459`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5882459c451c348d09ce1c24488a30d1f0c1ec2e) | kk,wsi/metal: Support VK_EXT_hdr_metadata | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r6) | 2026-06-10 | [`38a98a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/38a98a48035aa25d6187fcd01eb69d28b0f98fbd) | v3d: remove duplicate util_blitter_save_so_targets() call | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r5) | 2026-06-10 | [`bed7ba2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bed7ba27801e9b660780c43ec35532c9caf3d69c) | aco: schedule split barriers | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r4) | 2026-06-10 | [`1825627`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1825627cf86d3762217d0c3ff86628c899ca0d73) | va: Set contiguous_planes for DMA-BUF imported surfaces | Vulkan 1.4.353 |
@@ -98,8 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260609-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r13) | 2026-06-09 | [`1ab1799`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1ab1799733c9d8a05b06178fdec4a49832f1fd14) | freedreno/perfetto: Use sequence-scoped clk | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r12) | 2026-06-09 | [`94c7ccb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/94c7ccbaa3540e384571c7438f48ca06cbac9cc6) | radeonsi: remove duplicate '.bpp' initializer in si_sdma_copy_image | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r11) | 2026-06-09 | [`0aff5e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0aff5e006c3d8fc773c05effa547b3ddccfec077) | jay: Handle dpas_intel intrinsic | Vulkan 1.4.353 |
-| [v26.2.0-20260609-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r10) | 2026-06-09 | [`f6dd632`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f6dd632b313bad941118529ad68167f4c0572128) | v3dv: drop legacy CPU queue fallback paths | Vulkan 1.4.353 |
-| [v26.2.0-20260609-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r9) | 2026-06-09 | [`0752d8b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0752d8b08d1774b9b45547e751ccb75fd3f3df21) | zink: Set can_do_invalid_linear_modifier workaround for QCOM blob driver | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---
