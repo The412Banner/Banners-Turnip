@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260610-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r10) | 2026-06-10 | [`fd616ba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd616bab71a7b24b9b71588125fabea739f511cb) | glx: avoid crash on glXBindTexImageEXT when no texture target set | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r9) | 2026-06-10 | [`11334c4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/11334c438a48f63ee2b2fb63388fd52fc77d385a) | ir3: fix possible signed overflow in ir3_link_add | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r8) | 2026-06-10 | [`67471fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67471fed866f673ab1ee7fdc2babe145b899c1fd) | tu: Enable texel buffer / SSBO emulation for known problematic games | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r7) | 2026-06-10 | [`5882459`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5882459c451c348d09ce1c24488a30d1f0c1ec2e) | kk,wsi/metal: Support VK_EXT_hdr_metadata | Vulkan 1.4.353 |
