@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`489aa18`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/489aa1808f2553511f718d287af6532a67c0cb23) |
-| **Commit date** | 2026-06-09 |
-| **Commit title** | anv: give anv_ensure_fp64_shader() a chance to be called |
+| **Commit** | [`1a9a0a1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1a9a0a15f7cafdbdb3037bb109b6d77bf282d41c) |
+| **Commit date** | 2026-06-10 |
+| **Commit title** | ir3: lower undef booleans to zero |
 | **Build date** | 20260610 |
-| **Release** | [v26.2.0-20260610](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610) |
+| **Release** | [v26.2.0-20260610-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260610-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r2) | 2026-06-10 | [`1a9a0a1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1a9a0a15f7cafdbdb3037bb109b6d77bf282d41c) | ir3: lower undef booleans to zero | Vulkan 1.4.353 |
 | [v26.2.0-20260610](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610) | 2026-06-10 | [`489aa18`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/489aa1808f2553511f718d287af6532a67c0cb23) | anv: give anv_ensure_fp64_shader() a chance to be called | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r15) | 2026-06-09 | [`fbd2f14`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fbd2f140fe810af76cdbf1bccd3b10cb3087fb02) | etnaviv: Drop unused num_loops shader stat | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r14) | 2026-06-09 | [`4ac11c9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ac11c9006e67fa1ec6b3e9f539783cb63d55626) | nak: block pipe_format from nak bindings. | Vulkan 1.4.353 |
@@ -99,9 +100,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260609-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r7) | 2026-06-09 | [`36f3175`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/36f31751872d0110a7e13d1db25f0472f55785eb) | radv/amdgpu: defer allocating the NULL PRT BO | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r6) | 2026-06-09 | [`371ed09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/371ed096596ace82f5bac36a2db6cd737ac7743c) | kk: Work around crash with multiple concurrent MTL4Compiler | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r5) | 2026-06-09 | [`6b06f70`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b06f70af0eb1b03ab0625199a2191f3e5f2f5cf) | kk: Remove unused deprecated Metal APIs | Vulkan 1.4.353 |
-| [v26.2.0-20260609-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r4) | 2026-06-09 | [`fbd9c67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fbd9c67e2afb0d4447ff6097eb9bd37fd9294ee9) | drm-shim/freedreno: Fix VM_BIND support. | Vulkan 1.4.353 |
-| [v26.2.0-20260609-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r3) | 2026-06-09 | [`9da4fb5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9da4fb526aa5ae465736aa5ede0797674440f28c) | nir/lower_tex: skip external texture YUV lowering for query instructions | Vulkan 1.4.353 |
-| [v26.2.0-20260609-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r2) | 2026-06-09 | [`9d858b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9d858b6719f5d5b0ed426cf6d136e8f0fd81c0c1) | rusticl/program: implement CL_PROGRAM_BUILD_LOG without a copy | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---

@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260610-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r2) | 2026-06-10 | [`1a9a0a1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1a9a0a15f7cafdbdb3037bb109b6d77bf282d41c) | ir3: lower undef booleans to zero | Vulkan 1.4.353 |
 | [v26.2.0-20260610](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610) | 2026-06-09 | [`489aa18`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/489aa1808f2553511f718d287af6532a67c0cb23) | anv: give anv_ensure_fp64_shader() a chance to be called | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r15) | 2026-06-09 | [`fbd2f14`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fbd2f140fe810af76cdbf1bccd3b10cb3087fb02) | etnaviv: Drop unused num_loops shader stat | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r14) | 2026-06-09 | [`4ac11c9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ac11c9006e67fa1ec6b3e9f539783cb63d55626) | nak: block pipe_format from nak bindings. | Vulkan 1.4.353 |
