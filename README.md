@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`1825627`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1825627cf86d3762217d0c3ff86628c899ca0d73) |
+| **Commit** | [`bed7ba2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bed7ba27801e9b660780c43ec35532c9caf3d69c) |
 | **Commit date** | 2026-06-10 |
-| **Commit title** | va: Set contiguous_planes for DMA-BUF imported surfaces |
+| **Commit title** | aco: schedule split barriers |
 | **Build date** | 20260610 |
-| **Release** | [v26.2.0-20260610-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r4) |
+| **Release** | [v26.2.0-20260610-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260610-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r5) | 2026-06-10 | [`bed7ba2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bed7ba27801e9b660780c43ec35532c9caf3d69c) | aco: schedule split barriers | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r4) | 2026-06-10 | [`1825627`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1825627cf86d3762217d0c3ff86628c899ca0d73) | va: Set contiguous_planes for DMA-BUF imported surfaces | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r3) | 2026-06-10 | [`db382b3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db382b3caeeb71af95717e8f27197018f8dd1d13) | radeonsi: use exec_size from the aco prolog/epilog callback | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r2) | 2026-06-10 | [`1a9a0a1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1a9a0a15f7cafdbdb3037bb109b6d77bf282d41c) | ir3: lower undef booleans to zero | Vulkan 1.4.353 |
@@ -99,7 +100,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260609-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r10) | 2026-06-09 | [`f6dd632`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f6dd632b313bad941118529ad68167f4c0572128) | v3dv: drop legacy CPU queue fallback paths | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r9) | 2026-06-09 | [`0752d8b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0752d8b08d1774b9b45547e751ccb75fd3f3df21) | zink: Set can_do_invalid_linear_modifier workaround for QCOM blob driver | Vulkan 1.4.353 |
 | [v26.2.0-20260609-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r8) | 2026-06-09 | [`09df2ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09df2ee2ba97f76d4da244bc98e843f807bfa99f) | nir/opt_sink: sink more Intel block instructions | Vulkan 1.4.353 |
-| [v26.2.0-20260609-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260609-r7) | 2026-06-09 | [`36f3175`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/36f31751872d0110a7e13d1db25f0472f55785eb) | radv/amdgpu: defer allocating the NULL PRT BO | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---

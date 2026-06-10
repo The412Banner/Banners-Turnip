@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260610-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r5) | 2026-06-10 | [`bed7ba2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bed7ba27801e9b660780c43ec35532c9caf3d69c) | aco: schedule split barriers | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r4) | 2026-06-10 | [`1825627`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1825627cf86d3762217d0c3ff86628c899ca0d73) | va: Set contiguous_planes for DMA-BUF imported surfaces | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r3) | 2026-06-10 | [`db382b3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db382b3caeeb71af95717e8f27197018f8dd1d13) | radeonsi: use exec_size from the aco prolog/epilog callback | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r2) | 2026-06-10 | [`1a9a0a1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1a9a0a15f7cafdbdb3037bb109b6d77bf282d41c) | ir3: lower undef booleans to zero | Vulkan 1.4.353 |
