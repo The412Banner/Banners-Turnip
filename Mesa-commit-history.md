@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260610-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r11) | 2026-06-10 | [`56d7d55`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/56d7d5522c95813013ffbd4ac3f0f51830ce7706) | anv: Replace va.scratch_surface_state_pool access with a function | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r10) | 2026-06-10 | [`fd616ba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd616bab71a7b24b9b71588125fabea739f511cb) | glx: avoid crash on glXBindTexImageEXT when no texture target set | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r9) | 2026-06-10 | [`11334c4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/11334c438a48f63ee2b2fb63388fd52fc77d385a) | ir3: fix possible signed overflow in ir3_link_add | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r8) | 2026-06-10 | [`67471fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67471fed866f673ab1ee7fdc2babe145b899c1fd) | tu: Enable texel buffer / SSBO emulation for known problematic games | Vulkan 1.4.353 |
