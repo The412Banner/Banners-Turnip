@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260611-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r6) | 2026-06-11 | [`3660224`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/366022458be9fa97866257be25c5a698b926c2c5) | egl: fix _EGL_NATIVE_PLATFORM fallback for unrecognized native displays | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r5) | 2026-06-11 | [`73017ea`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73017ea86a3bdadd89f03d871cb716351e75d33d) | ac/video: drop an useless drm_minor check | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r4) | 2026-06-11 | [`73017ea`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73017ea86a3bdadd89f03d871cb716351e75d33d) | ac/video: drop an useless drm_minor check | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r3) | 2026-06-11 | [`2a681c4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2a681c4f8b56b6f1eb70fbd7ab353be0068867eb) | intel/decoder: Print more information in shader's headline | Vulkan 1.4.353 |
