@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`924ccc2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/924ccc2f6c8edc7a42ee1f6e7ad2e637d87a3633) |
+| **Commit** | [`41b4e04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41b4e04c76bab90c62fcce405364689a13b59f65) |
 | **Commit date** | 2026-06-11 |
-| **Commit title** | teflon: Ensure all TfLiteRegistration fields are 0 |
+| **Commit title** | nak: Fix encoding of f16x2 min/max on sm90+ |
 | **Build date** | 20260611 |
-| **Release** | [v26.2.0-20260611-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r12) |
+| **Release** | [v26.2.0-20260611-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r13) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260611-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r13) | 2026-06-11 | [`41b4e04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41b4e04c76bab90c62fcce405364689a13b59f65) | nak: Fix encoding of f16x2 min/max on sm90+ | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r12) | 2026-06-11 | [`924ccc2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/924ccc2f6c8edc7a42ee1f6e7ad2e637d87a3633) | teflon: Ensure all TfLiteRegistration fields are 0 | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r11) | 2026-06-11 | [`62b90b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/62b90b082916433dd137642ab11f174be14d4c15) | meson: drop non-existent platforms=xcb check | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r10) | 2026-06-11 | [`b941dd7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b941dd736ffc1ea4768954ab79886445dcef5473) | util: Fix float8 denorm rounding to min-normal | Vulkan 1.4.353 |
