@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`9268636`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/92686361656a72388ed0d6f79042f414ae68e699) |
+| **Commit** | [`6cb9aaa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6cb9aaa2b7853f6299cfe674a3e444b2f4ac8d78) |
 | **Commit date** | 2026-06-11 |
-| **Commit title** | ethosu: Fix -Werror=format build error on 32-bit |
+| **Commit title** | aco/sched_vopd: fix v_dual_dot2acc_f32_f16 created from VOP2 with inline constant |
 | **Build date** | 20260611 |
-| **Release** | [v26.2.0-20260611-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r7) |
+| **Release** | [v26.2.0-20260611-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260611-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r8) | 2026-06-11 | [`6cb9aaa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6cb9aaa2b7853f6299cfe674a3e444b2f4ac8d78) | aco/sched_vopd: fix v_dual_dot2acc_f32_f16 created from VOP2 with inline constant | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r7) | 2026-06-11 | [`9268636`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/92686361656a72388ed0d6f79042f414ae68e699) | ethosu: Fix -Werror=format build error on 32-bit | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r6) | 2026-06-11 | [`3660224`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/366022458be9fa97866257be25c5a698b926c2c5) | egl: fix _EGL_NATIVE_PLATFORM fallback for unrecognized native displays | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r5) | 2026-06-11 | [`73017ea`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73017ea86a3bdadd89f03d871cb716351e75d33d) | ac/video: drop an useless drm_minor check | Vulkan 1.4.353 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260610-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r9) | 2026-06-10 | [`11334c4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/11334c438a48f63ee2b2fb63388fd52fc77d385a) | ir3: fix possible signed overflow in ir3_link_add | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r8) | 2026-06-10 | [`67471fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67471fed866f673ab1ee7fdc2babe145b899c1fd) | tu: Enable texel buffer / SSBO emulation for known problematic games | Vulkan 1.4.353 |
 | [v26.2.0-20260610-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r7) | 2026-06-10 | [`5882459`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5882459c451c348d09ce1c24488a30d1f0c1ec2e) | kk,wsi/metal: Support VK_EXT_hdr_metadata | Vulkan 1.4.353 |
-| [v26.2.0-20260610-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260610-r6) | 2026-06-10 | [`38a98a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/38a98a48035aa25d6187fcd01eb69d28b0f98fbd) | v3d: remove duplicate util_blitter_save_so_targets() call | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---
