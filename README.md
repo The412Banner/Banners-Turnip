@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`8aa1ad6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8aa1ad6cd4fe725684d6c349f88dcca94b6e8cab) |
+| **Commit** | [`d7f9fed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d7f9fede8472f66f4949c92b93d075c350b0bd6a) |
 | **Commit date** | 2026-06-12 |
-| **Commit title** | Uprev ANGLE to 8e09325ebad45c7e11630a79754361e965e5fab0 |
+| **Commit title** | kraid: Re-materialize constants |
 | **Build date** | 20260612 |
-| **Release** | [v26.2.0-20260612-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r11) |
+| **Release** | [v26.2.0-20260612-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r12) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260612-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r12) | 2026-06-12 | [`d7f9fed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d7f9fede8472f66f4949c92b93d075c350b0bd6a) | kraid: Re-materialize constants | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r11) | 2026-06-12 | [`8aa1ad6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8aa1ad6cd4fe725684d6c349f88dcca94b6e8cab) | Uprev ANGLE to 8e09325ebad45c7e11630a79754361e965e5fab0 | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r10) | 2026-06-12 | [`6617b5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6617b5b3fb0354534330968f30fbab43ad527f01) | mediafoundation: detach xThreadProc frame processing from apiLock to unblock concurrentt ProcessOutput calls | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r9) | 2026-06-12 | [`860fe2d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/860fe2d7935d1d4e97dc9930785751915ce2c212) | tu: Don't process A2R10G10B10 clear values via new pack function | Vulkan 1.4.353 |
@@ -100,7 +101,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260612](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612) | 2026-06-12 | [`67ded3d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67ded3d07939865edb581f23cbb0b82056dcdefb) | panvk: Advertise VK_KHR_compute_shader_derivatives | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r13) | 2026-06-11 | [`41b4e04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41b4e04c76bab90c62fcce405364689a13b59f65) | nak: Fix encoding of f16x2 min/max on sm90+ | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r12) | 2026-06-11 | [`924ccc2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/924ccc2f6c8edc7a42ee1f6e7ad2e637d87a3633) | teflon: Ensure all TfLiteRegistration fields are 0 | Vulkan 1.4.353 |
-| [v26.2.0-20260611-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r11) | 2026-06-11 | [`62b90b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/62b90b082916433dd137642ab11f174be14d4c15) | meson: drop non-existent platforms=xcb check | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---
