@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260612-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r11) | 2026-06-12 | [`8aa1ad6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8aa1ad6cd4fe725684d6c349f88dcca94b6e8cab) | Uprev ANGLE to 8e09325ebad45c7e11630a79754361e965e5fab0 | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r10) | 2026-06-12 | [`6617b5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6617b5b3fb0354534330968f30fbab43ad527f01) | mediafoundation: detach xThreadProc frame processing from apiLock to unblock concurrentt ProcessOutput calls | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r9) | 2026-06-12 | [`860fe2d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/860fe2d7935d1d4e97dc9930785751915ce2c212) | tu: Don't process A2R10G10B10 clear values via new pack function | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r8) | 2026-06-12 | [`db4159c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db4159c431ac3160f21379c55c7c528efae316ab) | Modify x11_xcb_display_supports_xshm to get xshm opcode | Vulkan 1.4.353 |
