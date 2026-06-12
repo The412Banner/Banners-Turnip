@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260612-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r14) | 2026-06-12 | [`8faf71d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8faf71d84f0ef92538107d132ff48f7179e922d4) | aux/tc: enforce strict resolve semantics | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r13) | 2026-06-12 | [`4e2abd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e2abd872a1ff1c470f33f21a76adfeece754e93) | anv: align storage texel buffer support on image support | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r12) | 2026-06-12 | [`d7f9fed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d7f9fede8472f66f4949c92b93d075c350b0bd6a) | kraid: Re-materialize constants | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r11) | 2026-06-12 | [`8aa1ad6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8aa1ad6cd4fe725684d6c349f88dcca94b6e8cab) | Uprev ANGLE to 8e09325ebad45c7e11630a79754361e965e5fab0 | Vulkan 1.4.353 |
