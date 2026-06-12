@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`a07ded8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a07ded8e8cf1d2f2b758ebb0520a7845f608c284) |
+| **Commit** | [`5435618`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5435618d2e53fc77ee5d90f61e3f13435d818117) |
 | **Commit date** | 2026-06-12 |
-| **Commit title** | kraid: Better document swizzles |
+| **Commit title** | nvk: Implement support for non graphics timestamp |
 | **Build date** | 20260612 |
-| **Release** | [v26.2.0-20260612-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r4) |
+| **Release** | [v26.2.0-20260612-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260612-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r5) | 2026-06-12 | [`5435618`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5435618d2e53fc77ee5d90f61e3f13435d818117) | nvk: Implement support for non graphics timestamp | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r4) | 2026-06-12 | [`a07ded8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a07ded8e8cf1d2f2b758ebb0520a7845f608c284) | kraid: Better document swizzles | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r3) | 2026-06-12 | [`42fd600`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42fd600dc066248f8f524b54eee6a2f969211b32) | brw: Remove the brw assembler tests | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r2) | 2026-06-12 | [`1f83be5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1f83be5eddc757a6fd8fdfb3eddc562223587f62) | intel/gen: Drop unused format parameter from gen_inst_has_dst | Vulkan 1.4.353 |
