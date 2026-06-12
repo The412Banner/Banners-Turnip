@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260612-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r3) | 2026-06-12 | [`42fd600`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42fd600dc066248f8f524b54eee6a2f969211b32) | brw: Remove the brw assembler tests | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r2) | 2026-06-12 | [`1f83be5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1f83be5eddc757a6fd8fdfb3eddc562223587f62) | intel/gen: Drop unused format parameter from gen_inst_has_dst | Vulkan 1.4.353 |
 | [v26.2.0-20260612](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612) | 2026-06-11 | [`67ded3d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67ded3d07939865edb581f23cbb0b82056dcdefb) | panvk: Advertise VK_KHR_compute_shader_derivatives | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r13) | 2026-06-11 | [`41b4e04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41b4e04c76bab90c62fcce405364689a13b59f65) | nak: Fix encoding of f16x2 min/max on sm90+ | Vulkan 1.4.353 |
