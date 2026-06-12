@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260612-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r6) | 2026-06-12 | [`e8b5f93`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e8b5f93c3118274c7343ed02ea75f8bd74319980) | v3dv: increase max push constants size | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r5) | 2026-06-12 | [`5435618`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5435618d2e53fc77ee5d90f61e3f13435d818117) | nvk: Implement support for non graphics timestamp | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r4) | 2026-06-12 | [`a07ded8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a07ded8e8cf1d2f2b758ebb0520a7845f608c284) | kraid: Better document swizzles | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r3) | 2026-06-12 | [`42fd600`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42fd600dc066248f8f524b54eee6a2f969211b32) | brw: Remove the brw assembler tests | Vulkan 1.4.353 |

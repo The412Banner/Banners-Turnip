@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`5435618`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5435618d2e53fc77ee5d90f61e3f13435d818117) |
+| **Commit** | [`e8b5f93`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e8b5f93c3118274c7343ed02ea75f8bd74319980) |
 | **Commit date** | 2026-06-12 |
-| **Commit title** | nvk: Implement support for non graphics timestamp |
+| **Commit title** | v3dv: increase max push constants size |
 | **Build date** | 20260612 |
-| **Release** | [v26.2.0-20260612-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r5) |
+| **Release** | [v26.2.0-20260612-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260612-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r6) | 2026-06-12 | [`e8b5f93`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e8b5f93c3118274c7343ed02ea75f8bd74319980) | v3dv: increase max push constants size | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r5) | 2026-06-12 | [`5435618`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5435618d2e53fc77ee5d90f61e3f13435d818117) | nvk: Implement support for non graphics timestamp | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r4) | 2026-06-12 | [`a07ded8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a07ded8e8cf1d2f2b758ebb0520a7845f608c284) | kraid: Better document swizzles | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r3) | 2026-06-12 | [`42fd600`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42fd600dc066248f8f524b54eee6a2f969211b32) | brw: Remove the brw assembler tests | Vulkan 1.4.353 |
@@ -99,8 +100,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260611-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r9) | 2026-06-11 | [`bb32d88`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bb32d88c6f16c417a9f7eadc8a573d4463a904f8) | ac: set has_desc_resource_level to true for gfx1156 | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r8) | 2026-06-11 | [`6cb9aaa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6cb9aaa2b7853f6299cfe674a3e444b2f4ac8d78) | aco/sched_vopd: fix v_dual_dot2acc_f32_f16 created from VOP2 with inline constant | Vulkan 1.4.353 |
 | [v26.2.0-20260611-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r7) | 2026-06-11 | [`9268636`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/92686361656a72388ed0d6f79042f414ae68e699) | ethosu: Fix -Werror=format build error on 32-bit | Vulkan 1.4.353 |
-| [v26.2.0-20260611-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r6) | 2026-06-11 | [`3660224`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/366022458be9fa97866257be25c5a698b926c2c5) | egl: fix _EGL_NATIVE_PLATFORM fallback for unrecognized native displays | Vulkan 1.4.353 |
-| [v26.2.0-20260611-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r5) | 2026-06-11 | [`73017ea`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73017ea86a3bdadd89f03d871cb716351e75d33d) | ac/video: drop an useless drm_minor check | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---
