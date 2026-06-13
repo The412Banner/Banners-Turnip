@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`8f272b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8f272b1fe18e95366386a075f2df0db4e9ea78b9) |
+| **Commit** | [`ce4654e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce4654ead659aa68f88cfb898a0fcca4da6f329b) |
 | **Commit date** | 2026-06-13 |
-| **Commit title** | nouveau/mme: Add a test for MME Shadow RAM behavior |
+| **Commit title** | radv: rename vrs_coarse_shading -> vrs_flat_shading |
 | **Build date** | 20260613 |
-| **Release** | [v26.2.0-20260613](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260613) |
+| **Release** | [v26.2.0-20260613-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260613-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,15 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260613-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260613-r2) | 2026-06-13 | [`ce4654e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce4654ead659aa68f88cfb898a0fcca4da6f329b) | radv: rename vrs_coarse_shading -> vrs_flat_shading | Vulkan 1.4.353 |
 | [v26.2.0-20260613](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260613) | 2026-06-13 | [`8f272b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8f272b1fe18e95366386a075f2df0db4e9ea78b9) | nouveau/mme: Add a test for MME Shadow RAM behavior | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r14) | 2026-06-12 | [`8faf71d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8faf71d84f0ef92538107d132ff48f7179e922d4) | aux/tc: enforce strict resolve semantics | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r13) | 2026-06-12 | [`4e2abd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e2abd872a1ff1c470f33f21a76adfeece754e93) | anv: align storage texel buffer support on image support | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r12) | 2026-06-12 | [`d7f9fed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d7f9fede8472f66f4949c92b93d075c350b0bd6a) | kraid: Re-materialize constants | Vulkan 1.4.353 |
-| [v26.2.0-20260612-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r11) | 2026-06-12 | [`8aa1ad6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8aa1ad6cd4fe725684d6c349f88dcca94b6e8cab) | Uprev ANGLE to 8e09325ebad45c7e11630a79754361e965e5fab0 | Vulkan 1.4.353 |
-| [v26.2.0-20260612-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r10) | 2026-06-12 | [`6617b5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6617b5b3fb0354534330968f30fbab43ad527f01) | mediafoundation: detach xThreadProc frame processing from apiLock to unblock concurrentt ProcessOutput calls | Vulkan 1.4.353 |
-| [v26.2.0-20260612-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r9) | 2026-06-12 | [`860fe2d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/860fe2d7935d1d4e97dc9930785751915ce2c212) | tu: Don't process A2R10G10B10 clear values via new pack function | Vulkan 1.4.353 |
-| [v26.2.0-20260612-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r8) | 2026-06-12 | [`db4159c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db4159c431ac3160f21379c55c7c528efae316ab) | Modify x11_xcb_display_supports_xshm to get xshm opcode | Vulkan 1.4.353 |
-| [v26.2.0-20260612-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r7) | 2026-06-12 | [`25f698d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/25f698d6de37f67cd889f5973a42ae1f7d708e96) | Revert "people: update Marek's email" | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---

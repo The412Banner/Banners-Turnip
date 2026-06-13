@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260613-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260613-r2) | 2026-06-13 | [`ce4654e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce4654ead659aa68f88cfb898a0fcca4da6f329b) | radv: rename vrs_coarse_shading -> vrs_flat_shading | Vulkan 1.4.353 |
 | [v26.2.0-20260613](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260613) | 2026-06-13 | [`8f272b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8f272b1fe18e95366386a075f2df0db4e9ea78b9) | nouveau/mme: Add a test for MME Shadow RAM behavior | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r14) | 2026-06-12 | [`8faf71d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8faf71d84f0ef92538107d132ff48f7179e922d4) | aux/tc: enforce strict resolve semantics | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r13) | 2026-06-12 | [`4e2abd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e2abd872a1ff1c470f33f21a76adfeece754e93) | anv: align storage texel buffer support on image support | Vulkan 1.4.353 |
