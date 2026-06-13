@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`8faf71d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8faf71d84f0ef92538107d132ff48f7179e922d4) |
-| **Commit date** | 2026-06-12 |
-| **Commit title** | aux/tc: enforce strict resolve semantics |
-| **Build date** | 20260612 |
-| **Release** | [v26.2.0-20260612-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r14) |
+| **Commit** | [`8f272b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8f272b1fe18e95366386a075f2df0db4e9ea78b9) |
+| **Commit date** | 2026-06-13 |
+| **Commit title** | nouveau/mme: Add a test for MME Shadow RAM behavior |
+| **Build date** | 20260613 |
+| **Release** | [v26.2.0-20260613](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260613) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260613](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260613) | 2026-06-13 | [`8f272b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8f272b1fe18e95366386a075f2df0db4e9ea78b9) | nouveau/mme: Add a test for MME Shadow RAM behavior | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r14) | 2026-06-12 | [`8faf71d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8faf71d84f0ef92538107d132ff48f7179e922d4) | aux/tc: enforce strict resolve semantics | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r13) | 2026-06-12 | [`4e2abd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e2abd872a1ff1c470f33f21a76adfeece754e93) | anv: align storage texel buffer support on image support | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r12) | 2026-06-12 | [`d7f9fed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d7f9fede8472f66f4949c92b93d075c350b0bd6a) | kraid: Re-materialize constants | Vulkan 1.4.353 |
@@ -95,13 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260612-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r9) | 2026-06-12 | [`860fe2d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/860fe2d7935d1d4e97dc9930785751915ce2c212) | tu: Don't process A2R10G10B10 clear values via new pack function | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r8) | 2026-06-12 | [`db4159c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db4159c431ac3160f21379c55c7c528efae316ab) | Modify x11_xcb_display_supports_xshm to get xshm opcode | Vulkan 1.4.353 |
 | [v26.2.0-20260612-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r7) | 2026-06-12 | [`25f698d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/25f698d6de37f67cd889f5973a42ae1f7d708e96) | Revert "people: update Marek's email" | Vulkan 1.4.353 |
-| [v26.2.0-20260612-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r6) | 2026-06-12 | [`e8b5f93`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e8b5f93c3118274c7343ed02ea75f8bd74319980) | v3dv: increase max push constants size | Vulkan 1.4.353 |
-| [v26.2.0-20260612-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r5) | 2026-06-12 | [`5435618`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5435618d2e53fc77ee5d90f61e3f13435d818117) | nvk: Implement support for non graphics timestamp | Vulkan 1.4.353 |
-| [v26.2.0-20260612-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r4) | 2026-06-12 | [`a07ded8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a07ded8e8cf1d2f2b758ebb0520a7845f608c284) | kraid: Better document swizzles | Vulkan 1.4.353 |
-| [v26.2.0-20260612-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r3) | 2026-06-12 | [`42fd600`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42fd600dc066248f8f524b54eee6a2f969211b32) | brw: Remove the brw assembler tests | Vulkan 1.4.353 |
-| [v26.2.0-20260612-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612-r2) | 2026-06-12 | [`1f83be5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1f83be5eddc757a6fd8fdfb3eddc562223587f62) | intel/gen: Drop unused format parameter from gen_inst_has_dst | Vulkan 1.4.353 |
-| [v26.2.0-20260612](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260612) | 2026-06-12 | [`67ded3d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67ded3d07939865edb581f23cbb0b82056dcdefb) | panvk: Advertise VK_KHR_compute_shader_derivatives | Vulkan 1.4.353 |
-| [v26.2.0-20260611-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260611-r13) | 2026-06-11 | [`41b4e04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41b4e04c76bab90c62fcce405364689a13b59f65) | nak: Fix encoding of f16x2 min/max on sm90+ | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---
