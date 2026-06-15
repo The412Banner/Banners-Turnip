@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260615-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r7) | 2026-06-15 | [`5134104`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5134104c9cf6bf7f883f672f1e160daf83bd9aa2) | nir/skip_helpers: don't require helpers for non uniform descriptors | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r6) | 2026-06-15 | [`d3c5044`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c50442f9c1e99c5c7039f27b90a191fe991606) | anv: Replace anv_descriptor_set_binding_layout::descriptor_data_sampler_size by a local variable | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r5) | 2026-06-15 | [`68b21aa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/68b21aa375c5fb1b6f19df9682710657b66944ab) | nir/lower_terminate_to_demote: tweak terminate_if lowering | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r4) | 2026-06-15 | [`cdc6a0b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cdc6a0bfed71b22cfbb5ce7f6b778ee3fdedf409) | v3dv: allow TFU readahead padding above maxMemoryAllocationSize | Vulkan 1.4.353 |
