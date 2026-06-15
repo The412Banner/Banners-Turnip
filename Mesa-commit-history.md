@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260615-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r5) | 2026-06-15 | [`68b21aa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/68b21aa375c5fb1b6f19df9682710657b66944ab) | nir/lower_terminate_to_demote: tweak terminate_if lowering | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r4) | 2026-06-15 | [`cdc6a0b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cdc6a0bfed71b22cfbb5ce7f6b778ee3fdedf409) | v3dv: allow TFU readahead padding above maxMemoryAllocationSize | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r3) | 2026-06-15 | [`9ff341f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ff341ff5f63429c9b24b7561a23f6c4a83932c6) | pvr/ci: add AXE-1-16M nightly Vulkan CTS testing | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r2) | 2026-06-15 | [`1981646`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1981646c4fb6ba33a4df7205583908c9760ba804) | aco/tests: test creating v_dual_dot2acc_f32_f16 from v_dot2c_f32_f16 with inline constant | Vulkan 1.4.353 |
