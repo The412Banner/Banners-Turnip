@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260615-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r3) | 2026-06-15 | [`9ff341f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ff341ff5f63429c9b24b7561a23f6c4a83932c6) | pvr/ci: add AXE-1-16M nightly Vulkan CTS testing | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r2) | 2026-06-15 | [`1981646`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1981646c4fb6ba33a4df7205583908c9760ba804) | aco/tests: test creating v_dual_dot2acc_f32_f16 from v_dot2c_f32_f16 with inline constant | Vulkan 1.4.353 |
 | [v26.2.0-20260615](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615) | 2026-06-15 | [`7c018be`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c018be258d107f74c79a4f0dd37cf42486889e1) | ci: disable Collabora's farm due to maintenance | Vulkan 1.4.353 |
 | [v26.2.0-20260613-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260613-r2) | 2026-06-13 | [`ce4654e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce4654ead659aa68f88cfb898a0fcca4da6f329b) | radv: rename vrs_coarse_shading -> vrs_flat_shading | Vulkan 1.4.353 |

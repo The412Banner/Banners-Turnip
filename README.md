@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`1981646`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1981646c4fb6ba33a4df7205583908c9760ba804) |
+| **Commit** | [`9ff341f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ff341ff5f63429c9b24b7561a23f6c4a83932c6) |
 | **Commit date** | 2026-06-15 |
-| **Commit title** | aco/tests: test creating v_dual_dot2acc_f32_f16 from v_dot2c_f32_f16 with inline constant |
+| **Commit title** | pvr/ci: add AXE-1-16M nightly Vulkan CTS testing |
 | **Build date** | 20260615 |
-| **Release** | [v26.2.0-20260615-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r2) |
+| **Release** | [v26.2.0-20260615-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260615-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r3) | 2026-06-15 | [`9ff341f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ff341ff5f63429c9b24b7561a23f6c4a83932c6) | pvr/ci: add AXE-1-16M nightly Vulkan CTS testing | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r2) | 2026-06-15 | [`1981646`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1981646c4fb6ba33a4df7205583908c9760ba804) | aco/tests: test creating v_dual_dot2acc_f32_f16 from v_dot2c_f32_f16 with inline constant | Vulkan 1.4.353 |
 | [v26.2.0-20260615](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615) | 2026-06-15 | [`7c018be`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c018be258d107f74c79a4f0dd37cf42486889e1) | ci: disable Collabora's farm due to maintenance | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
