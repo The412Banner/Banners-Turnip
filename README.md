@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`cff8dbd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff8dbd452b840edb0820b56be6b292cac2b4cc9) |
+| **Commit** | [`1845e53`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1845e538650738e7e7c01461b7dd94c36641dd1f) |
 | **Commit date** | 2026-06-16 |
-| **Commit title** | v3dv: rename format_plane unorm/snorm flags to sw_unorm/sw_snorm |
+| **Commit title** | ac/lower_global_access: combine multiple 32-bit offsets |
 | **Build date** | 20260616 |
-| **Release** | [v26.2.0-20260616-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r6) |
+| **Release** | [v26.2.0-20260616-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260616-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r7) | 2026-06-16 | [`1845e53`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1845e538650738e7e7c01461b7dd94c36641dd1f) | ac/lower_global_access: combine multiple 32-bit offsets | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r6) | 2026-06-16 | [`cff8dbd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff8dbd452b840edb0820b56be6b292cac2b4cc9) | v3dv: rename format_plane unorm/snorm flags to sw_unorm/sw_snorm | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r5) | 2026-06-16 | [`40d4cf7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/40d4cf7a7040f382e87636d2821a38f20d4fd850) | intel/gen: Explicitly declare gen_opcodes_private.h dependency | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r4) | 2026-06-16 | [`a7575d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a7575d7e981cac410752e047fa7922ef2d8425fa) | kk: Respect precomp-compiler options when setting up kk_clc | Vulkan 1.4.353 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260615-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r5) | 2026-06-15 | [`68b21aa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/68b21aa375c5fb1b6f19df9682710657b66944ab) | nir/lower_terminate_to_demote: tweak terminate_if lowering | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r4) | 2026-06-15 | [`cdc6a0b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cdc6a0bfed71b22cfbb5ce7f6b778ee3fdedf409) | v3dv: allow TFU readahead padding above maxMemoryAllocationSize | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r3) | 2026-06-15 | [`9ff341f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ff341ff5f63429c9b24b7561a23f6c4a83932c6) | pvr/ci: add AXE-1-16M nightly Vulkan CTS testing | Vulkan 1.4.353 |
-| [v26.2.0-20260615-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r2) | 2026-06-15 | [`1981646`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1981646c4fb6ba33a4df7205583908c9760ba804) | aco/tests: test creating v_dual_dot2acc_f32_f16 from v_dot2c_f32_f16 with inline constant | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---
