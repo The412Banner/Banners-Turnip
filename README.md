@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`40d4cf7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/40d4cf7a7040f382e87636d2821a38f20d4fd850) |
+| **Commit** | [`cff8dbd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff8dbd452b840edb0820b56be6b292cac2b4cc9) |
 | **Commit date** | 2026-06-16 |
-| **Commit title** | intel/gen: Explicitly declare gen_opcodes_private.h dependency |
+| **Commit title** | v3dv: rename format_plane unorm/snorm flags to sw_unorm/sw_snorm |
 | **Build date** | 20260616 |
-| **Release** | [v26.2.0-20260616-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r5) |
+| **Release** | [v26.2.0-20260616-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260616-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r6) | 2026-06-16 | [`cff8dbd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff8dbd452b840edb0820b56be6b292cac2b4cc9) | v3dv: rename format_plane unorm/snorm flags to sw_unorm/sw_snorm | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r5) | 2026-06-16 | [`40d4cf7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/40d4cf7a7040f382e87636d2821a38f20d4fd850) | intel/gen: Explicitly declare gen_opcodes_private.h dependency | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r4) | 2026-06-16 | [`a7575d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a7575d7e981cac410752e047fa7922ef2d8425fa) | kk: Respect precomp-compiler options when setting up kk_clc | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r3) | 2026-06-16 | [`0b7dd78`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b7dd7881444b807104ddf7fc98f471895719522) | intel: Add debug hook to dump out BVH after update | Vulkan 1.4.353 |
