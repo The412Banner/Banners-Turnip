@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260616-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r3) | 2026-06-15 | [`0b7dd78`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b7dd7881444b807104ddf7fc98f471895719522) | intel: Add debug hook to dump out BVH after update | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r2) | 2026-06-16 | [`d9263b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d9263b617c5a0269221b430fafade19d5879c0ec) | anv/rt: Skip invalid node in child block count | Vulkan 1.4.353 |
 | [v26.2.0-20260616](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616) | 2026-06-15 | [`d3371e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3371e22d79af0feeeaf9769da4b9bee45805ed7) | brw: don't preprocess software doubles if opts->softfp64 is not set | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r7) | 2026-06-15 | [`5134104`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5134104c9cf6bf7f883f672f1e160daf83bd9aa2) | nir/skip_helpers: don't require helpers for non uniform descriptors | Vulkan 1.4.353 |
