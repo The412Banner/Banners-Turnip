@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260616-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r8) | 2026-06-16 | [`44290e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44290e189951581691b4ad6d0d3c209b6b806e14) | nir: Fix trailing comment generation for variable naming | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r7) | 2026-06-16 | [`1845e53`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1845e538650738e7e7c01461b7dd94c36641dd1f) | ac/lower_global_access: combine multiple 32-bit offsets | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r6) | 2026-06-16 | [`cff8dbd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff8dbd452b840edb0820b56be6b292cac2b4cc9) | v3dv: rename format_plane unorm/snorm flags to sw_unorm/sw_snorm | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r5) | 2026-06-16 | [`40d4cf7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/40d4cf7a7040f382e87636d2821a38f20d4fd850) | intel/gen: Explicitly declare gen_opcodes_private.h dependency | Vulkan 1.4.353 |
