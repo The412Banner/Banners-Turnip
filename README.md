@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`44290e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44290e189951581691b4ad6d0d3c209b6b806e14) |
+| **Commit** | [`9a2d718`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9a2d7186eb4cddf3fb6354e0b3d6e087e9622243) |
 | **Commit date** | 2026-06-16 |
-| **Commit title** | nir: Fix trailing comment generation for variable naming |
+| **Commit title** | vulkan: fix lowering untyped accel struct with descriptor heap |
 | **Build date** | 20260616 |
-| **Release** | [v26.2.0-20260616-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r8) |
+| **Release** | [v26.2.0-20260616-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260616-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r9) | 2026-06-16 | [`9a2d718`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9a2d7186eb4cddf3fb6354e0b3d6e087e9622243) | vulkan: fix lowering untyped accel struct with descriptor heap | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r8) | 2026-06-16 | [`44290e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44290e189951581691b4ad6d0d3c209b6b806e14) | nir: Fix trailing comment generation for variable naming | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r7) | 2026-06-16 | [`1845e53`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1845e538650738e7e7c01461b7dd94c36641dd1f) | ac/lower_global_access: combine multiple 32-bit offsets | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r6) | 2026-06-16 | [`cff8dbd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff8dbd452b840edb0820b56be6b292cac2b4cc9) | v3dv: rename format_plane unorm/snorm flags to sw_unorm/sw_snorm | Vulkan 1.4.353 |
