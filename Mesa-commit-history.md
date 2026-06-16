@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260616-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r5) | 2026-06-16 | [`40d4cf7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/40d4cf7a7040f382e87636d2821a38f20d4fd850) | intel/gen: Explicitly declare gen_opcodes_private.h dependency | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r4) | 2026-06-15 | [`a7575d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a7575d7e981cac410752e047fa7922ef2d8425fa) | kk: Respect precomp-compiler options when setting up kk_clc | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r3) | 2026-06-15 | [`0b7dd78`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b7dd7881444b807104ddf7fc98f471895719522) | intel: Add debug hook to dump out BVH after update | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r2) | 2026-06-16 | [`d9263b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d9263b617c5a0269221b430fafade19d5879c0ec) | anv/rt: Skip invalid node in child block count | Vulkan 1.4.353 |
