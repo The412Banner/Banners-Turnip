@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`0b7dd78`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b7dd7881444b807104ddf7fc98f471895719522) |
+| **Commit** | [`a7575d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a7575d7e981cac410752e047fa7922ef2d8425fa) |
 | **Commit date** | 2026-06-15 |
-| **Commit title** | intel: Add debug hook to dump out BVH after update |
+| **Commit title** | kk: Respect precomp-compiler options when setting up kk_clc |
 | **Build date** | 20260616 |
-| **Release** | [v26.2.0-20260616-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r3) |
+| **Release** | [v26.2.0-20260616-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260616-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r4) | 2026-06-16 | [`a7575d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a7575d7e981cac410752e047fa7922ef2d8425fa) | kk: Respect precomp-compiler options when setting up kk_clc | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r3) | 2026-06-16 | [`0b7dd78`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b7dd7881444b807104ddf7fc98f471895719522) | intel: Add debug hook to dump out BVH after update | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r2) | 2026-06-16 | [`d9263b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d9263b617c5a0269221b430fafade19d5879c0ec) | anv/rt: Skip invalid node in child block count | Vulkan 1.4.353 |
 | [v26.2.0-20260616](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616) | 2026-06-16 | [`d3371e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3371e22d79af0feeeaf9769da4b9bee45805ed7) | brw: don't preprocess software doubles if opts->softfp64 is not set | Vulkan 1.4.353 |
