@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`9a2d718`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9a2d7186eb4cddf3fb6354e0b3d6e087e9622243) |
+| **Commit** | [`e5b39e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5b39e03b05b1facb9756e8479a3ee28b1f9b41a) |
 | **Commit date** | 2026-06-16 |
-| **Commit title** | vulkan: fix lowering untyped accel struct with descriptor heap |
+| **Commit title** | kraid: OpShiftLop is unsigned |
 | **Build date** | 20260616 |
-| **Release** | [v26.2.0-20260616-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r9) |
+| **Release** | [v26.2.0-20260616-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r10) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260616-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r10) | 2026-06-16 | [`e5b39e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5b39e03b05b1facb9756e8479a3ee28b1f9b41a) | kraid: OpShiftLop is unsigned | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r9) | 2026-06-16 | [`9a2d718`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9a2d7186eb4cddf3fb6354e0b3d6e087e9622243) | vulkan: fix lowering untyped accel struct with descriptor heap | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r8) | 2026-06-16 | [`44290e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44290e189951581691b4ad6d0d3c209b6b806e14) | nir: Fix trailing comment generation for variable naming | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r7) | 2026-06-16 | [`1845e53`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1845e538650738e7e7c01461b7dd94c36641dd1f) | ac/lower_global_access: combine multiple 32-bit offsets | Vulkan 1.4.353 |
@@ -98,8 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260616](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616) | 2026-06-16 | [`d3371e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3371e22d79af0feeeaf9769da4b9bee45805ed7) | brw: don't preprocess software doubles if opts->softfp64 is not set | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r7) | 2026-06-15 | [`5134104`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5134104c9cf6bf7f883f672f1e160daf83bd9aa2) | nir/skip_helpers: don't require helpers for non uniform descriptors | Vulkan 1.4.353 |
 | [v26.2.0-20260615-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r6) | 2026-06-15 | [`d3c5044`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c50442f9c1e99c5c7039f27b90a191fe991606) | anv: Replace anv_descriptor_set_binding_layout::descriptor_data_sampler_size by a local variable | Vulkan 1.4.353 |
-| [v26.2.0-20260615-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r5) | 2026-06-15 | [`68b21aa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/68b21aa375c5fb1b6f19df9682710657b66944ab) | nir/lower_terminate_to_demote: tweak terminate_if lowering | Vulkan 1.4.353 |
-| [v26.2.0-20260615-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260615-r4) | 2026-06-15 | [`cdc6a0b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cdc6a0bfed71b22cfbb5ce7f6b778ee3fdedf409) | v3dv: allow TFU readahead padding above maxMemoryAllocationSize | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---
