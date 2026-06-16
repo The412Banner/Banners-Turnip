@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`e5b39e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5b39e03b05b1facb9756e8479a3ee28b1f9b41a) |
+| **Commit** | [`9d55862`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9d558626ef13985e583e21318b43df6c32aed3d8) |
 | **Commit date** | 2026-06-16 |
-| **Commit title** | kraid: OpShiftLop is unsigned |
+| **Commit title** | aco/assembler: pass std::vector to insert_code |
 | **Build date** | 20260616 |
-| **Release** | [v26.2.0-20260616-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r10) |
+| **Release** | [v26.2.0-20260616-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260616-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r11) | 2026-06-16 | [`9d55862`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9d558626ef13985e583e21318b43df6c32aed3d8) | aco/assembler: pass std::vector to insert_code | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r10) | 2026-06-16 | [`e5b39e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5b39e03b05b1facb9756e8479a3ee28b1f9b41a) | kraid: OpShiftLop is unsigned | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r9) | 2026-06-16 | [`9a2d718`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9a2d7186eb4cddf3fb6354e0b3d6e087e9622243) | vulkan: fix lowering untyped accel struct with descriptor heap | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r8) | 2026-06-16 | [`44290e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44290e189951581691b4ad6d0d3c209b6b806e14) | nir: Fix trailing comment generation for variable naming | Vulkan 1.4.353 |
