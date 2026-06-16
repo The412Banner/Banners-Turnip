@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260616-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r13) | 2026-06-16 | [`e3903bc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e3903bc647281ab1b29f9d0c92e86b9b5d3ed4d9) | zink: fix import2d sampler view creation | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r12) | 2026-06-16 | [`1e9fd4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1e9fd4ca5b1470a1c4ed6ca228a95be64de8ac01) | spirv: set num_components for OpAtomicFlagTestAndSet | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r11) | 2026-06-16 | [`9d55862`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9d558626ef13985e583e21318b43df6c32aed3d8) | aco/assembler: pass std::vector to insert_code | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r10) | 2026-06-16 | [`e5b39e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5b39e03b05b1facb9756e8479a3ee28b1f9b41a) | kraid: OpShiftLop is unsigned | Vulkan 1.4.353 |
