@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260617](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617) | 2026-06-17 | [`3d5d0b4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d5d0b4b23e0a84f9abc4efb57aaf488466ac802) | nvk: Use meta for image copies where possible | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r14) | 2026-06-16 | [`4d92a06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4d92a069ff93316aa7fb798ed8317476032c5e49) | rusticl: validate input_programs binary type in clLinkProgram | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r13) | 2026-06-16 | [`e3903bc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e3903bc647281ab1b29f9d0c92e86b9b5d3ed4d9) | zink: fix import2d sampler view creation | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r12) | 2026-06-16 | [`1e9fd4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1e9fd4ca5b1470a1c4ed6ca228a95be64de8ac01) | spirv: set num_components for OpAtomicFlagTestAndSet | Vulkan 1.4.353 |
