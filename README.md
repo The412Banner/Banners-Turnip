@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`3d5d0b4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d5d0b4b23e0a84f9abc4efb57aaf488466ac802) |
+| **Commit** | [`11c9032`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/11c903246655184d12fcead8888486c5ae796eef) |
 | **Commit date** | 2026-06-17 |
-| **Commit title** | nvk: Use meta for image copies where possible |
+| **Commit title** | v3dv: use common multisync code |
 | **Build date** | 20260617 |
-| **Release** | [v26.2.0-20260617](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617) |
+| **Release** | [v26.2.0-20260617-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260617-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r2) | 2026-06-17 | [`11c9032`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/11c903246655184d12fcead8888486c5ae796eef) | v3dv: use common multisync code | Vulkan 1.4.353 |
 | [v26.2.0-20260617](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617) | 2026-06-17 | [`3d5d0b4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d5d0b4b23e0a84f9abc4efb57aaf488466ac802) | nvk: Use meta for image copies where possible | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r14) | 2026-06-16 | [`4d92a06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4d92a069ff93316aa7fb798ed8317476032c5e49) | rusticl: validate input_programs binary type in clLinkProgram | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r13) | 2026-06-16 | [`e3903bc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e3903bc647281ab1b29f9d0c92e86b9b5d3ed4d9) | zink: fix import2d sampler view creation | Vulkan 1.4.353 |
@@ -97,7 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260616-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r8) | 2026-06-16 | [`44290e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44290e189951581691b4ad6d0d3c209b6b806e14) | nir: Fix trailing comment generation for variable naming | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r7) | 2026-06-16 | [`1845e53`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1845e538650738e7e7c01461b7dd94c36641dd1f) | ac/lower_global_access: combine multiple 32-bit offsets | Vulkan 1.4.353 |
 | [v26.2.0-20260616-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r6) | 2026-06-16 | [`cff8dbd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff8dbd452b840edb0820b56be6b292cac2b4cc9) | v3dv: rename format_plane unorm/snorm flags to sw_unorm/sw_snorm | Vulkan 1.4.353 |
-| [v26.2.0-20260616-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260616-r5) | 2026-06-16 | [`40d4cf7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/40d4cf7a7040f382e87636d2821a38f20d4fd850) | intel/gen: Explicitly declare gen_opcodes_private.h dependency | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---
