@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260617-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r5) | 2026-06-17 | [`d38eb68`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d38eb680a21e418605f826c49c7b7422353586f8) | radeonsi: Implement SQTT CB_START and CB_END | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r4) | 2026-06-17 | [`6a01034`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a010343d47b004cfd8ed859a8c35ebba0249a60) | fd: lrz_block in fdl6_lrz_layout_init() should not be static | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r3) | 2026-06-17 | [`14a5ed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14a5ed90667c88845c7c3e065c06e49571216ed0) | rusticl/kernel: override libclc shader config helpers | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r2) | 2026-06-17 | [`11c9032`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/11c903246655184d12fcead8888486c5ae796eef) | v3dv: use common multisync code | Vulkan 1.4.353 |
