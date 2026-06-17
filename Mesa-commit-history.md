@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260617-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r4) | 2026-06-17 | [`6a01034`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a010343d47b004cfd8ed859a8c35ebba0249a60) | fd: lrz_block in fdl6_lrz_layout_init() should not be static | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r3) | 2026-06-17 | [`14a5ed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14a5ed90667c88845c7c3e065c06e49571216ed0) | rusticl/kernel: override libclc shader config helpers | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r2) | 2026-06-17 | [`11c9032`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/11c903246655184d12fcead8888486c5ae796eef) | v3dv: use common multisync code | Vulkan 1.4.353 |
 | [v26.2.0-20260617](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617) | 2026-06-17 | [`3d5d0b4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d5d0b4b23e0a84f9abc4efb57aaf488466ac802) | nvk: Use meta for image copies where possible | Vulkan 1.4.353 |
