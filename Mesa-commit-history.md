@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260618](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618) | 2026-06-17 | [`30ec583`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/30ec583d7e3bf43a53a2d2d9774ccf356877c473) | ci-farms/vmware: Disable vmware tests for now | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r9) | 2026-06-17 | [`dde1709`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dde1709274f4575964be93e63207b2c37c7ffddd) | anv/brw/jay: de-dynamify per-sample interpolation | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r8) | 2026-06-17 | [`e4d0b93`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e4d0b936fdd112dc2a95047f64facd0498084cd1) | radeonsi/ci: change DEQP_TARGET to default for Wayland | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r7) | 2026-06-17 | [`4bfc030`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bfc03020ad76719b8932056fdabb0601ffb328b) | gfxstream: Avoid transfering VkAllocationCallbacks between guest and host | Vulkan 1.4.353 |
