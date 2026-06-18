@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`6380717`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6380717956ac12a574948b644456957518b67b68) |
+| **Commit** | [`2b5dd5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b5dd5dca11ee27cc9ce31f3d378fd84fd300bf4) |
 | **Commit date** | 2026-06-18 |
-| **Commit title** | radv: clear gang cache flushes when the command buffer is reset |
+| **Commit title** | panvk: Advertise VK_EXT_rasterization_order_attachment_access |
 | **Build date** | 20260618 |
-| **Release** | [v26.2.0-20260618-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r7) |
+| **Release** | [v26.2.0-20260618-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260618-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r8) | 2026-06-18 | [`2b5dd5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b5dd5dca11ee27cc9ce31f3d378fd84fd300bf4) | panvk: Advertise VK_EXT_rasterization_order_attachment_access | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r7) | 2026-06-18 | [`6380717`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6380717956ac12a574948b644456957518b67b68) | radv: clear gang cache flushes when the command buffer is reset | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r6) | 2026-06-18 | [`bcc8b44`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bcc8b44a8c0b0b3eda70de6fc1473441f334896b) | v3d: create the compute job after the zero-sized dispatch check | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r5) | 2026-06-18 | [`81daea6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/81daea66703eeea1a232446e3a36902353fc3045) | panvk/csf: Use RUN_FULLSCREEN for cmd_draw_volume | Vulkan 1.4.353 |
@@ -98,9 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260617-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r8) | 2026-06-17 | [`e4d0b93`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e4d0b936fdd112dc2a95047f64facd0498084cd1) | radeonsi/ci: change DEQP_TARGET to default for Wayland | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r7) | 2026-06-17 | [`4bfc030`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bfc03020ad76719b8932056fdabb0601ffb328b) | gfxstream: Avoid transfering VkAllocationCallbacks between guest and host | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r6) | 2026-06-17 | [`66611c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/66611c569f610372a14cd195268d1075ff22a0eb) | radv: fix setting COMPUTE_DISPATCH_INTERLEAVE on the gfx queue | Vulkan 1.4.353 |
-| [v26.2.0-20260617-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r5) | 2026-06-17 | [`d38eb68`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d38eb680a21e418605f826c49c7b7422353586f8) | radeonsi: Implement SQTT CB_START and CB_END | Vulkan 1.4.353 |
-| [v26.2.0-20260617-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r4) | 2026-06-17 | [`6a01034`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a010343d47b004cfd8ed859a8c35ebba0249a60) | fd: lrz_block in fdl6_lrz_layout_init() should not be static | Vulkan 1.4.353 |
-| [v26.2.0-20260617-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r3) | 2026-06-17 | [`14a5ed9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14a5ed90667c88845c7c3e065c06e49571216ed0) | rusticl/kernel: override libclc shader config helpers | Vulkan 1.4.353 |
 <!-- RECENT_BUILDS_END -->
 
 ---

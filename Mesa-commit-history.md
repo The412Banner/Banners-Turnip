@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260618-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r8) | 2026-06-18 | [`2b5dd5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b5dd5dca11ee27cc9ce31f3d378fd84fd300bf4) | panvk: Advertise VK_EXT_rasterization_order_attachment_access | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r7) | 2026-06-18 | [`6380717`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6380717956ac12a574948b644456957518b67b68) | radv: clear gang cache flushes when the command buffer is reset | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r6) | 2026-06-18 | [`bcc8b44`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bcc8b44a8c0b0b3eda70de6fc1473441f334896b) | v3d: create the compute job after the zero-sized dispatch check | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r5) | 2026-06-18 | [`81daea6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/81daea66703eeea1a232446e3a36902353fc3045) | panvk/csf: Use RUN_FULLSCREEN for cmd_draw_volume | Vulkan 1.4.353 |
