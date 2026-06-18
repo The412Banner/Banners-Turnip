@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260618-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r5) | 2026-06-18 | [`81daea6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/81daea66703eeea1a232446e3a36902353fc3045) | panvk/csf: Use RUN_FULLSCREEN for cmd_draw_volume | Vulkan 1.4.353 |
 | [v26.2.0-20260618-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r4) | 2026-06-18 | [`67a88ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67a88ee9c8e146120346081eed8e3cf891cf9aa2) | intel/gen/xe: Merge Xe2 compact 3src subreg HI2/LO3 into a gen_split_range | Vulkan 1.4.353 |
 | [v26.2.0-20260618-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r3) | 2026-06-18 | [`dac0019`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dac0019373a2a2cb2ed8b68b066b13dd3d822ef2) | radv/sqtt: add instruction timing SE mask controls | Vulkan 1.4.353 |
 | [v26.2.0-20260618-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r2) | 2026-06-18 | [`1e687cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1e687cb162b9fe66f182bb42f8c5df163daeef5c) | intel: Add drirc option to write lookup maps unconditionally | Vulkan 1.4.353 |
