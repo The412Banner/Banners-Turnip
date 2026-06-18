@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`2b5dd5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b5dd5dca11ee27cc9ce31f3d378fd84fd300bf4) |
+| **Commit** | [`4781d59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4781d59cfdb82d0705b2ec42f759a20adeefea1f) |
 | **Commit date** | 2026-06-18 |
-| **Commit title** | panvk: Advertise VK_EXT_rasterization_order_attachment_access |
+| **Commit title** | broadcom/ci: upgrade kernel in DuTs |
 | **Build date** | 20260618 |
-| **Release** | [v26.2.0-20260618-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r8) |
+| **Release** | [v26.2.0-20260618-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260618-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r9) | 2026-06-18 | [`4781d59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4781d59cfdb82d0705b2ec42f759a20adeefea1f) | broadcom/ci: upgrade kernel in DuTs | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r8) | 2026-06-18 | [`2b5dd5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b5dd5dca11ee27cc9ce31f3d378fd84fd300bf4) | panvk: Advertise VK_EXT_rasterization_order_attachment_access | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r7) | 2026-06-18 | [`6380717`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6380717956ac12a574948b644456957518b67b68) | radv: clear gang cache flushes when the command buffer is reset | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r6) | 2026-06-18 | [`bcc8b44`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bcc8b44a8c0b0b3eda70de6fc1473441f334896b) | v3d: create the compute job after the zero-sized dispatch check | Vulkan 1.4.354 |
