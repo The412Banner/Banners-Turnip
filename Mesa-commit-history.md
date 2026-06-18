@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260618-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r3) | 2026-06-18 | [`dac0019`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dac0019373a2a2cb2ed8b68b066b13dd3d822ef2) | radv/sqtt: add instruction timing SE mask controls | Vulkan 1.4.353 |
 | [v26.2.0-20260618-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r2) | 2026-06-18 | [`1e687cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1e687cb162b9fe66f182bb42f8c5df163daeef5c) | intel: Add drirc option to write lookup maps unconditionally | Vulkan 1.4.353 |
 | [v26.2.0-20260618](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618) | 2026-06-17 | [`30ec583`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/30ec583d7e3bf43a53a2d2d9774ccf356877c473) | ci-farms/vmware: Disable vmware tests for now | Vulkan 1.4.353 |
 | [v26.2.0-20260617-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260617-r9) | 2026-06-17 | [`dde1709`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dde1709274f4575964be93e63207b2c37c7ffddd) | anv/brw/jay: de-dynamify per-sample interpolation | Vulkan 1.4.353 |
