@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260618-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r11) | 2026-06-18 | [`8b8603d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b8603df2be2a560b4a2c3864976ea53ba2afb90) | ci: fix perfetto download in build-perfetto.sh | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r10) | 2026-06-18 | [`a4d9204`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a4d920454382d329658246a853df90a65f542dff) | pvr/ci: add some timing out tests on AXE-1-16M to skips list | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r9) | 2026-06-18 | [`4781d59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4781d59cfdb82d0705b2ec42f759a20adeefea1f) | broadcom/ci: upgrade kernel in DuTs | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r8) | 2026-06-18 | [`2b5dd5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b5dd5dca11ee27cc9ce31f3d378fd84fd300bf4) | panvk: Advertise VK_EXT_rasterization_order_attachment_access | Vulkan 1.4.354 |
