@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.353 |
-| **Commit** | [`dac0019`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dac0019373a2a2cb2ed8b68b066b13dd3d822ef2) |
+| **Commit** | [`67a88ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67a88ee9c8e146120346081eed8e3cf891cf9aa2) |
 | **Commit date** | 2026-06-18 |
-| **Commit title** | radv/sqtt: add instruction timing SE mask controls |
+| **Commit title** | intel/gen/xe: Merge Xe2 compact 3src subreg HI2/LO3 into a gen_split_range |
 | **Build date** | 20260618 |
-| **Release** | [v26.2.0-20260618-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r3) |
+| **Release** | [v26.2.0-20260618-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260618-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r4) | 2026-06-18 | [`67a88ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67a88ee9c8e146120346081eed8e3cf891cf9aa2) | intel/gen/xe: Merge Xe2 compact 3src subreg HI2/LO3 into a gen_split_range | Vulkan 1.4.353 |
 | [v26.2.0-20260618-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r3) | 2026-06-18 | [`dac0019`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dac0019373a2a2cb2ed8b68b066b13dd3d822ef2) | radv/sqtt: add instruction timing SE mask controls | Vulkan 1.4.353 |
 | [v26.2.0-20260618-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r2) | 2026-06-18 | [`1e687cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1e687cb162b9fe66f182bb42f8c5df163daeef5c) | intel: Add drirc option to write lookup maps unconditionally | Vulkan 1.4.353 |
 | [v26.2.0-20260618](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618) | 2026-06-18 | [`30ec583`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/30ec583d7e3bf43a53a2d2d9774ccf356877c473) | ci-farms/vmware: Disable vmware tests for now | Vulkan 1.4.353 |
