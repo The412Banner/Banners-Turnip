@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`ad4e3ca`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ad4e3cad54dde5fbb97483d51a325039ab18fce2) |
+| **Commit** | [`07b53cd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/07b53cd328f8968b423258a43ba05e8fe70e787e) |
 | **Commit date** | 2026-06-19 |
-| **Commit title** | etnaviv: Gate 128-bit render targets on HALF_FLOAT |
+| **Commit title** | v3d/ci: update expected results and document failures |
 | **Build date** | 20260619 |
-| **Release** | [v26.2.0-20260619-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r6) |
+| **Release** | [v26.2.0-20260619-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260619-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r7) | 2026-06-19 | [`07b53cd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/07b53cd328f8968b423258a43ba05e8fe70e787e) | v3d/ci: update expected results and document failures | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r6) | 2026-06-19 | [`ad4e3ca`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ad4e3cad54dde5fbb97483d51a325039ab18fce2) | etnaviv: Gate 128-bit render targets on HALF_FLOAT | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r5) | 2026-06-19 | [`44b82c7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44b82c7576db6906987ccaf799a69dea28429cf0) | ir3/opt_prefetch_descriptors: rematerialize defs at preamble start | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r4) | 2026-06-19 | [`1b48450`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1b484501281816ff05b60832601286b1302ac72c) | kk: Implement draw-related commands using device addresses | Vulkan 1.4.354 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260618-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r10) | 2026-06-18 | [`a4d9204`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a4d920454382d329658246a853df90a65f542dff) | pvr/ci: add some timing out tests on AXE-1-16M to skips list | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r9) | 2026-06-18 | [`4781d59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4781d59cfdb82d0705b2ec42f759a20adeefea1f) | broadcom/ci: upgrade kernel in DuTs | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r8) | 2026-06-18 | [`2b5dd5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b5dd5dca11ee27cc9ce31f3d378fd84fd300bf4) | panvk: Advertise VK_EXT_rasterization_order_attachment_access | Vulkan 1.4.354 |
-| [v26.2.0-20260618-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r7) | 2026-06-18 | [`6380717`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6380717956ac12a574948b644456957518b67b68) | radv: clear gang cache flushes when the command buffer is reset | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
