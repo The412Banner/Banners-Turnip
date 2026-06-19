@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260619-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r10) | 2026-06-19 | [`df96a10`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/df96a100aef520f8b7745fe2e962cce06df0c15e) | v3dv: fix assertion on push constants | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r9) | 2026-06-19 | [`08c2bb3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/08c2bb3b31db0eb9414ca0c8455c7a962797369c) | radeonsi/mm: Set correct usage in si_dec_fill_surface | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r8) | 2026-06-19 | [`5bb025f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bb025f953af5795d2dc8fefc69ad22effb2a51b) | gallivm: fix small_unorm -> unorm8 fetch path on big-endian | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r7) | 2026-06-19 | [`07b53cd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/07b53cd328f8968b423258a43ba05e8fe70e787e) | v3d/ci: update expected results and document failures | Vulkan 1.4.354 |
