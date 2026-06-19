@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`df96a10`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/df96a100aef520f8b7745fe2e962cce06df0c15e) |
+| **Commit** | [`c95edad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c95edade04a0fd146643fd72e7178c2b4bd4b1ae) |
 | **Commit date** | 2026-06-19 |
-| **Commit title** | v3dv: fix assertion on push constants |
+| **Commit title** | panvk: Talk directly to pankmod when binding sparse resources |
 | **Build date** | 20260619 |
-| **Release** | [v26.2.0-20260619-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r10) |
+| **Release** | [v26.2.0-20260619-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260619-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r11) | 2026-06-19 | [`c95edad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c95edade04a0fd146643fd72e7178c2b4bd4b1ae) | panvk: Talk directly to pankmod when binding sparse resources | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r10) | 2026-06-19 | [`df96a10`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/df96a100aef520f8b7745fe2e962cce06df0c15e) | v3dv: fix assertion on push constants | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r9) | 2026-06-19 | [`08c2bb3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/08c2bb3b31db0eb9414ca0c8455c7a962797369c) | radeonsi/mm: Set correct usage in si_dec_fill_surface | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r8) | 2026-06-19 | [`5bb025f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bb025f953af5795d2dc8fefc69ad22effb2a51b) | gallivm: fix small_unorm -> unorm8 fetch path on big-endian | Vulkan 1.4.354 |
@@ -100,7 +101,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260618-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r12) | 2026-06-18 | [`db25e87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db25e87243ed60d4dc41df575d2229999ae3ba67) | intel: Change dpas_intel source order to follow DPAS | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r11) | 2026-06-18 | [`8b8603d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b8603df2be2a560b4a2c3864976ea53ba2afb90) | ci: fix perfetto download in build-perfetto.sh | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r10) | 2026-06-18 | [`a4d9204`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a4d920454382d329658246a853df90a65f542dff) | pvr/ci: add some timing out tests on AXE-1-16M to skips list | Vulkan 1.4.354 |
-| [v26.2.0-20260618-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r9) | 2026-06-18 | [`4781d59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4781d59cfdb82d0705b2ec42f759a20adeefea1f) | broadcom/ci: upgrade kernel in DuTs | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
