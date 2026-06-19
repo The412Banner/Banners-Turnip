@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260619-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r3) | 2026-06-19 | [`c08dba8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c08dba83025533c3863349f147376b52528c4b3a) | kk: Move to Metal4 command encoding | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r2) | 2026-06-19 | [`d470487`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d470487004fd9a945083fd2765d14604076251b5) | nak/instr_sched_prepass: Take predicate spilling into account when scheduling instrucitons | Vulkan 1.4.354 |
 | [v26.2.0-20260619](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619) | 2026-06-19 | [`0541a7d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0541a7d9131c3951ece83138c6cd98dddf55da26) | Revert "anv: Fix Wa_14021821874, Wa_14018813551, Wa_14026600921" | Vulkan 1.4.354 |
 | [v26.2.0-20260618-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260618-r12) | 2026-06-18 | [`db25e87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db25e87243ed60d4dc41df575d2229999ae3ba67) | intel: Change dpas_intel source order to follow DPAS | Vulkan 1.4.354 |
