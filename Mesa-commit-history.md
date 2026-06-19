@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260619-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r14) | 2026-06-19 | [`56eb387`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/56eb3877c15845131c1b4603ee3c60832bd168f8) | wsi/x11: Be more adaptive in how much the sleep is pulled back. | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r13) | 2026-06-19 | [`2ed09c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2ed09c8b110f913365ba0bfd7e7d34cea26030f0) | kraid: Add OpRegIn and OpRegOut | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r12) | 2026-06-19 | [`7695a27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7695a2729e743ee5290b7a7b3ef22c91a10cc2d6) | zink: don't invalidate cbufs without inlined resolve | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r11) | 2026-06-19 | [`c95edad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c95edade04a0fd146643fd72e7178c2b4bd4b1ae) | panvk: Talk directly to pankmod when binding sparse resources | Vulkan 1.4.354 |
