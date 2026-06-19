@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260619-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r6) | 2026-06-19 | [`ad4e3ca`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ad4e3cad54dde5fbb97483d51a325039ab18fce2) | etnaviv: Gate 128-bit render targets on HALF_FLOAT | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r5) | 2026-06-19 | [`44b82c7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44b82c7576db6906987ccaf799a69dea28429cf0) | ir3/opt_prefetch_descriptors: rematerialize defs at preamble start | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r4) | 2026-06-19 | [`1b48450`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1b484501281816ff05b60832601286b1302ac72c) | kk: Implement draw-related commands using device addresses | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r3) | 2026-06-19 | [`c08dba8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c08dba83025533c3863349f147376b52528c4b3a) | kk: Move to Metal4 command encoding | Vulkan 1.4.354 |
