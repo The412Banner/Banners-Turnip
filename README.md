@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`5bb025f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bb025f953af5795d2dc8fefc69ad22effb2a51b) |
+| **Commit** | [`08c2bb3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/08c2bb3b31db0eb9414ca0c8455c7a962797369c) |
 | **Commit date** | 2026-06-19 |
-| **Commit title** | gallivm: fix small_unorm -> unorm8 fetch path on big-endian |
+| **Commit title** | radeonsi/mm: Set correct usage in si_dec_fill_surface |
 | **Build date** | 20260619 |
-| **Release** | [v26.2.0-20260619-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r8) |
+| **Release** | [v26.2.0-20260619-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260619-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r9) | 2026-06-19 | [`08c2bb3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/08c2bb3b31db0eb9414ca0c8455c7a962797369c) | radeonsi/mm: Set correct usage in si_dec_fill_surface | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r8) | 2026-06-19 | [`5bb025f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bb025f953af5795d2dc8fefc69ad22effb2a51b) | gallivm: fix small_unorm -> unorm8 fetch path on big-endian | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r7) | 2026-06-19 | [`07b53cd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/07b53cd328f8968b423258a43ba05e8fe70e787e) | v3d/ci: update expected results and document failures | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r6) | 2026-06-19 | [`ad4e3ca`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ad4e3cad54dde5fbb97483d51a325039ab18fce2) | etnaviv: Gate 128-bit render targets on HALF_FLOAT | Vulkan 1.4.354 |
