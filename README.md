@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`c95edad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c95edade04a0fd146643fd72e7178c2b4bd4b1ae) |
+| **Commit** | [`7695a27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7695a2729e743ee5290b7a7b3ef22c91a10cc2d6) |
 | **Commit date** | 2026-06-19 |
-| **Commit title** | panvk: Talk directly to pankmod when binding sparse resources |
+| **Commit title** | zink: don't invalidate cbufs without inlined resolve |
 | **Build date** | 20260619 |
-| **Release** | [v26.2.0-20260619-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r11) |
+| **Release** | [v26.2.0-20260619-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r12) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260619-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r12) | 2026-06-19 | [`7695a27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7695a2729e743ee5290b7a7b3ef22c91a10cc2d6) | zink: don't invalidate cbufs without inlined resolve | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r11) | 2026-06-19 | [`c95edad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c95edade04a0fd146643fd72e7178c2b4bd4b1ae) | panvk: Talk directly to pankmod when binding sparse resources | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r10) | 2026-06-19 | [`df96a10`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/df96a100aef520f8b7745fe2e962cce06df0c15e) | v3dv: fix assertion on push constants | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r9) | 2026-06-19 | [`08c2bb3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/08c2bb3b31db0eb9414ca0c8455c7a962797369c) | radeonsi/mm: Set correct usage in si_dec_fill_surface | Vulkan 1.4.354 |
