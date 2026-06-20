@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`c2e2cd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2e2cd534c11deae210bc4c1ad0a956e0cc0cbd7) |
+| **Commit** | [`621f785`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/621f785e2e005846c560175b6e60287ac335a2fd) |
 | **Commit date** | 2026-06-20 |
-| **Commit title** | Uprev ANGLE to 836636df1b06034b39a4a2a68b811ecf6f9b674f |
+| **Commit title** | doc/ci: Add drm-shim CI reproduction guide |
 | **Build date** | 20260620 |
-| **Release** | [v26.2.0-20260620-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r3) |
+| **Release** | [v26.2.0-20260620-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260620-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r4) | 2026-06-20 | [`621f785`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/621f785e2e005846c560175b6e60287ac335a2fd) | doc/ci: Add drm-shim CI reproduction guide | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r3) | 2026-06-20 | [`c2e2cd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2e2cd534c11deae210bc4c1ad0a956e0cc0cbd7) | Uprev ANGLE to 836636df1b06034b39a4a2a68b811ecf6f9b674f | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r2) | 2026-06-20 | [`2046b79`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2046b79f2f043502a44bd86b64f2db256b002697) | vulkan/wsi/wayland: Do a roundtrip after retiring the old swapchain. | Vulkan 1.4.354 |
 | [v26.2.0-20260620](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620) | 2026-06-20 | [`27e63a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27e63a959ee44b7b18bce07cb32d7f3c6a08fb4b) | nak: normalize lop3 constant sources | Vulkan 1.4.354 |
