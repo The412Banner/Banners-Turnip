@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`27e63a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27e63a959ee44b7b18bce07cb32d7f3c6a08fb4b) |
+| **Commit** | [`2046b79`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2046b79f2f043502a44bd86b64f2db256b002697) |
 | **Commit date** | 2026-06-20 |
-| **Commit title** | nak: normalize lop3 constant sources |
+| **Commit title** | vulkan/wsi/wayland: Do a roundtrip after retiring the old swapchain. |
 | **Build date** | 20260620 |
-| **Release** | [v26.2.0-20260620](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620) |
+| **Release** | [v26.2.0-20260620-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260620-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r2) | 2026-06-20 | [`2046b79`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2046b79f2f043502a44bd86b64f2db256b002697) | vulkan/wsi/wayland: Do a roundtrip after retiring the old swapchain. | Vulkan 1.4.354 |
 | [v26.2.0-20260620](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620) | 2026-06-20 | [`27e63a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27e63a959ee44b7b18bce07cb32d7f3c6a08fb4b) | nak: normalize lop3 constant sources | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r15) | 2026-06-19 | [`59a9e21`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/59a9e21652eaf7309b000a5ea751ec85a781f3ce) | ac,radeonsi: remove uses_kernel_cu_mask and associated code | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r14) | 2026-06-19 | [`56eb387`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/56eb3877c15845131c1b4603ee3c60832bd168f8) | wsi/x11: Be more adaptive in how much the sleep is pulled back. | Vulkan 1.4.354 |
@@ -99,10 +100,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260619-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r7) | 2026-06-19 | [`07b53cd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/07b53cd328f8968b423258a43ba05e8fe70e787e) | v3d/ci: update expected results and document failures | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r6) | 2026-06-19 | [`ad4e3ca`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ad4e3cad54dde5fbb97483d51a325039ab18fce2) | etnaviv: Gate 128-bit render targets on HALF_FLOAT | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r5) | 2026-06-19 | [`44b82c7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44b82c7576db6906987ccaf799a69dea28429cf0) | ir3/opt_prefetch_descriptors: rematerialize defs at preamble start | Vulkan 1.4.354 |
-| [v26.2.0-20260619-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r4) | 2026-06-19 | [`1b48450`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1b484501281816ff05b60832601286b1302ac72c) | kk: Implement draw-related commands using device addresses | Vulkan 1.4.354 |
-| [v26.2.0-20260619-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r3) | 2026-06-19 | [`c08dba8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c08dba83025533c3863349f147376b52528c4b3a) | kk: Move to Metal4 command encoding | Vulkan 1.4.354 |
-| [v26.2.0-20260619-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r2) | 2026-06-19 | [`d470487`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d470487004fd9a945083fd2765d14604076251b5) | nak/instr_sched_prepass: Take predicate spilling into account when scheduling instrucitons | Vulkan 1.4.354 |
-| [v26.2.0-20260619](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619) | 2026-06-19 | [`0541a7d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0541a7d9131c3951ece83138c6cd98dddf55da26) | Revert "anv: Fix Wa_14021821874, Wa_14018813551, Wa_14026600921" | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
