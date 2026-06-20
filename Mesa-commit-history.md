@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260620-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r5) | 2026-06-20 | [`304324e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/304324eb288de91ab6440d95a2d2e54e3d6573ee) | nak: convert base to iadd for non-uniform ldcx lowering | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r4) | 2026-06-20 | [`621f785`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/621f785e2e005846c560175b6e60287ac335a2fd) | doc/ci: Add drm-shim CI reproduction guide | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r3) | 2026-06-20 | [`c2e2cd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2e2cd534c11deae210bc4c1ad0a956e0cc0cbd7) | Uprev ANGLE to 836636df1b06034b39a4a2a68b811ecf6f9b674f | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r2) | 2026-06-20 | [`2046b79`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2046b79f2f043502a44bd86b64f2db256b002697) | vulkan/wsi/wayland: Do a roundtrip after retiring the old swapchain. | Vulkan 1.4.354 |
