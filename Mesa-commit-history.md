@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260620-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r3) | 2026-06-20 | [`c2e2cd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2e2cd534c11deae210bc4c1ad0a956e0cc0cbd7) | Uprev ANGLE to 836636df1b06034b39a4a2a68b811ecf6f9b674f | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r2) | 2026-06-20 | [`2046b79`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2046b79f2f043502a44bd86b64f2db256b002697) | vulkan/wsi/wayland: Do a roundtrip after retiring the old swapchain. | Vulkan 1.4.354 |
 | [v26.2.0-20260620](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620) | 2026-06-20 | [`27e63a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27e63a959ee44b7b18bce07cb32d7f3c6a08fb4b) | nak: normalize lop3 constant sources | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r15) | 2026-06-19 | [`59a9e21`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/59a9e21652eaf7309b000a5ea751ec85a781f3ce) | ac,radeonsi: remove uses_kernel_cu_mask and associated code | Vulkan 1.4.354 |
