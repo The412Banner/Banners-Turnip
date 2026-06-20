@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260620](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620) | 2026-06-20 | [`27e63a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27e63a959ee44b7b18bce07cb32d7f3c6a08fb4b) | nak: normalize lop3 constant sources | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r15) | 2026-06-19 | [`59a9e21`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/59a9e21652eaf7309b000a5ea751ec85a781f3ce) | ac,radeonsi: remove uses_kernel_cu_mask and associated code | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r14) | 2026-06-19 | [`56eb387`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/56eb3877c15845131c1b4603ee3c60832bd168f8) | wsi/x11: Be more adaptive in how much the sleep is pulled back. | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r13) | 2026-06-19 | [`2ed09c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2ed09c8b110f913365ba0bfd7e7d34cea26030f0) | kraid: Add OpRegIn and OpRegOut | Vulkan 1.4.354 |
