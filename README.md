@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`1559e14`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1559e14770765627058bc2e6f3304b162af01efb) |
+| **Commit** | [`ed78163`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ed781637fa11fb87bbeae10e0ad860fc69265f48) |
 | **Commit date** | 2026-06-20 |
-| **Commit title** | nir/opt_varyings: shrink pathological varying arrays to 1 element |
+| **Commit title** | nir: change nir_def_bits_used to accept nir_scalar |
 | **Build date** | 20260620 |
-| **Release** | [v26.2.0-20260620-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r6) |
+| **Release** | [v26.2.0-20260620-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260620-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r7) | 2026-06-20 | [`ed78163`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ed781637fa11fb87bbeae10e0ad860fc69265f48) | nir: change nir_def_bits_used to accept nir_scalar | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r6) | 2026-06-20 | [`1559e14`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1559e14770765627058bc2e6f3304b162af01efb) | nir/opt_varyings: shrink pathological varying arrays to 1 element | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r5) | 2026-06-20 | [`304324e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/304324eb288de91ab6440d95a2d2e54e3d6573ee) | nak: convert base to iadd for non-uniform ldcx lowering | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r4) | 2026-06-20 | [`621f785`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/621f785e2e005846c560175b6e60287ac335a2fd) | doc/ci: Add drm-shim CI reproduction guide | Vulkan 1.4.354 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260619-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r13) | 2026-06-19 | [`2ed09c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2ed09c8b110f913365ba0bfd7e7d34cea26030f0) | kraid: Add OpRegIn and OpRegOut | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r12) | 2026-06-19 | [`7695a27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7695a2729e743ee5290b7a7b3ef22c91a10cc2d6) | zink: don't invalidate cbufs without inlined resolve | Vulkan 1.4.354 |
 | [v26.2.0-20260619-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r11) | 2026-06-19 | [`c95edad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c95edade04a0fd146643fd72e7178c2b4bd4b1ae) | panvk: Talk directly to pankmod when binding sparse resources | Vulkan 1.4.354 |
-| [v26.2.0-20260619-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260619-r10) | 2026-06-19 | [`df96a10`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/df96a100aef520f8b7745fe2e962cce06df0c15e) | v3dv: fix assertion on push constants | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
