@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260621](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621) | 2026-06-21 | [`4a6f6dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4a6f6dd266cce89912d1eb093f141753626ef795) | gallium/dri: fix redundant Meson condition | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r7) | 2026-06-20 | [`ed78163`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ed781637fa11fb87bbeae10e0ad860fc69265f48) | nir: change nir_def_bits_used to accept nir_scalar | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r6) | 2026-06-20 | [`1559e14`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1559e14770765627058bc2e6f3304b162af01efb) | nir/opt_varyings: shrink pathological varying arrays to 1 element | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r5) | 2026-06-20 | [`304324e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/304324eb288de91ab6440d95a2d2e54e3d6573ee) | nak: convert base to iadd for non-uniform ldcx lowering | Vulkan 1.4.354 |
