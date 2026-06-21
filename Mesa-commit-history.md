@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260621-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r6) | 2026-06-21 | [`a86a30f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a86a30fff2d7cae3783f7be3c7fee71a8262cdcd) | rti: Initial commit | Vulkan 1.4.354 |
 | [v26.2.0-20260621-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r5) | 2026-06-21 | [`72f1a2d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72f1a2d51d2e8f878a7603bd296aadb5f5a595ea) | nak: run nir_opt_constant_folding after nak_nir_lower_load_store | Vulkan 1.4.354 |
 | [v26.2.0-20260621-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r4) | 2026-06-21 | [`00ed4ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/00ed4ed059e89e2a6e88d3bceccad373637d4034) | zink: Also enable the nearest consistency workaround on anv. | Vulkan 1.4.354 |
 | [v26.2.0-20260621-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r3) | 2026-06-21 | [`b4b83a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b4b83a54fc0fa490644526a2f80a16f2166112d0) | nvk: Use I2M in CmdUpdateBuffer when possible | Vulkan 1.4.354 |
