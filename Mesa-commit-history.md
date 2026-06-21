@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260621-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r4) | 2026-06-21 | [`00ed4ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/00ed4ed059e89e2a6e88d3bceccad373637d4034) | zink: Also enable the nearest consistency workaround on anv. | Vulkan 1.4.354 |
 | [v26.2.0-20260621-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r3) | 2026-06-21 | [`b4b83a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b4b83a54fc0fa490644526a2f80a16f2166112d0) | nvk: Use I2M in CmdUpdateBuffer when possible | Vulkan 1.4.354 |
 | [v26.2.0-20260621-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r2) | 2026-06-21 | [`dec456d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dec456d02e364fd56e929208af2ce70f42595a7c) | kk: Work around Metal index robustness gaps | Vulkan 1.4.354 |
 | [v26.2.0-20260621](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621) | 2026-06-21 | [`4a6f6dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4a6f6dd266cce89912d1eb093f141753626ef795) | gallium/dri: fix redundant Meson condition | Vulkan 1.4.354 |
