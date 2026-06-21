@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`4a6f6dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4a6f6dd266cce89912d1eb093f141753626ef795) |
+| **Commit** | [`dec456d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dec456d02e364fd56e929208af2ce70f42595a7c) |
 | **Commit date** | 2026-06-21 |
-| **Commit title** | gallium/dri: fix redundant Meson condition |
+| **Commit title** | kk: Work around Metal index robustness gaps |
 | **Build date** | 20260621 |
-| **Release** | [v26.2.0-20260621](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621) |
+| **Release** | [v26.2.0-20260621-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260621-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r2) | 2026-06-21 | [`dec456d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dec456d02e364fd56e929208af2ce70f42595a7c) | kk: Work around Metal index robustness gaps | Vulkan 1.4.354 |
 | [v26.2.0-20260621](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621) | 2026-06-21 | [`4a6f6dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4a6f6dd266cce89912d1eb093f141753626ef795) | gallium/dri: fix redundant Meson condition | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r7) | 2026-06-20 | [`ed78163`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ed781637fa11fb87bbeae10e0ad860fc69265f48) | nir: change nir_def_bits_used to accept nir_scalar | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r6) | 2026-06-20 | [`1559e14`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1559e14770765627058bc2e6f3304b162af01efb) | nir/opt_varyings: shrink pathological varying arrays to 1 element | Vulkan 1.4.354 |
 | [v26.2.0-20260620-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r5) | 2026-06-20 | [`304324e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/304324eb288de91ab6440d95a2d2e54e3d6573ee) | nak: convert base to iadd for non-uniform ldcx lowering | Vulkan 1.4.354 |
-| [v26.2.0-20260620-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r4) | 2026-06-20 | [`621f785`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/621f785e2e005846c560175b6e60287ac335a2fd) | doc/ci: Add drm-shim CI reproduction guide | Vulkan 1.4.354 |
-| [v26.2.0-20260620-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r3) | 2026-06-20 | [`c2e2cd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2e2cd534c11deae210bc4c1ad0a956e0cc0cbd7) | Uprev ANGLE to 836636df1b06034b39a4a2a68b811ecf6f9b674f | Vulkan 1.4.354 |
-| [v26.2.0-20260620-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260620-r2) | 2026-06-20 | [`2046b79`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2046b79f2f043502a44bd86b64f2db256b002697) | vulkan/wsi/wayland: Do a roundtrip after retiring the old swapchain. | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
