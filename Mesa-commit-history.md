@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260622-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r5) | 2026-06-22 | [`03ea3c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/03ea3c1b504fe82b3f17fa70b043ccd717cde5ea) | radv: workaround game bugs with Sniper Elite 5 | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r4) | 2026-06-22 | [`3b5eecf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3b5eecf990f1e47de927bd359ef46b16a9de33b2) | nir: fix vectorising phis with mixed chased sources | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r3) | 2026-06-22 | [`4bf8fd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bf8fd5121122abd87aafb31e43bbbe9e3d2e921) | kk: Add GPU hang detection | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r2) | 2026-06-22 | [`b43e7ab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b43e7ab9edcf64e7224c8cba66d3def2704f2d18) | panvk: Advertise VK_EXT_image_sliced_view_of_3d | Vulkan 1.4.354 |
