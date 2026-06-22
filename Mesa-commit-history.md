@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260622-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r7) | 2026-06-22 | [`22abfc0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/22abfc06d7cf4c115ca2e368505d75ba4af174b4) | radv: Fix gnu-empty-initializer errors in ca9191a8 | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r6) | 2026-06-22 | [`8e7d802`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8e7d802c1c12a5828f6c2e884a400c185ad6d8f2) | venus: fix typo in vn_queue_submit_2_to_1 | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r5) | 2026-06-22 | [`03ea3c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/03ea3c1b504fe82b3f17fa70b043ccd717cde5ea) | radv: workaround game bugs with Sniper Elite 5 | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r4) | 2026-06-22 | [`3b5eecf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3b5eecf990f1e47de927bd359ef46b16a9de33b2) | nir: fix vectorising phis with mixed chased sources | Vulkan 1.4.354 |
