@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`4bf8fd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bf8fd5121122abd87aafb31e43bbbe9e3d2e921) |
+| **Commit** | [`3b5eecf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3b5eecf990f1e47de927bd359ef46b16a9de33b2) |
 | **Commit date** | 2026-06-22 |
-| **Commit title** | kk: Add GPU hang detection |
+| **Commit title** | nir: fix vectorising phis with mixed chased sources |
 | **Build date** | 20260622 |
-| **Release** | [v26.2.0-20260622-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r3) |
+| **Release** | [v26.2.0-20260622-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,14 +87,13 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260622-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r4) | 2026-06-22 | [`3b5eecf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3b5eecf990f1e47de927bd359ef46b16a9de33b2) | nir: fix vectorising phis with mixed chased sources | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r3) | 2026-06-22 | [`4bf8fd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bf8fd5121122abd87aafb31e43bbbe9e3d2e921) | kk: Add GPU hang detection | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r2) | 2026-06-22 | [`b43e7ab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b43e7ab9edcf64e7224c8cba66d3def2704f2d18) | panvk: Advertise VK_EXT_image_sliced_view_of_3d | Vulkan 1.4.354 |
 | [v26.2.0-20260622](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622) | 2026-06-22 | [`dc1db53`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc1db5367ef1245498d2d0fc74637a9e56e22f0d) | nvk/ci: document fixed tests, new failures, and recent flakes | Vulkan 1.4.354 |
 | [v26.2.0-20260621-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r6) | 2026-06-21 | [`a86a30f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a86a30fff2d7cae3783f7be3c7fee71a8262cdcd) | rti: Initial commit | Vulkan 1.4.354 |
 | [v26.2.0-20260621-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r5) | 2026-06-21 | [`72f1a2d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72f1a2d51d2e8f878a7603bd296aadb5f5a595ea) | nak: run nir_opt_constant_folding after nak_nir_lower_load_store | Vulkan 1.4.354 |
 | [v26.2.0-20260621-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r4) | 2026-06-21 | [`00ed4ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/00ed4ed059e89e2a6e88d3bceccad373637d4034) | zink: Also enable the nearest consistency workaround on anv. | Vulkan 1.4.354 |
-| [v26.2.0-20260621-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r3) | 2026-06-21 | [`b4b83a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b4b83a54fc0fa490644526a2f80a16f2166112d0) | nvk: Use I2M in CmdUpdateBuffer when possible | Vulkan 1.4.354 |
-| [v26.2.0-20260621-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r2) | 2026-06-21 | [`dec456d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dec456d02e364fd56e929208af2ce70f42595a7c) | kk: Work around Metal index robustness gaps | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
