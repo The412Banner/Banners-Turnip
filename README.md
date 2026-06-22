@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`03ea3c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/03ea3c1b504fe82b3f17fa70b043ccd717cde5ea) |
+| **Commit** | [`8e7d802`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8e7d802c1c12a5828f6c2e884a400c185ad6d8f2) |
 | **Commit date** | 2026-06-22 |
-| **Commit title** | radv: workaround game bugs with Sniper Elite 5 |
+| **Commit title** | venus: fix typo in vn_queue_submit_2_to_1 |
 | **Build date** | 20260622 |
-| **Release** | [v26.2.0-20260622-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r5) |
+| **Release** | [v26.2.0-20260622-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260622-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r6) | 2026-06-22 | [`8e7d802`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8e7d802c1c12a5828f6c2e884a400c185ad6d8f2) | venus: fix typo in vn_queue_submit_2_to_1 | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r5) | 2026-06-22 | [`03ea3c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/03ea3c1b504fe82b3f17fa70b043ccd717cde5ea) | radv: workaround game bugs with Sniper Elite 5 | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r4) | 2026-06-22 | [`3b5eecf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3b5eecf990f1e47de927bd359ef46b16a9de33b2) | nir: fix vectorising phis with mixed chased sources | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r3) | 2026-06-22 | [`4bf8fd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bf8fd5121122abd87aafb31e43bbbe9e3d2e921) | kk: Add GPU hang detection | Vulkan 1.4.354 |
