@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260622-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r3) | 2026-06-22 | [`4bf8fd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bf8fd5121122abd87aafb31e43bbbe9e3d2e921) | kk: Add GPU hang detection | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r2) | 2026-06-22 | [`b43e7ab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b43e7ab9edcf64e7224c8cba66d3def2704f2d18) | panvk: Advertise VK_EXT_image_sliced_view_of_3d | Vulkan 1.4.354 |
 | [v26.2.0-20260622](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622) | 2026-06-21 | [`dc1db53`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc1db5367ef1245498d2d0fc74637a9e56e22f0d) | nvk/ci: document fixed tests, new failures, and recent flakes | Vulkan 1.4.354 |
 | [v26.2.0-20260621-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260621-r6) | 2026-06-21 | [`a86a30f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a86a30fff2d7cae3783f7be3c7fee71a8262cdcd) | rti: Initial commit | Vulkan 1.4.354 |
