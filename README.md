@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`164c1f2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/164c1f244e2394756b393011206c39da928dda4f) |
+| **Commit** | [`512fe5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/512fe5b687ac41a58fcc3518f69dc1004db4d6f3) |
 | **Commit date** | 2026-06-23 |
-| **Commit title** | kraid: Fix cross-build |
+| **Commit title** | nir/opt_phi_precision: bail on load_const conversions between float and ints |
 | **Build date** | 20260623 |
-| **Release** | [v26.2.0-20260623-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r5) |
+| **Release** | [v26.2.0-20260623-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260623-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r6) | 2026-06-23 | [`512fe5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/512fe5b687ac41a58fcc3518f69dc1004db4d6f3) | nir/opt_phi_precision: bail on load_const conversions between float and ints | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r5) | 2026-06-23 | [`164c1f2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/164c1f244e2394756b393011206c39da928dda4f) | kraid: Fix cross-build | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r4) | 2026-06-23 | [`b0d6b4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0d6b4c402ff52ff2b670db5875671c436617896) | r300: clean up endian swap selection | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r3) | 2026-06-23 | [`dc02a63`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc02a63d212d314ade09b7f0d05c3ead4832cd8e) | panvk: Advertise VK_EXT_shader_tile_image | Vulkan 1.4.354 |
