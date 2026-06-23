@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`22abfc0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/22abfc06d7cf4c115ca2e368505d75ba4af174b4) |
-| **Commit date** | 2026-06-22 |
-| **Commit title** | radv: Fix gnu-empty-initializer errors in ca9191a8 |
-| **Build date** | 20260622 |
-| **Release** | [v26.2.0-20260622-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r7) |
+| **Commit** | [`501433d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/501433dff3dc46f1f3876dd32b6c1b731c7b2379) |
+| **Commit date** | 2026-06-23 |
+| **Commit title** | util: remove bogus const attribute |
+| **Build date** | 20260623 |
+| **Release** | [v26.2.0-20260623](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,13 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260623](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623) | 2026-06-23 | [`501433d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/501433dff3dc46f1f3876dd32b6c1b731c7b2379) | util: remove bogus const attribute | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r7) | 2026-06-22 | [`22abfc0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/22abfc06d7cf4c115ca2e368505d75ba4af174b4) | radv: Fix gnu-empty-initializer errors in ca9191a8 | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r6) | 2026-06-22 | [`8e7d802`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8e7d802c1c12a5828f6c2e884a400c185ad6d8f2) | venus: fix typo in vn_queue_submit_2_to_1 | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r5) | 2026-06-22 | [`03ea3c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/03ea3c1b504fe82b3f17fa70b043ccd717cde5ea) | radv: workaround game bugs with Sniper Elite 5 | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r4) | 2026-06-22 | [`3b5eecf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3b5eecf990f1e47de927bd359ef46b16a9de33b2) | nir: fix vectorising phis with mixed chased sources | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r3) | 2026-06-22 | [`4bf8fd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bf8fd5121122abd87aafb31e43bbbe9e3d2e921) | kk: Add GPU hang detection | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r2) | 2026-06-22 | [`b43e7ab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b43e7ab9edcf64e7224c8cba66d3def2704f2d18) | panvk: Advertise VK_EXT_image_sliced_view_of_3d | Vulkan 1.4.354 |
-| [v26.2.0-20260622](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622) | 2026-06-22 | [`dc1db53`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc1db5367ef1245498d2d0fc74637a9e56e22f0d) | nvk/ci: document fixed tests, new failures, and recent flakes | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
