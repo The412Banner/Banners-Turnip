@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260623-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r5) | 2026-06-23 | [`164c1f2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/164c1f244e2394756b393011206c39da928dda4f) | kraid: Fix cross-build | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r4) | 2026-06-23 | [`b0d6b4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0d6b4c402ff52ff2b670db5875671c436617896) | r300: clean up endian swap selection | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r3) | 2026-06-23 | [`dc02a63`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc02a63d212d314ade09b7f0d05c3ead4832cd8e) | panvk: Advertise VK_EXT_shader_tile_image | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r2) | 2026-06-23 | [`475efed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/475efed859b667388d60df1f4c1df2f0af7ac8c0) | Revert "rusticl: fix leak in `util_queue`" | Vulkan 1.4.354 |
