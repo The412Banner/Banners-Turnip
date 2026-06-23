@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`a8f4c06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8f4c069a7eaacde0bfb1ec3ee349f2fe881a734) |
+| **Commit** | [`bc649a0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bc649a02d4c1ca2148ba6eb2e0a83fa774b4d037) |
 | **Commit date** | 2026-06-23 |
-| **Commit title** | brw: Fix INTEL_LOWER_DPAS=1 for Xe2+ |
+| **Commit title** | tu: handle partially set resolve attachment info without crashing |
 | **Build date** | 20260623 |
-| **Release** | [v26.2.0-20260623-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r9) |
+| **Release** | [v26.2.0-20260623-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r10) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260623-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r10) | 2026-06-23 | [`bc649a0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bc649a02d4c1ca2148ba6eb2e0a83fa774b4d037) | tu: handle partially set resolve attachment info without crashing | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r9) | 2026-06-23 | [`a8f4c06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8f4c069a7eaacde0bfb1ec3ee349f2fe881a734) | brw: Fix INTEL_LOWER_DPAS=1 for Xe2+ | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r8) | 2026-06-23 | [`e1c0af6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1c0af65e49cb38c0646a7cdc5498fa75e3e2824) | Reapply "rusticl: fix leak in `util_queue`" | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r7) | 2026-06-23 | [`b0fd4ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0fd4ef7f8b972460fb2e59cefe2fae20e601d49) | nir,panfrost: remove 8-bit and 16-bit booleans | Vulkan 1.4.354 |
@@ -97,7 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260623-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r2) | 2026-06-23 | [`475efed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/475efed859b667388d60df1f4c1df2f0af7ac8c0) | Revert "rusticl: fix leak in `util_queue`" | Vulkan 1.4.354 |
 | [v26.2.0-20260623](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623) | 2026-06-23 | [`501433d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/501433dff3dc46f1f3876dd32b6c1b731c7b2379) | util: remove bogus const attribute | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r7) | 2026-06-22 | [`22abfc0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/22abfc06d7cf4c115ca2e368505d75ba4af174b4) | radv: Fix gnu-empty-initializer errors in ca9191a8 | Vulkan 1.4.354 |
-| [v26.2.0-20260622-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r6) | 2026-06-22 | [`8e7d802`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8e7d802c1c12a5828f6c2e884a400c185ad6d8f2) | venus: fix typo in vn_queue_submit_2_to_1 | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---

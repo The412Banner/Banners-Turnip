@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260623-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r10) | 2026-06-23 | [`bc649a0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bc649a02d4c1ca2148ba6eb2e0a83fa774b4d037) | tu: handle partially set resolve attachment info without crashing | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r9) | 2026-06-23 | [`a8f4c06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8f4c069a7eaacde0bfb1ec3ee349f2fe881a734) | brw: Fix INTEL_LOWER_DPAS=1 for Xe2+ | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r8) | 2026-06-23 | [`e1c0af6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1c0af65e49cb38c0646a7cdc5498fa75e3e2824) | Reapply "rusticl: fix leak in `util_queue`" | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r7) | 2026-06-23 | [`b0fd4ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0fd4ef7f8b972460fb2e59cefe2fae20e601d49) | nir,panfrost: remove 8-bit and 16-bit booleans | Vulkan 1.4.354 |
