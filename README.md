@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`b0fd4ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0fd4ef7f8b972460fb2e59cefe2fae20e601d49) |
+| **Commit** | [`e1c0af6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1c0af65e49cb38c0646a7cdc5498fa75e3e2824) |
 | **Commit date** | 2026-06-23 |
-| **Commit title** | nir,panfrost: remove 8-bit and 16-bit booleans |
+| **Commit title** | Reapply "rusticl: fix leak in `util_queue`" |
 | **Build date** | 20260623 |
-| **Release** | [v26.2.0-20260623-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r7) |
+| **Release** | [v26.2.0-20260623-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260623-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r8) | 2026-06-23 | [`e1c0af6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1c0af65e49cb38c0646a7cdc5498fa75e3e2824) | Reapply "rusticl: fix leak in `util_queue`" | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r7) | 2026-06-23 | [`b0fd4ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0fd4ef7f8b972460fb2e59cefe2fae20e601d49) | nir,panfrost: remove 8-bit and 16-bit booleans | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r6) | 2026-06-23 | [`512fe5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/512fe5b687ac41a58fcc3518f69dc1004db4d6f3) | nir/opt_phi_precision: bail on load_const conversions between float and ints | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r5) | 2026-06-23 | [`164c1f2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/164c1f244e2394756b393011206c39da928dda4f) | kraid: Fix cross-build | Vulkan 1.4.354 |
