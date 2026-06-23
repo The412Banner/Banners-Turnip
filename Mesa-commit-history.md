@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260623-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r12) | 2026-06-23 | [`b9b3e80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9b3e80cc164270fdc6189b41a136e956f6bf3d7) | intel/common: remove fallthrough annotation in unreachable code | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r11) | 2026-06-23 | [`ea0bc05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea0bc0578611f78cef40d31e4d1de284f9d2491b) | mediafoundation: preserve low latency ping pong behavior between ProcessInput and ProcessOutput | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r10) | 2026-06-23 | [`bc649a0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bc649a02d4c1ca2148ba6eb2e0a83fa774b4d037) | tu: handle partially set resolve attachment info without crashing | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r9) | 2026-06-23 | [`a8f4c06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8f4c069a7eaacde0bfb1ec3ee349f2fe881a734) | brw: Fix INTEL_LOWER_DPAS=1 for Xe2+ | Vulkan 1.4.354 |
