@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`475efed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/475efed859b667388d60df1f4c1df2f0af7ac8c0) |
+| **Commit** | [`dc02a63`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc02a63d212d314ade09b7f0d05c3ead4832cd8e) |
 | **Commit date** | 2026-06-23 |
-| **Commit title** | Revert "rusticl: fix leak in `util_queue`" |
+| **Commit title** | panvk: Advertise VK_EXT_shader_tile_image |
 | **Build date** | 20260623 |
-| **Release** | [v26.2.0-20260623-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r2) |
+| **Release** | [v26.2.0-20260623-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260623-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r3) | 2026-06-23 | [`dc02a63`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc02a63d212d314ade09b7f0d05c3ead4832cd8e) | panvk: Advertise VK_EXT_shader_tile_image | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r2) | 2026-06-23 | [`475efed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/475efed859b667388d60df1f4c1df2f0af7ac8c0) | Revert "rusticl: fix leak in `util_queue`" | Vulkan 1.4.354 |
 | [v26.2.0-20260623](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623) | 2026-06-23 | [`501433d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/501433dff3dc46f1f3876dd32b6c1b731c7b2379) | util: remove bogus const attribute | Vulkan 1.4.354 |
 | [v26.2.0-20260622-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260622-r7) | 2026-06-22 | [`22abfc0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/22abfc06d7cf4c115ca2e368505d75ba4af174b4) | radv: Fix gnu-empty-initializer errors in ca9191a8 | Vulkan 1.4.354 |
