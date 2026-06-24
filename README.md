@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`485f068`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/485f06802aa5aa59ac3d6fe5f78dc44545f43151) |
+| **Commit** | [`9333946`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/933394630d1c211cedef877bbfb51b8f6d257ef8) |
 | **Commit date** | 2026-06-24 |
-| **Commit title** | radeonsi/mm: Fix setting VPE rotation when horizontal flip is enabled |
+| **Commit title** | aco: encode unused VOP3 operands as inline constant 0 on RDNA |
 | **Build date** | 20260624 |
-| **Release** | [v26.2.0-20260624-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r6) |
+| **Release** | [v26.2.0-20260624-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260624-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r7) | 2026-06-24 | [`9333946`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/933394630d1c211cedef877bbfb51b8f6d257ef8) | aco: encode unused VOP3 operands as inline constant 0 on RDNA | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r6) | 2026-06-24 | [`485f068`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/485f06802aa5aa59ac3d6fe5f78dc44545f43151) | radeonsi/mm: Fix setting VPE rotation when horizontal flip is enabled | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r5) | 2026-06-24 | [`5473f4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5473f4b5e91280be98fa9dacac3b0f2da6eef7c7) | brw, elk: Fix invalid case using float-negation in combine constants | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r4) | 2026-06-24 | [`f7e8fb4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f7e8fb46b3d79ed49553448fbd8c2be33b83a278) | gfxstream: link goldfish_address_space against perfetto | Vulkan 1.4.354 |
@@ -101,7 +102,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260623-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r7) | 2026-06-23 | [`b0fd4ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0fd4ef7f8b972460fb2e59cefe2fae20e601d49) | nir,panfrost: remove 8-bit and 16-bit booleans | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r6) | 2026-06-23 | [`512fe5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/512fe5b687ac41a58fcc3518f69dc1004db4d6f3) | nir/opt_phi_precision: bail on load_const conversions between float and ints | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r5) | 2026-06-23 | [`164c1f2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/164c1f244e2394756b393011206c39da928dda4f) | kraid: Fix cross-build | Vulkan 1.4.354 |
-| [v26.2.0-20260623-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r4) | 2026-06-23 | [`b0d6b4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0d6b4c402ff52ff2b670db5875671c436617896) | r300: clean up endian swap selection | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---

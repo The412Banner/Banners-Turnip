@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260624-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r7) | 2026-06-24 | [`9333946`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/933394630d1c211cedef877bbfb51b8f6d257ef8) | aco: encode unused VOP3 operands as inline constant 0 on RDNA | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r6) | 2026-06-24 | [`485f068`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/485f06802aa5aa59ac3d6fe5f78dc44545f43151) | radeonsi/mm: Fix setting VPE rotation when horizontal flip is enabled | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r5) | 2026-06-24 | [`5473f4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5473f4b5e91280be98fa9dacac3b0f2da6eef7c7) | brw, elk: Fix invalid case using float-negation in combine constants | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r4) | 2026-06-23 | [`f7e8fb4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f7e8fb46b3d79ed49553448fbd8c2be33b83a278) | gfxstream: link goldfish_address_space against perfetto | Vulkan 1.4.354 |
