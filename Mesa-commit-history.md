@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260624-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r13) | 2026-06-24 | [`68468b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/68468b6d1b918824ffa7de1dd11a29aff7c4781a) | jay: add bfloat16 support | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r12) | 2026-06-24 | [`da325ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da325ef1d4c36dd29431ef7364b955fdea37c502) | anv: Workaround game bug for Witcher3 | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r11) | 2026-06-24 | [`78e5559`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/78e5559214ab95937030447b8170b2db50bd39ff) | panvk: enable 8bit multiplanar YUV formats on v9+ to v13 | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r10) | 2026-06-24 | [`8784152`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/878415246eac6cc3c8633d81939f3d61359d20d4) | anv: hash binding tables for EXT_descriptor_heap too | Vulkan 1.4.354 |
