@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`7ccd70b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7ccd70b9ec3853e05dde1dcc330fbc74331a5b51) |
-| **Commit date** | 2026-06-24 |
-| **Commit title** | kk: Reduce root buffer pointer by replacing it with the GPU address |
+| **Commit** | [`f7e8fb4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f7e8fb46b3d79ed49553448fbd8c2be33b83a278) |
+| **Commit date** | 2026-06-23 |
+| **Commit title** | gfxstream: link goldfish_address_space against perfetto |
 | **Build date** | 20260624 |
-| **Release** | [v26.2.0-20260624-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r3) |
+| **Release** | [v26.2.0-20260624-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260624-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r4) | 2026-06-24 | [`f7e8fb4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f7e8fb46b3d79ed49553448fbd8c2be33b83a278) | gfxstream: link goldfish_address_space against perfetto | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r3) | 2026-06-24 | [`7ccd70b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7ccd70b9ec3853e05dde1dcc330fbc74331a5b51) | kk: Reduce root buffer pointer by replacing it with the GPU address | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r2) | 2026-06-24 | [`114f3ff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114f3ff0cc032284c7f93712e8329b6ed50f393a) | anv/xe: prevent WaitIdle optimization for fences with exported sync_fd | Vulkan 1.4.354 |
 | [v26.2.0-20260624](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624) | 2026-06-24 | [`43e9b44`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43e9b446abcfd7583610b47a2b59f7dff2ada127) | glx/apple: Convert K&R-style declarations to ANSI prototypes | Vulkan 1.4.354 |
@@ -100,7 +101,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260623-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r5) | 2026-06-23 | [`164c1f2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/164c1f244e2394756b393011206c39da928dda4f) | kraid: Fix cross-build | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r4) | 2026-06-23 | [`b0d6b4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0d6b4c402ff52ff2b670db5875671c436617896) | r300: clean up endian swap selection | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r3) | 2026-06-23 | [`dc02a63`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc02a63d212d314ade09b7f0d05c3ead4832cd8e) | panvk: Advertise VK_EXT_shader_tile_image | Vulkan 1.4.354 |
-| [v26.2.0-20260623-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r2) | 2026-06-23 | [`475efed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/475efed859b667388d60df1f4c1df2f0af7ac8c0) | Revert "rusticl: fix leak in `util_queue`" | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
