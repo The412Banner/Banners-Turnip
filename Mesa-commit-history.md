@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260624-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r11) | 2026-06-24 | [`78e5559`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/78e5559214ab95937030447b8170b2db50bd39ff) | panvk: enable 8bit multiplanar YUV formats on v9+ to v13 | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r10) | 2026-06-24 | [`8784152`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/878415246eac6cc3c8633d81939f3d61359d20d4) | anv: hash binding tables for EXT_descriptor_heap too | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r9) | 2026-06-24 | [`35bfb9f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35bfb9fbd4b7305e7a461559597c313495a103d0) | jay: Fix stack smashing with more than 16 FS inputs | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r8) | 2026-06-24 | [`5ba2818`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ba2818fd12a767936e55b000e11b3c69c980208) | virgl/ci: Retire disabled android-virgl-llvmpipe | Vulkan 1.4.354 |
