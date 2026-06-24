@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`78e5559`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/78e5559214ab95937030447b8170b2db50bd39ff) |
+| **Commit** | [`da325ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da325ef1d4c36dd29431ef7364b955fdea37c502) |
 | **Commit date** | 2026-06-24 |
-| **Commit title** | panvk: enable 8bit multiplanar YUV formats on v9+ to v13 |
+| **Commit title** | anv: Workaround game bug for Witcher3 |
 | **Build date** | 20260624 |
-| **Release** | [v26.2.0-20260624-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r11) |
+| **Release** | [v26.2.0-20260624-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r12) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260624-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r12) | 2026-06-24 | [`da325ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da325ef1d4c36dd29431ef7364b955fdea37c502) | anv: Workaround game bug for Witcher3 | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r11) | 2026-06-24 | [`78e5559`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/78e5559214ab95937030447b8170b2db50bd39ff) | panvk: enable 8bit multiplanar YUV formats on v9+ to v13 | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r10) | 2026-06-24 | [`8784152`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/878415246eac6cc3c8633d81939f3d61359d20d4) | anv: hash binding tables for EXT_descriptor_heap too | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r9) | 2026-06-24 | [`35bfb9f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35bfb9fbd4b7305e7a461559597c313495a103d0) | jay: Fix stack smashing with more than 16 FS inputs | Vulkan 1.4.354 |
@@ -99,8 +100,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260624-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r2) | 2026-06-24 | [`114f3ff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114f3ff0cc032284c7f93712e8329b6ed50f393a) | anv/xe: prevent WaitIdle optimization for fences with exported sync_fd | Vulkan 1.4.354 |
 | [v26.2.0-20260624](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624) | 2026-06-24 | [`43e9b44`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43e9b446abcfd7583610b47a2b59f7dff2ada127) | glx/apple: Convert K&R-style declarations to ANSI prototypes | Vulkan 1.4.354 |
 | [v26.2.0-20260623-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r12) | 2026-06-23 | [`b9b3e80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9b3e80cc164270fdc6189b41a136e956f6bf3d7) | intel/common: remove fallthrough annotation in unreachable code | Vulkan 1.4.354 |
-| [v26.2.0-20260623-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r11) | 2026-06-23 | [`ea0bc05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea0bc0578611f78cef40d31e4d1de284f9d2491b) | mediafoundation: preserve low latency ping pong behavior between ProcessInput and ProcessOutput | Vulkan 1.4.354 |
-| [v26.2.0-20260623-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260623-r10) | 2026-06-23 | [`bc649a0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bc649a02d4c1ca2148ba6eb2e0a83fa774b4d037) | tu: handle partially set resolve attachment info without crashing | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
