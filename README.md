@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`e5ec950`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5ec9502a51a8424ec77eae3a9f4dec30faea990) |
+| **Commit** | [`8b28b4d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b28b4d615999390455c237e38ed921881c21de7) |
 | **Commit date** | 2026-06-25 |
-| **Commit title** | radv: cleanup pCreateInfo uses for VkImage |
+| **Commit title** | doc/features.txt: enable VK_KHR_shader_float16_int8 for v3dv |
 | **Build date** | 20260625 |
-| **Release** | [v26.2.0-20260625-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r4) |
+| **Release** | [v26.2.0-20260625-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260625-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r5) | 2026-06-25 | [`8b28b4d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b28b4d615999390455c237e38ed921881c21de7) | doc/features.txt: enable VK_KHR_shader_float16_int8 for v3dv | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r4) | 2026-06-25 | [`e5ec950`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5ec9502a51a8424ec77eae3a9f4dec30faea990) | radv: cleanup pCreateInfo uses for VkImage | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r3) | 2026-06-25 | [`3eb0567`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3eb05675c7d621102178cd19f8ca9c0ddabc9af4) | anv: add hitman2 workaround for SLM load vectorization | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r2) | 2026-06-25 | [`f108feb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f108feb48ff9101dfb826b6515f00852c60d1eff) | spirv: allow mapping readonly buffers with struct members | Vulkan 1.4.354 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260624-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r9) | 2026-06-24 | [`35bfb9f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35bfb9fbd4b7305e7a461559597c313495a103d0) | jay: Fix stack smashing with more than 16 FS inputs | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r8) | 2026-06-24 | [`5ba2818`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ba2818fd12a767936e55b000e11b3c69c980208) | virgl/ci: Retire disabled android-virgl-llvmpipe | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r7) | 2026-06-24 | [`9333946`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/933394630d1c211cedef877bbfb51b8f6d257ef8) | aco: encode unused VOP3 operands as inline constant 0 on RDNA | Vulkan 1.4.354 |
-| [v26.2.0-20260624-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r6) | 2026-06-24 | [`485f068`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/485f06802aa5aa59ac3d6fe5f78dc44545f43151) | radeonsi/mm: Fix setting VPE rotation when horizontal flip is enabled | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
