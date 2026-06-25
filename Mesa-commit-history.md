@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260625-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r4) | 2026-06-25 | [`e5ec950`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5ec9502a51a8424ec77eae3a9f4dec30faea990) | radv: cleanup pCreateInfo uses for VkImage | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r3) | 2026-06-25 | [`3eb0567`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3eb05675c7d621102178cd19f8ca9c0ddabc9af4) | anv: add hitman2 workaround for SLM load vectorization | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r2) | 2026-06-25 | [`f108feb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f108feb48ff9101dfb826b6515f00852c60d1eff) | spirv: allow mapping readonly buffers with struct members | Vulkan 1.4.354 |
 | [v26.2.0-20260625](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625) | 2026-06-24 | [`da95960`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da959603a5fe273f77bff7cf5260a0b3d9b82745) | kraid/hw_tests: Use preloaded registers | Vulkan 1.4.354 |
