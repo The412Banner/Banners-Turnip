@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`8b28b4d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b28b4d615999390455c237e38ed921881c21de7) |
+| **Commit** | [`4734636`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47346366b6bafb4fb39bff74c8b45f6a98ff9aab) |
 | **Commit date** | 2026-06-25 |
-| **Commit title** | doc/features.txt: enable VK_KHR_shader_float16_int8 for v3dv |
+| **Commit title** | mesa3d: gfxstream: Add P210 format support |
 | **Build date** | 20260625 |
-| **Release** | [v26.2.0-20260625-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r5) |
+| **Release** | [v26.2.0-20260625-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,18 +87,12 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260625-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r6) | 2026-06-25 | [`4734636`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47346366b6bafb4fb39bff74c8b45f6a98ff9aab) | mesa3d: gfxstream: Add P210 format support | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r5) | 2026-06-25 | [`8b28b4d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b28b4d615999390455c237e38ed921881c21de7) | doc/features.txt: enable VK_KHR_shader_float16_int8 for v3dv | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r4) | 2026-06-25 | [`e5ec950`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5ec9502a51a8424ec77eae3a9f4dec30faea990) | radv: cleanup pCreateInfo uses for VkImage | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r3) | 2026-06-25 | [`3eb0567`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3eb05675c7d621102178cd19f8ca9c0ddabc9af4) | anv: add hitman2 workaround for SLM load vectorization | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r2) | 2026-06-25 | [`f108feb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f108feb48ff9101dfb826b6515f00852c60d1eff) | spirv: allow mapping readonly buffers with struct members | Vulkan 1.4.354 |
 | [v26.2.0-20260625](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625) | 2026-06-25 | [`da95960`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da959603a5fe273f77bff7cf5260a0b3d9b82745) | kraid/hw_tests: Use preloaded registers | Vulkan 1.4.354 |
-| [v26.2.0-20260624-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r13) | 2026-06-24 | [`68468b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/68468b6d1b918824ffa7de1dd11a29aff7c4781a) | jay: add bfloat16 support | Vulkan 1.4.354 |
-| [v26.2.0-20260624-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r12) | 2026-06-24 | [`da325ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da325ef1d4c36dd29431ef7364b955fdea37c502) | anv: Workaround game bug for Witcher3 | Vulkan 1.4.354 |
-| [v26.2.0-20260624-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r11) | 2026-06-24 | [`78e5559`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/78e5559214ab95937030447b8170b2db50bd39ff) | panvk: enable 8bit multiplanar YUV formats on v9+ to v13 | Vulkan 1.4.354 |
-| [v26.2.0-20260624-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r10) | 2026-06-24 | [`8784152`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/878415246eac6cc3c8633d81939f3d61359d20d4) | anv: hash binding tables for EXT_descriptor_heap too | Vulkan 1.4.354 |
-| [v26.2.0-20260624-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r9) | 2026-06-24 | [`35bfb9f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35bfb9fbd4b7305e7a461559597c313495a103d0) | jay: Fix stack smashing with more than 16 FS inputs | Vulkan 1.4.354 |
-| [v26.2.0-20260624-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r8) | 2026-06-24 | [`5ba2818`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ba2818fd12a767936e55b000e11b3c69c980208) | virgl/ci: Retire disabled android-virgl-llvmpipe | Vulkan 1.4.354 |
-| [v26.2.0-20260624-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r7) | 2026-06-24 | [`9333946`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/933394630d1c211cedef877bbfb51b8f6d257ef8) | aco: encode unused VOP3 operands as inline constant 0 on RDNA | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
