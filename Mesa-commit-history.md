@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260625-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r7) | 2026-06-25 | [`791cf54`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/791cf54f536a396b0cee4c1bba2842a37765bc18) | intel/gen: Add Xe3P compact support | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r6) | 2026-06-25 | [`4734636`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47346366b6bafb4fb39bff74c8b45f6a98ff9aab) | mesa3d: gfxstream: Add P210 format support | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r5) | 2026-06-25 | [`8b28b4d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b28b4d615999390455c237e38ed921881c21de7) | doc/features.txt: enable VK_KHR_shader_float16_int8 for v3dv | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r4) | 2026-06-25 | [`e5ec950`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5ec9502a51a8424ec77eae3a9f4dec30faea990) | radv: cleanup pCreateInfo uses for VkImage | Vulkan 1.4.354 |
