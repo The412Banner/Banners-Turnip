@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260625-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r2) | 2026-06-25 | [`f108feb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f108feb48ff9101dfb826b6515f00852c60d1eff) | spirv: allow mapping readonly buffers with struct members | Vulkan 1.4.354 |
 | [v26.2.0-20260625](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625) | 2026-06-24 | [`da95960`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da959603a5fe273f77bff7cf5260a0b3d9b82745) | kraid/hw_tests: Use preloaded registers | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r13) | 2026-06-24 | [`68468b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/68468b6d1b918824ffa7de1dd11a29aff7c4781a) | jay: add bfloat16 support | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r12) | 2026-06-24 | [`da325ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da325ef1d4c36dd29431ef7364b955fdea37c502) | anv: Workaround game bug for Witcher3 | Vulkan 1.4.354 |

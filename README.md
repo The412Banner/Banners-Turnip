@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`da95960`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da959603a5fe273f77bff7cf5260a0b3d9b82745) |
-| **Commit date** | 2026-06-24 |
-| **Commit title** | kraid/hw_tests: Use preloaded registers |
+| **Commit** | [`f108feb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f108feb48ff9101dfb826b6515f00852c60d1eff) |
+| **Commit date** | 2026-06-25 |
+| **Commit title** | spirv: allow mapping readonly buffers with struct members |
 | **Build date** | 20260625 |
-| **Release** | [v26.2.0-20260625](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625) |
+| **Release** | [v26.2.0-20260625-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260625-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r2) | 2026-06-25 | [`f108feb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f108feb48ff9101dfb826b6515f00852c60d1eff) | spirv: allow mapping readonly buffers with struct members | Vulkan 1.4.354 |
 | [v26.2.0-20260625](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625) | 2026-06-25 | [`da95960`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da959603a5fe273f77bff7cf5260a0b3d9b82745) | kraid/hw_tests: Use preloaded registers | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r13) | 2026-06-24 | [`68468b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/68468b6d1b918824ffa7de1dd11a29aff7c4781a) | jay: add bfloat16 support | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r12) | 2026-06-24 | [`da325ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da325ef1d4c36dd29431ef7364b955fdea37c502) | anv: Workaround game bug for Witcher3 | Vulkan 1.4.354 |
@@ -98,9 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260624-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r6) | 2026-06-24 | [`485f068`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/485f06802aa5aa59ac3d6fe5f78dc44545f43151) | radeonsi/mm: Fix setting VPE rotation when horizontal flip is enabled | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r5) | 2026-06-24 | [`5473f4b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5473f4b5e91280be98fa9dacac3b0f2da6eef7c7) | brw, elk: Fix invalid case using float-negation in combine constants | Vulkan 1.4.354 |
 | [v26.2.0-20260624-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r4) | 2026-06-24 | [`f7e8fb4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f7e8fb46b3d79ed49553448fbd8c2be33b83a278) | gfxstream: link goldfish_address_space against perfetto | Vulkan 1.4.354 |
-| [v26.2.0-20260624-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r3) | 2026-06-24 | [`7ccd70b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7ccd70b9ec3853e05dde1dcc330fbc74331a5b51) | kk: Reduce root buffer pointer by replacing it with the GPU address | Vulkan 1.4.354 |
-| [v26.2.0-20260624-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624-r2) | 2026-06-24 | [`114f3ff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114f3ff0cc032284c7f93712e8329b6ed50f393a) | anv/xe: prevent WaitIdle optimization for fences with exported sync_fd | Vulkan 1.4.354 |
-| [v26.2.0-20260624](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260624) | 2026-06-24 | [`43e9b44`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43e9b446abcfd7583610b47a2b59f7dff2ada127) | glx/apple: Convert K&R-style declarations to ANSI prototypes | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
