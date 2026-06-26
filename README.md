@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`ce6647d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce6647daa543690eff8a72c080eee118fb1a63bf) |
+| **Commit** | [`925ea59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/925ea5973ee8403a693b42ea1d7a29afa9d9970f) |
 | **Commit date** | 2026-06-26 |
-| **Commit title** | vulkan: condition cmd_queue initialization to driver need |
+| **Commit title** | pco: Refactor internal shader pass skipping |
 | **Build date** | 20260626 |
-| **Release** | [v26.2.0-20260626-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r10) |
+| **Release** | [v26.2.0-20260626-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260626-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r11) | 2026-06-26 | [`925ea59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/925ea5973ee8403a693b42ea1d7a29afa9d9970f) | pco: Refactor internal shader pass skipping | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r10) | 2026-06-26 | [`ce6647d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce6647daa543690eff8a72c080eee118fb1a63bf) | vulkan: condition cmd_queue initialization to driver need | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r9) | 2026-06-26 | [`6adb0d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6adb0d5e01dca952fcb04b7773ad92b0ab2e132d) | etnaviv: blt: Zero-initialize conv_swizzle | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r8) | 2026-06-26 | [`5d8c4c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5d8c4c1880942107f287551eb46efd8cff6b8134) | radv/ci: skip compression_control cases | Vulkan 1.4.354 |
