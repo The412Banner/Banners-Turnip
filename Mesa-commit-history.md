@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260626-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r13) | 2026-06-26 | [`0151fed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0151fedf47288088b99057db82ff9df65f4d8d93) | zink: reset usage following SHADER_WRITE access | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r12) | 2026-06-26 | [`4c79551`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c79551a86383a25902afde91a0d50a9ce533b5a) | zink: a618 ci updates | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r11) | 2026-06-26 | [`925ea59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/925ea5973ee8403a693b42ea1d7a29afa9d9970f) | pco: Refactor internal shader pass skipping | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r10) | 2026-06-26 | [`ce6647d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce6647daa543690eff8a72c080eee118fb1a63bf) | vulkan: condition cmd_queue initialization to driver need | Vulkan 1.4.354 |
