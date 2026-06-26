@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`894e4a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/894e4a9f69f1d44e61b49897f925c4d2cea5c04a) |
-| **Commit date** | 2026-06-25 |
-| **Commit title** | anv/rt: reorder encode_internal_node to only process valid children |
+| **Commit** | [`b723e99`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b723e99a54b786d15486a480bb55d6401a4b5b4d) |
+| **Commit date** | 2026-06-26 |
+| **Commit title** | Add offset getter for image intrinsics |
 | **Build date** | 20260626 |
-| **Release** | [v26.2.0-20260626](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626) |
+| **Release** | [v26.2.0-20260626-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260626-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r2) | 2026-06-26 | [`b723e99`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b723e99a54b786d15486a480bb55d6401a4b5b4d) | Add offset getter for image intrinsics | Vulkan 1.4.354 |
 | [v26.2.0-20260626](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626) | 2026-06-26 | [`894e4a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/894e4a9f69f1d44e61b49897f925c4d2cea5c04a) | anv/rt: reorder encode_internal_node to only process valid children | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r8) | 2026-06-25 | [`34fbf35`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/34fbf35b97ce28fe7510fbe99bdc7389ac3a6644) | anv: fix descriptor heap indexing of YCbCr embedded samplers | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r7) | 2026-06-25 | [`791cf54`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/791cf54f536a396b0cee4c1bba2842a37765bc18) | intel/gen: Add Xe3P compact support | Vulkan 1.4.354 |
