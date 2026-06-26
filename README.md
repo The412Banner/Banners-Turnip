@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`cef20f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cef20f5a006f96c335370fe8004a21acc9966a44) |
+| **Commit** | [`8e0914e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8e0914ee315109a0d99cdb40e0645d1dc38023a6) |
 | **Commit date** | 2026-06-26 |
-| **Commit title** | pan/crc: Optimize clear color hashing |
+| **Commit title** | drirc: add a callback mechanism do deal with shader hash & options |
 | **Build date** | 20260626 |
-| **Release** | [v26.2.0-20260626-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r5) |
+| **Release** | [v26.2.0-20260626-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260626-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r6) | 2026-06-26 | [`8e0914e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8e0914ee315109a0d99cdb40e0645d1dc38023a6) | drirc: add a callback mechanism do deal with shader hash & options | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r5) | 2026-06-26 | [`cef20f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cef20f5a006f96c335370fe8004a21acc9966a44) | pan/crc: Optimize clear color hashing | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r4) | 2026-06-26 | [`2ce9bc6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2ce9bc68585af69cd8e46d38139f82b0efdc4ecc) | panvk: Fix DRM format modifiers for multi-planar YUV formats | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r3) | 2026-06-26 | [`0e9dfa7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e9dfa72019612dd604b6fb6b831b3119bba05e6) | intel/executor: Enable Xe3P | Vulkan 1.4.354 |
@@ -97,7 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260625-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r6) | 2026-06-25 | [`4734636`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47346366b6bafb4fb39bff74c8b45f6a98ff9aab) | mesa3d: gfxstream: Add P210 format support | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r5) | 2026-06-25 | [`8b28b4d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b28b4d615999390455c237e38ed921881c21de7) | doc/features.txt: enable VK_KHR_shader_float16_int8 for v3dv | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r4) | 2026-06-25 | [`e5ec950`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e5ec9502a51a8424ec77eae3a9f4dec30faea990) | radv: cleanup pCreateInfo uses for VkImage | Vulkan 1.4.354 |
-| [v26.2.0-20260625-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r3) | 2026-06-25 | [`3eb0567`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3eb05675c7d621102178cd19f8ca9c0ddabc9af4) | anv: add hitman2 workaround for SLM load vectorization | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
