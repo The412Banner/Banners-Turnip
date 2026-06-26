@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260626-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r5) | 2026-06-26 | [`cef20f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cef20f5a006f96c335370fe8004a21acc9966a44) | pan/crc: Optimize clear color hashing | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r4) | 2026-06-26 | [`2ce9bc6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2ce9bc68585af69cd8e46d38139f82b0efdc4ecc) | panvk: Fix DRM format modifiers for multi-planar YUV formats | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r3) | 2026-06-26 | [`0e9dfa7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e9dfa72019612dd604b6fb6b831b3119bba05e6) | intel/executor: Enable Xe3P | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r2) | 2026-06-26 | [`b723e99`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b723e99a54b786d15486a480bb55d6401a4b5b4d) | Add offset getter for image intrinsics | Vulkan 1.4.354 |
