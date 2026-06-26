@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`b723e99`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b723e99a54b786d15486a480bb55d6401a4b5b4d) |
+| **Commit** | [`0e9dfa7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e9dfa72019612dd604b6fb6b831b3119bba05e6) |
 | **Commit date** | 2026-06-26 |
-| **Commit title** | Add offset getter for image intrinsics |
+| **Commit title** | intel/executor: Enable Xe3P |
 | **Build date** | 20260626 |
-| **Release** | [v26.2.0-20260626-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r2) |
+| **Release** | [v26.2.0-20260626-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260626-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r3) | 2026-06-26 | [`0e9dfa7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e9dfa72019612dd604b6fb6b831b3119bba05e6) | intel/executor: Enable Xe3P | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r2) | 2026-06-26 | [`b723e99`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b723e99a54b786d15486a480bb55d6401a4b5b4d) | Add offset getter for image intrinsics | Vulkan 1.4.354 |
 | [v26.2.0-20260626](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626) | 2026-06-26 | [`894e4a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/894e4a9f69f1d44e61b49897f925c4d2cea5c04a) | anv/rt: reorder encode_internal_node to only process valid children | Vulkan 1.4.354 |
 | [v26.2.0-20260625-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260625-r8) | 2026-06-25 | [`34fbf35`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/34fbf35b97ce28fe7510fbe99bdc7389ac3a6644) | anv: fix descriptor heap indexing of YCbCr embedded samplers | Vulkan 1.4.354 |
