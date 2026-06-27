@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`019ee85`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/019ee85efbe5948c6a740da5fb383bd503133aa2) |
+| **Commit** | [`88bc7f1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88bc7f1afd125512e2188c561fc373d2872efed8) |
 | **Commit date** | 2026-06-27 |
-| **Commit title** | util/u_trace: Release memory for reused timestamps |
+| **Commit title** | nir/to_lcssa: do not sort predecessors for phi sources |
 | **Build date** | 20260627 |
-| **Release** | [v26.2.0-20260627-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r4) |
+| **Release** | [v26.2.0-20260627-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260627-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r5) | 2026-06-27 | [`88bc7f1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88bc7f1afd125512e2188c561fc373d2872efed8) | nir/to_lcssa: do not sort predecessors for phi sources | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r4) | 2026-06-27 | [`019ee85`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/019ee85efbe5948c6a740da5fb383bd503133aa2) | util/u_trace: Release memory for reused timestamps | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r3) | 2026-06-27 | [`d360c08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d360c0895ca7738b20680b31b8697e46436f0bc4) | glx: simplify FBConfig wire decode | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r2) | 2026-06-27 | [`d3c2dab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c2dab2073a8604e2fec1367165fba54edad5fa) | panvk: add P010 native YUV support | Vulkan 1.4.354 |
@@ -100,9 +101,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260626-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r12) | 2026-06-26 | [`4c79551`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c79551a86383a25902afde91a0d50a9ce533b5a) | zink: a618 ci updates | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r11) | 2026-06-26 | [`925ea59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/925ea5973ee8403a693b42ea1d7a29afa9d9970f) | pco: Refactor internal shader pass skipping | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r10) | 2026-06-26 | [`ce6647d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce6647daa543690eff8a72c080eee118fb1a63bf) | vulkan: condition cmd_queue initialization to driver need | Vulkan 1.4.354 |
-| [v26.2.0-20260626-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r9) | 2026-06-26 | [`6adb0d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6adb0d5e01dca952fcb04b7773ad92b0ab2e132d) | etnaviv: blt: Zero-initialize conv_swizzle | Vulkan 1.4.354 |
-| [v26.2.0-20260626-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r8) | 2026-06-26 | [`5d8c4c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5d8c4c1880942107f287551eb46efd8cff6b8134) | radv/ci: skip compression_control cases | Vulkan 1.4.354 |
-| [v26.2.0-20260626-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r7) | 2026-06-26 | [`ce81244`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce81244354e955d2a154c43e077f109cfd05f6a8) | vulkan: Shuffle around bvh build code | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
