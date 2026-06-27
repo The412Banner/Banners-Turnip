@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260627-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r8) | 2026-06-27 | [`4c1d39f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c1d39fa98f7b2b3ac6cdfd4ce171b61ed618a9c) | compiler/rust: Add more methods/traits to U8EnumSet | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r7) | 2026-06-27 | [`4bf6f9c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bf6f9c41c855e5e24f7d1ff1bb2fc67f72c2e1c) | kraid: Add OpLd/StCvt and plumb them through | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r6) | 2026-06-27 | [`4a1a8a1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4a1a8a1f0449a8cb97d1c8471216fd4cb7ffabe5) | anv: add missing handling of push pointers in gfx dgc | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r5) | 2026-06-27 | [`88bc7f1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88bc7f1afd125512e2188c561fc373d2872efed8) | nir/to_lcssa: do not sort predecessors for phi sources | Vulkan 1.4.354 |
