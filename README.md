@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`a87b488`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a87b488e22178a63bfb362cc7b88e6ac0b83a7ad) |
-| **Commit date** | 2026-06-26 |
-| **Commit title** | docs: fix references to moved crates |
+| **Commit** | [`d3c2dab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c2dab2073a8604e2fec1367165fba54edad5fa) |
+| **Commit date** | 2026-06-27 |
+| **Commit title** | panvk: add P010 native YUV support |
 | **Build date** | 20260627 |
-| **Release** | [v26.2.0-20260627](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627) |
+| **Release** | [v26.2.0-20260627-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260627-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r2) | 2026-06-27 | [`d3c2dab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c2dab2073a8604e2fec1367165fba54edad5fa) | panvk: add P010 native YUV support | Vulkan 1.4.354 |
 | [v26.2.0-20260627](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627) | 2026-06-27 | [`a87b488`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a87b488e22178a63bfb362cc7b88e6ac0b83a7ad) | docs: fix references to moved crates | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r18) | 2026-06-26 | [`2725b63`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2725b6333bfb759f694d121622b2645b6c3e2b49) | intel/perf: map ray tracing counters to RAYTRACING group | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r17) | 2026-06-26 | [`5bd6134`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bd61342d349c3d768b916e7c7523855330a6c0c) | mr-label-maker: Add rule for rust files | Vulkan 1.4.354 |
@@ -104,8 +105,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260626-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r5) | 2026-06-26 | [`cef20f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cef20f5a006f96c335370fe8004a21acc9966a44) | pan/crc: Optimize clear color hashing | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r4) | 2026-06-26 | [`2ce9bc6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2ce9bc68585af69cd8e46d38139f82b0efdc4ecc) | panvk: Fix DRM format modifiers for multi-planar YUV formats | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r3) | 2026-06-26 | [`0e9dfa7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e9dfa72019612dd604b6fb6b831b3119bba05e6) | intel/executor: Enable Xe3P | Vulkan 1.4.354 |
-| [v26.2.0-20260626-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r2) | 2026-06-26 | [`b723e99`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b723e99a54b786d15486a480bb55d6401a4b5b4d) | Add offset getter for image intrinsics | Vulkan 1.4.354 |
-| [v26.2.0-20260626](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626) | 2026-06-26 | [`894e4a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/894e4a9f69f1d44e61b49897f925c4d2cea5c04a) | anv/rt: reorder encode_internal_node to only process valid children | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
