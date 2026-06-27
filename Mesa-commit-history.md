@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260627-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r4) | 2026-06-27 | [`019ee85`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/019ee85efbe5948c6a740da5fb383bd503133aa2) | util/u_trace: Release memory for reused timestamps | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r3) | 2026-06-26 | [`d360c08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d360c0895ca7738b20680b31b8697e46436f0bc4) | glx: simplify FBConfig wire decode | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r2) | 2026-06-27 | [`d3c2dab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c2dab2073a8604e2fec1367165fba54edad5fa) | panvk: add P010 native YUV support | Vulkan 1.4.354 |
 | [v26.2.0-20260627](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627) | 2026-06-26 | [`a87b488`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a87b488e22178a63bfb362cc7b88e6ac0b83a7ad) | docs: fix references to moved crates | Vulkan 1.4.354 |

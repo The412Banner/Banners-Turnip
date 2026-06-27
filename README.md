@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`d360c08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d360c0895ca7738b20680b31b8697e46436f0bc4) |
-| **Commit date** | 2026-06-26 |
-| **Commit title** | glx: simplify FBConfig wire decode |
+| **Commit** | [`019ee85`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/019ee85efbe5948c6a740da5fb383bd503133aa2) |
+| **Commit date** | 2026-06-27 |
+| **Commit title** | util/u_trace: Release memory for reused timestamps |
 | **Build date** | 20260627 |
-| **Release** | [v26.2.0-20260627-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r3) |
+| **Release** | [v26.2.0-20260627-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260627-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r4) | 2026-06-27 | [`019ee85`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/019ee85efbe5948c6a740da5fb383bd503133aa2) | util/u_trace: Release memory for reused timestamps | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r3) | 2026-06-27 | [`d360c08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d360c0895ca7738b20680b31b8697e46436f0bc4) | glx: simplify FBConfig wire decode | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r2) | 2026-06-27 | [`d3c2dab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c2dab2073a8604e2fec1367165fba54edad5fa) | panvk: add P010 native YUV support | Vulkan 1.4.354 |
 | [v26.2.0-20260627](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627) | 2026-06-27 | [`a87b488`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a87b488e22178a63bfb362cc7b88e6ac0b83a7ad) | docs: fix references to moved crates | Vulkan 1.4.354 |
@@ -102,7 +103,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260626-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r9) | 2026-06-26 | [`6adb0d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6adb0d5e01dca952fcb04b7773ad92b0ab2e132d) | etnaviv: blt: Zero-initialize conv_swizzle | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r8) | 2026-06-26 | [`5d8c4c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5d8c4c1880942107f287551eb46efd8cff6b8134) | radv/ci: skip compression_control cases | Vulkan 1.4.354 |
 | [v26.2.0-20260626-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r7) | 2026-06-26 | [`ce81244`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce81244354e955d2a154c43e077f109cfd05f6a8) | vulkan: Shuffle around bvh build code | Vulkan 1.4.354 |
-| [v26.2.0-20260626-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r6) | 2026-06-26 | [`8e0914e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8e0914ee315109a0d99cdb40e0645d1dc38023a6) | drirc: add a callback mechanism do deal with shader hash & options | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
