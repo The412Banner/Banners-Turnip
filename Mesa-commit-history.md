@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260628-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628-r3) | 2026-06-28 | [`99734aa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99734aa206f5ee3e2b2a394b488566235afa956d) | anv: add infrastructure to deal with missing barriers in applications | Vulkan 1.4.354 |
 | [v26.2.0-20260628-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628-r2) | 2026-06-28 | [`ea72882`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea72882df13e275473b2a9c83e93786b58fadc80) | glx/apple: Add create_context_attribs entry to the applegl_screen_vtable | Vulkan 1.4.354 |
 | [v26.2.0-20260628](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628) | 2026-06-28 | [`a7d8f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a7d8f5d5b305e876f871a6965036053f16fb414c) | kraid: Widen more ops | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r8) | 2026-06-27 | [`4c1d39f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c1d39fa98f7b2b3ac6cdfd4ce171b61ed618a9c) | compiler/rust: Add more methods/traits to U8EnumSet | Vulkan 1.4.354 |
