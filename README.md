@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`4c1d39f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c1d39fa98f7b2b3ac6cdfd4ce171b61ed618a9c) |
-| **Commit date** | 2026-06-27 |
-| **Commit title** | compiler/rust: Add more methods/traits to U8EnumSet |
-| **Build date** | 20260627 |
-| **Release** | [v26.2.0-20260627-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r8) |
+| **Commit** | [`a7d8f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a7d8f5d5b305e876f871a6965036053f16fb414c) |
+| **Commit date** | 2026-06-28 |
+| **Commit title** | kraid: Widen more ops |
+| **Build date** | 20260628 |
+| **Release** | [v26.2.0-20260628](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,19 +87,13 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260628](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628) | 2026-06-28 | [`a7d8f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a7d8f5d5b305e876f871a6965036053f16fb414c) | kraid: Widen more ops | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r8) | 2026-06-27 | [`4c1d39f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c1d39fa98f7b2b3ac6cdfd4ce171b61ed618a9c) | compiler/rust: Add more methods/traits to U8EnumSet | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r7) | 2026-06-27 | [`4bf6f9c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bf6f9c41c855e5e24f7d1ff1bb2fc67f72c2e1c) | kraid: Add OpLd/StCvt and plumb them through | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r6) | 2026-06-27 | [`4a1a8a1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4a1a8a1f0449a8cb97d1c8471216fd4cb7ffabe5) | anv: add missing handling of push pointers in gfx dgc | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r5) | 2026-06-27 | [`88bc7f1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88bc7f1afd125512e2188c561fc373d2872efed8) | nir/to_lcssa: do not sort predecessors for phi sources | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r4) | 2026-06-27 | [`019ee85`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/019ee85efbe5948c6a740da5fb383bd503133aa2) | util/u_trace: Release memory for reused timestamps | Vulkan 1.4.354 |
 | [v26.2.0-20260627-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r3) | 2026-06-27 | [`d360c08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d360c0895ca7738b20680b31b8697e46436f0bc4) | glx: simplify FBConfig wire decode | Vulkan 1.4.354 |
-| [v26.2.0-20260627-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627-r2) | 2026-06-27 | [`d3c2dab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c2dab2073a8604e2fec1367165fba54edad5fa) | panvk: add P010 native YUV support | Vulkan 1.4.354 |
-| [v26.2.0-20260627](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260627) | 2026-06-27 | [`a87b488`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a87b488e22178a63bfb362cc7b88e6ac0b83a7ad) | docs: fix references to moved crates | Vulkan 1.4.354 |
-| [v26.2.0-20260626-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r18) | 2026-06-26 | [`2725b63`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2725b6333bfb759f694d121622b2645b6c3e2b49) | intel/perf: map ray tracing counters to RAYTRACING group | Vulkan 1.4.354 |
-| [v26.2.0-20260626-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r17) | 2026-06-26 | [`5bd6134`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5bd61342d349c3d768b916e7c7523855330a6c0c) | mr-label-maker: Add rule for rust files | Vulkan 1.4.354 |
-| [v26.2.0-20260626-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r16) | 2026-06-26 | [`421b7fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/421b7feab90bc022523367c69b0e2fb7336e79b3) | zink: use DAC for vertex binding | Vulkan 1.4.354 |
-| [v26.2.0-20260626-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r15) | 2026-06-26 | [`e7af4de`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e7af4dec014ae6a298b75a6032f9a07b8c36560b) | glx: free visinfo on BadMatch in glXCreateWindow's AppleGL path | Vulkan 1.4.354 |
-| [v26.2.0-20260626-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260626-r14) | 2026-06-26 | [`c41d800`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c41d800a3091a55c0ce3a06aedfea57bda1b9fd4) | nil: Pick tiling params closer to proprietary | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
