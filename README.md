@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`7bf9ff9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7bf9ff93892d5e164507730961342470cdff8813) |
+| **Commit** | [`4cbf95e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4cbf95e1b52716ac74416a83874db523e7367ea4) |
 | **Commit date** | 2026-06-29 |
-| **Commit title** | radv: disable VRS with MSAA 8x also on GFX10.3 |
+| **Commit title** | v3dv: remove unused no-op job allocation setup |
 | **Build date** | 20260629 |
-| **Release** | [v26.2.0-20260629-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r2) |
+| **Release** | [v26.2.0-20260629-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,11 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260629-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r3) | 2026-06-29 | [`4cbf95e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4cbf95e1b52716ac74416a83874db523e7367ea4) | v3dv: remove unused no-op job allocation setup | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r2) | 2026-06-29 | [`7bf9ff9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7bf9ff93892d5e164507730961342470cdff8813) | radv: disable VRS with MSAA 8x also on GFX10.3 | Vulkan 1.4.354 |
 | [v26.2.0-20260629](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629) | 2026-06-29 | [`c5f0ccc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5f0ccc62ad6c1453c5dff0075275e3a2f6f4b80) | panvk: set cfg cull status according to primitive topology | Vulkan 1.4.354 |
 | [v26.2.0-20260628-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628-r4) | 2026-06-28 | [`2f5aee0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2f5aee03ceeb7c9ac38c06d0799380232ed3e693) | nil: enable PLC for compressed data | Vulkan 1.4.354 |
 | [v26.2.0-20260628-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628-r3) | 2026-06-28 | [`99734aa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99734aa206f5ee3e2b2a394b488566235afa956d) | anv: add infrastructure to deal with missing barriers in applications | Vulkan 1.4.354 |
-| [v26.2.0-20260628-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628-r2) | 2026-06-28 | [`ea72882`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea72882df13e275473b2a9c83e93786b58fadc80) | glx/apple: Add create_context_attribs entry to the applegl_screen_vtable | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
