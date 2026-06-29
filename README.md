@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`2f5aee0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2f5aee03ceeb7c9ac38c06d0799380232ed3e693) |
-| **Commit date** | 2026-06-28 |
-| **Commit title** | nil: enable PLC for compressed data |
-| **Build date** | 20260628 |
-| **Release** | [v26.2.0-20260628-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628-r4) |
+| **Commit** | [`c5f0ccc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5f0ccc62ad6c1453c5dff0075275e3a2f6f4b80) |
+| **Commit date** | 2026-06-29 |
+| **Commit title** | panvk: set cfg cull status according to primitive topology |
+| **Build date** | 20260629 |
+| **Release** | [v26.2.0-20260629](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,10 +87,10 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260629](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629) | 2026-06-29 | [`c5f0ccc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5f0ccc62ad6c1453c5dff0075275e3a2f6f4b80) | panvk: set cfg cull status according to primitive topology | Vulkan 1.4.354 |
 | [v26.2.0-20260628-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628-r4) | 2026-06-28 | [`2f5aee0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2f5aee03ceeb7c9ac38c06d0799380232ed3e693) | nil: enable PLC for compressed data | Vulkan 1.4.354 |
 | [v26.2.0-20260628-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628-r3) | 2026-06-28 | [`99734aa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99734aa206f5ee3e2b2a394b488566235afa956d) | anv: add infrastructure to deal with missing barriers in applications | Vulkan 1.4.354 |
 | [v26.2.0-20260628-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628-r2) | 2026-06-28 | [`ea72882`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea72882df13e275473b2a9c83e93786b58fadc80) | glx/apple: Add create_context_attribs entry to the applegl_screen_vtable | Vulkan 1.4.354 |
-| [v26.2.0-20260628](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260628) | 2026-06-28 | [`a7d8f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a7d8f5d5b305e876f871a6965036053f16fb414c) | kraid: Widen more ops | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
