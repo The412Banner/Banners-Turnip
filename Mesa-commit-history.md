@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260629-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r6) | 2026-06-29 | [`e9115e4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e9115e448f7bf1ee36d162be36b009f031e9821d) | freedreno/drm: Fix uninitialized read of BO metadata on import | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r5) | 2026-06-29 | [`a5d96cd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5d96cd6cda0bd1b358468f00530bb6535e6ef14) | r300: move r500 FS derivative fixup to nir_to_rc translation | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r4) | 2026-06-29 | [`99d6770`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99d67700d0640053058b596ab963e742b2975e24) | pvr/ci: enable PVR_IGNORE_FINISHME_WARNINGS | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r3) | 2026-06-29 | [`4cbf95e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4cbf95e1b52716ac74416a83874db523e7367ea4) | v3dv: remove unused no-op job allocation setup | Vulkan 1.4.354 |
