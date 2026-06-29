@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`99d6770`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99d67700d0640053058b596ab963e742b2975e24) |
+| **Commit** | [`a5d96cd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5d96cd6cda0bd1b358468f00530bb6535e6ef14) |
 | **Commit date** | 2026-06-29 |
-| **Commit title** | pvr/ci: enable PVR_IGNORE_FINISHME_WARNINGS |
+| **Commit title** | r300: move r500 FS derivative fixup to nir_to_rc translation |
 | **Build date** | 20260629 |
-| **Release** | [v26.2.0-20260629-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r4) |
+| **Release** | [v26.2.0-20260629-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260629-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r5) | 2026-06-29 | [`a5d96cd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5d96cd6cda0bd1b358468f00530bb6535e6ef14) | r300: move r500 FS derivative fixup to nir_to_rc translation | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r4) | 2026-06-29 | [`99d6770`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99d67700d0640053058b596ab963e742b2975e24) | pvr/ci: enable PVR_IGNORE_FINISHME_WARNINGS | Vulkan 1.4.354 |
 | [v26.1.0-winlator-v11.1](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.1.0-winlator-v11.1) | 2026-06-29 |  |  |  |
 | [v26.2.0-20260629-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r3) | 2026-06-29 | [`4cbf95e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4cbf95e1b52716ac74416a83874db523e7367ea4) | v3dv: remove unused no-op job allocation setup | Vulkan 1.4.354 |
