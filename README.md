@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`0eeb51a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0eeb51a58d9abf5d48212b6b7ffe01d9085bffbd) |
+| **Commit** | [`7fb22ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fb22ad1a0c51b76eab7f7d122caa816135af289) |
 | **Commit date** | 2026-06-30 |
-| **Commit title** | anv: Support VK_ANDROID_native_buffer older than version 11 |
+| **Commit title** | panfrost/ci: turn bifrost / valhall rules into per-kernel driver |
 | **Build date** | 20260630 |
-| **Release** | [v26.2.0-20260630-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r5) |
+| **Release** | [v26.2.0-20260630-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260630-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r6) | 2026-06-30 | [`7fb22ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fb22ad1a0c51b76eab7f7d122caa816135af289) | panfrost/ci: turn bifrost / valhall rules into per-kernel driver | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r5) | 2026-06-30 | [`0eeb51a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0eeb51a58d9abf5d48212b6b7ffe01d9085bffbd) | anv: Support VK_ANDROID_native_buffer older than version 11 | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r4) | 2026-06-30 | [`7fa1b48`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fa1b48755647b9468f5c603810260edea9de996) | radv: disable AMD_device_coherent_memory on gfx12 due to out of order behavior | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r3) | 2026-06-30 | [`f5e4233`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f5e423312d3a9f8b653d2b41ff48195fdea91020) | lavapipe: lower array-deref-of-vec for mesh shader outputs | Vulkan 1.4.354 |
