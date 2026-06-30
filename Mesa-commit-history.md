@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260630-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r7) | 2026-06-30 | [`57f136e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57f136ebc95c48b51e75c0892e27896d43f379a2) | docs/perfetto: panfrost now supports render stages | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r6) | 2026-06-30 | [`7fb22ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fb22ad1a0c51b76eab7f7d122caa816135af289) | panfrost/ci: turn bifrost / valhall rules into per-kernel driver | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r5) | 2026-06-30 | [`0eeb51a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0eeb51a58d9abf5d48212b6b7ffe01d9085bffbd) | anv: Support VK_ANDROID_native_buffer older than version 11 | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r4) | 2026-06-30 | [`7fa1b48`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fa1b48755647b9468f5c603810260edea9de996) | radv: disable AMD_device_coherent_memory on gfx12 due to out of order behavior | Vulkan 1.4.354 |

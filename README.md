@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`7fb22ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fb22ad1a0c51b76eab7f7d122caa816135af289) |
+| **Commit** | [`57f136e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57f136ebc95c48b51e75c0892e27896d43f379a2) |
 | **Commit date** | 2026-06-30 |
-| **Commit title** | panfrost/ci: turn bifrost / valhall rules into per-kernel driver |
+| **Commit title** | docs/perfetto: panfrost now supports render stages |
 | **Build date** | 20260630 |
-| **Release** | [v26.2.0-20260630-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r6) |
+| **Release** | [v26.2.0-20260630-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260630-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r7) | 2026-06-30 | [`57f136e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57f136ebc95c48b51e75c0892e27896d43f379a2) | docs/perfetto: panfrost now supports render stages | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r6) | 2026-06-30 | [`7fb22ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fb22ad1a0c51b76eab7f7d122caa816135af289) | panfrost/ci: turn bifrost / valhall rules into per-kernel driver | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r5) | 2026-06-30 | [`0eeb51a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0eeb51a58d9abf5d48212b6b7ffe01d9085bffbd) | anv: Support VK_ANDROID_native_buffer older than version 11 | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r4) | 2026-06-30 | [`7fa1b48`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fa1b48755647b9468f5c603810260edea9de996) | radv: disable AMD_device_coherent_memory on gfx12 due to out of order behavior | Vulkan 1.4.354 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260629-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r6) | 2026-06-29 | [`e9115e4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e9115e448f7bf1ee36d162be36b009f031e9821d) | freedreno/drm: Fix uninitialized read of BO metadata on import | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r5) | 2026-06-29 | [`a5d96cd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5d96cd6cda0bd1b358468f00530bb6535e6ef14) | r300: move r500 FS derivative fixup to nir_to_rc translation | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r4) | 2026-06-29 | [`99d6770`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99d67700d0640053058b596ab963e742b2975e24) | pvr/ci: enable PVR_IGNORE_FINISHME_WARNINGS | Vulkan 1.4.354 |
-| [v26.1.0-winlator-v11.1](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.1.0-winlator-v11.1) | 2026-06-29 |  |  |  |
 <!-- RECENT_BUILDS_END -->
 
 ---
