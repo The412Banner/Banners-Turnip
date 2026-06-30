@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260630](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630) | 2026-06-29 | [`9710884`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/97108842afd4a56885e51e596024514a880928a2) | anv: Compile init RT shader with Jay | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r8) | 2026-06-29 | [`b0050c4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0050c4e754172c1c986f34e4ac0333d3d01479b) | meson: drop misleading `-D egl-native-platform` values | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r7) | 2026-06-29 | [`f39e380`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f39e380bd1aa5a340f60f05d6ec96caf2811972a) | ci/windows: Update WARP to 1.0.20 | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r6) | 2026-06-29 | [`e9115e4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e9115e448f7bf1ee36d162be36b009f031e9821d) | freedreno/drm: Fix uninitialized read of BO metadata on import | Vulkan 1.4.354 |
