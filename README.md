@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`fa8fa25`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa8fa25d6077eac3d0206495b5ecb1ddc5066a1c) |
+| **Commit** | [`16ba3cf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/16ba3cf32a8d7fffd5854e3ffdc190098146caef) |
 | **Commit date** | 2026-06-30 |
-| **Commit title** | glx: fix per-display drawHash / zombieGLXDrawable / dri2Hash leak on GLX_USE_APPLE builds |
+| **Commit title** | d3d12: d3d12_create_fence_raw to lazily register fence event on waits |
 | **Build date** | 20260630 |
-| **Release** | [v26.2.0-20260630-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r9) |
+| **Release** | [v26.2.0-20260630-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r10) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260630-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r10) | 2026-06-30 | [`16ba3cf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/16ba3cf32a8d7fffd5854e3ffdc190098146caef) | d3d12: d3d12_create_fence_raw to lazily register fence event on waits | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r9) | 2026-06-30 | [`fa8fa25`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa8fa25d6077eac3d0206495b5ecb1ddc5066a1c) | glx: fix per-display drawHash / zombieGLXDrawable / dri2Hash leak on GLX_USE_APPLE builds | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r8) | 2026-06-30 | [`c053340`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c05334058d5417b0986578c94b9aa6ab601f3ba8) | pco: allow non-pure integer formats for image xchg atomics | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r7) | 2026-06-30 | [`57f136e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57f136ebc95c48b51e75c0892e27896d43f379a2) | docs/perfetto: panfrost now supports render stages | Vulkan 1.4.354 |
