@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`9710884`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/97108842afd4a56885e51e596024514a880928a2) |
-| **Commit date** | 2026-06-29 |
-| **Commit title** | anv: Compile init RT shader with Jay |
+| **Commit** | [`8ad054c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ad054ce867161d01cfdd70c01248e32ecc9e7f4) |
+| **Commit date** | 2026-06-30 |
+| **Commit title** | radv: remove the deprecated warning for RADV_FORCE_FAMILY |
 | **Build date** | 20260630 |
-| **Release** | [v26.2.0-20260630](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630) |
+| **Release** | [v26.2.0-20260630-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260630-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r2) | 2026-06-30 | [`8ad054c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ad054ce867161d01cfdd70c01248e32ecc9e7f4) | radv: remove the deprecated warning for RADV_FORCE_FAMILY | Vulkan 1.4.354 |
 | [v26.2.0-20260630](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630) | 2026-06-30 | [`9710884`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/97108842afd4a56885e51e596024514a880928a2) | anv: Compile init RT shader with Jay | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r8) | 2026-06-29 | [`b0050c4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0050c4e754172c1c986f34e4ac0333d3d01479b) | meson: drop misleading `-D egl-native-platform` values | Vulkan 1.4.354 |
 | [v26.2.0-20260629-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260629-r7) | 2026-06-29 | [`f39e380`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f39e380bd1aa5a340f60f05d6ec96caf2811972a) | ci/windows: Update WARP to 1.0.20 | Vulkan 1.4.354 |
