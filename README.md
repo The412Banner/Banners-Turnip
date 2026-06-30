@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`57f136e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57f136ebc95c48b51e75c0892e27896d43f379a2) |
+| **Commit** | [`c053340`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c05334058d5417b0986578c94b9aa6ab601f3ba8) |
 | **Commit date** | 2026-06-30 |
-| **Commit title** | docs/perfetto: panfrost now supports render stages |
+| **Commit title** | pco: allow non-pure integer formats for image xchg atomics |
 | **Build date** | 20260630 |
-| **Release** | [v26.2.0-20260630-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r7) |
+| **Release** | [v26.2.0-20260630-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260630-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r8) | 2026-06-30 | [`c053340`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c05334058d5417b0986578c94b9aa6ab601f3ba8) | pco: allow non-pure integer formats for image xchg atomics | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r7) | 2026-06-30 | [`57f136e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57f136ebc95c48b51e75c0892e27896d43f379a2) | docs/perfetto: panfrost now supports render stages | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r6) | 2026-06-30 | [`7fb22ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fb22ad1a0c51b76eab7f7d122caa816135af289) | panfrost/ci: turn bifrost / valhall rules into per-kernel driver | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r5) | 2026-06-30 | [`0eeb51a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0eeb51a58d9abf5d48212b6b7ffe01d9085bffbd) | anv: Support VK_ANDROID_native_buffer older than version 11 | Vulkan 1.4.354 |
