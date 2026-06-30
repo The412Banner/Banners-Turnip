@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260630-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r14) | 2026-06-30 | [`fd16393`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd16393e56ac4b3fe213048f45e4f2477cbb43c1) | intel/ci: Remove nightly CML jobs, retire runner | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r13) | 2026-06-30 | [`0983c72`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0983c72a7ed9907cb494079260f1e15dd695ea42) | anv: fix push pointer optimization with DGC | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r12) | 2026-06-30 | [`a472df7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a472df72eb67591454756c522c2eacbc69b65088) | intel/executor: inform oa not available if that's the case | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r11) | 2026-06-30 | [`45b8dfc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/45b8dfc0b8d350cc797c085a0e0ed26a40d87be2) | freedreno: Add some gen8 control registers | Vulkan 1.4.354 |
