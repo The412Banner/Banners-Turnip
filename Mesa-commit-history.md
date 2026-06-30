@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260630-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r9) | 2026-06-30 | [`fa8fa25`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa8fa25d6077eac3d0206495b5ecb1ddc5066a1c) | glx: fix per-display drawHash / zombieGLXDrawable / dri2Hash leak on GLX_USE_APPLE builds | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r8) | 2026-06-30 | [`c053340`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c05334058d5417b0986578c94b9aa6ab601f3ba8) | pco: allow non-pure integer formats for image xchg atomics | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r7) | 2026-06-30 | [`57f136e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57f136ebc95c48b51e75c0892e27896d43f379a2) | docs/perfetto: panfrost now supports render stages | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r6) | 2026-06-30 | [`7fb22ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fb22ad1a0c51b76eab7f7d122caa816135af289) | panfrost/ci: turn bifrost / valhall rules into per-kernel driver | Vulkan 1.4.354 |
