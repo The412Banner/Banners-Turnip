@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`66d84e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/66d84e2df8d1dc8c7c2f68fc53a49dea29de4693) |
+| **Commit** | [`6fa81ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6fa81edf350ab680292e767ba407fc89f88b8da9) |
 | **Commit date** | 2026-07-01 |
-| **Commit title** | zink: noop per-resource synchronization for unordered->ordered access |
+| **Commit title** | dzn: silence PREfast C33010 warnings |
 | **Build date** | 20260701 |
-| **Release** | [v26.2.0-20260701-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r10) |
+| **Release** | [v26.2.0-20260701-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260701-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r11) | 2026-07-01 | [`6fa81ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6fa81edf350ab680292e767ba407fc89f88b8da9) | dzn: silence PREfast C33010 warnings | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r10) | 2026-07-01 | [`66d84e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/66d84e2df8d1dc8c7c2f68fc53a49dea29de4693) | zink: noop per-resource synchronization for unordered->ordered access | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r9) | 2026-07-01 | [`60ef62f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/60ef62fba63a94290df96729bf6c6b246c5d0bc5) | zink: fix a memleak in zink_init_format_props() | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r8) | 2026-07-01 | [`16d454c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/16d454c2d1fc03d5cd99a90281e55f1251e90917) | kraid/nir: Allow i8v3 ops | Vulkan 1.4.354 |
