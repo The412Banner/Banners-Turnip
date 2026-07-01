@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`a6bb4bb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6bb4bbd1eaa8b1b8ba9e5df98ed2c9958393e40) |
+| **Commit** | [`0c195a0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0c195a01b06d693274b51af58d921071643fb5a7) |
 | **Commit date** | 2026-07-01 |
-| **Commit title** | intel/brw: Factor out combinable_ordered_pipe() helper |
+| **Commit title** | drm-shim: Fix racy initialization. |
 | **Build date** | 20260701 |
-| **Release** | [v26.2.0-20260701](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701) |
+| **Release** | [v26.2.0-20260701-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260701-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r2) | 2026-07-01 | [`0c195a0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0c195a01b06d693274b51af58d921071643fb5a7) | drm-shim: Fix racy initialization. | Vulkan 1.4.354 |
 | [v26.2.0-20260701](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701) | 2026-07-01 | [`a6bb4bb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6bb4bbd1eaa8b1b8ba9e5df98ed2c9958393e40) | intel/brw: Factor out combinable_ordered_pipe() helper | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r16) | 2026-06-30 | [`d02b251`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d02b25157c68804c4e6da613faf0f38a3bcca6d3) | vulkan/android: force linear for mutable format | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r15) | 2026-06-30 | [`8cf9a06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8cf9a06e154dec3854d3bdc1d050769e3d560423) | st/pbo_compute: account for drivers failing to create cs shaders | Vulkan 1.4.354 |
@@ -102,7 +103,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260630-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r5) | 2026-06-30 | [`0eeb51a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0eeb51a58d9abf5d48212b6b7ffe01d9085bffbd) | anv: Support VK_ANDROID_native_buffer older than version 11 | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r4) | 2026-06-30 | [`7fa1b48`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fa1b48755647b9468f5c603810260edea9de996) | radv: disable AMD_device_coherent_memory on gfx12 due to out of order behavior | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r3) | 2026-06-30 | [`f5e4233`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f5e423312d3a9f8b653d2b41ff48195fdea91020) | lavapipe: lower array-deref-of-vec for mesh shader outputs | Vulkan 1.4.354 |
-| [v26.2.0-20260630-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r2) | 2026-06-30 | [`8ad054c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ad054ce867161d01cfdd70c01248e32ecc9e7f4) | radv: remove the deprecated warning for RADV_FORCE_FAMILY | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
