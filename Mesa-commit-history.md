@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260701-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r12) | 2026-07-01 | [`92d452c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/92d452cb2345df4f7e0d8318a1709abe451f56b2) | nvk/ci: update nightly job expectations | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r11) | 2026-07-01 | [`6fa81ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6fa81edf350ab680292e767ba407fc89f88b8da9) | dzn: silence PREfast C33010 warnings | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r10) | 2026-07-01 | [`66d84e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/66d84e2df8d1dc8c7c2f68fc53a49dea29de4693) | zink: noop per-resource synchronization for unordered->ordered access | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r9) | 2026-07-01 | [`60ef62f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/60ef62fba63a94290df96729bf6c6b246c5d0bc5) | zink: fix a memleak in zink_init_format_props() | Vulkan 1.4.354 |
