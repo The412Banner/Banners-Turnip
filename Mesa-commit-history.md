@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260701-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r14) | 2026-07-01 | [`114e6ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114e6ef02d32a15373419078e1037680934ba139) | intel/blorp: memset(0) blorp keys during initialization | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r13) | 2026-07-01 | [`790bebe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/790bebe7ca0d9625dc378a805540da07523b17ef) | intel/gen: Use lookup tables for Gfx12+ short type encoding/decoding | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r12) | 2026-07-01 | [`92d452c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/92d452cb2345df4f7e0d8318a1709abe451f56b2) | nvk/ci: update nightly job expectations | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r11) | 2026-07-01 | [`6fa81ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6fa81edf350ab680292e767ba407fc89f88b8da9) | dzn: silence PREfast C33010 warnings | Vulkan 1.4.354 |
