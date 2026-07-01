@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260701](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701) | 2026-07-01 | [`a6bb4bb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6bb4bbd1eaa8b1b8ba9e5df98ed2c9958393e40) | intel/brw: Factor out combinable_ordered_pipe() helper | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r16) | 2026-06-30 | [`d02b251`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d02b25157c68804c4e6da613faf0f38a3bcca6d3) | vulkan/android: force linear for mutable format | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r15) | 2026-06-30 | [`8cf9a06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8cf9a06e154dec3854d3bdc1d050769e3d560423) | st/pbo_compute: account for drivers failing to create cs shaders | Vulkan 1.4.354 |
 | [v26.2.0-20260630-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260630-r14) | 2026-06-30 | [`fd16393`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd16393e56ac4b3fe213048f45e4f2477cbb43c1) | intel/ci: Remove nightly CML jobs, retire runner | Vulkan 1.4.354 |
