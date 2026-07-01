@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260701-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r5) | 2026-07-01 | [`58b14a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58b14a6f563c7e75f798c7ceacc832dea1de9bcc) | kk: refold combined image/sampler packing after vars_to_ssa | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r4) | 2026-07-01 | [`c2e02de`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2e02de11b6cb231a8a5ce6e2b5398f350ab8b4c) | ci/panfrost: add piglit OpenCL testing for G610 | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r3) | 2026-07-01 | [`2726653`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/272665305264d27600dcf7838eb0257324ad9ab4) | nir/opt_copy_prop_vars: kill stale entries when source deref is written | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r2) | 2026-07-01 | [`0c195a0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0c195a01b06d693274b51af58d921071643fb5a7) | drm-shim: Fix racy initialization. | Vulkan 1.4.354 |
