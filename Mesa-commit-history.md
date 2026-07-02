@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260702-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r7) | 2026-07-02 | [`f98e13c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f98e13c1119f06c1d2f5f26e9393db980d7874b3) | panvk/v10+: Fix size gt -> gte for 64k alignment | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r6) | 2026-07-02 | [`166da9f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/166da9fe46c6038a44b5ef9d01a57fe43d69a822) | radv: set RADV_CMD_DIRTY_GFX12_HIZ_WA_STATE around attachment clears | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r5) | 2026-07-02 | [`d26e849`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d26e8493907cdd16cf15d48e64d9c082cc489dff) | kk: defer cmd buffer submission and lighten compute barriers | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r4) | 2026-07-02 | [`09724ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09724adf773372ebd8784c2704a3d4b3e79cdef6) | panvk: Drop empty SYNC_ONLY bind queue ops | Vulkan 1.4.354 |
