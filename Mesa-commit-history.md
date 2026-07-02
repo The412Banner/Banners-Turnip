@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260702-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r2) | 2026-07-01 | [`5d4b3d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5d4b3d64982c42614873880764d3ae392cf1ca0d) | glx/apple: return CGLError from apple_visual_create_pfobj instead of aborting | Vulkan 1.4.354 |
 | [v26.2.0-20260702](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702) | 2026-07-01 | [`844516d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/844516d03999e1c212d4e52fda834decee9cda54) | kraid/parallel_copy: Emit small constants directly | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r15) | 2026-07-01 | [`0d82e6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d82e6c4072c4fd7b551cf871ae5d81ea804d553) | nvk: Interp frag_coord at centroid for min_sample_shading | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r14) | 2026-07-01 | [`114e6ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114e6ef02d32a15373419078e1037680934ba139) | intel/blorp: memset(0) blorp keys during initialization | Vulkan 1.4.354 |
