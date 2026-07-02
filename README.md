@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`ae96aa2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae96aa2173b1b6deec53dbd23fe0e40feb45568c) |
+| **Commit** | [`09724ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09724adf773372ebd8784c2704a3d4b3e79cdef6) |
 | **Commit date** | 2026-07-02 |
-| **Commit title** | gallivm: honour exec mask in EmitMeshTasksEXT |
+| **Commit title** | panvk: Drop empty SYNC_ONLY bind queue ops |
 | **Build date** | 20260702 |
-| **Release** | [v26.2.0-20260702-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r3) |
+| **Release** | [v26.2.0-20260702-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260702-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r4) | 2026-07-02 | [`09724ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09724adf773372ebd8784c2704a3d4b3e79cdef6) | panvk: Drop empty SYNC_ONLY bind queue ops | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r3) | 2026-07-02 | [`ae96aa2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae96aa2173b1b6deec53dbd23fe0e40feb45568c) | gallivm: honour exec mask in EmitMeshTasksEXT | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r2) | 2026-07-02 | [`5d4b3d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5d4b3d64982c42614873880764d3ae392cf1ca0d) | glx/apple: return CGLError from apple_visual_create_pfobj instead of aborting | Vulkan 1.4.354 |
 | [v26.2.0-20260702](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702) | 2026-07-02 | [`844516d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/844516d03999e1c212d4e52fda834decee9cda54) | kraid/parallel_copy: Emit small constants directly | Vulkan 1.4.354 |
@@ -101,8 +102,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260701-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r7) | 2026-07-01 | [`6674dc9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6674dc92b87f201f9809a6655b5ae69174143164) | tu: Emit bin info in Perfetto render_pass | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r6) | 2026-07-01 | [`4309489`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43094891c9ba32e862eefc85b042e331d2b0bd59) | docs: add sha sum for 26.1.4 | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r5) | 2026-07-01 | [`58b14a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58b14a6f563c7e75f798c7ceacc832dea1de9bcc) | kk: refold combined image/sampler packing after vars_to_ssa | Vulkan 1.4.354 |
-| [v26.2.0-20260701-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r4) | 2026-07-01 | [`c2e02de`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2e02de11b6cb231a8a5ce6e2b5398f350ab8b4c) | ci/panfrost: add piglit OpenCL testing for G610 | Vulkan 1.4.354 |
-| [v26.2.0-20260701-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r3) | 2026-07-01 | [`2726653`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/272665305264d27600dcf7838eb0257324ad9ab4) | nir/opt_copy_prop_vars: kill stale entries when source deref is written | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
