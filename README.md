@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`0d82e6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d82e6c4072c4fd7b551cf871ae5d81ea804d553) |
+| **Commit** | [`844516d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/844516d03999e1c212d4e52fda834decee9cda54) |
 | **Commit date** | 2026-07-01 |
-| **Commit title** | nvk: Interp frag_coord at centroid for min_sample_shading |
-| **Build date** | 20260701 |
-| **Release** | [v26.2.0-20260701-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r15) |
+| **Commit title** | kraid/parallel_copy: Emit small constants directly |
+| **Build date** | 20260702 |
+| **Release** | [v26.2.0-20260702](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260702](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702) | 2026-07-02 | [`844516d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/844516d03999e1c212d4e52fda834decee9cda54) | kraid/parallel_copy: Emit small constants directly | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r15) | 2026-07-01 | [`0d82e6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d82e6c4072c4fd7b551cf871ae5d81ea804d553) | nvk: Interp frag_coord at centroid for min_sample_shading | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r14) | 2026-07-01 | [`114e6ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114e6ef02d32a15373419078e1037680934ba139) | intel/blorp: memset(0) blorp keys during initialization | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r13) | 2026-07-01 | [`790bebe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/790bebe7ca0d9625dc378a805540da07523b17ef) | intel/gen: Use lookup tables for Gfx12+ short type encoding/decoding | Vulkan 1.4.354 |
