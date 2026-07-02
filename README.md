@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`d26e849`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d26e8493907cdd16cf15d48e64d9c082cc489dff) |
+| **Commit** | [`166da9f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/166da9fe46c6038a44b5ef9d01a57fe43d69a822) |
 | **Commit date** | 2026-07-02 |
-| **Commit title** | kk: defer cmd buffer submission and lighten compute barriers |
+| **Commit title** | radv: set RADV_CMD_DIRTY_GFX12_HIZ_WA_STATE around attachment clears |
 | **Build date** | 20260702 |
-| **Release** | [v26.2.0-20260702-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r5) |
+| **Release** | [v26.2.0-20260702-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260702-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r6) | 2026-07-02 | [`166da9f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/166da9fe46c6038a44b5ef9d01a57fe43d69a822) | radv: set RADV_CMD_DIRTY_GFX12_HIZ_WA_STATE around attachment clears | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r5) | 2026-07-02 | [`d26e849`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d26e8493907cdd16cf15d48e64d9c082cc489dff) | kk: defer cmd buffer submission and lighten compute barriers | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r4) | 2026-07-02 | [`09724ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09724adf773372ebd8784c2704a3d4b3e79cdef6) | panvk: Drop empty SYNC_ONLY bind queue ops | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r3) | 2026-07-02 | [`ae96aa2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae96aa2173b1b6deec53dbd23fe0e40feb45568c) | gallivm: honour exec mask in EmitMeshTasksEXT | Vulkan 1.4.354 |
@@ -100,8 +101,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260701-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r10) | 2026-07-01 | [`66d84e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/66d84e2df8d1dc8c7c2f68fc53a49dea29de4693) | zink: noop per-resource synchronization for unordered->ordered access | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r9) | 2026-07-01 | [`60ef62f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/60ef62fba63a94290df96729bf6c6b246c5d0bc5) | zink: fix a memleak in zink_init_format_props() | Vulkan 1.4.354 |
 | [v26.2.0-20260701-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r8) | 2026-07-01 | [`16d454c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/16d454c2d1fc03d5cd99a90281e55f1251e90917) | kraid/nir: Allow i8v3 ops | Vulkan 1.4.354 |
-| [v26.2.0-20260701-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r7) | 2026-07-01 | [`6674dc9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6674dc92b87f201f9809a6655b5ae69174143164) | tu: Emit bin info in Perfetto render_pass | Vulkan 1.4.354 |
-| [v26.2.0-20260701-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260701-r6) | 2026-07-01 | [`4309489`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43094891c9ba32e862eefc85b042e331d2b0bd59) | docs: add sha sum for 26.1.4 | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
