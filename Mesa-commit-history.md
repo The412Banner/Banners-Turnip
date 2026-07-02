@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260702-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r5) | 2026-07-02 | [`d26e849`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d26e8493907cdd16cf15d48e64d9c082cc489dff) | kk: defer cmd buffer submission and lighten compute barriers | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r4) | 2026-07-02 | [`09724ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09724adf773372ebd8784c2704a3d4b3e79cdef6) | panvk: Drop empty SYNC_ONLY bind queue ops | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r3) | 2026-07-02 | [`ae96aa2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae96aa2173b1b6deec53dbd23fe0e40feb45568c) | gallivm: honour exec mask in EmitMeshTasksEXT | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r2) | 2026-07-01 | [`5d4b3d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5d4b3d64982c42614873880764d3ae392cf1ca0d) | glx/apple: return CGLError from apple_visual_create_pfobj instead of aborting | Vulkan 1.4.354 |
