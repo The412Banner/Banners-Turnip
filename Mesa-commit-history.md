@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260702-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r11) | 2026-07-02 | [`d49a25f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d49a25f8526ce2a7fc67d0759fe6289fbd560e71) | etnaviv: Support native bitfield_insert | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r10) | 2026-07-02 | [`f25147f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f25147f9756eebc0b6f12b7b6907b6e69c44e5a7) | intel/ci: Fix xfails for nightlies. | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r9) | 2026-07-02 | [`57df60b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57df60ba2819a0d11451591d67111e94bb033ac7) | nvk: Serialize shaders with asm | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r8) | 2026-07-02 | [`5875055`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5875055a74ad15702ee467c2f6fa27bd6c0e9835) | nvk: Fix DGC localsize computation | Vulkan 1.4.354 |
