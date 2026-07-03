@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260703-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r4) | 2026-07-03 | [`27aa5dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27aa5dd14eff7489f302da95ef7b20680b56be56) | pvr, ci: Update axe and bxs failure list | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r3) | 2026-07-03 | [`3aae7f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3aae7f592319b91e59e2b4c8b28371cbc5751c10) | va: Implement vaPutImage for derived images | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r2) | 2026-07-03 | [`daa9780`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/daa97802f56ecd98dbebe2a06f524869b984881b) | etnaviv: Implement unified sampler allocation | Vulkan 1.4.354 |
 | [v26.2.0-20260703](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703) | 2026-07-02 | [`9963753`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99637537e1b33afb21b21bb39290b647b7b67e59) | kraid/nir: Plumb through texture ops | Vulkan 1.4.354 |
