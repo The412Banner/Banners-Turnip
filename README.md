@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`4c06e26`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c06e26acfb2745e4ef0f2f87c500837f578f167) |
+| **Commit** | [`0cd84d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0cd84d45c60031375fe9712da55fb1f4af1f5929) |
 | **Commit date** | 2026-07-03 |
-| **Commit title** | etnaviv: Allow MSAA resolve of stencil only buffers |
+| **Commit title** | kk: Record command buffers live and replay only on resubmit |
 | **Build date** | 20260703 |
-| **Release** | [v26.2.0-20260703-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r5) |
+| **Release** | [v26.2.0-20260703-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260703-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r6) | 2026-07-03 | [`0cd84d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0cd84d45c60031375fe9712da55fb1f4af1f5929) | kk: Record command buffers live and replay only on resubmit | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r5) | 2026-07-03 | [`4c06e26`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c06e26acfb2745e4ef0f2f87c500837f578f167) | etnaviv: Allow MSAA resolve of stencil only buffers | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r4) | 2026-07-03 | [`27aa5dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27aa5dd14eff7489f302da95ef7b20680b56be56) | pvr, ci: Update axe and bxs failure list | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r3) | 2026-07-03 | [`3aae7f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3aae7f592319b91e59e2b4c8b28371cbc5751c10) | va: Implement vaPutImage for derived images | Vulkan 1.4.354 |

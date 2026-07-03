@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260703-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r6) | 2026-07-03 | [`0cd84d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0cd84d45c60031375fe9712da55fb1f4af1f5929) | kk: Record command buffers live and replay only on resubmit | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r5) | 2026-07-03 | [`4c06e26`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c06e26acfb2745e4ef0f2f87c500837f578f167) | etnaviv: Allow MSAA resolve of stencil only buffers | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r4) | 2026-07-03 | [`27aa5dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27aa5dd14eff7489f302da95ef7b20680b56be56) | pvr, ci: Update axe and bxs failure list | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r3) | 2026-07-03 | [`3aae7f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3aae7f592319b91e59e2b4c8b28371cbc5751c10) | va: Implement vaPutImage for derived images | Vulkan 1.4.354 |
