@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260703-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r2) | 2026-07-03 | [`daa9780`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/daa97802f56ecd98dbebe2a06f524869b984881b) | etnaviv: Implement unified sampler allocation | Vulkan 1.4.354 |
 | [v26.2.0-20260703](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703) | 2026-07-02 | [`9963753`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99637537e1b33afb21b21bb39290b647b7b67e59) | kraid/nir: Plumb through texture ops | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r11) | 2026-07-02 | [`d49a25f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d49a25f8526ce2a7fc67d0759fe6289fbd560e71) | etnaviv: Support native bitfield_insert | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r10) | 2026-07-02 | [`f25147f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f25147f9756eebc0b6f12b7b6907b6e69c44e5a7) | intel/ci: Fix xfails for nightlies. | Vulkan 1.4.354 |
