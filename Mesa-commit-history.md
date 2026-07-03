@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260703-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r9) | 2026-07-03 | [`b231495`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2314951b15fa8f8f902bf36c3d1bcce55549d50) | freedreno/qrisc: Test new label features | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r8) | 2026-07-03 | [`82d8be5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82d8be576d822c8cbeca4ea3aa97470b3fab4fe1) | nir/algebraic: pattern-match manual iadd64 | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r7) | 2026-07-03 | [`f2d3900`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f2d39008f9c2537f723b8854e980d9151e4b178f) | ci: Remove flatbuffers from builds | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r6) | 2026-07-03 | [`0cd84d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0cd84d45c60031375fe9712da55fb1f4af1f5929) | kk: Record command buffers live and replay only on resubmit | Vulkan 1.4.354 |
