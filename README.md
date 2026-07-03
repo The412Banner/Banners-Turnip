@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`daa9780`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/daa97802f56ecd98dbebe2a06f524869b984881b) |
+| **Commit** | [`3aae7f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3aae7f592319b91e59e2b4c8b28371cbc5751c10) |
 | **Commit date** | 2026-07-03 |
-| **Commit title** | etnaviv: Implement unified sampler allocation |
+| **Commit title** | va: Implement vaPutImage for derived images |
 | **Build date** | 20260703 |
-| **Release** | [v26.2.0-20260703-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r2) |
+| **Release** | [v26.2.0-20260703-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260703-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r3) | 2026-07-03 | [`3aae7f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3aae7f592319b91e59e2b4c8b28371cbc5751c10) | va: Implement vaPutImage for derived images | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r2) | 2026-07-03 | [`daa9780`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/daa97802f56ecd98dbebe2a06f524869b984881b) | etnaviv: Implement unified sampler allocation | Vulkan 1.4.354 |
 | [v26.2.0-20260703](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703) | 2026-07-03 | [`9963753`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99637537e1b33afb21b21bb39290b647b7b67e59) | kraid/nir: Plumb through texture ops | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r11) | 2026-07-02 | [`d49a25f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d49a25f8526ce2a7fc67d0759fe6289fbd560e71) | etnaviv: Support native bitfield_insert | Vulkan 1.4.354 |
@@ -97,7 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260702-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r6) | 2026-07-02 | [`166da9f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/166da9fe46c6038a44b5ef9d01a57fe43d69a822) | radv: set RADV_CMD_DIRTY_GFX12_HIZ_WA_STATE around attachment clears | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r5) | 2026-07-02 | [`d26e849`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d26e8493907cdd16cf15d48e64d9c082cc489dff) | kk: defer cmd buffer submission and lighten compute barriers | Vulkan 1.4.354 |
 | [v26.2.0-20260702-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r4) | 2026-07-02 | [`09724ad`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09724adf773372ebd8784c2704a3d4b3e79cdef6) | panvk: Drop empty SYNC_ONLY bind queue ops | Vulkan 1.4.354 |
-| [v26.2.0-20260702-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r3) | 2026-07-02 | [`ae96aa2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae96aa2173b1b6deec53dbd23fe0e40feb45568c) | gallivm: honour exec mask in EmitMeshTasksEXT | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
