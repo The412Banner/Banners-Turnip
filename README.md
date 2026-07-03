@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`d4e1f6e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4e1f6e905c0475ab3cdbb6b98c4cb7f21e13282) |
-| **Commit date** | 2026-07-03 |
-| **Commit title** | tool: Rename RTI to gamma |
+| **Commit** | [`9092781`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9092781412a8e828ff36a838ee870a5dff7d56be) |
+| **Commit date** | 2026-07-04 |
+| **Commit title** | anv: enable VK_KHR_shader_fma |
 | **Build date** | 20260703 |
-| **Release** | [v26.2.0-20260703-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r11) |
+| **Release** | [v26.2.0-20260703-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r12) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260703-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r12) | 2026-07-03 | [`9092781`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9092781412a8e828ff36a838ee870a5dff7d56be) | anv: enable VK_KHR_shader_fma | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r11) | 2026-07-03 | [`d4e1f6e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4e1f6e905c0475ab3cdbb6b98c4cb7f21e13282) | tool: Rename RTI to gamma | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r10) | 2026-07-03 | [`fe54903`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fe549034510744348b51df3f3e521670341fec14) | kraid: dead-code elimination pass | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r9) | 2026-07-03 | [`b231495`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2314951b15fa8f8f902bf36c3d1bcce55549d50) | freedreno/qrisc: Test new label features | Vulkan 1.4.354 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260703-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r3) | 2026-07-03 | [`3aae7f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3aae7f592319b91e59e2b4c8b28371cbc5751c10) | va: Implement vaPutImage for derived images | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r2) | 2026-07-03 | [`daa9780`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/daa97802f56ecd98dbebe2a06f524869b984881b) | etnaviv: Implement unified sampler allocation | Vulkan 1.4.354 |
 | [v26.2.0-20260703](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703) | 2026-07-03 | [`9963753`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99637537e1b33afb21b21bb39290b647b7b67e59) | kraid/nir: Plumb through texture ops | Vulkan 1.4.354 |
-| [v26.2.0-20260702-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260702-r11) | 2026-07-02 | [`d49a25f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d49a25f8526ce2a7fc67d0759fe6289fbd560e71) | etnaviv: Support native bitfield_insert | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---

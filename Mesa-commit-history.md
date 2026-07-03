@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260703-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r12) | 2026-07-04 | [`9092781`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9092781412a8e828ff36a838ee870a5dff7d56be) | anv: enable VK_KHR_shader_fma | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r11) | 2026-07-03 | [`d4e1f6e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4e1f6e905c0475ab3cdbb6b98c4cb7f21e13282) | tool: Rename RTI to gamma | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r10) | 2026-07-03 | [`fe54903`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fe549034510744348b51df3f3e521670341fec14) | kraid: dead-code elimination pass | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r9) | 2026-07-03 | [`b231495`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2314951b15fa8f8f902bf36c3d1bcce55549d50) | freedreno/qrisc: Test new label features | Vulkan 1.4.354 |
