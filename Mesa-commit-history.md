@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260704-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704-r5) | 2026-07-04 | [`6ff5ff2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6ff5ff273649a2b6d81febe50f9b161054fcd27d) | nir/opt_varyings: move (c ? interp_input0 : interp_input1) into the prev shader | Vulkan 1.4.354 |
 | [v26.2.0-20260704-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704-r4) | 2026-07-04 | [`75d5cde`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/75d5cded5a582f721f1cebc7b97d1366eb3e1d85) | rocket: fix mmap leak in buffer map/unmap | Vulkan 1.4.354 |
 | [v26.2.0-20260704-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704-r3) | 2026-07-04 | [`12cb6da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/12cb6dace72c043969dac8a05e2c15ee8c8cd2e0) | Uprev VVL to 6906fd94f2f422beb682d43d8b1af872aaff97b0 | Vulkan 1.4.354 |
 | [v26.2.0-20260704-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704-r2) | 2026-07-04 | [`4274cd9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4274cd9ca6ba528651fc60eb035e3b1154cd5b2d) | kraid: Add OpAtom* and plumb them through | Vulkan 1.4.354 |
