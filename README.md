@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`41c9070`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41c9070e3af4ccedcdb8641c1334fb2b764f753d) |
+| **Commit** | [`4274cd9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4274cd9ca6ba528651fc60eb035e3b1154cd5b2d) |
 | **Commit date** | 2026-07-04 |
-| **Commit title** | vulkan/wsi/util: purge vk_xwayland_wait_ready |
+| **Commit title** | kraid: Add OpAtom* and plumb them through |
 | **Build date** | 20260704 |
-| **Release** | [v26.2.0-20260704](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704) |
+| **Release** | [v26.2.0-20260704-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260704-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704-r2) | 2026-07-04 | [`4274cd9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4274cd9ca6ba528651fc60eb035e3b1154cd5b2d) | kraid: Add OpAtom* and plumb them through | Vulkan 1.4.354 |
 | [v26.2.0-20260704](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704) | 2026-07-04 | [`41c9070`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41c9070e3af4ccedcdb8641c1334fb2b764f753d) | vulkan/wsi/util: purge vk_xwayland_wait_ready | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r12) | 2026-07-03 | [`9092781`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9092781412a8e828ff36a838ee870a5dff7d56be) | anv: enable VK_KHR_shader_fma | Vulkan 1.4.354 |
 | [v26.2.0-20260703-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260703-r11) | 2026-07-03 | [`d4e1f6e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4e1f6e905c0475ab3cdbb6b98c4cb7f21e13282) | tool: Rename RTI to gamma | Vulkan 1.4.354 |
