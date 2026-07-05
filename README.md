@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`72fd703`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72fd7032fbcdcd60e99f5810a1ed6bde2f2272d1) |
+| **Commit** | [`0b17f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b17f5d2f2858650c19f666337d590ca35591912) |
 | **Commit date** | 2026-07-05 |
-| **Commit title** | rocket: compute element-wise ADD requant instead of LUT |
+| **Commit title** | rocket: simplify input/output tensor creation |
 | **Build date** | 20260705 |
-| **Release** | [v26.2.0-20260705](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705) |
+| **Release** | [v26.2.0-20260705-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260705-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705-r2) | 2026-07-05 | [`0b17f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b17f5d2f2858650c19f666337d590ca35591912) | rocket: simplify input/output tensor creation | Vulkan 1.4.354 |
 | [v26.2.0-20260705](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705) | 2026-07-05 | [`72fd703`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72fd7032fbcdcd60e99f5810a1ed6bde2f2272d1) | rocket: compute element-wise ADD requant instead of LUT | Vulkan 1.4.354 |
 | [v26.2.0-20260704-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704-r5) | 2026-07-04 | [`6ff5ff2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6ff5ff273649a2b6d81febe50f9b161054fcd27d) | nir/opt_varyings: move (c ? interp_input0 : interp_input1) into the prev shader | Vulkan 1.4.354 |
 | [v26.2.0-20260704-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704-r4) | 2026-07-04 | [`75d5cde`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/75d5cded5a582f721f1cebc7b97d1366eb3e1d85) | rocket: fix mmap leak in buffer map/unmap | Vulkan 1.4.354 |
