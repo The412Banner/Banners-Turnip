@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`19b7200`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/19b72005ca21f21bf398a53c967ddfddf443968f) |
+| **Commit** | [`8d839e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8d839e912544df2a132f6edde3c89ea4d3114a5a) |
 | **Commit date** | 2026-07-05 |
-| **Commit title** | Uprev Piglit to 9a0eab5e1f7f009b4f72c25d23faf937b38354a6 |
+| **Commit title** | ci/piglit: fix nightly expectations after piglit uprev |
 | **Build date** | 20260705 |
-| **Release** | [v26.2.0-20260705-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705-r3) |
+| **Release** | [v26.2.0-20260705-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,11 +87,10 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260705-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705-r4) | 2026-07-05 | [`8d839e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8d839e912544df2a132f6edde3c89ea4d3114a5a) | ci/piglit: fix nightly expectations after piglit uprev | Vulkan 1.4.354 |
 | [v26.2.0-20260705-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705-r3) | 2026-07-05 | [`19b7200`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/19b72005ca21f21bf398a53c967ddfddf443968f) | Uprev Piglit to 9a0eab5e1f7f009b4f72c25d23faf937b38354a6 | Vulkan 1.4.354 |
 | [v26.2.0-20260705-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705-r2) | 2026-07-05 | [`0b17f5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b17f5d2f2858650c19f666337d590ca35591912) | rocket: simplify input/output tensor creation | Vulkan 1.4.354 |
 | [v26.2.0-20260705](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705) | 2026-07-05 | [`72fd703`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72fd7032fbcdcd60e99f5810a1ed6bde2f2272d1) | rocket: compute element-wise ADD requant instead of LUT | Vulkan 1.4.354 |
-| [v26.2.0-20260704-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704-r5) | 2026-07-04 | [`6ff5ff2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6ff5ff273649a2b6d81febe50f9b161054fcd27d) | nir/opt_varyings: move (c ? interp_input0 : interp_input1) into the prev shader | Vulkan 1.4.354 |
-| [v26.2.0-20260704-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260704-r4) | 2026-07-04 | [`75d5cde`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/75d5cded5a582f721f1cebc7b97d1366eb3e1d85) | rocket: fix mmap leak in buffer map/unmap | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
