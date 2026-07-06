@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260706-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r5) | 2026-07-06 | [`f38f0f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f38f0f51111262306c5e22e1416d85f0e99ab02e) | radv: don't set DB_Z_INFO.NUM_SAMPLES = 3 on gfx12 | Vulkan 1.4.354 |
 | [v26.2.0-20260706-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r4) | 2026-07-06 | [`68f79fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/68f79fed521d807e3b53e2f317316d2b1cf09275) | freedreno: Modify reg_size_vec4 for a608 and a612 to 32 | Vulkan 1.4.354 |
 | [v26.2.0-20260706-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r3) | 2026-07-06 | [`3ee10b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3ee10b7171bcc0a337a77efdc1f32a3641294955) | mediafoundation: initial av1 dx12 hmft prototype | Vulkan 1.4.354 |
 | [v26.2.0-20260706-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r2) | 2026-07-06 | [`338abd1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/338abd18af44da3671cab7e4c95e9bd123dd12b8) | doc/features.txt: fix VK_KHR_shader_float16_int8 for v3dv | Vulkan 1.4.354 |
