@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260706](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706) | 2026-07-06 | [`471f8dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/471f8dc66ceb627f4d6e935b4db4ac325e0b463e) | radv: use the image view usage for MSRSTT transient iviews | Vulkan 1.4.354 |
 | [v26.2.0-20260705-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705-r6) | 2026-07-05 | [`6b5b7d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b5b7d405cee79cee97044710fe273f0aa331f09) | glx: remove GLX_USE_APPLE and collapse the guards it gated | Vulkan 1.4.354 |
 | [v26.2.0-20260705-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705-r5) | 2026-07-05 | [`114ec04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114ec04a6063041524cefd69426eff86f7b141c1) | glx: extract drawable lifecycle into a vtable | Vulkan 1.4.354 |
 | [v26.2.0-20260705-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260705-r4) | 2026-07-05 | [`8d839e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8d839e912544df2a132f6edde3c89ea4d3114a5a) | ci/piglit: fix nightly expectations after piglit uprev | Vulkan 1.4.354 |
