@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260707-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r4) | 2026-07-07 | [`19a58c4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/19a58c4b4f5f83e2a16c768ec1afe2011ee76460) | llvmpipe: Enable PIPE_CAP_SHAREABLE_SHADERS | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r3) | 2026-07-07 | [`0eb2873`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0eb2873034eb3df8de5048e02b4e6e9bbd295556) | nir: change type_size return type to unsigned in nir_lower_{amul,io} | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r2) | 2026-07-07 | [`f581409`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f581409963462eb1f29246a60abf508af11f7a03) | nvk: Use meta for vkCmdFillBuffer | Vulkan 1.4.354 |
 | [v26.2.0-20260707](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707) | 2026-07-06 | [`6546c2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6546c2f14b6795e8c0645b805161fc1883a43bc8) | nvk: add a build option to override the build ID | Vulkan 1.4.354 |
