@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260707](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707) | 2026-07-06 | [`6546c2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6546c2f14b6795e8c0645b805161fc1883a43bc8) | nvk: add a build option to override the build ID | Vulkan 1.4.354 |
 | [v26.2.0-20260706-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r8) | 2026-07-06 | [`6a50eba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a50eba471c56c045a07b00811cc95246de7faa7) | anv: Bump subgroup size for histogram and prefix shader | Vulkan 1.4.354 |
 | [v26.2.0-20260706-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r7) | 2026-07-06 | [`4598124`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4598124b93f96ad3d01cfcea72435e3f5c8c596f) | tu: Enable tu_dont_care_as_load for all Kex Engine games | Vulkan 1.4.354 |
 | [v26.2.0-20260706-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r6) | 2026-07-06 | [`c73ebcd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c73ebcd8119d01c1289ca75d1c6e9e2ea00ec079) | broadcom/ci: mark fixed tests as such | Vulkan 1.4.354 |

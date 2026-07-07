@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`6a50eba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a50eba471c56c045a07b00811cc95246de7faa7) |
+| **Commit** | [`6546c2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6546c2f14b6795e8c0645b805161fc1883a43bc8) |
 | **Commit date** | 2026-07-06 |
-| **Commit title** | anv: Bump subgroup size for histogram and prefix shader |
-| **Build date** | 20260706 |
-| **Release** | [v26.2.0-20260706-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r8) |
+| **Commit title** | nvk: add a build option to override the build ID |
+| **Build date** | 20260707 |
+| **Release** | [v26.2.0-20260707](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260707](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707) | 2026-07-07 | [`6546c2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6546c2f14b6795e8c0645b805161fc1883a43bc8) | nvk: add a build option to override the build ID | Vulkan 1.4.354 |
 | [v26.2.0-20260706-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r8) | 2026-07-06 | [`6a50eba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a50eba471c56c045a07b00811cc95246de7faa7) | anv: Bump subgroup size for histogram and prefix shader | Vulkan 1.4.354 |
 | [v26.2.0-20260706-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r7) | 2026-07-06 | [`4598124`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4598124b93f96ad3d01cfcea72435e3f5c8c596f) | tu: Enable tu_dont_care_as_load for all Kex Engine games | Vulkan 1.4.354 |
 | [v26.2.0-20260706-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260706-r6) | 2026-07-06 | [`c73ebcd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c73ebcd8119d01c1289ca75d1c6e9e2ea00ec079) | broadcom/ci: mark fixed tests as such | Vulkan 1.4.354 |
