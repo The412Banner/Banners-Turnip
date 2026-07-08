@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r2) | 2026-07-08 | [`2451cb6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2451cb698eafa8df57f62e935f09c34feabeef97) | tu: Fix capture/replay with sampler custom border color | Vulkan 1.4.354 |
 | [v26.2.0-20260708](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708) | 2026-07-08 | [`79a21d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79a21d0ef93f3ceb9940eb132af66f8f2e67e5db) | brw: Use shared LSC opcode names in IR printing | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r8) | 2026-07-07 | [`64578c2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64578c2de5a06ac2b1e03b70ab5e5a39abc3b316) | kraid: Stop re-sorting blocks with CFGBuilder | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r7) | 2026-07-07 | [`9e24785`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9e24785f81567f074c4923247c4f9d48766b2dbd) | llvmpipe: fix arch of LLVM JIT when cross compiling on Apple | Vulkan 1.4.354 |
