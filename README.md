@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`da13afb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da13afb9476fd906d2ac3a5f38252974e91956a9) |
+| **Commit** | [`5ec0125`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ec01259be367766c2bd1aad4fcef49e79c4c574) |
 | **Commit date** | 2026-07-08 |
-| **Commit title** | aco: Remove SMEM offset optimization for non-buffer loads |
+| **Commit title** | Revert "spirv: allow mapping readonly buffers with struct members" |
 | **Build date** | 20260708 |
-| **Release** | [v26.2.0-20260708-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r8) |
+| **Release** | [v26.2.0-20260708-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r9) | 2026-07-08 | [`5ec0125`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ec01259be367766c2bd1aad4fcef49e79c4c574) | Revert "spirv: allow mapping readonly buffers with struct members" | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r8) | 2026-07-08 | [`da13afb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da13afb9476fd906d2ac3a5f38252974e91956a9) | aco: Remove SMEM offset optimization for non-buffer loads | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r7) | 2026-07-08 | [`3db7625`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3db76251251c91885e488fdfc5b68644890eef10) | jay: add real cycle model | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r6) | 2026-07-08 | [`601343f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/601343f4050c4c5bb47bc1e086e15ccecebb3511) | anv/ci: turn on astc emulation testing | Vulkan 1.4.354 |
