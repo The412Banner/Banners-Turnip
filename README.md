@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`5ec0125`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ec01259be367766c2bd1aad4fcef49e79c4c574) |
+| **Commit** | [`d8bda1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8bda1b651002e8b6585a672125550255c8bdf7c) |
 | **Commit date** | 2026-07-08 |
-| **Commit title** | Revert "spirv: allow mapping readonly buffers with struct members" |
+| **Commit title** | mediafoundation: ask for temporal delimiter for AV1 via raw header |
 | **Build date** | 20260708 |
-| **Release** | [v26.2.0-20260708-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r9) |
+| **Release** | [v26.2.0-20260708-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r10) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r10) | 2026-07-08 | [`d8bda1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8bda1b651002e8b6585a672125550255c8bdf7c) | mediafoundation: ask for temporal delimiter for AV1 via raw header | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r9) | 2026-07-08 | [`5ec0125`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ec01259be367766c2bd1aad4fcef49e79c4c574) | Revert "spirv: allow mapping readonly buffers with struct members" | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r8) | 2026-07-08 | [`da13afb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da13afb9476fd906d2ac3a5f38252974e91956a9) | aco: Remove SMEM offset optimization for non-buffer loads | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r7) | 2026-07-08 | [`3db7625`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3db76251251c91885e488fdfc5b68644890eef10) | jay: add real cycle model | Vulkan 1.4.354 |
