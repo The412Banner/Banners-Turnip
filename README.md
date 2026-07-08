@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`2451cb6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2451cb698eafa8df57f62e935f09c34feabeef97) |
+| **Commit** | [`c26d330`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c26d3301b26ace1134f4cb10ec7d4c5d6867ede1) |
 | **Commit date** | 2026-07-08 |
-| **Commit title** | tu: Fix capture/replay with sampler custom border color |
+| **Commit title** | zink: Address libvulkan.1.dylib dlopen failure on macOS |
 | **Build date** | 20260708 |
-| **Release** | [v26.2.0-20260708-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r2) |
+| **Release** | [v26.2.0-20260708-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r3) | 2026-07-08 | [`c26d330`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c26d3301b26ace1134f4cb10ec7d4c5d6867ede1) | zink: Address libvulkan.1.dylib dlopen failure on macOS | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r2) | 2026-07-08 | [`2451cb6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2451cb698eafa8df57f62e935f09c34feabeef97) | tu: Fix capture/replay with sampler custom border color | Vulkan 1.4.354 |
 | [v26.2.0-20260708](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708) | 2026-07-08 | [`79a21d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79a21d0ef93f3ceb9940eb132af66f8f2e67e5db) | brw: Use shared LSC opcode names in IR printing | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r8) | 2026-07-07 | [`64578c2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64578c2de5a06ac2b1e03b70ab5e5a39abc3b316) | kraid: Stop re-sorting blocks with CFGBuilder | Vulkan 1.4.354 |
@@ -95,7 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260707-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r5) | 2026-07-07 | [`d4ee4a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4ee4a62885e230a9712c9737f7e6e0dd7991c61) | v3dv: honor wait dependencies for job-less submissions | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r4) | 2026-07-07 | [`19a58c4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/19a58c4b4f5f83e2a16c768ec1afe2011ee76460) | llvmpipe: Enable PIPE_CAP_SHAREABLE_SHADERS | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r3) | 2026-07-07 | [`0eb2873`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0eb2873034eb3df8de5048e02b4e6e9bbd295556) | nir: change type_size return type to unsigned in nir_lower_{amul,io} | Vulkan 1.4.354 |
-| [v26.2.0-20260707-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r2) | 2026-07-07 | [`f581409`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f581409963462eb1f29246a60abf508af11f7a03) | nvk: Use meta for vkCmdFillBuffer | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
