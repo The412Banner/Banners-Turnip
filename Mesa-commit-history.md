@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r6) | 2026-07-08 | [`601343f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/601343f4050c4c5bb47bc1e086e15ccecebb3511) | anv/ci: turn on astc emulation testing | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r5) | 2026-07-08 | [`06cdc6a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/06cdc6a653ced42539eb01e5d4b71a278ef3e2be) | ethosu: Preserve fused pad extents | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r4) | 2026-07-08 | [`b820907`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b8209078389c19d79e81639732f00a62fc2425ae) | vulkan: use center/extent form for instance node AABB transform | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r3) | 2026-07-08 | [`c26d330`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c26d3301b26ace1134f4cb10ec7d4c5d6867ede1) | zink: Address libvulkan.1.dylib dlopen failure on macOS | Vulkan 1.4.354 |
