@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r7) | 2026-07-08 | [`3db7625`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3db76251251c91885e488fdfc5b68644890eef10) | jay: add real cycle model | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r6) | 2026-07-08 | [`601343f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/601343f4050c4c5bb47bc1e086e15ccecebb3511) | anv/ci: turn on astc emulation testing | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r5) | 2026-07-08 | [`06cdc6a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/06cdc6a653ced42539eb01e5d4b71a278ef3e2be) | ethosu: Preserve fused pad extents | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r4) | 2026-07-08 | [`b820907`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b8209078389c19d79e81639732f00a62fc2425ae) | vulkan: use center/extent form for instance node AABB transform | Vulkan 1.4.354 |

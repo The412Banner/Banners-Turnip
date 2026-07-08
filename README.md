@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`601343f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/601343f4050c4c5bb47bc1e086e15ccecebb3511) |
+| **Commit** | [`3db7625`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3db76251251c91885e488fdfc5b68644890eef10) |
 | **Commit date** | 2026-07-08 |
-| **Commit title** | anv/ci: turn on astc emulation testing |
+| **Commit title** | jay: add real cycle model |
 | **Build date** | 20260708 |
-| **Release** | [v26.2.0-20260708-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r6) |
+| **Release** | [v26.2.0-20260708-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r7) | 2026-07-08 | [`3db7625`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3db76251251c91885e488fdfc5b68644890eef10) | jay: add real cycle model | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r6) | 2026-07-08 | [`601343f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/601343f4050c4c5bb47bc1e086e15ccecebb3511) | anv/ci: turn on astc emulation testing | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r5) | 2026-07-08 | [`06cdc6a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/06cdc6a653ced42539eb01e5d4b71a278ef3e2be) | ethosu: Preserve fused pad extents | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r4) | 2026-07-08 | [`b820907`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b8209078389c19d79e81639732f00a62fc2425ae) | vulkan: use center/extent form for instance node AABB transform | Vulkan 1.4.354 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260707-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r8) | 2026-07-07 | [`64578c2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64578c2de5a06ac2b1e03b70ab5e5a39abc3b316) | kraid: Stop re-sorting blocks with CFGBuilder | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r7) | 2026-07-07 | [`9e24785`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9e24785f81567f074c4923247c4f9d48766b2dbd) | llvmpipe: fix arch of LLVM JIT when cross compiling on Apple | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r6) | 2026-07-07 | [`cff43b5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff43b5af37049b167d4a6046c65f3cef32cce1c) | v3dv: enable VK_KHR_shader_subgroup_rotate / rotate subgroups | Vulkan 1.4.354 |
-| [v26.2.0-20260707-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r5) | 2026-07-07 | [`d4ee4a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4ee4a62885e230a9712c9737f7e6e0dd7991c61) | v3dv: honor wait dependencies for job-less submissions | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
