@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r11) | 2026-07-08 | [`712ebaa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/712ebaa4b1a9f3e2f05ac436f456c080b9bb30c4) | pan: Add BIFROST_MESA_DUMP_DIR option to dump shader binaries | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r10) | 2026-07-08 | [`d8bda1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8bda1b651002e8b6585a672125550255c8bdf7c) | mediafoundation: ask for temporal delimiter for AV1 via raw header | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r9) | 2026-07-08 | [`5ec0125`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ec01259be367766c2bd1aad4fcef49e79c4c574) | Revert "spirv: allow mapping readonly buffers with struct members" | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r8) | 2026-07-08 | [`da13afb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da13afb9476fd906d2ac3a5f38252974e91956a9) | aco: Remove SMEM offset optimization for non-buffer loads | Vulkan 1.4.354 |
