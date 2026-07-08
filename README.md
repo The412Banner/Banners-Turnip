@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`c26d330`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c26d3301b26ace1134f4cb10ec7d4c5d6867ede1) |
+| **Commit** | [`b820907`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b8209078389c19d79e81639732f00a62fc2425ae) |
 | **Commit date** | 2026-07-08 |
-| **Commit title** | zink: Address libvulkan.1.dylib dlopen failure on macOS |
+| **Commit title** | vulkan: use center/extent form for instance node AABB transform |
 | **Build date** | 20260708 |
-| **Release** | [v26.2.0-20260708-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r3) |
+| **Release** | [v26.2.0-20260708-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r4) | 2026-07-08 | [`b820907`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b8209078389c19d79e81639732f00a62fc2425ae) | vulkan: use center/extent form for instance node AABB transform | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r3) | 2026-07-08 | [`c26d330`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c26d3301b26ace1134f4cb10ec7d4c5d6867ede1) | zink: Address libvulkan.1.dylib dlopen failure on macOS | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r2) | 2026-07-08 | [`2451cb6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2451cb698eafa8df57f62e935f09c34feabeef97) | tu: Fix capture/replay with sampler custom border color | Vulkan 1.4.354 |
 | [v26.2.0-20260708](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708) | 2026-07-08 | [`79a21d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79a21d0ef93f3ceb9940eb132af66f8f2e67e5db) | brw: Use shared LSC opcode names in IR printing | Vulkan 1.4.354 |
