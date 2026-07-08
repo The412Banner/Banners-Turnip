@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r8) | 2026-07-08 | [`da13afb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da13afb9476fd906d2ac3a5f38252974e91956a9) | aco: Remove SMEM offset optimization for non-buffer loads | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r7) | 2026-07-08 | [`3db7625`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3db76251251c91885e488fdfc5b68644890eef10) | jay: add real cycle model | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r6) | 2026-07-08 | [`601343f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/601343f4050c4c5bb47bc1e086e15ccecebb3511) | anv/ci: turn on astc emulation testing | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r5) | 2026-07-08 | [`06cdc6a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/06cdc6a653ced42539eb01e5d4b71a278ef3e2be) | ethosu: Preserve fused pad extents | Vulkan 1.4.354 |
