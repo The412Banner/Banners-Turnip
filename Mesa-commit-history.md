@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260708](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708) | 2026-07-08 | [`79a21d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79a21d0ef93f3ceb9940eb132af66f8f2e67e5db) | brw: Use shared LSC opcode names in IR printing | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r8) | 2026-07-07 | [`64578c2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64578c2de5a06ac2b1e03b70ab5e5a39abc3b316) | kraid: Stop re-sorting blocks with CFGBuilder | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r7) | 2026-07-07 | [`9e24785`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9e24785f81567f074c4923247c4f9d48766b2dbd) | llvmpipe: fix arch of LLVM JIT when cross compiling on Apple | Vulkan 1.4.354 |
 | [v26.2.0-20260707-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260707-r6) | 2026-07-07 | [`cff43b5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff43b5af37049b167d4a6046c65f3cef32cce1c) | v3dv: enable VK_KHR_shader_subgroup_rotate / rotate subgroups | Vulkan 1.4.354 |
