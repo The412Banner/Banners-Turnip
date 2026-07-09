@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260709-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r8) | 2026-07-09 | [`0b5975e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b5975e599fb52f5d905a4e9ff89f7dbf1c048b9) | anv: No need to flush RT cache if we update buffer via CS | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r7) | 2026-07-09 | [`1078b01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1078b01f634c60e52a7e07bf71756a071703c094) | u_trace: Initialize fuzzy_* callbacks correctly | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r6) | 2026-07-09 | [`8ccc7f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ccc7f5632ad21e821e32902173256dfff85a2de) | nvk: Add an NVK_DEBUG=no_compression flag | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r5) | 2026-07-09 | [`c1c734d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c1c734d006f3c579978312850e834142322ba5ea) | radv: enable radv_force_nan_preserve_min_max for DOOM: The Dark Ages | Vulkan 1.4.354 |
