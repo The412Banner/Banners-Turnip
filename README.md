@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`8ccc7f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ccc7f5632ad21e821e32902173256dfff85a2de) |
+| **Commit** | [`1078b01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1078b01f634c60e52a7e07bf71756a071703c094) |
 | **Commit date** | 2026-07-09 |
-| **Commit title** | nvk: Add an NVK_DEBUG=no_compression flag |
+| **Commit title** | u_trace: Initialize fuzzy_* callbacks correctly |
 | **Build date** | 20260709 |
-| **Release** | [v26.2.0-20260709-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r6) |
+| **Release** | [v26.2.0-20260709-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260709-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r7) | 2026-07-09 | [`1078b01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1078b01f634c60e52a7e07bf71756a071703c094) | u_trace: Initialize fuzzy_* callbacks correctly | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r6) | 2026-07-09 | [`8ccc7f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ccc7f5632ad21e821e32902173256dfff85a2de) | nvk: Add an NVK_DEBUG=no_compression flag | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r5) | 2026-07-09 | [`c1c734d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c1c734d006f3c579978312850e834142322ba5ea) | radv: enable radv_force_nan_preserve_min_max for DOOM: The Dark Ages | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r4) | 2026-07-09 | [`dcceedf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcceedff82a9037812f7d1d13b646869ac90f436) | xfiles: update expectations based on 2026-7-8 nightly | Vulkan 1.4.354 |
@@ -96,8 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260708-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r11) | 2026-07-08 | [`712ebaa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/712ebaa4b1a9f3e2f05ac436f456c080b9bb30c4) | pan: Add BIFROST_MESA_DUMP_DIR option to dump shader binaries | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r10) | 2026-07-08 | [`d8bda1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8bda1b651002e8b6585a672125550255c8bdf7c) | mediafoundation: ask for temporal delimiter for AV1 via raw header | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r9) | 2026-07-08 | [`5ec0125`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ec01259be367766c2bd1aad4fcef49e79c4c574) | Revert "spirv: allow mapping readonly buffers with struct members" | Vulkan 1.4.354 |
-| [v26.2.0-20260708-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r8) | 2026-07-08 | [`da13afb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da13afb9476fd906d2ac3a5f38252974e91956a9) | aco: Remove SMEM offset optimization for non-buffer loads | Vulkan 1.4.354 |
-| [v26.2.0-20260708-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r7) | 2026-07-08 | [`3db7625`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3db76251251c91885e488fdfc5b68644890eef10) | jay: add real cycle model | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
