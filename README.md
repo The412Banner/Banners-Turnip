@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`39d5668`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/39d5668fbec0ad1243116e7d3af3d94f98f9d9ab) |
-| **Commit date** | 2026-07-08 |
-| **Commit title** | os_misc.c: add missing include for mach_host_self() |
+| **Commit** | [`ce2c2a2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce2c2a29f135993d2a26e1407236716f47b6043d) |
+| **Commit date** | 2026-07-09 |
+| **Commit title** | zink/ci: update trace checksums |
 | **Build date** | 20260709 |
-| **Release** | [v26.2.0-20260709](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709) |
+| **Release** | [v26.2.0-20260709-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260709-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r2) | 2026-07-09 | [`ce2c2a2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce2c2a29f135993d2a26e1407236716f47b6043d) | zink/ci: update trace checksums | Vulkan 1.4.354 |
 | [v26.2.0-20260709](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709) | 2026-07-09 | [`39d5668`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/39d5668fbec0ad1243116e7d3af3d94f98f9d9ab) | os_misc.c: add missing include for mach_host_self() | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r11) | 2026-07-08 | [`712ebaa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/712ebaa4b1a9f3e2f05ac436f456c080b9bb30c4) | pan: Add BIFROST_MESA_DUMP_DIR option to dump shader binaries | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r10) | 2026-07-08 | [`d8bda1b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d8bda1b651002e8b6585a672125550255c8bdf7c) | mediafoundation: ask for temporal delimiter for AV1 via raw header | Vulkan 1.4.354 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260708-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r4) | 2026-07-08 | [`b820907`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b8209078389c19d79e81639732f00a62fc2425ae) | vulkan: use center/extent form for instance node AABB transform | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r3) | 2026-07-08 | [`c26d330`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c26d3301b26ace1134f4cb10ec7d4c5d6867ede1) | zink: Address libvulkan.1.dylib dlopen failure on macOS | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r2) | 2026-07-08 | [`2451cb6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2451cb698eafa8df57f62e935f09c34feabeef97) | tu: Fix capture/replay with sampler custom border color | Vulkan 1.4.354 |
-| [v26.2.0-20260708](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708) | 2026-07-08 | [`79a21d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79a21d0ef93f3ceb9940eb132af66f8f2e67e5db) | brw: Use shared LSC opcode names in IR printing | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
