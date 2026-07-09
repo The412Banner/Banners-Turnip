@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260709-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r3) | 2026-07-09 | [`3cda978`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3cda978f302c30535bac033676084104a572683b) | llvmpipe: link all LLVM targets on Apple to fix build failure when using static LLVM libraries | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r2) | 2026-07-09 | [`ce2c2a2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce2c2a29f135993d2a26e1407236716f47b6043d) | zink/ci: update trace checksums | Vulkan 1.4.354 |
 | [v26.2.0-20260709](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709) | 2026-07-08 | [`39d5668`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/39d5668fbec0ad1243116e7d3af3d94f98f9d9ab) | os_misc.c: add missing include for mach_host_self() | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r11) | 2026-07-08 | [`712ebaa`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/712ebaa4b1a9f3e2f05ac436f456c080b9bb30c4) | pan: Add BIFROST_MESA_DUMP_DIR option to dump shader binaries | Vulkan 1.4.354 |
