@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`dcceedf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcceedff82a9037812f7d1d13b646869ac90f436) |
+| **Commit** | [`c1c734d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c1c734d006f3c579978312850e834142322ba5ea) |
 | **Commit date** | 2026-07-09 |
-| **Commit title** | xfiles: update expectations based on 2026-7-8 nightly |
+| **Commit title** | radv: enable radv_force_nan_preserve_min_max for DOOM: The Dark Ages |
 | **Build date** | 20260709 |
-| **Release** | [v26.2.0-20260709-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r4) |
+| **Release** | [v26.2.0-20260709-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260709-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r5) | 2026-07-09 | [`c1c734d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c1c734d006f3c579978312850e834142322ba5ea) | radv: enable radv_force_nan_preserve_min_max for DOOM: The Dark Ages | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r4) | 2026-07-09 | [`dcceedf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcceedff82a9037812f7d1d13b646869ac90f436) | xfiles: update expectations based on 2026-7-8 nightly | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r3) | 2026-07-09 | [`3cda978`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3cda978f302c30535bac033676084104a572683b) | llvmpipe: link all LLVM targets on Apple to fix build failure when using static LLVM libraries | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r2) | 2026-07-09 | [`ce2c2a2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce2c2a29f135993d2a26e1407236716f47b6043d) | zink/ci: update trace checksums | Vulkan 1.4.354 |
@@ -97,7 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260708-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r8) | 2026-07-08 | [`da13afb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da13afb9476fd906d2ac3a5f38252974e91956a9) | aco: Remove SMEM offset optimization for non-buffer loads | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r7) | 2026-07-08 | [`3db7625`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3db76251251c91885e488fdfc5b68644890eef10) | jay: add real cycle model | Vulkan 1.4.354 |
 | [v26.2.0-20260708-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r6) | 2026-07-08 | [`601343f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/601343f4050c4c5bb47bc1e086e15ccecebb3511) | anv/ci: turn on astc emulation testing | Vulkan 1.4.354 |
-| [v26.2.0-20260708-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260708-r5) | 2026-07-08 | [`06cdc6a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/06cdc6a653ced42539eb01e5d4b71a278ef3e2be) | ethosu: Preserve fused pad extents | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
