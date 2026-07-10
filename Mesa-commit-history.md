@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260710-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r8) | 2026-07-10 | [`b16af1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b16af1f337c3de61aa4da7349bde5061b1736170) | d3d12: Use res_device to import resource from different device via handle | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r7) | 2026-07-10 | [`cfe64a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cfe64a989b3f0c49e72cc2302cd8ea221c2e1eb8) | v3dv: enable VK_KHR_shader_maximal_reconvergence | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r6) | 2026-07-10 | [`0e79791`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e79791fa5f68e587e864a774b002ba5b4f29127) | nouveau: fix data race in nouveau_fence_ref | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r5) | 2026-07-10 | [`a8ce4d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8ce4d829191939d8db4381a09dadcffdf6b5b7c) | freedreno: add Adreno 225 | Vulkan 1.4.354 |
