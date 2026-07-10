@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260710-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r4) | 2026-07-10 | [`a6a11a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6a11a453c8c75742284a57bf9fc9a73f0f76ae5) | radv: Use 64bit keys on GFX12 | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r3) | 2026-07-10 | [`64ba60c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64ba60cb329c834a7e0c0a30223daeb84331acc1) | freedreno/blitter: copy full depth of src box in resource_copy_region | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r2) | 2026-07-09 | [`a1b50db`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1b50dbcd751bbb24ac717927c627a30e5969657) | vulkan/screenshot-layer: replace itoa/sprintf with snprintf | Vulkan 1.4.354 |
 | [v26.2.0-20260710](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710) | 2026-07-10 | [`593e886`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/593e886c984651ed64c6e31236afe2df313f3bad) | radv/nir_trim_fs_color_exports: remove mrt0.w if alpha_to_one makes it dead | Vulkan 1.4.354 |
