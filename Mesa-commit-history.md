@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260710-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r2) | 2026-07-09 | [`a1b50db`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1b50dbcd751bbb24ac717927c627a30e5969657) | vulkan/screenshot-layer: replace itoa/sprintf with snprintf | Vulkan 1.4.354 |
 | [v26.2.0-20260710](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710) | 2026-07-10 | [`593e886`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/593e886c984651ed64c6e31236afe2df313f3bad) | radv/nir_trim_fs_color_exports: remove mrt0.w if alpha_to_one makes it dead | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r9) | 2026-07-09 | [`83c85cf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/83c85cf2b3f305f01a5a01e77a950c58bf7f2601) | rusticl: enable panfrost by default | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r8) | 2026-07-09 | [`0b5975e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b5975e599fb52f5d905a4e9ff89f7dbf1c048b9) | anv: No need to flush RT cache if we update buffer via CS | Vulkan 1.4.354 |
