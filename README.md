@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`83c85cf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/83c85cf2b3f305f01a5a01e77a950c58bf7f2601) |
-| **Commit date** | 2026-07-09 |
-| **Commit title** | rusticl: enable panfrost by default |
-| **Build date** | 20260709 |
-| **Release** | [v26.2.0-20260709-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r9) |
+| **Commit** | [`593e886`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/593e886c984651ed64c6e31236afe2df313f3bad) |
+| **Commit date** | 2026-07-10 |
+| **Commit title** | radv/nir_trim_fs_color_exports: remove mrt0.w if alpha_to_one makes it dead |
+| **Build date** | 20260710 |
+| **Release** | [v26.2.0-20260710](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260710](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710) | 2026-07-10 | [`593e886`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/593e886c984651ed64c6e31236afe2df313f3bad) | radv/nir_trim_fs_color_exports: remove mrt0.w if alpha_to_one makes it dead | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r9) | 2026-07-09 | [`83c85cf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/83c85cf2b3f305f01a5a01e77a950c58bf7f2601) | rusticl: enable panfrost by default | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r8) | 2026-07-09 | [`0b5975e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b5975e599fb52f5d905a4e9ff89f7dbf1c048b9) | anv: No need to flush RT cache if we update buffer via CS | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r7) | 2026-07-09 | [`1078b01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1078b01f634c60e52a7e07bf71756a071703c094) | u_trace: Initialize fuzzy_* callbacks correctly | Vulkan 1.4.354 |
@@ -95,7 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260709-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r4) | 2026-07-09 | [`dcceedf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcceedff82a9037812f7d1d13b646869ac90f436) | xfiles: update expectations based on 2026-7-8 nightly | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r3) | 2026-07-09 | [`3cda978`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3cda978f302c30535bac033676084104a572683b) | llvmpipe: link all LLVM targets on Apple to fix build failure when using static LLVM libraries | Vulkan 1.4.354 |
 | [v26.2.0-20260709-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r2) | 2026-07-09 | [`ce2c2a2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce2c2a29f135993d2a26e1407236716f47b6043d) | zink/ci: update trace checksums | Vulkan 1.4.354 |
-| [v26.2.0-20260709](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709) | 2026-07-09 | [`39d5668`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/39d5668fbec0ad1243116e7d3af3d94f98f9d9ab) | os_misc.c: add missing include for mach_host_self() | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
