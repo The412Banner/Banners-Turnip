@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260711-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r3) | 2026-07-11 | [`03696e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/03696e9a6d73d46a6cc4cbdb378ddaac02efd42a) | Uprev VVL to e875181c4f0fab1bd0c4926c21a21de0bd967bb3 | Vulkan 1.4.354 |
 | [v26.2.0-20260711-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r2) | 2026-07-11 | [`93dc351`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/93dc3517e870f80821542dd6d8e5edb63cdf68b3) | panvk: simplify non_polygon calculation | Vulkan 1.4.354 |
 | [v26.2.0-20260711](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711) | 2026-07-10 | [`74b5819`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74b5819d5ff2d5a9435c9ff4bad44a70f18b6780) | gfxstream: Validate guest mapped-memory ranges in flush/invalidate | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r8) | 2026-07-10 | [`b16af1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b16af1f337c3de61aa4da7349bde5061b1736170) | d3d12: Use res_device to import resource from different device via handle | Vulkan 1.4.354 |
