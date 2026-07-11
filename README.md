@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`b16af1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b16af1f337c3de61aa4da7349bde5061b1736170) |
+| **Commit** | [`74b5819`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74b5819d5ff2d5a9435c9ff4bad44a70f18b6780) |
 | **Commit date** | 2026-07-10 |
-| **Commit title** | d3d12: Use res_device to import resource from different device via handle |
-| **Build date** | 20260710 |
-| **Release** | [v26.2.0-20260710-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r8) |
+| **Commit title** | gfxstream: Validate guest mapped-memory ranges in flush/invalidate |
+| **Build date** | 20260711 |
+| **Release** | [v26.2.0-20260711](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,16 +87,13 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260711](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711) | 2026-07-11 | [`74b5819`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74b5819d5ff2d5a9435c9ff4bad44a70f18b6780) | gfxstream: Validate guest mapped-memory ranges in flush/invalidate | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r8) | 2026-07-10 | [`b16af1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b16af1f337c3de61aa4da7349bde5061b1736170) | d3d12: Use res_device to import resource from different device via handle | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r7) | 2026-07-10 | [`cfe64a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cfe64a989b3f0c49e72cc2302cd8ea221c2e1eb8) | v3dv: enable VK_KHR_shader_maximal_reconvergence | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r6) | 2026-07-10 | [`0e79791`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e79791fa5f68e587e864a774b002ba5b4f29127) | nouveau: fix data race in nouveau_fence_ref | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r5) | 2026-07-10 | [`a8ce4d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8ce4d829191939d8db4381a09dadcffdf6b5b7c) | freedreno: add Adreno 225 | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r4) | 2026-07-10 | [`a6a11a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6a11a453c8c75742284a57bf9fc9a73f0f76ae5) | radv: Use 64bit keys on GFX12 | Vulkan 1.4.354 |
 | [v26.2.0-20260710-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r3) | 2026-07-10 | [`64ba60c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64ba60cb329c834a7e0c0a30223daeb84331acc1) | freedreno/blitter: copy full depth of src box in resource_copy_region | Vulkan 1.4.354 |
-| [v26.2.0-20260710-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r2) | 2026-07-10 | [`a1b50db`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1b50dbcd751bbb24ac717927c627a30e5969657) | vulkan/screenshot-layer: replace itoa/sprintf with snprintf | Vulkan 1.4.354 |
-| [v26.2.0-20260710](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710) | 2026-07-10 | [`593e886`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/593e886c984651ed64c6e31236afe2df313f3bad) | radv/nir_trim_fs_color_exports: remove mrt0.w if alpha_to_one makes it dead | Vulkan 1.4.354 |
-| [v26.2.0-20260709-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r9) | 2026-07-09 | [`83c85cf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/83c85cf2b3f305f01a5a01e77a950c58bf7f2601) | rusticl: enable panfrost by default | Vulkan 1.4.354 |
-| [v26.2.0-20260709-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260709-r8) | 2026-07-09 | [`0b5975e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b5975e599fb52f5d905a4e9ff89f7dbf1c048b9) | anv: No need to flush RT cache if we update buffer via CS | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
