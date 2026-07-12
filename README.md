@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`58373d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58373d6addcec1dcd42be42273338f5157dfb744) |
+| **Commit** | [`f768c98`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f768c98f3181f1255ed0315391435501b9839e72) |
 | **Commit date** | 2026-07-12 |
-| **Commit title** | venus: properly clean up driver internal sim syncobj allocs |
+| **Commit title** | freedreno/ci: document fixed tests |
 | **Build date** | 20260712 |
-| **Release** | [v26.2.0-20260712-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712-r2) |
+| **Release** | [v26.2.0-20260712-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260712-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712-r3) | 2026-07-12 | [`f768c98`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f768c98f3181f1255ed0315391435501b9839e72) | freedreno/ci: document fixed tests | Vulkan 1.4.354 |
 | [v26.2.0-20260712-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712-r2) | 2026-07-12 | [`58373d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58373d6addcec1dcd42be42273338f5157dfb744) | venus: properly clean up driver internal sim syncobj allocs | Vulkan 1.4.354 |
 | [v26.2.0-20260712](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712) | 2026-07-12 | [`584a099`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/584a0997c8e4e93cfd517abe7db41c369642460a) | tu: Propagate allocation failures for tu_cs_* functions | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->

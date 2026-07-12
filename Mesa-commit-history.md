@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260712-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712-r3) | 2026-07-12 | [`f768c98`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f768c98f3181f1255ed0315391435501b9839e72) | freedreno/ci: document fixed tests | Vulkan 1.4.354 |
 | [v26.2.0-20260712-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712-r2) | 2026-07-12 | [`58373d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58373d6addcec1dcd42be42273338f5157dfb744) | venus: properly clean up driver internal sim syncobj allocs | Vulkan 1.4.354 |
 | [v26.2.0-20260712](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712) | 2026-07-12 | [`584a099`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/584a0997c8e4e93cfd517abe7db41c369642460a) | tu: Propagate allocation failures for tu_cs_* functions | Vulkan 1.4.354 |
 | [v26.2.0-20260711-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r6) | 2026-07-11 | [`9e6e6e5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9e6e6e5db7c892447496aef01892464142adfcd8) | pan/perf: fix building error due to 'Mali G1.xml' file name with space | Vulkan 1.4.354 |
