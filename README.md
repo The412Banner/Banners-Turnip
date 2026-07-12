@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`9e6e6e5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9e6e6e5db7c892447496aef01892464142adfcd8) |
-| **Commit date** | 2026-07-11 |
-| **Commit title** | pan/perf: fix building error due to 'Mali G1.xml' file name with space |
-| **Build date** | 20260711 |
-| **Release** | [v26.2.0-20260711-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r6) |
+| **Commit** | [`584a099`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/584a0997c8e4e93cfd517abe7db41c369642460a) |
+| **Commit date** | 2026-07-12 |
+| **Commit title** | tu: Propagate allocation failures for tu_cs_* functions |
+| **Build date** | 20260712 |
+| **Release** | [v26.2.0-20260712](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,14 +87,10 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260712](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712) | 2026-07-12 | [`584a099`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/584a0997c8e4e93cfd517abe7db41c369642460a) | tu: Propagate allocation failures for tu_cs_* functions | Vulkan 1.4.354 |
 | [v26.2.0-20260711-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r6) | 2026-07-11 | [`9e6e6e5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9e6e6e5db7c892447496aef01892464142adfcd8) | pan/perf: fix building error due to 'Mali G1.xml' file name with space | Vulkan 1.4.354 |
 | [v26.2.0-20260711-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r5) | 2026-07-11 | [`2e0ad86`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2e0ad862b586804965889307d4dae54dc8a77c17) | nvk: Use ?: in nvk_physical_device_compiler_flags | Vulkan 1.4.354 |
 | [v26.2.0-20260711-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r4) | 2026-07-11 | [`2d21262`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2d212623b38423e9c0754d79f2323bd6cabf25b3) | kraid/nir: Implement nir_op_[iu]mul_2x32_64 | Vulkan 1.4.354 |
-| [v26.2.0-20260711-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r3) | 2026-07-11 | [`03696e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/03696e9a6d73d46a6cc4cbdb378ddaac02efd42a) | Uprev VVL to e875181c4f0fab1bd0c4926c21a21de0bd967bb3 | Vulkan 1.4.354 |
-| [v26.2.0-20260711-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r2) | 2026-07-11 | [`93dc351`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/93dc3517e870f80821542dd6d8e5edb63cdf68b3) | panvk: simplify non_polygon calculation | Vulkan 1.4.354 |
-| [v26.2.0-20260711](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711) | 2026-07-11 | [`74b5819`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74b5819d5ff2d5a9435c9ff4bad44a70f18b6780) | gfxstream: Validate guest mapped-memory ranges in flush/invalidate | Vulkan 1.4.354 |
-| [v26.2.0-20260710-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r8) | 2026-07-10 | [`b16af1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b16af1f337c3de61aa4da7349bde5061b1736170) | d3d12: Use res_device to import resource from different device via handle | Vulkan 1.4.354 |
-| [v26.2.0-20260710-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260710-r7) | 2026-07-10 | [`cfe64a9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cfe64a989b3f0c49e72cc2302cd8ea221c2e1eb8) | v3dv: enable VK_KHR_shader_maximal_reconvergence | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
