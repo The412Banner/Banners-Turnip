@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`584a099`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/584a0997c8e4e93cfd517abe7db41c369642460a) |
+| **Commit** | [`58373d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58373d6addcec1dcd42be42273338f5157dfb744) |
 | **Commit date** | 2026-07-12 |
-| **Commit title** | tu: Propagate allocation failures for tu_cs_* functions |
+| **Commit title** | venus: properly clean up driver internal sim syncobj allocs |
 | **Build date** | 20260712 |
-| **Release** | [v26.2.0-20260712](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712) |
+| **Release** | [v26.2.0-20260712-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,10 +87,8 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260712-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712-r2) | 2026-07-12 | [`58373d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58373d6addcec1dcd42be42273338f5157dfb744) | venus: properly clean up driver internal sim syncobj allocs | Vulkan 1.4.354 |
 | [v26.2.0-20260712](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712) | 2026-07-12 | [`584a099`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/584a0997c8e4e93cfd517abe7db41c369642460a) | tu: Propagate allocation failures for tu_cs_* functions | Vulkan 1.4.354 |
-| [v26.2.0-20260711-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r6) | 2026-07-11 | [`9e6e6e5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9e6e6e5db7c892447496aef01892464142adfcd8) | pan/perf: fix building error due to 'Mali G1.xml' file name with space | Vulkan 1.4.354 |
-| [v26.2.0-20260711-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r5) | 2026-07-11 | [`2e0ad86`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2e0ad862b586804965889307d4dae54dc8a77c17) | nvk: Use ?: in nvk_physical_device_compiler_flags | Vulkan 1.4.354 |
-| [v26.2.0-20260711-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260711-r4) | 2026-07-11 | [`2d21262`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2d212623b38423e9c0754d79f2323bd6cabf25b3) | kraid/nir: Implement nir_op_[iu]mul_2x32_64 | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
