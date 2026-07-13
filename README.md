@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`8210ad6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8210ad6512f6a84b8de5330ad460b6b14b50b64e) |
+| **Commit** | [`8316f73`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8316f733c76e052b80eccd6af8bc143f0637c85d) |
 | **Commit date** | 2026-07-13 |
-| **Commit title** | zink: Gate tess/geom barrier stages on feature support |
+| **Commit title** | nir/opt_sink: don't sink comparisons that use ballot(true) |
 | **Build date** | 20260713 |
-| **Release** | [v26.2.0-20260713-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r4) |
+| **Release** | [v26.2.0-20260713-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260713-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r5) | 2026-07-13 | [`8316f73`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8316f733c76e052b80eccd6af8bc143f0637c85d) | nir/opt_sink: don't sink comparisons that use ballot(true) | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r4) | 2026-07-13 | [`8210ad6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8210ad6512f6a84b8de5330ad460b6b14b50b64e) | zink: Gate tess/geom barrier stages on feature support | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r3) | 2026-07-13 | [`9cbb427`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cbb427506da0222696c326c57ff7ef979c9cb63) | Revert "ci: disable Collabora's farm due to maintenance" | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r2) | 2026-07-13 | [`3ae3633`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3ae3633545bd68d037a35d30de45f5794a5232b3) | kk: Metal's precise functions are only fp32 | Vulkan 1.4.354 |
