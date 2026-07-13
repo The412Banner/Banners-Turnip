@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260713-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r3) | 2026-07-13 | [`9cbb427`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cbb427506da0222696c326c57ff7ef979c9cb63) | Revert "ci: disable Collabora's farm due to maintenance" | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r2) | 2026-07-13 | [`3ae3633`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3ae3633545bd68d037a35d30de45f5794a5232b3) | kk: Metal's precise functions are only fp32 | Vulkan 1.4.354 |
 | [v26.2.0-20260713](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713) | 2026-07-13 | [`9dc6035`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9dc6035bb5b328dda1bf7b4e25840baf577f16d8) | pan/bi: Lower 64-bit hadd on v9/v10 | Vulkan 1.4.354 |
 | [v26.2.0-20260712-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260712-r3) | 2026-07-12 | [`f768c98`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f768c98f3181f1255ed0315391435501b9839e72) | freedreno/ci: document fixed tests | Vulkan 1.4.354 |
