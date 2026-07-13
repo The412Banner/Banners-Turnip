@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`865d2c9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/865d2c9b96470135a4abf813215bc5967f6190dd) |
+| **Commit** | [`ef330b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ef330b6e3cdfbb61eb5bed383729ae1a22c20dd9) |
 | **Commit date** | 2026-07-13 |
-| **Commit title** | panvk: Wire up VK_EXT_shader_image_atomic_int64 on v9+ |
+| **Commit title** | mailmap: update my email address |
 | **Build date** | 20260713 |
-| **Release** | [v26.2.0-20260713-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r8) |
+| **Release** | [v26.2.0-20260713-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260713-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r9) | 2026-07-13 | [`ef330b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ef330b6e3cdfbb61eb5bed383729ae1a22c20dd9) | mailmap: update my email address | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r8) | 2026-07-13 | [`865d2c9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/865d2c9b96470135a4abf813215bc5967f6190dd) | panvk: Wire up VK_EXT_shader_image_atomic_int64 on v9+ | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r7) | 2026-07-13 | [`c541170`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c541170035abb73b2e2ad00047a48739c192e521) | radeonsi: fix truncated cache key | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r6) | 2026-07-13 | [`c1a2175`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c1a21752c4b7d446068ad5b8a6327d7b4b54d58b) | freedreno/ci: Update a660-vk-traces-restricted checksums | Vulkan 1.4.354 |
