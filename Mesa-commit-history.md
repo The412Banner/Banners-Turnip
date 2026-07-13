@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260713-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r6) | 2026-07-13 | [`c1a2175`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c1a21752c4b7d446068ad5b8a6327d7b4b54d58b) | freedreno/ci: Update a660-vk-traces-restricted checksums | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r5) | 2026-07-13 | [`8316f73`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8316f733c76e052b80eccd6af8bc143f0637c85d) | nir/opt_sink: don't sink comparisons that use ballot(true) | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r4) | 2026-07-13 | [`8210ad6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8210ad6512f6a84b8de5330ad460b6b14b50b64e) | zink: Gate tess/geom barrier stages on feature support | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r3) | 2026-07-13 | [`9cbb427`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cbb427506da0222696c326c57ff7ef979c9cb63) | Revert "ci: disable Collabora's farm due to maintenance" | Vulkan 1.4.354 |
