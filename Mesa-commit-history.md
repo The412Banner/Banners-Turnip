@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260714-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r7) | 2026-07-14 | [`423f8b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/423f8b97e2c6f5a07cd311e113e023bed920c65b) | nv30: fix truncated values in line_stipple_pattern | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r6) | 2026-07-14 | [`c459e13`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c459e13d7e522c8fdad30e18a16b5e4c7698a4ed) | pco: allow fence ops to be legalized if they come last in a block | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r5) | 2026-07-14 | [`84f2f1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84f2f1fddfcd11f2a3d4c6d4d1bd1a35aac494f5) | vc4: free vertex and constant buffers on context destroy | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r4) | 2026-07-14 | [`9a8d947`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9a8d9478c6bb749f850514876c0ab94063cfc5cd) | pipe: Remove pipe_video_codec::expect_chunked_decode | Vulkan 1.4.354 |

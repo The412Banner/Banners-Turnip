@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`c459e13`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c459e13d7e522c8fdad30e18a16b5e4c7698a4ed) |
+| **Commit** | [`423f8b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/423f8b97e2c6f5a07cd311e113e023bed920c65b) |
 | **Commit date** | 2026-07-14 |
-| **Commit title** | pco: allow fence ops to be legalized if they come last in a block |
+| **Commit title** | nv30: fix truncated values in line_stipple_pattern |
 | **Build date** | 20260714 |
-| **Release** | [v26.2.0-20260714-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r6) |
+| **Release** | [v26.2.0-20260714-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260714-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r7) | 2026-07-14 | [`423f8b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/423f8b97e2c6f5a07cd311e113e023bed920c65b) | nv30: fix truncated values in line_stipple_pattern | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r6) | 2026-07-14 | [`c459e13`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c459e13d7e522c8fdad30e18a16b5e4c7698a4ed) | pco: allow fence ops to be legalized if they come last in a block | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r5) | 2026-07-14 | [`84f2f1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84f2f1fddfcd11f2a3d4c6d4d1bd1a35aac494f5) | vc4: free vertex and constant buffers on context destroy | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r4) | 2026-07-14 | [`9a8d947`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9a8d9478c6bb749f850514876c0ab94063cfc5cd) | pipe: Remove pipe_video_codec::expect_chunked_decode | Vulkan 1.4.354 |
@@ -99,7 +100,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260713-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r6) | 2026-07-13 | [`c1a2175`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c1a21752c4b7d446068ad5b8a6327d7b4b54d58b) | freedreno/ci: Update a660-vk-traces-restricted checksums | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r5) | 2026-07-13 | [`8316f73`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8316f733c76e052b80eccd6af8bc143f0637c85d) | nir/opt_sink: don't sink comparisons that use ballot(true) | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r4) | 2026-07-13 | [`8210ad6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8210ad6512f6a84b8de5330ad460b6b14b50b64e) | zink: Gate tess/geom barrier stages on feature support | Vulkan 1.4.354 |
-| [v26.2.0-20260713-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r3) | 2026-07-13 | [`9cbb427`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cbb427506da0222696c326c57ff7ef979c9cb63) | Revert "ci: disable Collabora's farm due to maintenance" | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
