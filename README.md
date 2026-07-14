@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`0ab29c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0ab29c1d21d56f1780bd057176c998fda738402a) |
+| **Commit** | [`fb2e7af`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb2e7af27ecfd5a3707ac17205467c2df5050bd5) |
 | **Commit date** | 2026-07-14 |
-| **Commit title** | docs: Add a note about Vulkan implicit sync in the 25.3.0 release notes |
+| **Commit title** | brw: Rework FS SIMD selection to follow requirements over debug flags |
 | **Build date** | 20260714 |
-| **Release** | [v26.2.0-20260714-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r11) |
+| **Release** | [v26.2.0-20260714-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r12) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260714-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r12) | 2026-07-14 | [`fb2e7af`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb2e7af27ecfd5a3707ac17205467c2df5050bd5) | brw: Rework FS SIMD selection to follow requirements over debug flags | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r11) | 2026-07-14 | [`0ab29c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0ab29c1d21d56f1780bd057176c998fda738402a) | docs: Add a note about Vulkan implicit sync in the 25.3.0 release notes | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r10) | 2026-07-14 | [`b64abcd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b64abcd9ffde1c3687e339ceda6da964c1cdc956) | wgl: Move sub-8bpc pixel formats to extended format list to match other Windows drivers | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r9) | 2026-07-14 | [`f66e3d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f66e3d74cb3c300cdc58364ef58a4455c74f95d0) | tu: Implement VK_EXT_primitive_restart_index | Vulkan 1.4.354 |
@@ -99,7 +100,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260714-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r2) | 2026-07-14 | [`ca08532`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca08532f91e3efc551d6284f99ba39861dbb3e6f) | venus: allow to use vtest as a fallback for virtgpu | Vulkan 1.4.354 |
 | [v26.2.0-20260714](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714) | 2026-07-14 | [`4def7fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4def7fb90a9b39367f819275ff9af93965679dd1) | brw: Fix GS EOTs to not have an empty channel mask on LSC platforms | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r9) | 2026-07-13 | [`ef330b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ef330b6e3cdfbb61eb5bed383729ae1a22c20dd9) | mailmap: update my email address | Vulkan 1.4.354 |
-| [v26.2.0-20260713-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r8) | 2026-07-13 | [`865d2c9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/865d2c9b96470135a4abf813215bc5967f6190dd) | panvk: Wire up VK_EXT_shader_image_atomic_int64 on v9+ | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
