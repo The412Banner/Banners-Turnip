@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`4def7fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4def7fb90a9b39367f819275ff9af93965679dd1) |
-| **Commit date** | 2026-07-13 |
-| **Commit title** | brw: Fix GS EOTs to not have an empty channel mask on LSC platforms |
+| **Commit** | [`ca08532`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca08532f91e3efc551d6284f99ba39861dbb3e6f) |
+| **Commit date** | 2026-07-14 |
+| **Commit title** | venus: allow to use vtest as a fallback for virtgpu |
 | **Build date** | 20260714 |
-| **Release** | [v26.2.0-20260714](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714) |
+| **Release** | [v26.2.0-20260714-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260714-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r2) | 2026-07-14 | [`ca08532`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca08532f91e3efc551d6284f99ba39861dbb3e6f) | venus: allow to use vtest as a fallback for virtgpu | Vulkan 1.4.354 |
 | [v26.2.0-20260714](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714) | 2026-07-14 | [`4def7fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4def7fb90a9b39367f819275ff9af93965679dd1) | brw: Fix GS EOTs to not have an empty channel mask on LSC platforms | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r9) | 2026-07-13 | [`ef330b6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ef330b6e3cdfbb61eb5bed383729ae1a22c20dd9) | mailmap: update my email address | Vulkan 1.4.354 |
 | [v26.2.0-20260713-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260713-r8) | 2026-07-13 | [`865d2c9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/865d2c9b96470135a4abf813215bc5967f6190dd) | panvk: Wire up VK_EXT_shader_image_atomic_int64 on v9+ | Vulkan 1.4.354 |
