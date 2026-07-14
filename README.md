@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.2.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`9a8d947`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9a8d9478c6bb749f850514876c0ab94063cfc5cd) |
+| **Commit** | [`84f2f1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84f2f1fddfcd11f2a3d4c6d4d1bd1a35aac494f5) |
 | **Commit date** | 2026-07-14 |
-| **Commit title** | pipe: Remove pipe_video_codec::expect_chunked_decode |
+| **Commit title** | vc4: free vertex and constant buffers on context destroy |
 | **Build date** | 20260714 |
-| **Release** | [v26.2.0-20260714-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r4) |
+| **Release** | [v26.2.0-20260714-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260714-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r5) | 2026-07-14 | [`84f2f1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84f2f1fddfcd11f2a3d4c6d4d1bd1a35aac494f5) | vc4: free vertex and constant buffers on context destroy | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r4) | 2026-07-14 | [`9a8d947`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9a8d9478c6bb749f850514876c0ab94063cfc5cd) | pipe: Remove pipe_video_codec::expect_chunked_decode | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r3) | 2026-07-14 | [`dea6244`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dea624494db61509646ef2406393a3298c9c6d62) | r300: fix swtcl per-vertex point size | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r2) | 2026-07-14 | [`ca08532`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca08532f91e3efc551d6284f99ba39861dbb3e6f) | venus: allow to use vtest as a fallback for virtgpu | Vulkan 1.4.354 |
