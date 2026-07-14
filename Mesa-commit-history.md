@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260714-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r4) | 2026-07-14 | [`9a8d947`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9a8d9478c6bb749f850514876c0ab94063cfc5cd) | pipe: Remove pipe_video_codec::expect_chunked_decode | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r3) | 2026-07-14 | [`dea6244`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dea624494db61509646ef2406393a3298c9c6d62) | r300: fix swtcl per-vertex point size | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r2) | 2026-07-14 | [`ca08532`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca08532f91e3efc551d6284f99ba39861dbb3e6f) | venus: allow to use vtest as a fallback for virtgpu | Vulkan 1.4.354 |
 | [v26.2.0-20260714](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714) | 2026-07-13 | [`4def7fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4def7fb90a9b39367f819275ff9af93965679dd1) | brw: Fix GS EOTs to not have an empty channel mask on LSC platforms | Vulkan 1.4.354 |
