@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260714-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r9) | 2026-07-14 | [`f66e3d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f66e3d74cb3c300cdc58364ef58a4455c74f95d0) | tu: Implement VK_EXT_primitive_restart_index | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r8) | 2026-07-14 | [`08c1041`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/08c1041db9f4c2c73278ec9dd93704154d8d313d) | jay: allocate shader under memctx | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r7) | 2026-07-14 | [`423f8b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/423f8b97e2c6f5a07cd311e113e023bed920c65b) | nv30: fix truncated values in line_stipple_pattern | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r6) | 2026-07-14 | [`c459e13`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c459e13d7e522c8fdad30e18a16b5e4c7698a4ed) | pco: allow fence ops to be legalized if they come last in a block | Vulkan 1.4.354 |
