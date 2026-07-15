@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260715-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715-r4) | 2026-07-15 | [`48297c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/48297c8344669c4a867fae28e2cafb646218016e) | intel: Fix operator precedence in intel_simd_overridden | Vulkan 1.4.354 |
 | [v26.3.0-20260715-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715-r3) | 2026-07-15 | [`304e1b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/304e1b1d453cafc32a44c571bfcfc7bd574d0c79) | people: update my email address | Vulkan 1.4.354 |
 | [v26.3.0-20260715-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715-r2) | 2026-07-15 | [`f449a3a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f449a3ae575910ab6ee06d9607d2ffcdf442aae2) | freedreno/a6xx: Split VS driver params | Vulkan 1.4.354 |
 | [v26.3.0-20260715](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715) | 2026-07-15 | [`fb7300c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb7300c6da2b740b0605b1562fe569391f33be94) | v3dv: record the no-op fragment shader with its Vulkan stage bit | Vulkan 1.4.354 |
