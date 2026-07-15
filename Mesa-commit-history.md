@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260715-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r3) | 2026-07-15 | [`c00a5eb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c00a5eb353fad3517fbd99127a553d4b11745540) | r300: emulate gl_FrontFacing on R3xx/R4xx | Vulkan 1.4.354 |
 | [v26.2.0-20260715-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r2) | 2026-07-15 | [`0f90865`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0f9086520f0ed1ba8fdd81548e6b4e1a6dc2ad65) | panvk/csf: flush primitives generated query writes from CSF | Vulkan 1.4.354 |
 | [v26.2.0-20260715](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715) | 2026-07-15 | [`4195130`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4195130407d4c9256d29baac001c49dc98bf2906) | jay: Add loop_once_halt opcode | Vulkan 1.4.354 |
 | [v26.2.0-20260714-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260714-r12) | 2026-07-14 | [`fb2e7af`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb2e7af27ecfd5a3707ac17205467c2df5050bd5) | brw: Rework FS SIMD selection to follow requirements over debug flags | Vulkan 1.4.354 |
