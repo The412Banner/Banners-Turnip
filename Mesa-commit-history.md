@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260715-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715-r2) | 2026-07-15 | [`f449a3a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f449a3ae575910ab6ee06d9607d2ffcdf442aae2) | freedreno/a6xx: Split VS driver params | Vulkan 1.4.354 |
 | [v26.3.0-20260715](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715) | 2026-07-15 | [`fb7300c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb7300c6da2b740b0605b1562fe569391f33be94) | v3dv: record the no-op fragment shader with its Vulkan stage bit | Vulkan 1.4.354 |
 | [v26.2.0-20260715-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r7) | 2026-07-15 | [`7aeab89`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7aeab89318ceae974772daa10d999f65873eae67) | pipe: Remove pipe_video_codec::chroma_format | Vulkan 1.4.354 |
 | [v26.2.0-20260715-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r6) | 2026-07-15 | [`a6c2a06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6c2a06f9190e22867b9911e3e2a1b00fe74721d) | zink: add anv ci flake | Vulkan 1.4.354 |
