@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.2.0-20260715-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r6) | 2026-07-15 | [`a6c2a06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6c2a06f9190e22867b9911e3e2a1b00fe74721d) | zink: add anv ci flake | Vulkan 1.4.354 |
 | [v26.2.0-20260715-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r5) | 2026-07-15 | [`48d3a8d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/48d3a8d8371ac488767e870b8c7497b32d8d9b30) | tu: Enable tu_allow_oob_indirect_ubo_loads for Clausewitz engine | Vulkan 1.4.354 |
 | [v26.2.0-20260715-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r4) | 2026-07-15 | [`9cbe70f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cbe70fca38e5172be9d8df0d365aa27f77503e2) | radv: shorten internal shader names | Vulkan 1.4.354 |
 | [v26.2.0-20260715-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r3) | 2026-07-15 | [`c00a5eb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c00a5eb353fad3517fbd99127a553d4b11745540) | r300: emulate gl_FrontFacing on R3xx/R4xx | Vulkan 1.4.354 |
