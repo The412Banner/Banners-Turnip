@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260716-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r9) | 2026-07-16 | [`3e21310`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e21310d5c94c8fe9a51310494d4ce73830db582) | anv: add per-shader brw_prefer_simd32_fs driconf option | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r8) | 2026-07-16 | [`b473d5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b473d5ddf62c0dadf544ff866eb9b766adf86d15) | gfxstream: add build system TOML files | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r7) | 2026-07-16 | [`cde03ff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cde03ff17ccfa0e38109b2dd0551492a590fd3f1) | d3d12: Video Encode slice fallback to support AUTO if FULL_FRAME unavailable | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r6) | 2026-07-16 | [`87afa31`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/87afa3193eee4c6dbdef4306a7c6ead6a5a4d825) | iris: set 3DSTATE_SF::LastPixelEnable with smooth lines | Vulkan 1.4.354 |
