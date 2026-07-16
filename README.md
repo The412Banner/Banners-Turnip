@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`7a2bdd3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7a2bdd35b2ba699bb7e6ad43866822121b2a4269) |
-| **Commit date** | 2026-07-15 |
-| **Commit title** | jay: Various geometry shader fixes. |
+| **Commit** | [`09180f0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09180f0eed603872b75f44b398048db06f236f54) |
+| **Commit date** | 2026-07-16 |
+| **Commit title** | zink: fix swap interval changes being dropped |
 | **Build date** | 20260716 |
-| **Release** | [v26.3.0-20260716](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716) |
+| **Release** | [v26.3.0-20260716-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260716-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r2) | 2026-07-16 | [`09180f0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09180f0eed603872b75f44b398048db06f236f54) | zink: fix swap interval changes being dropped | Vulkan 1.4.354 |
 | [v26.3.0-20260716](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716) | 2026-07-16 | [`7a2bdd3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7a2bdd35b2ba699bb7e6ad43866822121b2a4269) | jay: Various geometry shader fixes. | Vulkan 1.4.354 |
 | [v26.3.0-20260715-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715-r5) | 2026-07-15 | [`48297c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/48297c8344669c4a867fae28e2cafb646218016e) | intel: Fix operator precedence in intel_simd_overridden | Vulkan 1.4.354 |
 | [v26.3.0-20260715-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715-r3) | 2026-07-15 | [`304e1b1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/304e1b1d453cafc32a44c571bfcfc7bd574d0c79) | people: update my email address | Vulkan 1.4.354 |
@@ -97,7 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.2.0-20260715-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r5) | 2026-07-15 | [`48d3a8d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/48d3a8d8371ac488767e870b8c7497b32d8d9b30) | tu: Enable tu_allow_oob_indirect_ubo_loads for Clausewitz engine | Vulkan 1.4.354 |
 | [v26.2.0-20260715-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r4) | 2026-07-15 | [`9cbe70f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cbe70fca38e5172be9d8df0d365aa27f77503e2) | radv: shorten internal shader names | Vulkan 1.4.354 |
 | [v26.2.0-20260715-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r3) | 2026-07-15 | [`c00a5eb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c00a5eb353fad3517fbd99127a553d4b11745540) | r300: emulate gl_FrontFacing on R3xx/R4xx | Vulkan 1.4.354 |
-| [v26.2.0-20260715-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r2) | 2026-07-15 | [`0f90865`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0f9086520f0ed1ba8fdd81548e6b4e1a6dc2ad65) | panvk/csf: flush primitives generated query writes from CSF | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
