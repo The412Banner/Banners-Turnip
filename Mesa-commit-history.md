@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260716-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r5) | 2026-07-16 | [`6541c05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6541c057a93806255354455a61015bf29e5d36bd) | anv: defer batch BO allocation for command buffers until recording | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r4) | 2026-07-16 | [`ba868a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ba868a6f4a6d720854823a2a87f6539bb8b6b1c2) | mesa/main: use marshal_count if present | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r3) | 2026-07-16 | [`c2ecb43`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2ecb433fda48ee5d0ef295b3aa79f23143ceeca) | ac/vcn_enc: Disable var slice for preencode with VCN4 | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r2) | 2026-07-16 | [`09180f0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09180f0eed603872b75f44b398048db06f236f54) | zink: fix swap interval changes being dropped | Vulkan 1.4.354 |
