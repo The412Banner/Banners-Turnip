@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260716-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r3) | 2026-07-16 | [`c2ecb43`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2ecb433fda48ee5d0ef295b3aa79f23143ceeca) | ac/vcn_enc: Disable var slice for preencode with VCN4 | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r2) | 2026-07-16 | [`09180f0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/09180f0eed603872b75f44b398048db06f236f54) | zink: fix swap interval changes being dropped | Vulkan 1.4.354 |
 | [v26.3.0-20260716](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716) | 2026-07-15 | [`7a2bdd3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7a2bdd35b2ba699bb7e6ad43866822121b2a4269) | jay: Various geometry shader fixes. | Vulkan 1.4.354 |
 | [v26.3.0-20260715-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715-r5) | 2026-07-15 | [`48297c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/48297c8344669c4a867fae28e2cafb646218016e) | intel: Fix operator precedence in intel_simd_overridden | Vulkan 1.4.354 |
