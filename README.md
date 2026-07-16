@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`6541c05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6541c057a93806255354455a61015bf29e5d36bd) |
+| **Commit** | [`87afa31`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/87afa3193eee4c6dbdef4306a7c6ead6a5a4d825) |
 | **Commit date** | 2026-07-16 |
-| **Commit title** | anv: defer batch BO allocation for command buffers until recording |
+| **Commit title** | iris: set 3DSTATE_SF::LastPixelEnable with smooth lines |
 | **Build date** | 20260716 |
-| **Release** | [v26.3.0-20260716-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r5) |
+| **Release** | [v26.3.0-20260716-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260716-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r6) | 2026-07-16 | [`87afa31`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/87afa3193eee4c6dbdef4306a7c6ead6a5a4d825) | iris: set 3DSTATE_SF::LastPixelEnable with smooth lines | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r5) | 2026-07-16 | [`6541c05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6541c057a93806255354455a61015bf29e5d36bd) | anv: defer batch BO allocation for command buffers until recording | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r4) | 2026-07-16 | [`ba868a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ba868a6f4a6d720854823a2a87f6539bb8b6b1c2) | mesa/main: use marshal_count if present | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r3) | 2026-07-16 | [`c2ecb43`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2ecb433fda48ee5d0ef295b3aa79f23143ceeca) | ac/vcn_enc: Disable var slice for preencode with VCN4 | Vulkan 1.4.354 |
@@ -97,7 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260715-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715-r2) | 2026-07-15 | [`f449a3a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f449a3ae575910ab6ee06d9607d2ffcdf442aae2) | freedreno/a6xx: Split VS driver params | Vulkan 1.4.354 |
 | [v26.3.0-20260715](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260715) | 2026-07-15 | [`fb7300c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb7300c6da2b740b0605b1562fe569391f33be94) | v3dv: record the no-op fragment shader with its Vulkan stage bit | Vulkan 1.4.354 |
 | [v26.2.0-20260715-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r7) | 2026-07-15 | [`7aeab89`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7aeab89318ceae974772daa10d999f65873eae67) | pipe: Remove pipe_video_codec::chroma_format | Vulkan 1.4.354 |
-| [v26.2.0-20260715-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.2.0-20260715-r6) | 2026-07-15 | [`a6c2a06`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a6c2a06f9190e22867b9911e3e2a1b00fe74721d) | zink: add anv ci flake | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
