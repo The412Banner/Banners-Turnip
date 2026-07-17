@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260717-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r2) | 2026-07-17 | [`f4dd8a1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f4dd8a15eda786a5a623905d251f403e079c1217) | nir: return intrinsic in nir_store_reg | Vulkan 1.4.354 |
 | [v26.3.0-20260717](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717) | 2026-07-17 | [`20f4f9f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20f4f9f45057559475600b60364b60643011990f) | kraid/ra: Rework the RA flow | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r12) | 2026-07-16 | [`99bf1b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99bf1b953cba11d41dbee519ae1b53387477df9e) | intel/compiler: Add assertion to help coverity out | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r11) | 2026-07-16 | [`3e3c41b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e3c41be1c10e759b39e0a01472d09acaf55d656) | lvp: add linker script to fix android symbols | Vulkan 1.4.354 |
