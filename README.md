@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`80e1e58`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/80e1e584d734797b33352881872bf6bc5d497c8d) |
+| **Commit** | [`4ce4fef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ce4feff89bad1ffd2ac7933ab25b44b6cca38d9) |
 | **Commit date** | 2026-07-17 |
-| **Commit title** | kraid: Validate swizzle invariants |
+| **Commit title** | nv30: fix an issue when this push buffer is NULL |
 | **Build date** | 20260717 |
-| **Release** | [v26.3.0-20260717-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r6) |
+| **Release** | [v26.3.0-20260717-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260717-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r7) | 2026-07-17 | [`4ce4fef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ce4feff89bad1ffd2ac7933ab25b44b6cca38d9) | nv30: fix an issue when this push buffer is NULL | Vulkan 1.4.354 |
 | [v26.3.0-20260717-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r6) | 2026-07-17 | [`80e1e58`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/80e1e584d734797b33352881872bf6bc5d497c8d) | kraid: Validate swizzle invariants | Vulkan 1.4.354 |
 | [v26.3.0-20260717-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r5) | 2026-07-17 | [`74a9470`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74a947082e896661d4f2e9176f10da744bbe7a8e) | freedreno/ci: Limit edgeflag and stipple skips to Piglit tests | Vulkan 1.4.354 |
 | [v26.3.0-20260717-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r4) | 2026-07-17 | [`92f4f40`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/92f4f409d4eaf1990142d1614ade0745ed8d2139) | radeonsi: run nir_copy_prop after nir_lower_load_const_to_scalar | Vulkan 1.4.354 |
@@ -95,9 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260717](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717) | 2026-07-17 | [`20f4f9f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20f4f9f45057559475600b60364b60643011990f) | kraid/ra: Rework the RA flow | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r12) | 2026-07-16 | [`99bf1b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99bf1b953cba11d41dbee519ae1b53387477df9e) | intel/compiler: Add assertion to help coverity out | Vulkan 1.4.354 |
 | [v26.3.0-20260716-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r11) | 2026-07-16 | [`3e3c41b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e3c41be1c10e759b39e0a01472d09acaf55d656) | lvp: add linker script to fix android symbols | Vulkan 1.4.354 |
-| [v26.3.0-20260716-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r10) | 2026-07-16 | [`a7cdad7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a7cdad725932c60e8b760b61115574d8fb935a3c) | brw: Handle empty top block in brw_nir_move_interpolation_to_top | Vulkan 1.4.354 |
-| [v26.3.0-20260716-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r9) | 2026-07-16 | [`3e21310`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e21310d5c94c8fe9a51310494d4ce73830db582) | anv: add per-shader brw_prefer_simd32_fs driconf option | Vulkan 1.4.354 |
-| [v26.3.0-20260716-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260716-r8) | 2026-07-16 | [`b473d5d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b473d5ddf62c0dadf544ff866eb9b766adf86d15) | gfxstream: add build system TOML files | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
