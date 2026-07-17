@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260717-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r5) | 2026-07-17 | [`74a9470`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74a947082e896661d4f2e9176f10da744bbe7a8e) | freedreno/ci: Limit edgeflag and stipple skips to Piglit tests | Vulkan 1.4.354 |
 | [v26.3.0-20260717-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r4) | 2026-07-17 | [`92f4f40`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/92f4f409d4eaf1990142d1614ade0745ed8d2139) | radeonsi: run nir_copy_prop after nir_lower_load_const_to_scalar | Vulkan 1.4.354 |
 | [v26.3.0-20260717-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r3) | 2026-07-17 | [`d4d1634`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4d1634bbb02124b496d78a01f78ffb397813924) | gfxstream: Fixes for physical device property overwrites | Vulkan 1.4.354 |
 | [v26.3.0-20260717-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r2) | 2026-07-17 | [`f4dd8a1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f4dd8a15eda786a5a623905d251f403e079c1217) | nir: return intrinsic in nir_store_reg | Vulkan 1.4.354 |
