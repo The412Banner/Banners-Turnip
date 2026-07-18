@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260718](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718) | 2026-07-18 | [`f773b1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f773b1f3a7e7067bb08d7596d51a7e4474ea82f8) | ac/llvm: remove the optimization barrier from ac_build_ballot | Vulkan 1.4.354 |
 | [v26.3.0-20260717-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r7) | 2026-07-17 | [`4ce4fef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ce4feff89bad1ffd2ac7933ab25b44b6cca38d9) | nv30: fix an issue when this push buffer is NULL | Vulkan 1.4.354 |
 | [v26.3.0-20260717-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r6) | 2026-07-17 | [`80e1e58`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/80e1e584d734797b33352881872bf6bc5d497c8d) | kraid: Validate swizzle invariants | Vulkan 1.4.354 |
 | [v26.3.0-20260717-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r5) | 2026-07-17 | [`74a9470`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74a947082e896661d4f2e9176f10da744bbe7a8e) | freedreno/ci: Limit edgeflag and stipple skips to Piglit tests | Vulkan 1.4.354 |
