@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`879365e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/879365ec9f06adef47f116d11b88632264c1f271) |
+| **Commit** | [`db128e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db128e2f552610de79e2912925929c40c9a55652) |
 | **Commit date** | 2026-07-18 |
-| **Commit title** | vulkan/runtime: fixup vk_shader leak on RT group recompile |
+| **Commit title** | Uprev VVL to 6727ae4734bf9e1e6f6954254bbc382687a3866d |
 | **Build date** | 20260718 |
-| **Release** | [v26.3.0-20260718-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r7) |
+| **Release** | [v26.3.0-20260718-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260718-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r8) | 2026-07-18 | [`db128e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db128e2f552610de79e2912925929c40c9a55652) | Uprev VVL to 6727ae4734bf9e1e6f6954254bbc382687a3866d | Vulkan 1.4.354 |
 | [v26.3.0-20260718-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r7) | 2026-07-18 | [`879365e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/879365ec9f06adef47f116d11b88632264c1f271) | vulkan/runtime: fixup vk_shader leak on RT group recompile | Vulkan 1.4.354 |
 | [v26.3.0-20260718-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r3) | 2026-07-18 | [`cf0588a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cf0588a5b835916ec031d9f47d0a0b6ef6c9745e) | vulkan: Implement a late triangles -> quads pass | Vulkan 1.4.354 |
 | [v26.3.0-20260718-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r2) | 2026-07-18 | [`4b9c74d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b9c74d0af56b7a9cea3384965934a20ce95bfc4) | tu: Don't truncate subdraw size | Vulkan 1.4.354 |
 | [v26.3.0-20260718](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718) | 2026-07-18 | [`f773b1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f773b1f3a7e7067bb08d7596d51a7e4474ea82f8) | ac/llvm: remove the optimization barrier from ac_build_ballot | Vulkan 1.4.354 |
-| [v26.3.0-20260717-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r7) | 2026-07-17 | [`4ce4fef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ce4feff89bad1ffd2ac7933ab25b44b6cca38d9) | nv30: fix an issue when this push buffer is NULL | Vulkan 1.4.354 |
-| [v26.3.0-20260717-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r6) | 2026-07-17 | [`80e1e58`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/80e1e584d734797b33352881872bf6bc5d497c8d) | kraid: Validate swizzle invariants | Vulkan 1.4.354 |
-| [v26.3.0-20260717-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260717-r5) | 2026-07-17 | [`74a9470`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74a947082e896661d4f2e9176f10da744bbe7a8e) | freedreno/ci: Limit edgeflag and stipple skips to Piglit tests | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
