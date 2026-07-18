@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260718-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r6) | 2026-07-18 | [`879365e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/879365ec9f06adef47f116d11b88632264c1f271) | vulkan/runtime: fixup vk_shader leak on RT group recompile | Vulkan 1.4.354 |
 | [v26.3.0-20260718-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r5) | 2026-07-18 | [`879365e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/879365ec9f06adef47f116d11b88632264c1f271) | vulkan/runtime: fixup vk_shader leak on RT group recompile | Vulkan 1.4.354 |
 | [v26.3.0-20260718-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r4) | 2026-07-18 | [`879365e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/879365ec9f06adef47f116d11b88632264c1f271) | vulkan/runtime: fixup vk_shader leak on RT group recompile | Vulkan 1.4.354 |
 | [v26.3.0-20260718-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r3) | 2026-07-18 | [`cf0588a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cf0588a5b835916ec031d9f47d0a0b6ef6c9745e) | vulkan: Implement a late triangles -> quads pass | Vulkan 1.4.354 |
