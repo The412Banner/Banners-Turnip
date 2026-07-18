@@ -20,6 +20,10 @@ jobs:
             suffix: "-A8xx"
             extra_patch: "patches/tu8_kgsl_26.patch"
             extra_script: "patches/fix_a8xx_dev_info.py:patches/apply_a8xx_gpus.py"
+          - variant: a8xx-gen8
+            suffix: "-A8xx-gen8"
+            extra_patch: "patches/a8xx_gen8.patch"
+            extra_script: "patches/a8xx_shared_mem.py"
           - variant: 710-720-test
             suffix: "-710-720-Test"
             extra_patch: ""
