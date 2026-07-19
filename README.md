@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`a11215b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a11215b318f6208cca39b49315a3856d4870210b) |
+| **Commit** | [`3bf5a8d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3bf5a8d0b0ea547c965bc02fdd9137e2f9189213) |
 | **Commit date** | 2026-07-19 |
-| **Commit title** | kk: call opt_licm to lighten loop executions |
+| **Commit title** | kosmickrisp: don't cache a NULL Metal compiler |
 | **Build date** | 20260719 |
-| **Release** | [v26.3.0-20260719](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260719) |
+| **Release** | [v26.3.0-20260719-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260719-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,11 +87,9 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260719-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260719-r2) | 2026-07-19 | [`3bf5a8d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3bf5a8d0b0ea547c965bc02fdd9137e2f9189213) | kosmickrisp: don't cache a NULL Metal compiler | Vulkan 1.4.354 |
 | [v26.3.0-20260719](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260719) | 2026-07-19 | [`a11215b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a11215b318f6208cca39b49315a3856d4870210b) | kk: call opt_licm to lighten loop executions | Vulkan 1.4.354 |
 | [v26.3.0-20260718-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r8) | 2026-07-18 | [`db128e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db128e2f552610de79e2912925929c40c9a55652) | Uprev VVL to 6727ae4734bf9e1e6f6954254bbc382687a3866d | Vulkan 1.4.354 |
-| [v26.3.0-20260718-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r7) | 2026-07-18 | [`879365e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/879365ec9f06adef47f116d11b88632264c1f271) | vulkan/runtime: fixup vk_shader leak on RT group recompile | Vulkan 1.4.354 |
-| [v26.3.0-20260718-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r3) | 2026-07-18 | [`cf0588a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cf0588a5b835916ec031d9f47d0a0b6ef6c9745e) | vulkan: Implement a late triangles -> quads pass | Vulkan 1.4.354 |
-| [v26.3.0-20260718-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r2) | 2026-07-18 | [`4b9c74d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b9c74d0af56b7a9cea3384965934a20ce95bfc4) | tu: Don't truncate subdraw size | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---

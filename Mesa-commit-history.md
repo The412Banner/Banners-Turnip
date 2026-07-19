@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260719-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260719-r2) | 2026-07-19 | [`3bf5a8d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3bf5a8d0b0ea547c965bc02fdd9137e2f9189213) | kosmickrisp: don't cache a NULL Metal compiler | Vulkan 1.4.354 |
 | [v26.3.0-20260719](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260719) | 2026-07-19 | [`a11215b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a11215b318f6208cca39b49315a3856d4870210b) | kk: call opt_licm to lighten loop executions | Vulkan 1.4.354 |
 | [v26.3.0-20260718-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r8) | 2026-07-18 | [`db128e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db128e2f552610de79e2912925929c40c9a55652) | Uprev VVL to 6727ae4734bf9e1e6f6954254bbc382687a3866d | Vulkan 1.4.354 |
 | [v26.3.0-20260718-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260718-r7) | 2026-07-18 | [`879365e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/879365ec9f06adef47f116d11b88632264c1f271) | vulkan/runtime: fixup vk_shader leak on RT group recompile | Vulkan 1.4.354 |
