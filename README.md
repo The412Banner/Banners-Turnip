@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`7f540b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f540b051c40cfc0c5ed0c48fd70c0309fb82b37) |
+| **Commit** | [`42f636b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42f636bee95409f8ac89a453ab0edcbe58530180) |
 | **Commit date** | 2026-07-20 |
-| **Commit title** | kk: Fix Vulkan to Metal stage translation for timestamps |
+| **Commit title** | d3d12/video: Don't reset batches in fence_wait |
 | **Build date** | 20260720 |
-| **Release** | [v26.3.0-20260720-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r6) |
+| **Release** | [v26.3.0-20260720-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260720-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r7) | 2026-07-20 | [`42f636b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42f636bee95409f8ac89a453ab0edcbe58530180) | d3d12/video: Don't reset batches in fence_wait | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r6) | 2026-07-20 | [`7f540b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f540b051c40cfc0c5ed0c48fd70c0309fb82b37) | kk: Fix Vulkan to Metal stage translation for timestamps | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r5) | 2026-07-20 | [`5ead95a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ead95a3b3201e30c93b6a503319ee8210b34319) | mediafoundation: return a bigger output buffer size for hmft. | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r4) | 2026-07-20 | [`386867b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/386867b486260fdf8e106250fee943b850a403fb) | tu: Move all physical_device compiler options to a dedicated struct | Vulkan 1.4.354 |
