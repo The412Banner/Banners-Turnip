@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260720-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r4) | 2026-07-20 | [`386867b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/386867b486260fdf8e106250fee943b850a403fb) | tu: Move all physical_device compiler options to a dedicated struct | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r3) | 2026-07-20 | [`208edab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/208edabb69d2dba9518c29b7f351f0db637a66ba) | mesa/glapi: trace bitfields symbolically | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r2) | 2026-07-20 | [`6941649`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/69416494db271747d015b6ab010f3e348d7f76da) | tu: Use computed subgroup size | Vulkan 1.4.354 |
 | [v26.3.0-20260719-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260719-r2) | 2026-07-19 | [`3bf5a8d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3bf5a8d0b0ea547c965bc02fdd9137e2f9189213) | kosmickrisp: don't cache a NULL Metal compiler | Vulkan 1.4.354 |
