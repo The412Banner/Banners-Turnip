@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260720-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r6) | 2026-07-20 | [`7f540b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f540b051c40cfc0c5ed0c48fd70c0309fb82b37) | kk: Fix Vulkan to Metal stage translation for timestamps | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r5) | 2026-07-20 | [`5ead95a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ead95a3b3201e30c93b6a503319ee8210b34319) | mediafoundation: return a bigger output buffer size for hmft. | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r4) | 2026-07-20 | [`386867b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/386867b486260fdf8e106250fee943b850a403fb) | tu: Move all physical_device compiler options to a dedicated struct | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r3) | 2026-07-20 | [`208edab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/208edabb69d2dba9518c29b7f351f0db637a66ba) | mesa/glapi: trace bitfields symbolically | Vulkan 1.4.354 |
