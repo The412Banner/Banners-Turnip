@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`6941649`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/69416494db271747d015b6ab010f3e348d7f76da) |
+| **Commit** | [`208edab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/208edabb69d2dba9518c29b7f351f0db637a66ba) |
 | **Commit date** | 2026-07-20 |
-| **Commit title** | tu: Use computed subgroup size |
+| **Commit title** | mesa/glapi: trace bitfields symbolically |
 | **Build date** | 20260720 |
-| **Release** | [v26.3.0-20260720-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r2) |
+| **Release** | [v26.3.0-20260720-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260720-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r3) | 2026-07-20 | [`208edab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/208edabb69d2dba9518c29b7f351f0db637a66ba) | mesa/glapi: trace bitfields symbolically | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r2) | 2026-07-20 | [`6941649`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/69416494db271747d015b6ab010f3e348d7f76da) | tu: Use computed subgroup size | Vulkan 1.4.354 |
 | [v26.3.0-20260720](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720) | 2026-07-20 | [`df73bd9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/df73bd930ae57bc1928beb1fdfb30bc3ab41b684) | util: add Blockland workaround for crash | Vulkan 1.4.354 |
 | [v26.3.0-20260719-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260719-r2) | 2026-07-19 | [`3bf5a8d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3bf5a8d0b0ea547c965bc02fdd9137e2f9189213) | kosmickrisp: don't cache a NULL Metal compiler | Vulkan 1.4.354 |
