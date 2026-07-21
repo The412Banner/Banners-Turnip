@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`772cb76`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/772cb76cc80ed5bde9c8a3972f0852d68fa54f9d) |
-| **Commit date** | 2026-07-20 |
-| **Commit title** | venus: relax SYNC_FD fence export requirement |
+| **Commit** | [`35a8967`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35a89677c45d79a7d08682d8afc4454009ca27d4) |
+| **Commit date** | 2026-07-21 |
+| **Commit title** | vulkan/video: Fix coding H265 SPS pcm block sizes, inter ref pic set and lt refs |
 | **Build date** | 20260721 |
-| **Release** | [v26.3.0-20260721](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721) |
+| **Release** | [v26.3.0-20260721-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260721-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r2) | 2026-07-21 | [`35a8967`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35a89677c45d79a7d08682d8afc4454009ca27d4) | vulkan/video: Fix coding H265 SPS pcm block sizes, inter ref pic set and lt refs | Vulkan 1.4.354 |
 | [v26.3.0-20260721](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721) | 2026-07-21 | [`772cb76`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/772cb76cc80ed5bde9c8a3972f0852d68fa54f9d) | venus: relax SYNC_FD fence export requirement | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r9) | 2026-07-20 | [`8abf7d1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8abf7d19736e5b0bf4112cbb3787f9a7b2c4f2c9) | anv/rt: Add parent child count map instead of using pad field | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r8) | 2026-07-20 | [`9adc7dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9adc7dd3fa68d4ef659364075c8583f873d8a464) | anv: Use quad primitives for BVH encoding | Vulkan 1.4.354 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260720-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r4) | 2026-07-20 | [`386867b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/386867b486260fdf8e106250fee943b850a403fb) | tu: Move all physical_device compiler options to a dedicated struct | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r3) | 2026-07-20 | [`208edab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/208edabb69d2dba9518c29b7f351f0db637a66ba) | mesa/glapi: trace bitfields symbolically | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r2) | 2026-07-20 | [`6941649`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/69416494db271747d015b6ab010f3e348d7f76da) | tu: Use computed subgroup size | Vulkan 1.4.354 |
-| [v26.3.0-20260720](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720) | 2026-07-20 | [`df73bd9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/df73bd930ae57bc1928beb1fdfb30bc3ab41b684) | util: add Blockland workaround for crash | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
