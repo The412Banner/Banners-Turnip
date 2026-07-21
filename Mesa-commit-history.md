@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260721-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r7) | 2026-07-21 | [`be8bcf1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/be8bcf120e3bd719ba20c10aaf066e61619b0450) | ethosu: Emit explicit convolution activation ranges | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r6) | 2026-07-21 | [`935b49f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/935b49fcea98bae63d0b2b51caac9109b398f41a) | kk: Advertise proper rendering granularity | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r5) | 2026-07-21 | [`cf3da2a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cf3da2abcb0b8b85cd721f22865645324c4f77e4) | kraid: Add fsin/fcos and wire them up with tests | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r4) | 2026-07-21 | [`8b79064`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b79064907bb8b0677fdae942483e20b54cf4a3d) | v3d: save fragment constants on sand8/sand30 blit | Vulkan 1.4.354 |

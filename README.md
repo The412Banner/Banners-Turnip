@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`935b49f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/935b49fcea98bae63d0b2b51caac9109b398f41a) |
+| **Commit** | [`be8bcf1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/be8bcf120e3bd719ba20c10aaf066e61619b0450) |
 | **Commit date** | 2026-07-21 |
-| **Commit title** | kk: Advertise proper rendering granularity |
+| **Commit title** | ethosu: Emit explicit convolution activation ranges |
 | **Build date** | 20260721 |
-| **Release** | [v26.3.0-20260721-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r6) |
+| **Release** | [v26.3.0-20260721-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260721-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r7) | 2026-07-21 | [`be8bcf1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/be8bcf120e3bd719ba20c10aaf066e61619b0450) | ethosu: Emit explicit convolution activation ranges | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r6) | 2026-07-21 | [`935b49f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/935b49fcea98bae63d0b2b51caac9109b398f41a) | kk: Advertise proper rendering granularity | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r5) | 2026-07-21 | [`cf3da2a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cf3da2abcb0b8b85cd721f22865645324c4f77e4) | kraid: Add fsin/fcos and wire them up with tests | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r4) | 2026-07-21 | [`8b79064`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b79064907bb8b0677fdae942483e20b54cf4a3d) | v3d: save fragment constants on sand8/sand30 blit | Vulkan 1.4.354 |
@@ -95,8 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260721](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721) | 2026-07-21 | [`772cb76`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/772cb76cc80ed5bde9c8a3972f0852d68fa54f9d) | venus: relax SYNC_FD fence export requirement | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r9) | 2026-07-20 | [`8abf7d1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8abf7d19736e5b0bf4112cbb3787f9a7b2c4f2c9) | anv/rt: Add parent child count map instead of using pad field | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r8) | 2026-07-20 | [`9adc7dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9adc7dd3fa68d4ef659364075c8583f873d8a464) | anv: Use quad primitives for BVH encoding | Vulkan 1.4.354 |
-| [v26.3.0-20260720-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r7) | 2026-07-20 | [`42f636b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42f636bee95409f8ac89a453ab0edcbe58530180) | d3d12/video: Don't reset batches in fence_wait | Vulkan 1.4.354 |
-| [v26.3.0-20260720-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r6) | 2026-07-20 | [`7f540b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f540b051c40cfc0c5ed0c48fd70c0309fb82b37) | kk: Fix Vulkan to Metal stage translation for timestamps | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
