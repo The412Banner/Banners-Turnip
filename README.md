@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`998c1ae`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/998c1ae11d607b8103f9f476512c431945a89c14) |
+| **Commit** | [`8b79064`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b79064907bb8b0677fdae942483e20b54cf4a3d) |
 | **Commit date** | 2026-07-21 |
-| **Commit title** | mr-label-maker: Label src/vulkan/runtime/vk_video as video |
+| **Commit title** | v3d: save fragment constants on sand8/sand30 blit |
 | **Build date** | 20260721 |
-| **Release** | [v26.3.0-20260721-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r3) |
+| **Release** | [v26.3.0-20260721-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260721-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r4) | 2026-07-21 | [`8b79064`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b79064907bb8b0677fdae942483e20b54cf4a3d) | v3d: save fragment constants on sand8/sand30 blit | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r3) | 2026-07-21 | [`998c1ae`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/998c1ae11d607b8103f9f476512c431945a89c14) | mr-label-maker: Label src/vulkan/runtime/vk_video as video | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r2) | 2026-07-21 | [`35a8967`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35a89677c45d79a7d08682d8afc4454009ca27d4) | vulkan/video: Fix coding H265 SPS pcm block sizes, inter ref pic set and lt refs | Vulkan 1.4.354 |
 | [v26.3.0-20260721](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721) | 2026-07-21 | [`772cb76`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/772cb76cc80ed5bde9c8a3972f0852d68fa54f9d) | venus: relax SYNC_FD fence export requirement | Vulkan 1.4.354 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260720-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r6) | 2026-07-20 | [`7f540b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f540b051c40cfc0c5ed0c48fd70c0309fb82b37) | kk: Fix Vulkan to Metal stage translation for timestamps | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r5) | 2026-07-20 | [`5ead95a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ead95a3b3201e30c93b6a503319ee8210b34319) | mediafoundation: return a bigger output buffer size for hmft. | Vulkan 1.4.354 |
 | [v26.3.0-20260720-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r4) | 2026-07-20 | [`386867b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/386867b486260fdf8e106250fee943b850a403fb) | tu: Move all physical_device compiler options to a dedicated struct | Vulkan 1.4.354 |
-| [v26.3.0-20260720-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260720-r3) | 2026-07-20 | [`208edab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/208edabb69d2dba9518c29b7f351f0db637a66ba) | mesa/glapi: trace bitfields symbolically | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---

@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260721-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r4) | 2026-07-21 | [`8b79064`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b79064907bb8b0677fdae942483e20b54cf4a3d) | v3d: save fragment constants on sand8/sand30 blit | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r3) | 2026-07-21 | [`998c1ae`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/998c1ae11d607b8103f9f476512c431945a89c14) | mr-label-maker: Label src/vulkan/runtime/vk_video as video | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r2) | 2026-07-21 | [`35a8967`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35a89677c45d79a7d08682d8afc4454009ca27d4) | vulkan/video: Fix coding H265 SPS pcm block sizes, inter ref pic set and lt refs | Vulkan 1.4.354 |
 | [v26.3.0-20260721](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721) | 2026-07-20 | [`772cb76`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/772cb76cc80ed5bde9c8a3972f0852d68fa54f9d) | venus: relax SYNC_FD fence export requirement | Vulkan 1.4.354 |
