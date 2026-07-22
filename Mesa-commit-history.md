@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260722](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722) | 2026-07-22 | [`d49a00b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d49a00bdf15fd48b31af93aaf5feed3eebcbda12) | r300: fixes for UB around left shifts | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r8) | 2026-07-21 | [`6b89caf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b89caf0e02686ddf2afaac53280d1a1d2d5b79b) | tu: AVOID_CCU should avoid depth CCU if custom resolve writes D/S | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r7) | 2026-07-21 | [`be8bcf1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/be8bcf120e3bd719ba20c10aaf066e61619b0450) | ethosu: Emit explicit convolution activation ranges | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r6) | 2026-07-21 | [`935b49f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/935b49fcea98bae63d0b2b51caac9109b398f41a) | kk: Advertise proper rendering granularity | Vulkan 1.4.354 |
