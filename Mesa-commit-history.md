@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260722-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r7) | 2026-07-22 | [`45582c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/45582c89a8c64f55784ace8daec70a6bf361e75d) | pan: in register allocation, consider spilling the node being allocated | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r6) | 2026-07-22 | [`a1b2939`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1b2939cbd3bb7054a85bd0150e36f0c85cbcdcf) | panfrost: v12+ fixes for run_fullscreen blits | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r5) | 2026-07-22 | [`0aba464`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0aba464832e3f2bae16fb47a825cdbcfa68246d4) | kraid/v9: Fix op_dst_supported_lanes() for vecsize dsts | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r4) | 2026-07-22 | [`c43cac7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c43cac7264b36b3e3c30408d1b4ad99655293af9) | pan/bi: enable late_lower_int64 on Valhall (v9+) | Vulkan 1.4.354 |
