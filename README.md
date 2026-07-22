@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`45582c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/45582c89a8c64f55784ace8daec70a6bf361e75d) |
+| **Commit** | [`52ee87d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52ee87d6dcac1f2e3c1b086d0fc53e526d904ad0) |
 | **Commit date** | 2026-07-22 |
-| **Commit title** | pan: in register allocation, consider spilling the node being allocated |
+| **Commit title** | intel/executor: Add block2d example for Xe2 |
 | **Build date** | 20260722 |
-| **Release** | [v26.3.0-20260722-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r7) |
+| **Release** | [v26.3.0-20260722-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260722-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r8) | 2026-07-22 | [`52ee87d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52ee87d6dcac1f2e3c1b086d0fc53e526d904ad0) | intel/executor: Add block2d example for Xe2 | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r7) | 2026-07-22 | [`45582c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/45582c89a8c64f55784ace8daec70a6bf361e75d) | pan: in register allocation, consider spilling the node being allocated | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r6) | 2026-07-22 | [`a1b2939`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1b2939cbd3bb7054a85bd0150e36f0c85cbcdcf) | panfrost: v12+ fixes for run_fullscreen blits | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r5) | 2026-07-22 | [`0aba464`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0aba464832e3f2bae16fb47a825cdbcfa68246d4) | kraid/v9: Fix op_dst_supported_lanes() for vecsize dsts | Vulkan 1.4.354 |
