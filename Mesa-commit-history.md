@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260722-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r3) | 2026-07-22 | [`d3d45a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3d45a7fb41433149924d0bbbf9d9bd1ddb9c33a) | pvr: Implementation of VK_KHR_maintenance7 | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r2) | 2026-07-22 | [`38ba9dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/38ba9dd991a2a221719212740222f048c070aeeb) | kk: Remove unused mtl_drawable_present | Vulkan 1.4.354 |
 | [v26.3.0-20260722](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722) | 2026-07-22 | [`d49a00b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d49a00bdf15fd48b31af93aaf5feed3eebcbda12) | r300: fixes for UB around left shifts | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r8) | 2026-07-21 | [`6b89caf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b89caf0e02686ddf2afaac53280d1a1d2d5b79b) | tu: AVOID_CCU should avoid depth CCU if custom resolve writes D/S | Vulkan 1.4.354 |
