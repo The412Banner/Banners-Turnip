@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`0aba464`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0aba464832e3f2bae16fb47a825cdbcfa68246d4) |
+| **Commit** | [`a1b2939`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1b2939cbd3bb7054a85bd0150e36f0c85cbcdcf) |
 | **Commit date** | 2026-07-22 |
-| **Commit title** | kraid/v9: Fix op_dst_supported_lanes() for vecsize dsts |
+| **Commit title** | panfrost: v12+ fixes for run_fullscreen blits |
 | **Build date** | 20260722 |
-| **Release** | [v26.3.0-20260722-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r5) |
+| **Release** | [v26.3.0-20260722-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260722-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r6) | 2026-07-22 | [`a1b2939`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1b2939cbd3bb7054a85bd0150e36f0c85cbcdcf) | panfrost: v12+ fixes for run_fullscreen blits | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r5) | 2026-07-22 | [`0aba464`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0aba464832e3f2bae16fb47a825cdbcfa68246d4) | kraid/v9: Fix op_dst_supported_lanes() for vecsize dsts | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r4) | 2026-07-22 | [`c43cac7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c43cac7264b36b3e3c30408d1b4ad99655293af9) | pan/bi: enable late_lower_int64 on Valhall (v9+) | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r3) | 2026-07-22 | [`d3d45a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3d45a7fb41433149924d0bbbf9d9bd1ddb9c33a) | pvr: Implementation of VK_KHR_maintenance7 | Vulkan 1.4.354 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260722](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722) | 2026-07-22 | [`d49a00b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d49a00bdf15fd48b31af93aaf5feed3eebcbda12) | r300: fixes for UB around left shifts | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r8) | 2026-07-21 | [`6b89caf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b89caf0e02686ddf2afaac53280d1a1d2d5b79b) | tu: AVOID_CCU should avoid depth CCU if custom resolve writes D/S | Vulkan 1.4.354 |
 | [v26.3.0-20260721-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r7) | 2026-07-21 | [`be8bcf1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/be8bcf120e3bd719ba20c10aaf066e61619b0450) | ethosu: Emit explicit convolution activation ranges | Vulkan 1.4.354 |
-| [v26.3.0-20260721-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260721-r6) | 2026-07-21 | [`935b49f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/935b49fcea98bae63d0b2b51caac9109b398f41a) | kk: Advertise proper rendering granularity | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
