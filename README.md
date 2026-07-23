@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`42f591b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42f591b906b7e8a966cc339f84d2671f423d48c4) |
+| **Commit** | [`2e8e61c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2e8e61c1fb1a77d72d31ca010ed90c516e45f849) |
 | **Commit date** | 2026-07-23 |
-| **Commit title** | v3d,v3dv: commonize timestamp query |
+| **Commit title** | v3dv: propagate failure when getting a stage's NIR fails |
 | **Build date** | 20260723 |
-| **Release** | [v26.3.0-20260723-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r2) |
+| **Release** | [v26.3.0-20260723-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260723-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r3) | 2026-07-23 | [`2e8e61c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2e8e61c1fb1a77d72d31ca010ed90c516e45f849) | v3dv: propagate failure when getting a stage's NIR fails | Vulkan 1.4.354 |
 | [v26.3.0-20260723-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r2) | 2026-07-23 | [`42f591b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42f591b906b7e8a966cc339f84d2671f423d48c4) | v3d,v3dv: commonize timestamp query | Vulkan 1.4.354 |
 | [v26.3.0-20260723](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723) | 2026-07-23 | [`fa95a76`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa95a76636f25ee3399f72b86e1c0648af333991) | nir/lower_io_indirect_loads: implement lowering indirect vertex index | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r9) | 2026-07-22 | [`3d2de67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d2de671faaf917a370713c6afd87eb8446cbf87) | ac/nir/lower_ps_early: port radv_nir_trim_fs_color_exports in here | Vulkan 1.4.354 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260722-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r5) | 2026-07-22 | [`0aba464`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0aba464832e3f2bae16fb47a825cdbcfa68246d4) | kraid/v9: Fix op_dst_supported_lanes() for vecsize dsts | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r4) | 2026-07-22 | [`c43cac7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c43cac7264b36b3e3c30408d1b4ad99655293af9) | pan/bi: enable late_lower_int64 on Valhall (v9+) | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r3) | 2026-07-22 | [`d3d45a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3d45a7fb41433149924d0bbbf9d9bd1ddb9c33a) | pvr: Implementation of VK_KHR_maintenance7 | Vulkan 1.4.354 |
-| [v26.3.0-20260722-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r2) | 2026-07-22 | [`38ba9dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/38ba9dd991a2a221719212740222f048c070aeeb) | kk: Remove unused mtl_drawable_present | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
