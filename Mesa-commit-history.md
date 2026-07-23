@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260723](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723) | 2026-07-22 | [`fa95a76`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa95a76636f25ee3399f72b86e1c0648af333991) | nir/lower_io_indirect_loads: implement lowering indirect vertex index | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r9) | 2026-07-22 | [`3d2de67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d2de671faaf917a370713c6afd87eb8446cbf87) | ac/nir/lower_ps_early: port radv_nir_trim_fs_color_exports in here | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r8) | 2026-07-22 | [`52ee87d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52ee87d6dcac1f2e3c1b086d0fc53e526d904ad0) | intel/executor: Add block2d example for Xe2 | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r7) | 2026-07-22 | [`45582c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/45582c89a8c64f55784ace8daec70a6bf361e75d) | pan: in register allocation, consider spilling the node being allocated | Vulkan 1.4.354 |
