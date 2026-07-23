@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260723-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r6) | 2026-07-23 | [`eadcadf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/eadcadf067ede525b5f511d22215272bb31eaa41) | nvk: report fills from memory correctly | Vulkan 1.4.354 |
 | [v26.3.0-20260723-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r5) | 2026-07-23 | [`5c4ec0c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5c4ec0c99dc9c32f489276a6de141199afb13600) | pick-ui: require reverts to be explicitly nominated for backport | Vulkan 1.4.354 |
 | [v26.3.0-20260723-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r4) | 2026-07-23 | [`594f44b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/594f44bdf48ceea0591c928a8cdb13f56d009899) | mediafoundation: removing dependency of pipe_screen from CD3D12BitstreamMFBuffer | Vulkan 1.4.354 |
 | [v26.3.0-20260723-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r3) | 2026-07-23 | [`2e8e61c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2e8e61c1fb1a77d72d31ca010ed90c516e45f849) | v3dv: propagate failure when getting a stage's NIR fails | Vulkan 1.4.354 |
