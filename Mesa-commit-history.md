@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260723-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r4) | 2026-07-23 | [`594f44b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/594f44bdf48ceea0591c928a8cdb13f56d009899) | mediafoundation: removing dependency of pipe_screen from CD3D12BitstreamMFBuffer | Vulkan 1.4.354 |
 | [v26.3.0-20260723-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r3) | 2026-07-23 | [`2e8e61c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2e8e61c1fb1a77d72d31ca010ed90c516e45f849) | v3dv: propagate failure when getting a stage's NIR fails | Vulkan 1.4.354 |
 | [v26.3.0-20260723-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r2) | 2026-07-23 | [`42f591b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42f591b906b7e8a966cc339f84d2671f423d48c4) | v3d,v3dv: commonize timestamp query | Vulkan 1.4.354 |
 | [v26.3.0-20260723](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723) | 2026-07-22 | [`fa95a76`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa95a76636f25ee3399f72b86e1c0648af333991) | nir/lower_io_indirect_loads: implement lowering indirect vertex index | Vulkan 1.4.354 |
