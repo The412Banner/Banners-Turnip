@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`eadcadf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/eadcadf067ede525b5f511d22215272bb31eaa41) |
+| **Commit** | [`8b794a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b794a5167a729758cac9bde45fbe1886eb89c91) |
 | **Commit date** | 2026-07-23 |
-| **Commit title** | nvk: report fills from memory correctly |
+| **Commit title** | venus: document timeline semaphore implementation |
 | **Build date** | 20260723 |
-| **Release** | [v26.3.0-20260723-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r6) |
+| **Release** | [v26.3.0-20260723-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260723-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r7) | 2026-07-23 | [`8b794a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b794a5167a729758cac9bde45fbe1886eb89c91) | venus: document timeline semaphore implementation | Vulkan 1.4.354 |
 | [v26.3.0-20260723-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r6) | 2026-07-23 | [`eadcadf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/eadcadf067ede525b5f511d22215272bb31eaa41) | nvk: report fills from memory correctly | Vulkan 1.4.354 |
 | [v26.3.0-20260723-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r5) | 2026-07-23 | [`5c4ec0c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5c4ec0c99dc9c32f489276a6de141199afb13600) | pick-ui: require reverts to be explicitly nominated for backport | Vulkan 1.4.354 |
 | [v26.3.0-20260723-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r4) | 2026-07-23 | [`594f44b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/594f44bdf48ceea0591c928a8cdb13f56d009899) | mediafoundation: removing dependency of pipe_screen from CD3D12BitstreamMFBuffer | Vulkan 1.4.354 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260723-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r2) | 2026-07-23 | [`42f591b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42f591b906b7e8a966cc339f84d2671f423d48c4) | v3d,v3dv: commonize timestamp query | Vulkan 1.4.354 |
 | [v26.3.0-20260723](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723) | 2026-07-23 | [`fa95a76`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa95a76636f25ee3399f72b86e1c0648af333991) | nir/lower_io_indirect_loads: implement lowering indirect vertex index | Vulkan 1.4.354 |
 | [v26.3.0-20260722-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r9) | 2026-07-22 | [`3d2de67`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d2de671faaf917a370713c6afd87eb8446cbf87) | ac/nir/lower_ps_early: port radv_nir_trim_fs_color_exports in here | Vulkan 1.4.354 |
-| [v26.3.0-20260722-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260722-r8) | 2026-07-22 | [`52ee87d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52ee87d6dcac1f2e3c1b086d0fc53e526d904ad0) | intel/executor: Add block2d example for Xe2 | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
