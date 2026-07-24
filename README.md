@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`b277a49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b277a4925a161592801d711a8258433e2e2cda42) |
+| **Commit** | [`254943a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/254943add03f7ecdbe0feb70a4e85d855e1c611b) |
 | **Commit date** | 2026-07-24 |
-| **Commit title** | nir: Account for cmat memory accesses in copy_prop_vars |
+| **Commit title** | nv30: reorder binding steps to match draw module intended behavior |
 | **Build date** | 20260724 |
-| **Release** | [v26.3.0-20260724-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r5) |
+| **Release** | [v26.3.0-20260724-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,13 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260724-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r6) | 2026-07-24 | [`254943a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/254943add03f7ecdbe0feb70a4e85d855e1c611b) | nv30: reorder binding steps to match draw module intended behavior | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r5) | 2026-07-24 | [`b277a49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b277a4925a161592801d711a8258433e2e2cda42) | nir: Account for cmat memory accesses in copy_prop_vars | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r4) | 2026-07-24 | [`95cf4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95cf4cca42bd40289d4d1d8e56c8e3c54ebe9344) | st: invalidate shader constants on clip plane state changes | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r3) | 2026-07-24 | [`0409984`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0409984f27a183d833c6633b0981f1d99208400f) | lavapipe: add tensorlayout and blockloads NV_cooperative_matrix2 support | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r2) | 2026-07-24 | [`1d899a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1d899a489de21796a28075b8a4aed8a5954b0057) | pvr: Fix for depth stencil 2d array writes. | Vulkan 1.4.354 |
 | [v26.3.0-20260724](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724) | 2026-07-24 | [`479773c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/479773c7e4264506f2d9ec4bf15c6bf677f0d67a) | mesa/st: Invalidate FS sampler views after PBO texture transfers | Vulkan 1.4.354 |
 | [v26.3.0-20260723-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r7) | 2026-07-23 | [`8b794a5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8b794a5167a729758cac9bde45fbe1886eb89c91) | venus: document timeline semaphore implementation | Vulkan 1.4.354 |
-| [v26.3.0-20260723-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260723-r6) | 2026-07-23 | [`eadcadf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/eadcadf067ede525b5f511d22215272bb31eaa41) | nvk: report fills from memory correctly | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
