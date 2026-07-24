@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260724-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r7) | 2026-07-24 | [`d0a72a2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d0a72a261e1b79b5951491160a7384e8079d6243) | intel/gen: print sr0 subregisters | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r6) | 2026-07-24 | [`254943a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/254943add03f7ecdbe0feb70a4e85d855e1c611b) | nv30: reorder binding steps to match draw module intended behavior | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r5) | 2026-07-24 | [`b277a49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b277a4925a161592801d711a8258433e2e2cda42) | nir: Account for cmat memory accesses in copy_prop_vars | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r4) | 2026-07-24 | [`95cf4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95cf4cca42bd40289d4d1d8e56c8e3c54ebe9344) | st: invalidate shader constants on clip plane state changes | Vulkan 1.4.354 |
