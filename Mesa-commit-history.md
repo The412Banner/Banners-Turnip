@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260724-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r4) | 2026-07-24 | [`95cf4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95cf4cca42bd40289d4d1d8e56c8e3c54ebe9344) | st: invalidate shader constants on clip plane state changes | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r3) | 2026-07-24 | [`0409984`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0409984f27a183d833c6633b0981f1d99208400f) | lavapipe: add tensorlayout and blockloads NV_cooperative_matrix2 support | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r2) | 2026-07-24 | [`1d899a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1d899a489de21796a28075b8a4aed8a5954b0057) | pvr: Fix for depth stencil 2d array writes. | Vulkan 1.4.354 |
 | [v26.3.0-20260724](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724) | 2026-07-24 | [`479773c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/479773c7e4264506f2d9ec4bf15c6bf677f0d67a) | mesa/st: Invalidate FS sampler views after PBO texture transfers | Vulkan 1.4.354 |
