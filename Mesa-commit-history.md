@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260725-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725-r2) | 2026-07-25 | [`c403949`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c4039495967db0bff1ffaf2c955bc8586ce9c269) | anv: Include build and device identity in shader binary UUID | Vulkan 1.4.354 |
 | [v26.3.0-20260725](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725) | 2026-07-25 | [`7a6f569`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7a6f5690575edc7113ff0da4281d8a646114be28) | radeonsi: add handling of PERSP_PULL_MODEL | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r9) | 2026-07-24 | [`1b0f0e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1b0f0e0a83c4b20a0a24df41bafc6d0ca88d5fcb) | rusticl/memory: return 0 for CL_IMAGE_SLICE_PITCH also for 2d images | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r8) | 2026-07-24 | [`aefa0ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aefa0ce06e0f5b2fcd70ba81f7e6957191ed686c) | freedreno/a6xx: Add SUBPASS_FENCE | Vulkan 1.4.354 |
