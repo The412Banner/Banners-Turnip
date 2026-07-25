@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`c403949`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c4039495967db0bff1ffaf2c955bc8586ce9c269) |
+| **Commit** | [`d18d598`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d18d598e275d1ab4634381c5414affe1319af6b1) |
 | **Commit date** | 2026-07-25 |
-| **Commit title** | anv: Include build and device identity in shader binary UUID |
+| **Commit title** | Uprev VVL to 8dc2d227ef6ca2fa7c4cca5711b0856b8dc18dff |
 | **Build date** | 20260725 |
-| **Release** | [v26.3.0-20260725-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725-r2) |
+| **Release** | [v26.3.0-20260725-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260725-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725-r3) | 2026-07-25 | [`d18d598`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d18d598e275d1ab4634381c5414affe1319af6b1) | Uprev VVL to 8dc2d227ef6ca2fa7c4cca5711b0856b8dc18dff | Vulkan 1.4.354 |
 | [v26.3.0-20260725-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725-r2) | 2026-07-25 | [`c403949`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c4039495967db0bff1ffaf2c955bc8586ce9c269) | anv: Include build and device identity in shader binary UUID | Vulkan 1.4.354 |
 | [v26.3.0-20260725](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725) | 2026-07-25 | [`7a6f569`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7a6f5690575edc7113ff0da4281d8a646114be28) | radeonsi: add handling of PERSP_PULL_MODEL | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r9) | 2026-07-24 | [`1b0f0e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1b0f0e0a83c4b20a0a24df41bafc6d0ca88d5fcb) | rusticl/memory: return 0 for CL_IMAGE_SLICE_PITCH also for 2d images | Vulkan 1.4.354 |
@@ -96,8 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260724-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r5) | 2026-07-24 | [`b277a49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b277a4925a161592801d711a8258433e2e2cda42) | nir: Account for cmat memory accesses in copy_prop_vars | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r4) | 2026-07-24 | [`95cf4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95cf4cca42bd40289d4d1d8e56c8e3c54ebe9344) | st: invalidate shader constants on clip plane state changes | Vulkan 1.4.354 |
 | [v26.3.0-20260724-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r3) | 2026-07-24 | [`0409984`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0409984f27a183d833c6633b0981f1d99208400f) | lavapipe: add tensorlayout and blockloads NV_cooperative_matrix2 support | Vulkan 1.4.354 |
-| [v26.3.0-20260724-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r2) | 2026-07-24 | [`1d899a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1d899a489de21796a28075b8a4aed8a5954b0057) | pvr: Fix for depth stencil 2d array writes. | Vulkan 1.4.354 |
-| [v26.3.0-20260724](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724) | 2026-07-24 | [`479773c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/479773c7e4264506f2d9ec4bf15c6bf677f0d67a) | mesa/st: Invalidate FS sampler views after PBO texture transfers | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
