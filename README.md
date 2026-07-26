@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`3e2d851`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e2d8517b897026377267c09975db83525d2fc95) |
-| **Commit date** | 2026-07-25 |
-| **Commit title** | lavapipe: Fix gnu-empty-initializer error in 0409984f |
-| **Build date** | 20260725 |
-| **Release** | [v26.3.0-20260725-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725-r4) |
+| **Commit** | [`1863e52`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1863e52e5ce30f3e773c4f15c9abad47e2b92964) |
+| **Commit date** | 2026-07-26 |
+| **Commit title** | kraid/nir: Implement fquantize2f16 |
+| **Build date** | 20260726 |
+| **Release** | [v26.3.0-20260726](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,10 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260726](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726) | 2026-07-26 | [`1863e52`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1863e52e5ce30f3e773c4f15c9abad47e2b92964) | kraid/nir: Implement fquantize2f16 | Vulkan 1.4.354 |
 | [v26.3.0-20260725-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725-r4) | 2026-07-25 | [`3e2d851`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e2d8517b897026377267c09975db83525d2fc95) | lavapipe: Fix gnu-empty-initializer error in 0409984f | Vulkan 1.4.354 |
 | [v26.3.0-20260725-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725-r3) | 2026-07-25 | [`d18d598`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d18d598e275d1ab4634381c5414affe1319af6b1) | Uprev VVL to 8dc2d227ef6ca2fa7c4cca5711b0856b8dc18dff | Vulkan 1.4.354 |
 | [v26.3.0-20260725-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725-r2) | 2026-07-25 | [`c403949`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c4039495967db0bff1ffaf2c955bc8586ce9c269) | anv: Include build and device identity in shader binary UUID | Vulkan 1.4.354 |
-| [v26.3.0-20260725](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260725) | 2026-07-25 | [`7a6f569`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7a6f5690575edc7113ff0da4281d8a646114be28) | radeonsi: add handling of PERSP_PULL_MODEL | Vulkan 1.4.354 |
-| [v26.3.0-20260724-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r9) | 2026-07-24 | [`1b0f0e0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1b0f0e0a83c4b20a0a24df41bafc6d0ca88d5fcb) | rusticl/memory: return 0 for CL_IMAGE_SLICE_PITCH also for 2d images | Vulkan 1.4.354 |
-| [v26.3.0-20260724-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r8) | 2026-07-24 | [`aefa0ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aefa0ce06e0f5b2fcd70ba81f7e6957191ed686c) | freedreno/a6xx: Add SUBPASS_FENCE | Vulkan 1.4.354 |
-| [v26.3.0-20260724-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260724-r7) | 2026-07-24 | [`d0a72a2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d0a72a261e1b79b5951491160a7384e8079d6243) | intel/gen: print sr0 subregisters | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
