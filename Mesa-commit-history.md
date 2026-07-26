@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260726-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726-r4) | 2026-07-26 | [`780727e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/780727e68adc62f446dc1df7bcaf86f20b6c03d1) | rusticl/kernel: add libclc source hash to kernel shader keys | Vulkan 1.4.354 |
 | [v26.3.0-20260726-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726-r3) | 2026-07-26 | [`e233788`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2337881c46d8b09276c13fdf1ad04db462e1228) | nir: Add options to nir_lower_xfb_to_stores | Vulkan 1.4.354 |
 | [v26.3.0-20260726-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726-r2) | 2026-07-26 | [`9512f46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9512f46818de8ee10efb671fc661a0cff685a8f4) | meson: give names to libdrm drivers attributes checks | Vulkan 1.4.354 |
 | [v26.3.0-20260726](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726) | 2026-07-26 | [`1863e52`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1863e52e5ce30f3e773c4f15c9abad47e2b92964) | kraid/nir: Implement fquantize2f16 | Vulkan 1.4.354 |
