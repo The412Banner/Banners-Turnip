@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260727-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r2) | 2026-07-27 | [`6015d5e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6015d5e538d531f230bb102e0af10eed566e6900) | pan/perf: Fix 32bit build of panquick | Vulkan 1.4.354 |
 | [v26.3.0-20260727](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727) | 2026-07-27 | [`0d4d190`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d4d1907bd35acfe80208d10deeb0cb134f79c60) | freedreno/a702: drop passing test | Vulkan 1.4.354 |
 | [v26.3.0-20260726-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726-r5) | 2026-07-26 | [`19ffa05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/19ffa058b441e7f25f9cec774e26b0c1ac29f03d) | anv: add infrastructure to force tagged compute shaders to SIMD32 | Vulkan 1.4.354 |
 | [v26.3.0-20260726-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726-r4) | 2026-07-26 | [`780727e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/780727e68adc62f446dc1df7bcaf86f20b6c03d1) | rusticl/kernel: add libclc source hash to kernel shader keys | Vulkan 1.4.354 |

@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`0d4d190`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d4d1907bd35acfe80208d10deeb0cb134f79c60) |
+| **Commit** | [`6015d5e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6015d5e538d531f230bb102e0af10eed566e6900) |
 | **Commit date** | 2026-07-27 |
-| **Commit title** | freedreno/a702: drop passing test |
+| **Commit title** | pan/perf: Fix 32bit build of panquick |
 | **Build date** | 20260727 |
-| **Release** | [v26.3.0-20260727](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727) |
+| **Release** | [v26.3.0-20260727-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,12 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260727-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r2) | 2026-07-27 | [`6015d5e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6015d5e538d531f230bb102e0af10eed566e6900) | pan/perf: Fix 32bit build of panquick | Vulkan 1.4.354 |
 | [v26.3.0-20260727](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727) | 2026-07-27 | [`0d4d190`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d4d1907bd35acfe80208d10deeb0cb134f79c60) | freedreno/a702: drop passing test | Vulkan 1.4.354 |
 | [v26.3.0-20260726-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726-r5) | 2026-07-26 | [`19ffa05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/19ffa058b441e7f25f9cec774e26b0c1ac29f03d) | anv: add infrastructure to force tagged compute shaders to SIMD32 | Vulkan 1.4.354 |
 | [v26.3.0-20260726-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726-r4) | 2026-07-26 | [`780727e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/780727e68adc62f446dc1df7bcaf86f20b6c03d1) | rusticl/kernel: add libclc source hash to kernel shader keys | Vulkan 1.4.354 |
 | [v26.3.0-20260726-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726-r3) | 2026-07-26 | [`e233788`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2337881c46d8b09276c13fdf1ad04db462e1228) | nir: Add options to nir_lower_xfb_to_stores | Vulkan 1.4.354 |
-| [v26.3.0-20260726-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726-r2) | 2026-07-26 | [`9512f46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9512f46818de8ee10efb671fc661a0cff685a8f4) | meson: give names to libdrm drivers attributes checks | Vulkan 1.4.354 |
-| [v26.3.0-20260726](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260726) | 2026-07-26 | [`1863e52`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1863e52e5ce30f3e773c4f15c9abad47e2b92964) | kraid/nir: Implement fquantize2f16 | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
