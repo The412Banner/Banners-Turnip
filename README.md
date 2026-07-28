@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`dcb6045`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcb6045ac5b45a0d086d37904588a4fc05262233) |
+| **Commit** | [`697929b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/697929b7b6065b2637f0ea999a4a821a2520f357) |
 | **Commit date** | 2026-07-28 |
-| **Commit title** | radv: Expose mutable acceleration structure descriptors |
+| **Commit title** | r300: preserve masked writes on microtiled color buffers |
 | **Build date** | 20260728 |
-| **Release** | [v26.3.0-20260728-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r5) |
+| **Release** | [v26.3.0-20260728-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260728-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r6) | 2026-07-28 | [`697929b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/697929b7b6065b2637f0ea999a4a821a2520f357) | r300: preserve masked writes on microtiled color buffers | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r5) | 2026-07-28 | [`dcb6045`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcb6045ac5b45a0d086d37904588a4fc05262233) | radv: Expose mutable acceleration structure descriptors | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r4) | 2026-07-28 | [`892e2d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/892e2d0c297cf0d8db95bcf1ef978a9a8e7ff311) | radv/nir/opt_tid_function: const fold partially used inverse_ballot | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r3) | 2026-07-28 | [`114ca57`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114ca57fd288c1a84a1525dd3ee9f13528a353c2) | kraid: Implement shader_clock | Vulkan 1.4.354 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260727-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r6) | 2026-07-27 | [`3c0803f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3c0803f5a17f13bad5c2f2da7cdeaee4f792eeb2) | tu: Dirty LRZ after changing attachment locations disable LRZ writes | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r5) | 2026-07-27 | [`f453139`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f4531397d001a3335f92458c509d27af2a7754a5) | aco: remove TODO in try_optimize_branching_sequence | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r4) | 2026-07-27 | [`c41c159`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c41c1596ee6dead1c139484fccff6a4b8addff72) | ac/video: Update VCN 5.3 encode caps | Vulkan 1.4.354 |
-| [v26.3.0-20260727-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r3) | 2026-07-27 | [`ed30ed7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ed30ed7c39d2fae442c4a353144ba1112e9f0d3d) | asahi: nir: lower flrp64 | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
