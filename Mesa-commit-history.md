@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260728-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r9) | 2026-07-28 | [`6804cd3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6804cd3a6bf37c1f69f1016ec7a7c831217ec7ff) | mesa: inline bug report url | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r8) | 2026-07-28 | [`090fecc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/090fecc2fc9f14bfde473e076136a19af279c4eb) | intel/compiler/brw: Use moves instead of copies in scoreboarding pass | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r7) | 2026-07-28 | [`1d8d746`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1d8d7469892b3162ec3d269c1e1b81718847612d) | anv/video: don't report VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r6) | 2026-07-28 | [`697929b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/697929b7b6065b2637f0ea999a4a821a2520f357) | r300: preserve masked writes on microtiled color buffers | Vulkan 1.4.354 |
