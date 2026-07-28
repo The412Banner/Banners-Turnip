@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260728-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r11) | 2026-07-28 | [`ad4dcba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ad4dcba94148faca1ca9db395713b5d477ac713f) | drm-shim: Add etnaviv | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r10) | 2026-07-28 | [`acaa46f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/acaa46f155f75aebe9a0ece1e06c329f87f06e6b) | hwtest: fix tests as F2FP and IMNMX do not exist on Volta | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r9) | 2026-07-28 | [`6804cd3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6804cd3a6bf37c1f69f1016ec7a7c831217ec7ff) | mesa: inline bug report url | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r8) | 2026-07-28 | [`090fecc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/090fecc2fc9f14bfde473e076136a19af279c4eb) | intel/compiler/brw: Use moves instead of copies in scoreboarding pass | Vulkan 1.4.354 |
