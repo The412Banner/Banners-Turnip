@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`ad4dcba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ad4dcba94148faca1ca9db395713b5d477ac713f) |
+| **Commit** | [`d265315`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d265315064bc0b27a82362d550049e7b3c42abd4) |
 | **Commit date** | 2026-07-28 |
-| **Commit title** | drm-shim: Add etnaviv |
+| **Commit title** | kraid: Pass scale to FEXP.f32 instead of arg |
 | **Build date** | 20260728 |
-| **Release** | [v26.3.0-20260728-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r11) |
+| **Release** | [v26.3.0-20260728-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r12) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260728-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r12) | 2026-07-28 | [`d265315`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d265315064bc0b27a82362d550049e7b3c42abd4) | kraid: Pass scale to FEXP.f32 instead of arg | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r11) | 2026-07-28 | [`ad4dcba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ad4dcba94148faca1ca9db395713b5d477ac713f) | drm-shim: Add etnaviv | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r10) | 2026-07-28 | [`acaa46f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/acaa46f155f75aebe9a0ece1e06c329f87f06e6b) | hwtest: fix tests as F2FP and IMNMX do not exist on Volta | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r9) | 2026-07-28 | [`6804cd3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6804cd3a6bf37c1f69f1016ec7a7c831217ec7ff) | mesa: inline bug report url | Vulkan 1.4.354 |
