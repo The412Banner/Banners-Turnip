@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260728](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728) | 2026-07-28 | [`60654ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/60654ceb9139ab8f289c6252bc12659fcf655e1c) | vtn/opencl: fix libclc needing fp16 lowering to fp32 | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r9) | 2026-07-27 | [`c5f10a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5f10a8501ca964ef24570f430a99633c689f656) | anv: Enable the temporary RE engine workaround for several titles | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r8) | 2026-07-27 | [`c276444`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c276444b7190c2feaa722168253baaf9f3c737e9) | asahi: ci: Add failing b10g11r11 and e5b9g9r9 copy tests | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r7) | 2026-07-27 | [`28f0804`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/28f0804ea039c333d2294bdd6565332dbdfe7979) | brw: Match fill/spill optimization scratch accesses by logical offset | Vulkan 1.4.354 |

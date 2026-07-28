@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`c5f10a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5f10a8501ca964ef24570f430a99633c689f656) |
-| **Commit date** | 2026-07-27 |
-| **Commit title** | anv: Enable the temporary RE engine workaround for several titles |
-| **Build date** | 20260727 |
-| **Release** | [v26.3.0-20260727-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r9) |
+| **Commit** | [`60654ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/60654ceb9139ab8f289c6252bc12659fcf655e1c) |
+| **Commit date** | 2026-07-28 |
+| **Commit title** | vtn/opencl: fix libclc needing fp16 lowering to fp32 |
+| **Build date** | 20260728 |
+| **Release** | [v26.3.0-20260728](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260728](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728) | 2026-07-28 | [`60654ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/60654ceb9139ab8f289c6252bc12659fcf655e1c) | vtn/opencl: fix libclc needing fp16 lowering to fp32 | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r9) | 2026-07-27 | [`c5f10a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5f10a8501ca964ef24570f430a99633c689f656) | anv: Enable the temporary RE engine workaround for several titles | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r8) | 2026-07-27 | [`c276444`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c276444b7190c2feaa722168253baaf9f3c737e9) | asahi: ci: Add failing b10g11r11 and e5b9g9r9 copy tests | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r7) | 2026-07-27 | [`28f0804`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/28f0804ea039c333d2294bdd6565332dbdfe7979) | brw: Match fill/spill optimization scratch accesses by logical offset | Vulkan 1.4.354 |
