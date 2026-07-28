@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`892e2d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/892e2d0c297cf0d8db95bcf1ef978a9a8e7ff311) |
+| **Commit** | [`dcb6045`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcb6045ac5b45a0d086d37904588a4fc05262233) |
 | **Commit date** | 2026-07-28 |
-| **Commit title** | radv/nir/opt_tid_function: const fold partially used inverse_ballot |
+| **Commit title** | radv: Expose mutable acceleration structure descriptors |
 | **Build date** | 20260728 |
-| **Release** | [v26.3.0-20260728-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r4) |
+| **Release** | [v26.3.0-20260728-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260728-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r5) | 2026-07-28 | [`dcb6045`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcb6045ac5b45a0d086d37904588a4fc05262233) | radv: Expose mutable acceleration structure descriptors | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r4) | 2026-07-28 | [`892e2d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/892e2d0c297cf0d8db95bcf1ef978a9a8e7ff311) | radv/nir/opt_tid_function: const fold partially used inverse_ballot | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r3) | 2026-07-28 | [`114ca57`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114ca57fd288c1a84a1525dd3ee9f13528a353c2) | kraid: Implement shader_clock | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r2) | 2026-07-28 | [`47cf31c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47cf31c8edc11f95f4e58380b3f9fdbd3dc6c0f8) | freedreno: Build blit shaders with nir_builder | Vulkan 1.4.354 |
