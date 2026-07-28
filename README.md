@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`47cf31c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47cf31c8edc11f95f4e58380b3f9fdbd3dc6c0f8) |
+| **Commit** | [`114ca57`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114ca57fd288c1a84a1525dd3ee9f13528a353c2) |
 | **Commit date** | 2026-07-28 |
-| **Commit title** | freedreno: Build blit shaders with nir_builder |
+| **Commit title** | kraid: Implement shader_clock |
 | **Build date** | 20260728 |
-| **Release** | [v26.3.0-20260728-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r2) |
+| **Release** | [v26.3.0-20260728-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260728-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r3) | 2026-07-28 | [`114ca57`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114ca57fd288c1a84a1525dd3ee9f13528a353c2) | kraid: Implement shader_clock | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r2) | 2026-07-28 | [`47cf31c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47cf31c8edc11f95f4e58380b3f9fdbd3dc6c0f8) | freedreno: Build blit shaders with nir_builder | Vulkan 1.4.354 |
 | [v26.3.0-20260728](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728) | 2026-07-28 | [`60654ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/60654ceb9139ab8f289c6252bc12659fcf655e1c) | vtn/opencl: fix libclc needing fp16 lowering to fp32 | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r9) | 2026-07-27 | [`c5f10a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5f10a8501ca964ef24570f430a99633c689f656) | anv: Enable the temporary RE engine workaround for several titles | Vulkan 1.4.354 |
