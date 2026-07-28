@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`6804cd3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6804cd3a6bf37c1f69f1016ec7a7c831217ec7ff) |
+| **Commit** | [`acaa46f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/acaa46f155f75aebe9a0ece1e06c329f87f06e6b) |
 | **Commit date** | 2026-07-28 |
-| **Commit title** | mesa: inline bug report url |
+| **Commit title** | hwtest: fix tests as F2FP and IMNMX do not exist on Volta |
 | **Build date** | 20260728 |
-| **Release** | [v26.3.0-20260728-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r9) |
+| **Release** | [v26.3.0-20260728-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r10) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260728-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r10) | 2026-07-28 | [`acaa46f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/acaa46f155f75aebe9a0ece1e06c329f87f06e6b) | hwtest: fix tests as F2FP and IMNMX do not exist on Volta | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r9) | 2026-07-28 | [`6804cd3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6804cd3a6bf37c1f69f1016ec7a7c831217ec7ff) | mesa: inline bug report url | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r8) | 2026-07-28 | [`090fecc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/090fecc2fc9f14bfde473e076136a19af279c4eb) | intel/compiler/brw: Use moves instead of copies in scoreboarding pass | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r7) | 2026-07-28 | [`1d8d746`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1d8d7469892b3162ec3d269c1e1b81718847612d) | anv/video: don't report VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR | Vulkan 1.4.354 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260728](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728) | 2026-07-28 | [`60654ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/60654ceb9139ab8f289c6252bc12659fcf655e1c) | vtn/opencl: fix libclc needing fp16 lowering to fp32 | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r9) | 2026-07-27 | [`c5f10a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5f10a8501ca964ef24570f430a99633c689f656) | anv: Enable the temporary RE engine workaround for several titles | Vulkan 1.4.354 |
 | [v26.3.0-20260727-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r8) | 2026-07-27 | [`c276444`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c276444b7190c2feaa722168253baaf9f3c737e9) | asahi: ci: Add failing b10g11r11 and e5b9g9r9 copy tests | Vulkan 1.4.354 |
-| [v26.3.0-20260727-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260727-r7) | 2026-07-27 | [`28f0804`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/28f0804ea039c333d2294bdd6565332dbdfe7979) | brw: Match fill/spill optimization scratch accesses by logical offset | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
