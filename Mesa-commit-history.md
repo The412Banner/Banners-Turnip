@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260728-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r4) | 2026-07-28 | [`892e2d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/892e2d0c297cf0d8db95bcf1ef978a9a8e7ff311) | radv/nir/opt_tid_function: const fold partially used inverse_ballot | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r3) | 2026-07-28 | [`114ca57`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/114ca57fd288c1a84a1525dd3ee9f13528a353c2) | kraid: Implement shader_clock | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r2) | 2026-07-28 | [`47cf31c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47cf31c8edc11f95f4e58380b3f9fdbd3dc6c0f8) | freedreno: Build blit shaders with nir_builder | Vulkan 1.4.354 |
 | [v26.3.0-20260728](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728) | 2026-07-28 | [`60654ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/60654ceb9139ab8f289c6252bc12659fcf655e1c) | vtn/opencl: fix libclc needing fp16 lowering to fp32 | Vulkan 1.4.354 |
