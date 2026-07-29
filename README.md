@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`42694cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42694cb11015d3efea30abb3358b8a0b3875f71a) |
+| **Commit** | [`112793b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/112793b456b492bf2a6e925210c16229f3643a8a) |
 | **Commit date** | 2026-07-29 |
-| **Commit title** | tu: Report correct maxFragmentInputComponents limits |
+| **Commit title** | ci: add missing .ci-farms/* for new farms |
 | **Build date** | 20260729 |
-| **Release** | [v26.3.0-20260729-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r4) |
+| **Release** | [v26.3.0-20260729-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260729-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r5) | 2026-07-29 | [`112793b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/112793b456b492bf2a6e925210c16229f3643a8a) | ci: add missing .ci-farms/* for new farms | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r4) | 2026-07-29 | [`42694cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42694cb11015d3efea30abb3358b8a0b3875f71a) | tu: Report correct maxFragmentInputComponents limits | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r3) | 2026-07-29 | [`ea29b1c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea29b1c5e9f35b9cb576f1838f40d479070d6138) | radeonsi: replace SPI_PS_INPUT_ENA magic numbers with proper definitions | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r2) | 2026-07-29 | [`5b7bcac`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5b7bcac9bab7044034a6031fdf46ea803f92e861) | brw: Respect LSC data sizes and address alignment | Vulkan 1.4.354 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260728-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r8) | 2026-07-28 | [`090fecc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/090fecc2fc9f14bfde473e076136a19af279c4eb) | intel/compiler/brw: Use moves instead of copies in scoreboarding pass | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r7) | 2026-07-28 | [`1d8d746`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1d8d7469892b3162ec3d269c1e1b81718847612d) | anv/video: don't report VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r6) | 2026-07-28 | [`697929b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/697929b7b6065b2637f0ea999a4a821a2520f357) | r300: preserve masked writes on microtiled color buffers | Vulkan 1.4.354 |
-| [v26.3.0-20260728-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r5) | 2026-07-28 | [`dcb6045`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcb6045ac5b45a0d086d37904588a4fc05262233) | radv: Expose mutable acceleration structure descriptors | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
