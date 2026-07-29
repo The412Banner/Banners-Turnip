@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260729-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r9) | 2026-07-29 | [`564ed33`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/564ed330dfdde4cd2b12042725902d7bdb34f9f8) | zink+radv/ci: document more navi10 flakes | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r8) | 2026-07-29 | [`213c8e3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/213c8e331de9b45d54e031fb1f2ed844a71ddd2b) | nak/hw_test: test QMD deps in more depth | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r7) | 2026-07-29 | [`c2dd50c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2dd50cb516ab42d8c880f9114bd046e51bc20a2) | zink: gate some EXT_descriptor_indexing related code | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r6) | 2026-07-29 | [`de40450`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/de40450ca19cf17f7a390088c83f1a185f8f860c) | panvk/decode: implement nop strings | Vulkan 1.4.354 |
