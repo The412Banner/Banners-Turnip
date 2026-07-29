@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260729-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r2) | 2026-07-29 | [`5b7bcac`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5b7bcac9bab7044034a6031fdf46ea803f92e861) | brw: Respect LSC data sizes and address alignment | Vulkan 1.4.354 |
 | [v26.3.0-20260729](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729) | 2026-07-28 | [`21dc9d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/21dc9d41551d94cb0a28a1a2a904a2c179c47b25) | anv: delay binding point state allocations | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r12) | 2026-07-28 | [`d265315`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d265315064bc0b27a82362d550049e7b3c42abd4) | kraid: Pass scale to FEXP.f32 instead of arg | Vulkan 1.4.354 |
 | [v26.3.0-20260728-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r11) | 2026-07-28 | [`ad4dcba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ad4dcba94148faca1ca9db395713b5d477ac713f) | drm-shim: Add etnaviv | Vulkan 1.4.354 |
