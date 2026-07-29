@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`112793b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/112793b456b492bf2a6e925210c16229f3643a8a) |
+| **Commit** | [`de40450`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/de40450ca19cf17f7a390088c83f1a185f8f860c) |
 | **Commit date** | 2026-07-29 |
-| **Commit title** | ci: add missing .ci-farms/* for new farms |
+| **Commit title** | panvk/decode: implement nop strings |
 | **Build date** | 20260729 |
-| **Release** | [v26.3.0-20260729-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r5) |
+| **Release** | [v26.3.0-20260729-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260729-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r6) | 2026-07-29 | [`de40450`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/de40450ca19cf17f7a390088c83f1a185f8f860c) | panvk/decode: implement nop strings | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r5) | 2026-07-29 | [`112793b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/112793b456b492bf2a6e925210c16229f3643a8a) | ci: add missing .ci-farms/* for new farms | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r4) | 2026-07-29 | [`42694cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42694cb11015d3efea30abb3358b8a0b3875f71a) | tu: Report correct maxFragmentInputComponents limits | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r3) | 2026-07-29 | [`ea29b1c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea29b1c5e9f35b9cb576f1838f40d479070d6138) | radeonsi: replace SPI_PS_INPUT_ENA magic numbers with proper definitions | Vulkan 1.4.354 |
