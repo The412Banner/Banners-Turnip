@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260729-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r4) | 2026-07-29 | [`42694cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42694cb11015d3efea30abb3358b8a0b3875f71a) | tu: Report correct maxFragmentInputComponents limits | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r3) | 2026-07-29 | [`ea29b1c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea29b1c5e9f35b9cb576f1838f40d479070d6138) | radeonsi: replace SPI_PS_INPUT_ENA magic numbers with proper definitions | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r2) | 2026-07-29 | [`5b7bcac`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5b7bcac9bab7044034a6031fdf46ea803f92e861) | brw: Respect LSC data sizes and address alignment | Vulkan 1.4.354 |
 | [v26.3.0-20260729](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729) | 2026-07-28 | [`21dc9d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/21dc9d41551d94cb0a28a1a2a904a2c179c47b25) | anv: delay binding point state allocations | Vulkan 1.4.354 |
