@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260730-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r9) | 2026-07-30 | [`209e682`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/209e68250df169301db18c4cce8f512d67f2faf4) | rusticl: Stop taking references to temporaries | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r8) | 2026-07-30 | [`7296f9a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7296f9af84cd5debd10ca1bf4f0f1f29ef98f8c6) | brw: Remove obsolete interface to get number of used registers | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r7) | 2026-07-30 | [`6bdcd28`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6bdcd282afc3c1f5a1abb63cdec69ec14453c805) | virtio/magma-gpu: continue with the renaming | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r6) | 2026-07-30 | [`318240f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/318240f418cad33ec63e43e28533782bd62b8fe7) | kk: Fix up M5 robustness2 behavior when LOD is out of bounds | Vulkan 1.4.354 |
