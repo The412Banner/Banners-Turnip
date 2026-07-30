@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260730-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r7) | 2026-07-30 | [`6bdcd28`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6bdcd282afc3c1f5a1abb63cdec69ec14453c805) | virtio/magma-gpu: continue with the renaming | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r6) | 2026-07-30 | [`318240f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/318240f418cad33ec63e43e28533782bd62b8fe7) | kk: Fix up M5 robustness2 behavior when LOD is out of bounds | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r5) | 2026-07-30 | [`97d586c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/97d586cc66406277f0035ec25a1fa847b5307151) | zink/ci: switch zink/anv jobs to surfaceless+i915 | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r4) | 2026-07-30 | [`4b37c2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b37c2f5cb546d948b7afdfe647cab7a43fe8a4b) | v3dv: advertise VK_EXT_device_memory_report | Vulkan 1.4.354 |
