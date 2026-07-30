@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`395de86`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/395de865be7bc1cf07538340753942884e547b21) |
+| **Commit** | [`4b37c2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b37c2f5cb546d948b7afdfe647cab7a43fe8a4b) |
 | **Commit date** | 2026-07-30 |
-| **Commit title** | poly: Fix comment after moving passthrough_gs |
+| **Commit title** | v3dv: advertise VK_EXT_device_memory_report |
 | **Build date** | 20260730 |
-| **Release** | [v26.3.0-20260730-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r3) |
+| **Release** | [v26.3.0-20260730-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260730-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r4) | 2026-07-30 | [`4b37c2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b37c2f5cb546d948b7afdfe647cab7a43fe8a4b) | v3dv: advertise VK_EXT_device_memory_report | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r3) | 2026-07-30 | [`395de86`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/395de865be7bc1cf07538340753942884e547b21) | poly: Fix comment after moving passthrough_gs | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r2) | 2026-07-30 | [`c13d920`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c13d920dda2c799eb8322fd79478b0ae36c93c8b) | jay: Drop assertion which doesn't hold true anymore | Vulkan 1.4.354 |
 | [v26.3.0-20260730](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730) | 2026-07-30 | [`13e6e00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/13e6e00b1a56a21392bdd43c8f1154eb4063cfa4) | kraid: Implement derivatives | Vulkan 1.4.354 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260729-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r7) | 2026-07-29 | [`c2dd50c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2dd50cb516ab42d8c880f9114bd046e51bc20a2) | zink: gate some EXT_descriptor_indexing related code | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r6) | 2026-07-29 | [`de40450`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/de40450ca19cf17f7a390088c83f1a185f8f860c) | panvk/decode: implement nop strings | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r5) | 2026-07-29 | [`112793b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/112793b456b492bf2a6e925210c16229f3643a8a) | ci: add missing .ci-farms/* for new farms | Vulkan 1.4.354 |
-| [v26.3.0-20260729-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r4) | 2026-07-29 | [`42694cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42694cb11015d3efea30abb3358b8a0b3875f71a) | tu: Report correct maxFragmentInputComponents limits | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---

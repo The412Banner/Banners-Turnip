@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260730-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r4) | 2026-07-30 | [`4b37c2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b37c2f5cb546d948b7afdfe647cab7a43fe8a4b) | v3dv: advertise VK_EXT_device_memory_report | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r3) | 2026-07-30 | [`395de86`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/395de865be7bc1cf07538340753942884e547b21) | poly: Fix comment after moving passthrough_gs | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r2) | 2026-07-30 | [`c13d920`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c13d920dda2c799eb8322fd79478b0ae36c93c8b) | jay: Drop assertion which doesn't hold true anymore | Vulkan 1.4.354 |
 | [v26.3.0-20260730](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730) | 2026-07-30 | [`13e6e00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/13e6e00b1a56a21392bdd43c8f1154eb4063cfa4) | kraid: Implement derivatives | Vulkan 1.4.354 |
