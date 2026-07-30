@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`6bdcd28`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6bdcd282afc3c1f5a1abb63cdec69ec14453c805) |
+| **Commit** | [`7296f9a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7296f9af84cd5debd10ca1bf4f0f1f29ef98f8c6) |
 | **Commit date** | 2026-07-30 |
-| **Commit title** | virtio/magma-gpu: continue with the renaming |
+| **Commit title** | brw: Remove obsolete interface to get number of used registers |
 | **Build date** | 20260730 |
-| **Release** | [v26.3.0-20260730-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r7) |
+| **Release** | [v26.3.0-20260730-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260730-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r8) | 2026-07-30 | [`7296f9a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7296f9af84cd5debd10ca1bf4f0f1f29ef98f8c6) | brw: Remove obsolete interface to get number of used registers | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r7) | 2026-07-30 | [`6bdcd28`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6bdcd282afc3c1f5a1abb63cdec69ec14453c805) | virtio/magma-gpu: continue with the renaming | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r6) | 2026-07-30 | [`318240f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/318240f418cad33ec63e43e28533782bd62b8fe7) | kk: Fix up M5 robustness2 behavior when LOD is out of bounds | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r5) | 2026-07-30 | [`97d586c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/97d586cc66406277f0035ec25a1fa847b5307151) | zink/ci: switch zink/anv jobs to surfaceless+i915 | Vulkan 1.4.354 |
@@ -95,8 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260730-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r2) | 2026-07-30 | [`c13d920`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c13d920dda2c799eb8322fd79478b0ae36c93c8b) | jay: Drop assertion which doesn't hold true anymore | Vulkan 1.4.354 |
 | [v26.3.0-20260730](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730) | 2026-07-30 | [`13e6e00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/13e6e00b1a56a21392bdd43c8f1154eb4063cfa4) | kraid: Implement derivatives | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r10) | 2026-07-29 | [`4e2e284`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e2e284654faf92b3cb755f0bd1bd4d7e158b0bc) | panvk: advertise VK_KHR_maintenance6 on v6-7 | Vulkan 1.4.354 |
-| [v26.3.0-20260729-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r9) | 2026-07-29 | [`564ed33`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/564ed330dfdde4cd2b12042725902d7bdb34f9f8) | zink+radv/ci: document more navi10 flakes | Vulkan 1.4.354 |
-| [v26.3.0-20260729-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r8) | 2026-07-29 | [`213c8e3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/213c8e331de9b45d54e031fb1f2ed844a71ddd2b) | nak/hw_test: test QMD deps in more depth | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
