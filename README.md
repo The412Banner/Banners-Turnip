@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`4e2e284`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e2e284654faf92b3cb755f0bd1bd4d7e158b0bc) |
-| **Commit date** | 2026-07-29 |
-| **Commit title** | panvk: advertise VK_KHR_maintenance6 on v6-7 |
-| **Build date** | 20260729 |
-| **Release** | [v26.3.0-20260729-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r10) |
+| **Commit** | [`13e6e00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/13e6e00b1a56a21392bdd43c8f1154eb4063cfa4) |
+| **Commit date** | 2026-07-30 |
+| **Commit title** | kraid: Implement derivatives |
+| **Build date** | 20260730 |
+| **Release** | [v26.3.0-20260730](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260730](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730) | 2026-07-30 | [`13e6e00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/13e6e00b1a56a21392bdd43c8f1154eb4063cfa4) | kraid: Implement derivatives | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r10) | 2026-07-29 | [`4e2e284`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e2e284654faf92b3cb755f0bd1bd4d7e158b0bc) | panvk: advertise VK_KHR_maintenance6 on v6-7 | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r9) | 2026-07-29 | [`564ed33`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/564ed330dfdde4cd2b12042725902d7bdb34f9f8) | zink+radv/ci: document more navi10 flakes | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r8) | 2026-07-29 | [`213c8e3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/213c8e331de9b45d54e031fb1f2ed844a71ddd2b) | nak/hw_test: test QMD deps in more depth | Vulkan 1.4.354 |
@@ -96,10 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260729-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r4) | 2026-07-29 | [`42694cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42694cb11015d3efea30abb3358b8a0b3875f71a) | tu: Report correct maxFragmentInputComponents limits | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r3) | 2026-07-29 | [`ea29b1c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea29b1c5e9f35b9cb576f1838f40d479070d6138) | radeonsi: replace SPI_PS_INPUT_ENA magic numbers with proper definitions | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r2) | 2026-07-29 | [`5b7bcac`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5b7bcac9bab7044034a6031fdf46ea803f92e861) | brw: Respect LSC data sizes and address alignment | Vulkan 1.4.354 |
-| [v26.3.0-20260729](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729) | 2026-07-29 | [`21dc9d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/21dc9d41551d94cb0a28a1a2a904a2c179c47b25) | anv: delay binding point state allocations | Vulkan 1.4.354 |
-| [v26.3.0-20260728-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r12) | 2026-07-28 | [`d265315`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d265315064bc0b27a82362d550049e7b3c42abd4) | kraid: Pass scale to FEXP.f32 instead of arg | Vulkan 1.4.354 |
-| [v26.3.0-20260728-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r11) | 2026-07-28 | [`ad4dcba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ad4dcba94148faca1ca9db395713b5d477ac713f) | drm-shim: Add etnaviv | Vulkan 1.4.354 |
-| [v26.3.0-20260728-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260728-r10) | 2026-07-28 | [`acaa46f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/acaa46f155f75aebe9a0ece1e06c329f87f06e6b) | hwtest: fix tests as F2FP and IMNMX do not exist on Volta | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
