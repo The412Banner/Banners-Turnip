@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260730-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r2) | 2026-07-30 | [`c13d920`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c13d920dda2c799eb8322fd79478b0ae36c93c8b) | jay: Drop assertion which doesn't hold true anymore | Vulkan 1.4.354 |
 | [v26.3.0-20260730](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730) | 2026-07-30 | [`13e6e00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/13e6e00b1a56a21392bdd43c8f1154eb4063cfa4) | kraid: Implement derivatives | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r10) | 2026-07-29 | [`4e2e284`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e2e284654faf92b3cb755f0bd1bd4d7e158b0bc) | panvk: advertise VK_KHR_maintenance6 on v6-7 | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r9) | 2026-07-29 | [`564ed33`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/564ed330dfdde4cd2b12042725902d7bdb34f9f8) | zink+radv/ci: document more navi10 flakes | Vulkan 1.4.354 |

@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`13e6e00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/13e6e00b1a56a21392bdd43c8f1154eb4063cfa4) |
+| **Commit** | [`c13d920`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c13d920dda2c799eb8322fd79478b0ae36c93c8b) |
 | **Commit date** | 2026-07-30 |
-| **Commit title** | kraid: Implement derivatives |
+| **Commit title** | jay: Drop assertion which doesn't hold true anymore |
 | **Build date** | 20260730 |
-| **Release** | [v26.3.0-20260730](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730) |
+| **Release** | [v26.3.0-20260730-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260730-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r2) | 2026-07-30 | [`c13d920`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c13d920dda2c799eb8322fd79478b0ae36c93c8b) | jay: Drop assertion which doesn't hold true anymore | Vulkan 1.4.354 |
 | [v26.3.0-20260730](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730) | 2026-07-30 | [`13e6e00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/13e6e00b1a56a21392bdd43c8f1154eb4063cfa4) | kraid: Implement derivatives | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r10) | 2026-07-29 | [`4e2e284`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e2e284654faf92b3cb755f0bd1bd4d7e158b0bc) | panvk: advertise VK_KHR_maintenance6 on v6-7 | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r9) | 2026-07-29 | [`564ed33`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/564ed330dfdde4cd2b12042725902d7bdb34f9f8) | zink+radv/ci: document more navi10 flakes | Vulkan 1.4.354 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260729-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r5) | 2026-07-29 | [`112793b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/112793b456b492bf2a6e925210c16229f3643a8a) | ci: add missing .ci-farms/* for new farms | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r4) | 2026-07-29 | [`42694cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/42694cb11015d3efea30abb3358b8a0b3875f71a) | tu: Report correct maxFragmentInputComponents limits | Vulkan 1.4.354 |
 | [v26.3.0-20260729-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r3) | 2026-07-29 | [`ea29b1c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea29b1c5e9f35b9cb576f1838f40d479070d6138) | radeonsi: replace SPI_PS_INPUT_ENA magic numbers with proper definitions | Vulkan 1.4.354 |
-| [v26.3.0-20260729-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260729-r2) | 2026-07-29 | [`5b7bcac`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5b7bcac9bab7044034a6031fdf46ea803f92e861) | brw: Respect LSC data sizes and address alignment | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
