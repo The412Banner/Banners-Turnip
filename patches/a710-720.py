@@ -197,7 +197,7 @@ add_gpus([
     ], A6xxGPUInfo(
         CHIP.A7XX,
         [a7xx_base, a7xx_gen1],
-        num_ccu = 3,
+        num_ccu = 1,
         tile_align_w = 64,
         tile_align_h = 32,
         tile_max_w = 1024,
@@ -217,7 +217,7 @@ add_gpus([
     ], A6xxGPUInfo(
         CHIP.A7XX,
         [a7xx_base, a7xx_gen1],
-        num_ccu = 3,
+        num_ccu = 1,
         tile_align_w = 64,
         tile_align_h = 32,
         tile_max_w = 1024,
@@ -237,7 +237,7 @@ add_gpus([
     ], A6xxGPUInfo(
         CHIP.A7XX,
         [a7xx_base, a7xx_gen1],
-        num_ccu = 3,
+        num_ccu = 1,
         tile_align_w = 64,
         tile_align_h = 32,
         tile_max_w = 1024,
