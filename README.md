@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`15c7cc5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/15c7cc550a05ba6ea34799a16f64a8689d1abc76) |
+| **Commit** | [`cc82e15`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cc82e157111d488c5c7540f4042884803293ebf7) |
 | **Commit date** | 2026-07-31 |
-| **Commit title** | pan/rusticl: Update the last OpenCL conformance version passed value |
+| **Commit title** | pan/compiler/stats: Fix ALU not being used in instruction bounds |
 | **Build date** | 20260731 |
-| **Release** | [v26.3.0-20260731-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r7) |
+| **Release** | [v26.3.0-20260731-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260731-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r8) | 2026-07-31 | [`cc82e15`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cc82e157111d488c5c7540f4042884803293ebf7) | pan/compiler/stats: Fix ALU not being used in instruction bounds | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r7) | 2026-07-31 | [`15c7cc5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/15c7cc550a05ba6ea34799a16f64a8689d1abc76) | pan/rusticl: Update the last OpenCL conformance version passed value | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r5) | 2026-07-31 | [`271ad6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/271ad6c5cdc4cf5c062c82a5972720a449ae06df) | radeonsi: emit MESHLET registers for mesh shaders in gfx10_emit_shader_ngg | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r4) | 2026-07-31 | [`b3f90ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b3f90cea88602d8bec6ea2bb48c6650329aef852) | pan: check full fb coverage on has_partial_tiles | Vulkan 1.4.354 |
