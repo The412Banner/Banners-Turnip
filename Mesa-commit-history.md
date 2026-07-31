@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260731-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r11) | 2026-07-31 | [`707cc8f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/707cc8f5ab97485a0c4cf1a2ab13dbdf5c9469c4) | svga: fix shared memory index for svga driver | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r10) | 2026-07-31 | [`6c306fd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c306fd75a9a3bad31ef779f8607d557524e2277) | d3d12: Disable vao fast path for AMD | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r9) | 2026-07-31 | [`cc82e15`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cc82e157111d488c5c7540f4042884803293ebf7) | pan/compiler/stats: Fix ALU not being used in instruction bounds | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r8) | 2026-07-31 | [`cc82e15`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cc82e157111d488c5c7540f4042884803293ebf7) | pan/compiler/stats: Fix ALU not being used in instruction bounds | Vulkan 1.4.354 |
