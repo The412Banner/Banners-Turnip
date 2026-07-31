@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260731-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r2) | 2026-07-31 | [`32b2249`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32b22499f488c169d2d5d5d00b6f299b17839f82) | glx/apple: implement swap control on top of kCGLCPSwapInterval | Vulkan 1.4.354 |
 | [v26.3.0-20260731](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731) | 2026-07-31 | [`ea60532`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea60532e25126eea862d6bd09f9d2e79cb1f339b) | llvmpipe: don't create a screen when the process is not allowed to JIT | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r10) | 2026-07-30 | [`a62bd97`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a62bd97754eb52d2ba875528f832c5acbcf9d2db) | jay: copy resource_intel surface handle value | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r9) | 2026-07-30 | [`209e682`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/209e68250df169301db18c4cce8f512d67f2faf4) | rusticl: Stop taking references to temporaries | Vulkan 1.4.354 |
