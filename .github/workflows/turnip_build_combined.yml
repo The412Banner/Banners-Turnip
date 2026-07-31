@@ -211,7 +211,7 @@ jobs:
             printf '%s\n' "- **A710** (\`0x07010000\`) — per-GPU \`a710_raw_magic_regs\` from real A710 blob traces."
             printf '%s\n' "- **A720** (\`0x43020000\`) — per-GPU \`a720_raw_magic_regs\` from real A720 blob traces."
             printf '%s\n\n' "- **A722** (\`0x43020100\`) — per-GPU \`a722_raw_magic_regs\` (distinct \`PC_MODE_CNTL=0x3f\`, \`UCHE_CACHE_WAYS=0x0\`)."
-            printf "\`num_ccu=1\`, \`tile_align_w=64\`, \`tile_align_h=32\`; other properties inherited from Mesa's \`a7xx_base\`/\`a7xx_gen1\`. None of these chip IDs exist in Mesa main or the Linux kernel device catalog.\n\n"
+            printf "\`num_ccu=3\`, \`tile_align_w=64\`, \`tile_align_h=32\`; other properties inherited from Mesa's \`a7xx_base\`/\`a7xx_gen1\`. None of these chip IDs exist in Mesa main or the Linux kernel device catalog.\n\n"
             printf '</details>\n\n'
             printf '%s\n\n' '---'
             printf "### Adreno GPU Support\n\n"
