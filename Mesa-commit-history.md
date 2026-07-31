@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260731-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r6) | 2026-07-31 | [`15c7cc5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/15c7cc550a05ba6ea34799a16f64a8689d1abc76) | pan/rusticl: Update the last OpenCL conformance version passed value | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r5) | 2026-07-31 | [`271ad6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/271ad6c5cdc4cf5c062c82a5972720a449ae06df) | radeonsi: emit MESHLET registers for mesh shaders in gfx10_emit_shader_ngg | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r4) | 2026-07-31 | [`b3f90ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b3f90cea88602d8bec6ea2bb48c6650329aef852) | pan: check full fb coverage on has_partial_tiles | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r3) | 2026-07-31 | [`edaa36d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/edaa36d969a43c1142c8e8a0a9c9451ae81df643) | radv: replace PS_STATE_LINE_RAST_MODE with SMOOTH_LINES, make it accurate | Vulkan 1.4.354 |
