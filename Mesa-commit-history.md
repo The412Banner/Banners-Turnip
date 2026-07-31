@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260731-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r9) | 2026-07-31 | [`cc82e15`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cc82e157111d488c5c7540f4042884803293ebf7) | pan/compiler/stats: Fix ALU not being used in instruction bounds | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r8) | 2026-07-31 | [`cc82e15`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cc82e157111d488c5c7540f4042884803293ebf7) | pan/compiler/stats: Fix ALU not being used in instruction bounds | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r7) | 2026-07-31 | [`15c7cc5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/15c7cc550a05ba6ea34799a16f64a8689d1abc76) | pan/rusticl: Update the last OpenCL conformance version passed value | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r6) | 2026-07-31 | [`15c7cc5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/15c7cc550a05ba6ea34799a16f64a8689d1abc76) | pan/rusticl: Update the last OpenCL conformance version passed value | Vulkan 1.4.354 |

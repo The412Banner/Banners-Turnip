@@ -77,7 +77,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | **Commit date** | 2026-07-31 |
 | **Commit title** | pan/compiler/stats: Fix ALU not being used in instruction bounds |
 | **Build date** | 20260731 |
-| **Release** | [v26.3.0-20260731-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r8) |
+| **Release** | [v26.3.0-20260731-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,7 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.3.0-20260731-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r8) | 2026-07-31 | [`cc82e15`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cc82e157111d488c5c7540f4042884803293ebf7) | pan/compiler/stats: Fix ALU not being used in instruction bounds | Vulkan 1.4.354 |
+| [v26.3.0-20260731-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r9) | 2026-07-31 | [`cc82e15`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cc82e157111d488c5c7540f4042884803293ebf7) | pan/compiler/stats: Fix ALU not being used in instruction bounds | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r7) | 2026-07-31 | [`15c7cc5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/15c7cc550a05ba6ea34799a16f64a8689d1abc76) | pan/rusticl: Update the last OpenCL conformance version passed value | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r5) | 2026-07-31 | [`271ad6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/271ad6c5cdc4cf5c062c82a5972720a449ae06df) | radeonsi: emit MESHLET registers for mesh shaders in gfx10_emit_shader_ngg | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r4) | 2026-07-31 | [`b3f90ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b3f90cea88602d8bec6ea2bb48c6650329aef852) | pan: check full fb coverage on has_partial_tiles | Vulkan 1.4.354 |
@@ -97,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260730-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r10) | 2026-07-30 | [`a62bd97`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a62bd97754eb52d2ba875528f832c5acbcf9d2db) | jay: copy resource_intel surface handle value | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r9) | 2026-07-30 | [`209e682`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/209e68250df169301db18c4cce8f512d67f2faf4) | rusticl: Stop taking references to temporaries | Vulkan 1.4.354 |
 | [v26.3.0-20260730-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r8) | 2026-07-30 | [`7296f9a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7296f9af84cd5debd10ca1bf4f0f1f29ef98f8c6) | brw: Remove obsolete interface to get number of used registers | Vulkan 1.4.354 |
-| [v26.3.0-20260730-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260730-r7) | 2026-07-30 | [`6bdcd28`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6bdcd282afc3c1f5a1abb63cdec69ec14453c805) | virtio/magma-gpu: continue with the renaming | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
