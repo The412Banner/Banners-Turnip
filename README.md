@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`0baeca3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0baeca38c72ae4af7c464644189853b66af153e7) |
+| **Commit** | [`a8259a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8259a857aa9c90eef3ffecca4ccea35a3492b55) |
 | **Commit date** | 2026-08-01 |
-| **Commit title** | glx/apple: silence OpenGL deprecation warnings in libglx |
+| **Commit title** | compiler/rust/cfg: Remap node edges in remove_unreachable() |
 | **Build date** | 20260801 |
-| **Release** | [v26.3.0-20260801](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801) |
+| **Release** | [v26.3.0-20260801-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260801-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r2) | 2026-08-01 | [`a8259a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8259a857aa9c90eef3ffecca4ccea35a3492b55) | compiler/rust/cfg: Remap node edges in remove_unreachable() | Vulkan 1.4.354 |
 | [v26.3.0-20260801](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801) | 2026-08-01 | [`0baeca3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0baeca38c72ae4af7c464644189853b66af153e7) | glx/apple: silence OpenGL deprecation warnings in libglx | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r12) | 2026-07-31 | [`3e3631d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e3631d98d0a0a3ba3f6ea71ea398bde2002c8e8) | brw: Enforce Gfx9 restriction 3-source destination must be GRF | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r11) | 2026-07-31 | [`707cc8f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/707cc8f5ab97485a0c4cf1a2ab13dbdf5c9469c4) | svga: fix shared memory index for svga driver | Vulkan 1.4.354 |
