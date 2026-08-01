@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`3e3631d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e3631d98d0a0a3ba3f6ea71ea398bde2002c8e8) |
-| **Commit date** | 2026-07-31 |
-| **Commit title** | brw: Enforce Gfx9 restriction 3-source destination must be GRF |
-| **Build date** | 20260731 |
-| **Release** | [v26.3.0-20260731-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r12) |
+| **Commit** | [`0baeca3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0baeca38c72ae4af7c464644189853b66af153e7) |
+| **Commit date** | 2026-08-01 |
+| **Commit title** | glx/apple: silence OpenGL deprecation warnings in libglx |
+| **Build date** | 20260801 |
+| **Release** | [v26.3.0-20260801](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260801](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801) | 2026-08-01 | [`0baeca3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0baeca38c72ae4af7c464644189853b66af153e7) | glx/apple: silence OpenGL deprecation warnings in libglx | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r12) | 2026-07-31 | [`3e3631d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e3631d98d0a0a3ba3f6ea71ea398bde2002c8e8) | brw: Enforce Gfx9 restriction 3-source destination must be GRF | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r11) | 2026-07-31 | [`707cc8f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/707cc8f5ab97485a0c4cf1a2ab13dbdf5c9469c4) | svga: fix shared memory index for svga driver | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r10) | 2026-07-31 | [`6c306fd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c306fd75a9a3bad31ef779f8607d557524e2277) | d3d12: Disable vao fast path for AMD | Vulkan 1.4.354 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260731-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r4) | 2026-07-31 | [`b3f90ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b3f90cea88602d8bec6ea2bb48c6650329aef852) | pan: check full fb coverage on has_partial_tiles | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r3) | 2026-07-31 | [`edaa36d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/edaa36d969a43c1142c8e8a0a9c9451ae81df643) | radv: replace PS_STATE_LINE_RAST_MODE with SMOOTH_LINES, make it accurate | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r2) | 2026-07-31 | [`32b2249`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32b22499f488c169d2d5d5d00b6f299b17839f82) | glx/apple: implement swap control on top of kCGLCPSwapInterval | Vulkan 1.4.354 |
-| [v26.3.0-20260731](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731) | 2026-07-31 | [`ea60532`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea60532e25126eea862d6bd09f9d2e79cb1f339b) | llvmpipe: don't create a screen when the process is not allowed to JIT | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
