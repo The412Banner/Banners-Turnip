@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`a8259a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8259a857aa9c90eef3ffecca4ccea35a3492b55) |
+| **Commit** | [`a5ab305`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5ab30520c7b29b519dd1464e8af8b27c9a37cb3) |
 | **Commit date** | 2026-08-01 |
-| **Commit title** | compiler/rust/cfg: Remap node edges in remove_unreachable() |
+| **Commit title** | mesa/st: approximate fog distance in the frag shader |
 | **Build date** | 20260801 |
-| **Release** | [v26.3.0-20260801-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r2) |
+| **Release** | [v26.3.0-20260801-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260801-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r3) | 2026-08-01 | [`a5ab305`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5ab30520c7b29b519dd1464e8af8b27c9a37cb3) | mesa/st: approximate fog distance in the frag shader | Vulkan 1.4.354 |
 | [v26.3.0-20260801-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r2) | 2026-08-01 | [`a8259a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8259a857aa9c90eef3ffecca4ccea35a3492b55) | compiler/rust/cfg: Remap node edges in remove_unreachable() | Vulkan 1.4.354 |
 | [v26.3.0-20260801](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801) | 2026-08-01 | [`0baeca3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0baeca38c72ae4af7c464644189853b66af153e7) | glx/apple: silence OpenGL deprecation warnings in libglx | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r12) | 2026-07-31 | [`3e3631d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e3631d98d0a0a3ba3f6ea71ea398bde2002c8e8) | brw: Enforce Gfx9 restriction 3-source destination must be GRF | Vulkan 1.4.354 |
@@ -97,7 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260731-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r5) | 2026-07-31 | [`271ad6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/271ad6c5cdc4cf5c062c82a5972720a449ae06df) | radeonsi: emit MESHLET registers for mesh shaders in gfx10_emit_shader_ngg | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r4) | 2026-07-31 | [`b3f90ce`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b3f90cea88602d8bec6ea2bb48c6650329aef852) | pan: check full fb coverage on has_partial_tiles | Vulkan 1.4.354 |
 | [v26.3.0-20260731-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r3) | 2026-07-31 | [`edaa36d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/edaa36d969a43c1142c8e8a0a9c9451ae81df643) | radv: replace PS_STATE_LINE_RAST_MODE with SMOOTH_LINES, make it accurate | Vulkan 1.4.354 |
-| [v26.3.0-20260731-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r2) | 2026-07-31 | [`32b2249`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32b22499f488c169d2d5d5d00b6f299b17839f82) | glx/apple: implement swap control on top of kCGLCPSwapInterval | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
