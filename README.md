@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`f375241`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f375241f91404b2289378e8d628f8e36020a555d) |
+| **Commit** | [`99098b3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99098b31471dc07c815a421c56da243b79c73b26) |
 | **Commit date** | 2026-08-02 |
-| **Commit title** | aco: do not require wqm for mbcnt |
+| **Commit title** | intel/nir: Allow V8 load/stores when known to be SIMD16 or smaller |
 | **Build date** | 20260802 |
-| **Release** | [v26.3.0-20260802](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260802) |
+| **Release** | [v26.3.0-20260802-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260802-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,8 +87,8 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260802-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260802-r2) | 2026-08-02 | [`99098b3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99098b31471dc07c815a421c56da243b79c73b26) | intel/nir: Allow V8 load/stores when known to be SIMD16 or smaller | Vulkan 1.4.354 |
 | [v26.3.0-20260802](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260802) | 2026-08-02 | [`f375241`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f375241f91404b2289378e8d628f8e36020a555d) | aco: do not require wqm for mbcnt | Vulkan 1.4.354 |
-| [v26.3.0-20260801-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r5) | 2026-08-01 | [`84f0901`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84f090168c2e5248acd930f5c201c6d3ecda3c87) | ir3: Don't use alias.tex inside predt/predf/prede sequence | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
