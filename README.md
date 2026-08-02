@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`84f0901`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84f090168c2e5248acd930f5c201c6d3ecda3c87) |
-| **Commit date** | 2026-08-01 |
-| **Commit title** | ir3: Don't use alias.tex inside predt/predf/prede sequence |
-| **Build date** | 20260801 |
-| **Release** | [v26.3.0-20260801-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r5) |
+| **Commit** | [`f375241`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f375241f91404b2289378e8d628f8e36020a555d) |
+| **Commit date** | 2026-08-02 |
+| **Commit title** | aco: do not require wqm for mbcnt |
+| **Build date** | 20260802 |
+| **Release** | [v26.3.0-20260802](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260802) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,15 +87,8 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260802](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260802) | 2026-08-02 | [`f375241`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f375241f91404b2289378e8d628f8e36020a555d) | aco: do not require wqm for mbcnt | Vulkan 1.4.354 |
 | [v26.3.0-20260801-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r5) | 2026-08-01 | [`84f0901`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84f090168c2e5248acd930f5c201c6d3ecda3c87) | ir3: Don't use alias.tex inside predt/predf/prede sequence | Vulkan 1.4.354 |
-| [v26.3.0-20260801-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r4) | 2026-08-01 | [`959d6a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/959d6a425da065879e181726603b7b76d435b109) | radv: Fix gnu-empty-initializer error in 6cad4ee1 | Vulkan 1.4.354 |
-| [v26.3.0-20260801-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r3) | 2026-08-01 | [`a5ab305`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5ab30520c7b29b519dd1464e8af8b27c9a37cb3) | mesa/st: approximate fog distance in the frag shader | Vulkan 1.4.354 |
-| [v26.3.0-20260801-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801-r2) | 2026-08-01 | [`a8259a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a8259a857aa9c90eef3ffecca4ccea35a3492b55) | compiler/rust/cfg: Remap node edges in remove_unreachable() | Vulkan 1.4.354 |
-| [v26.3.0-20260801](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260801) | 2026-08-01 | [`0baeca3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0baeca38c72ae4af7c464644189853b66af153e7) | glx/apple: silence OpenGL deprecation warnings in libglx | Vulkan 1.4.354 |
-| [v26.3.0-20260731-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r12) | 2026-07-31 | [`3e3631d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3e3631d98d0a0a3ba3f6ea71ea398bde2002c8e8) | brw: Enforce Gfx9 restriction 3-source destination must be GRF | Vulkan 1.4.354 |
-| [v26.3.0-20260731-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r11) | 2026-07-31 | [`707cc8f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/707cc8f5ab97485a0c4cf1a2ab13dbdf5c9469c4) | svga: fix shared memory index for svga driver | Vulkan 1.4.354 |
-| [v26.3.0-20260731-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r10) | 2026-07-31 | [`6c306fd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c306fd75a9a3bad31ef779f8607d557524e2277) | d3d12: Disable vao fast path for AMD | Vulkan 1.4.354 |
-| [v26.3.0-20260731-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260731-r9) | 2026-07-31 | [`cc82e15`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cc82e157111d488c5c7540f4042884803293ebf7) | pan/compiler/stats: Fix ALU not being used in instruction bounds | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---
