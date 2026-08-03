@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260803-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r6) | 2026-08-03 | [`b683b5a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b683b5a33e7a9fba20bb872c0772c886dcfc8ace) | anv: fixup the logic dealing with STATE_BYTE_STRIDE | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r5) | 2026-08-03 | [`0200462`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0200462978a19f55ab5f893fbfa4b7c8f078d251) | svga: fix shader leakage for emulated code path | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r4) | 2026-08-03 | [`a2feaa6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a2feaa67a07ed02450d17c020e0cf3704964ffd5) | intel/gen: decode type of src1 in basic 2 source after setting IMM | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r3) | 2026-08-03 | [`84acd84`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84acd8488ad671d17bcdaf432b01a2e06db34fb3) | anv: Return early in anv_reloc_list_append() when relocs are not in use | Vulkan 1.4.354 |
