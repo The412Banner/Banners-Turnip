@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`84acd84`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84acd8488ad671d17bcdaf432b01a2e06db34fb3) |
+| **Commit** | [`a2feaa6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a2feaa67a07ed02450d17c020e0cf3704964ffd5) |
 | **Commit date** | 2026-08-03 |
-| **Commit title** | anv: Return early in anv_reloc_list_append() when relocs are not in use |
+| **Commit title** | intel/gen: decode type of src1 in basic 2 source after setting IMM |
 | **Build date** | 20260803 |
-| **Release** | [v26.3.0-20260803-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r3) |
+| **Release** | [v26.3.0-20260803-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,11 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260803-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r4) | 2026-08-03 | [`a2feaa6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a2feaa67a07ed02450d17c020e0cf3704964ffd5) | intel/gen: decode type of src1 in basic 2 source after setting IMM | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r3) | 2026-08-03 | [`84acd84`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84acd8488ad671d17bcdaf432b01a2e06db34fb3) | anv: Return early in anv_reloc_list_append() when relocs are not in use | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r2) | 2026-08-03 | [`cf41ce6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cf41ce6ac45c97fb8565e6e4326380955f922f50) | nir/opt_varyings: fix incorrect counting of emit_vertex within a block | Vulkan 1.4.354 |
 | [v26.3.0-20260803](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803) | 2026-08-03 | [`7e34817`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7e34817cdc0406ab452762fc97726dfd2d2c51e3) | tu: Fix memory leak of FDM patch-points | Vulkan 1.4.354 |
 | [v26.3.0-20260802-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260802-r2) | 2026-08-02 | [`99098b3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99098b31471dc07c815a421c56da243b79c73b26) | intel/nir: Allow V8 load/stores when known to be SIMD16 or smaller | Vulkan 1.4.354 |
-| [v26.3.0-20260802](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260802) | 2026-08-02 | [`f375241`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f375241f91404b2289378e8d628f8e36020a555d) | aco: do not require wqm for mbcnt | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---

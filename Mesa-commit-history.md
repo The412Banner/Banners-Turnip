@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260803-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r4) | 2026-08-03 | [`a2feaa6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a2feaa67a07ed02450d17c020e0cf3704964ffd5) | intel/gen: decode type of src1 in basic 2 source after setting IMM | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r3) | 2026-08-03 | [`84acd84`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84acd8488ad671d17bcdaf432b01a2e06db34fb3) | anv: Return early in anv_reloc_list_append() when relocs are not in use | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r2) | 2026-08-03 | [`cf41ce6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cf41ce6ac45c97fb8565e6e4326380955f922f50) | nir/opt_varyings: fix incorrect counting of emit_vertex within a block | Vulkan 1.4.354 |
 | [v26.3.0-20260803](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803) | 2026-08-03 | [`7e34817`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7e34817cdc0406ab452762fc97726dfd2d2c51e3) | tu: Fix memory leak of FDM patch-points | Vulkan 1.4.354 |
