@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260803-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r2) | 2026-08-03 | [`cf41ce6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cf41ce6ac45c97fb8565e6e4326380955f922f50) | nir/opt_varyings: fix incorrect counting of emit_vertex within a block | Vulkan 1.4.354 |
 | [v26.3.0-20260803](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803) | 2026-08-03 | [`7e34817`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7e34817cdc0406ab452762fc97726dfd2d2c51e3) | tu: Fix memory leak of FDM patch-points | Vulkan 1.4.354 |
 | [v26.3.0-20260802-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260802-r2) | 2026-08-02 | [`99098b3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99098b31471dc07c815a421c56da243b79c73b26) | intel/nir: Allow V8 load/stores when known to be SIMD16 or smaller | Vulkan 1.4.354 |
 | [v26.3.0-20260802](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260802) | 2026-08-02 | [`f375241`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f375241f91404b2289378e8d628f8e36020a555d) | aco: do not require wqm for mbcnt | Vulkan 1.4.354 |
