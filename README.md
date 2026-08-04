@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`e492a27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e492a278685f16e480624172724b1e4282876968) |
+| **Commit** | [`5173525`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/51735259659644ccec13a3cb1b2f22d37c3d635c) |
 | **Commit date** | 2026-08-04 |
-| **Commit title** | pvr: enable global priority related extensions |
+| **Commit title** | anv: only consider active view-capable queues for image views |
 | **Build date** | 20260804 |
-| **Release** | [v26.3.0-20260804-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r8) |
+| **Release** | [v26.3.0-20260804-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260804-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r9) | 2026-08-04 | [`5173525`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/51735259659644ccec13a3cb1b2f22d37c3d635c) | anv: only consider active view-capable queues for image views | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r8) | 2026-08-04 | [`e492a27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e492a278685f16e480624172724b1e4282876968) | pvr: enable global priority related extensions | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r7) | 2026-08-04 | [`0973b92`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0973b92ec25a73c30ef53e4d79b6b5d5b845e075) | radv: Support video_encode_feedback2 (frame) stats | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r6) | 2026-08-04 | [`b2f967e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2f967eeef9ed5b6a7efc53efc1ed42c334f7e93) | Uprev Piglit to 65f44948b98d21f82ac119f8b3b5cfd866d2698a | Vulkan 1.4.358 |
@@ -97,8 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260804](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804) | 2026-08-04 | [`b460cff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b460cff22a56043e48e9ba083a8314b9a52840b4) | svga: Pass buffer handle for fd handles for resource_from_handle() | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r7) | 2026-08-03 | [`4a66f5a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4a66f5a91787a2f6cd21623bd39bd5aeb3212ca0) | iris: Add function to compute and emit engine async threads limits | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r6) | 2026-08-03 | [`b683b5a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b683b5a33e7a9fba20bb872c0772c886dcfc8ace) | anv: fixup the logic dealing with STATE_BYTE_STRIDE | Vulkan 1.4.354 |
-| [v26.3.0-20260803-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r5) | 2026-08-03 | [`0200462`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0200462978a19f55ab5f893fbfa4b7c8f078d251) | svga: fix shader leakage for emulated code path | Vulkan 1.4.354 |
-| [v26.3.0-20260803-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r4) | 2026-08-03 | [`a2feaa6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a2feaa67a07ed02450d17c020e0cf3704964ffd5) | intel/gen: decode type of src1 in basic 2 source after setting IMM | Vulkan 1.4.354 |
 <!-- RECENT_BUILDS_END -->
 
 ---

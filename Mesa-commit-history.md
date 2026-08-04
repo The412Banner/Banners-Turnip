@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260804-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r9) | 2026-08-04 | [`5173525`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/51735259659644ccec13a3cb1b2f22d37c3d635c) | anv: only consider active view-capable queues for image views | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r8) | 2026-08-04 | [`e492a27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e492a278685f16e480624172724b1e4282876968) | pvr: enable global priority related extensions | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r7) | 2026-08-04 | [`0973b92`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0973b92ec25a73c30ef53e4d79b6b5d5b845e075) | radv: Support video_encode_feedback2 (frame) stats | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r6) | 2026-08-04 | [`b2f967e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2f967eeef9ed5b6a7efc53efc1ed42c334f7e93) | Uprev Piglit to 65f44948b98d21f82ac119f8b3b5cfd866d2698a | Vulkan 1.4.358 |
