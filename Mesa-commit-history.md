@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260804-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r5) | 2026-08-04 | [`7af5c50`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7af5c5006f7be4a3e343e6539cd0887fb9106411) | vulkan/runtime: avoid rehashing shader stage hashes | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r4) | 2026-08-04 | [`9ce0077`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ce0077356200b13ec8d4b92b29c1371776372f6) | aco/tests: test skip_smem_offset_align | Vulkan 1.4.354 |
 | [v26.3.0-20260804-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r3) | 2026-08-04 | [`0269993`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0269993175d37cd35094d0d5ee704d1f5bb85a7a) | radeonsi,radv: avoid timestamp conversion overflow | Vulkan 1.4.354 |
 | [v26.3.0-20260804-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r2) | 2026-08-04 | [`c7919be`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c7919be1fa9d99a75eb6ec6042fdff6265fe55e5) | venus: remove in-tree venus-protocol | Vulkan 1.4.354 |
