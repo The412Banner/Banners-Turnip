@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260804-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r3) | 2026-08-04 | [`0269993`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0269993175d37cd35094d0d5ee704d1f5bb85a7a) | radeonsi,radv: avoid timestamp conversion overflow | Vulkan 1.4.354 |
 | [v26.3.0-20260804-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r2) | 2026-08-04 | [`c7919be`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c7919be1fa9d99a75eb6ec6042fdff6265fe55e5) | venus: remove in-tree venus-protocol | Vulkan 1.4.354 |
 | [v26.3.0-20260804](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804) | 2026-08-03 | [`b460cff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b460cff22a56043e48e9ba083a8314b9a52840b4) | svga: Pass buffer handle for fd handles for resource_from_handle() | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r7) | 2026-08-03 | [`4a66f5a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4a66f5a91787a2f6cd21623bd39bd5aeb3212ca0) | iris: Add function to compute and emit engine async threads limits | Vulkan 1.4.354 |

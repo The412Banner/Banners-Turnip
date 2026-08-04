@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.354 |
-| **Commit** | [`c7919be`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c7919be1fa9d99a75eb6ec6042fdff6265fe55e5) |
+| **Commit** | [`0269993`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0269993175d37cd35094d0d5ee704d1f5bb85a7a) |
 | **Commit date** | 2026-08-04 |
-| **Commit title** | venus: remove in-tree venus-protocol |
+| **Commit title** | radeonsi,radv: avoid timestamp conversion overflow |
 | **Build date** | 20260804 |
-| **Release** | [v26.3.0-20260804-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r2) |
+| **Release** | [v26.3.0-20260804-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260804-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r3) | 2026-08-04 | [`0269993`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0269993175d37cd35094d0d5ee704d1f5bb85a7a) | radeonsi,radv: avoid timestamp conversion overflow | Vulkan 1.4.354 |
 | [v26.3.0-20260804-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r2) | 2026-08-04 | [`c7919be`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c7919be1fa9d99a75eb6ec6042fdff6265fe55e5) | venus: remove in-tree venus-protocol | Vulkan 1.4.354 |
 | [v26.3.0-20260804](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804) | 2026-08-04 | [`b460cff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b460cff22a56043e48e9ba083a8314b9a52840b4) | svga: Pass buffer handle for fd handles for resource_from_handle() | Vulkan 1.4.354 |
 | [v26.3.0-20260803-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260803-r7) | 2026-08-03 | [`4a66f5a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4a66f5a91787a2f6cd21623bd39bd5aeb3212ca0) | iris: Add function to compute and emit engine async threads limits | Vulkan 1.4.354 |
