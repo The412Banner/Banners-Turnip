@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260804-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r11) | 2026-08-04 | [`38ba6ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/38ba6ef02d1ce1f80cb1f7d7d671b29d89a196ae) | bvh/meson: Add -g option to glslang for debug information | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r10) | 2026-08-04 | [`e6c71d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6c71d0142557494185dfe4ed0b329d9e66438f5) | nir/validate: Make errors red | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r9) | 2026-08-04 | [`5173525`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/51735259659644ccec13a3cb1b2f22d37c3d635c) | anv: only consider active view-capable queues for image views | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r8) | 2026-08-04 | [`e492a27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e492a278685f16e480624172724b1e4282876968) | pvr: enable global priority related extensions | Vulkan 1.4.358 |

@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`e6c71d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6c71d0142557494185dfe4ed0b329d9e66438f5) |
+| **Commit** | [`38ba6ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/38ba6ef02d1ce1f80cb1f7d7d671b29d89a196ae) |
 | **Commit date** | 2026-08-04 |
-| **Commit title** | nir/validate: Make errors red |
+| **Commit title** | bvh/meson: Add -g option to glslang for debug information |
 | **Build date** | 20260804 |
-| **Release** | [v26.3.0-20260804-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r10) |
+| **Release** | [v26.3.0-20260804-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260804-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r11) | 2026-08-04 | [`38ba6ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/38ba6ef02d1ce1f80cb1f7d7d671b29d89a196ae) | bvh/meson: Add -g option to glslang for debug information | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r10) | 2026-08-04 | [`e6c71d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6c71d0142557494185dfe4ed0b329d9e66438f5) | nir/validate: Make errors red | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r9) | 2026-08-04 | [`5173525`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/51735259659644ccec13a3cb1b2f22d37c3d635c) | anv: only consider active view-capable queues for image views | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r8) | 2026-08-04 | [`e492a27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e492a278685f16e480624172724b1e4282876968) | pvr: enable global priority related extensions | Vulkan 1.4.358 |
