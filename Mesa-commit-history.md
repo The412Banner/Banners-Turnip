@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260805-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r7) | 2026-08-05 | [`a0fb4dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a0fb4dd492078a5d972e1a64f5c2c4cd628356a9) | kk: Support VK_EXT_image_view_min_lod | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r6) | 2026-08-05 | [`a53480a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a53480aa227924dcda63f853e8f267254b977e81) | ci: Uprev virglrenderer | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r5) | 2026-08-05 | [`c1ca2c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c1ca2c890eb8a6a3a2ea61011b635f62bf2d2e98) | virgl: Support tiled gbm modifiers | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r4) | 2026-08-05 | [`418f296`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/418f2963a1500481b97afeecd94959588434ad4a) | freedreno: Fix VPC_RAST_STREAM_CNTL register layouts | Vulkan 1.4.358 |

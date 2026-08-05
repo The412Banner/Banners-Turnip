@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`a53480a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a53480aa227924dcda63f853e8f267254b977e81) |
+| **Commit** | [`a0fb4dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a0fb4dd492078a5d972e1a64f5c2c4cd628356a9) |
 | **Commit date** | 2026-08-05 |
-| **Commit title** | ci: Uprev virglrenderer |
+| **Commit title** | kk: Support VK_EXT_image_view_min_lod |
 | **Build date** | 20260805 |
-| **Release** | [v26.3.0-20260805-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r6) |
+| **Release** | [v26.3.0-20260805-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260805-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r7) | 2026-08-05 | [`a0fb4dd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a0fb4dd492078a5d972e1a64f5c2c4cd628356a9) | kk: Support VK_EXT_image_view_min_lod | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r6) | 2026-08-05 | [`a53480a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a53480aa227924dcda63f853e8f267254b977e81) | ci: Uprev virglrenderer | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r5) | 2026-08-05 | [`c1ca2c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c1ca2c890eb8a6a3a2ea61011b635f62bf2d2e98) | virgl: Support tiled gbm modifiers | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r4) | 2026-08-05 | [`418f296`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/418f2963a1500481b97afeecd94959588434ad4a) | freedreno: Fix VPC_RAST_STREAM_CNTL register layouts | Vulkan 1.4.358 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260804-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r10) | 2026-08-04 | [`e6c71d0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6c71d0142557494185dfe4ed0b329d9e66438f5) | nir/validate: Make errors red | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r9) | 2026-08-04 | [`5173525`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/51735259659644ccec13a3cb1b2f22d37c3d635c) | anv: only consider active view-capable queues for image views | Vulkan 1.4.358 |
 | [v26.3.0-20260804-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r8) | 2026-08-04 | [`e492a27`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e492a278685f16e480624172724b1e4282876968) | pvr: enable global priority related extensions | Vulkan 1.4.358 |
-| [v26.3.0-20260804-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260804-r7) | 2026-08-04 | [`0973b92`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0973b92ec25a73c30ef53e4d79b6b5d5b845e075) | radv: Support video_encode_feedback2 (frame) stats | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---
