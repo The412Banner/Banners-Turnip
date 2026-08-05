@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`64f9ff1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64f9ff1d26fe56acedc50f484bc0e2bb2ed07942) |
+| **Commit** | [`418f296`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/418f2963a1500481b97afeecd94959588434ad4a) |
 | **Commit date** | 2026-08-05 |
-| **Commit title** | nir/nir_builder: inline dst_bit_size calculation in assert |
+| **Commit title** | freedreno: Fix VPC_RAST_STREAM_CNTL register layouts |
 | **Build date** | 20260805 |
-| **Release** | [v26.3.0-20260805-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r3) |
+| **Release** | [v26.3.0-20260805-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260805-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r4) | 2026-08-05 | [`418f296`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/418f2963a1500481b97afeecd94959588434ad4a) | freedreno: Fix VPC_RAST_STREAM_CNTL register layouts | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r3) | 2026-08-05 | [`64f9ff1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64f9ff1d26fe56acedc50f484bc0e2bb2ed07942) | nir/nir_builder: inline dst_bit_size calculation in assert | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r2) | 2026-08-05 | [`db70cf6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db70cf645dc92e300b18975e3d6d4be0f3799e49) | nir, spirv: Pad 3-component debug printf arguments to 4 components | Vulkan 1.4.358 |
 | [v26.3.0-20260805](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805) | 2026-08-05 | [`14a7fe4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14a7fe4b3588c899678a36d05f795e8f4d148487) | nir/print: skip some more default cases of intrinsic indices to reduce visual noise | Vulkan 1.4.358 |

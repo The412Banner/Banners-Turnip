@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260805-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r4) | 2026-08-05 | [`418f296`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/418f2963a1500481b97afeecd94959588434ad4a) | freedreno: Fix VPC_RAST_STREAM_CNTL register layouts | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r3) | 2026-08-05 | [`64f9ff1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64f9ff1d26fe56acedc50f484bc0e2bb2ed07942) | nir/nir_builder: inline dst_bit_size calculation in assert | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r2) | 2026-08-05 | [`db70cf6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db70cf645dc92e300b18975e3d6d4be0f3799e49) | nir, spirv: Pad 3-component debug printf arguments to 4 components | Vulkan 1.4.358 |
 | [v26.3.0-20260805](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805) | 2026-08-04 | [`14a7fe4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14a7fe4b3588c899678a36d05f795e8f4d148487) | nir/print: skip some more default cases of intrinsic indices to reduce visual noise | Vulkan 1.4.358 |
