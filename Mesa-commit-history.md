@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260805-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r11) | 2026-08-05 | [`1e2a9c2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1e2a9c2217273a71cee4e27baa743b68df19178e) | docs: add release dates for the 26.2.x cycle | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r10) | 2026-08-05 | [`93a1ab8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/93a1ab86ffa11f65a0906244b31260f50f4a0dbd) | etnaviv: Turn the sampler parameter loads into constants | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r9) | 2026-08-05 | [`ab9632d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ab9632da84408217d643b61affd69e7e1163103a) | v3dv: cap CL BO growth when doubling | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r8) | 2026-08-05 | [`2b545d2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b545d2cef1f8ee54789a2fbd817395799f64740) | kraid/nir: Emit OpIMul signless | Vulkan 1.4.358 |
