@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`410a764`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/410a764236d2918fba636330a978ce6ab53d22b2) |
+| **Commit** | [`0c006c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0c006c5624820b75730e77d2dc530d2a84374eb2) |
 | **Commit date** | 2026-08-06 |
-| **Commit title** | util/dynarray: outline the growth slow path |
+| **Commit title** | radv: remove deprecated RADV_DEBUG=nocompute |
 | **Build date** | 20260806 |
-| **Release** | [v26.3.0-20260806-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r4) |
+| **Release** | [v26.3.0-20260806-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260806-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r5) | 2026-08-06 | [`0c006c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0c006c5624820b75730e77d2dc530d2a84374eb2) | radv: remove deprecated RADV_DEBUG=nocompute | Vulkan 1.4.358 |
 | [v26.3.0-20260806-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r4) | 2026-08-06 | [`410a764`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/410a764236d2918fba636330a978ce6ab53d22b2) | util/dynarray: outline the growth slow path | Vulkan 1.4.358 |
 | [v26.3.0-20260806-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r3) | 2026-08-06 | [`4b3a40c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b3a40c4c2a8e80b6caf0e340d58473ffca9c15a) | nir/range_analysis: skip caching unsupported UUB ALU ops | Vulkan 1.4.358 |
 | [v26.3.0-20260806-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r2) | 2026-08-06 | [`c2af981`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2af98113d87c9b9ebacc571b68b0bccc7fbf4b3) | radv/ci: make more flakes on VANGOGH | Vulkan 1.4.358 |
