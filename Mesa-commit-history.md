@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260806-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r3) | 2026-08-06 | [`4b3a40c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b3a40c4c2a8e80b6caf0e340d58473ffca9c15a) | nir/range_analysis: skip caching unsupported UUB ALU ops | Vulkan 1.4.358 |
 | [v26.3.0-20260806-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r2) | 2026-08-06 | [`c2af981`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2af98113d87c9b9ebacc571b68b0bccc7fbf4b3) | radv/ci: make more flakes on VANGOGH | Vulkan 1.4.358 |
 | [v26.3.0-20260806](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806) | 2026-08-06 | [`43ec7c6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43ec7c6b0bca7d405a5e69bf7743afc92600268f) | kk: Disable allowGPUOptimizedContents on M5 for e5b9g9r9 | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r11) | 2026-08-05 | [`1e2a9c2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1e2a9c2217273a71cee4e27baa743b68df19178e) | docs: add release dates for the 26.2.x cycle | Vulkan 1.4.358 |
