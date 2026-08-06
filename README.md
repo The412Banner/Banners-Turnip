@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`43ec7c6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43ec7c6b0bca7d405a5e69bf7743afc92600268f) |
+| **Commit** | [`c2af981`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2af98113d87c9b9ebacc571b68b0bccc7fbf4b3) |
 | **Commit date** | 2026-08-06 |
-| **Commit title** | kk: Disable allowGPUOptimizedContents on M5 for e5b9g9r9 |
+| **Commit title** | radv/ci: make more flakes on VANGOGH |
 | **Build date** | 20260806 |
-| **Release** | [v26.3.0-20260806](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806) |
+| **Release** | [v26.3.0-20260806-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260806-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r2) | 2026-08-06 | [`c2af981`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2af98113d87c9b9ebacc571b68b0bccc7fbf4b3) | radv/ci: make more flakes on VANGOGH | Vulkan 1.4.358 |
 | [v26.3.0-20260806](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806) | 2026-08-06 | [`43ec7c6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43ec7c6b0bca7d405a5e69bf7743afc92600268f) | kk: Disable allowGPUOptimizedContents on M5 for e5b9g9r9 | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r11) | 2026-08-05 | [`1e2a9c2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1e2a9c2217273a71cee4e27baa743b68df19178e) | docs: add release dates for the 26.2.x cycle | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r10) | 2026-08-05 | [`93a1ab8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/93a1ab86ffa11f65a0906244b31260f50f4a0dbd) | etnaviv: Turn the sampler parameter loads into constants | Vulkan 1.4.358 |
@@ -96,9 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260805-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r6) | 2026-08-05 | [`a53480a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a53480aa227924dcda63f853e8f267254b977e81) | ci: Uprev virglrenderer | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r5) | 2026-08-05 | [`c1ca2c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c1ca2c890eb8a6a3a2ea61011b635f62bf2d2e98) | virgl: Support tiled gbm modifiers | Vulkan 1.4.358 |
 | [v26.3.0-20260805-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r4) | 2026-08-05 | [`418f296`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/418f2963a1500481b97afeecd94959588434ad4a) | freedreno: Fix VPC_RAST_STREAM_CNTL register layouts | Vulkan 1.4.358 |
-| [v26.3.0-20260805-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r3) | 2026-08-05 | [`64f9ff1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64f9ff1d26fe56acedc50f484bc0e2bb2ed07942) | nir/nir_builder: inline dst_bit_size calculation in assert | Vulkan 1.4.358 |
-| [v26.3.0-20260805-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805-r2) | 2026-08-05 | [`db70cf6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db70cf645dc92e300b18975e3d6d4be0f3799e49) | nir, spirv: Pad 3-component debug printf arguments to 4 components | Vulkan 1.4.358 |
-| [v26.3.0-20260805](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260805) | 2026-08-05 | [`14a7fe4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14a7fe4b3588c899678a36d05f795e8f4d148487) | nir/print: skip some more default cases of intrinsic indices to reduce visual noise | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---
