@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260806-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r6) | 2026-08-06 | [`a962b84`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a962b84f2f6a875434d4468d32cabe10b665f248) | gen_calendar_entries: fix datetime for newer Python | Vulkan 1.4.358 |
 | [v26.3.0-20260806-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r5) | 2026-08-06 | [`0c006c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0c006c5624820b75730e77d2dc530d2a84374eb2) | radv: remove deprecated RADV_DEBUG=nocompute | Vulkan 1.4.358 |
 | [v26.3.0-20260806-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r4) | 2026-08-06 | [`410a764`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/410a764236d2918fba636330a978ce6ab53d22b2) | util/dynarray: outline the growth slow path | Vulkan 1.4.358 |
 | [v26.3.0-20260806-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r3) | 2026-08-06 | [`4b3a40c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4b3a40c4c2a8e80b6caf0e340d58473ffca9c15a) | nir/range_analysis: skip caching unsupported UUB ALU ops | Vulkan 1.4.358 |
