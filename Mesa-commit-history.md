@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260807-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r9) | 2026-08-07 | [`525aac8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/525aac88c53be55f5958122e590fea2edcdc05d1) | freedreno/a2xx: remove the IO variables of lowered TGSI shaders | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r8) | 2026-08-07 | [`de048b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/de048b7cda65e634e19ea66cfec4bdcdbd0ee0e6) | pco: drop i2i16 conversion for nir_interleave srcs | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r7) | 2026-08-07 | [`e1b1d55`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1b1d5555636439169637546f5b82acac48f2b9d) | radv: fix enabling mesh shader queries when shaderObject is enabled | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r6) | 2026-08-07 | [`fa63afe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa63afe272482cc8c6a1fad6f006d740173d09ca) | etnaviv: Derive the shadow compare shader key from current sampler state | Vulkan 1.4.358 |
