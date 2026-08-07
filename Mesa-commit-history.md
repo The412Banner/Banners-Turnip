@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260807-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r2) | 2026-08-07 | [`506fc08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/506fc08410b943d474c954b9a1764d967d463a17) | freedreno/drm-shim: add a225 | Vulkan 1.4.358 |
 | [v26.3.0-20260807](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807) | 2026-08-07 | [`f5b6dfb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f5b6dfb260bcad9522e9bf2c5fc3bd01258daf03) | intel/executor: Add 256_hw_regs.lua example | Vulkan 1.4.358 |
 | [v26.3.0-20260806-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r6) | 2026-08-06 | [`a962b84`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a962b84f2f6a875434d4468d32cabe10b665f248) | gen_calendar_entries: fix datetime for newer Python | Vulkan 1.4.358 |
 | [v26.3.0-20260806-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r5) | 2026-08-06 | [`0c006c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0c006c5624820b75730e77d2dc530d2a84374eb2) | radv: remove deprecated RADV_DEBUG=nocompute | Vulkan 1.4.358 |
