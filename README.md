@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`fa63afe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa63afe272482cc8c6a1fad6f006d740173d09ca) |
+| **Commit** | [`e1b1d55`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1b1d5555636439169637546f5b82acac48f2b9d) |
 | **Commit date** | 2026-08-07 |
-| **Commit title** | etnaviv: Derive the shadow compare shader key from current sampler state |
+| **Commit title** | radv: fix enabling mesh shader queries when shaderObject is enabled |
 | **Build date** | 20260807 |
-| **Release** | [v26.3.0-20260807-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r6) |
+| **Release** | [v26.3.0-20260807-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260807-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r7) | 2026-08-07 | [`e1b1d55`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1b1d5555636439169637546f5b82acac48f2b9d) | radv: fix enabling mesh shader queries when shaderObject is enabled | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r6) | 2026-08-07 | [`fa63afe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa63afe272482cc8c6a1fad6f006d740173d09ca) | etnaviv: Derive the shadow compare shader key from current sampler state | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r5) | 2026-08-07 | [`7c32b01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c32b01df300feadf65d72555760b570cdfdccef) | anv: fix descriptor heap with non buffer aligned addresses pre Gfx12.5 | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r4) | 2026-08-07 | [`33780ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/33780ef17231d34dc2c1348e9b967fb0f1f37cda) | docs: fix reporting VK_KHR_index_type_uint8 on RADV | Vulkan 1.4.358 |
