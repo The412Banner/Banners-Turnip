@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260807-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r6) | 2026-08-07 | [`fa63afe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa63afe272482cc8c6a1fad6f006d740173d09ca) | etnaviv: Derive the shadow compare shader key from current sampler state | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r5) | 2026-08-07 | [`7c32b01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c32b01df300feadf65d72555760b570cdfdccef) | anv: fix descriptor heap with non buffer aligned addresses pre Gfx12.5 | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r4) | 2026-08-07 | [`33780ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/33780ef17231d34dc2c1348e9b967fb0f1f37cda) | docs: fix reporting VK_KHR_index_type_uint8 on RADV | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r3) | 2026-08-07 | [`58af0e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58af0e12abafaaa84f045b944f381c9260ca28e8) | kraid: Add OpMMul* and plumb them through | Vulkan 1.4.358 |
