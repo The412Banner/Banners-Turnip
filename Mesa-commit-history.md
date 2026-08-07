@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260807-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r13) | 2026-08-07 | [`6775457`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67754571ca932823ede9c392c9e538218a434943) | zink: fall back to sole pdev when DRM matching is unavailable | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r12) | 2026-08-07 | [`61656d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/61656d744be6101fe2e807ee6feca9d61724f2bc) | wsi/display: free the previous display name when EDID is parsed | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r11) | 2026-08-07 | [`e40d93a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e40d93a8ea98966ecb33b3a273c1633ea9ea0ea4) | ci/rusticl: Update nightly expectations after spirv-llvm-translator bump | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r10) | 2026-08-07 | [`3903060`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3903060418105c9d0fd4896a855b55e9a6e8b25d) | anv: shrink push constant data for EXT_descriptor_buffer/EXT_descriptor_heap | Vulkan 1.4.358 |
