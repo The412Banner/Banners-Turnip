@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`33780ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/33780ef17231d34dc2c1348e9b967fb0f1f37cda) |
+| **Commit** | [`7c32b01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c32b01df300feadf65d72555760b570cdfdccef) |
 | **Commit date** | 2026-08-07 |
-| **Commit title** | docs: fix reporting VK_KHR_index_type_uint8 on RADV |
+| **Commit title** | anv: fix descriptor heap with non buffer aligned addresses pre Gfx12.5 |
 | **Build date** | 20260807 |
-| **Release** | [v26.3.0-20260807-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r4) |
+| **Release** | [v26.3.0-20260807-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260807-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r5) | 2026-08-07 | [`7c32b01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c32b01df300feadf65d72555760b570cdfdccef) | anv: fix descriptor heap with non buffer aligned addresses pre Gfx12.5 | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r4) | 2026-08-07 | [`33780ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/33780ef17231d34dc2c1348e9b967fb0f1f37cda) | docs: fix reporting VK_KHR_index_type_uint8 on RADV | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r3) | 2026-08-07 | [`58af0e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58af0e12abafaaa84f045b944f381c9260ca28e8) | kraid: Add OpMMul* and plumb them through | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r2) | 2026-08-07 | [`506fc08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/506fc08410b943d474c954b9a1764d967d463a17) | freedreno/drm-shim: add a225 | Vulkan 1.4.358 |
