@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`506fc08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/506fc08410b943d474c954b9a1764d967d463a17) |
+| **Commit** | [`58af0e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58af0e12abafaaa84f045b944f381c9260ca28e8) |
 | **Commit date** | 2026-08-07 |
-| **Commit title** | freedreno/drm-shim: add a225 |
+| **Commit title** | kraid: Add OpMMul* and plumb them through |
 | **Build date** | 20260807 |
-| **Release** | [v26.3.0-20260807-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r2) |
+| **Release** | [v26.3.0-20260807-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260807-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r3) | 2026-08-07 | [`58af0e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58af0e12abafaaa84f045b944f381c9260ca28e8) | kraid: Add OpMMul* and plumb them through | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r2) | 2026-08-07 | [`506fc08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/506fc08410b943d474c954b9a1764d967d463a17) | freedreno/drm-shim: add a225 | Vulkan 1.4.358 |
 | [v26.3.0-20260807](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807) | 2026-08-07 | [`f5b6dfb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f5b6dfb260bcad9522e9bf2c5fc3bd01258daf03) | intel/executor: Add 256_hw_regs.lua example | Vulkan 1.4.358 |
 | [v26.3.0-20260806-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260806-r6) | 2026-08-06 | [`a962b84`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a962b84f2f6a875434d4468d32cabe10b665f248) | gen_calendar_entries: fix datetime for newer Python | Vulkan 1.4.358 |
