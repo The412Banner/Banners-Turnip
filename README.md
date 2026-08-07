@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`0138d2e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0138d2e800fcec8b65dc92a2e519cdf4c1a8c8fa) |
+| **Commit** | [`0deba49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0deba49b3d91eb510e47cbd52678b862af7b1c58) |
 | **Commit date** | 2026-08-07 |
-| **Commit title** | nak: Serialize carry access in instr_sched_prepass |
+| **Commit title** | svga: do y flip back only for non negative svga->curr.viewport[0].scale[1] |
 | **Build date** | 20260807 |
-| **Release** | [v26.3.0-20260807-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r16) |
+| **Release** | [v26.3.0-20260807-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r17) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260807-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r17) | 2026-08-07 | [`0deba49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0deba49b3d91eb510e47cbd52678b862af7b1c58) | svga: do y flip back only for non negative svga->curr.viewport[0].scale[1] | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r16) | 2026-08-07 | [`0138d2e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0138d2e800fcec8b65dc92a2e519cdf4c1a8c8fa) | nak: Serialize carry access in instr_sched_prepass | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r15) | 2026-08-07 | [`f475fb0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f475fb0c8372f9e5f66e17920f60df4fa3ec67da) | ci: move virgl jobs from merge pipelines to pre-merge/nightly only | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r14) | 2026-08-07 | [`6a87757`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a87757de5ef92c7d4b5770a47b2a9836eaf373c) | pan: allow CRC with AFBC | Vulkan 1.4.358 |
