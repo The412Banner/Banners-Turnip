@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`6775457`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67754571ca932823ede9c392c9e538218a434943) |
+| **Commit** | [`6a87757`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a87757de5ef92c7d4b5770a47b2a9836eaf373c) |
 | **Commit date** | 2026-08-07 |
-| **Commit title** | zink: fall back to sole pdev when DRM matching is unavailable |
+| **Commit title** | pan: allow CRC with AFBC |
 | **Build date** | 20260807 |
-| **Release** | [v26.3.0-20260807-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r13) |
+| **Release** | [v26.3.0-20260807-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r14) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260807-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r14) | 2026-08-07 | [`6a87757`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a87757de5ef92c7d4b5770a47b2a9836eaf373c) | pan: allow CRC with AFBC | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r13) | 2026-08-07 | [`6775457`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67754571ca932823ede9c392c9e538218a434943) | zink: fall back to sole pdev when DRM matching is unavailable | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r12) | 2026-08-07 | [`61656d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/61656d744be6101fe2e807ee6feca9d61724f2bc) | wsi/display: free the previous display name when EDID is parsed | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r11) | 2026-08-07 | [`e40d93a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e40d93a8ea98966ecb33b3a273c1633ea9ea0ea4) | ci/rusticl: Update nightly expectations after spirv-llvm-translator bump | Vulkan 1.4.358 |
