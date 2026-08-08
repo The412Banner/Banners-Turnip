@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`cb671c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cb671c51db1407f82c366b32642a7271224ceedd) |
-| **Commit date** | 2026-08-08 |
-| **Commit title** | intel/executor: Support Large GRF mode on DG2 through Xe2 |
+| **Commit** | [`bab34da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bab34da4a378379e65d212b405525f50255efd31) |
+| **Commit date** | 2026-08-09 |
+| **Commit title** | ci/broadcom: Update ci expectations after piglit uprev |
 | **Build date** | 20260808 |
-| **Release** | [v26.3.0-20260808-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r9) |
+| **Release** | [v26.3.0-20260808-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r10) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260808-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r10) | 2026-08-08 | [`bab34da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bab34da4a378379e65d212b405525f50255efd31) | ci/broadcom: Update ci expectations after piglit uprev | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r9) | 2026-08-08 | [`cb671c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cb671c51db1407f82c366b32642a7271224ceedd) | intel/executor: Support Large GRF mode on DG2 through Xe2 | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r8) | 2026-08-08 | [`502fe65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/502fe653a31e40929a6b4527824bacf9b76ec470) | brw: Consider address register SWSB dependencies in lower_scoreboard | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r7) | 2026-08-08 | [`2376e45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2376e45acbf67dcb97bcb36ca5377115456b4e0e) | nir: Add missing lower_io case | Vulkan 1.4.358 |
@@ -97,10 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260808-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r2) | 2026-08-08 | [`bd52ca4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bd52ca4c90ae17cd690256ec4650de1af6f739ca) | freedreno/a2xx: stop advertising GL_EXT_frag_depth | Vulkan 1.4.358 |
 | [v26.3.0-20260808](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808) | 2026-08-08 | [`9baff41`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9baff41023188540e5ec1484082c356e1c4730a7) | anv: Allow aliasing of images with tiled modifiers | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r18) | 2026-08-07 | [`2a2cc31`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2a2cc31dd7d2b7197a4de13818ed6ae2a251c78e) | anv: Bump up the subgroup size to 32 | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r17) | 2026-08-07 | [`0deba49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0deba49b3d91eb510e47cbd52678b862af7b1c58) | svga: do y flip back only for non negative svga->curr.viewport[0].scale[1] | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r16) | 2026-08-07 | [`0138d2e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0138d2e800fcec8b65dc92a2e519cdf4c1a8c8fa) | nak: Serialize carry access in instr_sched_prepass | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r15) | 2026-08-07 | [`f475fb0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f475fb0c8372f9e5f66e17920f60df4fa3ec67da) | ci: move virgl jobs from merge pipelines to pre-merge/nightly only | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r14) | 2026-08-07 | [`6a87757`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a87757de5ef92c7d4b5770a47b2a9836eaf373c) | pan: allow CRC with AFBC | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---

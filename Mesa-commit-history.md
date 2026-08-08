@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260808-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r10) | 2026-08-09 | [`bab34da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bab34da4a378379e65d212b405525f50255efd31) | ci/broadcom: Update ci expectations after piglit uprev | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r9) | 2026-08-08 | [`cb671c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cb671c51db1407f82c366b32642a7271224ceedd) | intel/executor: Support Large GRF mode on DG2 through Xe2 | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r8) | 2026-08-08 | [`502fe65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/502fe653a31e40929a6b4527824bacf9b76ec470) | brw: Consider address register SWSB dependencies in lower_scoreboard | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r7) | 2026-08-08 | [`2376e45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2376e45acbf67dcb97bcb36ca5377115456b4e0e) | nir: Add missing lower_io case | Vulkan 1.4.358 |
