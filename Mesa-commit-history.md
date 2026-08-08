@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260808-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r4) | 2026-08-08 | [`32fab1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32fab1ad098a393ffa40dce8e5272f52aa0ff70a) | kraid: Add a destination modifier propagation pass | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r3) | 2026-08-08 | [`b961bb5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b961bb5513653735d623a88128da858353a31054) | subprojects: amend missing venus-protocol version bump | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r2) | 2026-08-08 | [`bd52ca4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bd52ca4c90ae17cd690256ec4650de1af6f739ca) | freedreno/a2xx: stop advertising GL_EXT_frag_depth | Vulkan 1.4.358 |
 | [v26.3.0-20260808](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808) | 2026-08-07 | [`9baff41`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9baff41023188540e5ec1484082c356e1c4730a7) | anv: Allow aliasing of images with tiled modifiers | Vulkan 1.4.358 |
