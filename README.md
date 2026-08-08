@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`2c63b65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c63b650516f27d4c20be6b2fbc6988b1e659799) |
+| **Commit** | [`2376e45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2376e45acbf67dcb97bcb36ca5377115456b4e0e) |
 | **Commit date** | 2026-08-08 |
-| **Commit title** | ci: Run the shader-db job on etnaviv changes |
+| **Commit title** | nir: Add missing lower_io case |
 | **Build date** | 20260808 |
-| **Release** | [v26.3.0-20260808-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r6) |
+| **Release** | [v26.3.0-20260808-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260808-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r7) | 2026-08-08 | [`2376e45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2376e45acbf67dcb97bcb36ca5377115456b4e0e) | nir: Add missing lower_io case | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r6) | 2026-08-08 | [`2c63b65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c63b650516f27d4c20be6b2fbc6988b1e659799) | ci: Run the shader-db job on etnaviv changes | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r5) | 2026-08-08 | [`057132b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/057132b93b6c1b0d4da2efac1b285e75e9aa0e29) | virgl: Close winsys fd after destroying screen | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r4) | 2026-08-08 | [`32fab1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32fab1ad098a393ffa40dce8e5272f52aa0ff70a) | kraid: Add a destination modifier propagation pass | Vulkan 1.4.358 |
@@ -100,7 +101,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260807-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r14) | 2026-08-07 | [`6a87757`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6a87757de5ef92c7d4b5770a47b2a9836eaf373c) | pan: allow CRC with AFBC | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r13) | 2026-08-07 | [`6775457`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/67754571ca932823ede9c392c9e538218a434943) | zink: fall back to sole pdev when DRM matching is unavailable | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r12) | 2026-08-07 | [`61656d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/61656d744be6101fe2e807ee6feca9d61724f2bc) | wsi/display: free the previous display name when EDID is parsed | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r11) | 2026-08-07 | [`e40d93a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e40d93a8ea98966ecb33b3a273c1633ea9ea0ea4) | ci/rusticl: Update nightly expectations after spirv-llvm-translator bump | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---
