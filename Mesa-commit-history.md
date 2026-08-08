@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260808](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808) | 2026-08-07 | [`9baff41`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9baff41023188540e5ec1484082c356e1c4730a7) | anv: Allow aliasing of images with tiled modifiers | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r18) | 2026-08-07 | [`2a2cc31`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2a2cc31dd7d2b7197a4de13818ed6ae2a251c78e) | anv: Bump up the subgroup size to 32 | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r17) | 2026-08-07 | [`0deba49`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0deba49b3d91eb510e47cbd52678b862af7b1c58) | svga: do y flip back only for non negative svga->curr.viewport[0].scale[1] | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r16) | 2026-08-07 | [`0138d2e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0138d2e800fcec8b65dc92a2e519cdf4c1a8c8fa) | nak: Serialize carry access in instr_sched_prepass | Vulkan 1.4.358 |
