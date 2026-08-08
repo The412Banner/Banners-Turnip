@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`32fab1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32fab1ad098a393ffa40dce8e5272f52aa0ff70a) |
+| **Commit** | [`057132b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/057132b93b6c1b0d4da2efac1b285e75e9aa0e29) |
 | **Commit date** | 2026-08-08 |
-| **Commit title** | kraid: Add a destination modifier propagation pass |
+| **Commit title** | virgl: Close winsys fd after destroying screen |
 | **Build date** | 20260808 |
-| **Release** | [v26.3.0-20260808-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r4) |
+| **Release** | [v26.3.0-20260808-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260808-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r5) | 2026-08-08 | [`057132b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/057132b93b6c1b0d4da2efac1b285e75e9aa0e29) | virgl: Close winsys fd after destroying screen | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r4) | 2026-08-08 | [`32fab1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32fab1ad098a393ffa40dce8e5272f52aa0ff70a) | kraid: Add a destination modifier propagation pass | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r3) | 2026-08-08 | [`b961bb5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b961bb5513653735d623a88128da858353a31054) | subprojects: amend missing venus-protocol version bump | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r2) | 2026-08-08 | [`bd52ca4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bd52ca4c90ae17cd690256ec4650de1af6f739ca) | freedreno/a2xx: stop advertising GL_EXT_frag_depth | Vulkan 1.4.358 |
@@ -100,13 +101,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260807-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r12) | 2026-08-07 | [`61656d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/61656d744be6101fe2e807ee6feca9d61724f2bc) | wsi/display: free the previous display name when EDID is parsed | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r11) | 2026-08-07 | [`e40d93a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e40d93a8ea98966ecb33b3a273c1633ea9ea0ea4) | ci/rusticl: Update nightly expectations after spirv-llvm-translator bump | Vulkan 1.4.358 |
 | [v26.3.0-20260807-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r10) | 2026-08-07 | [`3903060`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3903060418105c9d0fd4896a855b55e9a6e8b25d) | anv: shrink push constant data for EXT_descriptor_buffer/EXT_descriptor_heap | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r9) | 2026-08-07 | [`525aac8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/525aac88c53be55f5958122e590fea2edcdc05d1) | freedreno/a2xx: remove the IO variables of lowered TGSI shaders | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r8) | 2026-08-07 | [`de048b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/de048b7cda65e634e19ea66cfec4bdcdbd0ee0e6) | pco: drop i2i16 conversion for nir_interleave srcs | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r7) | 2026-08-07 | [`e1b1d55`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1b1d5555636439169637546f5b82acac48f2b9d) | radv: fix enabling mesh shader queries when shaderObject is enabled | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r6) | 2026-08-07 | [`fa63afe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa63afe272482cc8c6a1fad6f006d740173d09ca) | etnaviv: Derive the shadow compare shader key from current sampler state | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r5) | 2026-08-07 | [`7c32b01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c32b01df300feadf65d72555760b570cdfdccef) | anv: fix descriptor heap with non buffer aligned addresses pre Gfx12.5 | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r4) | 2026-08-07 | [`33780ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/33780ef17231d34dc2c1348e9b967fb0f1f37cda) | docs: fix reporting VK_KHR_index_type_uint8 on RADV | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r3) | 2026-08-07 | [`58af0e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58af0e12abafaaa84f045b944f381c9260ca28e8) | kraid: Add OpMMul* and plumb them through | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---
