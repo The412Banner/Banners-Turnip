@@ -76,8 +76,8 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | **Commit** | [`bab34da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bab34da4a378379e65d212b405525f50255efd31) |
 | **Commit date** | 2026-08-09 |
 | **Commit title** | ci/broadcom: Update ci expectations after piglit uprev |
-| **Build date** | 20260808 |
-| **Release** | [v26.3.0-20260808-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r10) |
+| **Build date** | 20260809 |
+| **Release** | [v26.3.0-20260809](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,7 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.3.0-20260808-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r10) | 2026-08-08 | [`bab34da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bab34da4a378379e65d212b405525f50255efd31) | ci/broadcom: Update ci expectations after piglit uprev | Vulkan 1.4.358 |
+| [v26.3.0-20260809](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809) | 2026-08-09 | [`bab34da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bab34da4a378379e65d212b405525f50255efd31) | ci/broadcom: Update ci expectations after piglit uprev | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r9) | 2026-08-08 | [`cb671c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cb671c51db1407f82c366b32642a7271224ceedd) | intel/executor: Support Large GRF mode on DG2 through Xe2 | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r8) | 2026-08-08 | [`502fe65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/502fe653a31e40929a6b4527824bacf9b76ec470) | brw: Consider address register SWSB dependencies in lower_scoreboard | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r7) | 2026-08-08 | [`2376e45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2376e45acbf67dcb97bcb36ca5377115456b4e0e) | nir: Add missing lower_io case | Vulkan 1.4.358 |
@@ -96,8 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260808-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r4) | 2026-08-08 | [`32fab1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32fab1ad098a393ffa40dce8e5272f52aa0ff70a) | kraid: Add a destination modifier propagation pass | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r3) | 2026-08-08 | [`b961bb5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b961bb5513653735d623a88128da858353a31054) | subprojects: amend missing venus-protocol version bump | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r2) | 2026-08-08 | [`bd52ca4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bd52ca4c90ae17cd690256ec4650de1af6f739ca) | freedreno/a2xx: stop advertising GL_EXT_frag_depth | Vulkan 1.4.358 |
-| [v26.3.0-20260808](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808) | 2026-08-08 | [`9baff41`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9baff41023188540e5ec1484082c356e1c4730a7) | anv: Allow aliasing of images with tiled modifiers | Vulkan 1.4.358 |
-| [v26.3.0-20260807-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260807-r18) | 2026-08-07 | [`2a2cc31`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2a2cc31dd7d2b7197a4de13818ed6ae2a251c78e) | anv: Bump up the subgroup size to 32 | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---
