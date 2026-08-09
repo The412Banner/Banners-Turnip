@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`2b66ae8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b66ae8a739733b09cfdf9b0e99be84c0c9041bd) |
+| **Commit** | [`f56d52b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f56d52b26b2937b93a518e3346282e312cfb894f) |
 | **Commit date** | 2026-08-09 |
-| **Commit title** | Uprev ANGLE to be80ce591a481c12d60c50d6040d40c035b40a2b |
+| **Commit title** | anv: always ensure push constant is allocated for compute |
 | **Build date** | 20260809 |
-| **Release** | [v26.3.0-20260809-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r2) |
+| **Release** | [v26.3.0-20260809-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260809-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r3) | 2026-08-09 | [`f56d52b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f56d52b26b2937b93a518e3346282e312cfb894f) | anv: always ensure push constant is allocated for compute | Vulkan 1.4.358 |
 | [v26.3.0-20260809-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r2) | 2026-08-09 | [`2b66ae8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b66ae8a739733b09cfdf9b0e99be84c0c9041bd) | Uprev ANGLE to be80ce591a481c12d60c50d6040d40c035b40a2b | Vulkan 1.4.358 |
 | [v26.3.0-20260809](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809) | 2026-08-09 | [`bab34da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bab34da4a378379e65d212b405525f50255efd31) | ci/broadcom: Update ci expectations after piglit uprev | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r9) | 2026-08-08 | [`cb671c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cb671c51db1407f82c366b32642a7271224ceedd) | intel/executor: Support Large GRF mode on DG2 through Xe2 | Vulkan 1.4.358 |

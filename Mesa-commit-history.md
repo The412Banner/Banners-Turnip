@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260809-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r3) | 2026-08-09 | [`f56d52b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f56d52b26b2937b93a518e3346282e312cfb894f) | anv: always ensure push constant is allocated for compute | Vulkan 1.4.358 |
 | [v26.3.0-20260809-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r2) | 2026-08-09 | [`2b66ae8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b66ae8a739733b09cfdf9b0e99be84c0c9041bd) | Uprev ANGLE to be80ce591a481c12d60c50d6040d40c035b40a2b | Vulkan 1.4.358 |
 | [v26.3.0-20260809](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809) | 2026-08-09 | [`bab34da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bab34da4a378379e65d212b405525f50255efd31) | ci/broadcom: Update ci expectations after piglit uprev | Vulkan 1.4.358 |
 | [v26.3.0-20260808-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r10) | 2026-08-09 | [`bab34da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bab34da4a378379e65d212b405525f50255efd31) | ci/broadcom: Update ci expectations after piglit uprev | Vulkan 1.4.358 |
