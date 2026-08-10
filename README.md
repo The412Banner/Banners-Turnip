@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`43c2df4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43c2df4bca6b5d1d557a3c22cb466b07d61769b4) |
+| **Commit** | [`fb6e1fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb6e1fbce19fec4755c8f1710a1b60d096ee68ca) |
 | **Commit date** | 2026-08-10 |
-| **Commit title** | nir/algebraic: don't leak pattern conditions across passes |
+| **Commit title** | nak: Add a test for IMNMX in nvdisasm_tests |
 | **Build date** | 20260810 |
-| **Release** | [v26.3.0-20260810-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r4) |
+| **Release** | [v26.3.0-20260810-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,11 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260810-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r5) | 2026-08-10 | [`fb6e1fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb6e1fbce19fec4755c8f1710a1b60d096ee68ca) | nak: Add a test for IMNMX in nvdisasm_tests | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r4) | 2026-08-10 | [`43c2df4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43c2df4bca6b5d1d557a3c22cb466b07d61769b4) | nir/algebraic: don't leak pattern conditions across passes | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r3) | 2026-08-10 | [`02af786`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/02af7862247919f073139ba88cd0e4d35b84e876) | r300: improve error printing in r500_fragprog_emit.c | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r2) | 2026-08-10 | [`5187897`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/518789778c28e66add9c8685f63e92566c22ebc0) | kk: Add Foundation framework to bridge | Vulkan 1.4.358 |
 | [v26.3.0-20260810](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810) | 2026-08-10 | [`8ede4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ede4ccb7300892dd004fb4cede8abb0823000f4) | kk: Simplify memory budget calculations | Vulkan 1.4.358 |
-| [v26.3.0-20260809-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r3) | 2026-08-09 | [`f56d52b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f56d52b26b2937b93a518e3346282e312cfb894f) | anv: always ensure push constant is allocated for compute | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---
