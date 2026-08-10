@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260810-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r8) | 2026-08-10 | [`34b78fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/34b78fb26b9b1b3f52c81de538ebbad1c994b293) | freedreno/a2xx: fix the window scissor losing a row and a column | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r7) | 2026-08-10 | [`742af79`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/742af792775f21e29e154a4e35b8c1a2e3103de4) | radv/meta: fix resolving to 3D color images | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r6) | 2026-08-10 | [`9b900ba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9b900ba1b658ef1e6102b70975d480b4a1696598) | radv/video: Use vk_video_get_h264_level | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r5) | 2026-08-10 | [`fb6e1fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb6e1fbce19fec4755c8f1710a1b60d096ee68ca) | nak: Add a test for IMNMX in nvdisasm_tests | Vulkan 1.4.358 |
