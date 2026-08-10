@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260810-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r3) | 2026-08-10 | [`02af786`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/02af7862247919f073139ba88cd0e4d35b84e876) | r300: improve error printing in r500_fragprog_emit.c | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r2) | 2026-08-10 | [`5187897`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/518789778c28e66add9c8685f63e92566c22ebc0) | kk: Add Foundation framework to bridge | Vulkan 1.4.358 |
 | [v26.3.0-20260810](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810) | 2026-08-10 | [`8ede4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ede4ccb7300892dd004fb4cede8abb0823000f4) | kk: Simplify memory budget calculations | Vulkan 1.4.358 |
 | [v26.3.0-20260809-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r3) | 2026-08-09 | [`f56d52b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f56d52b26b2937b93a518e3346282e312cfb894f) | anv: always ensure push constant is allocated for compute | Vulkan 1.4.358 |
