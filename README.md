@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`f56d52b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f56d52b26b2937b93a518e3346282e312cfb894f) |
-| **Commit date** | 2026-08-09 |
-| **Commit title** | anv: always ensure push constant is allocated for compute |
-| **Build date** | 20260809 |
-| **Release** | [v26.3.0-20260809-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r3) |
+| **Commit** | [`8ede4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ede4ccb7300892dd004fb4cede8abb0823000f4) |
+| **Commit date** | 2026-08-10 |
+| **Commit title** | kk: Simplify memory budget calculations |
+| **Build date** | 20260810 |
+| **Release** | [v26.3.0-20260810](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,14 +87,9 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260810](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810) | 2026-08-10 | [`8ede4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ede4ccb7300892dd004fb4cede8abb0823000f4) | kk: Simplify memory budget calculations | Vulkan 1.4.358 |
 | [v26.3.0-20260809-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r3) | 2026-08-09 | [`f56d52b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f56d52b26b2937b93a518e3346282e312cfb894f) | anv: always ensure push constant is allocated for compute | Vulkan 1.4.358 |
 | [v26.3.0-20260809-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r2) | 2026-08-09 | [`2b66ae8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b66ae8a739733b09cfdf9b0e99be84c0c9041bd) | Uprev ANGLE to be80ce591a481c12d60c50d6040d40c035b40a2b | Vulkan 1.4.358 |
-| [v26.3.0-20260809](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809) | 2026-08-09 | [`bab34da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bab34da4a378379e65d212b405525f50255efd31) | ci/broadcom: Update ci expectations after piglit uprev | Vulkan 1.4.358 |
-| [v26.3.0-20260808-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r9) | 2026-08-08 | [`cb671c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cb671c51db1407f82c366b32642a7271224ceedd) | intel/executor: Support Large GRF mode on DG2 through Xe2 | Vulkan 1.4.358 |
-| [v26.3.0-20260808-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r8) | 2026-08-08 | [`502fe65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/502fe653a31e40929a6b4527824bacf9b76ec470) | brw: Consider address register SWSB dependencies in lower_scoreboard | Vulkan 1.4.358 |
-| [v26.3.0-20260808-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r7) | 2026-08-08 | [`2376e45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2376e45acbf67dcb97bcb36ca5377115456b4e0e) | nir: Add missing lower_io case | Vulkan 1.4.358 |
-| [v26.3.0-20260808-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r6) | 2026-08-08 | [`2c63b65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c63b650516f27d4c20be6b2fbc6988b1e659799) | ci: Run the shader-db job on etnaviv changes | Vulkan 1.4.358 |
-| [v26.3.0-20260808-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260808-r5) | 2026-08-08 | [`057132b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/057132b93b6c1b0d4da2efac1b285e75e9aa0e29) | virgl: Close winsys fd after destroying screen | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---
