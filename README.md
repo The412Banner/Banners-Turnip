@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`9b900ba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9b900ba1b658ef1e6102b70975d480b4a1696598) |
+| **Commit** | [`742af79`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/742af792775f21e29e154a4e35b8c1a2e3103de4) |
 | **Commit date** | 2026-08-10 |
-| **Commit title** | radv/video: Use vk_video_get_h264_level |
+| **Commit title** | radv/meta: fix resolving to 3D color images |
 | **Build date** | 20260810 |
-| **Release** | [v26.3.0-20260810-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r6) |
+| **Release** | [v26.3.0-20260810-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260810-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r7) | 2026-08-10 | [`742af79`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/742af792775f21e29e154a4e35b8c1a2e3103de4) | radv/meta: fix resolving to 3D color images | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r6) | 2026-08-10 | [`9b900ba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9b900ba1b658ef1e6102b70975d480b4a1696598) | radv/video: Use vk_video_get_h264_level | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r5) | 2026-08-10 | [`fb6e1fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb6e1fbce19fec4755c8f1710a1b60d096ee68ca) | nak: Add a test for IMNMX in nvdisasm_tests | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r4) | 2026-08-10 | [`43c2df4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43c2df4bca6b5d1d557a3c22cb466b07d61769b4) | nir/algebraic: don't leak pattern conditions across passes | Vulkan 1.4.358 |
