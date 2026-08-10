@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`e408d9a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e408d9abd32d0f3f7621fd7cbcc018f635d24531) |
+| **Commit** | [`62585e8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/62585e8940a6ccb920e7b5bd8bc1235e6cabedc2) |
 | **Commit date** | 2026-08-10 |
-| **Commit title** | iris: Initialize source hash in program data |
+| **Commit title** | anv: Close shader dump archive on device destruction |
 | **Build date** | 20260810 |
-| **Release** | [v26.3.0-20260810-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r12) |
+| **Release** | [v26.3.0-20260810-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r13) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260810-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r13) | 2026-08-10 | [`62585e8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/62585e8940a6ccb920e7b5bd8bc1235e6cabedc2) | anv: Close shader dump archive on device destruction | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r12) | 2026-08-10 | [`e408d9a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e408d9abd32d0f3f7621fd7cbcc018f635d24531) | iris: Initialize source hash in program data | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r11) | 2026-08-10 | [`b587ce6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b587ce63f66f0a6b5136bd5d27d6f793410629ad) | brw: Respect execution mask when resetting GS control data | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r10) | 2026-08-10 | [`74d4e41`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74d4e41b2bb1e77ef4e022a6a1329d6cc782c4c6) | tu: Use correct pointer for vis stream patchpoint cs fence | Vulkan 1.4.358 |
