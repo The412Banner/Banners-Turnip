@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`74d4e41`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74d4e41b2bb1e77ef4e022a6a1329d6cc782c4c6) |
+| **Commit** | [`b587ce6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b587ce63f66f0a6b5136bd5d27d6f793410629ad) |
 | **Commit date** | 2026-08-10 |
-| **Commit title** | tu: Use correct pointer for vis stream patchpoint cs fence |
+| **Commit title** | brw: Respect execution mask when resetting GS control data |
 | **Build date** | 20260810 |
-| **Release** | [v26.3.0-20260810-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r10) |
+| **Release** | [v26.3.0-20260810-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260810-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r11) | 2026-08-10 | [`b587ce6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b587ce63f66f0a6b5136bd5d27d6f793410629ad) | brw: Respect execution mask when resetting GS control data | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r10) | 2026-08-10 | [`74d4e41`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74d4e41b2bb1e77ef4e022a6a1329d6cc782c4c6) | tu: Use correct pointer for vis stream patchpoint cs fence | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r9) | 2026-08-10 | [`9bbf48e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9bbf48eed3cf5ec67d7cf44de9f4fb46e629bc27) | mediafoundation: shut down the event queue. | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r8) | 2026-08-10 | [`34b78fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/34b78fb26b9b1b3f52c81de538ebbad1c994b293) | freedreno/a2xx: fix the window scissor losing a row and a column | Vulkan 1.4.358 |
