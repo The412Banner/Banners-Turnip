@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`8ede4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ede4ccb7300892dd004fb4cede8abb0823000f4) |
+| **Commit** | [`5187897`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/518789778c28e66add9c8685f63e92566c22ebc0) |
 | **Commit date** | 2026-08-10 |
-| **Commit title** | kk: Simplify memory budget calculations |
+| **Commit title** | kk: Add Foundation framework to bridge |
 | **Build date** | 20260810 |
-| **Release** | [v26.3.0-20260810](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810) |
+| **Release** | [v26.3.0-20260810-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260810-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r2) | 2026-08-10 | [`5187897`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/518789778c28e66add9c8685f63e92566c22ebc0) | kk: Add Foundation framework to bridge | Vulkan 1.4.358 |
 | [v26.3.0-20260810](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810) | 2026-08-10 | [`8ede4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ede4ccb7300892dd004fb4cede8abb0823000f4) | kk: Simplify memory budget calculations | Vulkan 1.4.358 |
 | [v26.3.0-20260809-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r3) | 2026-08-09 | [`f56d52b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f56d52b26b2937b93a518e3346282e312cfb894f) | anv: always ensure push constant is allocated for compute | Vulkan 1.4.358 |
 | [v26.3.0-20260809-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260809-r2) | 2026-08-09 | [`2b66ae8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b66ae8a739733b09cfdf9b0e99be84c0c9041bd) | Uprev ANGLE to be80ce591a481c12d60c50d6040d40c035b40a2b | Vulkan 1.4.358 |
