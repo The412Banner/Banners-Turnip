@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260811-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r4) | 2026-08-11 | [`0df67d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0df67d43c8159854ef5e1b45155542a977666b72) | radv: add a workaround for broken multi viewport with UE5 | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r3) | 2026-08-11 | [`e060f20`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e060f20717a311059ba2ccc34cd52516c1c8865d) | kk: Disable workaround 8 and 11 on macOS 27 | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r2) | 2026-08-11 | [`194c22e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/194c22e871235e16033ccac2a29ed4e7d2e822de) | kk: Implement buffer marker AMD | Vulkan 1.4.358 |
 | [v26.3.0-20260811](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811) | 2026-08-10 | [`1b2e70d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1b2e70de00f68f8cf32dca8cd1a64fba9b6410a8) | nak: improve implementation of global_bounded | Vulkan 1.4.358 |

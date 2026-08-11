@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`e060f20`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e060f20717a311059ba2ccc34cd52516c1c8865d) |
+| **Commit** | [`0df67d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0df67d43c8159854ef5e1b45155542a977666b72) |
 | **Commit date** | 2026-08-11 |
-| **Commit title** | kk: Disable workaround 8 and 11 on macOS 27 |
+| **Commit title** | radv: add a workaround for broken multi viewport with UE5 |
 | **Build date** | 20260811 |
-| **Release** | [v26.3.0-20260811-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r3) |
+| **Release** | [v26.3.0-20260811-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260811-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r4) | 2026-08-11 | [`0df67d4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0df67d43c8159854ef5e1b45155542a977666b72) | radv: add a workaround for broken multi viewport with UE5 | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r3) | 2026-08-11 | [`e060f20`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e060f20717a311059ba2ccc34cd52516c1c8865d) | kk: Disable workaround 8 and 11 on macOS 27 | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r2) | 2026-08-11 | [`194c22e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/194c22e871235e16033ccac2a29ed4e7d2e822de) | kk: Implement buffer marker AMD | Vulkan 1.4.358 |
 | [v26.3.0-20260811](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811) | 2026-08-11 | [`1b2e70d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1b2e70de00f68f8cf32dca8cd1a64fba9b6410a8) | nak: improve implementation of global_bounded | Vulkan 1.4.358 |
@@ -103,7 +104,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260810-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r4) | 2026-08-10 | [`43c2df4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/43c2df4bca6b5d1d557a3c22cb466b07d61769b4) | nir/algebraic: don't leak pattern conditions across passes | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r3) | 2026-08-10 | [`02af786`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/02af7862247919f073139ba88cd0e4d35b84e876) | r300: improve error printing in r500_fragprog_emit.c | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r2) | 2026-08-10 | [`5187897`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/518789778c28e66add9c8685f63e92566c22ebc0) | kk: Add Foundation framework to bridge | Vulkan 1.4.358 |
-| [v26.3.0-20260810](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810) | 2026-08-10 | [`8ede4cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8ede4ccb7300892dd004fb4cede8abb0823000f4) | kk: Simplify memory budget calculations | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---
