@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260811-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r13) | 2026-08-11 | [`58f6bc5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58f6bc5eab77cd818d0a0e20d32c6859b67ed174) | anv: remove all code related to INTEL_performance_query not using metrics_library | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r12) | 2026-08-11 | [`56f473c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/56f473cc63e86c74e815c5f44e3cdc7ddd6d665f) | freedreno/a2xx: read gl_FragCoord from the component asked for | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r11) | 2026-08-11 | [`b061696`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0616965331138387d63402f1d17f4ecc5245511) | kk: Fix disable of workaround 8 | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r10) | 2026-08-11 | [`64dbbfe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64dbbfe03429ee4e3b80e3d88ef8000084d15ff8) | radv: run nir_opt_dead_cf before nir_vk_lower_ycbcr_tex | Vulkan 1.4.358 |
