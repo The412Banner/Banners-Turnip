@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260811-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r9) | 2026-08-11 | [`94073fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/94073fb459293cebe10c4e74ee28e7d2879cc917) | pan/genxml/v14: Clean up format list | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r8) | 2026-08-11 | [`e1ef8f0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1ef8f046c6e37ec1e2a13229560fbb824e5118f) | pvr: advertise KHR_shader_fma | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r7) | 2026-08-11 | [`4e66d3c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e66d3ca29458c0c749c199255e348b09e81c514) | broadcom/compiler: handle 16-bit fsat | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r6) | 2026-08-11 | [`811ebbd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/811ebbd43c24ead247c19a792eae55b4a3162d21) | pco, pvr: add support for VK_EXT_inline_uniform_block | Vulkan 1.4.358 |
