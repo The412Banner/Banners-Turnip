@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260811-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r15) | 2026-08-11 | [`47bc087`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47bc0871f64477bf2d013bfab1c0774a221ef5cf) | freedreno/ci: Switch a200 to gfx-ci/linux kernel | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r14) | 2026-08-11 | [`fdaeb5a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fdaeb5a757599841ec9c95a548f8849066bd2fc3) | etnaviv: reorder state emission to optimize loads | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r13) | 2026-08-11 | [`58f6bc5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58f6bc5eab77cd818d0a0e20d32c6859b67ed174) | anv: remove all code related to INTEL_performance_query not using metrics_library | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r12) | 2026-08-11 | [`56f473c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/56f473cc63e86c74e815c5f44e3cdc7ddd6d665f) | freedreno/a2xx: read gl_FragCoord from the component asked for | Vulkan 1.4.358 |
