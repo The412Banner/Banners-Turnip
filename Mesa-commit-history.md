@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260811](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811) | 2026-08-10 | [`1b2e70d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1b2e70de00f68f8cf32dca8cd1a64fba9b6410a8) | nak: improve implementation of global_bounded | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r14) | 2026-08-10 | [`fc8b192`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fc8b1928cbc21099d1428299bf7d0c86da9f7b65) | intel/compiler: Don't vectorize URB access to vec8 in SIMD32 | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r13) | 2026-08-10 | [`62585e8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/62585e8940a6ccb920e7b5bd8bc1235e6cabedc2) | anv: Close shader dump archive on device destruction | Vulkan 1.4.358 |
 | [v26.3.0-20260810-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260810-r12) | 2026-08-10 | [`e408d9a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e408d9abd32d0f3f7621fd7cbcc018f635d24531) | iris: Initialize source hash in program data | Vulkan 1.4.358 |
