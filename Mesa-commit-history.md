@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260811-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r18) | 2026-08-11 | [`064cbe8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/064cbe8aabe117766b59fc7bf4745598c75bbf90) | freedreno/a2xx: let nir lower fsign | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r17) | 2026-08-11 | [`aa6f912`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aa6f9121f0fb76446f1fb48cb9284380a64f9686) | anv: let's not crash everywhere | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r16) | 2026-08-11 | [`76e9e97`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76e9e975a4f530a160efcb86fb8bf62ebe5dfc77) | anv: fix binding mode flush | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r15) | 2026-08-11 | [`47bc087`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47bc0871f64477bf2d013bfab1c0774a221ef5cf) | freedreno/ci: Switch a200 to gfx-ci/linux kernel | Vulkan 1.4.358 |
