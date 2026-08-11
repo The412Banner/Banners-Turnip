@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260811-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r12) | 2026-08-11 | [`56f473c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/56f473cc63e86c74e815c5f44e3cdc7ddd6d665f) | freedreno/a2xx: read gl_FragCoord from the component asked for | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r11) | 2026-08-11 | [`b061696`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0616965331138387d63402f1d17f4ecc5245511) | kk: Fix disable of workaround 8 | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r10) | 2026-08-11 | [`64dbbfe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64dbbfe03429ee4e3b80e3d88ef8000084d15ff8) | radv: run nir_opt_dead_cf before nir_vk_lower_ycbcr_tex | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r9) | 2026-08-11 | [`94073fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/94073fb459293cebe10c4e74ee28e7d2879cc917) | pan/genxml/v14: Clean up format list | Vulkan 1.4.358 |
