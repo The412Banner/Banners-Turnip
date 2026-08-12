@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.358 |
-| **Commit** | [`976b8f4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/976b8f4754520fa3434b0f3a0bac97468da42fc7) |
+| **Commit** | [`724bffd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/724bffde435bd1055a07db34cd8252d809d37a4f) |
 | **Commit date** | 2026-08-12 |
-| **Commit title** | ac/uvd: Make create cmd work with duplicate handle on UVD < 6.3 |
+| **Commit title** | radv/ci: use all drm-shim devices in radv-validate-cache |
 | **Build date** | 20260812 |
-| **Release** | [v26.3.0-20260812-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r6) |
+| **Release** | [v26.3.0-20260812-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260812-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r7) | 2026-08-12 | [`724bffd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/724bffde435bd1055a07db34cd8252d809d37a4f) | radv/ci: use all drm-shim devices in radv-validate-cache | Vulkan 1.4.358 |
 | [v26.3.0-20260812-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r6) | 2026-08-12 | [`976b8f4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/976b8f4754520fa3434b0f3a0bac97468da42fc7) | ac/uvd: Make create cmd work with duplicate handle on UVD < 6.3 | Vulkan 1.4.358 |
 | [v26.3.0-20260812-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r5) | 2026-08-12 | [`5af4976`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5af4976e23a6dd361f5a1e0d26595b47d228c191) | radeonsi/mm: Don't use HEVC per slice loop filter across slices on old FW | Vulkan 1.4.358 |
 | [v26.3.0-20260812-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r4) | 2026-08-12 | [`2c4ebcd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c4ebcdef8ebf72a6296d62b7c04b63f0469bb18) | nir/opt_cse: CSE subgroup ops per block | Vulkan 1.4.358 |
@@ -104,7 +105,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260811-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r10) | 2026-08-11 | [`64dbbfe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/64dbbfe03429ee4e3b80e3d88ef8000084d15ff8) | radv: run nir_opt_dead_cf before nir_vk_lower_ycbcr_tex | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r9) | 2026-08-11 | [`94073fb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/94073fb459293cebe10c4e74ee28e7d2879cc917) | pan/genxml/v14: Clean up format list | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r8) | 2026-08-11 | [`e1ef8f0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1ef8f046c6e37ec1e2a13229560fbb824e5118f) | pvr: advertise KHR_shader_fma | Vulkan 1.4.358 |
-| [v26.3.0-20260811-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r7) | 2026-08-11 | [`4e66d3c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e66d3ca29458c0c749c199255e348b09e81c514) | broadcom/compiler: handle 16-bit fsat | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---

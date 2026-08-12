@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260812-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r7) | 2026-08-12 | [`724bffd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/724bffde435bd1055a07db34cd8252d809d37a4f) | radv/ci: use all drm-shim devices in radv-validate-cache | Vulkan 1.4.358 |
 | [v26.3.0-20260812-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r6) | 2026-08-12 | [`976b8f4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/976b8f4754520fa3434b0f3a0bac97468da42fc7) | ac/uvd: Make create cmd work with duplicate handle on UVD < 6.3 | Vulkan 1.4.358 |
 | [v26.3.0-20260812-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r5) | 2026-08-12 | [`5af4976`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5af4976e23a6dd361f5a1e0d26595b47d228c191) | radeonsi/mm: Don't use HEVC per slice loop filter across slices on old FW | Vulkan 1.4.358 |
 | [v26.3.0-20260812-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r4) | 2026-08-12 | [`2c4ebcd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c4ebcdef8ebf72a6296d62b7c04b63f0469bb18) | nir/opt_cse: CSE subgroup ops per block | Vulkan 1.4.358 |
