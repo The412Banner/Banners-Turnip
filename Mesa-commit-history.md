@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260812-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r2) | 2026-08-12 | [`b7314ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b7314eec75b007efd0569cbd1df046e6da3b6e90) | kk: Move kk_buffer Metal members into its own struct | Vulkan 1.4.358 |
 | [v26.3.0-20260812](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812) | 2026-08-11 | [`eb03131`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/eb03131ca07be8a8f4abd09fcae66686007afd13) | brw/rt: Accept hit directly based on condition | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r18) | 2026-08-11 | [`064cbe8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/064cbe8aabe117766b59fc7bf4745598c75bbf90) | freedreno/a2xx: let nir lower fsign | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r17) | 2026-08-11 | [`aa6f912`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aa6f9121f0fb76446f1fb48cb9284380a64f9686) | anv: let's not crash everywhere | Vulkan 1.4.358 |
