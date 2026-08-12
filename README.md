@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`e2c33e7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2c33e79025d7bc2eb6cdce21353cee71bb63491) |
+| **Commit** | [`127e7cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/127e7cb8ca0bbafe915095db872e1a0a96b19de5) |
 | **Commit date** | 2026-08-12 |
-| **Commit title** | pvr: fix sampler handle dereference with immutable samplers |
+| **Commit title** | tu: CmdSetRenderingInputAttachmentIndices should dirty LRZ |
 | **Build date** | 20260812 |
-| **Release** | [v26.3.0-20260812-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r12) |
+| **Release** | [v26.3.0-20260812-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r13) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260812-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r13) | 2026-08-12 | [`127e7cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/127e7cb8ca0bbafe915095db872e1a0a96b19de5) | tu: CmdSetRenderingInputAttachmentIndices should dirty LRZ | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r12) | 2026-08-12 | [`e2c33e7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2c33e79025d7bc2eb6cdce21353cee71bb63491) | pvr: fix sampler handle dereference with immutable samplers | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r11) | 2026-08-12 | [`e651fb7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e651fb738a6110049c8546b23796d40ec454e323) | brw: Vectorize URB for task and mesh shaders after SIMD is set | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r10) | 2026-08-12 | [`c5138d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5138d5f2bfbb41b787ab6cf87525b6dbe2d6cdc) | mesa/shader_query: Handle SPIR-V built-ins in validate_io | Vulkan 1.4.359 |
@@ -102,7 +103,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260811-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r18) | 2026-08-11 | [`064cbe8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/064cbe8aabe117766b59fc7bf4745598c75bbf90) | freedreno/a2xx: let nir lower fsign | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r17) | 2026-08-11 | [`aa6f912`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aa6f9121f0fb76446f1fb48cb9284380a64f9686) | anv: let's not crash everywhere | Vulkan 1.4.358 |
 | [v26.3.0-20260811-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r16) | 2026-08-11 | [`76e9e97`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/76e9e975a4f530a160efcb86fb8bf62ebe5dfc77) | anv: fix binding mode flush | Vulkan 1.4.358 |
-| [v26.3.0-20260811-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260811-r15) | 2026-08-11 | [`47bc087`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/47bc0871f64477bf2d013bfab1c0774a221ef5cf) | freedreno/ci: Switch a200 to gfx-ci/linux kernel | Vulkan 1.4.358 |
 <!-- RECENT_BUILDS_END -->
 
 ---
