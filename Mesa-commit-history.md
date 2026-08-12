@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260812-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r15) | 2026-08-12 | [`175e1f3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/175e1f3cf5347c8a9a104dfcd64d32d7583642b2) | nir: Set info->fs.color_is_dual_source for DUAL_SRC_BLEND var locations | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r14) | 2026-08-12 | [`769b2d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/769b2d6ab13ca509487ff38f12a0bdb892343c17) | anv: fix upload of shader kernels spanning more than one heap BO | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r13) | 2026-08-12 | [`127e7cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/127e7cb8ca0bbafe915095db872e1a0a96b19de5) | tu: CmdSetRenderingInputAttachmentIndices should dirty LRZ | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r12) | 2026-08-12 | [`e2c33e7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2c33e79025d7bc2eb6cdce21353cee71bb63491) | pvr: fix sampler handle dereference with immutable samplers | Vulkan 1.4.359 |
