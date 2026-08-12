@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`c5138d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5138d5f2bfbb41b787ab6cf87525b6dbe2d6cdc) |
+| **Commit** | [`e651fb7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e651fb738a6110049c8546b23796d40ec454e323) |
 | **Commit date** | 2026-08-12 |
-| **Commit title** | mesa/shader_query: Handle SPIR-V built-ins in validate_io |
+| **Commit title** | brw: Vectorize URB for task and mesh shaders after SIMD is set |
 | **Build date** | 20260812 |
-| **Release** | [v26.3.0-20260812-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r10) |
+| **Release** | [v26.3.0-20260812-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260812-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r11) | 2026-08-12 | [`e651fb7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e651fb738a6110049c8546b23796d40ec454e323) | brw: Vectorize URB for task and mesh shaders after SIMD is set | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r10) | 2026-08-12 | [`c5138d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5138d5f2bfbb41b787ab6cf87525b6dbe2d6cdc) | mesa/shader_query: Handle SPIR-V built-ins in validate_io | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r9) | 2026-08-12 | [`61f62f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/61f62f590d026f80d22976371719ff8bb7d9e66c) | gfxstream: default unknown AHB dataspace to BT.709 (sRGB) | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r8) | 2026-08-12 | [`4e171a2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e171a2330deb370bbf2c3afc1887727b9e06cbd) | tu: Simplify query pool resets | Vulkan 1.4.359 |
