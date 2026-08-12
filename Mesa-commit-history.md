@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260812-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r5) | 2026-08-12 | [`5af4976`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5af4976e23a6dd361f5a1e0d26595b47d228c191) | radeonsi/mm: Don't use HEVC per slice loop filter across slices on old FW | Vulkan 1.4.358 |
 | [v26.3.0-20260812-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r4) | 2026-08-12 | [`2c4ebcd`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c4ebcdef8ebf72a6296d62b7c04b63f0469bb18) | nir/opt_cse: CSE subgroup ops per block | Vulkan 1.4.358 |
 | [v26.3.0-20260812-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r3) | 2026-08-12 | [`faf1cd2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/faf1cd2de8f05fe7fcfce2d0ffdb8fb1f933a579) | radv: fix redundant WSI destroy | Vulkan 1.4.358 |
 | [v26.3.0-20260812-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r2) | 2026-08-12 | [`b7314ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b7314eec75b007efd0569cbd1df046e6da3b6e90) | kk: Move kk_buffer Metal members into its own struct | Vulkan 1.4.358 |
