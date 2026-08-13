@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`899bfd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/899bfd8e713122dde4dcfdd03e7651e2a232508a) |
+| **Commit** | [`8613a71`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8613a718f2ae2d17ecab84eef8868e997b4d4d73) |
 | **Commit date** | 2026-08-13 |
-| **Commit title** | gfxstream/guest: let the Vulkan driver link on Mach-O |
+| **Commit title** | dri-sw: Use size and offset from whandle in create_mapped() |
 | **Build date** | 20260813 |
-| **Release** | [v26.3.0-20260813-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r12) |
+| **Release** | [v26.3.0-20260813-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r13) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260813-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r13) | 2026-08-13 | [`8613a71`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8613a718f2ae2d17ecab84eef8868e997b4d4d73) | dri-sw: Use size and offset from whandle in create_mapped() | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r12) | 2026-08-13 | [`899bfd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/899bfd8e713122dde4dcfdd03e7651e2a232508a) | gfxstream/guest: let the Vulkan driver link on Mach-O | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r11) | 2026-08-13 | [`2b7a724`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b7a72457a55b80e02700debdbc11037db7201e2) | anv: Add missing ANV_BO_ALLOC_INTERNAL flags | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r10) | 2026-08-13 | [`d4e515d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4e515de85a0637a6b272246d5b4ce8ff8f33443) | Revert "freedreno: Don't re-bind global buffers" | Vulkan 1.4.359 |
@@ -101,8 +102,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260813](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813) | 2026-08-13 | [`ac021d1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ac021d175341483cd267111d5cc160a4a8fa7c16) | subprojects: Use CDN URLs for crates.io | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r15) | 2026-08-12 | [`175e1f3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/175e1f3cf5347c8a9a104dfcd64d32d7583642b2) | nir: Set info->fs.color_is_dual_source for DUAL_SRC_BLEND var locations | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r14) | 2026-08-12 | [`769b2d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/769b2d6ab13ca509487ff38f12a0bdb892343c17) | anv: fix upload of shader kernels spanning more than one heap BO | Vulkan 1.4.359 |
-| [v26.3.0-20260812-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r13) | 2026-08-12 | [`127e7cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/127e7cb8ca0bbafe915095db872e1a0a96b19de5) | tu: CmdSetRenderingInputAttachmentIndices should dirty LRZ | Vulkan 1.4.359 |
-| [v26.3.0-20260812-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r12) | 2026-08-12 | [`e2c33e7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2c33e79025d7bc2eb6cdce21353cee71bb63491) | pvr: fix sampler handle dereference with immutable samplers | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
