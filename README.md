@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`70fec01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/70fec0194d4a271003182f806ee06eb159967ce0) |
+| **Commit** | [`b3fba9b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b3fba9b4e64e093f6cfbf39fb3fd4ef55e8dc3e3) |
 | **Commit date** | 2026-08-13 |
-| **Commit title** | v3d: fix data in get UBO size |
+| **Commit title** | brw: handle load_ubo through memory_access on lsc platforms |
 | **Build date** | 20260813 |
-| **Release** | [v26.3.0-20260813-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r6) |
+| **Release** | [v26.3.0-20260813-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260813-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r7) | 2026-08-13 | [`b3fba9b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b3fba9b4e64e093f6cfbf39fb3fd4ef55e8dc3e3) | brw: handle load_ubo through memory_access on lsc platforms | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r6) | 2026-08-13 | [`70fec01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/70fec0194d4a271003182f806ee06eb159967ce0) | v3d: fix data in get UBO size | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r5) | 2026-08-13 | [`771ade1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/771ade18e3f5068e59a523d7a5538b0160acb750) | anv: flush L1/L2 caches on end of command buffer | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r4) | 2026-08-13 | [`15fd588`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/15fd588bae91a937a96ed3af6432ccf9ee6e891a) | radv: fix cmdbuf alignment with DGC when queues aren't enabled | Vulkan 1.4.359 |
@@ -99,7 +100,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260812-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r12) | 2026-08-12 | [`e2c33e7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2c33e79025d7bc2eb6cdce21353cee71bb63491) | pvr: fix sampler handle dereference with immutable samplers | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r11) | 2026-08-12 | [`e651fb7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e651fb738a6110049c8546b23796d40ec454e323) | brw: Vectorize URB for task and mesh shaders after SIMD is set | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r10) | 2026-08-12 | [`c5138d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c5138d5f2bfbb41b787ab6cf87525b6dbe2d6cdc) | mesa/shader_query: Handle SPIR-V built-ins in validate_io | Vulkan 1.4.359 |
-| [v26.3.0-20260812-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r9) | 2026-08-12 | [`61f62f5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/61f62f590d026f80d22976371719ff8bb7d9e66c) | gfxstream: default unknown AHB dataspace to BT.709 (sRGB) | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
