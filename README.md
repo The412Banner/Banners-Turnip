@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`2b7a724`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b7a72457a55b80e02700debdbc11037db7201e2) |
+| **Commit** | [`899bfd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/899bfd8e713122dde4dcfdd03e7651e2a232508a) |
 | **Commit date** | 2026-08-13 |
-| **Commit title** | anv: Add missing ANV_BO_ALLOC_INTERNAL flags |
+| **Commit title** | gfxstream/guest: let the Vulkan driver link on Mach-O |
 | **Build date** | 20260813 |
-| **Release** | [v26.3.0-20260813-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r11) |
+| **Release** | [v26.3.0-20260813-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r12) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260813-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r12) | 2026-08-13 | [`899bfd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/899bfd8e713122dde4dcfdd03e7651e2a232508a) | gfxstream/guest: let the Vulkan driver link on Mach-O | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r11) | 2026-08-13 | [`2b7a724`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b7a72457a55b80e02700debdbc11037db7201e2) | anv: Add missing ANV_BO_ALLOC_INTERNAL flags | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r10) | 2026-08-13 | [`d4e515d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4e515de85a0637a6b272246d5b4ce8ff8f33443) | Revert "freedreno: Don't re-bind global buffers" | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r9) | 2026-08-13 | [`2c90739`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c9073912232b93eb9b60486edbd72d53e5f3d26) | radv: Prefer STRUCTURED OOB over STRUCTURED_OFFSET for texel buffers. | Vulkan 1.4.359 |
