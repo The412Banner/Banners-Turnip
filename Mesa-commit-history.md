@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260813-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r5) | 2026-08-13 | [`771ade1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/771ade18e3f5068e59a523d7a5538b0160acb750) | anv: flush L1/L2 caches on end of command buffer | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r4) | 2026-08-13 | [`15fd588`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/15fd588bae91a937a96ed3af6432ccf9ee6e891a) | radv: fix cmdbuf alignment with DGC when queues aren't enabled | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r3) | 2026-08-13 | [`b69016a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b69016a721dbcb9d0ba96c4917f68d91e935bc49) | radeonsi: Enable NV_timeline_semaphore with userq | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r2) | 2026-08-13 | [`c3105f2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c3105f2cf210deb2f6df71d5ff7b7241991c2359) | panfrost: allow explicit layout for array images | Vulkan 1.4.359 |
