@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260813-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r2) | 2026-08-13 | [`c3105f2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c3105f2cf210deb2f6df71d5ff7b7241991c2359) | panfrost: allow explicit layout for array images | Vulkan 1.4.359 |
 | [v26.3.0-20260813](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813) | 2026-08-13 | [`ac021d1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ac021d175341483cd267111d5cc160a4a8fa7c16) | subprojects: Use CDN URLs for crates.io | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r15) | 2026-08-12 | [`175e1f3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/175e1f3cf5347c8a9a104dfcd64d32d7583642b2) | nir: Set info->fs.color_is_dual_source for DUAL_SRC_BLEND var locations | Vulkan 1.4.359 |
 | [v26.3.0-20260812-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260812-r14) | 2026-08-12 | [`769b2d6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/769b2d6ab13ca509487ff38f12a0bdb892343c17) | anv: fix upload of shader kernels spanning more than one heap BO | Vulkan 1.4.359 |
