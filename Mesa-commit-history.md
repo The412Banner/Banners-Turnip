@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260813-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r10) | 2026-08-13 | [`d4e515d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4e515de85a0637a6b272246d5b4ce8ff8f33443) | Revert "freedreno: Don't re-bind global buffers" | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r9) | 2026-08-13 | [`2c90739`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c9073912232b93eb9b60486edbd72d53e5f3d26) | radv: Prefer STRUCTURED OOB over STRUCTURED_OFFSET for texel buffers. | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r8) | 2026-08-13 | [`6f34944`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f34944c756c72ecc64cfede1670d4f3aae44857) | radeonsi/test: update navi10 failures | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r7) | 2026-08-13 | [`b3fba9b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b3fba9b4e64e093f6cfbf39fb3fd4ef55e8dc3e3) | brw: handle load_ubo through memory_access on lsc platforms | Vulkan 1.4.359 |
