@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`096fc2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/096fc2be80a2bb854e63f719e53fc14f084510f0) |
+| **Commit** | [`72c8f5c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72c8f5c89b3849b2b4444ebc53dd3b84ac70c2e2) |
 | **Commit date** | 2026-08-14 |
-| **Commit title** | tu: Handle resolves in CmdBeginCustomResolveEXT |
+| **Commit title** | meson: Drop version check for GCC < 4.4.6 |
 | **Build date** | 20260814 |
-| **Release** | [v26.3.0-20260814-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r2) |
+| **Release** | [v26.3.0-20260814-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260814-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r3) | 2026-08-14 | [`72c8f5c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72c8f5c89b3849b2b4444ebc53dd3b84ac70c2e2) | meson: Drop version check for GCC < 4.4.6 | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r2) | 2026-08-14 | [`096fc2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/096fc2be80a2bb854e63f719e53fc14f084510f0) | tu: Handle resolves in CmdBeginCustomResolveEXT | Vulkan 1.4.359 |
 | [v26.3.0-20260814](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814) | 2026-08-14 | [`5dd199f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5dd199f0336ead1c6651e37dad41afc672b41cb0) | src/util/u_math.c: do not use arm fpu instructions if fpu is not available | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r14) | 2026-08-13 | [`944ef80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/944ef80b85da5a98ca92b2f9a616151cc562de0c) | anv: Require dedicated allocation query on scanout images from WSI | Vulkan 1.4.359 |
