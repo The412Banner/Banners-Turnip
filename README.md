@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`72c8f5c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72c8f5c89b3849b2b4444ebc53dd3b84ac70c2e2) |
+| **Commit** | [`d67b04a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d67b04a356d5191424136b3140d370d453e09886) |
 | **Commit date** | 2026-08-14 |
-| **Commit title** | meson: Drop version check for GCC < 4.4.6 |
+| **Commit title** | radv/ci: skip two more tests that use custom border color on compute |
 | **Build date** | 20260814 |
-| **Release** | [v26.3.0-20260814-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r3) |
+| **Release** | [v26.3.0-20260814-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260814-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r4) | 2026-08-14 | [`d67b04a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d67b04a356d5191424136b3140d370d453e09886) | radv/ci: skip two more tests that use custom border color on compute | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r3) | 2026-08-14 | [`72c8f5c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72c8f5c89b3849b2b4444ebc53dd3b84ac70c2e2) | meson: Drop version check for GCC < 4.4.6 | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r2) | 2026-08-14 | [`096fc2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/096fc2be80a2bb854e63f719e53fc14f084510f0) | tu: Handle resolves in CmdBeginCustomResolveEXT | Vulkan 1.4.359 |
 | [v26.3.0-20260814](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814) | 2026-08-14 | [`5dd199f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5dd199f0336ead1c6651e37dad41afc672b41cb0) | src/util/u_math.c: do not use arm fpu instructions if fpu is not available | Vulkan 1.4.359 |
@@ -102,7 +103,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260813-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r5) | 2026-08-13 | [`771ade1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/771ade18e3f5068e59a523d7a5538b0160acb750) | anv: flush L1/L2 caches on end of command buffer | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r4) | 2026-08-13 | [`15fd588`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/15fd588bae91a937a96ed3af6432ccf9ee6e891a) | radv: fix cmdbuf alignment with DGC when queues aren't enabled | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r3) | 2026-08-13 | [`b69016a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b69016a721dbcb9d0ba96c4917f68d91e935bc49) | radeonsi: Enable NV_timeline_semaphore with userq | Vulkan 1.4.359 |
-| [v26.3.0-20260813-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r2) | 2026-08-13 | [`c3105f2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c3105f2cf210deb2f6df71d5ff7b7241991c2359) | panfrost: allow explicit layout for array images | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
