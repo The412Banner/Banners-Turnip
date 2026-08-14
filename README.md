@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`f413ab8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f413ab8ccd882b27738667ddedc078b0e6a697f9) |
+| **Commit** | [`7486528`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74865282cf8eb12a9b4e1ce5d001c7fa7f04358e) |
 | **Commit date** | 2026-08-14 |
-| **Commit title** | radv/video: Fix out of bounds reads of AV1 tile params |
+| **Commit title** | tu: Don't write LRZ direction when not writing LRZ |
 | **Build date** | 20260814 |
-| **Release** | [v26.3.0-20260814-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r12) |
+| **Release** | [v26.3.0-20260814-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r13) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260814-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r13) | 2026-08-14 | [`7486528`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74865282cf8eb12a9b4e1ce5d001c7fa7f04358e) | tu: Don't write LRZ direction when not writing LRZ | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r12) | 2026-08-14 | [`f413ab8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f413ab8ccd882b27738667ddedc078b0e6a697f9) | radv/video: Fix out of bounds reads of AV1 tile params | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r11) | 2026-08-14 | [`f08c9d9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f08c9d96432513af146575e03f03a623c6395e7d) | nv30/ci: add notes about piglit tests | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r10) | 2026-08-14 | [`8cafe2c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8cafe2c1a7db42c2972eb44e83becd14a9c532bb) | radeonsi: fix AMD_DEBUG=usellvm usage | Vulkan 1.4.359 |
@@ -104,7 +105,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260813-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r12) | 2026-08-13 | [`899bfd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/899bfd8e713122dde4dcfdd03e7651e2a232508a) | gfxstream/guest: let the Vulkan driver link on Mach-O | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r11) | 2026-08-13 | [`2b7a724`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2b7a72457a55b80e02700debdbc11037db7201e2) | anv: Add missing ANV_BO_ALLOC_INTERNAL flags | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r10) | 2026-08-13 | [`d4e515d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4e515de85a0637a6b272246d5b4ce8ff8f33443) | Revert "freedreno: Don't re-bind global buffers" | Vulkan 1.4.359 |
-| [v26.3.0-20260813-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r9) | 2026-08-13 | [`2c90739`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c9073912232b93eb9b60486edbd72d53e5f3d26) | radv: Prefer STRUCTURED OOB over STRUCTURED_OFFSET for texel buffers. | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
