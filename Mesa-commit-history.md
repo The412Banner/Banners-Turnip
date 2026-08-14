@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260814-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r7) | 2026-08-14 | [`32daa04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32daa04241fb09ce28f52b703549b82e2fb1a949) | v3dv: report correct TMU spill and fill counts | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r6) | 2026-08-14 | [`6eccd73`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6eccd73966b9d4a348aa7cff8db2b64b68556117) | panvk/v10+: Fix unbound LD_ATTR.auto32 | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r5) | 2026-08-14 | [`06962ba`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/06962badb1997f9e41516c9341e9e5a157c01435) | radv: remove the VBO descriptor prefetch | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r4) | 2026-08-14 | [`d67b04a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d67b04a356d5191424136b3140d370d453e09886) | radv/ci: skip two more tests that use custom border color on compute | Vulkan 1.4.359 |
