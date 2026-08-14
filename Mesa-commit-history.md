@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260814-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r14) | 2026-08-14 | [`e999786`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e999786ac06e1708d18bc5b2211258934e5c5c20) | tu/lrz: Fast-clear the part of LRZ that the flag RAM covers | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r13) | 2026-08-14 | [`7486528`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74865282cf8eb12a9b4e1ce5d001c7fa7f04358e) | tu: Don't write LRZ direction when not writing LRZ | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r12) | 2026-08-14 | [`f413ab8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f413ab8ccd882b27738667ddedc078b0e6a697f9) | radv/video: Fix out of bounds reads of AV1 tile params | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r11) | 2026-08-14 | [`f08c9d9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f08c9d96432513af146575e03f03a623c6395e7d) | nv30/ci: add notes about piglit tests | Vulkan 1.4.359 |
