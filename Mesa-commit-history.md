@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260814-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r9) | 2026-08-14 | [`f97037d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f97037d764fe7089cd0845f9814e013b76bb8b33) | tu/ci: Skip more broken direct_drm tests on a702 | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r8) | 2026-08-14 | [`4566d5c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4566d5ceef26132710b8db4330634aa847801235) | aco/tests: test cndmask condition invert | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r7) | 2026-08-14 | [`32daa04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32daa04241fb09ce28f52b703549b82e2fb1a949) | v3dv: report correct TMU spill and fill counts | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r6) | 2026-08-14 | [`6eccd73`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6eccd73966b9d4a348aa7cff8db2b64b68556117) | panvk/v10+: Fix unbound LD_ATTR.auto32 | Vulkan 1.4.359 |

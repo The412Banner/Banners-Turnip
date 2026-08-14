@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`4566d5c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4566d5ceef26132710b8db4330634aa847801235) |
+| **Commit** | [`f97037d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f97037d764fe7089cd0845f9814e013b76bb8b33) |
 | **Commit date** | 2026-08-14 |
-| **Commit title** | aco/tests: test cndmask condition invert |
+| **Commit title** | tu/ci: Skip more broken direct_drm tests on a702 |
 | **Build date** | 20260814 |
-| **Release** | [v26.3.0-20260814-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r8) |
+| **Release** | [v26.3.0-20260814-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260814-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r9) | 2026-08-14 | [`f97037d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f97037d764fe7089cd0845f9814e013b76bb8b33) | tu/ci: Skip more broken direct_drm tests on a702 | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r8) | 2026-08-14 | [`4566d5c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4566d5ceef26132710b8db4330634aa847801235) | aco/tests: test cndmask condition invert | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r7) | 2026-08-14 | [`32daa04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/32daa04241fb09ce28f52b703549b82e2fb1a949) | v3dv: report correct TMU spill and fill counts | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r6) | 2026-08-14 | [`6eccd73`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6eccd73966b9d4a348aa7cff8db2b64b68556117) | panvk/v10+: Fix unbound LD_ATTR.auto32 | Vulkan 1.4.359 |
@@ -104,7 +105,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260813-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r8) | 2026-08-13 | [`6f34944`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f34944c756c72ecc64cfede1670d4f3aae44857) | radeonsi/test: update navi10 failures | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r7) | 2026-08-13 | [`b3fba9b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b3fba9b4e64e093f6cfbf39fb3fd4ef55e8dc3e3) | brw: handle load_ubo through memory_access on lsc platforms | Vulkan 1.4.359 |
 | [v26.3.0-20260813-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r6) | 2026-08-13 | [`70fec01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/70fec0194d4a271003182f806ee06eb159967ce0) | v3d: fix data in get UBO size | Vulkan 1.4.359 |
-| [v26.3.0-20260813-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260813-r5) | 2026-08-13 | [`771ade1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/771ade18e3f5068e59a523d7a5538b0160acb750) | anv: flush L1/L2 caches on end of command buffer | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
