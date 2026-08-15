@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260815-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260815-r3) | 2026-08-15 | [`f0bcf54`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0bcf54488119f97502da9f4cca87a214e502a3e) | etnaviv: rs: Add the rgb10_a2 RS format | Vulkan 1.4.359 |
 | [v26.3.0-20260815-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260815-r2) | 2026-08-15 | [`8220394`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/822039414ce22530906183913e5afd7a6f075670) | panvk/ci: Route VS shaders through Kraid in Kraid job | Vulkan 1.4.359 |
 | [v26.3.0-20260815](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260815) | 2026-08-14 | [`558688a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/558688a73c7894b46b511e0c485f8eb0de0d9526) | kraid/stats: Fix spill cost | Vulkan 1.4.359 |
 | [v26.3.0-20260814-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r14) | 2026-08-14 | [`e999786`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e999786ac06e1708d18bc5b2211258934e5c5c20) | tu/lrz: Fast-clear the part of LRZ that the flag RAM covers | Vulkan 1.4.359 |
