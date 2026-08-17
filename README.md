@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`f0bcf54`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0bcf54488119f97502da9f4cca87a214e502a3e) |
-| **Commit date** | 2026-08-15 |
-| **Commit title** | etnaviv: rs: Add the rgb10_a2 RS format |
-| **Build date** | 20260815 |
-| **Release** | [v26.3.0-20260815-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260815-r3) |
+| **Commit** | [`41fe6cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41fe6cb36e2e50fa5f8610a8ed500de438fd5e4d) |
+| **Commit date** | 2026-08-17 |
+| **Commit title** | anv/video: Fix to set proper values to missing attributes for H265 encoding |
+| **Build date** | 20260817 |
+| **Release** | [v26.3.0-20260817](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,14 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.3.0-20260815-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260815-r3) | 2026-08-15 | [`f0bcf54`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0bcf54488119f97502da9f4cca87a214e502a3e) | etnaviv: rs: Add the rgb10_a2 RS format | Vulkan 1.4.359 |
-| [v26.3.0-20260815-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260815-r2) | 2026-08-15 | [`8220394`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/822039414ce22530906183913e5afd7a6f075670) | panvk/ci: Route VS shaders through Kraid in Kraid job | Vulkan 1.4.359 |
-| [v26.3.0-20260815](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260815) | 2026-08-15 | [`558688a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/558688a73c7894b46b511e0c485f8eb0de0d9526) | kraid/stats: Fix spill cost | Vulkan 1.4.359 |
-| [v26.3.0-20260814-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r14) | 2026-08-14 | [`e999786`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e999786ac06e1708d18bc5b2211258934e5c5c20) | tu/lrz: Fast-clear the part of LRZ that the flag RAM covers | Vulkan 1.4.359 |
-| [v26.3.0-20260814-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r13) | 2026-08-14 | [`7486528`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74865282cf8eb12a9b4e1ce5d001c7fa7f04358e) | tu: Don't write LRZ direction when not writing LRZ | Vulkan 1.4.359 |
-| [v26.3.0-20260814-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r12) | 2026-08-14 | [`f413ab8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f413ab8ccd882b27738667ddedc078b0e6a697f9) | radv/video: Fix out of bounds reads of AV1 tile params | Vulkan 1.4.359 |
-| [v26.3.0-20260814-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r11) | 2026-08-14 | [`f08c9d9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f08c9d96432513af146575e03f03a623c6395e7d) | nv30/ci: add notes about piglit tests | Vulkan 1.4.359 |
-| [v26.3.0-20260814-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260814-r10) | 2026-08-14 | [`8cafe2c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8cafe2c1a7db42c2972eb44e83becd14a9c532bb) | radeonsi: fix AMD_DEBUG=usellvm usage | Vulkan 1.4.359 |
+| [v26.3.0-20260817](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817) | 2026-08-17 | [`41fe6cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41fe6cb36e2e50fa5f8610a8ed500de438fd5e4d) | anv/video: Fix to set proper values to missing attributes for H265 encoding | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
