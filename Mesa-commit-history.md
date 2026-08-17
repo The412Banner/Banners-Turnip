@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260817-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817-r2) | 2026-08-16 | [`e2340e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2340e192a1260561a9f7a62936c4d11d100dc0a) | nir/opt_varyings: Change non-interpolated I/O to uint type. | Vulkan 1.4.359 |
 | [v26.3.0-20260817](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817) | 2026-08-17 | [`41fe6cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41fe6cb36e2e50fa5f8610a8ed500de438fd5e4d) | anv/video: Fix to set proper values to missing attributes for H265 encoding | Vulkan 1.4.359 |
 | [v26.3.0-20260815-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260815-r3) | 2026-08-15 | [`f0bcf54`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0bcf54488119f97502da9f4cca87a214e502a3e) | etnaviv: rs: Add the rgb10_a2 RS format | Vulkan 1.4.359 |
 | [v26.3.0-20260815-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260815-r2) | 2026-08-15 | [`8220394`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/822039414ce22530906183913e5afd7a6f075670) | panvk/ci: Route VS shaders through Kraid in Kraid job | Vulkan 1.4.359 |
