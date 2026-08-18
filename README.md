@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`3c56bd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3c56bd8ded62ba90a766254b4d985ef8197d8787) |
+| **Commit** | [`7cee821`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7cee821cdec35e68d46c5313db19488b9bbe116e) |
 | **Commit date** | 2026-08-18 |
-| **Commit title** | etnaviv: Cache the shader key and variant lookup |
+| **Commit title** | rusticl: fix wrong destination offset in Image::copy_to_buffer |
 | **Build date** | 20260818 |
-| **Release** | [v26.3.0-20260818-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r17) |
+| **Release** | [v26.3.0-20260818-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r18) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260818-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r18) | 2026-08-18 | [`7cee821`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7cee821cdec35e68d46c5313db19488b9bbe116e) | rusticl: fix wrong destination offset in Image::copy_to_buffer | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r17) | 2026-08-18 | [`3c56bd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3c56bd8ded62ba90a766254b4d985ef8197d8787) | etnaviv: Cache the shader key and variant lookup | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r16) | 2026-08-18 | [`ecbc99d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ecbc99d70862f3f4d842657558e1ec51abc09033) | gfxstream: map DRM_FORMAT_ARGB8888/XRGB8888 to VK_FORMAT_B8G8R8A8_UNORM | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r15) | 2026-08-18 | [`7f760b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f760b878f2686de303b5d07512ad3a2ca1ab441) | ir3: Handle sparse loads in ir3_nir_lower_64b_image | Vulkan 1.4.359 |
