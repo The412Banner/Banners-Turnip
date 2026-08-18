@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260818-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r5) | 2026-08-18 | [`2c6740b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c6740b0394cccdaad916052f17eddf9e7534ba9) | anv: Add drirc option to disable dynamicStackIDControl | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r4) | 2026-08-18 | [`85d08fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/85d08fe5557c755e628e36ff31c242499c749c96) | radv: Wait for L2 cache writeback on ACE for SDMA+ACE gangs | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r3) | 2026-08-18 | [`728fd22`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/728fd222ce70b0e5415e39d1a796b9b60b8a4679) | kraid: Drop support for load_layer_id | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r2) | 2026-08-18 | [`e1c6bf8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1c6bf8d20713261c2cba57b59b93cc5e75d08e4) | nir/search: reset FP state for commutative match attempts | Vulkan 1.4.359 |
