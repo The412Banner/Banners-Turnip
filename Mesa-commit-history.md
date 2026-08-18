@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260818-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r16) | 2026-08-18 | [`ecbc99d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ecbc99d70862f3f4d842657558e1ec51abc09033) | gfxstream: map DRM_FORMAT_ARGB8888/XRGB8888 to VK_FORMAT_B8G8R8A8_UNORM | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r15) | 2026-08-18 | [`7f760b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f760b878f2686de303b5d07512ad3a2ca1ab441) | ir3: Handle sparse loads in ir3_nir_lower_64b_image | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r14) | 2026-08-18 | [`b87749b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b87749b99a30ffab4cf2bd1d7e1d85feccf7428b) | tool/gamma: Add virtual destructor for gamma_file_view | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r13) | 2026-08-18 | [`0f06239`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0f062397ced784087ad1e1de3b886402e8a1d5d8) | nak: call nir_opt_move_discards_to_top | Vulkan 1.4.359 |
