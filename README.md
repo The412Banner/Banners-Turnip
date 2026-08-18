@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`1a12d71`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1a12d7188b46703d433f4d909b0e8e0d6c5bbe5d) |
+| **Commit** | [`d22b355`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d22b355f035c57d2051575cd93c05bb98dbb455e) |
 | **Commit date** | 2026-08-18 |
-| **Commit title** | radv: disable nir_opt_reassociate_for_fma for VS if it's not the last pre FS shader |
+| **Commit title** | panvk/utrace: handle clone CS heap exhaustion gracefully |
 | **Build date** | 20260818 |
-| **Release** | [v26.3.0-20260818-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r9) |
+| **Release** | [v26.3.0-20260818-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r10) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260818-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r10) | 2026-08-18 | [`d22b355`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d22b355f035c57d2051575cd93c05bb98dbb455e) | panvk/utrace: handle clone CS heap exhaustion gracefully | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r9) | 2026-08-18 | [`1a12d71`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1a12d7188b46703d433f4d909b0e8e0d6c5bbe5d) | radv: disable nir_opt_reassociate_for_fma for VS if it's not the last pre FS shader | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r8) | 2026-08-18 | [`f38b05e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f38b05eaaf2d4f570fa417c6ac3fe80939d71c47) | radv/meta: fix using aspects for blits | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r7) | 2026-08-18 | [`ec9f041`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec9f0419f530119537d822b206c40c4b9f4cb873) | tu: Allow multi-layer images with explicit DRM format modifiers | Vulkan 1.4.359 |
