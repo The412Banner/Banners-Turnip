@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`d22b355`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d22b355f035c57d2051575cd93c05bb98dbb455e) |
+| **Commit** | [`dcb4727`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcb47270b483a3e9c34847dcdc31d0fa74a3414f) |
 | **Commit date** | 2026-08-18 |
-| **Commit title** | panvk/utrace: handle clone CS heap exhaustion gracefully |
+| **Commit title** | radv/gamma: Fix geometry counts |
 | **Build date** | 20260818 |
-| **Release** | [v26.3.0-20260818-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r10) |
+| **Release** | [v26.3.0-20260818-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260818-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r11) | 2026-08-18 | [`dcb4727`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dcb47270b483a3e9c34847dcdc31d0fa74a3414f) | radv/gamma: Fix geometry counts | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r10) | 2026-08-18 | [`d22b355`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d22b355f035c57d2051575cd93c05bb98dbb455e) | panvk/utrace: handle clone CS heap exhaustion gracefully | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r9) | 2026-08-18 | [`1a12d71`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1a12d7188b46703d433f4d909b0e8e0d6c5bbe5d) | radv: disable nir_opt_reassociate_for_fma for VS if it's not the last pre FS shader | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r8) | 2026-08-18 | [`f38b05e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f38b05eaaf2d4f570fa417c6ac3fe80939d71c47) | radv/meta: fix using aspects for blits | Vulkan 1.4.359 |
