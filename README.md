@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`c14545d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c14545d36aff5f21b3174ed6b4514926fff23606) |
+| **Commit** | [`e1c6bf8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1c6bf8d20713261c2cba57b59b93cc5e75d08e4) |
 | **Commit date** | 2026-08-18 |
-| **Commit title** | radv: tidy up declaring CS_TASK_DRAW_ID for task shaders |
+| **Commit title** | nir/search: reset FP state for commutative match attempts |
 | **Build date** | 20260818 |
-| **Release** | [v26.3.0-20260818](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818) |
+| **Release** | [v26.3.0-20260818-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,13 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260818-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r2) | 2026-08-18 | [`e1c6bf8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1c6bf8d20713261c2cba57b59b93cc5e75d08e4) | nir/search: reset FP state for commutative match attempts | Vulkan 1.4.359 |
 | [v26.3.0-20260818](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818) | 2026-08-18 | [`c14545d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c14545d36aff5f21b3174ed6b4514926fff23606) | radv: tidy up declaring CS_TASK_DRAW_ID for task shaders | Vulkan 1.4.359 |
 | [v26.3.0-20260817-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817-r6) | 2026-08-17 | [`3c4d3e4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3c4d3e46d19f2f4e951f3ae059543b03592f7944) | radeonsi/mm: Fix AV1 decode qmatrix params | Vulkan 1.4.359 |
 | [v26.3.0-20260817-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817-r5) | 2026-08-17 | [`0b1b879`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b1b8798d81cb4da8c181c7d81076a0541006853) | wsi/wayland: send tearing hints when present mode changes to IMMEDIATE | Vulkan 1.4.359 |
 | [v26.3.0-20260817-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817-r4) | 2026-08-17 | [`dddaef6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dddaef6f8c970770cc60f6bab6ab5392f54e7679) | radv: try to clarify RECTLIST/RECT_2D differences | Vulkan 1.4.359 |
 | [v26.3.0-20260817-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817-r3) | 2026-08-17 | [`efeda58`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/efeda58bb23294b848e846219c37fe95c6d939b8) | gallivm: orcjit: fix use-after-free in remove_jd() during exit | Vulkan 1.4.359 |
 | [v26.3.0-20260817-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817-r2) | 2026-08-17 | [`e2340e1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e2340e192a1260561a9f7a62936c4d11d100dc0a) | nir/opt_varyings: Change non-interpolated I/O to uint type. | Vulkan 1.4.359 |
-| [v26.3.0-20260817](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817) | 2026-08-17 | [`41fe6cb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/41fe6cb36e2e50fa5f8610a8ed500de438fd5e4d) | anv/video: Fix to set proper values to missing attributes for H265 encoding | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---

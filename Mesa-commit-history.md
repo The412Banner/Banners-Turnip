@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260818-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r2) | 2026-08-18 | [`e1c6bf8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1c6bf8d20713261c2cba57b59b93cc5e75d08e4) | nir/search: reset FP state for commutative match attempts | Vulkan 1.4.359 |
 | [v26.3.0-20260818](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818) | 2026-08-18 | [`c14545d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c14545d36aff5f21b3174ed6b4514926fff23606) | radv: tidy up declaring CS_TASK_DRAW_ID for task shaders | Vulkan 1.4.359 |
 | [v26.3.0-20260817-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817-r6) | 2026-08-17 | [`3c4d3e4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3c4d3e46d19f2f4e951f3ae059543b03592f7944) | radeonsi/mm: Fix AV1 decode qmatrix params | Vulkan 1.4.359 |
 | [v26.3.0-20260817-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260817-r5) | 2026-08-17 | [`0b1b879`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b1b8798d81cb4da8c181c7d81076a0541006853) | wsi/wayland: send tearing hints when present mode changes to IMMEDIATE | Vulkan 1.4.359 |
