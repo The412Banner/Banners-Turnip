@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260818-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r8) | 2026-08-18 | [`f38b05e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f38b05eaaf2d4f570fa417c6ac3fe80939d71c47) | radv/meta: fix using aspects for blits | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r7) | 2026-08-18 | [`ec9f041`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec9f0419f530119537d822b206c40c4b9f4cb873) | tu: Allow multi-layer images with explicit DRM format modifiers | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r6) | 2026-08-18 | [`9075f69`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9075f69cd0cb55e126d88ab91e547ecec0cba560) | radv/ci: add khronos link to the bfloat16 dequant failures. | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r5) | 2026-08-18 | [`2c6740b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c6740b0394cccdaad916052f17eddf9e7534ba9) | anv: Add drirc option to disable dynamicStackIDControl | Vulkan 1.4.359 |
