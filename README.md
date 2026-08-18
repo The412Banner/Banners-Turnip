@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`9075f69`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9075f69cd0cb55e126d88ab91e547ecec0cba560) |
+| **Commit** | [`ec9f041`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec9f0419f530119537d822b206c40c4b9f4cb873) |
 | **Commit date** | 2026-08-18 |
-| **Commit title** | radv/ci: add khronos link to the bfloat16 dequant failures. |
+| **Commit title** | tu: Allow multi-layer images with explicit DRM format modifiers |
 | **Build date** | 20260818 |
-| **Release** | [v26.3.0-20260818-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r6) |
+| **Release** | [v26.3.0-20260818-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260818-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r7) | 2026-08-18 | [`ec9f041`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec9f0419f530119537d822b206c40c4b9f4cb873) | tu: Allow multi-layer images with explicit DRM format modifiers | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r6) | 2026-08-18 | [`9075f69`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9075f69cd0cb55e126d88ab91e547ecec0cba560) | radv/ci: add khronos link to the bfloat16 dequant failures. | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r5) | 2026-08-18 | [`2c6740b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c6740b0394cccdaad916052f17eddf9e7534ba9) | anv: Add drirc option to disable dynamicStackIDControl | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r4) | 2026-08-18 | [`85d08fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/85d08fe5557c755e628e36ff31c242499c749c96) | radv: Wait for L2 cache writeback on ACE for SDMA+ACE gangs | Vulkan 1.4.359 |
