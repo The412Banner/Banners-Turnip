@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260818-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r17) | 2026-08-18 | [`3c56bd8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3c56bd8ded62ba90a766254b4d985ef8197d8787) | etnaviv: Cache the shader key and variant lookup | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r16) | 2026-08-18 | [`ecbc99d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ecbc99d70862f3f4d842657558e1ec51abc09033) | gfxstream: map DRM_FORMAT_ARGB8888/XRGB8888 to VK_FORMAT_B8G8R8A8_UNORM | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r15) | 2026-08-18 | [`7f760b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f760b878f2686de303b5d07512ad3a2ca1ab441) | ir3: Handle sparse loads in ir3_nir_lower_64b_image | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r14) | 2026-08-18 | [`b87749b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b87749b99a30ffab4cf2bd1d7e1d85feccf7428b) | tool/gamma: Add virtual destructor for gamma_file_view | Vulkan 1.4.359 |
