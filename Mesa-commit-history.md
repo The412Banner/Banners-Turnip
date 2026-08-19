@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260819-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r9) | 2026-08-19 | [`c207014`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2070149bc92bb76ee88cfcf772810eb0b047d52) | docs: add sha sum for 26.1.8 | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r8) | 2026-08-19 | [`2061a5e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2061a5ee6184e465eafb87cf465aed92c04f1a41) | freedreno: Add chip-id support for A830v1 | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r7) | 2026-08-19 | [`88be0c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88be0c15190df9c46d42dca3e14cb42ba8cd3f8d) | anv: Allow CCS_E without a format list more often | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r6) | 2026-08-19 | [`586fc2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/586fc2f5e096855c3828644bb212634f1f664682) | radv/nir: do not always lower push constants to SMEM | Vulkan 1.4.359 |
