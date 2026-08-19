@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`24c8a88`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/24c8a889798562010742bc58bb0fc9c6bdc4ed07) |
-| **Commit date** | 2026-08-19 |
-| **Commit title** | vulkan/android: allow optimal tiling for unorm and srgb mutation |
+| **Commit** | [`276eace`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/276eace58baa521a306b72a8b3fce06445a11fea) |
+| **Commit date** | 2026-08-18 |
+| **Commit title** | kk: Enable nir_io_non_interpolated_as_uint |
 | **Build date** | 20260819 |
-| **Release** | [v26.3.0-20260819-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r2) |
+| **Release** | [v26.3.0-20260819-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260819-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r3) | 2026-08-19 | [`276eace`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/276eace58baa521a306b72a8b3fce06445a11fea) | kk: Enable nir_io_non_interpolated_as_uint | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r2) | 2026-08-19 | [`24c8a88`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/24c8a889798562010742bc58bb0fc9c6bdc4ed07) | vulkan/android: allow optimal tiling for unorm and srgb mutation | Vulkan 1.4.359 |
 | [v26.3.0-20260819](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819) | 2026-08-19 | [`679bec7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/679bec75fdef43ed98b8c507c0c9e011ef002136) | svga: Fix some vmw_printf() debugging messages. | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r19](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r19) | 2026-08-18 | [`fcee81a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fcee81a38d8e4b4c77c3d45261e2d50205b6400f) | spirv: Discard excess image coordinate components | Vulkan 1.4.359 |
@@ -105,7 +106,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260818-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r5) | 2026-08-18 | [`2c6740b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c6740b0394cccdaad916052f17eddf9e7534ba9) | anv: Add drirc option to disable dynamicStackIDControl | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r4) | 2026-08-18 | [`85d08fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/85d08fe5557c755e628e36ff31c242499c749c96) | radv: Wait for L2 cache writeback on ACE for SDMA+ACE gangs | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r3) | 2026-08-18 | [`728fd22`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/728fd222ce70b0e5415e39d1a796b9b60b8a4679) | kraid: Drop support for load_layer_id | Vulkan 1.4.359 |
-| [v26.3.0-20260818-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r2) | 2026-08-18 | [`e1c6bf8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e1c6bf8d20713261c2cba57b59b93cc5e75d08e4) | nir/search: reset FP state for commutative match attempts | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
