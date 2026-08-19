@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`b848564`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b848564ebb2052cd22eaf87d07ddfe784cdec81a) |
+| **Commit** | [`586fc2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/586fc2f5e096855c3828644bb212634f1f664682) |
 | **Commit date** | 2026-08-19 |
-| **Commit title** | ethosu: Improve U65 Conv1D block selection |
+| **Commit title** | radv/nir: do not always lower push constants to SMEM |
 | **Build date** | 20260819 |
-| **Release** | [v26.3.0-20260819-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r5) |
+| **Release** | [v26.3.0-20260819-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260819-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r6) | 2026-08-19 | [`586fc2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/586fc2f5e096855c3828644bb212634f1f664682) | radv/nir: do not always lower push constants to SMEM | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r5) | 2026-08-19 | [`b848564`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b848564ebb2052cd22eaf87d07ddfe784cdec81a) | ethosu: Improve U65 Conv1D block selection | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r4) | 2026-08-19 | [`88b03b4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88b03b465553ede3c86cfe39b8553e04e3c3c1f8) | kk: narrow forced depth write application | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r3) | 2026-08-19 | [`276eace`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/276eace58baa521a306b72a8b3fce06445a11fea) | kk: Enable nir_io_non_interpolated_as_uint | Vulkan 1.4.359 |
