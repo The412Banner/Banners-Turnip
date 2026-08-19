@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260819-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r2) | 2026-08-19 | [`24c8a88`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/24c8a889798562010742bc58bb0fc9c6bdc4ed07) | vulkan/android: allow optimal tiling for unorm and srgb mutation | Vulkan 1.4.359 |
 | [v26.3.0-20260819](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819) | 2026-08-18 | [`679bec7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/679bec75fdef43ed98b8c507c0c9e011ef002136) | svga: Fix some vmw_printf() debugging messages. | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r19](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r19) | 2026-08-18 | [`fcee81a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fcee81a38d8e4b4c77c3d45261e2d50205b6400f) | spirv: Discard excess image coordinate components | Vulkan 1.4.359 |
 | [v26.3.0-20260818-r18](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260818-r18) | 2026-08-18 | [`7cee821`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7cee821cdec35e68d46c5313db19488b9bbe116e) | rusticl: fix wrong destination offset in Image::copy_to_buffer | Vulkan 1.4.359 |
