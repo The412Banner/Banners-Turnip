@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260819-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r5) | 2026-08-19 | [`b848564`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b848564ebb2052cd22eaf87d07ddfe784cdec81a) | ethosu: Improve U65 Conv1D block selection | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r4) | 2026-08-19 | [`88b03b4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88b03b465553ede3c86cfe39b8553e04e3c3c1f8) | kk: narrow forced depth write application | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r3) | 2026-08-18 | [`276eace`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/276eace58baa521a306b72a8b3fce06445a11fea) | kk: Enable nir_io_non_interpolated_as_uint | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r2) | 2026-08-19 | [`24c8a88`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/24c8a889798562010742bc58bb0fc9c6bdc4ed07) | vulkan/android: allow optimal tiling for unorm and srgb mutation | Vulkan 1.4.359 |
