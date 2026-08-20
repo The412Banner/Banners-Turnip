@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`82c3c80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82c3c804868fb3020239b793646ba6e4b7dd3a68) |
+| **Commit** | [`6dd2f29`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6dd2f2919e74a1e038485b1dd08eb062c4230ebb) |
 | **Commit date** | 2026-08-20 |
-| **Commit title** | tu: Fix renderpass tracepoints being lost with s/r chains |
+| **Commit title** | radeonsi: try to clarify RECTLIST/RECT_2D differences |
 | **Build date** | 20260820 |
-| **Release** | [v26.3.0-20260820-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r14) |
+| **Release** | [v26.3.0-20260820-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r15) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r15) | 2026-08-20 | [`6dd2f29`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6dd2f2919e74a1e038485b1dd08eb062c4230ebb) | radeonsi: try to clarify RECTLIST/RECT_2D differences | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r14) | 2026-08-20 | [`82c3c80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82c3c804868fb3020239b793646ba6e4b7dd3a68) | tu: Fix renderpass tracepoints being lost with s/r chains | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r13) | 2026-08-20 | [`c69cc19`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c69cc19ae80c52a8399cca63873479474d9f2acb) | nouveau/drm: fix UB applying non-zero offset 40 to null pointer | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r12) | 2026-08-20 | [`d2ce69d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2ce69d4373284e6e3863d4201ec8e46b50cd58a) | radv: only split the right aspect for depth/stencil internal views | Vulkan 1.4.359 |
