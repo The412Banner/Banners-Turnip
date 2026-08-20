@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r14) | 2026-08-20 | [`82c3c80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82c3c804868fb3020239b793646ba6e4b7dd3a68) | tu: Fix renderpass tracepoints being lost with s/r chains | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r13) | 2026-08-20 | [`c69cc19`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c69cc19ae80c52a8399cca63873479474d9f2acb) | nouveau/drm: fix UB applying non-zero offset 40 to null pointer | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r12) | 2026-08-20 | [`d2ce69d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2ce69d4373284e6e3863d4201ec8e46b50cd58a) | radv: only split the right aspect for depth/stencil internal views | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r11) | 2026-08-20 | [`30a5b4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/30a5b4c95b9ed9c172cdd2b4aa6caae8c62e08dc) | zink: Handle max_varying where maxVertexOutputComponents value is too low. | Vulkan 1.4.359 |
