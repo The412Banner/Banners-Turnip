@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`29086ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29086edb12b06464efe120f25755e99f9a5188ad) |
+| **Commit** | [`57063d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57063d75742766f55924b12a3c10118bb76c1be7) |
 | **Commit date** | 2026-08-20 |
-| **Commit title** | vc4: warn about unsupported polygon mode |
+| **Commit title** | broadcom: pass simulator arg to build libbroadcom_v3d |
 | **Build date** | 20260820 |
-| **Release** | [v26.3.0-20260820-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r5) |
+| **Release** | [v26.3.0-20260820-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r6) | 2026-08-20 | [`57063d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57063d75742766f55924b12a3c10118bb76c1be7) | broadcom: pass simulator arg to build libbroadcom_v3d | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r5) | 2026-08-20 | [`29086ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29086edb12b06464efe120f25755e99f9a5188ad) | vc4: warn about unsupported polygon mode | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r4) | 2026-08-20 | [`6f55c61`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f55c6188bf3b4ef9c903498a896a2ec78e3f77c) | ci/deqp: Update VK CTS to 1.4.6.2 | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r3) | 2026-08-20 | [`c363342`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c363342a1130b8e00743337492055c71541724af) | freedreno/ci: Document cl-cts test bugs | Vulkan 1.4.359 |
