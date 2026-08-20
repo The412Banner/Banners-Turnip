@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`b2d849e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2d849e905ddfcc4c3794bd9550511dacc3cb1ca) |
+| **Commit** | [`20c66a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20c66a6e8da4a04ad97bb23e0c9db31d1a62125c) |
 | **Commit date** | 2026-08-20 |
-| **Commit title** | v3d: fix key with non-fill polygon mode |
+| **Commit title** | broadcom/qpu: drop obsolete pre-4.0 UNIFA check |
 | **Build date** | 20260820 |
-| **Release** | [v26.3.0-20260820-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r8) |
+| **Release** | [v26.3.0-20260820-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r9) | 2026-08-20 | [`20c66a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20c66a6e8da4a04ad97bb23e0c9db31d1a62125c) | broadcom/qpu: drop obsolete pre-4.0 UNIFA check | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r8) | 2026-08-20 | [`b2d849e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2d849e905ddfcc4c3794bd9550511dacc3cb1ca) | v3d: fix key with non-fill polygon mode | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r7) | 2026-08-20 | [`6e41d81`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6e41d819219d7f4025a95cbbaddfbe492d210ff3) | panvk/jm: Always emit vertex attribute descriptors | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r6) | 2026-08-20 | [`57063d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57063d75742766f55924b12a3c10118bb76c1be7) | broadcom: pass simulator arg to build libbroadcom_v3d | Vulkan 1.4.359 |
@@ -98,7 +99,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260819-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r9) | 2026-08-19 | [`c207014`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2070149bc92bb76ee88cfcf772810eb0b047d52) | docs: add sha sum for 26.1.8 | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r8) | 2026-08-19 | [`2061a5e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2061a5ee6184e465eafb87cf465aed92c04f1a41) | freedreno: Add chip-id support for A830v1 | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r7) | 2026-08-19 | [`88be0c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88be0c15190df9c46d42dca3e14cb42ba8cd3f8d) | anv: Allow CCS_E without a format list more often | Vulkan 1.4.359 |
-| [v26.3.0-20260819-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r6) | 2026-08-19 | [`586fc2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/586fc2f5e096855c3828644bb212634f1f664682) | radv/nir: do not always lower push constants to SMEM | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
