@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`6dd2f29`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6dd2f2919e74a1e038485b1dd08eb062c4230ebb) |
+| **Commit** | [`dbda147`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dbda14734f3be9163eadaf7c68dafc98952da9ec) |
 | **Commit date** | 2026-08-20 |
-| **Commit title** | radeonsi: try to clarify RECTLIST/RECT_2D differences |
+| **Commit title** | panfrost/mid: Disable mediump lowering entirely |
 | **Build date** | 20260820 |
-| **Release** | [v26.3.0-20260820-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r15) |
+| **Release** | [v26.3.0-20260820-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r16) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r16) | 2026-08-20 | [`dbda147`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dbda14734f3be9163eadaf7c68dafc98952da9ec) | panfrost/mid: Disable mediump lowering entirely | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r15) | 2026-08-20 | [`6dd2f29`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6dd2f2919e74a1e038485b1dd08eb062c4230ebb) | radeonsi: try to clarify RECTLIST/RECT_2D differences | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r14) | 2026-08-20 | [`82c3c80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82c3c804868fb3020239b793646ba6e4b7dd3a68) | tu: Fix renderpass tracepoints being lost with s/r chains | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r13) | 2026-08-20 | [`c69cc19`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c69cc19ae80c52a8399cca63873479474d9f2acb) | nouveau/drm: fix UB applying non-zero offset 40 to null pointer | Vulkan 1.4.359 |
@@ -103,7 +104,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260820-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r2) | 2026-08-20 | [`302736b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/302736bcf272ccf12572879dcc6846196a45f143) | nir: add a central load struct field helper. | Vulkan 1.4.359 |
 | [v26.3.0-20260820](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820) | 2026-08-20 | [`f30ebdf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f30ebdf012b7b60f06230d5d87d8969f9653a99e) | brw: Skip unspilling the destination when nothing is defined | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r9) | 2026-08-19 | [`c207014`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2070149bc92bb76ee88cfcf772810eb0b047d52) | docs: add sha sum for 26.1.8 | Vulkan 1.4.359 |
-| [v26.3.0-20260819-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r8) | 2026-08-19 | [`2061a5e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2061a5ee6184e465eafb87cf465aed92c04f1a41) | freedreno: Add chip-id support for A830v1 | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
