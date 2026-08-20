@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`b78fc73`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b78fc73dd898a7dfa87448a4b5ff4459a870e21a) |
+| **Commit** | [`30a5b4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/30a5b4c95b9ed9c172cdd2b4aa6caae8c62e08dc) |
 | **Commit date** | 2026-08-20 |
-| **Commit title** | docs: add missing VK_EXT_cooperative_matrix_maintenance1 for radv, lvp |
+| **Commit title** | zink: Handle max_varying where maxVertexOutputComponents value is too low. |
 | **Build date** | 20260820 |
-| **Release** | [v26.3.0-20260820-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r10) |
+| **Release** | [v26.3.0-20260820-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r11) | 2026-08-20 | [`30a5b4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/30a5b4c95b9ed9c172cdd2b4aa6caae8c62e08dc) | zink: Handle max_varying where maxVertexOutputComponents value is too low. | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r10) | 2026-08-20 | [`b78fc73`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b78fc73dd898a7dfa87448a4b5ff4459a870e21a) | docs: add missing VK_EXT_cooperative_matrix_maintenance1 for radv, lvp | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r9) | 2026-08-20 | [`20c66a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20c66a6e8da4a04ad97bb23e0c9db31d1a62125c) | broadcom/qpu: drop obsolete pre-4.0 UNIFA check | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r8) | 2026-08-20 | [`b2d849e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2d849e905ddfcc4c3794bd9550511dacc3cb1ca) | v3d: fix key with non-fill polygon mode | Vulkan 1.4.359 |
