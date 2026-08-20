@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r17) | 2026-08-20 | [`bb3fef5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bb3fef572518943e78af2ccde943f7559dbd5a5a) | jay: bump JAY_PARTITION_BLOCKS | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r16) | 2026-08-20 | [`dbda147`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dbda14734f3be9163eadaf7c68dafc98952da9ec) | panfrost/mid: Disable mediump lowering entirely | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r15) | 2026-08-20 | [`6dd2f29`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6dd2f2919e74a1e038485b1dd08eb062c4230ebb) | radeonsi: try to clarify RECTLIST/RECT_2D differences | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r14) | 2026-08-20 | [`82c3c80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82c3c804868fb3020239b793646ba6e4b7dd3a68) | tu: Fix renderpass tracepoints being lost with s/r chains | Vulkan 1.4.359 |
