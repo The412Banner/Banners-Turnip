@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r3) | 2026-08-20 | [`c363342`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c363342a1130b8e00743337492055c71541724af) | freedreno/ci: Document cl-cts test bugs | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r2) | 2026-08-20 | [`302736b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/302736bcf272ccf12572879dcc6846196a45f143) | nir: add a central load struct field helper. | Vulkan 1.4.359 |
 | [v26.3.0-20260820](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820) | 2026-08-20 | [`f30ebdf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f30ebdf012b7b60f06230d5d87d8969f9653a99e) | brw: Skip unspilling the destination when nothing is defined | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r9) | 2026-08-19 | [`c207014`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2070149bc92bb76ee88cfcf772810eb0b047d52) | docs: add sha sum for 26.1.8 | Vulkan 1.4.359 |
