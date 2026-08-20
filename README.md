@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`6e41d81`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6e41d819219d7f4025a95cbbaddfbe492d210ff3) |
+| **Commit** | [`b2d849e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2d849e905ddfcc4c3794bd9550511dacc3cb1ca) |
 | **Commit date** | 2026-08-20 |
-| **Commit title** | panvk/jm: Always emit vertex attribute descriptors |
+| **Commit title** | v3d: fix key with non-fill polygon mode |
 | **Build date** | 20260820 |
-| **Release** | [v26.3.0-20260820-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r7) |
+| **Release** | [v26.3.0-20260820-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r8) | 2026-08-20 | [`b2d849e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2d849e905ddfcc4c3794bd9550511dacc3cb1ca) | v3d: fix key with non-fill polygon mode | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r7) | 2026-08-20 | [`6e41d81`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6e41d819219d7f4025a95cbbaddfbe492d210ff3) | panvk/jm: Always emit vertex attribute descriptors | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r6) | 2026-08-20 | [`57063d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57063d75742766f55924b12a3c10118bb76c1be7) | broadcom: pass simulator arg to build libbroadcom_v3d | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r5) | 2026-08-20 | [`29086ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29086edb12b06464efe120f25755e99f9a5188ad) | vc4: warn about unsupported polygon mode | Vulkan 1.4.359 |
