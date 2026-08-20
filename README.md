@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`c363342`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c363342a1130b8e00743337492055c71541724af) |
+| **Commit** | [`6f55c61`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f55c6188bf3b4ef9c903498a896a2ec78e3f77c) |
 | **Commit date** | 2026-08-20 |
-| **Commit title** | freedreno/ci: Document cl-cts test bugs |
+| **Commit title** | ci/deqp: Update VK CTS to 1.4.6.2 |
 | **Build date** | 20260820 |
-| **Release** | [v26.3.0-20260820-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r3) |
+| **Release** | [v26.3.0-20260820-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r4) | 2026-08-20 | [`6f55c61`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f55c6188bf3b4ef9c903498a896a2ec78e3f77c) | ci/deqp: Update VK CTS to 1.4.6.2 | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r3) | 2026-08-20 | [`c363342`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c363342a1130b8e00743337492055c71541724af) | freedreno/ci: Document cl-cts test bugs | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r2) | 2026-08-20 | [`302736b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/302736bcf272ccf12572879dcc6846196a45f143) | nir: add a central load struct field helper. | Vulkan 1.4.359 |
 | [v26.3.0-20260820](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820) | 2026-08-20 | [`f30ebdf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f30ebdf012b7b60f06230d5d87d8969f9653a99e) | brw: Skip unspilling the destination when nothing is defined | Vulkan 1.4.359 |
@@ -95,7 +96,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260819-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r7) | 2026-08-19 | [`88be0c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88be0c15190df9c46d42dca3e14cb42ba8cd3f8d) | anv: Allow CCS_E without a format list more often | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r6) | 2026-08-19 | [`586fc2f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/586fc2f5e096855c3828644bb212634f1f664682) | radv/nir: do not always lower push constants to SMEM | Vulkan 1.4.359 |
 | [v26.3.0-20260819-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r5) | 2026-08-19 | [`b848564`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b848564ebb2052cd22eaf87d07ddfe784cdec81a) | ethosu: Improve U65 Conv1D block selection | Vulkan 1.4.359 |
-| [v26.3.0-20260819-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260819-r4) | 2026-08-19 | [`88b03b4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88b03b465553ede3c86cfe39b8553e04e3c3c1f8) | kk: narrow forced depth write application | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
