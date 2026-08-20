@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260820-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r10) | 2026-08-20 | [`b78fc73`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b78fc73dd898a7dfa87448a4b5ff4459a870e21a) | docs: add missing VK_EXT_cooperative_matrix_maintenance1 for radv, lvp | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r9) | 2026-08-20 | [`20c66a6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20c66a6e8da4a04ad97bb23e0c9db31d1a62125c) | broadcom/qpu: drop obsolete pre-4.0 UNIFA check | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r8) | 2026-08-20 | [`b2d849e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b2d849e905ddfcc4c3794bd9550511dacc3cb1ca) | v3d: fix key with non-fill polygon mode | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r7) | 2026-08-20 | [`6e41d81`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6e41d819219d7f4025a95cbbaddfbe492d210ff3) | panvk/jm: Always emit vertex attribute descriptors | Vulkan 1.4.359 |
