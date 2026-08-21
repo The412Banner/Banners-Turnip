@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`ae07c23`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae07c23981e85037228789f5adeacc021e293734) |
+| **Commit** | [`0a42d05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0a42d057b4e5d617cd98a6241795556b109550cb) |
 | **Commit date** | 2026-08-21 |
-| **Commit title** | radv: remove unnecessary radv_write_data() |
+| **Commit title** | anv: Fix ASTC emulation sync in CopyMemoryToImage |
 | **Build date** | 20260821 |
-| **Release** | [v26.3.0-20260821-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r3) |
+| **Release** | [v26.3.0-20260821-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260821-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r4) | 2026-08-21 | [`0a42d05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0a42d057b4e5d617cd98a6241795556b109550cb) | anv: Fix ASTC emulation sync in CopyMemoryToImage | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r3) | 2026-08-21 | [`ae07c23`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae07c23981e85037228789f5adeacc021e293734) | radv: remove unnecessary radv_write_data() | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r2) | 2026-08-21 | [`d2e56df`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2e56dfcda6383956d8a3297a3ac9879bd9a9e35) | nak: add iadd3 ineg with constant rules | Vulkan 1.4.359 |
 | [v26.3.0-20260821](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821) | 2026-08-21 | [`bde9b9b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bde9b9bea20d56cfbb21e3a1aafaec806d6d25ef) | intel/dev: Enable NVL-S/U PCI IDs (without FORCE_PROBE) | Vulkan 1.4.359 |
