@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260821-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r5) | 2026-08-21 | [`5ecf1f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ecf1f76324238cfd21f767e3b74fccd14c5c958) | vulkan: fix strict aliasing violations with vk_foreach_struct | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r4) | 2026-08-21 | [`0a42d05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0a42d057b4e5d617cd98a6241795556b109550cb) | anv: Fix ASTC emulation sync in CopyMemoryToImage | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r3) | 2026-08-21 | [`ae07c23`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae07c23981e85037228789f5adeacc021e293734) | radv: remove unnecessary radv_write_data() | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r2) | 2026-08-21 | [`d2e56df`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2e56dfcda6383956d8a3297a3ac9879bd9a9e35) | nak: add iadd3 ineg with constant rules | Vulkan 1.4.359 |
