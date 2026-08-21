@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`973858c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/973858c8022452020a38dd4831b1f7f7f08f772a) |
+| **Commit** | [`e7b3fda`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e7b3fdaefa65239e09a5eb7e23d7133a5862ef15) |
 | **Commit date** | 2026-08-21 |
-| **Commit title** | radv: set radv_force_exclusive_image for few native Vulkan games |
+| **Commit title** | zink/ci: fix wrongly identified failures on POLARIS10/NAVI10 |
 | **Build date** | 20260821 |
-| **Release** | [v26.3.0-20260821-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r11) |
+| **Release** | [v26.3.0-20260821-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r12) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260821-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r12) | 2026-08-21 | [`e7b3fda`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e7b3fdaefa65239e09a5eb7e23d7133a5862ef15) | zink/ci: fix wrongly identified failures on POLARIS10/NAVI10 | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r11) | 2026-08-21 | [`973858c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/973858c8022452020a38dd4831b1f7f7f08f772a) | radv: set radv_force_exclusive_image for few native Vulkan games | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r10) | 2026-08-21 | [`497f31e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/497f31e04cd7cb828254dea1c6efd717bcf567c8) | nir/opt_shared_vars_to_subgroup: detect loads that stay within subgroups | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r9) | 2026-08-21 | [`d7a796e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d7a796e618f480f9346ff73da14b6cb94da4c78d) | radv/ci: raise back the lockup timeout to the previous level | Vulkan 1.4.359 |
