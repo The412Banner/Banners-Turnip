@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`d2e56df`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2e56dfcda6383956d8a3297a3ac9879bd9a9e35) |
+| **Commit** | [`ae07c23`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae07c23981e85037228789f5adeacc021e293734) |
 | **Commit date** | 2026-08-21 |
-| **Commit title** | nak: add iadd3 ineg with constant rules |
+| **Commit title** | radv: remove unnecessary radv_write_data() |
 | **Build date** | 20260821 |
-| **Release** | [v26.3.0-20260821-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r2) |
+| **Release** | [v26.3.0-20260821-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260821-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r3) | 2026-08-21 | [`ae07c23`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae07c23981e85037228789f5adeacc021e293734) | radv: remove unnecessary radv_write_data() | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r2) | 2026-08-21 | [`d2e56df`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2e56dfcda6383956d8a3297a3ac9879bd9a9e35) | nak: add iadd3 ineg with constant rules | Vulkan 1.4.359 |
 | [v26.3.0-20260821](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821) | 2026-08-21 | [`bde9b9b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bde9b9bea20d56cfbb21e3a1aafaec806d6d25ef) | intel/dev: Enable NVL-S/U PCI IDs (without FORCE_PROBE) | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r17) | 2026-08-20 | [`bb3fef5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bb3fef572518943e78af2ccde943f7559dbd5a5a) | jay: bump JAY_PARTITION_BLOCKS | Vulkan 1.4.359 |
@@ -103,9 +104,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260820-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r6) | 2026-08-20 | [`57063d7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/57063d75742766f55924b12a3c10118bb76c1be7) | broadcom: pass simulator arg to build libbroadcom_v3d | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r5) | 2026-08-20 | [`29086ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29086edb12b06464efe120f25755e99f9a5188ad) | vc4: warn about unsupported polygon mode | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r4) | 2026-08-20 | [`6f55c61`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f55c6188bf3b4ef9c903498a896a2ec78e3f77c) | ci/deqp: Update VK CTS to 1.4.6.2 | Vulkan 1.4.359 |
-| [v26.3.0-20260820-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r3) | 2026-08-20 | [`c363342`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c363342a1130b8e00743337492055c71541724af) | freedreno/ci: Document cl-cts test bugs | Vulkan 1.4.359 |
-| [v26.3.0-20260820-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r2) | 2026-08-20 | [`302736b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/302736bcf272ccf12572879dcc6846196a45f143) | nir: add a central load struct field helper. | Vulkan 1.4.359 |
-| [v26.3.0-20260820](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820) | 2026-08-20 | [`f30ebdf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f30ebdf012b7b60f06230d5d87d8969f9653a99e) | brw: Skip unspilling the destination when nothing is defined | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
