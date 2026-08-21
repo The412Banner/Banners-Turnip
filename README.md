@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`e7b3fda`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e7b3fdaefa65239e09a5eb7e23d7133a5862ef15) |
+| **Commit** | [`216b4e5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/216b4e5fa1891750e627b72ecd7c950f387897ca) |
 | **Commit date** | 2026-08-21 |
-| **Commit title** | zink/ci: fix wrongly identified failures on POLARIS10/NAVI10 |
+| **Commit title** | ac/rdp: expose elf_gfxip_level enum and conversion helper in the header |
 | **Build date** | 20260821 |
-| **Release** | [v26.3.0-20260821-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r12) |
+| **Release** | [v26.3.0-20260821-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r13) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260821-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r13) | 2026-08-21 | [`216b4e5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/216b4e5fa1891750e627b72ecd7c950f387897ca) | ac/rdp: expose elf_gfxip_level enum and conversion helper in the header | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r12) | 2026-08-21 | [`e7b3fda`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e7b3fdaefa65239e09a5eb7e23d7133a5862ef15) | zink/ci: fix wrongly identified failures on POLARIS10/NAVI10 | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r11) | 2026-08-21 | [`973858c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/973858c8022452020a38dd4831b1f7f7f08f772a) | radv: set radv_force_exclusive_image for few native Vulkan games | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r10) | 2026-08-21 | [`497f31e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/497f31e04cd7cb828254dea1c6efd717bcf567c8) | nir/opt_shared_vars_to_subgroup: detect loads that stay within subgroups | Vulkan 1.4.359 |
@@ -105,7 +106,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260820-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r14) | 2026-08-20 | [`82c3c80`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82c3c804868fb3020239b793646ba6e4b7dd3a68) | tu: Fix renderpass tracepoints being lost with s/r chains | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r13) | 2026-08-20 | [`c69cc19`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c69cc19ae80c52a8399cca63873479474d9f2acb) | nouveau/drm: fix UB applying non-zero offset 40 to null pointer | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r12) | 2026-08-20 | [`d2ce69d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2ce69d4373284e6e3863d4201ec8e46b50cd58a) | radv: only split the right aspect for depth/stencil internal views | Vulkan 1.4.359 |
-| [v26.3.0-20260820-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r11) | 2026-08-20 | [`30a5b4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/30a5b4c95b9ed9c172cdd2b4aa6caae8c62e08dc) | zink: Handle max_varying where maxVertexOutputComponents value is too low. | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
