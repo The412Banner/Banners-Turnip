@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260821-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r2) | 2026-08-21 | [`d2e56df`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2e56dfcda6383956d8a3297a3ac9879bd9a9e35) | nak: add iadd3 ineg with constant rules | Vulkan 1.4.359 |
 | [v26.3.0-20260821](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821) | 2026-08-20 | [`bde9b9b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bde9b9bea20d56cfbb21e3a1aafaec806d6d25ef) | intel/dev: Enable NVL-S/U PCI IDs (without FORCE_PROBE) | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r17) | 2026-08-20 | [`bb3fef5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bb3fef572518943e78af2ccde943f7559dbd5a5a) | jay: bump JAY_PARTITION_BLOCKS | Vulkan 1.4.359 |
 | [v26.3.0-20260820-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r16) | 2026-08-20 | [`dbda147`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dbda14734f3be9163eadaf7c68dafc98952da9ec) | panfrost/mid: Disable mediump lowering entirely | Vulkan 1.4.359 |
