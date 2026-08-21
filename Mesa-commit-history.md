@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260821-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r10) | 2026-08-21 | [`497f31e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/497f31e04cd7cb828254dea1c6efd717bcf567c8) | nir/opt_shared_vars_to_subgroup: detect loads that stay within subgroups | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r9) | 2026-08-21 | [`d7a796e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d7a796e618f480f9346ff73da14b6cb94da4c78d) | radv/ci: raise back the lockup timeout to the previous level | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r8) | 2026-08-21 | [`75bd6b2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/75bd6b237f49ff6b120ae2a6a8e38a0f1cd896ea) | etnaviv: Emit TFB_COMMAND after the TFB buffer state | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r7) | 2026-08-21 | [`d945492`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d945492cc49648ed7aeec490f4adc327aa849557) | va: Set a reasonable minimum size for coded buffer | Vulkan 1.4.359 |
