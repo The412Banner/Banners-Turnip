@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260821-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r17) | 2026-08-21 | [`00e42c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/00e42c51b10d8e0769489156fa414f111897d515) | nvk: add a nvk_video_enabled() helper | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r16) | 2026-08-21 | [`355091f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/355091fc91bf49e853967b62a04c6acce0b09af7) | intel/brw: Add support to TANH instruction in Gfx 35 | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r15) | 2026-08-21 | [`4bd7d5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bd7d5bc0686d2ab0a80b5f0c4d38da0ccdb49c8) | anv: don't forget to hash render pass color attachments | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r14) | 2026-08-21 | [`bdcb5ca`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bdcb5ca56542b7032a2afd94f42b1249bbe14a51) | ethosu: Cache encoded weights within a subgraph | Vulkan 1.4.359 |
