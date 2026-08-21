@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`d945492`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d945492cc49648ed7aeec490f4adc327aa849557) |
+| **Commit** | [`75bd6b2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/75bd6b237f49ff6b120ae2a6a8e38a0f1cd896ea) |
 | **Commit date** | 2026-08-21 |
-| **Commit title** | va: Set a reasonable minimum size for coded buffer |
+| **Commit title** | etnaviv: Emit TFB_COMMAND after the TFB buffer state |
 | **Build date** | 20260821 |
-| **Release** | [v26.3.0-20260821-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r7) |
+| **Release** | [v26.3.0-20260821-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r8) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260821-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r8) | 2026-08-21 | [`75bd6b2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/75bd6b237f49ff6b120ae2a6a8e38a0f1cd896ea) | etnaviv: Emit TFB_COMMAND after the TFB buffer state | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r7) | 2026-08-21 | [`d945492`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d945492cc49648ed7aeec490f4adc327aa849557) | va: Set a reasonable minimum size for coded buffer | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r6) | 2026-08-21 | [`88c960b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88c960b769045c40b2f5d5c5364c2f64ae178fdf) | nvk: Advertise VK_KHR_device_address_commands | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r5) | 2026-08-21 | [`5ecf1f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ecf1f76324238cfd21f767e3b74fccd14c5c958) | vulkan: fix strict aliasing violations with vk_foreach_struct | Vulkan 1.4.359 |
