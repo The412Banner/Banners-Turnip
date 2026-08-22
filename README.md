@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`00e42c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/00e42c51b10d8e0769489156fa414f111897d515) |
-| **Commit date** | 2026-08-21 |
-| **Commit title** | nvk: add a nvk_video_enabled() helper |
-| **Build date** | 20260821 |
-| **Release** | [v26.3.0-20260821-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r17) |
+| **Commit** | [`ebcfbe6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ebcfbe601daeb0eb2854e5a3da7f6f3b597b4976) |
+| **Commit date** | 2026-08-22 |
+| **Commit title** | vulkan,anv,tu,lvp,radv: Delete radix_sort_vk |
+| **Build date** | 20260822 |
+| **Release** | [v26.3.0-20260822](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260822) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260822](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260822) | 2026-08-22 | [`ebcfbe6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ebcfbe601daeb0eb2854e5a3da7f6f3b597b4976) | vulkan,anv,tu,lvp,radv: Delete radix_sort_vk | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r17) | 2026-08-21 | [`00e42c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/00e42c51b10d8e0769489156fa414f111897d515) | nvk: add a nvk_video_enabled() helper | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r16) | 2026-08-21 | [`355091f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/355091fc91bf49e853967b62a04c6acce0b09af7) | intel/brw: Add support to TANH instruction in Gfx 35 | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r15) | 2026-08-21 | [`4bd7d5b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4bd7d5bc0686d2ab0a80b5f0c4d38da0ccdb49c8) | anv: don't forget to hash render pass color attachments | Vulkan 1.4.359 |
@@ -96,16 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260821-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r11) | 2026-08-21 | [`973858c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/973858c8022452020a38dd4831b1f7f7f08f772a) | radv: set radv_force_exclusive_image for few native Vulkan games | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r10) | 2026-08-21 | [`497f31e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/497f31e04cd7cb828254dea1c6efd717bcf567c8) | nir/opt_shared_vars_to_subgroup: detect loads that stay within subgroups | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r9) | 2026-08-21 | [`d7a796e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d7a796e618f480f9346ff73da14b6cb94da4c78d) | radv/ci: raise back the lockup timeout to the previous level | Vulkan 1.4.359 |
-| [v26.3.0-20260821-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r8) | 2026-08-21 | [`75bd6b2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/75bd6b237f49ff6b120ae2a6a8e38a0f1cd896ea) | etnaviv: Emit TFB_COMMAND after the TFB buffer state | Vulkan 1.4.359 |
-| [v26.3.0-20260821-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r7) | 2026-08-21 | [`d945492`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d945492cc49648ed7aeec490f4adc327aa849557) | va: Set a reasonable minimum size for coded buffer | Vulkan 1.4.359 |
-| [v26.3.0-20260821-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r6) | 2026-08-21 | [`88c960b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/88c960b769045c40b2f5d5c5364c2f64ae178fdf) | nvk: Advertise VK_KHR_device_address_commands | Vulkan 1.4.359 |
-| [v26.3.0-20260821-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r5) | 2026-08-21 | [`5ecf1f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ecf1f76324238cfd21f767e3b74fccd14c5c958) | vulkan: fix strict aliasing violations with vk_foreach_struct | Vulkan 1.4.359 |
-| [v26.3.0-20260821-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r4) | 2026-08-21 | [`0a42d05`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0a42d057b4e5d617cd98a6241795556b109550cb) | anv: Fix ASTC emulation sync in CopyMemoryToImage | Vulkan 1.4.359 |
-| [v26.3.0-20260821-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r3) | 2026-08-21 | [`ae07c23`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae07c23981e85037228789f5adeacc021e293734) | radv: remove unnecessary radv_write_data() | Vulkan 1.4.359 |
-| [v26.3.0-20260821-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r2) | 2026-08-21 | [`d2e56df`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2e56dfcda6383956d8a3297a3ac9879bd9a9e35) | nak: add iadd3 ineg with constant rules | Vulkan 1.4.359 |
-| [v26.3.0-20260821](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821) | 2026-08-21 | [`bde9b9b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bde9b9bea20d56cfbb21e3a1aafaec806d6d25ef) | intel/dev: Enable NVL-S/U PCI IDs (without FORCE_PROBE) | Vulkan 1.4.359 |
-| [v26.3.0-20260820-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r17) | 2026-08-20 | [`bb3fef5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bb3fef572518943e78af2ccde943f7559dbd5a5a) | jay: bump JAY_PARTITION_BLOCKS | Vulkan 1.4.359 |
-| [v26.3.0-20260820-r16](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260820-r16) | 2026-08-20 | [`dbda147`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dbda14734f3be9163eadaf7c68dafc98952da9ec) | panfrost/mid: Disable mediump lowering entirely | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
