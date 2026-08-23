@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260823-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260823-r2) | 2026-08-23 | [`d2d9722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2d97220bdebe8c37e1f740f357a671990d3d1be) | nv50: fixes for left shifts (picked with ubsan) | Vulkan 1.4.359 |
 | [v26.3.0-20260823](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260823) | 2026-08-23 | [`3f1b217`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3f1b217baffffa00cb8f53e158713a33e1bd4632) | freedreno/a5xx: seed the streamout counter in the units the hardware uses | Vulkan 1.4.359 |
 | [v26.3.0-20260822](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260822) | 2026-08-22 | [`ebcfbe6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ebcfbe601daeb0eb2854e5a3da7f6f3b597b4976) | vulkan,anv,tu,lvp,radv: Delete radix_sort_vk | Vulkan 1.4.359 |
 | [v26.3.0-20260821-r17](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260821-r17) | 2026-08-21 | [`00e42c5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/00e42c51b10d8e0769489156fa414f111897d515) | nvk: add a nvk_video_enabled() helper | Vulkan 1.4.359 |
