@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260824-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r10) | 2026-08-24 | [`087e24f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/087e24f91ea9357c1c704c588df335ecfe6bfda3) | brw: Use reaching definitions when skipping destination fills | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r9) | 2026-08-24 | [`4f14e16`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f14e16ba953b87286dfc3ddcbfc511ea2e60b9a) | nouveau/mme/tu104: add test and simulator code for DMA_READ and DMA_SYNC | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r8) | 2026-08-24 | [`4641f00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4641f0094f29752f2774e5c0cbfc75d5c76a2f26) | frontends/va: report processing entrypoint only if VPP is supported | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r7) | 2026-08-24 | [`0cd184e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0cd184e94fc4233d72fba6b9b266a943df4da13a) | tu: Don't reuse LRZ when it is cleared with partial render area | Vulkan 1.4.359 |
