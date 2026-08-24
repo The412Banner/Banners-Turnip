@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`4641f00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4641f0094f29752f2774e5c0cbfc75d5c76a2f26) |
+| **Commit** | [`4f14e16`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f14e16ba953b87286dfc3ddcbfc511ea2e60b9a) |
 | **Commit date** | 2026-08-24 |
-| **Commit title** | frontends/va: report processing entrypoint only if VPP is supported |
+| **Commit title** | nouveau/mme/tu104: add test and simulator code for DMA_READ and DMA_SYNC |
 | **Build date** | 20260824 |
-| **Release** | [v26.3.0-20260824-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r8) |
+| **Release** | [v26.3.0-20260824-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260824-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r9) | 2026-08-24 | [`4f14e16`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f14e16ba953b87286dfc3ddcbfc511ea2e60b9a) | nouveau/mme/tu104: add test and simulator code for DMA_READ and DMA_SYNC | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r8) | 2026-08-24 | [`4641f00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4641f0094f29752f2774e5c0cbfc75d5c76a2f26) | frontends/va: report processing entrypoint only if VPP is supported | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r7) | 2026-08-24 | [`0cd184e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0cd184e94fc4233d72fba6b9b266a943df4da13a) | tu: Don't reuse LRZ when it is cleared with partial render area | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r6) | 2026-08-24 | [`4c1c22e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c1c22e9d1a483b27f2502d9becc213257cfa7c5) | kk: Expose shaderSharedFloat32AtomicAdd for MSL >= 4.1 | Vulkan 1.4.359 |
@@ -96,7 +97,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260824-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r2) | 2026-08-24 | [`ac75cf5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ac75cf5a5bab59f86119d97f21d9b8cd0f85f4f8) | v3d: flush jobs that queue too many draw calls | Vulkan 1.4.359 |
 | [v26.3.0-20260824](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824) | 2026-08-24 | [`6f03332`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f0333205471a6d894dff5246aeabf3e8ff3d311) | tu: Advertise VK_EXT_shader_subgroup_ballot | Vulkan 1.4.359 |
 | [v26.3.0-20260823-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260823-r3) | 2026-08-23 | [`899977f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/899977f924d3af8de70f213a59c4c3731c68bcea) | radv/ci: Update the traces checksum for radv-raven-traces-restricted | Vulkan 1.4.359 |
-| [v26.3.0-20260823-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260823-r2) | 2026-08-23 | [`d2d9722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2d97220bdebe8c37e1f740f357a671990d3d1be) | nv50: fixes for left shifts (picked with ubsan) | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
