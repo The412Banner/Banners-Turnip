@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`087e24f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/087e24f91ea9357c1c704c588df335ecfe6bfda3) |
+| **Commit** | [`c915b45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c915b4587b127535b89393f268448e57ee3c143a) |
 | **Commit date** | 2026-08-24 |
-| **Commit title** | brw: Use reaching definitions when skipping destination fills |
+| **Commit title** | drm-shim: add freedreno/a225 |
 | **Build date** | 20260824 |
-| **Release** | [v26.3.0-20260824-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r10) |
+| **Release** | [v26.3.0-20260824-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r11) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260824-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r11) | 2026-08-24 | [`c915b45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c915b4587b127535b89393f268448e57ee3c143a) | drm-shim: add freedreno/a225 | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r10) | 2026-08-24 | [`087e24f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/087e24f91ea9357c1c704c588df335ecfe6bfda3) | brw: Use reaching definitions when skipping destination fills | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r9) | 2026-08-24 | [`4f14e16`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f14e16ba953b87286dfc3ddcbfc511ea2e60b9a) | nouveau/mme/tu104: add test and simulator code for DMA_READ and DMA_SYNC | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r8) | 2026-08-24 | [`4641f00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4641f0094f29752f2774e5c0cbfc75d5c76a2f26) | frontends/va: report processing entrypoint only if VPP is supported | Vulkan 1.4.359 |
