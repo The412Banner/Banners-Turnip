@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`78425bb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/78425bb3d03e90842154a5dfd4d3ed234fe55840) |
+| **Commit** | [`84d3619`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84d36193fdfe344986fa93f76c67954136803c6d) |
 | **Commit date** | 2026-08-24 |
-| **Commit title** | broadcom/qpu: decode the fround-group input unpack from raddr_b on V3D 7.1 |
+| **Commit title** | tu: Disable LRZ for depth resolve targets |
 | **Build date** | 20260824 |
-| **Release** | [v26.3.0-20260824-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r3) |
+| **Release** | [v26.3.0-20260824-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260824-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r4) | 2026-08-24 | [`84d3619`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84d36193fdfe344986fa93f76c67954136803c6d) | tu: Disable LRZ for depth resolve targets | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r3) | 2026-08-24 | [`78425bb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/78425bb3d03e90842154a5dfd4d3ed234fe55840) | broadcom/qpu: decode the fround-group input unpack from raddr_b on V3D 7.1 | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r2) | 2026-08-24 | [`ac75cf5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ac75cf5a5bab59f86119d97f21d9b8cd0f85f4f8) | v3d: flush jobs that queue too many draw calls | Vulkan 1.4.359 |
 | [v26.3.0-20260824](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824) | 2026-08-24 | [`6f03332`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f0333205471a6d894dff5246aeabf3e8ff3d311) | tu: Advertise VK_EXT_shader_subgroup_ballot | Vulkan 1.4.359 |
