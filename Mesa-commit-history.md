@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260824-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r8) | 2026-08-24 | [`4641f00`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4641f0094f29752f2774e5c0cbfc75d5c76a2f26) | frontends/va: report processing entrypoint only if VPP is supported | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r7) | 2026-08-24 | [`0cd184e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0cd184e94fc4233d72fba6b9b266a943df4da13a) | tu: Don't reuse LRZ when it is cleared with partial render area | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r6) | 2026-08-24 | [`4c1c22e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c1c22e9d1a483b27f2502d9becc213257cfa7c5) | kk: Expose shaderSharedFloat32AtomicAdd for MSL >= 4.1 | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r5) | 2026-08-24 | [`73e40d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73e40d80550681226e5b82f3c6cc4b56768cdfe2) | nvk/ci: update expectations | Vulkan 1.4.359 |
