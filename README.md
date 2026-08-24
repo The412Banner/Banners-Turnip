@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`899977f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/899977f924d3af8de70f213a59c4c3731c68bcea) |
-| **Commit date** | 2026-08-23 |
-| **Commit title** | radv/ci: Update the traces checksum for radv-raven-traces-restricted |
-| **Build date** | 20260823 |
-| **Release** | [v26.3.0-20260823-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260823-r3) |
+| **Commit** | [`6f03332`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f0333205471a6d894dff5246aeabf3e8ff3d311) |
+| **Commit date** | 2026-08-24 |
+| **Commit title** | tu: Advertise VK_EXT_shader_subgroup_ballot |
+| **Build date** | 20260824 |
+| **Release** | [v26.3.0-20260824](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260824](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824) | 2026-08-24 | [`6f03332`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f0333205471a6d894dff5246aeabf3e8ff3d311) | tu: Advertise VK_EXT_shader_subgroup_ballot | Vulkan 1.4.359 |
 | [v26.3.0-20260823-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260823-r3) | 2026-08-23 | [`899977f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/899977f924d3af8de70f213a59c4c3731c68bcea) | radv/ci: Update the traces checksum for radv-raven-traces-restricted | Vulkan 1.4.359 |
 | [v26.3.0-20260823-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260823-r2) | 2026-08-23 | [`d2d9722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2d97220bdebe8c37e1f740f357a671990d3d1be) | nv50: fixes for left shifts (picked with ubsan) | Vulkan 1.4.359 |
 | [v26.3.0-20260823](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260823) | 2026-08-23 | [`3f1b217`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3f1b217baffffa00cb8f53e158713a33e1bd4632) | freedreno/a5xx: seed the streamout counter in the units the hardware uses | Vulkan 1.4.359 |
