@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`ab4a67a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ab4a67a17a6402417343076f98131460ddbf2e92) |
+| **Commit** | [`27bf3ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27bf3ee4c2b2993f2a513b12c0d81f91e6e0a529) |
 | **Commit date** | 2026-08-25 |
-| **Commit title** | radv: fix and improve vkCmdSetEvent2 / vkCmdResetEvent2 |
+| **Commit title** | kk: Connect VK_EXT_debug_utils labels to Metal |
 | **Build date** | 20260825 |
-| **Release** | [v26.3.0-20260825-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r11) |
+| **Release** | [v26.3.0-20260825-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r12) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260825-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r12) | 2026-08-25 | [`27bf3ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27bf3ee4c2b2993f2a513b12c0d81f91e6e0a529) | kk: Connect VK_EXT_debug_utils labels to Metal | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r11) | 2026-08-25 | [`ab4a67a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ab4a67a17a6402417343076f98131460ddbf2e92) | radv: fix and improve vkCmdSetEvent2 / vkCmdResetEvent2 | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r10) | 2026-08-25 | [`7403042`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74030424e6ed5cc404055bb1afb3221bdec07897) | broadcom/compiler: fill the old value when spilling a partial write | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r9) | 2026-08-25 | [`dc33057`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc330577adb9e98363ef6061e09062f171d0d053) | amd/common: update TRUNC_COORD documentation | Vulkan 1.4.359 |
