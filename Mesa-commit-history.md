@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260825-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r5) | 2026-08-25 | [`2aa64dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2aa64dcf1ceb523aca350a25ef64adb3437d35ab) | radv: enable HTILE for mips+layers on GFX10+ | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r4) | 2026-08-25 | [`9bb9a74`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9bb9a74414d69c18eadc5a01b1efe04a6928da51) | freedreno, tu: Limit XFB streams on GPUs lacking multi-stream query support | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r3) | 2026-08-25 | [`7fa9a25`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fa9a25398a75fb7ef3c0656e4667ff9f6e9f2c1) | kk: Add feature check when setting depth bounds test | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r2) | 2026-08-25 | [`4412e09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4412e0924c9440910f3f25c5585b34d03cba9748) | mesa/st: don't pass stale VBO offsets as user pointers in core profiles | Vulkan 1.4.359 |
