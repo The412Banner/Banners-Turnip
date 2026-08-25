@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260825](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825) | 2026-08-24 | [`07646ea`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/07646ea2ab6d09e53b46d33fedfe9ad59a84efcb) | nir/lower_int_to_float: correct idiv from the remainder | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r11) | 2026-08-24 | [`c915b45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c915b4587b127535b89393f268448e57ee3c143a) | drm-shim: add freedreno/a225 | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r10) | 2026-08-24 | [`087e24f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/087e24f91ea9357c1c704c588df335ecfe6bfda3) | brw: Use reaching definitions when skipping destination fills | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r9) | 2026-08-24 | [`4f14e16`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f14e16ba953b87286dfc3ddcbfc511ea2e60b9a) | nouveau/mme/tu104: add test and simulator code for DMA_READ and DMA_SYNC | Vulkan 1.4.359 |
