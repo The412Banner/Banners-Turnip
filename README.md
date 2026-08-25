@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`d88f9b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d88f9b74d4f2cb43ea95e80951ade99381339d3a) |
+| **Commit** | [`d286f87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d286f87b1641abce126337f99caa13b11ae8ef5b) |
 | **Commit date** | 2026-08-25 |
-| **Commit title** | gfxstream/meson: drop unused include_directories() |
+| **Commit title** | freedreno/fdl: Fix gen8 multi-plane descriptor base |
 | **Build date** | 20260825 |
-| **Release** | [v26.3.0-20260825-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r13) |
+| **Release** | [v26.3.0-20260825-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r14) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260825-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r14) | 2026-08-25 | [`d286f87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d286f87b1641abce126337f99caa13b11ae8ef5b) | freedreno/fdl: Fix gen8 multi-plane descriptor base | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r13) | 2026-08-25 | [`d88f9b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d88f9b74d4f2cb43ea95e80951ade99381339d3a) | gfxstream/meson: drop unused include_directories() | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r12) | 2026-08-25 | [`27bf3ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27bf3ee4c2b2993f2a513b12c0d81f91e6e0a529) | kk: Connect VK_EXT_debug_utils labels to Metal | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r11) | 2026-08-25 | [`ab4a67a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ab4a67a17a6402417343076f98131460ddbf2e92) | radv: fix and improve vkCmdSetEvent2 / vkCmdResetEvent2 | Vulkan 1.4.359 |
@@ -102,7 +103,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260825](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825) | 2026-08-25 | [`07646ea`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/07646ea2ab6d09e53b46d33fedfe9ad59a84efcb) | nir/lower_int_to_float: correct idiv from the remainder | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r11) | 2026-08-24 | [`c915b45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c915b4587b127535b89393f268448e57ee3c143a) | drm-shim: add freedreno/a225 | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r10) | 2026-08-24 | [`087e24f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/087e24f91ea9357c1c704c588df335ecfe6bfda3) | brw: Use reaching definitions when skipping destination fills | Vulkan 1.4.359 |
-| [v26.3.0-20260824-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r9) | 2026-08-24 | [`4f14e16`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f14e16ba953b87286dfc3ddcbfc511ea2e60b9a) | nouveau/mme/tu104: add test and simulator code for DMA_READ and DMA_SYNC | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
