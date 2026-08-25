@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`d286f87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d286f87b1641abce126337f99caa13b11ae8ef5b) |
+| **Commit** | [`8cc4fe5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8cc4fe51fe781163d0345320a7a04520ecfcdb8d) |
 | **Commit date** | 2026-08-25 |
-| **Commit title** | freedreno/fdl: Fix gen8 multi-plane descriptor base |
+| **Commit title** | panvk/android: avoid pNext injection of caller ANB info |
 | **Build date** | 20260825 |
-| **Release** | [v26.3.0-20260825-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r14) |
+| **Release** | [v26.3.0-20260825-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r15) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260825-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r15) | 2026-08-25 | [`8cc4fe5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8cc4fe51fe781163d0345320a7a04520ecfcdb8d) | panvk/android: avoid pNext injection of caller ANB info | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r14) | 2026-08-25 | [`d286f87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d286f87b1641abce126337f99caa13b11ae8ef5b) | freedreno/fdl: Fix gen8 multi-plane descriptor base | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r13) | 2026-08-25 | [`d88f9b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d88f9b74d4f2cb43ea95e80951ade99381339d3a) | gfxstream/meson: drop unused include_directories() | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r12) | 2026-08-25 | [`27bf3ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27bf3ee4c2b2993f2a513b12c0d81f91e6e0a529) | kk: Connect VK_EXT_debug_utils labels to Metal | Vulkan 1.4.359 |
@@ -101,8 +102,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260825-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r3) | 2026-08-25 | [`7fa9a25`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fa9a25398a75fb7ef3c0656e4667ff9f6e9f2c1) | kk: Add feature check when setting depth bounds test | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r2) | 2026-08-25 | [`4412e09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4412e0924c9440910f3f25c5585b34d03cba9748) | mesa/st: don't pass stale VBO offsets as user pointers in core profiles | Vulkan 1.4.359 |
 | [v26.3.0-20260825](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825) | 2026-08-25 | [`07646ea`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/07646ea2ab6d09e53b46d33fedfe9ad59a84efcb) | nir/lower_int_to_float: correct idiv from the remainder | Vulkan 1.4.359 |
-| [v26.3.0-20260824-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r11) | 2026-08-24 | [`c915b45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c915b4587b127535b89393f268448e57ee3c143a) | drm-shim: add freedreno/a225 | Vulkan 1.4.359 |
-| [v26.3.0-20260824-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r10) | 2026-08-24 | [`087e24f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/087e24f91ea9357c1c704c588df335ecfe6bfda3) | brw: Use reaching definitions when skipping destination fills | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
