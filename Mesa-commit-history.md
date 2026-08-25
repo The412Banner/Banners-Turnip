@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260825-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r11) | 2026-08-25 | [`ab4a67a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ab4a67a17a6402417343076f98131460ddbf2e92) | radv: fix and improve vkCmdSetEvent2 / vkCmdResetEvent2 | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r10) | 2026-08-25 | [`7403042`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74030424e6ed5cc404055bb1afb3221bdec07897) | broadcom/compiler: fill the old value when spilling a partial write | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r9) | 2026-08-25 | [`dc33057`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc330577adb9e98363ef6061e09062f171d0d053) | amd/common: update TRUNC_COORD documentation | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r8) | 2026-08-25 | [`1eb29b2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1eb29b2f2f0f8a7c0a0d1251d9f26c5fb5d26902) | v3dv: keep CPU mapping alive for the cached BOs | Vulkan 1.4.359 |
