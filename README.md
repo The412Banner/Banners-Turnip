@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`e79595e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e79595e37b64d6c84b1962f5adc1bb61fa2ef165) |
+| **Commit** | [`630840b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/630840b3333ac6eafce6029ad153a47db97dd091) |
 | **Commit date** | 2026-08-25 |
-| **Commit title** | radeonsi/ci: update expectations |
+| **Commit title** | amd/common/virtio: fix import/free race that detaches a live res_id |
 | **Build date** | 20260825 |
-| **Release** | [v26.3.0-20260825-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r6) |
+| **Release** | [v26.3.0-20260825-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260825-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r7) | 2026-08-25 | [`630840b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/630840b3333ac6eafce6029ad153a47db97dd091) | amd/common/virtio: fix import/free race that detaches a live res_id | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r6) | 2026-08-25 | [`e79595e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e79595e37b64d6c84b1962f5adc1bb61fa2ef165) | radeonsi/ci: update expectations | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r5) | 2026-08-25 | [`2aa64dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2aa64dcf1ceb523aca350a25ef64adb3437d35ab) | radv: enable HTILE for mips+layers on GFX10+ | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r4) | 2026-08-25 | [`9bb9a74`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9bb9a74414d69c18eadc5a01b1efe04a6928da51) | freedreno, tu: Limit XFB streams on GPUs lacking multi-stream query support | Vulkan 1.4.359 |
@@ -101,7 +102,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260824-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r6) | 2026-08-24 | [`4c1c22e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4c1c22e9d1a483b27f2502d9becc213257cfa7c5) | kk: Expose shaderSharedFloat32AtomicAdd for MSL >= 4.1 | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r5) | 2026-08-24 | [`73e40d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73e40d80550681226e5b82f3c6cc4b56768cdfe2) | nvk/ci: update expectations | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r4) | 2026-08-24 | [`84d3619`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84d36193fdfe344986fa93f76c67954136803c6d) | tu: Disable LRZ for depth resolve targets | Vulkan 1.4.359 |
-| [v26.3.0-20260824-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r3) | 2026-08-24 | [`78425bb`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/78425bb3d03e90842154a5dfd4d3ed234fe55840) | broadcom/qpu: decode the fround-group input unpack from raddr_b on V3D 7.1 | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
