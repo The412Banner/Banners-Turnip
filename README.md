@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`4412e09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4412e0924c9440910f3f25c5585b34d03cba9748) |
+| **Commit** | [`7fa9a25`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fa9a25398a75fb7ef3c0656e4667ff9f6e9f2c1) |
 | **Commit date** | 2026-08-25 |
-| **Commit title** | mesa/st: don't pass stale VBO offsets as user pointers in core profiles |
+| **Commit title** | kk: Add feature check when setting depth bounds test |
 | **Build date** | 20260825 |
-| **Release** | [v26.3.0-20260825-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r2) |
+| **Release** | [v26.3.0-20260825-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260825-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r3) | 2026-08-25 | [`7fa9a25`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7fa9a25398a75fb7ef3c0656e4667ff9f6e9f2c1) | kk: Add feature check when setting depth bounds test | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r2) | 2026-08-25 | [`4412e09`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4412e0924c9440910f3f25c5585b34d03cba9748) | mesa/st: don't pass stale VBO offsets as user pointers in core profiles | Vulkan 1.4.359 |
 | [v26.3.0-20260825](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825) | 2026-08-25 | [`07646ea`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/07646ea2ab6d09e53b46d33fedfe9ad59a84efcb) | nir/lower_int_to_float: correct idiv from the remainder | Vulkan 1.4.359 |
 | [v26.3.0-20260824-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260824-r11) | 2026-08-24 | [`c915b45`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c915b4587b127535b89393f268448e57ee3c143a) | drm-shim: add freedreno/a225 | Vulkan 1.4.359 |
