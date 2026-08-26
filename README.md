@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`5244626`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52446262113329de9cdaab59de8713a2215b2f5e) |
-| **Commit date** | 2026-08-25 |
-| **Commit title** | spirv: Narrow the VectorShuffle undef marker to the component bit size |
+| **Commit** | [`28ce274`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/28ce274f4e5b0da78025b36c32f239549e09d012) |
+| **Commit date** | 2026-08-26 |
+| **Commit title** | spirv: Fix bounds check in OpSpecConstantOp CompositeExtract/Insert |
 | **Build date** | 20260826 |
-| **Release** | [v26.3.0-20260826](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826) |
+| **Release** | [v26.3.0-20260826-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260826-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r2) | 2026-08-26 | [`28ce274`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/28ce274f4e5b0da78025b36c32f239549e09d012) | spirv: Fix bounds check in OpSpecConstantOp CompositeExtract/Insert | Vulkan 1.4.359 |
 | [v26.3.0-20260826](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826) | 2026-08-26 | [`5244626`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52446262113329de9cdaab59de8713a2215b2f5e) | spirv: Narrow the VectorShuffle undef marker to the component bit size | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r15) | 2026-08-25 | [`8cc4fe5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8cc4fe51fe781163d0345320a7a04520ecfcdb8d) | panvk/android: avoid pNext injection of caller ANB info | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r14) | 2026-08-25 | [`d286f87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d286f87b1641abce126337f99caa13b11ae8ef5b) | freedreno/fdl: Fix gen8 multi-plane descriptor base | Vulkan 1.4.359 |
