@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`31c4715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/31c4715fa834dc1da66db38f8360bd796ce39a74) |
+| **Commit** | [`7efbeb9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7efbeb9098afb9a2b1d28b965527fa968fb6b949) |
 | **Commit date** | 2026-08-26 |
-| **Commit title** | kraid: Check mods and more swizzles for small constants |
+| **Commit title** | jay: Fix SIMD selection when a workgroup fits within a size |
 | **Build date** | 20260826 |
-| **Release** | [v26.3.0-20260826-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r6) |
+| **Release** | [v26.3.0-20260826-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260826-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r7) | 2026-08-26 | [`7efbeb9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7efbeb9098afb9a2b1d28b965527fa968fb6b949) | jay: Fix SIMD selection when a workgroup fits within a size | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r6) | 2026-08-26 | [`31c4715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/31c4715fa834dc1da66db38f8360bd796ce39a74) | kraid: Check mods and more swizzles for small constants | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r5) | 2026-08-26 | [`b9a2bf3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9a2bf372bf71eb6080fbfe7a75638bfb14e451c) | broadcom/ci: update expected results | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r4) | 2026-08-26 | [`5ff6194`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ff6194ee004f3c21c9617a57c6861f39fbdeef5) | pan/kmod: Don't initialize pan_kmod_deferred_bo_sync with size=0 | Vulkan 1.4.359 |
@@ -99,7 +100,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260825-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r12) | 2026-08-25 | [`27bf3ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27bf3ee4c2b2993f2a513b12c0d81f91e6e0a529) | kk: Connect VK_EXT_debug_utils labels to Metal | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r11) | 2026-08-25 | [`ab4a67a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ab4a67a17a6402417343076f98131460ddbf2e92) | radv: fix and improve vkCmdSetEvent2 / vkCmdResetEvent2 | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r10) | 2026-08-25 | [`7403042`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74030424e6ed5cc404055bb1afb3221bdec07897) | broadcom/compiler: fill the old value when spilling a partial write | Vulkan 1.4.359 |
-| [v26.3.0-20260825-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r9) | 2026-08-25 | [`dc33057`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc330577adb9e98363ef6061e09062f171d0d053) | amd/common: update TRUNC_COORD documentation | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
