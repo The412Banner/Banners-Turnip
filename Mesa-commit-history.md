@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260826-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r12) | 2026-08-26 | [`d45779b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d45779b345cc183527bc0db91865977b088cb4b4) | vk/wsi/win32: Stop using D3D12_IGNORE_SDK_LAYERS | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r11) | 2026-08-26 | [`cd6564a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cd6564aba7dfda24e14506eb75e31b8091b55083) | ir3: Don't use early preamble when the preamble is not speculatable | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r10) | 2026-08-26 | [`870e94b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/870e94b6341188879149d42f7a30030d4c6503ae) | magma-gpu-rs: sort the create_event_pair import | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r9) | 2026-08-26 | [`ca0c5d3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca0c5d3b7d92b41d985562e32b77b8415014eb5c) | r600/sfn: lower BUF txf in nir when on PRE-EG | Vulkan 1.4.359 |
