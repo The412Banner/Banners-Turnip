@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`9065df1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9065df13eb0fec9423897704db4d2d8f414a1364) |
+| **Commit** | [`ca0c5d3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca0c5d3b7d92b41d985562e32b77b8415014eb5c) |
 | **Commit date** | 2026-08-26 |
-| **Commit title** | radv: rework RADV_DEBUG options using a bitset |
+| **Commit title** | r600/sfn: lower BUF txf in nir when on PRE-EG |
 | **Build date** | 20260826 |
-| **Release** | [v26.3.0-20260826-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r8) |
+| **Release** | [v26.3.0-20260826-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r9) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260826-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r9) | 2026-08-26 | [`ca0c5d3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca0c5d3b7d92b41d985562e32b77b8415014eb5c) | r600/sfn: lower BUF txf in nir when on PRE-EG | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r8) | 2026-08-26 | [`9065df1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9065df13eb0fec9423897704db4d2d8f414a1364) | radv: rework RADV_DEBUG options using a bitset | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r7) | 2026-08-26 | [`7efbeb9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7efbeb9098afb9a2b1d28b965527fa968fb6b949) | jay: Fix SIMD selection when a workgroup fits within a size | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r6) | 2026-08-26 | [`31c4715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/31c4715fa834dc1da66db38f8360bd796ce39a74) | kraid: Check mods and more swizzles for small constants | Vulkan 1.4.359 |
