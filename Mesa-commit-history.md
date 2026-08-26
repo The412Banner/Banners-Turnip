@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260826](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826) | 2026-08-25 | [`5244626`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52446262113329de9cdaab59de8713a2215b2f5e) | spirv: Narrow the VectorShuffle undef marker to the component bit size | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r15) | 2026-08-25 | [`8cc4fe5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8cc4fe51fe781163d0345320a7a04520ecfcdb8d) | panvk/android: avoid pNext injection of caller ANB info | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r14](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r14) | 2026-08-25 | [`d286f87`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d286f87b1641abce126337f99caa13b11ae8ef5b) | freedreno/fdl: Fix gen8 multi-plane descriptor base | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r13](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r13) | 2026-08-25 | [`d88f9b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d88f9b74d4f2cb43ea95e80951ade99381339d3a) | gfxstream/meson: drop unused include_directories() | Vulkan 1.4.359 |
