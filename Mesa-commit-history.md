@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260826-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r6) | 2026-08-26 | [`31c4715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/31c4715fa834dc1da66db38f8360bd796ce39a74) | kraid: Check mods and more swizzles for small constants | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r5) | 2026-08-26 | [`b9a2bf3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9a2bf372bf71eb6080fbfe7a75638bfb14e451c) | broadcom/ci: update expected results | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r4) | 2026-08-26 | [`5ff6194`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ff6194ee004f3c21c9617a57c6861f39fbdeef5) | pan/kmod: Don't initialize pan_kmod_deferred_bo_sync with size=0 | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r3) | 2026-08-26 | [`bb63b17`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bb63b1797b657b64dac605391d251a22e1c9cefc) | amd/virtio: request deferred mapping for blob BOs | Vulkan 1.4.359 |

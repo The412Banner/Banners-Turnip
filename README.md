@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`b9a2bf3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9a2bf372bf71eb6080fbfe7a75638bfb14e451c) |
+| **Commit** | [`31c4715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/31c4715fa834dc1da66db38f8360bd796ce39a74) |
 | **Commit date** | 2026-08-26 |
-| **Commit title** | broadcom/ci: update expected results |
+| **Commit title** | kraid: Check mods and more swizzles for small constants |
 | **Build date** | 20260826 |
-| **Release** | [v26.3.0-20260826-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r5) |
+| **Release** | [v26.3.0-20260826-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260826-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r6) | 2026-08-26 | [`31c4715`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/31c4715fa834dc1da66db38f8360bd796ce39a74) | kraid: Check mods and more swizzles for small constants | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r5) | 2026-08-26 | [`b9a2bf3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9a2bf372bf71eb6080fbfe7a75638bfb14e451c) | broadcom/ci: update expected results | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r4) | 2026-08-26 | [`5ff6194`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ff6194ee004f3c21c9617a57c6861f39fbdeef5) | pan/kmod: Don't initialize pan_kmod_deferred_bo_sync with size=0 | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r3) | 2026-08-26 | [`bb63b17`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bb63b1797b657b64dac605391d251a22e1c9cefc) | amd/virtio: request deferred mapping for blob BOs | Vulkan 1.4.359 |
@@ -99,9 +100,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260825-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r11) | 2026-08-25 | [`ab4a67a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ab4a67a17a6402417343076f98131460ddbf2e92) | radv: fix and improve vkCmdSetEvent2 / vkCmdResetEvent2 | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r10) | 2026-08-25 | [`7403042`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/74030424e6ed5cc404055bb1afb3221bdec07897) | broadcom/compiler: fill the old value when spilling a partial write | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r9) | 2026-08-25 | [`dc33057`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dc330577adb9e98363ef6061e09062f171d0d053) | amd/common: update TRUNC_COORD documentation | Vulkan 1.4.359 |
-| [v26.3.0-20260825-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r8) | 2026-08-25 | [`1eb29b2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1eb29b2f2f0f8a7c0a0d1251d9f26c5fb5d26902) | v3dv: keep CPU mapping alive for the cached BOs | Vulkan 1.4.359 |
-| [v26.3.0-20260825-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r7) | 2026-08-25 | [`630840b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/630840b3333ac6eafce6029ad153a47db97dd091) | amd/common/virtio: fix import/free race that detaches a live res_id | Vulkan 1.4.359 |
-| [v26.3.0-20260825-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r6) | 2026-08-25 | [`e79595e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e79595e37b64d6c84b1962f5adc1bb61fa2ef165) | radeonsi/ci: update expectations | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
