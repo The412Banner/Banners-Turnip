@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260826-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r3) | 2026-08-26 | [`bb63b17`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bb63b1797b657b64dac605391d251a22e1c9cefc) | amd/virtio: request deferred mapping for blob BOs | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r2) | 2026-08-26 | [`28ce274`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/28ce274f4e5b0da78025b36c32f239549e09d012) | spirv: Fix bounds check in OpSpecConstantOp CompositeExtract/Insert | Vulkan 1.4.359 |
 | [v26.3.0-20260826](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826) | 2026-08-25 | [`5244626`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52446262113329de9cdaab59de8713a2215b2f5e) | spirv: Narrow the VectorShuffle undef marker to the component bit size | Vulkan 1.4.359 |
 | [v26.3.0-20260825-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r15) | 2026-08-25 | [`8cc4fe5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8cc4fe51fe781163d0345320a7a04520ecfcdb8d) | panvk/android: avoid pNext injection of caller ANB info | Vulkan 1.4.359 |
