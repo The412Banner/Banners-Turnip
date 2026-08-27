@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`e34e6d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e34e6d88c096dc7c21a3d01d10c8003293caf902) |
+| **Commit** | [`2329baf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2329baffd13c67e7f82af81a543a8074cb9b325b) |
 | **Commit date** | 2026-08-27 |
-| **Commit title** | pvr: use a load op for the resolve stencil load op |
+| **Commit title** | nir, spirv: Widen boolean DebugPrintf arguments to 32-bit |
 | **Build date** | 20260827 |
-| **Release** | [v26.3.0-20260827-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827-r2) |
+| **Release** | [v26.3.0-20260827-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,9 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260827-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827-r3) | 2026-08-27 | [`2329baf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2329baffd13c67e7f82af81a543a8074cb9b325b) | nir, spirv: Widen boolean DebugPrintf arguments to 32-bit | Vulkan 1.4.359 |
 | [v26.3.0-20260827-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827-r2) | 2026-08-27 | [`e34e6d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e34e6d88c096dc7c21a3d01d10c8003293caf902) | pvr: use a load op for the resolve stencil load op | Vulkan 1.4.359 |
 | [v26.3.0-20260827](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827) | 2026-08-27 | [`d0b3b0f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d0b3b0fc8797b9609cc3a2f23273efd9e6f04d29) | kk: Wrap meta operations in debug groups | Vulkan 1.4.359 |
-| [v26.3.0-20260826-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r12) | 2026-08-26 | [`d45779b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d45779b345cc183527bc0db91865977b088cb4b4) | vk/wsi/win32: Stop using D3D12_IGNORE_SDK_LAYERS | Vulkan 1.4.359 |
-| [v26.3.0-20260826-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r11) | 2026-08-26 | [`cd6564a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cd6564aba7dfda24e14506eb75e31b8091b55083) | ir3: Don't use early preamble when the preamble is not speculatable | Vulkan 1.4.359 |
-| [v26.3.0-20260826-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r10) | 2026-08-26 | [`870e94b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/870e94b6341188879149d42f7a30030d4c6503ae) | magma-gpu-rs: sort the create_event_pair import | Vulkan 1.4.359 |
-| [v26.3.0-20260826-r9](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r9) | 2026-08-26 | [`ca0c5d3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ca0c5d3b7d92b41d985562e32b77b8415014eb5c) | r600/sfn: lower BUF txf in nir when on PRE-EG | Vulkan 1.4.359 |
-| [v26.3.0-20260826-r8](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r8) | 2026-08-26 | [`9065df1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9065df13eb0fec9423897704db4d2d8f414a1364) | radv: rework RADV_DEBUG options using a bitset | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
