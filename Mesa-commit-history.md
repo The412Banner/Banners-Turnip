@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260827-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827-r2) | 2026-08-27 | [`e34e6d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e34e6d88c096dc7c21a3d01d10c8003293caf902) | pvr: use a load op for the resolve stencil load op | Vulkan 1.4.359 |
 | [v26.3.0-20260827](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827) | 2026-08-27 | [`d0b3b0f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d0b3b0fc8797b9609cc3a2f23273efd9e6f04d29) | kk: Wrap meta operations in debug groups | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r12) | 2026-08-26 | [`d45779b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d45779b345cc183527bc0db91865977b088cb4b4) | vk/wsi/win32: Stop using D3D12_IGNORE_SDK_LAYERS | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r11) | 2026-08-26 | [`cd6564a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cd6564aba7dfda24e14506eb75e31b8091b55083) | ir3: Don't use early preamble when the preamble is not speculatable | Vulkan 1.4.359 |
