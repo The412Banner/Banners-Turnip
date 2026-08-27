@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`d45779b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d45779b345cc183527bc0db91865977b088cb4b4) |
-| **Commit date** | 2026-08-26 |
-| **Commit title** | vk/wsi/win32: Stop using D3D12_IGNORE_SDK_LAYERS |
-| **Build date** | 20260826 |
-| **Release** | [v26.3.0-20260826-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r12) |
+| **Commit** | [`d0b3b0f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d0b3b0fc8797b9609cc3a2f23273efd9e6f04d29) |
+| **Commit date** | 2026-08-27 |
+| **Commit title** | kk: Wrap meta operations in debug groups |
+| **Build date** | 20260827 |
+| **Release** | [v26.3.0-20260827](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260827](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827) | 2026-08-27 | [`d0b3b0f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d0b3b0fc8797b9609cc3a2f23273efd9e6f04d29) | kk: Wrap meta operations in debug groups | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r12](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r12) | 2026-08-26 | [`d45779b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d45779b345cc183527bc0db91865977b088cb4b4) | vk/wsi/win32: Stop using D3D12_IGNORE_SDK_LAYERS | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r11](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r11) | 2026-08-26 | [`cd6564a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cd6564aba7dfda24e14506eb75e31b8091b55083) | ir3: Don't use early preamble when the preamble is not speculatable | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r10](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r10) | 2026-08-26 | [`870e94b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/870e94b6341188879149d42f7a30030d4c6503ae) | magma-gpu-rs: sort the create_event_pair import | Vulkan 1.4.359 |
@@ -97,9 +98,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260826-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r5) | 2026-08-26 | [`b9a2bf3`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b9a2bf372bf71eb6080fbfe7a75638bfb14e451c) | broadcom/ci: update expected results | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r4) | 2026-08-26 | [`5ff6194`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5ff6194ee004f3c21c9617a57c6861f39fbdeef5) | pan/kmod: Don't initialize pan_kmod_deferred_bo_sync with size=0 | Vulkan 1.4.359 |
 | [v26.3.0-20260826-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r3) | 2026-08-26 | [`bb63b17`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bb63b1797b657b64dac605391d251a22e1c9cefc) | amd/virtio: request deferred mapping for blob BOs | Vulkan 1.4.359 |
-| [v26.3.0-20260826-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826-r2) | 2026-08-26 | [`28ce274`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/28ce274f4e5b0da78025b36c32f239549e09d012) | spirv: Fix bounds check in OpSpecConstantOp CompositeExtract/Insert | Vulkan 1.4.359 |
-| [v26.3.0-20260826](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260826) | 2026-08-26 | [`5244626`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52446262113329de9cdaab59de8713a2215b2f5e) | spirv: Narrow the VectorShuffle undef marker to the component bit size | Vulkan 1.4.359 |
-| [v26.3.0-20260825-r15](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260825-r15) | 2026-08-25 | [`8cc4fe5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8cc4fe51fe781163d0345320a7a04520ecfcdb8d) | panvk/android: avoid pNext injection of caller ANB info | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
