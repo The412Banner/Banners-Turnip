@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260828](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260828) | 2026-08-28 | [`8fce8ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8fce8eee280f2592c653f7c541c65c6d6c97598c) | spirv: Check all valid capabilities for Layer and ViewportIndex builtins | Vulkan 1.4.359 |
 | [v26.3.0-20260827-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827-r3) | 2026-08-27 | [`2329baf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2329baffd13c67e7f82af81a543a8074cb9b325b) | nir, spirv: Widen boolean DebugPrintf arguments to 32-bit | Vulkan 1.4.359 |
 | [v26.3.0-20260827-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827-r2) | 2026-08-27 | [`e34e6d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e34e6d88c096dc7c21a3d01d10c8003293caf902) | pvr: use a load op for the resolve stencil load op | Vulkan 1.4.359 |
 | [v26.3.0-20260827](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827) | 2026-08-27 | [`d0b3b0f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d0b3b0fc8797b9609cc3a2f23273efd9e6f04d29) | kk: Wrap meta operations in debug groups | Vulkan 1.4.359 |
