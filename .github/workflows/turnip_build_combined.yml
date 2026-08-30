@@ -131,6 +131,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: build
+    # Publish whatever drivers built. A broken experimental leg (e.g. A8xx
+    # failing to compile against bleeding-edge Mesa) must NOT block shipping
+    # the standard A6xx/A7xx driver most users grab. The failed build leg
+    # still shows red, so the breakage stays visible and gets fixed.
+    if: ${{ !cancelled() }}
 
     steps:
       - name: Checkout repo (for patch list)
@@ -142,12 +147,25 @@ jobs:
           pattern: turnip-*
           merge-multiple: true
           path: ./zips
+        continue-on-error: true
 
       - name: Download release info
         uses: actions/download-artifact@v4
         with:
           name: release-info
           path: ./release-info
+        continue-on-error: true
+
+      - name: Require standard-driver metadata
+        run: |
+          # release-info is produced only by the 'regular' leg and carries the
+          # tag/version the release is named from. If the standard driver itself
+          # failed there is nothing coherent to publish — fail loudly here.
+          if [ ! -f release-info/tag.txt ]; then
+            echo "::error::Standard (A6xx/A7xx) driver build failed — no release metadata produced; nothing to publish."
+            exit 1
+          fi
+          echo "Drivers present this run:"; ls -1 zips/ || true
 
       - name: Write release body
         run: |
@@ -163,8 +181,17 @@ jobs:
           ZIP_A8XX="Turnip-${TAG}-A8xx.zip"
           ZIP_A7XX_TEST="Turnip-${TAG}-710-720-Test.zip"
           MESA_URL="https://gitlab.freedesktop.org/mesa/mesa/-/commit/${GITHASH_FULL}"
+          # Which driver ZIPs actually built this run? A failed leg = missing ZIP.
+          BUILT=$(ls zips/*.zip 2>/dev/null | wc -l | tr -d '[:space:]')
+          MISSING=""
+          [ -f "zips/${ZIP_REGULAR}" ]   || MISSING="${MISSING}\n- A6xx / A7xx standard (\`${ZIP_REGULAR}\`)"
+          [ -f "zips/${ZIP_A8XX}" ]      || MISSING="${MISSING}\n- A8xx (\`${ZIP_A8XX}\`)"
+          [ -f "zips/${ZIP_A7XX_TEST}" ] || MISSING="${MISSING}\n- A710 / A720 / A722 test (\`${ZIP_A7XX_TEST}\`)"
           {
             printf "> ⚠️ **AUTOMATED BUILD — Not guaranteed stable. Use at your own risk.**\n\n"
+            if [ -n "$MISSING" ]; then
+              printf "> ⚠️ **Partial release — %s of 3 drivers.** These failed to build this run and are NOT included (fix and re-run to add them):%b\n\n" "$BUILT" "$MISSING"
+            fi
             printf '%s\n\n' '---'
             printf "### Mesa Upstream\n\n"
             printf "| | |\n"
