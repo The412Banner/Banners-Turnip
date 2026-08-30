@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`8fce8ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8fce8eee280f2592c653f7c541c65c6d6c97598c) |
-| **Commit date** | 2026-08-28 |
-| **Commit title** | spirv: Check all valid capabilities for Layer and ViewportIndex builtins |
-| **Build date** | 20260828 |
-| **Release** | [v26.3.0-20260828](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260828) |
+| **Commit** | [`d340c7d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d340c7d825b719a1797ca024ad06632f3b3566d2) |
+| **Commit date** | 2026-08-30 |
+| **Commit title** | freedreno/a5xx: implement depth clamp |
+| **Build date** | 20260830 |
+| **Release** | [v26.3.0-20260830](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,9 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.3.0-20260828](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260828) | 2026-08-28 | [`8fce8ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8fce8eee280f2592c653f7c541c65c6d6c97598c) | spirv: Check all valid capabilities for Layer and ViewportIndex builtins | Vulkan 1.4.359 |
-| [v26.3.0-20260827-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827-r3) | 2026-08-27 | [`2329baf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2329baffd13c67e7f82af81a543a8074cb9b325b) | nir, spirv: Widen boolean DebugPrintf arguments to 32-bit | Vulkan 1.4.359 |
-| [v26.3.0-20260827-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260827-r2) | 2026-08-27 | [`e34e6d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e34e6d88c096dc7c21a3d01d10c8003293caf902) | pvr: use a load op for the resolve stencil load op | Vulkan 1.4.359 |
+| [v26.3.0-20260830](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830) | 2026-08-30 | [`d340c7d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d340c7d825b719a1797ca024ad06632f3b3566d2) | freedreno/a5xx: implement depth clamp | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
