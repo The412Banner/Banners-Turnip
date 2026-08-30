@@ -166,13 +166,13 @@ index 60ad3a8ef90..f7d14a67f9a 100644
  
 +   bool no_gmem = cmd->device->physical_device->dev_info.props.disable_gmem;
 +   if (no_gmem) {
-+       cmd->state.rp.gmem_disable_reason = "Unsupported GPU";
++       cmd->state.rp.force_render_mode_reason = "Unsupported GPU";
 +       return true;
 +    }
 +
     /* can't fit attachments into gmem */
     if (!cmd->state.tiling->possible) {
-       cmd->state.rp.gmem_disable_reason = "Can't fit attachments into gmem";
+       cmd->state.rp.force_render_mode_reason = "Can't fit attachments into gmem";
 From 6b3c67fcfcdf5bd9161df294e6c3335d32a5e762 Mon Sep 17 00:00:00 2001
 From: whitebelyash <whbexiumwork@gmail.com>
 Date: Mon, 2 Mar 2026 13:34:05 +0400
