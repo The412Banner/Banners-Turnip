@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260830-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830-r3) | 2026-08-30 | [`29c5f0a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29c5f0ad445246ba8352aee61702bc3b5887389d) | etnaviv: nir: Call nir_opt_combine_stores(..) | Vulkan 1.4.359 |
 | [v26.3.0-20260830-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830-r2) | 2026-08-30 | [`d340c7d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d340c7d825b719a1797ca024ad06632f3b3566d2) | freedreno/a5xx: implement depth clamp | Vulkan 1.4.359 |
 | [v26.3.0-20260830](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830) | 2026-08-30 | [`d340c7d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d340c7d825b719a1797ca024ad06632f3b3566d2) | freedreno/a5xx: implement depth clamp | Vulkan 1.4.359 |
 | [v26.3.0-20260828](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260828) | 2026-08-28 | [`8fce8ee`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8fce8eee280f2592c653f7c541c65c6d6c97598c) | spirv: Check all valid capabilities for Layer and ViewportIndex builtins | Vulkan 1.4.359 |

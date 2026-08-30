@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`d340c7d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d340c7d825b719a1797ca024ad06632f3b3566d2) |
+| **Commit** | [`29c5f0a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29c5f0ad445246ba8352aee61702bc3b5887389d) |
 | **Commit date** | 2026-08-30 |
-| **Commit title** | freedreno/a5xx: implement depth clamp |
+| **Commit title** | etnaviv: nir: Call nir_opt_combine_stores(..) |
 | **Build date** | 20260830 |
-| **Release** | [v26.3.0-20260830-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830-r2) |
+| **Release** | [v26.3.0-20260830-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260830-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830-r3) | 2026-08-30 | [`29c5f0a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29c5f0ad445246ba8352aee61702bc3b5887389d) | etnaviv: nir: Call nir_opt_combine_stores(..) | Vulkan 1.4.359 |
 | [v26.3.0-20260830-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830-r2) | 2026-08-30 | [`d340c7d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d340c7d825b719a1797ca024ad06632f3b3566d2) | freedreno/a5xx: implement depth clamp | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
