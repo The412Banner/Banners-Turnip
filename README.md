@@ -77,7 +77,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | **Commit date** | 2026-08-30 |
 | **Commit title** | freedreno/a5xx: implement depth clamp |
 | **Build date** | 20260830 |
-| **Release** | [v26.3.0-20260830](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830) |
+| **Release** | [v26.3.0-20260830-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,7 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v26.3.0-20260830](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830) | 2026-08-30 | [`d340c7d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d340c7d825b719a1797ca024ad06632f3b3566d2) | freedreno/a5xx: implement depth clamp | Vulkan 1.4.359 |
+| [v26.3.0-20260830-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830-r2) | 2026-08-30 | [`d340c7d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d340c7d825b719a1797ca024ad06632f3b3566d2) | freedreno/a5xx: implement depth clamp | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
