@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`7f19691`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f196910eb35aca76cf58d0c572c72c099e971a2) |
+| **Commit** | [`df7fda4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/df7fda4b20e7f6e1e35136a811799a9bbe7a68c0) |
 | **Commit date** | 2026-08-31 |
-| **Commit title** | radv: skip some depth metadata init for zero-initialized images |
+| **Commit title** | panfrost/csf: flush GPU caches after XFB compute in csf_launch_xfb |
 | **Build date** | 20260831 |
-| **Release** | [v26.3.0-20260831](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260831) |
+| **Release** | [v26.3.0-20260831-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260831-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,9 +87,9 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260831-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260831-r2) | 2026-08-31 | [`df7fda4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/df7fda4b20e7f6e1e35136a811799a9bbe7a68c0) | panfrost/csf: flush GPU caches after XFB compute in csf_launch_xfb | Vulkan 1.4.359 |
 | [v26.3.0-20260831](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260831) | 2026-08-31 | [`7f19691`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7f196910eb35aca76cf58d0c572c72c099e971a2) | radv: skip some depth metadata init for zero-initialized images | Vulkan 1.4.359 |
 | [v26.3.0-20260830-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830-r4) | 2026-08-30 | [`cf63745`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cf63745aa2dfdb88eafb4ac2b619f95c09cfd832) | anv: fix regression on coopmat per element operations feature. | Vulkan 1.4.359 |
-| [v26.3.0-20260830-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260830-r3) | 2026-08-30 | [`29c5f0a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29c5f0ad445246ba8352aee61702bc3b5887389d) | etnaviv: nir: Call nir_opt_combine_stores(..) | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
