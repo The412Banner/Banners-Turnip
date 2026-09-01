@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260901-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260901-r5) | 2026-09-01 | [`73ff21e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73ff21ef2d03f8b57a1470dad49ed49ae71913c5) | gfxstream: Fixes for extensions with type erased objects | Vulkan 1.4.359 |
 | [v26.3.0-20260901-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260901-r4) | 2026-09-01 | [`27b3c0e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27b3c0e78bc0177773108d51287a95ad79610f66) | pan/bi: Make bi_gather_stats arith and texel rates model-aware | Vulkan 1.4.359 |
 | [v26.3.0-20260901-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260901-r3) | 2026-09-01 | [`9fba08b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9fba08bd2366853c357df2c2a0be779351babfb5) | brw: use constant offset in extended descriptor for spill/fill | Vulkan 1.4.359 |
 | [v26.3.0-20260901-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260901-r2) | 2026-09-01 | [`085b2c7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/085b2c7976ad7655b379a055cbff52e82b7d91f3) | kk: move constant data out of scratch | Vulkan 1.4.359 |
