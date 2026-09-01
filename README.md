@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`9fba08b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9fba08bd2366853c357df2c2a0be779351babfb5) |
+| **Commit** | [`27b3c0e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27b3c0e78bc0177773108d51287a95ad79610f66) |
 | **Commit date** | 2026-09-01 |
-| **Commit title** | brw: use constant offset in extended descriptor for spill/fill |
+| **Commit title** | pan/bi: Make bi_gather_stats arith and texel rates model-aware |
 | **Build date** | 20260901 |
-| **Release** | [v26.3.0-20260901-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260901-r3) |
+| **Release** | [v26.3.0-20260901-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260901-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260901-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260901-r4) | 2026-09-01 | [`27b3c0e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/27b3c0e78bc0177773108d51287a95ad79610f66) | pan/bi: Make bi_gather_stats arith and texel rates model-aware | Vulkan 1.4.359 |
 | [v26.3.0-20260901-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260901-r3) | 2026-09-01 | [`9fba08b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9fba08bd2366853c357df2c2a0be779351babfb5) | brw: use constant offset in extended descriptor for spill/fill | Vulkan 1.4.359 |
 | [v26.3.0-20260901-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260901-r2) | 2026-09-01 | [`085b2c7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/085b2c7976ad7655b379a055cbff52e82b7d91f3) | kk: move constant data out of scratch | Vulkan 1.4.359 |
 | [v26.3.0-20260901](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260901) | 2026-09-01 | [`8e12d60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8e12d6000b247715b7c9bfaac67bca565dd8b9d8) | nv30/ci: add recent regression | Vulkan 1.4.359 |
