@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260902-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r4) | 2026-09-02 | [`109507f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/109507f242b079ce21e2956373695c51f571ddde) | va: Don't allow NULL codec in vaEndPicture | Vulkan 1.4.359 |
 | [v26.3.0-20260902-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r3) | 2026-09-02 | [`1c8cf9e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1c8cf9ee7842140afdbd33d764b84501f5d22811) | r600/sfn: get rid of useless indirect_file tracking | Vulkan 1.4.359 |
 | [v26.3.0-20260902-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r2) | 2026-09-02 | [`d870cef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d870cef8b7c8a4a11edc669669c9f18ae402314a) | intel/isl: Bump HALIGN from 16B to 32B on Xe2+ | Vulkan 1.4.359 |
 | [v26.3.0-20260902](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902) | 2026-09-02 | [`dd40672`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dd4067299bfa2e2537645d42226bce4887ff144f) | kraid/ra: Clean up clippy complaints | Vulkan 1.4.359 |
