@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`f8dadab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f8dadabfb2dbf5436540cd45a69604c3673a1252) |
+| **Commit** | [`2c3d428`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c3d428ccefafecfc6992234ed75b67f74d289b3) |
 | **Commit date** | 2026-09-03 |
-| **Commit title** | radv: add a drirc option to select the image clear/copy/blit/resolve path |
+| **Commit title** | mesa/st: fix incorrect VS input bases |
 | **Build date** | 20260903 |
-| **Release** | [v26.3.0-20260903-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r4) |
+| **Release** | [v26.3.0-20260903-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260903-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r5) | 2026-09-03 | [`2c3d428`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c3d428ccefafecfc6992234ed75b67f74d289b3) | mesa/st: fix incorrect VS input bases | Vulkan 1.4.359 |
 | [v26.3.0-20260903-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r4) | 2026-09-03 | [`f8dadab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f8dadabfb2dbf5436540cd45a69604c3673a1252) | radv: add a drirc option to select the image clear/copy/blit/resolve path | Vulkan 1.4.359 |
 | [v26.3.0-20260903-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r3) | 2026-09-03 | [`36c7756`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/36c7756187fabe587e7cc5ca4ef36e07db6ad544) | radv: enable subgroup-convergent indirect FS input indexing | Vulkan 1.4.359 |
 | [v26.3.0-20260903-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r2) | 2026-09-03 | [`db5ab8d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db5ab8de7769ce919f0f1cad923ca02a783fdd78) | kk: Do resolves using Metal render passes when possible | Vulkan 1.4.359 |
