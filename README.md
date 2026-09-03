@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`946b15e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/946b15ec48a54142efc15b97aa44b06df74f2062) |
-| **Commit date** | 2026-09-02 |
-| **Commit title** | etnaviv: Widen 32bpc RT colormasks without PE_32BPC_COLORMASK_FIX |
-| **Build date** | 20260902 |
-| **Release** | [v26.3.0-20260902-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r7) |
+| **Commit** | [`cff05c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff05c145647497ed5b9bc83754dc067ce4a6d39) |
+| **Commit date** | 2026-09-03 |
+| **Commit title** | pvr: fixup ordering of (has_)usc_itr_parallel_instances in dev info |
+| **Build date** | 20260903 |
+| **Release** | [v26.3.0-20260903](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260903](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903) | 2026-09-03 | [`cff05c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff05c145647497ed5b9bc83754dc067ce4a6d39) | pvr: fixup ordering of (has_)usc_itr_parallel_instances in dev info | Vulkan 1.4.359 |
 | [v26.3.0-20260902-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r7) | 2026-09-02 | [`946b15e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/946b15ec48a54142efc15b97aa44b06df74f2062) | etnaviv: Widen 32bpc RT colormasks without PE_32BPC_COLORMASK_FIX | Vulkan 1.4.359 |
 | [v26.3.0-20260902-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r6) | 2026-09-02 | [`bc4e308`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bc4e308a1a7fb8b94e931d5c9f70518c06dbe353) | ci/deqp: backport GLES2 CTS fixes | Vulkan 1.4.359 |
 | [v26.3.0-20260902-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r5) | 2026-09-02 | [`6f082cf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f082cf42654e73f64060cc695b839e650e73a5a) | docs: add sha sum for 26.2.2 | Vulkan 1.4.359 |
 | [v26.3.0-20260902-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r4) | 2026-09-02 | [`109507f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/109507f242b079ce21e2956373695c51f571ddde) | va: Don't allow NULL codec in vaEndPicture | Vulkan 1.4.359 |
-| [v26.3.0-20260902-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r3) | 2026-09-02 | [`1c8cf9e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1c8cf9ee7842140afdbd33d764b84501f5d22811) | r600/sfn: get rid of useless indirect_file tracking | Vulkan 1.4.359 |
-| [v26.3.0-20260902-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r2) | 2026-09-02 | [`d870cef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d870cef8b7c8a4a11edc669669c9f18ae402314a) | intel/isl: Bump HALIGN from 16B to 32B on Xe2+ | Vulkan 1.4.359 |
-| [v26.3.0-20260902](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902) | 2026-09-02 | [`dd40672`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dd4067299bfa2e2537645d42226bce4887ff144f) | kraid/ra: Clean up clippy complaints | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---

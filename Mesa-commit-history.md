@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260903](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903) | 2026-09-03 | [`cff05c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff05c145647497ed5b9bc83754dc067ce4a6d39) | pvr: fixup ordering of (has_)usc_itr_parallel_instances in dev info | Vulkan 1.4.359 |
 | [v26.3.0-20260902-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r7) | 2026-09-02 | [`946b15e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/946b15ec48a54142efc15b97aa44b06df74f2062) | etnaviv: Widen 32bpc RT colormasks without PE_32BPC_COLORMASK_FIX | Vulkan 1.4.359 |
 | [v26.3.0-20260902-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r6) | 2026-09-02 | [`bc4e308`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bc4e308a1a7fb8b94e931d5c9f70518c06dbe353) | ci/deqp: backport GLES2 CTS fixes | Vulkan 1.4.359 |
 | [v26.3.0-20260902-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r5) | 2026-09-02 | [`6f082cf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6f082cf42654e73f64060cc695b839e650e73a5a) | docs: add sha sum for 26.2.2 | Vulkan 1.4.359 |
