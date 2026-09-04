@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`6c89929`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c8992972087caa5c17447493461ac770e57b5d3) |
+| **Commit** | [`23373e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/23373e9fce2af674bd61a2501548be2ed035880b) |
 | **Commit date** | 2026-09-04 |
-| **Commit title** | kraid: Add a pre-RA pressure scheduler |
+| **Commit title** | brw: Drop debug fprintf accidentally left in dfceddb18554 |
 | **Build date** | 20260904 |
-| **Release** | [v26.3.0-20260904-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r6) |
+| **Release** | [v26.3.0-20260904-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260904-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r7) | 2026-09-04 | [`23373e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/23373e9fce2af674bd61a2501548be2ed035880b) | brw: Drop debug fprintf accidentally left in dfceddb18554 | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r6) | 2026-09-04 | [`6c89929`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c8992972087caa5c17447493461ac770e57b5d3) | kraid: Add a pre-RA pressure scheduler | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r5) | 2026-09-04 | [`beef4d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/beef4d8f88965c0bc65474859de9d2b4c6a3a809) | anv/android: Don't disable AUX_BIT importing Xe2+ CCS mod images | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r4) | 2026-09-04 | [`e62173b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e62173bc072083f50f1f140ce41ac431ee029da8) | ac/nir/fixup_smem_loads_null_prt: stop manually chasing scalars | Vulkan 1.4.359 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260904-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r2) | 2026-09-04 | [`495abbf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/495abbf74e4a58e7334c0bfa7b3b554588c9bea9) | gallium/ddebug: exclude ddebug from non-gfx builds | Vulkan 1.4.359 |
 | [v26.3.0-20260904](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904) | 2026-09-04 | [`2efa09c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2efa09c14d6cf7874e3a4cb7c0b30c99e8f544fb) | intel/isl: optimize find_next_divisor() | Vulkan 1.4.359 |
 | [v26.3.0-20260903-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r5) | 2026-09-03 | [`2c3d428`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c3d428ccefafecfc6992234ed75b67f74d289b3) | mesa/st: fix incorrect VS input bases | Vulkan 1.4.359 |
-| [v26.3.0-20260903-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r4) | 2026-09-03 | [`f8dadab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f8dadabfb2dbf5436540cd45a69604c3673a1252) | radv: add a drirc option to select the image clear/copy/blit/resolve path | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
