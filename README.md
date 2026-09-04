@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`beef4d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/beef4d8f88965c0bc65474859de9d2b4c6a3a809) |
+| **Commit** | [`6c89929`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c8992972087caa5c17447493461ac770e57b5d3) |
 | **Commit date** | 2026-09-04 |
-| **Commit title** | anv/android: Don't disable AUX_BIT importing Xe2+ CCS mod images |
+| **Commit title** | kraid: Add a pre-RA pressure scheduler |
 | **Build date** | 20260904 |
-| **Release** | [v26.3.0-20260904-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r5) |
+| **Release** | [v26.3.0-20260904-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260904-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r6) | 2026-09-04 | [`6c89929`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c8992972087caa5c17447493461ac770e57b5d3) | kraid: Add a pre-RA pressure scheduler | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r5) | 2026-09-04 | [`beef4d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/beef4d8f88965c0bc65474859de9d2b4c6a3a809) | anv/android: Don't disable AUX_BIT importing Xe2+ CCS mod images | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r4) | 2026-09-04 | [`e62173b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e62173bc072083f50f1f140ce41ac431ee029da8) | ac/nir/fixup_smem_loads_null_prt: stop manually chasing scalars | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r3) | 2026-09-04 | [`84cbbd2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84cbbd2a2eef7f13368fc9a1db2c73b2afa41829) | glsl: stop using strtok() | Vulkan 1.4.359 |
@@ -94,7 +95,6 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | [v26.3.0-20260904](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904) | 2026-09-04 | [`2efa09c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2efa09c14d6cf7874e3a4cb7c0b30c99e8f544fb) | intel/isl: optimize find_next_divisor() | Vulkan 1.4.359 |
 | [v26.3.0-20260903-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r5) | 2026-09-03 | [`2c3d428`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c3d428ccefafecfc6992234ed75b67f74d289b3) | mesa/st: fix incorrect VS input bases | Vulkan 1.4.359 |
 | [v26.3.0-20260903-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r4) | 2026-09-03 | [`f8dadab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f8dadabfb2dbf5436540cd45a69604c3673a1252) | radv: add a drirc option to select the image clear/copy/blit/resolve path | Vulkan 1.4.359 |
-| [v26.3.0-20260903-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r3) | 2026-09-03 | [`36c7756`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/36c7756187fabe587e7cc5ca4ef36e07db6ad544) | radv: enable subgroup-convergent indirect FS input indexing | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---

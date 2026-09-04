@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260904-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r6) | 2026-09-04 | [`6c89929`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c8992972087caa5c17447493461ac770e57b5d3) | kraid: Add a pre-RA pressure scheduler | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r5) | 2026-09-04 | [`beef4d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/beef4d8f88965c0bc65474859de9d2b4c6a3a809) | anv/android: Don't disable AUX_BIT importing Xe2+ CCS mod images | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r4) | 2026-09-04 | [`e62173b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e62173bc072083f50f1f140ce41ac431ee029da8) | ac/nir/fixup_smem_loads_null_prt: stop manually chasing scalars | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r3) | 2026-09-04 | [`84cbbd2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84cbbd2a2eef7f13368fc9a1db2c73b2afa41829) | glsl: stop using strtok() | Vulkan 1.4.359 |
