@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260904-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r4) | 2026-09-04 | [`e62173b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e62173bc072083f50f1f140ce41ac431ee029da8) | ac/nir/fixup_smem_loads_null_prt: stop manually chasing scalars | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r3) | 2026-09-04 | [`84cbbd2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/84cbbd2a2eef7f13368fc9a1db2c73b2afa41829) | glsl: stop using strtok() | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r2) | 2026-09-04 | [`495abbf`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/495abbf74e4a58e7334c0bfa7b3b554588c9bea9) | gallium/ddebug: exclude ddebug from non-gfx builds | Vulkan 1.4.359 |
 | [v26.3.0-20260904](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904) | 2026-09-04 | [`2efa09c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2efa09c14d6cf7874e3a4cb7c0b30c99e8f544fb) | intel/isl: optimize find_next_divisor() | Vulkan 1.4.359 |
