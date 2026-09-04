@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`2c3d428`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c3d428ccefafecfc6992234ed75b67f74d289b3) |
-| **Commit date** | 2026-09-03 |
-| **Commit title** | mesa/st: fix incorrect VS input bases |
-| **Build date** | 20260903 |
-| **Release** | [v26.3.0-20260903-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r5) |
+| **Commit** | [`2efa09c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2efa09c14d6cf7874e3a4cb7c0b30c99e8f544fb) |
+| **Commit date** | 2026-09-04 |
+| **Commit title** | intel/isl: optimize find_next_divisor() |
+| **Build date** | 20260904 |
+| **Release** | [v26.3.0-20260904](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,12 +87,12 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260904](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904) | 2026-09-04 | [`2efa09c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2efa09c14d6cf7874e3a4cb7c0b30c99e8f544fb) | intel/isl: optimize find_next_divisor() | Vulkan 1.4.359 |
 | [v26.3.0-20260903-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r5) | 2026-09-03 | [`2c3d428`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c3d428ccefafecfc6992234ed75b67f74d289b3) | mesa/st: fix incorrect VS input bases | Vulkan 1.4.359 |
 | [v26.3.0-20260903-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r4) | 2026-09-03 | [`f8dadab`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f8dadabfb2dbf5436540cd45a69604c3673a1252) | radv: add a drirc option to select the image clear/copy/blit/resolve path | Vulkan 1.4.359 |
 | [v26.3.0-20260903-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r3) | 2026-09-03 | [`36c7756`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/36c7756187fabe587e7cc5ca4ef36e07db6ad544) | radv: enable subgroup-convergent indirect FS input indexing | Vulkan 1.4.359 |
 | [v26.3.0-20260903-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903-r2) | 2026-09-03 | [`db5ab8d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/db5ab8de7769ce919f0f1cad923ca02a783fdd78) | kk: Do resolves using Metal render passes when possible | Vulkan 1.4.359 |
 | [v26.3.0-20260903](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260903) | 2026-09-03 | [`cff05c1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cff05c145647497ed5b9bc83754dc067ce4a6d39) | pvr: fixup ordering of (has_)usc_itr_parallel_instances in dev info | Vulkan 1.4.359 |
-| [v26.3.0-20260902-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260902-r7) | 2026-09-02 | [`946b15e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/946b15ec48a54142efc15b97aa44b06df74f2062) | etnaviv: Widen 32bpc RT colormasks without PE_32BPC_COLORMASK_FIX | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
