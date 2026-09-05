@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260905](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260905) | 2026-09-05 | [`86158b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/86158b8c7467cadcd24f8a8cf02aa3bc748f7e3f) | brw: Skip DPAS in has_invalid_dst_region | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r7) | 2026-09-04 | [`23373e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/23373e9fce2af674bd61a2501548be2ed035880b) | brw: Drop debug fprintf accidentally left in dfceddb18554 | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r6) | 2026-09-04 | [`6c89929`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c8992972087caa5c17447493461ac770e57b5d3) | kraid: Add a pre-RA pressure scheduler | Vulkan 1.4.359 |
 | [v26.3.0-20260904-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r5) | 2026-09-04 | [`beef4d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/beef4d8f88965c0bc65474859de9d2b4c6a3a809) | anv/android: Don't disable AUX_BIT importing Xe2+ CCS mod images | Vulkan 1.4.359 |
