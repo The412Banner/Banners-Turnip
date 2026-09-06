@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`86158b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/86158b8c7467cadcd24f8a8cf02aa3bc748f7e3f) |
-| **Commit date** | 2026-09-05 |
-| **Commit title** | brw: Skip DPAS in has_invalid_dst_region |
-| **Build date** | 20260905 |
-| **Release** | [v26.3.0-20260905](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260905) |
+| **Commit** | [`19935f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/19935f7e39047146adf1dda213e923b944eefaeb) |
+| **Commit date** | 2026-09-06 |
+| **Commit title** | Uprev VVL to ad4ed518c3c9783b9c9ff912c205c987b17d7bf4 |
+| **Build date** | 20260906 |
+| **Release** | [v26.3.0-20260906](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260906) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,10 +87,8 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260906](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260906) | 2026-09-06 | [`19935f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/19935f7e39047146adf1dda213e923b944eefaeb) | Uprev VVL to ad4ed518c3c9783b9c9ff912c205c987b17d7bf4 | Vulkan 1.4.359 |
 | [v26.3.0-20260905](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260905) | 2026-09-05 | [`86158b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/86158b8c7467cadcd24f8a8cf02aa3bc748f7e3f) | brw: Skip DPAS in has_invalid_dst_region | Vulkan 1.4.359 |
-| [v26.3.0-20260904-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r7) | 2026-09-04 | [`23373e9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/23373e9fce2af674bd61a2501548be2ed035880b) | brw: Drop debug fprintf accidentally left in dfceddb18554 | Vulkan 1.4.359 |
-| [v26.3.0-20260904-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r6) | 2026-09-04 | [`6c89929`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c8992972087caa5c17447493461ac770e57b5d3) | kraid: Add a pre-RA pressure scheduler | Vulkan 1.4.359 |
-| [v26.3.0-20260904-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260904-r5) | 2026-09-04 | [`beef4d8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/beef4d8f88965c0bc65474859de9d2b4c6a3a809) | anv/android: Don't disable AUX_BIT importing Xe2+ CCS mod images | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
