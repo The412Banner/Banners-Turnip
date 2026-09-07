@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`ea85c4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea85c4c2db3dcb6a9022081ef07ebdbbcb744a64) |
+| **Commit** | [`b63bb36`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b63bb362308a17316245671f51e2fb5c6637702d) |
 | **Commit date** | 2026-09-07 |
-| **Commit title** | subprojects: uprev venus-protocol to v1.1.3 |
+| **Commit title** | pan/bi: Fix binary shader dumps |
 | **Build date** | 20260907 |
-| **Release** | [v26.3.0-20260907](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260907) |
+| **Release** | [v26.3.0-20260907-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260907-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260907-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260907-r2) | 2026-09-07 | [`b63bb36`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b63bb362308a17316245671f51e2fb5c6637702d) | pan/bi: Fix binary shader dumps | Vulkan 1.4.359 |
 | [v26.3.0-20260907](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260907) | 2026-09-07 | [`ea85c4c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ea85c4c2db3dcb6a9022081ef07ebdbbcb744a64) | subprojects: uprev venus-protocol to v1.1.3 | Vulkan 1.4.359 |
 | [v26.3.0-20260906-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260906-r2) | 2026-09-06 | [`c3b008c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c3b008c1ba01d455351b762253ef44c3ca19653f) | nir/serialize: set info.spec to NULL | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
