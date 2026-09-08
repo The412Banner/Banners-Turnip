@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260908-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r3) | 2026-09-08 | [`04c9a2e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/04c9a2eefecff44ea087a445718402e71da4510d) | anv: Macro out the vid_mem address/attributes boilerplate | Vulkan 1.4.359 |
 | [v26.3.0-20260908-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r2) | 2026-09-08 | [`d10ec46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d10ec46ad5dfbb69e5f2c5f6aad0c7d8483760a5) | tu: Use p_atomic_read to read from query's slot->available | Vulkan 1.4.359 |
 | [v26.3.0-20260908](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908) | 2026-09-08 | [`c501e1d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c501e1d16e11c256610cd5922b1afa5660f2f5ea) | r300: respect unnormalized sampler coordinates | Vulkan 1.4.359 |
 | [v26.3.0-20260907-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260907-r3) | 2026-09-07 | [`acbb4f6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/acbb4f6b8de2768b5ea7d6a83a8e52a263eac5cc) | radv: disable depth clipping for slow depth clears | Vulkan 1.4.359 |
