@@ -72,12 +72,12 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | | |
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
-| **Vulkan version** | Vulkan 1.4.359 |
-| **Commit** | [`b260c39`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b260c3974b23a1d8dd9237292a39bdd1a5ea7bc5) |
+| **Vulkan version** | Vulkan 1.4.362 |
+| **Commit** | [`5630601`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5630601e8ec3da337d3f430da4557a6b06ba78c1) |
 | **Commit date** | 2026-09-08 |
-| **Commit title** | kk: Fix debug labels on the post-gfx compute encoder |
+| **Commit title** | venus: log more upon failed gralloc interactions |
 | **Build date** | 20260908 |
-| **Release** | [v26.3.0-20260908-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r4) |
+| **Release** | [v26.3.0-20260908-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,11 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260908-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r5) | 2026-09-08 | [`5630601`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5630601e8ec3da337d3f430da4557a6b06ba78c1) | venus: log more upon failed gralloc interactions | Vulkan 1.4.362 |
 | [v26.3.0-20260908-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r4) | 2026-09-08 | [`b260c39`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b260c3974b23a1d8dd9237292a39bdd1a5ea7bc5) | kk: Fix debug labels on the post-gfx compute encoder | Vulkan 1.4.359 |
 | [v26.3.0-20260908-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r3) | 2026-09-08 | [`04c9a2e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/04c9a2eefecff44ea087a445718402e71da4510d) | anv: Macro out the vid_mem address/attributes boilerplate | Vulkan 1.4.359 |
 | [v26.3.0-20260908-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r2) | 2026-09-08 | [`d10ec46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d10ec46ad5dfbb69e5f2c5f6aad0c7d8483760a5) | tu: Use p_atomic_read to read from query's slot->available | Vulkan 1.4.359 |
 | [v26.3.0-20260908](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908) | 2026-09-08 | [`c501e1d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c501e1d16e11c256610cd5922b1afa5660f2f5ea) | r300: respect unnormalized sampler coordinates | Vulkan 1.4.359 |
-| [v26.3.0-20260907-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260907-r3) | 2026-09-07 | [`acbb4f6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/acbb4f6b8de2768b5ea7d6a83a8e52a263eac5cc) | radv: disable depth clipping for slow depth clears | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---
