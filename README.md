@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.362 |
-| **Commit** | [`189ee82`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/189ee82449fdce83a0dc79cd80f201c51c29e2d0) |
+| **Commit** | [`0ba4b08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0ba4b08edc65075e9346d20d5310261939aaaf48) |
 | **Commit date** | 2026-09-09 |
-| **Commit title** | ir3: add quirk for prefetch sam.s2en needing helpers |
+| **Commit title** | anv: Fix barrier after anv_init_update_scratch |
 | **Build date** | 20260909 |
-| **Release** | [v26.3.0-20260909-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r5) |
+| **Release** | [v26.3.0-20260909-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r6) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,13 +87,13 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260909-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r6) | 2026-09-09 | [`0ba4b08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0ba4b08edc65075e9346d20d5310261939aaaf48) | anv: Fix barrier after anv_init_update_scratch | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r5) | 2026-09-09 | [`189ee82`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/189ee82449fdce83a0dc79cd80f201c51c29e2d0) | ir3: add quirk for prefetch sam.s2en needing helpers | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r4) | 2026-09-09 | [`0d607b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d607b78da454d7702cdda074df95a635c694b72) | freedreno: don't spin forever when an RD dump cannot be opened | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r3) | 2026-09-09 | [`5852428`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/585242842bd62e9cbf3adf3a8b327dab5f192a50) | aco: avoid mubuf bounds checking for global | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r2) | 2026-09-09 | [`294e91a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/294e91ade1b979e4ea8d7c504a9254e4c4fc786a) | ir3: Handle non-uniformity of texture_2/sampler_2 | Vulkan 1.4.362 |
 | [v26.3.0-20260909](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909) | 2026-09-09 | [`d039f1c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d039f1c9ea7eacd99c19cd9ea5b807b8ff14eba6) | isl: limit max programming buffer size on Xe2+ | Vulkan 1.4.362 |
 | [v26.3.0-20260908-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r5) | 2026-09-08 | [`5630601`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5630601e8ec3da337d3f430da4557a6b06ba78c1) | venus: log more upon failed gralloc interactions | Vulkan 1.4.362 |
-| [v26.3.0-20260908-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r4) | 2026-09-08 | [`b260c39`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b260c3974b23a1d8dd9237292a39bdd1a5ea7bc5) | kk: Fix debug labels on the post-gfx compute encoder | Vulkan 1.4.359 |
 <!-- RECENT_BUILDS_END -->
 
 ---

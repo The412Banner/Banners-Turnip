@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260909-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r6) | 2026-09-09 | [`0ba4b08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0ba4b08edc65075e9346d20d5310261939aaaf48) | anv: Fix barrier after anv_init_update_scratch | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r5) | 2026-09-09 | [`189ee82`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/189ee82449fdce83a0dc79cd80f201c51c29e2d0) | ir3: add quirk for prefetch sam.s2en needing helpers | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r4) | 2026-09-09 | [`0d607b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d607b78da454d7702cdda074df95a635c694b72) | freedreno: don't spin forever when an RD dump cannot be opened | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r3) | 2026-09-09 | [`5852428`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/585242842bd62e9cbf3adf3a8b327dab5f192a50) | aco: avoid mubuf bounds checking for global | Vulkan 1.4.362 |
