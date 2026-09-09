@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.362 |
-| **Commit** | [`5630601`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5630601e8ec3da337d3f430da4557a6b06ba78c1) |
-| **Commit date** | 2026-09-08 |
-| **Commit title** | venus: log more upon failed gralloc interactions |
-| **Build date** | 20260908 |
-| **Release** | [v26.3.0-20260908-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r5) |
+| **Commit** | [`d039f1c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d039f1c9ea7eacd99c19cd9ea5b807b8ff14eba6) |
+| **Commit date** | 2026-09-09 |
+| **Commit title** | isl: limit max programming buffer size on Xe2+ |
+| **Build date** | 20260909 |
+| **Release** | [v26.3.0-20260909](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260909](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909) | 2026-09-09 | [`d039f1c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d039f1c9ea7eacd99c19cd9ea5b807b8ff14eba6) | isl: limit max programming buffer size on Xe2+ | Vulkan 1.4.362 |
 | [v26.3.0-20260908-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r5) | 2026-09-08 | [`5630601`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5630601e8ec3da337d3f430da4557a6b06ba78c1) | venus: log more upon failed gralloc interactions | Vulkan 1.4.362 |
 | [v26.3.0-20260908-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r4) | 2026-09-08 | [`b260c39`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b260c3974b23a1d8dd9237292a39bdd1a5ea7bc5) | kk: Fix debug labels on the post-gfx compute encoder | Vulkan 1.4.359 |
 | [v26.3.0-20260908-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260908-r3) | 2026-09-08 | [`04c9a2e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/04c9a2eefecff44ea087a445718402e71da4510d) | anv: Macro out the vid_mem address/attributes boilerplate | Vulkan 1.4.359 |
