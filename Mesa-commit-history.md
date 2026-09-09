@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260909-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r4) | 2026-09-09 | [`0d607b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d607b78da454d7702cdda074df95a635c694b72) | freedreno: don't spin forever when an RD dump cannot be opened | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r3) | 2026-09-09 | [`5852428`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/585242842bd62e9cbf3adf3a8b327dab5f192a50) | aco: avoid mubuf bounds checking for global | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r2) | 2026-09-09 | [`294e91a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/294e91ade1b979e4ea8d7c504a9254e4c4fc786a) | ir3: Handle non-uniformity of texture_2/sampler_2 | Vulkan 1.4.362 |
 | [v26.3.0-20260909](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909) | 2026-09-09 | [`d039f1c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d039f1c9ea7eacd99c19cd9ea5b807b8ff14eba6) | isl: limit max programming buffer size on Xe2+ | Vulkan 1.4.362 |
