@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.362 |
-| **Commit** | [`72ebd91`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72ebd91e19f885f95de030bcedd4f12e614dbbbf) |
+| **Commit** | [`12b7b81`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/12b7b819edb4ddd3580e7e5ffe384610ae726c90) |
 | **Commit date** | 2026-09-10 |
-| **Commit title** | magma-gpu-rs: sync the tube implementation |
+| **Commit title** | radeonsi: Support DRM format modifiers on GFX6-8 |
 | **Build date** | 20260910 |
-| **Release** | [v26.3.0-20260910-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r4) |
+| **Release** | [v26.3.0-20260910-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260910-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r5) | 2026-09-10 | [`12b7b81`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/12b7b819edb4ddd3580e7e5ffe384610ae726c90) | radeonsi: Support DRM format modifiers on GFX6-8 | Vulkan 1.4.362 |
 | [v26.3.0-20260910-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r4) | 2026-09-10 | [`72ebd91`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72ebd91e19f885f95de030bcedd4f12e614dbbbf) | magma-gpu-rs: sync the tube implementation | Vulkan 1.4.362 |
 | [v26.3.0-20260910-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r3) | 2026-09-10 | [`6333777`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6333777cf5fc7f6bbcaaff7777f64e3f99318e5e) | jay: Fix an additional reconvergence issue with the physical CFG | Vulkan 1.4.362 |
 | [v26.3.0-20260910-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r2) | 2026-09-10 | [`2922c24`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2922c248f7a08ad01f06114ac2c270d86b648d8b) | kraid: Update isa files | Vulkan 1.4.362 |
