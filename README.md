@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.362 |
-| **Commit** | [`2922c24`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2922c248f7a08ad01f06114ac2c270d86b648d8b) |
+| **Commit** | [`6333777`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6333777cf5fc7f6bbcaaff7777f64e3f99318e5e) |
 | **Commit date** | 2026-09-10 |
-| **Commit title** | kraid: Update isa files |
+| **Commit title** | jay: Fix an additional reconvergence issue with the physical CFG |
 | **Build date** | 20260910 |
-| **Release** | [v26.3.0-20260910-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r2) |
+| **Release** | [v26.3.0-20260910-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,11 +87,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260910-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r3) | 2026-09-10 | [`6333777`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6333777cf5fc7f6bbcaaff7777f64e3f99318e5e) | jay: Fix an additional reconvergence issue with the physical CFG | Vulkan 1.4.362 |
 | [v26.3.0-20260910-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r2) | 2026-09-10 | [`2922c24`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2922c248f7a08ad01f06114ac2c270d86b648d8b) | kraid: Update isa files | Vulkan 1.4.362 |
 | [v26.3.0-20260910](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910) | 2026-09-10 | [`1775b1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1775b1fffa90ab04219cac48a5b0a6c0c6d7b45b) | docs/amd/hw: document all image 2D tiling layouts in terms of X/Y bit swizzle | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r6) | 2026-09-09 | [`0ba4b08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0ba4b08edc65075e9346d20d5310261939aaaf48) | anv: Fix barrier after anv_init_update_scratch | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r5) | 2026-09-09 | [`189ee82`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/189ee82449fdce83a0dc79cd80f201c51c29e2d0) | ir3: add quirk for prefetch sam.s2en needing helpers | Vulkan 1.4.362 |
-| [v26.3.0-20260909-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r4) | 2026-09-09 | [`0d607b7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0d607b78da454d7702cdda074df95a635c694b72) | freedreno: don't spin forever when an RD dump cannot be opened | Vulkan 1.4.362 |
 <!-- RECENT_BUILDS_END -->
 
 ---
