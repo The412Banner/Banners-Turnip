@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260910-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r4) | 2026-09-10 | [`72ebd91`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72ebd91e19f885f95de030bcedd4f12e614dbbbf) | magma-gpu-rs: sync the tube implementation | Vulkan 1.4.362 |
 | [v26.3.0-20260910-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r3) | 2026-09-10 | [`6333777`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6333777cf5fc7f6bbcaaff7777f64e3f99318e5e) | jay: Fix an additional reconvergence issue with the physical CFG | Vulkan 1.4.362 |
 | [v26.3.0-20260910-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r2) | 2026-09-10 | [`2922c24`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2922c248f7a08ad01f06114ac2c270d86b648d8b) | kraid: Update isa files | Vulkan 1.4.362 |
 | [v26.3.0-20260910](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910) | 2026-09-10 | [`1775b1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1775b1fffa90ab04219cac48a5b0a6c0c6d7b45b) | docs/amd/hw: document all image 2D tiling layouts in terms of X/Y bit swizzle | Vulkan 1.4.362 |
