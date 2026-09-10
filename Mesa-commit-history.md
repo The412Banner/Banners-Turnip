@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260910-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r2) | 2026-09-10 | [`2922c24`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2922c248f7a08ad01f06114ac2c270d86b648d8b) | kraid: Update isa files | Vulkan 1.4.362 |
 | [v26.3.0-20260910](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910) | 2026-09-10 | [`1775b1f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1775b1fffa90ab04219cac48a5b0a6c0c6d7b45b) | docs/amd/hw: document all image 2D tiling layouts in terms of X/Y bit swizzle | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r6) | 2026-09-09 | [`0ba4b08`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0ba4b08edc65075e9346d20d5310261939aaaf48) | anv: Fix barrier after anv_init_update_scratch | Vulkan 1.4.362 |
 | [v26.3.0-20260909-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260909-r5) | 2026-09-09 | [`189ee82`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/189ee82449fdce83a0dc79cd80f201c51c29e2d0) | ir3: add quirk for prefetch sam.s2en needing helpers | Vulkan 1.4.362 |
