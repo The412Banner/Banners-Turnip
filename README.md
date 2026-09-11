@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.362 |
-| **Commit** | [`ef18fe0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ef18fe0b975f0616bbdb4d296fbe68caf49043c0) |
+| **Commit** | [`fa9938a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa9938acf2d513fa102102ec313a98106f1c84b1) |
 | **Commit date** | 2026-09-11 |
-| **Commit title** | d3d12: Never claim residency we did not get |
+| **Commit title** | nv30: add missed fdot_replicates flag |
 | **Build date** | 20260911 |
-| **Release** | [v26.3.0-20260911-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r6) |
+| **Release** | [v26.3.0-20260911-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r7) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260911-r7](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r7) | 2026-09-11 | [`fa9938a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa9938acf2d513fa102102ec313a98106f1c84b1) | nv30: add missed fdot_replicates flag | Vulkan 1.4.362 |
 | [v26.3.0-20260911-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r6) | 2026-09-11 | [`ef18fe0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ef18fe0b975f0616bbdb4d296fbe68caf49043c0) | d3d12: Never claim residency we did not get | Vulkan 1.4.362 |
 | [v26.3.0-20260911-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r5) | 2026-09-11 | [`d1682b4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d1682b46cd0761278ac2600bd719a977a9edaff9) | radv/video: Implement cu_qp_delta workaround for old FW | Vulkan 1.4.362 |
 | [v26.3.0-20260911-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r4) | 2026-09-11 | [`81c837a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/81c837a6e8b5c23ee98c9d1f6cf41f308f2e52fc) | jay/to_binary: use more <1;1,0> regions | Vulkan 1.4.362 |
