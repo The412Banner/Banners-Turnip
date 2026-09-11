@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260911-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r6) | 2026-09-11 | [`ef18fe0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ef18fe0b975f0616bbdb4d296fbe68caf49043c0) | d3d12: Never claim residency we did not get | Vulkan 1.4.362 |
 | [v26.3.0-20260911-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r5) | 2026-09-11 | [`d1682b4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d1682b46cd0761278ac2600bd719a977a9edaff9) | radv/video: Implement cu_qp_delta workaround for old FW | Vulkan 1.4.362 |
 | [v26.3.0-20260911-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r4) | 2026-09-11 | [`81c837a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/81c837a6e8b5c23ee98c9d1f6cf41f308f2e52fc) | jay/to_binary: use more <1;1,0> regions | Vulkan 1.4.362 |
 | [v26.3.0-20260911-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r3) | 2026-09-11 | [`aed26d2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aed26d2b59e730e1d2e00829f07160b7d06762c3) | pipe/video: Remove HDR metadata | Vulkan 1.4.362 |
