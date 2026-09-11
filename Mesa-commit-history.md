@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260911-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r2) | 2026-09-10 | [`befa5b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/befa5b04c93fcc6296594e82f4c4def609082990) | aco/sched_vopd: initialize num_operands in VOPDInfo constructor | Vulkan 1.4.362 |
 | [v26.3.0-20260911](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911) | 2026-09-10 | [`b730349`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b73034922bacaafa7d99be1b0a776fe95b274f84) | brw: simplify vrt fixing code | Vulkan 1.4.362 |
 | [v26.3.0-20260910-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r5) | 2026-09-10 | [`12b7b81`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/12b7b819edb4ddd3580e7e5ffe384610ae726c90) | radeonsi: Support DRM format modifiers on GFX6-8 | Vulkan 1.4.362 |
 | [v26.3.0-20260910-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r4) | 2026-09-10 | [`72ebd91`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72ebd91e19f885f95de030bcedd4f12e614dbbbf) | magma-gpu-rs: sync the tube implementation | Vulkan 1.4.362 |

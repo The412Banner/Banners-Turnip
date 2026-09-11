@@ -73,11 +73,11 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.362 |
-| **Commit** | [`b730349`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b73034922bacaafa7d99be1b0a776fe95b274f84) |
+| **Commit** | [`befa5b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/befa5b04c93fcc6296594e82f4c4def609082990) |
 | **Commit date** | 2026-09-10 |
-| **Commit title** | brw: simplify vrt fixing code |
+| **Commit title** | aco/sched_vopd: initialize num_operands in VOPDInfo constructor |
 | **Build date** | 20260911 |
-| **Release** | [v26.3.0-20260911](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911) |
+| **Release** | [v26.3.0-20260911-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -87,6 +87,7 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830). Built
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260911-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r2) | 2026-09-11 | [`befa5b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/befa5b04c93fcc6296594e82f4c4def609082990) | aco/sched_vopd: initialize num_operands in VOPDInfo constructor | Vulkan 1.4.362 |
 | [v26.3.0-20260911](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911) | 2026-09-11 | [`b730349`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b73034922bacaafa7d99be1b0a776fe95b274f84) | brw: simplify vrt fixing code | Vulkan 1.4.362 |
 | [v26.3.0-20260910-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r5) | 2026-09-10 | [`12b7b81`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/12b7b819edb4ddd3580e7e5ffe384610ae726c90) | radeonsi: Support DRM format modifiers on GFX6-8 | Vulkan 1.4.362 |
 | [v26.3.0-20260910-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260910-r4) | 2026-09-10 | [`72ebd91`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/72ebd91e19f885f95de030bcedd4f12e614dbbbf) | magma-gpu-rs: sync the tube implementation | Vulkan 1.4.362 |
