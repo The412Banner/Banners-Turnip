@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260911-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r4) | 2026-09-11 | [`81c837a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/81c837a6e8b5c23ee98c9d1f6cf41f308f2e52fc) | jay/to_binary: use more <1;1,0> regions | Vulkan 1.4.362 |
 | [v26.3.0-20260911-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r3) | 2026-09-11 | [`aed26d2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/aed26d2b59e730e1d2e00829f07160b7d06762c3) | pipe/video: Remove HDR metadata | Vulkan 1.4.362 |
 | [v26.3.0-20260911-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911-r2) | 2026-09-10 | [`befa5b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/befa5b04c93fcc6296594e82f4c4def609082990) | aco/sched_vopd: initialize num_operands in VOPDInfo constructor | Vulkan 1.4.362 |
 | [v26.3.0-20260911](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260911) | 2026-09-10 | [`b730349`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b73034922bacaafa7d99be1b0a776fe95b274f84) | brw: simplify vrt fixing code | Vulkan 1.4.362 |
