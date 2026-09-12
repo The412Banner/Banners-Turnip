@@ -101,7 +101,6 @@ EOF
 		-Dbuildtype=release \
 		-Dstrip=true \
 		-Dplatforms=wayland \
-		-Degl-native-platform=wayland \
 		-Dgallium-drivers=zink \
 		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=kgsl \
