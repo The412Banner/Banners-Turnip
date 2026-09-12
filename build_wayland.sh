@@ -153,27 +153,39 @@ EOF
 package(){
 	cd "$out/usr/lib"
 	ls -la
+	# This cross build names the libraries without a version; Wine opens libEGL.so.1.
+	[ -e libEGL.so.1 ] || cp -L libEGL.so libEGL.so.1
+	[ -e libGLESv2.so.2 ] || cp -L libGLESv2.so libGLESv2.so.2
 	for f in libEGL.so.1 libGLESv2.so.2 libvulkan_freedreno.so libgallium-*.so; do
 		[ -e "$f" ] || { echo -e "${red}missing $f${nocolor}"; exit 1; }
 	done
-	echo "== NEEDED =="
-	for f in libEGL.so.1 libGLESv2.so.2 libvulkan_freedreno.so libgallium-*.so; do
-		echo "$f: $("$ndk/llvm-readelf" -d "$(readlink -f "$f")" | grep -oP 'NEEDED.*\[\K[^]]+' | tr '\n' ' ')"
+	echo "== NEEDED / SONAME =="
+	for f in *.so*; do
+		[ -f "$f" ] || continue
+		echo "$f: soname $("$ndk/llvm-readelf" -d "$f" | grep -oP 'SONAME.*\[\K[^]]+') needs $("$ndk/llvm-readelf" -d "$f" | grep -oP 'NEEDED.*\[\K[^]]+' | tr '\n' ' ')"
 	done
 
-	# The libraries plus the Termux libwayland they were linked against, versions noted.
+	# The libraries, anything of this build they link, and the Termux libwayland they were linked
+	# against.
 	pkg="$workdir/banner-mesa-wayland"
 	rm -rf "$pkg" && mkdir -p "$pkg/lib"
 	cp -L libEGL.so.1 libGLESv2.so.2 libvulkan_freedreno.so libgallium-*.so "$pkg/lib/"
+	for f in libEGL.so.1 libGLESv2.so.2 libvulkan_freedreno.so libgallium-*.so; do
+		for n in $("$ndk/llvm-readelf" -d "$f" | grep -oP 'NEEDED.*\[\K[^]]+'); do
+			[ -e "$n" ] && [ ! -e "$pkg/lib/$n" ] && cp -L "$n" "$pkg/lib/" && echo "bundled $n (needed by $f)"
+		done
+	done
 	cp -L "$tprefix/lib/libwayland-client.so" "$tprefix/lib/libwayland-server.so" "$tprefix/lib/libwayland-egl.so" "$pkg/lib/"
 	{
-		echo "Mesa $(cat "$workdir/mesa/VERSION") at $mesa_hash (gitlab.freedesktop.org/mesa/mesa), no patches."
-		echo "Built with $ndkver, API $api, for a Termux-style bionic userland (Bannerlator imagefs)."
+		echo "Mesa $(cat "$workdir/mesa/VERSION") at $mesa_hash (gitlab.freedesktop.org/mesa/mesa)."
+		echo "Linux-style build on bionic like Termux's (Android detection off, Zink general layout off for Turnip)."
+		echo "Built with $ndkver, API $api, for the Bannerlator imagefs."
 		echo "Turnip: KGSL, Wayland WSI. OpenGL: EGL (Wayland platform) + Zink, no LLVM, no GLX."
 		echo "Termux packages linked:"
 		for p in $termux_pkgs; do awk -v P="$p" 'BEGIN{RS="";FS="\n"} {n="";v=""; for(i=1;i<=NF;i++){if($i~/^Package: /)n=substr($i,10); if($i~/^Version: /)v=substr($i,10)} if(n==P){print "  " n " " v; exit}}' "$workdir/Packages"; done
 	} > "$pkg/BUILD-INFO.txt"
 	cat "$pkg/BUILD-INFO.txt"
+	ls -la "$pkg/lib"
 	(cd "$workdir" && tar -czf banner-mesa-wayland.tar.gz banner-mesa-wayland)
 	echo -e "${green}Built $workdir/banner-mesa-wayland.tar.gz${nocolor}"
 }
