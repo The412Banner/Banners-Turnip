@@ -15,6 +15,8 @@ ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 api=28
 termux_repo="https://packages-cf.termux.dev/apt/termux-main"
 termux_pkgs="libwayland libwayland-protocols libdrm libffi"
+# Mesa wants a wayland-scanner of exactly the libwayland version; Termux ships an x86_64 one.
+termux_host_pkgs="libwayland-cross-scanner"
 sysroot="$workdir/termux"
 tprefix="$sysroot/data/data/com.termux/files/usr"
 out="$workdir/out"
@@ -35,7 +37,7 @@ prepare(){
 	echo "Fetching Termux packages: $termux_pkgs"
 	curl -sL "$termux_repo/dists/stable/main/binary-aarch64/Packages" -o Packages
 	rm -rf "$sysroot" debs && mkdir -p "$sysroot" debs
-	for p in $termux_pkgs; do
+	for p in $termux_pkgs $termux_host_pkgs; do
 		fn=$(awk -v P="$p" 'BEGIN{RS="";FS="\n"} {n="";f=""; for(i=1;i<=NF;i++){if($i~/^Package: /)n=substr($i,10); if($i~/^Filename: /)f=substr($i,11)} if(n==P){print f; exit}}' Packages)
 		[ -n "$fn" ] || { echo -e "${red}Termux package $p not found${nocolor}"; exit 1; }
 		echo " - $fn"
@@ -85,6 +87,7 @@ EOF
 
 	cat <<EOF >native.txt
 [binaries]
+wayland-scanner = '$tprefix/opt/libwayland/cross/bin/wayland-scanner'
 c = ['ccache', 'clang']
 cpp = ['ccache', 'clang++']
 ar = 'llvm-ar'
