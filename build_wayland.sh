@@ -61,6 +61,10 @@ build(){
 	# Same NDK r29 compile fixes as the Android build.
 	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
 
+	# Termux's x86_64 wayland-scanner (the libwayland version) ahead of any system one.
+	export PATH="$tprefix/opt/libwayland/cross/bin:$PATH"
+	wayland-scanner --version
+
 	export CFLAGS="-Wno-error -Wno-deprecated-declarations -Wno-incompatible-pointer-types-discards-qualifiers -Wno-incompatible-pointer-types"
 	export CXXFLAGS="$CFLAGS"
 
@@ -87,7 +91,6 @@ EOF
 
 	cat <<EOF >native.txt
 [binaries]
-wayland-scanner = '$tprefix/opt/libwayland/cross/bin/wayland-scanner'
 c = ['ccache', 'clang']
 cpp = ['ccache', 'clang++']
 ar = 'llvm-ar'
