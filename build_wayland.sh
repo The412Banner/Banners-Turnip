@@ -66,6 +66,18 @@ build(){
 	sed -i 's/^#if defined(__ANDROID__) || defined(ANDROID)$/#if 0 \/* Linux-style build on bionic *\//' include/vulkan/vk_android_native_buffer.h
 	sed -i '/^#elif\|^#if/s/DETECT_OS_ANDROID/defined(__ANDROID__)/' src/util/u_process.c
 	grep -n "Linux-style build on bionic" src/util/detect_os.h include/vulkan/vk_android_native_buffer.h
+	# No DRM device here: with Zink forced, EGL takes its software-window (kopper) path, which
+	# then renders on the GPU through Zink's own Vulkan WSI. Upstream only takes it for
+	# LIBGL_ALWAYS_SOFTWARE, and that flag makes Zink insist on a CPU Vulkan device.
+	python3 - <<'PY'
+p = 'src/egl/drivers/dri2/platform_wayland.c'
+s = open(p).read()
+old = "   if (disp->Options.ForceSoftware)\n      return dri2_initialize_wayland_swrast(disp);\n   else\n      return dri2_initialize_wayland_drm(disp);"
+new = "   if (disp->Options.ForceSoftware || disp->Options.Zink)\n      return dri2_initialize_wayland_swrast(disp);\n   else\n      return dri2_initialize_wayland_drm(disp);"
+assert old in s, "platform_wayland.c changed upstream"
+open(p, 'w').write(s.replace(old, new, 1))
+print("egl: Zink takes the kopper path on Wayland")
+PY
 	python3 - <<'PY'
 p = 'src/gallium/drivers/zink/zink_screen.c'
 s = open(p).read()
