@@ -12,7 +12,7 @@ nocolor='\033[0m'
 workdir="$(pwd)/wayland_workdir"
 ndkver="android-ndk-r29"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
-api=28
+api=29   # reallocarray and ELF TLS
 termux_repo="https://packages-cf.termux.dev/apt/termux-main"
 termux_pkgs="libwayland libwayland-protocols libdrm libffi"
 # Mesa wants a wayland-scanner of exactly the libwayland version; Termux ships an x86_64 one.
@@ -58,8 +58,26 @@ prepare(){
 build(){
 	cd "$workdir/mesa"
 
-	# Same NDK r29 compile fixes as the Android build.
-	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
+	# This is a Linux-style build on bionic (like Termux's Mesa), not an Android-platform one: turn
+	# off Mesa's Android detection, as Termux does (their 0000/0002 patches), and keep Turnip out of
+	# Zink's general-layout path (their 0018: rendering artifacts on Adreno).
+	git checkout -q -- .
+	sed -i 's/^#if defined(__ANDROID__)$/#if 0 \/* Linux-style build on bionic *\//' src/util/detect_os.h
+	sed -i 's/^#if defined(__ANDROID__) || defined(ANDROID)$/#if 0 \/* Linux-style build on bionic *\//' include/vulkan/vk_android_native_buffer.h
+	sed -i '/^#elif\|^#if/s/DETECT_OS_ANDROID/defined(__ANDROID__)/' src/util/u_process.c
+	grep -n "Linux-style build on bionic" src/util/detect_os.h include/vulkan/vk_android_native_buffer.h
+	python3 - <<'PY'
+p = 'src/gallium/drivers/zink/zink_screen.c'
+s = open(p).read()
+old = "   case VK_DRIVER_ID_MESA_TURNIP:\n   case VK_DRIVER_ID_QUALCOMM_PROPRIETARY:\n      screen->driver_workarounds.general_layout = true;\n      break;\n"
+new = ("   case VK_DRIVER_ID_QUALCOMM_PROPRIETARY:\n      screen->driver_workarounds.general_layout = true;\n      break;\n"
+       "   case VK_DRIVER_ID_MESA_TURNIP:\n      screen->driver_workarounds.general_layout = false;\n      break;\n")
+if old in s:
+    open(p, 'w').write(s.replace(old, new, 1))
+    print("zink: general layout off for Turnip")
+else:
+    print("zink: general-layout list changed upstream, left as is")
+PY
 
 	# Termux's x86_64 wayland-scanner (the libwayland version) ahead of any system one.
 	export PATH="$tprefix/opt/libwayland/cross/bin:$PATH"
