@@ -1,0 +1,57 @@
+name: Build Wayland variant (Turnip WSI + EGL/Zink)
+
+# Only this branch, and only when the Wayland build itself changes. No release is published:
+# the result is a workflow artifact for the Bannerlator Wayland Proton build.
+on:
+  push:
+    branches: [wayland]
+    paths:
+      - build_wayland.sh
+      - mesa_hash.txt
+      - .github/workflows/wayland_build.yml
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build unzip flex bison glslang-tools curl ccache pkg-config \
+            libwayland-dev clang lld llvm python3-pip
+          pip3 install --break-system-packages meson mako pyyaml packaging
+
+      - name: Cache NDK
+        uses: actions/cache@v4
+        with:
+          path: wayland_workdir/android-ndk-r29
+          key: ndk-r29-linux
+
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ccache
+          key: ccache-wayland-${{ hashFiles('mesa_hash.txt') }}-${{ github.sha }}
+          restore-keys: |
+            ccache-wayland-${{ hashFiles('mesa_hash.txt') }}-
+            ccache-wayland-
+
+      - name: Build
+        run: |
+          ccache -M 2G
+          chmod +x build_wayland.sh
+          ./build_wayland.sh
+          ccache -s
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: banner-mesa-wayland
+          path: wayland_workdir/banner-mesa-wayland/
