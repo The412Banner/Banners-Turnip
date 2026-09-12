@@ -7,6 +7,7 @@ on:
     branches: [wayland]
     paths:
       - build_wayland.sh
+      - build_turnip_wayland_wsi.sh
       - mesa_hash.txt
       - .github/workflows/wayland_build.yml
 
@@ -55,3 +56,44 @@ jobs:
         with:
           name: banner-mesa-wayland
           path: wayland_workdir/banner-mesa-wayland/
+
+  turnip-combined:
+    # The release recipe plus the Wayland WSI: one AdrenoTools-style zip for X11 and Wayland.
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build unzip flex bison glslang-tools curl ccache pkg-config \
+            clang lld llvm python3-pip zip
+          pip3 install --break-system-packages meson mako pyyaml packaging
+
+      - name: Cache NDK
+        uses: actions/cache@v4
+        with:
+          path: wayland_workdir/android-ndk-r29
+          key: ndk-r29-linux
+
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ccache
+          key: ccache-combined-${{ hashFiles('mesa_hash.txt') }}-${{ github.sha }}
+          restore-keys: |
+            ccache-combined-${{ hashFiles('mesa_hash.txt') }}-
+            ccache-combined-
+
+      - name: Build
+        run: |
+          ccache -M 2G
+          ./build_turnip_wayland_wsi.sh
+          ccache -s
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: turnip-combined-wayland
+          path: wayland_workdir/turnip-combined/
