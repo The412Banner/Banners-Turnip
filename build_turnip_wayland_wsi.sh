@@ -9,7 +9,8 @@ green='\033[0;32m'
 red='\033[0;31m'
 nocolor='\033[0m'
 workdir="$(pwd)/wayland_workdir"
-sdkver="36"
+sdkver="36"      # Mesa platform-sdk-version, as the release
+clangapi="34"    # the NDK compiler the release uses
 ndkver="android-ndk-r29"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 api=29   # reallocarray and ELF TLS
@@ -73,8 +74,8 @@ build(){
 	cat <<EOF >cross-combined.txt
 [binaries]
 ar = '$ndk/llvm-ar'
-c = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang']
-cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
+c = ['ccache', '$ndk/aarch64-linux-android$clangapi-clang']
+cpp = ['ccache', '$ndk/aarch64-linux-android$clangapi-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
 c_ld = 'lld'
 cpp_ld = 'lld'
 strip = '$ndk/llvm-strip'
