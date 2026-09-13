@@ -1,0 +1,60 @@
+name: Build "turnip"
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to build'
+        required: true
+        type: string
+
+jobs:
+  start_building_turnip:
+    runs-on: ubuntu-24.04
+    env:
+      BUILD_VERSION: ${{ inputs.version }}
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Prepare environment
+      run: |
+        sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
+        sudo apt update
+        sudo apt install build-essential flex bison glslang-tools
+        sudo apt install meson-1.5 
+
+    - name: Execute build script
+      run: bash ./turnip_builder.sh
+
+    - name: Release "turnip"
+      uses: softprops/action-gh-release@v1
+      with:
+        body: |
+          Mainline Turnip Vulkan V${{ inputs.version }}
+          Built from: https://github.com/whitebelyash/mesa-unified (turnip/gen8 branch). Took a while.  
+          
+          I didn't test this this much. Contact me on MojoLauncher.en (#offtopic-non-help, requires Community role) or EmuCore discord if there are any issues.
+
+          
+          >[!WARNING]
+          > Please don't report issues to Mesa, PLEASE
+                    
+          Supported GPUs:
+          * Adreno 8XX Family: 840, 830, 829, 825, 810
+          * Adreno 7XX Family: any GPU supported by the upstream Turnip + 710/720/722 (unstable, sysmem only). Thanks, https://github.com/Vauzi-17/710.  
+          (Upstream has more fixes, so check it too)
+          * Adreno 6XX Family: any GPU supported by the upstream Turnip
+          
+          
+          Notes:
+          * Disable DXVK_HUD if you see weird black artifacts
+          * Apparently there are swizzling glitches in Eden & maybe other emulators, try increasing render scale(?)
+          * Some games may require AMD/NVIDIA GPU to run and refuse to start on Qualcomm or block some features. I've included a patch to spoof as Steam Deck - use `TU_DEBUG=deck_emu`
+          * GMEM rendering produces glitchy picture on A830 (write page faults), disable it with `TU_DEBUG=sysmem`. It's pretty much useless for PC emulation anyway.
+
+        tag_name: tu_v${{ inputs.version }}
+        name: Mainline Turnip v${{ inputs.version }}
+        files: |
+           /tmp/mainline-turnip-V${{ inputs.version }}.zip
+           /tmp/mainline-turnip-sync-V${{ inputs.version }}.zip
