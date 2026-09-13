@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Bannerlator zero-copy window layers: gralloc-backed Wayland swapchain images.
 
-With BANNER_WSI_AHB=1 in the environment and the compositor advertising the private global
-banner_ahb_v1 (Bannerlator's compositor does that in its layer mode), the Wayland WSI allocates
+When the compositor advertises the private global banner_ahb_v1 and wants gralloc buffers right
+now, the Wayland WSI allocates
 every swapchain image as an Android AHardwareBuffer (gralloc; UBWC when gralloc picks it, linear
 with BANNER_WSI_AHB_LINEAR=1 or when the explicit UBWC layout is refused), imports the buffer's
 dma-buf fd into the driver with an explicit DRM format modifier + row pitch (the same path Turnip
@@ -17,7 +17,25 @@ render fence is already in the dma-buf before wl_surface.commit, the compositor 
 layer's acquire fence, and imports the display's release fence back before wl_buffer.release, so
 the WSI's existing acquire path (wsi_create_sync_for_dma_buf_wait) waits on it.
 
-Without the variable (or without the global) nothing here runs: the WSI behaves exactly as before.
+Who decides, and when:
+
+  * banner_ahb_v1 version 2 (the compositor sends `mode`, which it does right after bind and again
+    every time the user flips "Zero-copy presentation" in the in-game drawer): the compositor's
+    mode decides, per swapchain, when the swapchain is created. BANNER_WSI_AHB=0 still forces the
+    whole feature off. BANNER_WSI_AHB=1 does NOT force it on here: the app exports that variable on
+    every zero-copy launch, so honouring it would freeze the live switch for exactly the sessions
+    that start with zero-copy on.
+  * banner_ahb_v1 version 1, or a version 2 compositor that has not sent `mode` yet: exactly the
+    original contract -- gralloc images iff BANNER_WSI_AHB=1, decided per swapchain at creation,
+    and no swapchain is ever retired for a mode change. A driver built from this patch therefore
+    drops straight into an older Bannerlator whose compositor only advertises version 1.
+
+A live mode change retires the swapchains that were built for the other mode: the next
+vkAcquireNextImageKHR / vkQueuePresentKHR returns VK_ERROR_OUT_OF_DATE_KHR, which DXVK, vkd3d-proton
+and Zink all answer by rebuilding the swapchain -- on gralloc buffers or on standard ones, whichever
+the mode now is. The old chain's buffers keep working until the program lets go of it.
+
+Without the global nothing here runs: the WSI behaves exactly as before.
 
 Written against exact source text rather than diff context so it survives Mesa line drift; every
 anchor is asserted, so a Mesa where the WSI changed shape fails the build instead of shipping a
@@ -129,6 +147,78 @@ banner_ahb_env_enabled(void)
    return e && (e[0] == '1' || e[0] == 't' || e[0] == 'T' || e[0] == 'y' || e[0] == 'Y');
 }
 
+/* An explicit BANNER_WSI_AHB=0 turns the feature off whatever the compositor says. */
+static bool
+banner_ahb_env_disabled(void)
+{
+   const char *e = getenv("BANNER_WSI_AHB");
+   return e && (e[0] == '0' || e[0] == 'f' || e[0] == 'F' || e[0] == 'n' || e[0] == 'N');
+}
+
+/* Does the compositor want gralloc swapchain images right now? Read once per swapchain when it is
+ * created, and again (cheaply) on acquire/present to notice the live switch. */
+static bool
+banner_ahb_want(const struct wsi_wl_display *display)
+{
+   if (!display->banner_ahb)
+      return false;
+   /* A version 1 compositor -- and a version 2 one whose first mode event has not arrived yet --
+    * keeps the original contract: the environment alone decides. Nothing below this line can ever
+    * make such a session behave differently from a driver built before the mode event existed. */
+   if (!display->banner_ahb_have_mode)
+      return banner_ahb_env_enabled();
+   if (banner_ahb_env_disabled())
+      return false;
+   return display->banner_ahb_mode;
+}
+
+static void
+banner_ahb_handle_mode(void *data, struct banner_ahb_v1 *proxy, uint32_t enabled)
+{
+   struct wsi_wl_display *display = data;
+   bool on = enabled != 0;
+   if (display->banner_ahb_have_mode && display->banner_ahb_mode == on)
+      return;
+   display->banner_ahb_have_mode = true;
+   display->banner_ahb_mode = on;
+   mesa_logi("banner-ahb: compositor wants %s swapchain images", on ? "gralloc" : "standard");
+}
+
+static const struct banner_ahb_v1_listener banner_ahb_listener = {
+   .mode = banner_ahb_handle_mode,
+};
+
+/* True when this swapchain was built for the other mode and must be rebuilt. Called from the top of
+ * both acquire paths and of queue_present, where Mesa already answers its own `retired` flag with
+ * VK_ERROR_OUT_OF_DATE_KHR; DXVK, vkd3d-proton and Zink all rebuild on that.
+ *
+ * The mode event rides the display's own event queue, which in MAILBOX is only dispatched when the
+ * acquire loop runs out of free images, so read whatever has arrived without blocking (the same
+ * non-blocking dispatch wsi_wl_swapchain_ensure_dispatch does every frame) -- otherwise a switch
+ * could sit unnoticed for several frames. Costs one poll(timeout=0) per call.
+ *
+ * Version 1 compositors never get here: banner_ahb_have_mode stays false, so `want` keeps matching
+ * what the chain recorded and no swapchain is ever retired. */
+static bool
+banner_ahb_mode_changed(struct wsi_wl_swapchain *chain)
+{
+   struct wsi_wl_display *display = chain->wsi_wl_surface->display;
+   if (!display->banner_ahb || display->banner_ahb_version < 2)
+      return false;
+   struct timespec instant = {0, 0};
+   wl_display_dispatch_queue_timeout(display->wl_display, display->queue, &instant);
+   if (!display->banner_ahb_have_mode || banner_ahb_want(display) == chain->banner.want)
+      return false;
+   if (!chain->banner.retire_said) {
+      chain->banner.retire_said = true;
+      mesa_logi("banner-ahb: zero-copy switched %s: retiring the %ux%u swapchain so the program "
+                "rebuilds it on %s buffers", display->banner_ahb_mode ? "on" : "off",
+                chain->extent.width, chain->extent.height,
+                display->banner_ahb_mode ? "gralloc" : "standard");
+   }
+   return true;
+}
+
 /* The AHardwareBuffer format a swapchain VkFormat can live in, 0 when there is none (gralloc has
  * no BGRA: those swapchains take the standard path, and the surface-format list hides them). */
 static uint32_t
@@ -148,7 +238,7 @@ banner_ahb_format_for(VkFormat format)
 static bool
 banner_ahb_skip_format(const struct wsi_wl_display *display, VkFormat format)
 {
-   return display->banner_ahb && banner_ahb_env_enabled() && banner_ahb_format_for(format) == 0;
+   return banner_ahb_want(display) && banner_ahb_format_for(format) == 0;
 }
 
 /* Native-handle sniff, the one Mesa's u_gralloc fallback uses (u_gralloc_fallback.c): a QTI
@@ -255,8 +345,13 @@ banner_ahb_setup_chain(struct wsi_wl_swapchain *chain)
    const struct wsi_device *wsi = chain->base.wsi;
    struct wsi_image_info *info = &chain->base.image_info;
 
+   /* Recorded before every early return: banner_ahb_mode_changed compares against it, so a chain
+    * that could not use gralloc buffers (a BGRA format, a blit chain, an allocation gralloc
+    * refused) is still rebuilt once when the switch moves -- and, crucially, is never rebuilt in a
+    * loop because its `mode` stayed false while the compositor's mode is on. */
    chain->banner.mode = false;
-   if (!display->banner_ahb || !banner_ahb_env_enabled())
+   chain->banner.want = banner_ahb_want(display);
+   if (!chain->banner.want)
       return;
    if (chain->buffer_type != WSI_WL_BUFFER_NATIVE || chain->base.blit.type != WSI_SWAPCHAIN_NO_BLIT ||
        info->explicit_sync || !wsi->supports_modifiers)
@@ -456,7 +551,10 @@ patch(os.path.join(wsi, 'wsi_common_wayland.c'), [
     # display: the bound global
     ('   struct wp_color_manager_v1 *color_manager;\n',
      '   struct wp_color_manager_v1 *color_manager;\n'
-     '   struct banner_ahb_v1 *banner_ahb; /* Bannerlator zero-copy layers, see banner_ahb_setup_chain */\n', 1),
+     '   struct banner_ahb_v1 *banner_ahb; /* Bannerlator zero-copy layers, see banner_ahb_setup_chain */\n'
+     '   uint32_t banner_ahb_version;      /* 1 = no mode event ever: the environment decides */\n'
+     '   bool banner_ahb_have_mode;        /* a mode event has arrived */\n'
+     '   bool banner_ahb_mode;             /* the compositor wants gralloc images */\n', 1),
     # image: its gralloc buffer
     ('   struct wp_linux_drm_syncobj_timeline_v1 *wl_syncobj_timeline[WSI_ES_COUNT];\n};\n',
      '   struct wp_linux_drm_syncobj_timeline_v1 *wl_syncobj_timeline[WSI_ES_COUNT];\n'
@@ -470,6 +568,8 @@ patch(os.path.join(wsi, 'wsi_common_wayland.c'), [
      '\n'
      '   struct {\n'
      '      bool mode;                  /* images come from gralloc */\n'
+     '      bool want;                  /* the mode this chain was built for (banner_ahb_mode_changed) */\n'
+     '      bool retire_said;           /* the "rebuilding it" line was logged once */\n'
      '      bool linear;                /* allocated with a CPU bit (linear layout) */\n'
      '      bool replaced_list;         /* explicit_info took drm_mod_list\'s place in create.pNext */\n'
      '      uint32_t ahb_format;\n'
@@ -491,8 +591,14 @@ patch(os.path.join(wsi, 'wsi_common_wayland.c'), [
     # registry: bind the global
     ('      } else if (strcmp(interface, wp_linux_drm_syncobj_manager_v1_interface.name) == 0) {\n',
      '      } else if (strcmp(interface, banner_ahb_v1_interface.name) == 0) {\n'
+     '         /* Binding above the advertised version is a fatal wl_display protocol error, and a\n'
+     '          * Bannerlator before the live switch advertises version 1: clamp, never assume 2. */\n'
+     '         display->banner_ahb_version = MIN2(version, 2u);\n'
      '         display->banner_ahb =\n'
-     '            wl_registry_bind(registry, name, &banner_ahb_v1_interface, 1);\n'
+     '            wl_registry_bind(registry, name, &banner_ahb_v1_interface,\n'
+     '                             display->banner_ahb_version);\n'
+     '         if (display->banner_ahb_version >= BANNER_AHB_V1_MODE_SINCE_VERSION)\n'
+     '            banner_ahb_v1_add_listener(display->banner_ahb, &banner_ahb_listener, display);\n'
      '      } else if (strcmp(interface, wp_linux_drm_syncobj_manager_v1_interface.name) == 0) {\n', 1),
     ('   if (display->color_manager)\n      wp_color_manager_v1_destroy(display->color_manager);\n',
      '   if (display->color_manager)\n      wp_color_manager_v1_destroy(display->color_manager);\n'
@@ -531,6 +637,11 @@ patch(os.path.join(wsi, 'wsi_common_wayland.c'), [
      '         banner_ahb_image_fini(&chain->images[i]);\n', 1),
     ('   vk_free(pAllocator, (void *)chain->drm_modifiers);\n',
      '   banner_ahb_chain_fini(chain);\n   vk_free(pAllocator, (void *)chain->drm_modifiers);\n', 1),
+    # the live switch: Mesa's own "this chain is done" answer, for a chain built for the other mode.
+    # Three sites, identical text: acquire_next_image_explicit, acquire_next_image_implicit,
+    # queue_present. All three already have `chain` in scope.
+    ('   if (chain->retired)\n      return VK_ERROR_OUT_OF_DATE_KHR;\n',
+     '   if (chain->retired || banner_ahb_mode_changed(chain))\n      return VK_ERROR_OUT_OF_DATE_KHR;\n', 3),
 ])
 
-print("wsi_common_wayland.c: gralloc-backed swapchain images behind banner_ahb_v1 (BANNER_WSI_AHB=1)")
+print("wsi_common_wayland.c: gralloc-backed swapchain images behind banner_ahb_v1 (mode event / BANNER_WSI_AHB)")
