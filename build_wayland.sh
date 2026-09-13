@@ -14,6 +14,10 @@ set -o pipefail
 #              $mesa_a8xx_ref: build_wn_turnip.sh's EXTRA_SCRIPT set, then
 #              apply_balance_variant.py (Balanced)  -> patches/upstream/winnative-v1.15/SOURCE.md
 #   a8xx_perf  the same set, then apply_perf_variant.py (Performance: KGSL PWR_MAX constraint)
+#   a8xx_gen8  this repo's own Android a8xx recipe (turnip_build_combined.yml, a8xx job):
+#              patches/a8xx_gen8.patch (whitebelyash tu8 series) + patches/a8xx_shared_mem.py,
+#              applied the way build_turnip.sh applies them; that job tracks Mesa main, so the
+#              Wayland build pins it to the same commit as the WN-Turnip drivers ($mesa_a8xx_ref).
 # winewayland picks one through BANNER_WAYLAND_VK_VARIANT (proton-wine android/wayland-deps/TURNIP.md).
 
 green='\033[0;32m'
@@ -51,6 +55,8 @@ mesa_a8xx_ref="12b7b819edb4ddd3580e7e5ffe384610ae726c90"
 wn_scripts="fix_gralloc_flushall.py fix_a8xx_dev_info.py apply_a8xx_gpus.py apply_a7xx_gen1_quirks.py apply_a7xx_gen2_ubwc_hint.py add_aimapper_gralloc.py add_ubwc_swapchain_usage.py"
 # These are the driver: they must apply and must change the tree.
 wn_required="fix_a8xx_dev_info.py apply_a8xx_gpus.py apply_a7xx_gen1_quirks.py apply_a7xx_gen2_ubwc_hint.py"
+# The Android release's own a8xx recipe; its job clones Mesa main unpinned, this build pins it.
+mesa_gen8_ref="$mesa_a8xx_ref"
 
 fetch_mesa(){	# <dir> <ref>: a shallow checkout of one Mesa commit, tagged so it can be reset to.
 	local dir="$1" ref="$2"
@@ -91,6 +97,7 @@ prepare(){
 	fetch_mesa mesa "$mesa_hash"
 	fetch_mesa mesa-a7xx "$mesa_a7xx_ref"
 	fetch_mesa mesa-a8xx "$mesa_a8xx_ref"
+	fetch_mesa mesa-a8xx-gen8 "$mesa_gen8_ref"
 }
 
 # The Wayland-on-bionic changes every driver here gets, committed on top of the checkout so a
@@ -305,6 +312,30 @@ build(){
 	echo "[a8xx_perf] Performance:"; git --no-pager diff --stat
 	build_turnip mesa-a8xx build-wayland-a8xx_perf libvulkan_freedreno_wayland_a8xx_perf.so
 	git checkout -q -- .
+
+	# a8xx_gen8: the Android a8xx job, mirrored from build_turnip.sh: the patch series with
+	# -N --fuzz=4 (rejects tolerated there, listed here), freedreno_devices.py reset if the series
+	# left it unparsable, the script, then its NDK r29 seds (Android-only files, harmless here).
+	apply_wayland_patches mesa-a8xx-gen8
+	echo "[a8xx_gen8] applying patches/a8xx_gen8.patch"
+	patch -p1 -N --fuzz=4 < "$repo/patches/a8xx_gen8.patch" 2>&1 | sed 's/^/    /' | tee "$workdir/log-a8xx_gen8-a8xx_gen8.patch.txt" \
+		|| echo -e "${red}[a8xx_gen8] partial patch failures (build_turnip.sh continues here too)${nocolor}"
+	rejects="$(git status --porcelain --untracked-files=all | grep '\.rej$' || true)"
+	[ -z "$rejects" ] || { echo "[a8xx_gen8] rejected hunks:"; echo "$rejects"; }
+	if ! python3 -c "compile(open('src/freedreno/common/freedreno_devices.py').read(),'f','exec')" 2>/dev/null; then
+		echo -e "${red}[a8xx_gen8] freedreno_devices.py has syntax errors after patching — resetting (as build_turnip.sh does)${nocolor}"
+		git checkout -- src/freedreno/common/freedreno_devices.py
+	fi
+	run_script a8xx_gen8 1 "$repo/patches/a8xx_shared_mem.py"
+	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
+	sed -i 's/, hnd->handle/, (void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
+	sed -i -E 's/([a-z_]+)->handle->/((const native_handle_t *)\1->handle)->/g' src/vulkan/runtime/vk_android.c || true
+	echo "[a8xx_gen8] recipe changes against the Wayland tree:"; git --no-pager diff --stat banner-wayland
+	# The series is the driver: its device table and its deck_emu debug option must have landed.
+	grep -q 'name="Adreno (TM) 825"' src/freedreno/common/freedreno_devices.py && grep -q 'deck_emu' src/freedreno/vulkan/tu_util.cc \
+		|| { echo -e "${red}[a8xx_gen8] the gen8 series did not land its A825 entry / deck_emu option, refusing to ship it${nocolor}"; exit 1; }
+	build_turnip mesa-a8xx-gen8 build-wayland-a8xx_gen8 libvulkan_freedreno_wayland_a8xx_gen8.so
+	git checkout -q -- .
 }
 
 package(){
@@ -313,7 +344,7 @@ package(){
 	# This cross build names the libraries without a version; Wine opens libEGL.so.1.
 	[ -e libEGL.so.1 ] || cp -L libEGL.so libEGL.so.1
 	[ -e libGLESv2.so.2 ] || cp -L libGLESv2.so libGLESv2.so.2
-	turnips="libvulkan_freedreno_wayland.so libvulkan_freedreno_wayland_a7xx.so libvulkan_freedreno_wayland_a8xx.so libvulkan_freedreno_wayland_a8xx_perf.so"
+	turnips="libvulkan_freedreno_wayland.so libvulkan_freedreno_wayland_a7xx.so libvulkan_freedreno_wayland_a8xx.so libvulkan_freedreno_wayland_a8xx_perf.so libvulkan_freedreno_wayland_a8xx_gen8.so"
 	for f in libEGL.so.1 libGLESv2.so.2 $turnips libgallium-*.so; do
 		[ -e "$f" ] || { echo -e "${red}missing $f${nocolor}"; exit 1; }
 	done
@@ -345,10 +376,11 @@ package(){
 		return 0
 	}
 	only_in "FD710" libvulkan_freedreno_wayland_a7xx.so ""
-	only_in "Adreno (TM) 825" libvulkan_freedreno_wayland_a8xx.so "libvulkan_freedreno_wayland_a8xx_perf.so"
+	only_in "Adreno (TM) 825" libvulkan_freedreno_wayland_a8xx.so "libvulkan_freedreno_wayland_a8xx_perf.so libvulkan_freedreno_wayland_a8xx_gen8.so"
 	only_in "WN-Turnip: Failed to set initial PWR_MAX constraint" libvulkan_freedreno_wayland_a8xx_perf.so ""
+	only_in "deck_emu" libvulkan_freedreno_wayland_a8xx_gen8.so ""
 	cmp -s libvulkan_freedreno_wayland_a8xx.so libvulkan_freedreno_wayland_a8xx_perf.so && { echo -e "${red}a8xx and a8xx_perf are the same file${nocolor}"; exit 1; }
-	echo "variant tables verified: FD710 only in a7xx; Adreno (TM) 825 in a8xx + a8xx_perf; PWR_MAX strings only in a8xx_perf"
+	echo "variant tables verified: FD710 only in a7xx; Adreno (TM) 825 in a8xx + a8xx_perf + a8xx_gen8; PWR_MAX strings only in a8xx_perf; deck_emu only in a8xx_gen8"
 	echo "== NEEDED / SONAME =="
 	for f in *.so*; do
 		[ -f "$f" ] || continue
@@ -368,7 +400,8 @@ src = glob.glob(os.path.join(sys.argv[1], 'freedreno_icd*.json'))[0]
 for lib, name in (('libvulkan_freedreno_wayland.so', 'banner_wayland_turnip.json'),
                   ('libvulkan_freedreno_wayland_a7xx.so', 'banner_wayland_turnip_a7xx.json'),
                   ('libvulkan_freedreno_wayland_a8xx.so', 'banner_wayland_turnip_a8xx.json'),
-                  ('libvulkan_freedreno_wayland_a8xx_perf.so', 'banner_wayland_turnip_a8xx_perf.json')):
+                  ('libvulkan_freedreno_wayland_a8xx_perf.so', 'banner_wayland_turnip_a8xx_perf.json'),
+                  ('libvulkan_freedreno_wayland_a8xx_gen8.so', 'banner_wayland_turnip_a8xx_gen8.json')):
     m = json.load(open(src))
     m['ICD']['library_path'] = '../../../lib/' + lib
     m['ICD']['library_arch'] = '64'
@@ -401,6 +434,9 @@ PYICD
 		echo "                                               build_wn_turnip.sh EXTRA_SCRIPT set + apply_balance_variant.py (Balanced)"
 		echo "                                               on Mesa $mesa_a8xx_ref; Adreno 8xx"
 		echo "  lib/libvulkan_freedreno_wayland_a8xx_perf.so the same + apply_perf_variant.py (Performance: KGSL PWR_MAX constraint)"
+		echo "  lib/libvulkan_freedreno_wayland_a8xx_gen8.so Banners-Turnip Android a8xx recipe (turnip_build_combined.yml a8xx job):"
+		echo "                                               patches/a8xx_gen8.patch + patches/a8xx_shared_mem.py on Mesa $mesa_gen8_ref"
+		echo "                                               (that job tracks Mesa main; pinned here to the WN-Turnip commit); Adreno 8xx"
 		echo "Termux packages linked:"
 		for p in $termux_pkgs; do awk -v P="$p" 'BEGIN{RS="";FS="\n"} {n="";v=""; for(i=1;i<=NF;i++){if($i~/^Package: /)n=substr($i,10); if($i~/^Version: /)v=substr($i,10)} if(n==P){print "  " n " " v; exit}}' "$workdir/Packages"; done
 	} > "$pkg/BUILD-INFO.txt"
