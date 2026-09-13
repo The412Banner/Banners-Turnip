@@ -165,6 +165,11 @@ PYEOF_KGSL
 	# line drift between Mesa versions.
 	python3 "$repo/patches/wayland/no_pthread_cancel.py" src/vulkan/wsi/wsi_common_display.c \
 		|| { echo -e "${red}wsi display: pthread_cancel replacement did not apply${nocolor}"; exit 1; }
+	# Bannerlator zero-copy window layers: with BANNER_WSI_AHB=1 (and the compositor's banner_ahb_v1
+	# global) the Wayland swapchain's images are gralloc AHardwareBuffers the compositor can put on a
+	# SurfaceControl layer without a copy. Runtime-gated: without the variable the WSI is unchanged.
+	python3 "$repo/patches/wayland/banner_ahb_wsi.py" . \
+		|| { echo -e "${red}wsi wayland: banner_ahb_wsi.py did not apply${nocolor}"; exit 1; }
 	git -c user.name=banners-turnip -c user.email=build@banners-turnip commit -q -am "Wayland build: shared patches"
 	git tag -f banner-wayland >/dev/null
 }
@@ -381,6 +386,11 @@ package(){
 	only_in "deck_emu" libvulkan_freedreno_wayland_a8xx_gen8.so ""
 	cmp -s libvulkan_freedreno_wayland_a8xx.so libvulkan_freedreno_wayland_a8xx_perf.so && { echo -e "${red}a8xx and a8xx_perf are the same file${nocolor}"; exit 1; }
 	echo "variant tables verified: FD710 only in a7xx; Adreno (TM) 825 in a8xx + a8xx_perf + a8xx_gen8; PWR_MAX strings only in a8xx_perf; deck_emu only in a8xx_gen8"
+	# Every driver carries the zero-copy WSI (the private protocol's interface name is its marker).
+	for f in $turnips; do
+		has "$f" "banner_ahb_v1" || fail_strings "$f does not carry the banner_ahb_v1 zero-copy WSI"
+	done
+	echo "zero-copy WSI (banner_ahb_v1) present in every driver"
 	echo "== NEEDED / SONAME =="
 	for f in *.so*; do
 		[ -f "$f" ] || continue
@@ -424,6 +434,8 @@ PYICD
 		echo "Linux-style build on bionic like Termux's (Android detection off, Zink general layout off for Turnip)."
 		echo "Built with $ndkver, API $api, for the Bannerlator imagefs."
 		echo "Turnip: KGSL, Wayland WSI. OpenGL: EGL (Wayland platform) + Zink, no LLVM, no GLX."
+		echo "Zero-copy layers: with BANNER_WSI_AHB=1 and a compositor advertising banner_ahb_v1, swapchain images are"
+		echo "  gralloc AHardwareBuffers handed to the compositor (patches/wayland/banner_ahb_wsi.py); off = unchanged WSI."
 		echo "Turnip drivers (same flags and Wayland changes; ICD manifests in share/vulkan/icd.d):"
 		echo "  lib/libvulkan_freedreno_wayland.so           plain: Mesa $mesa_hash, no device patches"
 		echo "                                               Adreno 6xx, 730/740/750"
