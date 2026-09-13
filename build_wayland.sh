@@ -87,8 +87,9 @@ apply_variant(){
 	done
 	echo "[$name] changes against the shared tree:"
 	git --no-pager diff --stat
-	git diff --quiet -- src/freedreno/common/freedreno_devices.py \
-		&& { echo -e "${red}[$name] variant left freedreno_devices.py unchanged, refusing to ship it${nocolor}"; exit 1; }
+	if git diff --quiet -- src/freedreno/common/freedreno_devices.py; then
+		echo -e "${red}[$name] variant left freedreno_devices.py unchanged, refusing to ship it${nocolor}"; exit 1
+	fi
 }
 
 configure(){
