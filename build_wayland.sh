@@ -176,7 +176,7 @@ run_script(){	# <label> <required 0|1> <script> [VAR=value ...]
 	if [ "$required" = 1 ]; then
 		# The autotune drawcall gate is one upstream restructured away on purpose; WinNative's own
 		# verify_patches.sh tolerates exactly that line.
-		if grep -E 'WARNING|anchor absent|not matched|FATAL|skipping' "$log" | grep -v 'drawcall anchor absent' | grep -q .; then
+		if [ -n "$(grep -E 'WARNING|anchor absent|not matched|FATAL|skipping' "$log" | grep -v 'drawcall anchor absent' || true)" ]; then
 			echo -e "${red}[$label] $(basename "$script") reported a missing anchor, refusing to ship this variant${nocolor}"; exit 1
 		fi
 		after="$(git diff | sha256sum)"
@@ -319,7 +319,7 @@ package(){
 	done
 	# The ICD must carry the DRM image path (see the freedreno-kmds note): fail loudly if it does not.
 	for f in $turnips; do
-		"$ndk/llvm-readelf" -d "$f" | grep -q "libdrm.so" || { echo -e "${red}$f does not link libdrm: the Wayland WSI has no DRM image path${nocolor}"; exit 1; }
+		"$ndk/llvm-readelf" -d "$f" | grep "libdrm.so" >/dev/null || { echo -e "${red}$f does not link libdrm: the Wayland WSI has no DRM image path${nocolor}"; exit 1; }
 	done
 	# The variants are drop-in replacements for the plain driver: same SONAME, same dependencies.
 	elfid(){ "$ndk/llvm-readelf" -d "$1" | grep -oP '(SONAME|NEEDED).*\[\K[^]]+' | sort | tr '\n' ' '; }
@@ -329,7 +329,8 @@ package(){
 	done
 	# And each really carries its recipe: GPU names from freedreno_devices.py end up in fd_dev_recs,
 	# the Performance tuning has its own log strings.
-	has(){ "$ndk/llvm-strings" "$1" | grep -qF "$2"; }
+	# Not grep -q: under pipefail an early exit gives llvm-strings SIGPIPE and the check "fails".
+	has(){ "$ndk/llvm-strings" "$1" | grep -F "$2" >/dev/null; }
 	# On a failed check, show what GPU names / tuning strings each driver does carry.
 	names(){ echo "  $1: $("$ndk/llvm-strings" "$1" | grep -E '^(FD[0-9]{3}|Adreno \(TM\) [0-9X-]+|Adreno X[0-9-]+|WN-Turnip:.*)$' | sort -u | tr '\n' '|')"; }
 	fail_strings(){ echo -e "${red}$1${nocolor}"; for g in $turnips; do names "$g"; done; exit 1; }
