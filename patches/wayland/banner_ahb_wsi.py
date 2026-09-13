@@ -1,0 +1,536 @@
+#!/usr/bin/env python3
+"""Bannerlator zero-copy window layers: gralloc-backed Wayland swapchain images.
+
+With BANNER_WSI_AHB=1 in the environment and the compositor advertising the private global
+banner_ahb_v1 (Bannerlator's compositor does that in its layer mode), the Wayland WSI allocates
+every swapchain image as an Android AHardwareBuffer (gralloc; UBWC when gralloc picks it, linear
+with BANNER_WSI_AHB_LINEAR=1 or when the explicit UBWC layout is refused), imports the buffer's
+dma-buf fd into the driver with an explicit DRM format modifier + row pitch (the same path Turnip
+takes for any gralloc buffer, minus vk_android.c, which a platforms=wayland build does not have),
+still shares it through zwp_linux_dmabuf_v1 (the compositor's blit path keeps working as the
+fallback) and hands the AHardwareBuffer itself to the compositor once per image over a socketpair
+(AHardwareBuffer_sendHandleToUnixSocket) with banner_ahb_v1.attach. The compositor then puts the
+game's own buffer on a SurfaceControl layer: no copy anywhere between the game and the display.
+
+Synchronisation stays Mesa's implicit-sync scheme (DMA_BUF_IOCTL_IMPORT/EXPORT_SYNC_FILE): the
+render fence is already in the dma-buf before wl_surface.commit, the compositor exports it as the
+layer's acquire fence, and imports the display's release fence back before wl_buffer.release, so
+the WSI's existing acquire path (wsi_create_sync_for_dma_buf_wait) waits on it.
+
+Without the variable (or without the global) nothing here runs: the WSI behaves exactly as before.
+
+Written against exact source text rather than diff context so it survives Mesa line drift; every
+anchor is asserted, so a Mesa where the WSI changed shape fails the build instead of shipping a
+driver without the feature.
+
+Usage: banner_ahb_wsi.py <Mesa root>   (run from anywhere; the glue files live next to this script)
+"""
+import os
+import shutil
+import sys
+
+mesa = sys.argv[1]
+here = os.path.dirname(os.path.abspath(__file__))
+wsi = os.path.join(mesa, 'src/vulkan/wsi')
+
+
+def patch(path, edits):
+    s = open(path).read()
+    for old, new, count in edits:
+        n = s.count(old)
+        assert n == count, "%s: expected %d of %r, found %d" % (path, count, old[:60], n)
+        s = s.replace(old, new)
+    open(path, 'w').write(s)
+
+
+# 1. The client-side protocol glue, pre-generated with wayland-scanner 1.24.0 from
+#    banner-ahb-v1.xml (kept next to it), compiled into the WSI like Mesa's own protocols.
+for f in ('banner-ahb-v1-client-protocol.h', 'banner-ahb-v1-protocol.c', 'banner-ahb-v1.xml'):
+    shutil.copy(os.path.join(here, f), os.path.join(wsi, f))
+
+patch(os.path.join(wsi, 'meson.build'), [(
+    "  files_vulkan_wsi += files('wsi_common_wayland.c')\n",
+    "  files_vulkan_wsi += files('wsi_common_wayland.c')\n"
+    "  files_vulkan_wsi += files('banner-ahb-v1-protocol.c')\n", 1)])
+
+# 2. wsi_common_wayland.c
+helpers = r'''
+/* ---- Bannerlator zero-copy layers: gralloc-backed swapchain images (BANNER_WSI_AHB=1) ----------
+ *
+ * See patches/wayland/banner_ahb_wsi.py in banners-turnip-wayland for the design. In short: when
+ * the compositor advertises banner_ahb_v1 and BANNER_WSI_AHB=1 is set, each swapchain image is an
+ * AHardwareBuffer whose dma-buf fd is imported with an explicit modifier + pitch, shared through
+ * zwp_linux_dmabuf_v1 as usual, and handed to the compositor once with banner_ahb_v1.attach.
+ * This is a Linux-style build with Android detection off, so libnativewindow is dlopen'd and the
+ * few NDK types used are declared here (they are stable ABI).
+ */
+#include <dlfcn.h>
+#include <sys/socket.h>
+#include "util/log.h"
+#include "util/os_file.h"
+#include "vk_format.h"
+
+typedef struct AHardwareBuffer AHardwareBuffer;
+struct banner_ahb_desc { /* AHardwareBuffer_Desc */
+   uint32_t width, height, layers, format;
+   uint64_t usage;
+   uint32_t stride, rfu0;
+   uint64_t rfu1;
+};
+struct banner_native_handle { int version; int numFds; int numInts; int data[]; };
+#define BANNER_AHB_FORMAT_R8G8B8A8_UNORM    1u
+#define BANNER_AHB_FORMAT_R10G10B10A2_UNORM 0x2bu
+#define BANNER_AHB_USAGE_CPU_READ_RARELY    (2ull)
+#define BANNER_AHB_USAGE_GPU_SAMPLED_IMAGE  (1ull << 8)
+#define BANNER_AHB_USAGE_GPU_FRAMEBUFFER    (1ull << 9)
+#define BANNER_AHB_USAGE_COMPOSER_OVERLAY   (1ull << 11)
+#define BANNER_MOD_QCOM_COMPRESSED          0x0500000000000001ull /* DRM_FORMAT_MOD_QCOM_COMPRESSED */
+
+static struct {
+   int state; /* 0 = untried, 1 = loaded, -1 = unavailable */
+   int (*allocate)(const struct banner_ahb_desc *, AHardwareBuffer **);
+   void (*release)(AHardwareBuffer *);
+   void (*describe)(const AHardwareBuffer *, struct banner_ahb_desc *);
+   const struct banner_native_handle *(*getNativeHandle)(const AHardwareBuffer *);
+   int (*sendHandle)(const AHardwareBuffer *, int);
+} banner_nw;
+
+static bool
+banner_ahb_load(void)
+{
+   if (banner_nw.state)
+      return banner_nw.state == 1;
+   banner_nw.state = -1;
+   void *lib = dlopen("libnativewindow.so", RTLD_NOW | RTLD_NOLOAD);
+   if (!lib)
+      lib = dlopen("libnativewindow.so", RTLD_NOW);
+   if (!lib) {
+      mesa_logw("banner-ahb: dlopen(libnativewindow.so) failed: %s", dlerror());
+      return false;
+   }
+   banner_nw.allocate = dlsym(lib, "AHardwareBuffer_allocate");
+   banner_nw.release = dlsym(lib, "AHardwareBuffer_release");
+   banner_nw.describe = dlsym(lib, "AHardwareBuffer_describe");
+   banner_nw.getNativeHandle = dlsym(lib, "AHardwareBuffer_getNativeHandle");
+   banner_nw.sendHandle = dlsym(lib, "AHardwareBuffer_sendHandleToUnixSocket");
+   if (!banner_nw.allocate || !banner_nw.release || !banner_nw.describe ||
+       !banner_nw.getNativeHandle || !banner_nw.sendHandle) {
+      mesa_logw("banner-ahb: libnativewindow.so lacks the AHardwareBuffer API");
+      return false;
+   }
+   banner_nw.state = 1;
+   return true;
+}
+
+static bool
+banner_ahb_env_enabled(void)
+{
+   const char *e = getenv("BANNER_WSI_AHB");
+   return e && (e[0] == '1' || e[0] == 't' || e[0] == 'T' || e[0] == 'y' || e[0] == 'Y');
+}
+
+/* The AHardwareBuffer format a swapchain VkFormat can live in, 0 when there is none (gralloc has
+ * no BGRA: those swapchains take the standard path, and the surface-format list hides them). */
+static uint32_t
+banner_ahb_format_for(VkFormat format)
+{
+   switch (format) {
+   case VK_FORMAT_R8G8B8A8_UNORM:
+   case VK_FORMAT_R8G8B8A8_SRGB:
+      return BANNER_AHB_FORMAT_R8G8B8A8_UNORM;
+   case VK_FORMAT_A2B10G10R10_UNORM_PACK32:
+      return BANNER_AHB_FORMAT_R10G10B10A2_UNORM;
+   default:
+      return 0;
+   }
+}
+
+static bool
+banner_ahb_skip_format(const struct wsi_wl_display *display, VkFormat format)
+{
+   return display->banner_ahb && banner_ahb_env_enabled() && banner_ahb_format_for(format) == 0;
+}
+
+/* Native-handle sniff, the one Mesa's u_gralloc fallback uses (u_gralloc_fallback.c): a QTI
+ * gralloc private_handle_t has the magic 'gmsm' as its first int and the UBWC flag
+ * (PRIV_FLAGS_UBWC_ALIGNED, 0x08000000) in the next one. false = unknown layout. */
+static bool
+banner_ahb_sniff_modifier(const struct banner_native_handle *h, uint64_t *mod)
+{
+   const uint32_t gmsm = ('g' << 24) | ('m' << 16) | ('s' << 8) | 'm';
+   if (!h || h->numFds < 1 || h->numInts < 2)
+      return false;
+   if ((uint32_t)h->data[h->numFds] != gmsm)
+      return false;
+   *mod = (h->data[h->numFds + 1] & 0x08000000) ? BANNER_MOD_QCOM_COMPRESSED : DRM_FORMAT_MOD_LINEAR;
+   return true;
+}
+
+/* Allocate one buffer of the chain's size with the chain's usage; reports gralloc's stride and the
+ * modifier its layout maps to. A layout the sniff can't name is only trusted when the buffer was
+ * asked for with a CPU bit (gralloc then can't have compressed it): linear. */
+static AHardwareBuffer *
+banner_ahb_alloc(const struct wsi_wl_swapchain *chain, bool linear, uint32_t *stride, uint64_t *mod)
+{
+   struct banner_ahb_desc d = {
+      .width = chain->extent.width, .height = chain->extent.height, .layers = 1,
+      .format = chain->banner.ahb_format,
+      .usage = BANNER_AHB_USAGE_GPU_SAMPLED_IMAGE | BANNER_AHB_USAGE_GPU_FRAMEBUFFER |
+               BANNER_AHB_USAGE_COMPOSER_OVERLAY |
+               (linear ? BANNER_AHB_USAGE_CPU_READ_RARELY : 0),
+   };
+   AHardwareBuffer *ahb = NULL;
+   if (banner_nw.allocate(&d, &ahb) != 0 || !ahb) {
+      mesa_logw("banner-ahb: AHardwareBuffer_allocate %ux%u failed", d.width, d.height);
+      return NULL;
+   }
+   struct banner_ahb_desc got;
+   banner_nw.describe(ahb, &got);
+   const struct banner_native_handle *h = banner_nw.getNativeHandle(ahb);
+   uint64_t m = DRM_FORMAT_MOD_LINEAR;
+   if (!banner_ahb_sniff_modifier(h, &m)) {
+      if (!linear) {
+         mesa_logw("banner-ahb: gralloc handle layout unknown (%d fds, %d ints): using linear buffers",
+                   h ? h->numFds : -1, h ? h->numInts : -1);
+         banner_nw.release(ahb);
+         return NULL;
+      }
+      m = DRM_FORMAT_MOD_LINEAR;
+   }
+   if (!h || h->numFds < 1) {
+      banner_nw.release(ahb);
+      return NULL;
+   }
+   *stride = got.stride;
+   *mod = m;
+   return ahb;
+}
+
+/* Put the explicit-layout create info in place of the modifier list (or append it). */
+static void
+banner_ahb_set_layout(struct wsi_wl_swapchain *chain, bool on)
+{
+   struct wsi_image_info *info = &chain->base.image_info;
+   VkBaseOutStructure *prev = (VkBaseOutStructure *)&info->create;
+   for (VkBaseOutStructure *n = prev->pNext; n; prev = n, n = n->pNext) {
+      if (on && n == (VkBaseOutStructure *)&info->drm_mod_list) {
+         chain->banner.explicit_info.pNext = n->pNext;
+         prev->pNext = (VkBaseOutStructure *)&chain->banner.explicit_info;
+         chain->banner.replaced_list = true;
+         info->create.tiling = VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT;
+         return;
+      }
+      if (!on && n == (VkBaseOutStructure *)&chain->banner.explicit_info) {
+         if (chain->banner.replaced_list) {
+            info->drm_mod_list.pNext = n->pNext;
+            prev->pNext = (VkBaseOutStructure *)&info->drm_mod_list;
+         } else {
+            prev->pNext = n->pNext;
+         }
+         info->create.tiling = chain->banner.saved_tiling;
+         chain->banner.replaced_list = false;
+         return;
+      }
+   }
+   if (on) {
+      chain->banner.explicit_info.pNext = NULL;
+      __vk_append_struct(&info->create, &chain->banner.explicit_info);
+      chain->banner.replaced_list = false;
+      info->create.tiling = VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT;
+   }
+}
+
+static VkResult banner_ahb_create_mem(const struct wsi_swapchain *chain,
+                                      const struct wsi_image_info *info,
+                                      struct wsi_image *image);
+
+/* Decide, once per swapchain, whether its images come from gralloc. Allocates a probe buffer
+ * (kept for the first image) to learn gralloc's stride and layout, and test-creates a VkImage
+ * with that explicit layout so a refused UBWC layout falls back to linear buffers instead of a
+ * failed swapchain. Leaves the chain untouched when anything is missing. */
+static void
+banner_ahb_setup_chain(struct wsi_wl_swapchain *chain)
+{
+   struct wsi_wl_display *display = chain->wsi_wl_surface->display;
+   const struct wsi_device *wsi = chain->base.wsi;
+   struct wsi_image_info *info = &chain->base.image_info;
+
+   chain->banner.mode = false;
+   if (!display->banner_ahb || !banner_ahb_env_enabled())
+      return;
+   if (chain->buffer_type != WSI_WL_BUFFER_NATIVE || chain->base.blit.type != WSI_SWAPCHAIN_NO_BLIT ||
+       info->explicit_sync || !wsi->supports_modifiers)
+      return;
+   chain->banner.ahb_format = banner_ahb_format_for(chain->vk_format);
+   if (!chain->banner.ahb_format) {
+      mesa_logi("banner-ahb: swapchain format %d has no gralloc equivalent, standard buffers", chain->vk_format);
+      return;
+   }
+   if (!banner_ahb_load())
+      return;
+
+   const char *lin = getenv("BANNER_WSI_AHB_LINEAR");
+   bool linear = (lin && lin[0] == '1') ||
+                 (info->create.usage & VK_IMAGE_USAGE_STORAGE_BIT) != 0; /* no UAV writes into UBWC */
+   chain->banner.saved_tiling = info->create.tiling;
+   for (int attempt = 0; attempt < 2; attempt++, linear = true) {
+      uint32_t stride = 0;
+      uint64_t mod = DRM_FORMAT_MOD_LINEAR;
+      AHardwareBuffer *ahb = banner_ahb_alloc(chain, linear, &stride, &mod);
+      if (!ahb)
+         continue;
+      chain->banner.layout = (VkSubresourceLayout) {
+         .offset = 0,
+         .rowPitch = (VkDeviceSize)stride * vk_format_get_blocksize(chain->vk_format),
+      };
+      chain->banner.explicit_info = (VkImageDrmFormatModifierExplicitCreateInfoEXT) {
+         .sType = VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT,
+         .drmFormatModifier = mod,
+         .drmFormatModifierPlaneCount = 1,
+         .pPlaneLayouts = &chain->banner.layout,
+      };
+      banner_ahb_set_layout(chain, true);
+      VkImage test = VK_NULL_HANDLE;
+      VkResult r = wsi->CreateImage(chain->base.device, &info->create, &chain->base.alloc, &test);
+      if (r == VK_SUCCESS) {
+         wsi->DestroyImage(chain->base.device, test, &chain->base.alloc);
+         chain->banner.mode = true;
+         chain->banner.linear = linear;
+         chain->banner.stride = stride;
+         chain->banner.modifier = mod;
+         chain->banner.probe = ahb;
+         info->create_mem = banner_ahb_create_mem;
+         mesa_logi("banner-ahb: %ux%u swapchain (%u images) on gralloc buffers: %s, stride %u px",
+                   chain->extent.width, chain->extent.height, chain->base.image_count,
+                   mod == BANNER_MOD_QCOM_COMPRESSED ? "UBWC (QCOM_COMPRESSED)" : "linear", stride);
+         return;
+      }
+      banner_ahb_set_layout(chain, false);
+      banner_nw.release(ahb);
+      mesa_logw("banner-ahb: vkCreateImage with gralloc's %s layout (pitch %u px) refused (%d)%s",
+                mod == BANNER_MOD_QCOM_COMPRESSED ? "UBWC" : "linear", stride, r,
+                linear ? ": standard buffers" : ": trying linear");
+   }
+}
+
+/* image_info.create_mem for gralloc images: import the buffer's dma-buf as the image's memory
+ * and describe it for zwp_linux_dmabuf_v1 like wsi_create_native_image_mem would. */
+static VkResult
+banner_ahb_create_mem(const struct wsi_swapchain *wsi_chain,
+                      const struct wsi_image_info *info,
+                      struct wsi_image *image)
+{
+   struct wsi_wl_swapchain *chain = (struct wsi_wl_swapchain *)wsi_chain;
+   struct wsi_wl_image *wl_image = wl_container_of(image, wl_image, base);
+   const struct wsi_device *wsi = wsi_chain->wsi;
+   VK_FROM_HANDLE(vk_device, device, wsi_chain->device);
+   AHardwareBuffer *ahb = chain->banner.probe;
+   uint32_t stride = chain->banner.stride;
+   uint64_t mod = chain->banner.modifier;
+
+   chain->banner.probe = NULL;
+   if (!ahb)
+      ahb = banner_ahb_alloc(chain, chain->banner.linear, &stride, &mod);
+   if (!ahb)
+      return VK_ERROR_OUT_OF_DEVICE_MEMORY;
+   if (stride != chain->banner.stride || mod != chain->banner.modifier) {
+      mesa_logw("banner-ahb: gralloc changed its layout between buffers (stride %u -> %u)", chain->banner.stride, stride);
+      banner_nw.release(ahb);
+      return VK_ERROR_OUT_OF_DEVICE_MEMORY;
+   }
+   const struct banner_native_handle *h = banner_nw.getNativeHandle(ahb);
+   int fd = h->data[0];
+
+   VkMemoryFdPropertiesKHR fd_props = { .sType = VK_STRUCTURE_TYPE_MEMORY_FD_PROPERTIES_KHR };
+   VkResult result = device->dispatch_table.GetMemoryFdPropertiesKHR(
+      wsi_chain->device, VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT, fd, &fd_props);
+   if (result != VK_SUCCESS) {
+      mesa_logw("banner-ahb: GetMemoryFdPropertiesKHR on the gralloc dma-buf failed (%d)", result);
+      banner_nw.release(ahb);
+      return result;
+   }
+   VkMemoryRequirements reqs;
+   wsi->GetImageMemoryRequirements(wsi_chain->device, image->image, &reqs);
+   uint32_t type_bits = reqs.memoryTypeBits & fd_props.memoryTypeBits;
+   if (!type_bits) {
+      mesa_logw("banner-ahb: no memory type can import the gralloc dma-buf");
+      banner_nw.release(ahb);
+      return VK_ERROR_OUT_OF_DEVICE_MEMORY;
+   }
+   off_t buf_size = lseek(fd, 0, SEEK_END);
+   if (buf_size > 0 && (VkDeviceSize)buf_size < reqs.size)
+      mesa_logw("banner-ahb: gralloc buffer is %lld bytes, the image needs %llu",
+                (long long)buf_size, (unsigned long long)reqs.size);
+
+   int import_fd = os_dupfd_cloexec(fd);
+   if (import_fd < 0) {
+      banner_nw.release(ahb);
+      return VK_ERROR_OUT_OF_HOST_MEMORY;
+   }
+   const VkImportMemoryFdInfoKHR import_info = {
+      .sType = VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR,
+      .handleType = VK_EXTERNAL_MEMORY_HANDLE_TYPE_DMA_BUF_BIT_EXT,
+      .fd = import_fd,
+   };
+   const VkMemoryDedicatedAllocateInfo dedicated = {
+      .sType = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO,
+      .pNext = &import_info,
+      .image = image->image,
+   };
+   const VkMemoryAllocateInfo alloc_info = {
+      .sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO,
+      .pNext = &dedicated,
+      .allocationSize = buf_size > 0 ? (VkDeviceSize)buf_size : reqs.size,
+      .memoryTypeIndex = wsi_select_memory_type(wsi, 0 /* req */, 0 /* deny */, type_bits),
+   };
+   result = wsi->AllocateMemory(wsi_chain->device, &alloc_info, &wsi_chain->alloc, &image->memory);
+   if (result != VK_SUCCESS) {
+      mesa_logw("banner-ahb: importing the gralloc dma-buf failed (%d)", result);
+      close(import_fd); /* ownership only moves on success */
+      banner_nw.release(ahb);
+      return result;
+   }
+
+   image->dma_buf_fd = os_dupfd_cloexec(fd);
+   image->num_planes = 1;
+   image->drm_modifier = mod;
+   image->offsets[0] = 0;
+   image->row_pitches[0] = (uint32_t)chain->banner.layout.rowPitch;
+   image->sizes[0] = image->row_pitches[0] * chain->extent.height;
+   wl_image->banner_ahb = ahb;
+   wl_image->banner_stride = stride;
+   return VK_SUCCESS;
+}
+
+/* Hand the compositor the image's AHardwareBuffer (once, right after its wl_buffer exists). */
+static void
+banner_ahb_attach(struct wsi_wl_swapchain *chain, struct wsi_wl_image *image, struct wl_buffer *buffer)
+{
+   struct wsi_wl_display *display = chain->wsi_wl_surface->display;
+   if (!chain->banner.mode || !image->banner_ahb || !display->banner_ahb)
+      return;
+   int sv[2];
+   if (socketpair(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0, sv) != 0) {
+      mesa_logw("banner-ahb: socketpair failed: %s", strerror(errno));
+      return;
+   }
+   /* The handle is in the socket before the request can reach the compositor. */
+   if (banner_nw.sendHandle(image->banner_ahb, sv[0]) != 0) {
+      mesa_logw("banner-ahb: AHardwareBuffer_sendHandleToUnixSocket failed");
+      close(sv[0]);
+      close(sv[1]);
+      return;
+   }
+   banner_ahb_v1_attach(display->banner_ahb, buffer, sv[1], chain->extent.width, chain->extent.height,
+                        image->banner_stride, (uint32_t)(chain->banner.modifier >> 32),
+                        (uint32_t)(chain->banner.modifier & 0xffffffff), chain->base.image_count);
+   close(sv[0]);
+   close(sv[1]); /* libwayland sends its own duplicate */
+   chain->banner.attached++;
+}
+
+static void
+banner_ahb_image_fini(struct wsi_wl_image *image)
+{
+   if (image->banner_ahb) {
+      banner_nw.release(image->banner_ahb);
+      image->banner_ahb = NULL;
+   }
+}
+
+static void
+banner_ahb_chain_fini(struct wsi_wl_swapchain *chain)
+{
+   if (chain->banner.probe) {
+      banner_nw.release(chain->banner.probe);
+      chain->banner.probe = NULL;
+   }
+}
+/* ---- end Bannerlator zero-copy layers ------------------------------------------------------- */
+'''
+
+patch(os.path.join(wsi, 'wsi_common_wayland.c'), [
+    # protocol glue
+    ('#include "color-management-v1-client-protocol.h"\n',
+     '#include "color-management-v1-client-protocol.h"\n#include "banner-ahb-v1-client-protocol.h"\n', 1),
+    # display: the bound global
+    ('   struct wp_color_manager_v1 *color_manager;\n',
+     '   struct wp_color_manager_v1 *color_manager;\n'
+     '   struct banner_ahb_v1 *banner_ahb; /* Bannerlator zero-copy layers, see banner_ahb_setup_chain */\n', 1),
+    # image: its gralloc buffer
+    ('   struct wp_linux_drm_syncobj_timeline_v1 *wl_syncobj_timeline[WSI_ES_COUNT];\n};\n',
+     '   struct wp_linux_drm_syncobj_timeline_v1 *wl_syncobj_timeline[WSI_ES_COUNT];\n'
+     '\n'
+     '   struct AHardwareBuffer *banner_ahb; /* the gralloc buffer behind the image (BANNER_WSI_AHB) */\n'
+     '   uint32_t banner_stride;              /* its row stride in pixels */\n'
+     '};\n', 1),
+    # chain: the gralloc mode state
+    ('   struct wsi_image_timing_request timing_request;\n\n   struct wsi_wl_image images[0];\n',
+     '   struct wsi_image_timing_request timing_request;\n'
+     '\n'
+     '   struct {\n'
+     '      bool mode;                  /* images come from gralloc */\n'
+     '      bool linear;                /* allocated with a CPU bit (linear layout) */\n'
+     '      bool replaced_list;         /* explicit_info took drm_mod_list\'s place in create.pNext */\n'
+     '      uint32_t ahb_format;\n'
+     '      uint32_t stride;            /* pixels, gralloc\'s */\n'
+     '      uint64_t modifier;\n'
+     '      uint32_t attached;          /* images handed to the compositor */\n'
+     '      VkImageTiling saved_tiling;\n'
+     '      struct AHardwareBuffer *probe; /* allocated by setup, consumed by the first image */\n'
+     '      VkSubresourceLayout layout;\n'
+     '      VkImageDrmFormatModifierExplicitCreateInfoEXT explicit_info;\n'
+     '   } banner;\n'
+     '\n'
+     '   struct wsi_wl_image images[0];\n', 1),
+    # the helpers, after the handle casts that close the struct section
+    ('VK_DEFINE_NONDISP_HANDLE_CASTS(wsi_wl_swapchain, base.base, VkSwapchainKHR,\n'
+     '                               VK_OBJECT_TYPE_SWAPCHAIN_KHR)\n',
+     'VK_DEFINE_NONDISP_HANDLE_CASTS(wsi_wl_swapchain, base.base, VkSwapchainKHR,\n'
+     '                               VK_OBJECT_TYPE_SWAPCHAIN_KHR)\n' + helpers, 1),
+    # registry: bind the global
+    ('      } else if (strcmp(interface, wp_linux_drm_syncobj_manager_v1_interface.name) == 0) {\n',
+     '      } else if (strcmp(interface, banner_ahb_v1_interface.name) == 0) {\n'
+     '         display->banner_ahb =\n'
+     '            wl_registry_bind(registry, name, &banner_ahb_v1_interface, 1);\n'
+     '      } else if (strcmp(interface, wp_linux_drm_syncobj_manager_v1_interface.name) == 0) {\n', 1),
+    ('   if (display->color_manager)\n      wp_color_manager_v1_destroy(display->color_manager);\n',
+     '   if (display->color_manager)\n      wp_color_manager_v1_destroy(display->color_manager);\n'
+     '   if (display->banner_ahb)\n      banner_ahb_v1_destroy(display->banner_ahb);\n', 1),
+    # surface formats: only what gralloc can hold, when the mode is on (both query variants)
+    ('         if (!(disp_fmt->flags & WSI_WL_FMT_ALPHA) ||\n'
+     '            !(disp_fmt->flags & WSI_WL_FMT_OPAQUE)) {\n'
+     '            continue;\n'
+     '         }\n',
+     '         if (!(disp_fmt->flags & WSI_WL_FMT_ALPHA) ||\n'
+     '            !(disp_fmt->flags & WSI_WL_FMT_OPAQUE)) {\n'
+     '            continue;\n'
+     '         }\n'
+     '         if (banner_ahb_skip_format(&display, disp_fmt->vk_format))\n'
+     '            continue;\n', 2),
+    # swapchain creation: decide before the images are made
+    ('   for (uint32_t i = 0; i < chain->base.image_count; i++) {\n'
+     '      result = wsi_wl_image_init(chain, &chain->images[i],\n'
+     '                                 pCreateInfo, pAllocator);\n',
+     '   banner_ahb_setup_chain(chain);\n'
+     '\n'
+     '   for (uint32_t i = 0; i < chain->base.image_count; i++) {\n'
+     '      result = wsi_wl_image_init(chain, &chain->images[i],\n'
+     '                                 pCreateInfo, pAllocator);\n', 1),
+    # image init: hand the buffer over once its wl_buffer exists
+    ('      zwp_linux_buffer_params_v1_destroy(params);\n'
+     '      loader_wayland_wrap_buffer(&image->wayland_buffer, buffer);\n',
+     '      zwp_linux_buffer_params_v1_destroy(params);\n'
+     '      loader_wayland_wrap_buffer(&image->wayland_buffer, buffer);\n'
+     '      banner_ahb_attach(chain, image, buffer);\n', 1),
+    # teardown
+    ('         loader_wayland_buffer_destroy(&chain->images[i].wayland_buffer);\n'
+     '         wsi_destroy_image(&chain->base, &chain->images[i].base);\n',
+     '         loader_wayland_buffer_destroy(&chain->images[i].wayland_buffer);\n'
+     '         wsi_destroy_image(&chain->base, &chain->images[i].base);\n'
+     '         banner_ahb_image_fini(&chain->images[i]);\n', 1),
+    ('   vk_free(pAllocator, (void *)chain->drm_modifiers);\n',
+     '   banner_ahb_chain_fini(chain);\n   vk_free(pAllocator, (void *)chain->drm_modifiers);\n', 1),
+])
+
+print("wsi_common_wayland.c: gralloc-backed swapchain images behind banner_ahb_v1 (BANNER_WSI_AHB=1)")
