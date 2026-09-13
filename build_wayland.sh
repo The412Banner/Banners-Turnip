@@ -4,7 +4,14 @@
 # compositor, not for AdrenoTools: it's built for a Termux-style bionic userland (the Bannerlator
 # imagefs) and links Termux's libwayland and libdrm.
 #
-# Same Mesa commit as the Android release (mesa_hash.txt), no patches.
+# Same Mesa commit as the Android release (mesa_hash.txt). Three Turnip drivers come out of the one
+# checkout, with the same flags: the plain one, plus the two Android-matrix variants
+# (turnip_build_combined_test.yml) applied exactly as build_turnip.sh applies them:
+#   plain : no extra patch                    Adreno 6xx, 730/740/750 (and upstream's 722 entry)
+#   a7xx  : patches/a710-720.py               Adreno 710/720/722 (tuned magic regs, replaces 722)
+#   a8xx  : patches/tu8_kgsl_26.patch + fix_a8xx_dev_info.py + apply_a8xx_gpus.py
+#                                             Adreno 8xx (adds 825, A810 KGSL id, extra 829 ids)
+# winewayland picks one through BANNER_WAYLAND_VK_VARIANT (see proton-wine android/wayland-deps/TURNIP.md).
 
 green='\033[0;32m'
 red='\033[0;31m'
@@ -58,6 +65,62 @@ prepare(){
 		git -C mesa fetch -q --depth=1 origin "$mesa_hash"
 		git -C mesa checkout -q FETCH_HEAD
 	fi
+	# The shared patches get committed on top of this so each variant can start from them cleanly.
+	git -C mesa rev-parse -q --verify banner-base >/dev/null 2>&1 || git -C mesa tag banner-base HEAD
+}
+
+# The Android matrix's variant step (build_turnip.sh): a patch series with -N --fuzz=4, then the
+# scripts. Here a patch that does not apply is an error, and a variant that leaves the device table
+# untouched is refused: a driver that silently equals the plain one must not ship under its name.
+apply_variant(){
+	local name="$1" patch="$2" scripts="$3" s
+	cd "$workdir/mesa"
+	git checkout -q -- .
+	if [ -n "$patch" ]; then
+		echo "[$name] applying $patch"
+		patch -p1 -N --fuzz=4 < "$repo/$patch" || { echo -e "${red}[$name] $patch did not apply${nocolor}"; exit 1; }
+	fi
+	IFS=':' read -ra s <<< "$scripts"
+	for script in "${s[@]}"; do
+		echo "[$name] running $script"
+		python3 "$repo/$script" || { echo -e "${red}[$name] $script failed${nocolor}"; exit 1; }
+	done
+	echo "[$name] changes against the shared tree:"
+	git --no-pager diff --stat
+	git diff --quiet -- src/freedreno/common/freedreno_devices.py \
+		&& { echo -e "${red}[$name] variant left freedreno_devices.py unchanged, refusing to ship it${nocolor}"; exit 1; }
+}
+
+configure(){
+	meson setup "$1" \
+		--cross-file cross.txt \
+		--native-file native.txt \
+		--prefix /usr \
+		--libdir lib \
+		-Dbuildtype=release \
+		-Dstrip=false \
+		-Db_ndebug=true \
+		-Dplatforms=wayland \
+		-Dgallium-drivers=zink \
+		-Dvulkan-drivers=freedreno \
+		-Dfreedreno-kmds=msm,kgsl \
+		-Dvulkan-beta=true \
+		-Degl=enabled \
+		-Dopengl=true \
+		-Dgles1=disabled \
+		-Dgles2=enabled \
+		-Dglx=disabled \
+		-Dgbm=disabled \
+		-Dglvnd=disabled \
+		-Dllvm=disabled \
+		-Dxmlconfig=disabled \
+		-Dexpat=disabled \
+		-Dzstd=disabled \
+		-Dvalgrind=disabled \
+		-Dlibunwind=disabled \
+		-Dandroid-libbacktrace=disabled \
+		-Dvideo-codecs= \
+		-Dtools=
 }
 
 build(){
@@ -66,7 +129,7 @@ build(){
 	# This is a Linux-style build on bionic (like Termux's Mesa), not an Android-platform one: turn
 	# off Mesa's Android detection, as Termux does (their 0000/0002 patches), and keep Turnip out of
 	# Zink's general-layout path (their 0018: rendering artifacts on Adreno).
-	git checkout -q -- .
+	git reset -q --hard banner-base
 	sed -i 's/^#if defined(__ANDROID__)$/#if 0 \/* Linux-style build on bionic *\//' src/util/detect_os.h
 	sed -i 's/^#if defined(__ANDROID__) || defined(ANDROID)$/#if 0 \/* Linux-style build on bionic *\//' include/vulkan/vk_android_native_buffer.h
 	sed -i '/^#elif\|^#if/s/DETECT_OS_ANDROID/defined(__ANDROID__)/' src/util/u_process.c
@@ -124,6 +187,9 @@ PYEOF_KGSL
 	# line drift between Mesa versions.
 	python3 "$repo/patches/wayland/no_pthread_cancel.py" src/vulkan/wsi/wsi_common_display.c \
 		|| { echo -e "${red}wsi display: pthread_cancel replacement did not apply${nocolor}"; exit 1; }
+	# Everything above is shared by the three drivers: commit it so a variant is exactly
+	# "these patches + its own", and git diff shows only the variant's part.
+	git -c user.name=banners-turnip -c user.email=build@banners-turnip commit -q -am "Wayland build: shared patches"
 
 	# Termux's x86_64 wayland-scanner (the libwayland version) ahead of any system one.
 	export PATH="$tprefix/opt/libwayland/cross/bin:$PATH"
@@ -168,38 +234,24 @@ EOF
 	# WSI still builds DRM-type images for every real device, so vkCreateSwapchainKHR then runs into
 	# a compiled-out branch (unreachable) and the guest dies with an access violation. Termux builds
 	# msm,kgsl; msm just finds no /dev/dri at runtime.
-	meson setup build-wayland \
-		--cross-file cross.txt \
-		--native-file native.txt \
-		--prefix /usr \
-		--libdir lib \
-		-Dbuildtype=release \
-		-Dstrip=false \
-		-Db_ndebug=true \
-		-Dplatforms=wayland \
-		-Dgallium-drivers=zink \
-		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=msm,kgsl \
-		-Dvulkan-beta=true \
-		-Degl=enabled \
-		-Dopengl=true \
-		-Dgles1=disabled \
-		-Dgles2=enabled \
-		-Dglx=disabled \
-		-Dgbm=disabled \
-		-Dglvnd=disabled \
-		-Dllvm=disabled \
-		-Dxmlconfig=disabled \
-		-Dexpat=disabled \
-		-Dzstd=disabled \
-		-Dvalgrind=disabled \
-		-Dlibunwind=disabled \
-		-Dandroid-libbacktrace=disabled \
-		-Dvideo-codecs= \
-		-Dtools=
+	configure build-wayland
 
 	ninja -C build-wayland
 	rm -rf "$out" && DESTDIR="$out" ninja -C build-wayland install
+	cp -L build-wayland/src/freedreno/vulkan/libvulkan_freedreno.so "$out/usr/lib/libvulkan_freedreno_wayland.so"
+
+	# The two Adreno variants: same tree, same flags, only the Turnip target.
+	build_variant a7xx "" "patches/a710-720.py"
+	build_variant a8xx "patches/tu8_kgsl_26.patch" "patches/fix_a8xx_dev_info.py:patches/apply_a8xx_gpus.py"
+	cd "$workdir/mesa" && git checkout -q -- .
+}
+
+build_variant(){
+	local name="$1"
+	apply_variant "$@"
+	configure "build-wayland-$name"
+	ninja -C "build-wayland-$name" src/freedreno/vulkan/libvulkan_freedreno.so
+	cp -L "build-wayland-$name/src/freedreno/vulkan/libvulkan_freedreno.so" "$out/usr/lib/libvulkan_freedreno_wayland_$name.so"
 }
 
 package(){
@@ -208,11 +260,27 @@ package(){
 	# This cross build names the libraries without a version; Wine opens libEGL.so.1.
 	[ -e libEGL.so.1 ] || cp -L libEGL.so libEGL.so.1
 	[ -e libGLESv2.so.2 ] || cp -L libGLESv2.so libGLESv2.so.2
-	for f in libEGL.so.1 libGLESv2.so.2 libvulkan_freedreno.so libgallium-*.so; do
+	turnips="libvulkan_freedreno_wayland.so libvulkan_freedreno_wayland_a7xx.so libvulkan_freedreno_wayland_a8xx.so"
+	for f in libEGL.so.1 libGLESv2.so.2 $turnips libgallium-*.so; do
 		[ -e "$f" ] || { echo -e "${red}missing $f${nocolor}"; exit 1; }
 	done
 	# The ICD must carry the DRM image path (see the freedreno-kmds note): fail loudly if it does not.
-	"$ndk/llvm-readelf" -d libvulkan_freedreno.so | grep -q "libdrm.so" || { echo -e "${red}libvulkan_freedreno.so does not link libdrm: the Wayland WSI has no DRM image path${nocolor}"; exit 1; }
+	for f in $turnips; do
+		"$ndk/llvm-readelf" -d "$f" | grep -q "libdrm.so" || { echo -e "${red}$f does not link libdrm: the Wayland WSI has no DRM image path${nocolor}"; exit 1; }
+	done
+	# The variants are drop-in replacements for the plain driver: same SONAME, same dependencies.
+	elfid(){ "$ndk/llvm-readelf" -d "$1" | grep -oP '(SONAME|NEEDED).*\[\K[^]]+' | sort | tr '\n' ' '; }
+	plain_id="$(elfid libvulkan_freedreno_wayland.so)"
+	for f in libvulkan_freedreno_wayland_a7xx.so libvulkan_freedreno_wayland_a8xx.so; do
+		[ "$(elfid "$f")" = "$plain_id" ] || { echo -e "${red}$f: SONAME/NEEDED differ from the plain driver\n  plain: $plain_id\n  $f: $(elfid "$f")${nocolor}"; exit 1; }
+	done
+	# And each really carries its GPU table: names from freedreno_devices.py end up in fd_dev_recs.
+	has(){ "$ndk/llvm-strings" "$1" | grep -qxF "$2"; }
+	has libvulkan_freedreno_wayland_a7xx.so "FD710" && ! has libvulkan_freedreno_wayland.so "FD710" \
+		|| { echo -e "${red}a7xx driver does not carry FD710 (or the plain one does)${nocolor}"; exit 1; }
+	has libvulkan_freedreno_wayland_a8xx.so "Adreno (TM) 825" && ! has libvulkan_freedreno_wayland.so "Adreno (TM) 825" \
+		|| { echo -e "${red}a8xx driver does not carry Adreno 825 (or the plain one does)${nocolor}"; exit 1; }
+	echo "variant tables verified: a7xx has FD710, a8xx has Adreno (TM) 825, plain has neither"
 	echo "== NEEDED / SONAME =="
 	for f in *.so*; do
 		[ -f "$f" ] || continue
@@ -222,9 +290,26 @@ package(){
 	# The libraries, anything of this build they link, and the Termux libwayland they were linked
 	# against.
 	pkg="$workdir/banner-mesa-wayland"
-	rm -rf "$pkg" && mkdir -p "$pkg/lib"
-	cp -L libEGL.so.1 libGLESv2.so.2 libvulkan_freedreno.so libgallium-*.so "$pkg/lib/"
-	for f in libEGL.so.1 libGLESv2.so.2 libvulkan_freedreno.so libgallium-*.so; do
+	rm -rf "$pkg" && mkdir -p "$pkg/lib" "$pkg/share/vulkan/icd.d"
+	cp -L libEGL.so.1 libGLESv2.so.2 $turnips libgallium-*.so "$pkg/lib/"
+	# One ICD manifest per driver, from the one Mesa installed (right api_version), pointing at
+	# lib/ relative to icd.d/ the way winewayland's bundled layout expects.
+	python3 - "$out/usr/share/vulkan/icd.d" "$pkg/share/vulkan/icd.d" <<'PYICD'
+import json, sys, glob, os
+src = glob.glob(os.path.join(sys.argv[1], 'freedreno_icd*.json'))[0]
+for lib, name in (('libvulkan_freedreno_wayland.so', 'banner_wayland_turnip.json'),
+                  ('libvulkan_freedreno_wayland_a7xx.so', 'banner_wayland_turnip_a7xx.json'),
+                  ('libvulkan_freedreno_wayland_a8xx.so', 'banner_wayland_turnip_a8xx.json')):
+    m = json.load(open(src))
+    m['ICD']['library_path'] = '../../../lib/' + lib
+    m['ICD']['library_arch'] = '64'
+    out = os.path.join(sys.argv[2], name)
+    with open(out, 'w') as f:
+        json.dump(m, f, indent=4)
+        f.write('\n')
+    print(name, '->', m['ICD']['library_path'], 'api', m['ICD']['api_version'])
+PYICD
+	for f in libEGL.so.1 libGLESv2.so.2 $turnips libgallium-*.so; do
 		for n in $("$ndk/llvm-readelf" -d "$f" | grep -oP 'NEEDED.*\[\K[^]]+'); do
 			[ -e "$n" ] && [ ! -e "$pkg/lib/$n" ] && cp -L "$n" "$pkg/lib/" && echo "bundled $n (needed by $f)"
 		done
@@ -237,11 +322,15 @@ package(){
 		echo "Linux-style build on bionic like Termux's (Android detection off, Zink general layout off for Turnip)."
 		echo "Built with $ndkver, API $api, for the Bannerlator imagefs."
 		echo "Turnip: KGSL, Wayland WSI. OpenGL: EGL (Wayland platform) + Zink, no LLVM, no GLX."
+		echo "Turnip variants (same tree and flags; ICD manifests in share/vulkan/icd.d):"
+		echo "  lib/libvulkan_freedreno_wayland.so       plain            Adreno 6xx, 730/740/750"
+		echo "  lib/libvulkan_freedreno_wayland_a7xx.so  patches/a710-720.py   Adreno 710/720/722"
+		echo "  lib/libvulkan_freedreno_wayland_a8xx.so  patches/tu8_kgsl_26.patch + fix_a8xx_dev_info.py + apply_a8xx_gpus.py   Adreno 8xx"
 		echo "Termux packages linked:"
 		for p in $termux_pkgs; do awk -v P="$p" 'BEGIN{RS="";FS="\n"} {n="";v=""; for(i=1;i<=NF;i++){if($i~/^Package: /)n=substr($i,10); if($i~/^Version: /)v=substr($i,10)} if(n==P){print "  " n " " v; exit}}' "$workdir/Packages"; done
 	} > "$pkg/BUILD-INFO.txt"
 	cat "$pkg/BUILD-INFO.txt"
-	ls -la "$pkg/lib"
+	ls -la "$pkg/lib" "$pkg/share/vulkan/icd.d"
 	(cd "$workdir" && tar -czf banner-mesa-wayland.tar.gz banner-mesa-wayland)
 	echo -e "${green}Built $workdir/banner-mesa-wayland.tar.gz${nocolor}"
 }
