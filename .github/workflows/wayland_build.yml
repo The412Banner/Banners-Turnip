@@ -9,6 +9,7 @@ on:
       - build_wayland.sh
       - build_turnip_wayland_wsi.sh
       - mesa_hash.txt
+      - mesa_wayland_ref.txt
       - .github/workflows/wayland_build.yml
 
 permissions:

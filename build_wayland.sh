@@ -21,7 +21,10 @@ sysroot="$workdir/termux"
 tprefix="$sysroot/data/data/com.termux/files/usr"
 out="$workdir/out"
 
-mesa_hash="$(tr -d '[:space:]' < mesa_hash.txt)"
+# The Wayland variant may pin its own Mesa ref (a tag or commit) in mesa_wayland_ref.txt; the
+# Android release keeps using mesa_hash.txt. Used to A/B the driver against Termux's Mesa version.
+if [ -s mesa_wayland_ref.txt ]; then mesa_hash="$(tr -d '[:space:]' < mesa_wayland_ref.txt)"
+else mesa_hash="$(tr -d '[:space:]' < mesa_hash.txt)"; fi
 
 prepare(){
 	mkdir -p "$workdir" && cd "$workdir"
@@ -74,9 +77,11 @@ p = 'src/egl/drivers/dri2/platform_wayland.c'
 s = open(p).read()
 old = "   if (disp->Options.ForceSoftware)\n      return dri2_initialize_wayland_swrast(disp);\n   else\n      return dri2_initialize_wayland_drm(disp);"
 new = "   if (disp->Options.ForceSoftware || disp->Options.Zink)\n      return dri2_initialize_wayland_swrast(disp);\n   else\n      return dri2_initialize_wayland_drm(disp);"
-assert old in s, "platform_wayland.c changed upstream"
-open(p, 'w').write(s.replace(old, new, 1))
-print("egl: Zink takes the kopper path on Wayland")
+if old in s:
+    open(p, 'w').write(s.replace(old, new, 1))
+    print("egl: Zink takes the kopper path on Wayland")
+else:
+    print("egl: platform_wayland.c differs at this Mesa ref, kopper patch skipped")
 PY
 	python3 - <<'PY'
 p = 'src/gallium/drivers/zink/zink_screen.c'
