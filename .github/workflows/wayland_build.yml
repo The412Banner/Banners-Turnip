@@ -1,8 +1,10 @@
 name: Build Wayland variant (Turnip WSI + EGL/Zink)
 
 # Only this branch, and only when the Wayland build itself changes. No release is published:
-# the result is a workflow artifact for the Bannerlator Wayland Proton build: three Turnip drivers
-# (plain, a7xx, a8xx) with their ICD manifests, Mesa EGL + Zink, and the Termux libs they link.
+# the result is a workflow artifact for the Bannerlator Wayland Proton build: four Turnip drivers
+# (plain, a7xx, a8xx, a8xx_perf, each from its own Mesa pin) with their ICD manifests, Mesa EGL +
+# Zink, the Termux libs they link, and the recipe logs; BUILD-INFO.txt (also the job summary)
+# records each driver's Mesa commit and upstream release.
 on:
   workflow_dispatch:
   push:
@@ -10,11 +12,8 @@ on:
     paths:
       - build_wayland.sh
       - 'patches/wayland/**'
-      # The a7xx / a8xx driver variants are the Android matrix's patches, built here too.
-      - patches/a710-720.py
-      - patches/tu8_kgsl_26.patch
-      - patches/fix_a8xx_dev_info.py
-      - patches/apply_a8xx_gpus.py
+      # The a7xx / a8xx driver variants are community recipes vendored under patches/upstream.
+      - 'patches/upstream/**'
       - 'patches/termux/**'
       - build_turnip_wayland_wsi.sh
       - mesa_hash.txt
