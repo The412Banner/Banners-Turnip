@@ -154,6 +154,11 @@ c_ld = 'lld'
 cpp_ld = 'lld'
 EOF
 
+	# freedreno-kmds MUST list msm as well as kgsl: with kgsl alone Mesa's top-level meson decides
+	# the system has no KMS/DRM, drops libdrm, and does not compile wsi_common_drm.c. The Wayland
+	# WSI still builds DRM-type images for every real device, so vkCreateSwapchainKHR then runs into
+	# a compiled-out branch (unreachable) and the guest dies with an access violation. Termux builds
+	# msm,kgsl; msm just finds no /dev/dri at runtime.
 	meson setup build-wayland \
 		--cross-file cross.txt \
 		--native-file native.txt \
@@ -165,7 +170,7 @@ EOF
 		-Dplatforms=wayland \
 		-Dgallium-drivers=zink \
 		-Dvulkan-drivers=freedreno \
-		-Dfreedreno-kmds=kgsl \
+		-Dfreedreno-kmds=msm,kgsl \
 		-Dvulkan-beta=true \
 		-Degl=enabled \
 		-Dopengl=true \
@@ -197,6 +202,8 @@ package(){
 	for f in libEGL.so.1 libGLESv2.so.2 libvulkan_freedreno.so libgallium-*.so; do
 		[ -e "$f" ] || { echo -e "${red}missing $f${nocolor}"; exit 1; }
 	done
+	# The ICD must carry the DRM image path (see the freedreno-kmds note): fail loudly if it does not.
+	"$ndk/llvm-readelf" -d libvulkan_freedreno.so | grep -q "libdrm.so" || { echo -e "${red}libvulkan_freedreno.so does not link libdrm: the Wayland WSI has no DRM image path${nocolor}"; exit 1; }
 	echo "== NEEDED / SONAME =="
 	for f in *.so*; do
 		[ -f "$f" ] || continue
@@ -214,6 +221,8 @@ package(){
 		done
 	done
 	cp -L "$tprefix/lib/libwayland-client.so" "$tprefix/lib/libwayland-server.so" "$tprefix/lib/libwayland-egl.so" "$pkg/lib/"
+	# libdrm comes from the Termux sysroot, not this build, so the NEEDED loop above misses it.
+	cp -L "$tprefix/lib/libdrm.so" "$pkg/lib/"
 	{
 		echo "Mesa $(cat "$workdir/mesa/VERSION") at $mesa_hash (gitlab.freedesktop.org/mesa/mesa)."
 		echo "Linux-style build on bionic like Termux's (Android detection off, Zink general layout off for Turnip)."
