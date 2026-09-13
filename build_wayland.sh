@@ -91,6 +91,26 @@ else:
     print("zink: general-layout list changed upstream, left as is")
 PY
 
+	# Termux 0014: tu_knl_kgsl's timestamp wait asserts that a failed ioctl can only ever be
+	# ETIMEDOUT. On this KGSL kernel it can be other things, and the assert takes the whole
+	# process down instead of letting the caller handle a timeout. Warn and report the
+	# timeout instead, which is what Termux ships.
+	python3 - <<'PYEOF_KGSL'
+p = 'src/freedreno/vulkan/tu_knl_kgsl.cc'
+s = open(p).read()
+old = """      } else if (ret == -1) {
+         assert(errno == ETIMEDOUT);
+         return VK_TIMEOUT;"""
+new = """      } else if (ret == -1) {
+         if (errno != ETIMEDOUT)
+            mesa_logw("wait_timestamp_safe: errno %d (%s)", errno, strerror(errno));
+         return VK_TIMEOUT;"""
+if old in s:
+    open(p, 'w').write(s.replace(old, new, 1))
+    print('turnip: kgsl timestamp wait no longer asserts')
+else:
+    print('turnip: kgsl wait_timestamp_safe assert not found, left as is')
+PYEOF_KGSL
 	# Termux's x86_64 wayland-scanner (the libwayland version) ahead of any system one.
 	export PATH="$tprefix/opt/libwayland/cross/bin:$PATH"
 	wayland-scanner --version
@@ -135,7 +155,8 @@ EOF
 		--prefix /usr \
 		--libdir lib \
 		-Dbuildtype=release \
-		-Dstrip=true \
+		-Dstrip=false \
+		-Db_ndebug=true \
 		-Dplatforms=wayland \
 		-Dgallium-drivers=zink \
 		-Dvulkan-drivers=freedreno \
