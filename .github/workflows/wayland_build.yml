@@ -3,10 +3,13 @@ name: Build Wayland variant (Turnip WSI + EGL/Zink)
 # Only this branch, and only when the Wayland build itself changes. No release is published:
 # the result is a workflow artifact for the Bannerlator Wayland Proton build.
 on:
+  workflow_dispatch:
   push:
     branches: [wayland]
     paths:
       - build_wayland.sh
+      - 'patches/wayland/**'
+      - 'patches/termux/**'
       - build_turnip_wayland_wsi.sh
       - mesa_hash.txt
       - mesa_wayland_ref.txt
