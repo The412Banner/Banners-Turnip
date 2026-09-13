@@ -441,7 +441,8 @@ package(){
 	only_in "deck_emu" libvulkan_freedreno_wayland_a8xx_gen8.so "libvulkan_freedreno_wayland_a8xx_white.so"
 	only_in "Adreno (TM) 812" libvulkan_freedreno_wayland_a8xx_white.so ""
 	only_in "whitebelyash branch" libvulkan_freedreno_wayland_a8xx_white.so ""
-	has libvulkan_freedreno_wayland_a8xx_white.so "(v31)" || fail_strings "a8xx_white does not carry the (v31) device-name suffix"
+	# (Not the " (v31)" device-name suffix: clang folds that 6-byte strcat literal into immediates,
+	# so it never reaches .rodata; the 812 entry and the driverInfo string above are the markers.)
 	# The SMXZ recipe has no textual marker (one Python-level prop on upstream): it must at least
 	# be its own binary, and the WN tunings must differ from each other.
 	for g in $turnips; do
@@ -457,7 +458,7 @@ package(){
 	echo "Mesa strings: plain '$(gitstr libvulkan_freedreno_wayland.so)' upstream '$(gitstr libvulkan_freedreno_wayland_a8xx_upstream.so)'"
 	[ -n "$(gitstr libvulkan_freedreno_wayland_a8xx_upstream.so)" ] && [ "$(gitstr libvulkan_freedreno_wayland_a8xx_upstream.so)" != "$(gitstr libvulkan_freedreno_wayland.so)" ] \
 		|| { echo -e "${red}a8xx_upstream and plain carry the same Mesa git string${nocolor}"; exit 1; }
-	echo "variant tables verified: FD710 in a7xx + a8xx_white; Adreno (TM) 825 in a8xx + a8xx_perf + a8xx_gen8 + a8xx_white; PWR_MAX only in a8xx_perf; deck_emu in a8xx_gen8 + a8xx_white; Adreno 812 / whitebelyash branch / (v31) only in a8xx_white; a8xx_smxz distinct; a8xx_upstream has Adreno 840 and its own Mesa string"
+	echo "variant tables verified: FD710 in a7xx + a8xx_white; Adreno (TM) 825 in a8xx + a8xx_perf + a8xx_gen8 + a8xx_white; PWR_MAX only in a8xx_perf; deck_emu in a8xx_gen8 + a8xx_white; Adreno 812 / whitebelyash branch only in a8xx_white; a8xx_smxz distinct; a8xx_upstream has Adreno 840 and its own Mesa string"
 	# Every driver carries the zero-copy WSI (the private protocol's interface name is its marker).
 	for f in $turnips; do
 		has "$f" "banner_ahb_v1" || fail_strings "$f does not carry the banner_ahb_v1 zero-copy WSI"
