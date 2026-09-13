@@ -18,6 +18,14 @@ set -o pipefail
 #              patches/a8xx_gen8.patch (whitebelyash tu8 series) + patches/a8xx_shared_mem.py,
 #              applied the way build_turnip.sh applies them; that job tracks Mesa main, so the
 #              Wayland build pins it to the same commit as the WN-Turnip drivers ($mesa_a8xx_ref).
+#   a8xx_smxz  StevenMXZ/Adreno-Tools-Drivers v36 "Turnip Gen8 V36": its build_turnip.sh seds on
+#              upstream Mesa $mesa_smxz_ref, the commit the released binary embeds
+#              (patches/upstream/smxz-v36/SOURCE.md on why not the fork branch the script names)
+#   a8xx_white whitebelyash/freedreno_turnip-CI tu_v31 "Mainline Turnip v31": the mesa-unified
+#              turnip/gen8 branch at $mesa_white_ref (fetched from that fork) + tu_version.h v31,
+#              the primary asset (patches/upstream/white-tu_v31/SOURCE.md)
+#   a8xx_upstream  pure upstream Mesa main at $mesa_upstream_ref (the head when this was pinned),
+#              nothing but the Wayland changes: the reference for what upstream gives 8xx today.
 # winewayland picks one through BANNER_WAYLAND_VK_VARIANT (proton-wine android/wayland-deps/TURNIP.md).
 
 green='\033[0;32m'
@@ -57,13 +65,23 @@ wn_scripts="fix_gralloc_flushall.py fix_a8xx_dev_info.py apply_a8xx_gpus.py appl
 wn_required="fix_a8xx_dev_info.py apply_a8xx_gpus.py apply_a7xx_gen1_quirks.py apply_a7xx_gen2_ubwc_hint.py"
 # The Android release's own a8xx recipe; its job clones Mesa main unpinned, this build pins it.
 mesa_gen8_ref="$mesa_a8xx_ref"
+smxz="$repo/patches/upstream/smxz-v36"
+smxz_tag="StevenMXZ/Adreno-Tools-Drivers v36 (tag commit 50cbd613e7f6f10e6bc36cfde51e9c76c23a441d)"
+mesa_smxz_ref="c501e1d16e11c256610cd5922b1afa5660f2f5ea"
+white="$repo/patches/upstream/white-tu_v31"
+white_tag="whitebelyash/freedreno_turnip-CI tu_v31 (tag commit 258fc21943dc3cab448bc53d1566a5f699283cf4)"
+mesa_white_ref="9c475fc367a7283a7eee58501fb48149780f2c1e"
+mesa_white_remote="https://github.com/whitebelyash/mesa-unified.git"
+# Pure upstream, pinned to the mesa/mesa main head at the time of pinning (bump deliberately).
+mesa_upstream_ref="bbc7792f717f27b17b4c12e6a4503d703a362aac"
+mesa_upstream_date="2026-09-13T15:39:30Z"
 
-fetch_mesa(){	# <dir> <ref>: a shallow checkout of one Mesa commit, tagged so it can be reset to.
-	local dir="$1" ref="$2"
+fetch_mesa(){	# <dir> <ref> [remote]: a shallow checkout of one Mesa commit, tagged so it can be reset to.
+	local dir="$1" ref="$2" remote="${3:-https://gitlab.freedesktop.org/mesa/mesa.git}"
 	if [ ! -d "$dir" ]; then
-		echo "Fetching Mesa $ref into $dir..."
+		echo "Fetching Mesa $ref from $remote into $dir..."
 		git init -q "$dir"
-		git -C "$dir" remote add origin https://gitlab.freedesktop.org/mesa/mesa.git
+		git -C "$dir" remote add origin "$remote"
 		git -C "$dir" fetch -q --depth=1 origin "$ref"
 		git -C "$dir" checkout -q FETCH_HEAD
 	fi
@@ -98,6 +116,9 @@ prepare(){
 	fetch_mesa mesa-a7xx "$mesa_a7xx_ref"
 	fetch_mesa mesa-a8xx "$mesa_a8xx_ref"
 	fetch_mesa mesa-a8xx-gen8 "$mesa_gen8_ref"
+	fetch_mesa mesa-a8xx-smxz "$mesa_smxz_ref"
+	fetch_mesa mesa-a8xx-white "$mesa_white_ref" "$mesa_white_remote"
+	fetch_mesa mesa-a8xx-upstream "$mesa_upstream_ref"
 }
 
 # The Wayland-on-bionic changes every driver here gets, committed on top of the checkout so a
@@ -341,6 +362,40 @@ build(){
 		|| { echo -e "${red}[a8xx_gen8] the gen8 series did not land its A825 entry / deck_emu option, refusing to ship it${nocolor}"; exit 1; }
 	build_turnip mesa-a8xx-gen8 build-wayland-a8xx_gen8 libvulkan_freedreno_wayland_a8xx_gen8.so
 	git checkout -q -- .
+
+	# a8xx_smxz: the v36 build_turnip.sh's edits, verbatim, on the upstream commit the release
+	# embeds (it applies no patch files). The a7xx_gen1 line is the whole recipe here: assert it.
+	apply_wayland_patches mesa-a8xx-smxz
+	echo "[a8xx_smxz] applying the v36 build_turnip.sh seds"
+	echo '#define TUGEN8_DRV_VERSION ""' > ./src/freedreno/vulkan/tu_version.h
+	sed -i 's/ (%s)//g' src/freedreno/vulkan/tu_device.cc || true
+	sed -i 's/ (%s)//g' src/freedreno/vulkan/tu_device.c || true
+	sed -i '/a7xx_gen1 = GPUProps(/a \        has_early_preamble = False,' src/freedreno/common/freedreno_devices.py || true
+	sed -i 's/typedef const native_handle_t\* buffer_handle_t;/typedef void\* buffer_handle_t;/g' include/android_stub/cutils/native_handle.h || true
+	sed -i 's/, hnd->handle/, (void \*)hnd->handle/g' src/util/u_gralloc/u_gralloc_fallback.c || true
+	sed -i 's/native_buffer->handle->/((const native_handle_t \*)native_buffer->handle)->/g' src/vulkan/runtime/vk_android.c || true
+	sed -i 's/anb->handle->/((const native_handle_t \*)anb->handle)->/g' src/vulkan/runtime/vk_android.c || true
+	grep -A1 '^a7xx_gen1 = GPUProps(' src/freedreno/common/freedreno_devices.py | grep -q 'has_early_preamble = False' \
+		|| { echo -e "${red}[a8xx_smxz] has_early_preamble = False did not land on a7xx_gen1, refusing to ship it${nocolor}"; exit 1; }
+	python3 -c "compile(open('src/freedreno/common/freedreno_devices.py').read(),'f','exec')"
+	echo "[a8xx_smxz] recipe changes against the Wayland tree:"; git --no-pager diff --stat banner-wayland
+	build_turnip mesa-a8xx-smxz build-wayland-a8xx_smxz libvulkan_freedreno_wayland_a8xx_smxz.so
+	git checkout -q -- .
+
+	# a8xx_white: the fork branch is the recipe; turnip_builder.sh only stamps the version.
+	apply_wayland_patches mesa-a8xx-white
+	echo "[a8xx_white] TUGEN8_DRV_VERSION v31 (turnip_builder.sh)"
+	echo '#define TUGEN8_DRV_VERSION "v31"' > ./src/freedreno/vulkan/tu_version.h
+	grep -q 'name="Adreno (TM) 812"' src/freedreno/common/freedreno_devices.py && grep -q 'TUGEN8_DRV_VERSION' src/freedreno/vulkan/tu_device.cc \
+		|| { echo -e "${red}[a8xx_white] this is not the mesa-unified turnip/gen8 tree (no Adreno 812 / TUGEN8_DRV_VERSION), refusing${nocolor}"; exit 1; }
+	echo "[a8xx_white] recipe changes against the Wayland tree:"; git --no-pager diff --stat banner-wayland
+	build_turnip mesa-a8xx-white build-wayland-a8xx_white libvulkan_freedreno_wayland_a8xx_white.so
+	git checkout -q -- .
+
+	# a8xx_upstream: nothing on top of the Wayland changes.
+	apply_wayland_patches mesa-a8xx-upstream
+	echo "[a8xx_upstream] Mesa main $mesa_upstream_ref ($mesa_upstream_date), no device patches"
+	build_turnip mesa-a8xx-upstream build-wayland-a8xx_upstream libvulkan_freedreno_wayland_a8xx_upstream.so
 }
 
 package(){
@@ -349,7 +404,7 @@ package(){
 	# This cross build names the libraries without a version; Wine opens libEGL.so.1.
 	[ -e libEGL.so.1 ] || cp -L libEGL.so libEGL.so.1
 	[ -e libGLESv2.so.2 ] || cp -L libGLESv2.so libGLESv2.so.2
-	turnips="libvulkan_freedreno_wayland.so libvulkan_freedreno_wayland_a7xx.so libvulkan_freedreno_wayland_a8xx.so libvulkan_freedreno_wayland_a8xx_perf.so libvulkan_freedreno_wayland_a8xx_gen8.so"
+	turnips="libvulkan_freedreno_wayland.so libvulkan_freedreno_wayland_a7xx.so libvulkan_freedreno_wayland_a8xx.so libvulkan_freedreno_wayland_a8xx_perf.so libvulkan_freedreno_wayland_a8xx_gen8.so libvulkan_freedreno_wayland_a8xx_smxz.so libvulkan_freedreno_wayland_a8xx_white.so libvulkan_freedreno_wayland_a8xx_upstream.so"
 	for f in libEGL.so.1 libGLESv2.so.2 $turnips libgallium-*.so; do
 		[ -e "$f" ] || { echo -e "${red}missing $f${nocolor}"; exit 1; }
 	done
@@ -380,12 +435,29 @@ package(){
 		done
 		return 0
 	}
-	only_in "FD710" libvulkan_freedreno_wayland_a7xx.so ""
-	only_in "Adreno (TM) 825" libvulkan_freedreno_wayland_a8xx.so "libvulkan_freedreno_wayland_a8xx_perf.so libvulkan_freedreno_wayland_a8xx_gen8.so"
+	only_in "FD710" libvulkan_freedreno_wayland_a7xx.so "libvulkan_freedreno_wayland_a8xx_white.so"
+	only_in "Adreno (TM) 825" libvulkan_freedreno_wayland_a8xx.so "libvulkan_freedreno_wayland_a8xx_perf.so libvulkan_freedreno_wayland_a8xx_gen8.so libvulkan_freedreno_wayland_a8xx_white.so"
 	only_in "WN-Turnip: Failed to set initial PWR_MAX constraint" libvulkan_freedreno_wayland_a8xx_perf.so ""
-	only_in "deck_emu" libvulkan_freedreno_wayland_a8xx_gen8.so ""
+	only_in "deck_emu" libvulkan_freedreno_wayland_a8xx_gen8.so "libvulkan_freedreno_wayland_a8xx_white.so"
+	only_in "Adreno (TM) 812" libvulkan_freedreno_wayland_a8xx_white.so ""
+	only_in "whitebelyash branch" libvulkan_freedreno_wayland_a8xx_white.so ""
+	has libvulkan_freedreno_wayland_a8xx_white.so "(v31)" || fail_strings "a8xx_white does not carry the (v31) device-name suffix"
+	# The SMXZ recipe has no textual marker (one Python-level prop on upstream): it must at least
+	# be its own binary, and the WN tunings must differ from each other.
+	for g in $turnips; do
+		[ "$g" = libvulkan_freedreno_wayland_a8xx_smxz.so ] && continue
+		cmp -s libvulkan_freedreno_wayland_a8xx_smxz.so "$g" && { echo -e "${red}a8xx_smxz is byte-identical to $g${nocolor}"; exit 1; }
+	done
 	cmp -s libvulkan_freedreno_wayland_a8xx.so libvulkan_freedreno_wayland_a8xx_perf.so && { echo -e "${red}a8xx and a8xx_perf are the same file${nocolor}"; exit 1; }
-	echo "variant tables verified: FD710 only in a7xx; Adreno (TM) 825 in a8xx + a8xx_perf + a8xx_gen8; PWR_MAX strings only in a8xx_perf; deck_emu only in a8xx_gen8"
+	# a8xx_upstream: upstream's own 8xx table (840 is upstream's, also in plain) and a different
+	# Mesa tree than plain: not the same bytes, and a different embedded Mesa git string.
+	has libvulkan_freedreno_wayland_a8xx_upstream.so "Adreno (TM) 840" || fail_strings "a8xx_upstream does not carry upstream's Adreno (TM) 840 entry"
+	cmp -s libvulkan_freedreno_wayland_a8xx_upstream.so libvulkan_freedreno_wayland.so && { echo -e "${red}a8xx_upstream is byte-identical to plain${nocolor}"; exit 1; }
+	gitstr(){ "$ndk/llvm-strings" "$1" | grep -oE '26\.[0-9]+\.[0-9]+-devel \(git-[0-9a-f]+\)' | head -1; }
+	echo "Mesa strings: plain '$(gitstr libvulkan_freedreno_wayland.so)' upstream '$(gitstr libvulkan_freedreno_wayland_a8xx_upstream.so)'"
+	[ -n "$(gitstr libvulkan_freedreno_wayland_a8xx_upstream.so)" ] && [ "$(gitstr libvulkan_freedreno_wayland_a8xx_upstream.so)" != "$(gitstr libvulkan_freedreno_wayland.so)" ] \
+		|| { echo -e "${red}a8xx_upstream and plain carry the same Mesa git string${nocolor}"; exit 1; }
+	echo "variant tables verified: FD710 in a7xx + a8xx_white; Adreno (TM) 825 in a8xx + a8xx_perf + a8xx_gen8 + a8xx_white; PWR_MAX only in a8xx_perf; deck_emu in a8xx_gen8 + a8xx_white; Adreno 812 / whitebelyash branch / (v31) only in a8xx_white; a8xx_smxz distinct; a8xx_upstream has Adreno 840 and its own Mesa string"
 	# Every driver carries the zero-copy WSI (the private protocol's interface name is its marker).
 	for f in $turnips; do
 		has "$f" "banner_ahb_v1" || fail_strings "$f does not carry the banner_ahb_v1 zero-copy WSI"
@@ -411,7 +483,10 @@ for lib, name in (('libvulkan_freedreno_wayland.so', 'banner_wayland_turnip.json
                   ('libvulkan_freedreno_wayland_a7xx.so', 'banner_wayland_turnip_a7xx.json'),
                   ('libvulkan_freedreno_wayland_a8xx.so', 'banner_wayland_turnip_a8xx.json'),
                   ('libvulkan_freedreno_wayland_a8xx_perf.so', 'banner_wayland_turnip_a8xx_perf.json'),
-                  ('libvulkan_freedreno_wayland_a8xx_gen8.so', 'banner_wayland_turnip_a8xx_gen8.json')):
+                  ('libvulkan_freedreno_wayland_a8xx_gen8.so', 'banner_wayland_turnip_a8xx_gen8.json'),
+                  ('libvulkan_freedreno_wayland_a8xx_smxz.so', 'banner_wayland_turnip_a8xx_smxz.json'),
+                  ('libvulkan_freedreno_wayland_a8xx_white.so', 'banner_wayland_turnip_a8xx_white.json'),
+                  ('libvulkan_freedreno_wayland_a8xx_upstream.so', 'banner_wayland_turnip_a8xx_upstream.json')):
     m = json.load(open(src))
     m['ICD']['library_path'] = '../../../lib/' + lib
     m['ICD']['library_arch'] = '64'
@@ -449,6 +524,14 @@ PYICD
 		echo "  lib/libvulkan_freedreno_wayland_a8xx_gen8.so Banners-Turnip Android a8xx recipe (turnip_build_combined.yml a8xx job):"
 		echo "                                               patches/a8xx_gen8.patch + patches/a8xx_shared_mem.py on Mesa $mesa_gen8_ref"
 		echo "                                               (that job tracks Mesa main; pinned here to the WN-Turnip commit); Adreno 8xx"
+		echo "  lib/libvulkan_freedreno_wayland_a8xx_smxz.so $smxz_tag"
+		echo "                                               v36 build_turnip.sh seds (has_early_preamble=False on a7xx_gen1) on upstream Mesa $mesa_smxz_ref"
+		echo "                                               (the commit the released binary embeds; the script's fork branch is April 2026); Adreno 8xx as upstream"
+		echo "  lib/libvulkan_freedreno_wayland_a8xx_white.so $white_tag"
+		echo "                                               mesa-unified turnip/gen8 at $mesa_white_ref + TUGEN8_DRV_VERSION v31 (primary asset, no 39751.diff)"
+		echo "                                               Adreno 840/830/829/825/812/810 + 710/720/722 (sysmem only) + upstream 6xx/7xx"
+		echo "  lib/libvulkan_freedreno_wayland_a8xx_upstream.so pure upstream: Mesa main @ $mesa_upstream_ref ($mesa_upstream_date), no device patches"
+		echo "                                               Adreno 8xx as upstream (810/829/830/840/X2) + everything upstream lists"
 		echo "Termux packages linked:"
 		for p in $termux_pkgs; do awk -v P="$p" 'BEGIN{RS="";FS="\n"} {n="";v=""; for(i=1;i<=NF;i++){if($i~/^Package: /)n=substr($i,10); if($i~/^Version: /)v=substr($i,10)} if(n==P){print "  " n " " v; exit}}' "$workdir/Packages"; done
 	} > "$pkg/BUILD-INFO.txt"
