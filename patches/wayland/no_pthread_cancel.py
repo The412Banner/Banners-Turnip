@@ -13,6 +13,7 @@ s = open(path).read()
 
 helper = '''#include <poll.h>
 #include <signal.h>
+#include <pthread.h>
 
 /* bionic has no pthread_cancel: stop a thread by signalling it and exiting from the handler. */
 static void
