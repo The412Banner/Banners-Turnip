@@ -330,13 +330,16 @@ package(){
 	# And each really carries its recipe: GPU names from freedreno_devices.py end up in fd_dev_recs,
 	# the Performance tuning has its own log strings.
 	has(){ "$ndk/llvm-strings" "$1" | grep -qF "$2"; }
-	only_in(){	# <string> <the one file that must have it>; every other driver must not
+	# On a failed check, show what GPU names / tuning strings each driver does carry.
+	names(){ echo "  $1: $("$ndk/llvm-strings" "$1" | grep -E '^(FD[0-9]{3}|Adreno \(TM\) [0-9X-]+|Adreno X[0-9-]+|WN-Turnip:.*)$' | sort -u | tr '\n' '|')"; }
+	fail_strings(){ echo -e "${red}$1${nocolor}"; for g in $turnips; do names "$g"; done; exit 1; }
+	only_in(){	# <string> <the one file that must have it> <others that must have it too>; the rest must not
 		local s="$1" f="$2" g
-		has "$f" "$s" || { echo -e "${red}$f does not carry '$s'${nocolor}"; exit 1; }
+		has "$f" "$s" || fail_strings "$f does not carry '$s'"
 		for g in $turnips; do
 			[ "$g" = "$f" ] && continue
-			case " $3 " in *" $g "*) has "$g" "$s" || { echo -e "${red}$g does not carry '$s'${nocolor}"; exit 1; }; continue;; esac
-			has "$g" "$s" && { echo -e "${red}$g carries '$s', which belongs to $f${nocolor}"; exit 1; }
+			case " $3 " in *" $g "*) has "$g" "$s" || fail_strings "$g does not carry '$s'"; continue;; esac
+			has "$g" "$s" && fail_strings "$g carries '$s', which belongs to $f"
 		done
 		return 0
 	}

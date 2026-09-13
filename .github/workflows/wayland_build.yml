@@ -66,6 +66,17 @@ jobs:
           name: banner-mesa-wayland
           path: wayland_workdir/banner-mesa-wayland/
 
+      # When a packaging guard trips, the built drivers and the recipe logs are the evidence.
+      - name: Upload the raw build output on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: banner-mesa-wayland-failed-build
+          path: |
+            wayland_workdir/out/usr/lib/libvulkan_freedreno_wayland*.so
+            wayland_workdir/log-*.txt
+          if-no-files-found: ignore
+
   turnip-combined:
     # The release recipe plus the Wayland WSI: one AdrenoTools-style zip for X11 and Wayland.
     runs-on: ubuntu-24.04
