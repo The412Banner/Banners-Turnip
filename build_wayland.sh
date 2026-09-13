@@ -118,12 +118,11 @@ else:
     print('turnip: kgsl wait_timestamp_safe assert not found, left as is')
 PYEOF_KGSL
 	# With libdrm present Mesa also builds the VK_KHR_display WSI (wsi_common_display.c), which
-	# cancels its wait/hotplug threads with pthread_cancel. bionic has no pthread_cancel. Termux's
-	# 0006 replaces it with a SIGUSR2 handler that pthread_exits the thread; apply it verbatim.
-	patch -p1 -N -F3 < "$repo/patches/termux/0006-wsi-no-pthread_cancel.patch" \
-		|| { echo -e "${red}Termux 0006 (wsi display: no pthread_cancel) did not apply${nocolor}"; exit 1; }
-	grep -q 'pthread_kill(wsi->wait_thread, SIGUSR2)' src/vulkan/wsi/wsi_common_display.c \
-		|| { echo -e "${red}0006 applied but the SIGUSR2 path is missing${nocolor}"; exit 1; }
+	# stops its wait/hotplug threads with pthread_cancel. bionic has none, so do what Termux's 0006
+	# does (SIGUSR2 handler that pthread_exits), written against exact source text so it survives
+	# line drift between Mesa versions.
+	python3 "$repo/patches/wayland/no_pthread_cancel.py" src/vulkan/wsi/wsi_common_display.c \
+		|| { echo -e "${red}wsi display: pthread_cancel replacement did not apply${nocolor}"; exit 1; }
 
 	# Termux's x86_64 wayland-scanner (the libwayland version) ahead of any system one.
 	export PATH="$tprefix/opt/libwayland/cross/bin:$PATH"
