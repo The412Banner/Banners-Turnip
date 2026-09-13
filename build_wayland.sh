@@ -14,6 +14,8 @@ ndkver="android-ndk-r29"
 ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 api=29   # reallocarray and ELF TLS
 termux_repo="https://packages-cf.termux.dev/apt/termux-main"
+# This repo: prepare() cd's into the work dir, so resolve it before anything moves.
+repo="$(cd "$(dirname "$0")" && pwd)"
 termux_pkgs="libwayland libwayland-protocols libdrm libffi"
 # Mesa wants a wayland-scanner of exactly the libwayland version; Termux ships an x86_64 one.
 termux_host_pkgs="libwayland-cross-scanner"
@@ -59,7 +61,6 @@ prepare(){
 }
 
 build(){
-	repo="$(pwd)"
 	cd "$workdir/mesa"
 
 	# This is a Linux-style build on bionic (like Termux's Mesa), not an Android-platform one: turn
