@@ -135,37 +135,24 @@ apply_wayland_patches(){	# <dir>
 	grep -n "Linux-style build on bionic" src/util/detect_os.h include/vulkan/vk_android_native_buffer.h
 	# OpenGL must take EGL's Wayland *DRM* path, not its shm/swrast one. Only the DRM initialiser
 	# asks zwp_linux_dmabuf_v1 for its default feedback (version >= 4, which the compositor has
-	# advertised since 2026-09-13), takes a render node out of the feedback's main_device, and so
-	# reaches driver_name = "zink" with kopper = true: GL on the GPU, presenting through Zink's own
-	# Vulkan WSI (this build's Turnip, zero-copy patch included). The swrast initialiser has no
-	# dmabuf branch at any version and this gallium build has no rasteriser at all (zink only,
-	# -Dllvm=disabled), so a display that lands there commits never-written shm buffers: native
-	# OpenGL windows were solid black on Wayland from the first build until 2026-09-13. Up to then
-	# this script forced exactly that, with "|| disp->Options.Zink" bolted onto the dispatcher (the
-	# kopper design it intended cannot work there: the swrast path leaves fd_render_gpu at -1 and
-	# dri2_setup_device then refuses the display unless ForceSoftware is on, and ForceSoftware makes
-	# Zink demand a CPU Vulkan device). The shortcut is gone; what is left is the assert that
-	# upstream's dispatcher still has the shape that reasoning is built on.
-	python3 - <<'PY'
-import sys
-p = 'src/egl/drivers/dri2/platform_wayland.c'
-s = open(p).read()
-stock = ("   if (disp->Options.ForceSoftware)\n"
-         "      return dri2_initialize_wayland_swrast(disp);\n"
-         "   else\n"
-         "      return dri2_initialize_wayland_drm(disp);")
-if stock not in s:
-    sys.exit("egl: dri2_initialize_wayland is not the stock two-way dispatcher at this Mesa ref - "
-             "establish which path a Zink display takes before shipping this driver")
-# The DRM path is only worth anything if it still reads the feedback we send; MIN2(version, 4) is
-# what makes it bind our version 4 global.
-for marker in ("zwp_linux_dmabuf_v1_get_default_feedback(",
-               "MIN2(version, ZWP_LINUX_DMABUF_V1_GET_DEFAULT_FEEDBACK_SINCE_VERSION)"):
-    if marker not in s:
-        sys.exit("egl: platform_wayland.c no longer has %s - the compositor's dmabuf feedback is "
-                 "how this driver finds a render node" % marker)
-print("egl: Zink on Wayland takes the DRM path (dmabuf feedback -> render node -> zink + kopper)")
-PY
+	# advertised since 2026-09-13) and reaches driver_name = "zink" with kopper = true: GL on the
+	# GPU, presenting through Zink's own Vulkan WSI (this build's Turnip, zero-copy patch included).
+	# The swrast initialiser has no dmabuf branch at any version and this gallium build has no
+	# rasteriser at all (zink only, -Dllvm=disabled), so a display that lands there commits
+	# never-written shm buffers: a black window. Up to 2026-09-13 this script forced exactly that
+	# with "|| disp->Options.Zink" on the dispatcher (the swrast path leaves fd_render_gpu at -1 and
+	# dri2_setup_device refuses the display unless ForceSoftware is on, and ForceSoftware makes Zink
+	# demand a CPU Vulkan device); since then the stock dispatcher is kept and asserted.
+	# The DRM path itself still wanted a DRM render node out of the feedback's main_device, and a
+	# phone that gives apps none (main_device 0:0: Adreno 830/840 retail devices, 2026-09-14) failed
+	# the same dri2_setup_device check and fell into that black software retry. Kopper needs no DRM
+	# fd, so egl_wayland_no_drm_node.py builds the kopper screen without one when there is no
+	# usable node (zink on the only Vulkan device, no EGLDevice) and keeps the stock path where a
+	# node works; it asserts the dispatcher, the feedback read and every anchor it edits, so a Mesa
+	# ref that moved any of them fails here instead of shipping an unread GL path. It also prints one
+	# warning line on the no-node path and on the software fallback, for wine_debug.log.
+	python3 "$repo/patches/wayland/egl_wayland_no_drm_node.py" . \
+		|| { echo -e "${red}egl: egl_wayland_no_drm_node.py did not apply${nocolor}"; exit 1; }
 	python3 - <<'PY'
 p = 'src/gallium/drivers/zink/zink_screen.c'
 s = open(p).read()
@@ -529,6 +516,8 @@ PYICD
 		echo "Linux-style build on bionic like Termux's (Android detection off, Zink general layout off for Turnip)."
 		echo "Built with $ndkver, API $api, for the Bannerlator imagefs."
 		echo "Turnip: KGSL, Wayland WSI. OpenGL: EGL (Wayland platform) + Zink, no LLVM, no GLX."
+		echo "EGL Wayland DRM path: zink + kopper on the compositor's render node, or on the Vulkan device without one"
+		echo "  when there is no usable node (main_device 0:0 / undescribable; patches/wayland/egl_wayland_no_drm_node.py)."
 		echo "Zero-copy layers: with BANNER_WSI_AHB=1 and a compositor advertising banner_ahb_v1, swapchain images are"
 		echo "  gralloc AHardwareBuffers handed to the compositor (patches/wayland/banner_ahb_wsi.py); off = unchanged WSI."
 		echo "Turnip drivers (same flags and Wayland changes; ICD manifests in share/vulkan/icd.d):"
