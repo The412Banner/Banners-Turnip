@@ -133,19 +133,38 @@ apply_wayland_patches(){	# <dir>
 	sed -i 's/^#if defined(__ANDROID__) || defined(ANDROID)$/#if 0 \/* Linux-style build on bionic *\//' include/vulkan/vk_android_native_buffer.h
 	sed -i '/^#elif\|^#if/s/DETECT_OS_ANDROID/defined(__ANDROID__)/' src/util/u_process.c
 	grep -n "Linux-style build on bionic" src/util/detect_os.h include/vulkan/vk_android_native_buffer.h
-	# No DRM device here: with Zink forced, EGL takes its software-window (kopper) path, which
-	# then renders on the GPU through Zink's own Vulkan WSI. Upstream only takes it for
-	# LIBGL_ALWAYS_SOFTWARE, and that flag makes Zink insist on a CPU Vulkan device.
+	# OpenGL must take EGL's Wayland *DRM* path, not its shm/swrast one. Only the DRM initialiser
+	# asks zwp_linux_dmabuf_v1 for its default feedback (version >= 4, which the compositor has
+	# advertised since 2026-09-13), takes a render node out of the feedback's main_device, and so
+	# reaches driver_name = "zink" with kopper = true: GL on the GPU, presenting through Zink's own
+	# Vulkan WSI (this build's Turnip, zero-copy patch included). The swrast initialiser has no
+	# dmabuf branch at any version and this gallium build has no rasteriser at all (zink only,
+	# -Dllvm=disabled), so a display that lands there commits never-written shm buffers: native
+	# OpenGL windows were solid black on Wayland from the first build until 2026-09-13. Up to then
+	# this script forced exactly that, with "|| disp->Options.Zink" bolted onto the dispatcher (the
+	# kopper design it intended cannot work there: the swrast path leaves fd_render_gpu at -1 and
+	# dri2_setup_device then refuses the display unless ForceSoftware is on, and ForceSoftware makes
+	# Zink demand a CPU Vulkan device). The shortcut is gone; what is left is the assert that
+	# upstream's dispatcher still has the shape that reasoning is built on.
 	python3 - <<'PY'
+import sys
 p = 'src/egl/drivers/dri2/platform_wayland.c'
 s = open(p).read()
-old = "   if (disp->Options.ForceSoftware)\n      return dri2_initialize_wayland_swrast(disp);\n   else\n      return dri2_initialize_wayland_drm(disp);"
-new = "   if (disp->Options.ForceSoftware || disp->Options.Zink)\n      return dri2_initialize_wayland_swrast(disp);\n   else\n      return dri2_initialize_wayland_drm(disp);"
-if old in s:
-    open(p, 'w').write(s.replace(old, new, 1))
-    print("egl: Zink takes the kopper path on Wayland")
-else:
-    print("egl: platform_wayland.c differs at this Mesa ref, kopper patch skipped")
+stock = ("   if (disp->Options.ForceSoftware)\n"
+         "      return dri2_initialize_wayland_swrast(disp);\n"
+         "   else\n"
+         "      return dri2_initialize_wayland_drm(disp);")
+if stock not in s:
+    sys.exit("egl: dri2_initialize_wayland is not the stock two-way dispatcher at this Mesa ref - "
+             "establish which path a Zink display takes before shipping this driver")
+# The DRM path is only worth anything if it still reads the feedback we send; MIN2(version, 4) is
+# what makes it bind our version 4 global.
+for marker in ("zwp_linux_dmabuf_v1_get_default_feedback(",
+               "MIN2(version, ZWP_LINUX_DMABUF_V1_GET_DEFAULT_FEEDBACK_SINCE_VERSION)"):
+    if marker not in s:
+        sys.exit("egl: platform_wayland.c no longer has %s - the compositor's dmabuf feedback is "
+                 "how this driver finds a render node" % marker)
+print("egl: Zink on Wayland takes the DRM path (dmabuf feedback -> render node -> zink + kopper)")
 PY
 	python3 - <<'PY'
 p = 'src/gallium/drivers/zink/zink_screen.c'
