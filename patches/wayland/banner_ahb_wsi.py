@@ -3,8 +3,8 @@
 
 When the compositor advertises the private global banner_ahb_v1 and wants gralloc buffers right
 now, the Wayland WSI allocates
-every swapchain image as an Android AHardwareBuffer (gralloc; UBWC when gralloc picks it, linear
-with BANNER_WSI_AHB_LINEAR=1 or when the explicit UBWC layout is refused), imports the buffer's
+every swapchain image as an Android AHardwareBuffer (gralloc; UBWC where gralloc and the compositor
+can take it, see "UBWC" below), imports the buffer's
 dma-buf fd into the driver with an explicit DRM format modifier + row pitch (the same path Turnip
 takes for any gralloc buffer, minus vk_android.c, which a platforms=wayland build does not have),
 still shares it through zwp_linux_dmabuf_v1 (the compositor's blit path keeps working as the
@@ -36,6 +36,28 @@ and Zink all answer by rebuilding the swapchain -- on gralloc buffers or on stan
 the mode now is. The old chain's buffers keep working until the program lets go of it.
 
 Without the global nothing here runs: the WSI behaves exactly as before.
+
+UBWC. QTI gralloc compresses a buffer only when asked to: the vendor usage bit
+AHARDWAREBUFFER_USAGE_VENDOR_0 (bit 28, gralloc's GRALLOC_USAGE_PRIVATE_ALLOC_UBWC) together with a GPU
+usage and no CPU bit (IsUBwcEnabled in QTI's gr_utils.cpp). Qualcomm's own driver hands the Android
+loader that bit for its swapchains; Mesa never sets it, so without it every gralloc swapchain here was
+linear. A chain now asks gralloc, in this order:
+  1. UBWC: GPU usage + COMPOSER_OVERLAY + VENDOR_0. Only when the chain's modifier list holds
+     QCOM_COMPRESSED -- that list is the compositor's modifiers for the format, filtered by what the
+     driver can create with this swapchain's usage, flags, format list and compression control, so it
+     means both "the compositor imports UBWC here" (the app's BANNER_WAYLAND_UBWC=0 takes it away) and
+     "this image may be UBWC" -- and not for storage swapchains or with BANNER_WSI_AHB_LINEAR=1.
+  2. plain: GPU usage + COMPOSER_OVERLAY, gralloc's own choice (the only request before; linear on QTI).
+  3. CPU-linear: plain + CPU_READ_RARELY, which gralloc can never compress.
+A buffer is used only when its native handle is a QTI private handle ('gmsm') whose flags say what it
+is (PRIV_FLAGS_UBWC_ALIGNED = UBWC, neither UBWC flag = linear; the UBWC_PI variant counts as
+unreadable), vkCreateImage takes gralloc's pitch with that modifier, and -- for UBWC -- gralloc's
+buffer holds all of the driver's UBWC image (its layout is the driver's own, from modifier + pitch).
+An unreadable handle (the newer grallocs: no 'gmsm') skips request 2 and ends on 3, linear, as
+before, and its ints are printed once so a reader for it can be written. So a wrong guess can only
+ever cost UBWC, never produce a buffer the driver reads with the wrong layout. Each swapchain gets one
+line: "on gralloc buffers: UBWC (QCOM_COMPRESSED), stride N px", or "linear, stride N px (no UBWC:
+<why>)".
 
 Written against exact source text rather than diff context so it survives Mesa line drift; every
 anchor is asserted, so a Mesa where the WSI changed shape fails the build instead of shipping a
@@ -83,6 +105,8 @@ helpers = r'''
  * few NDK types used are declared here (they are stable ABI).
  */
 #include <dlfcn.h>
+#include <stdarg.h>
+#include <stdio.h>
 #include <sys/socket.h>
 #include "util/log.h"
 #include "util/os_file.h"
@@ -102,7 +126,23 @@ struct banner_native_handle { int version; int numFds; int numInts; int data[]; 
 #define BANNER_AHB_USAGE_GPU_SAMPLED_IMAGE  (1ull << 8)
 #define BANNER_AHB_USAGE_GPU_FRAMEBUFFER    (1ull << 9)
 #define BANNER_AHB_USAGE_COMPOSER_OVERLAY   (1ull << 11)
+/* AHARDWAREBUFFER_USAGE_VENDOR_0. QTI gralloc reads it as GRALLOC_USAGE_PRIVATE_ALLOC_UBWC (gralloc1's
+ * PRODUCER_USAGE_PRIVATE_0): with a GPU usage and no CPU bit it allocates UBWC. Turnip only runs on
+ * Qualcomm SoCs, and whatever gralloc does with it is checked on the handle before it is trusted. */
+#define BANNER_AHB_USAGE_VENDOR_0           (1ull << 28)
 #define BANNER_MOD_QCOM_COMPRESSED          0x0500000000000001ull /* DRM_FORMAT_MOD_QCOM_COMPRESSED */
+/* QTI private_handle_t flags (gr_priv_handle.h / gralloc_priv.h). */
+#define BANNER_QTI_FLAG_UBWC                0x08000000u /* PRIV_FLAGS_UBWC_ALIGNED */
+#define BANNER_QTI_FLAG_UBWC_PI             0x40000000u /* PRIV_FLAGS_UBWC_ALIGNED_PI (YUV only): not ours */
+
+/* The gralloc requests a chain's buffers can be allocated with, in the order they are tried. */
+enum {
+   BANNER_AHB_REQ_UBWC,   /* + VENDOR_0, no CPU bit: UBWC where gralloc can */
+   BANNER_AHB_REQ_PLAIN,  /* no vendor or CPU bit: gralloc's own choice (linear on QTI) */
+   BANNER_AHB_REQ_CPU,    /* + CPU_READ_RARELY: never compressed, so linear whatever the handle */
+   BANNER_AHB_REQ_COUNT,
+};
+static const char *const banner_ahb_req_name[BANNER_AHB_REQ_COUNT] = {"UBWC", "plain", "CPU-linear"};
 
 static struct {
    int state; /* 0 = untried, 1 = loaded, -1 = unavailable */
@@ -242,8 +282,10 @@ banner_ahb_skip_format(const struct wsi_wl_display *display, VkFormat format)
 }
 
 /* Native-handle sniff, the one Mesa's u_gralloc fallback uses (u_gralloc_fallback.c): a QTI
- * gralloc private_handle_t has the magic 'gmsm' as its first int and the UBWC flag
- * (PRIV_FLAGS_UBWC_ALIGNED, 0x08000000) in the next one. false = unknown layout. */
+ * gralloc private_handle_t has the magic 'gmsm' as its first int and its flags in the next one,
+ * PRIV_FLAGS_UBWC_ALIGNED meaning UBWC. A UBWC_PI buffer carries only PRIV_FLAGS_UBWC_ALIGNED_PI
+ * (QTI gr_utils.cpp: YUV formats only, never with COMPOSER_OVERLAY), so reading its flags as "not
+ * UBWC" would be wrong: unknown instead. false = unknown layout. */
 static bool
 banner_ahb_sniff_modifier(const struct banner_native_handle *h, uint64_t *mod)
 {
@@ -252,44 +294,115 @@ banner_ahb_sniff_modifier(const struct banner_native_handle *h, uint64_t *mod)
       return false;
    if ((uint32_t)h->data[h->numFds] != gmsm)
       return false;
-   *mod = (h->data[h->numFds + 1] & 0x08000000) ? BANNER_MOD_QCOM_COMPRESSED : DRM_FORMAT_MOD_LINEAR;
+   const uint32_t flags = (uint32_t)h->data[h->numFds + 1];
+   if (flags & BANNER_QTI_FLAG_UBWC_PI)
+      return false;
+   *mod = (flags & BANNER_QTI_FLAG_UBWC) ? BANNER_MOD_QCOM_COMPRESSED : DRM_FORMAT_MOD_LINEAR;
    return true;
 }
 
-/* Allocate one buffer of the chain's size with the chain's usage; reports gralloc's stride and the
- * modifier its layout maps to. A layout the sniff can't name is only trusted when the buffer was
- * asked for with a CPU bit (gralloc then can't have compressed it): linear. */
+/* A gralloc handle the sniff can't read (newer QTI grallocs no longer start it with 'gmsm'): print its
+ * ints once per process and request, which is what a reader for that handle would be written from --
+ * the UBWC request's and the CPU-linear request's side by side show where the layout is kept. */
+static void
+banner_ahb_dump_handle(const struct banner_native_handle *h, int req)
+{
+   static bool said[BANNER_AHB_REQ_COUNT];
+   if (!h || req < 0 || req >= BANNER_AHB_REQ_COUNT || said[req])
+      return;
+   said[req] = true;
+   char ints[64 * 9 + 1];
+   size_t pos = 0;
+   ints[0] = '\0';
+   for (int i = 0; i < h->numInts && i < 64; i++) {
+      int n = snprintf(ints + pos, sizeof(ints) - pos, " %08x", (uint32_t)h->data[h->numFds + i]);
+      if (n < 0 || (size_t)n >= sizeof(ints) - pos)
+         break;
+      pos += (size_t)n;
+   }
+   mesa_logi("banner-ahb: unreadable gralloc handle from the %s request (%d fds, %d ints); ints:%s",
+             banner_ahb_req_name[req], h->numFds, h->numInts, pos ? ints : " none");
+}
+
+/* Add one reason to a chain's "why linear" text (NULL text = nobody is collecting). */
+static void __attribute__((format(printf, 3, 4)))
+banner_ahb_why(char *why, size_t size, const char *fmt, ...)
+{
+   if (!why || !size)
+      return;
+   size_t len = strlen(why);
+   if (len && len + 2 < size) {
+      memcpy(why + len, "; ", 3);
+      len += 2;
+   }
+   if (len + 1 >= size)
+      return;
+   va_list ap;
+   va_start(ap, fmt);
+   vsnprintf(why + len, size - len, fmt, ap);
+   va_end(ap);
+}
+
+/* Is QCOM_COMPRESSED in the chain's modifier list? That list (wsi_configure_native_image) is the
+ * compositor's modifiers for this format that the driver can create with this swapchain's usage,
+ * flags, format list and compression control, so this one test is both "the compositor imports UBWC
+ * here" -- the app's BANNER_WAYLAND_UBWC=0 takes it off the list -- and "this image may be UBWC"
+ * (Turnip's ubwc_possible for the usage, compression control not DISABLED). */
+static bool
+banner_ahb_ubwc_offered(const struct wsi_image_info *info)
+{
+   for (uint32_t i = 0; i < info->drm_mod_list.drmFormatModifierCount; i++) {
+      if (info->drm_mod_list.pDrmFormatModifiers[i] == BANNER_MOD_QCOM_COMPRESSED)
+         return true;
+   }
+   return false;
+}
+
+/* Allocate one buffer of the chain's size with request `req` (BANNER_AHB_REQ_*); reports gralloc's
+ * stride and the modifier its layout maps to. A handle the sniff can't read is only trusted on the
+ * CPU-linear request (gralloc can't have compressed that buffer): for the others it is released,
+ * *unknown is set and the reason added to `why`, so the caller goes straight to the CPU request. */
 static AHardwareBuffer *
-banner_ahb_alloc(const struct wsi_wl_swapchain *chain, bool linear, uint32_t *stride, uint64_t *mod)
+banner_ahb_alloc(const struct wsi_wl_swapchain *chain, int req, uint32_t *stride, uint64_t *mod,
+                 bool *unknown, char *why, size_t why_size)
 {
    struct banner_ahb_desc d = {
       .width = chain->extent.width, .height = chain->extent.height, .layers = 1,
       .format = chain->banner.ahb_format,
       .usage = BANNER_AHB_USAGE_GPU_SAMPLED_IMAGE | BANNER_AHB_USAGE_GPU_FRAMEBUFFER |
                BANNER_AHB_USAGE_COMPOSER_OVERLAY |
-               (linear ? BANNER_AHB_USAGE_CPU_READ_RARELY : 0),
+               (req == BANNER_AHB_REQ_UBWC ? BANNER_AHB_USAGE_VENDOR_0 : 0) |
+               (req == BANNER_AHB_REQ_CPU ? BANNER_AHB_USAGE_CPU_READ_RARELY : 0),
    };
+   if (unknown)
+      *unknown = false;
    AHardwareBuffer *ahb = NULL;
    if (banner_nw.allocate(&d, &ahb) != 0 || !ahb) {
-      mesa_logw("banner-ahb: AHardwareBuffer_allocate %ux%u failed", d.width, d.height);
+      mesa_logw("banner-ahb: AHardwareBuffer_allocate %ux%u (%s request, usage %#llx) failed",
+                d.width, d.height, banner_ahb_req_name[req], (unsigned long long)d.usage);
+      banner_ahb_why(why, why_size, "gralloc refused the %s request", banner_ahb_req_name[req]);
       return NULL;
    }
    struct banner_ahb_desc got;
    banner_nw.describe(ahb, &got);
    const struct banner_native_handle *h = banner_nw.getNativeHandle(ahb);
+   if (!h || h->numFds < 1) {
+      banner_ahb_why(why, why_size, "a gralloc handle without a dma-buf");
+      banner_nw.release(ahb);
+      return NULL;
+   }
    uint64_t m = DRM_FORMAT_MOD_LINEAR;
    if (!banner_ahb_sniff_modifier(h, &m)) {
-      if (!linear) {
-         mesa_logw("banner-ahb: gralloc handle layout unknown (%d fds, %d ints): using linear buffers",
-                   h ? h->numFds : -1, h ? h->numInts : -1);
+      banner_ahb_dump_handle(h, req);
+      if (req != BANNER_AHB_REQ_CPU) {
+         banner_ahb_why(why, why_size, "gralloc handle layout unknown (%d fds, %d ints)",
+                        h->numFds, h->numInts);
+         if (unknown)
+            *unknown = true;
          banner_nw.release(ahb);
          return NULL;
       }
       m = DRM_FORMAT_MOD_LINEAR;
-   }
-   if (!h || h->numFds < 1) {
-      banner_nw.release(ahb);
-      return NULL;
    }
    *stride = got.stride;
    *mod = m;
@@ -334,10 +447,12 @@ static VkResult banner_ahb_create_mem(const struct wsi_swapchain *chain,
                                       const struct wsi_image_info *info,
                                       struct wsi_image *image);
 
-/* Decide, once per swapchain, whether its images come from gralloc. Allocates a probe buffer
- * (kept for the first image) to learn gralloc's stride and layout, and test-creates a VkImage
- * with that explicit layout so a refused UBWC layout falls back to linear buffers instead of a
- * failed swapchain. Leaves the chain untouched when anything is missing. */
+/* Decide, once per swapchain, whether its images come from gralloc and with which request (the
+ * order is at the top of banner_ahb_wsi.py). Each request allocates a probe buffer (kept for the
+ * first image) to learn gralloc's stride and layout, and test-creates a VkImage with that explicit
+ * layout, so a layout the driver refuses -- or, for UBWC, one gralloc's buffer is too small for --
+ * moves on to the next request instead of failing the swapchain. Leaves the chain untouched when
+ * anything is missing. One line per swapchain says what it got and, when linear, why. */
 static void
 banner_ahb_setup_chain(struct wsi_wl_swapchain *chain)
 {
@@ -365,15 +480,39 @@ banner_ahb_setup_chain(struct wsi_wl_swapchain *chain)
       return;
 
    const char *lin = getenv("BANNER_WSI_AHB_LINEAR");
-   bool linear = (lin && lin[0] == '1') ||
-                 (info->create.usage & VK_IMAGE_USAGE_STORAGE_BIT) != 0; /* no UAV writes into UBWC */
+   const bool force_linear = lin && lin[0] == '1';
+   const bool storage = (info->create.usage & VK_IMAGE_USAGE_STORAGE_BIT) != 0; /* no UAV writes into UBWC */
+   char why[256] = ""; /* why the chain ends up linear, for its line */
+   int order[BANNER_AHB_REQ_COUNT], n = 0;
+   if (force_linear)
+      banner_ahb_why(why, sizeof(why), "BANNER_WSI_AHB_LINEAR=1");
+   else if (storage)
+      banner_ahb_why(why, sizeof(why), "a storage swapchain");
+   else if (!banner_ahb_ubwc_offered(info))
+      banner_ahb_why(why, sizeof(why), "qcom_compressed is not among the compositor's modifiers "
+                     "for this format and usage");
+   else
+      order[n++] = BANNER_AHB_REQ_UBWC;
+   if (!force_linear && !storage)
+      order[n++] = BANNER_AHB_REQ_PLAIN;
+   order[n++] = BANNER_AHB_REQ_CPU;
+
    chain->banner.saved_tiling = info->create.tiling;
-   for (int attempt = 0; attempt < 2; attempt++, linear = true) {
+   bool unreadable = false; /* gralloc's handles can't be read: only the CPU-linear request is left */
+   for (int i = 0; i < n; i++) {
+      const int req = order[i];
+      if (req != BANNER_AHB_REQ_CPU && unreadable)
+         continue;
       uint32_t stride = 0;
       uint64_t mod = DRM_FORMAT_MOD_LINEAR;
-      AHardwareBuffer *ahb = banner_ahb_alloc(chain, linear, &stride, &mod);
-      if (!ahb)
+      bool unknown = false;
+      AHardwareBuffer *ahb = banner_ahb_alloc(chain, req, &stride, &mod, &unknown, why, sizeof(why));
+      if (!ahb) {
+         unreadable = unreadable || unknown;
          continue;
+      }
+      if (req == BANNER_AHB_REQ_UBWC && mod != BANNER_MOD_QCOM_COMPRESSED)
+         banner_ahb_why(why, sizeof(why), "gralloc answered the UBWC request with a linear buffer");
       chain->banner.layout = (VkSubresourceLayout) {
          .offset = 0,
          .rowPitch = (VkDeviceSize)stride * vk_format_get_blocksize(chain->vk_format),
@@ -387,25 +526,52 @@ banner_ahb_setup_chain(struct wsi_wl_swapchain *chain)
       banner_ahb_set_layout(chain, true);
       VkImage test = VK_NULL_HANDLE;
       VkResult r = wsi->CreateImage(chain->base.device, &info->create, &chain->base.alloc, &test);
+      if (r == VK_SUCCESS && mod == BANNER_MOD_QCOM_COMPRESSED) {
+         /* The driver lays UBWC out itself from the modifier and the pitch (metadata first, then the
+          * pixels, as gralloc does). gralloc's buffer must hold all of that layout; if it is smaller
+          * the two disagree about it (a different alignment), so trust neither. */
+         VkMemoryRequirements need;
+         wsi->GetImageMemoryRequirements(chain->base.device, test, &need);
+         off_t have = lseek(banner_nw.getNativeHandle(ahb)->data[0], 0, SEEK_END);
+         if (have <= 0 || (VkDeviceSize)have < need.size) {
+            wsi->DestroyImage(chain->base.device, test, &chain->base.alloc);
+            banner_ahb_set_layout(chain, false);
+            banner_nw.release(ahb);
+            banner_ahb_why(why, sizeof(why), "gralloc's UBWC buffer is %lld bytes, the driver's UBWC "
+                           "image needs %llu", (long long)have, (unsigned long long)need.size);
+            mesa_logw("banner-ahb: gralloc's UBWC buffer (%lld bytes) is smaller than the driver's UBWC "
+                      "image (%llu): not using UBWC", (long long)have, (unsigned long long)need.size);
+            continue;
+         }
+      }
       if (r == VK_SUCCESS) {
          wsi->DestroyImage(chain->base.device, test, &chain->base.alloc);
          chain->banner.mode = true;
-         chain->banner.linear = linear;
+         chain->banner.req = req;
          chain->banner.stride = stride;
          chain->banner.modifier = mod;
          chain->banner.probe = ahb;
          info->create_mem = banner_ahb_create_mem;
-         mesa_logi("banner-ahb: %ux%u swapchain (%u images) on gralloc buffers: %s, stride %u px",
-                   chain->extent.width, chain->extent.height, chain->base.image_count,
-                   mod == BANNER_MOD_QCOM_COMPRESSED ? "UBWC (QCOM_COMPRESSED)" : "linear", stride);
+         if (mod == BANNER_MOD_QCOM_COMPRESSED)
+            mesa_logi("banner-ahb: %ux%u swapchain (%u images) on gralloc buffers: UBWC (QCOM_COMPRESSED), "
+                      "stride %u px", chain->extent.width, chain->extent.height, chain->base.image_count,
+                      stride);
+         else
+            mesa_logi("banner-ahb: %ux%u swapchain (%u images) on gralloc buffers: linear, stride %u px "
+                      "(no UBWC: %s)", chain->extent.width, chain->extent.height, chain->base.image_count,
+                      stride, why[0] ? why : "gralloc chose linear");
          return;
       }
       banner_ahb_set_layout(chain, false);
       banner_nw.release(ahb);
+      banner_ahb_why(why, sizeof(why), "the driver refused gralloc's %s layout (pitch %u px, %d)",
+                     mod == BANNER_MOD_QCOM_COMPRESSED ? "UBWC" : "linear", stride, r);
       mesa_logw("banner-ahb: vkCreateImage with gralloc's %s layout (pitch %u px) refused (%d)%s",
                 mod == BANNER_MOD_QCOM_COMPRESSED ? "UBWC" : "linear", stride, r,
-                linear ? ": standard buffers" : ": trying linear");
+                i + 1 < n ? ": trying the next request" : ": standard buffers");
    }
+   mesa_logw("banner-ahb: %ux%u swapchain on standard buffers: no usable gralloc buffer (%s)",
+             chain->extent.width, chain->extent.height, why[0] ? why : "no request left");
 }
 
 /* image_info.create_mem for gralloc images: import the buffer's dma-buf as the image's memory
@@ -425,7 +591,7 @@ banner_ahb_create_mem(const struct wsi_swapchain *wsi_chain,
 
    chain->banner.probe = NULL;
    if (!ahb)
-      ahb = banner_ahb_alloc(chain, chain->banner.linear, &stride, &mod);
+      ahb = banner_ahb_alloc(chain, chain->banner.req, &stride, &mod, NULL, NULL, 0);
    if (!ahb)
       return VK_ERROR_OUT_OF_DEVICE_MEMORY;
    if (stride != chain->banner.stride || mod != chain->banner.modifier) {
@@ -453,9 +619,18 @@ banner_ahb_create_mem(const struct wsi_swapchain *wsi_chain,
       return VK_ERROR_OUT_OF_DEVICE_MEMORY;
    }
    off_t buf_size = lseek(fd, 0, SEEK_END);
-   if (buf_size > 0 && (VkDeviceSize)buf_size < reqs.size)
+   if (buf_size > 0 && (VkDeviceSize)buf_size < reqs.size) {
+      /* UBWC: the chain's probe passed this check for the same request, so gralloc changed its mind;
+       * never import a UBWC buffer that can't hold the driver's layout. */
+      if (mod == BANNER_MOD_QCOM_COMPRESSED) {
+         mesa_logw("banner-ahb: gralloc UBWC buffer is %lld bytes, the image needs %llu: refused",
+                   (long long)buf_size, (unsigned long long)reqs.size);
+         banner_nw.release(ahb);
+         return VK_ERROR_OUT_OF_DEVICE_MEMORY;
+      }
       mesa_logw("banner-ahb: gralloc buffer is %lld bytes, the image needs %llu",
                 (long long)buf_size, (unsigned long long)reqs.size);
+   }
 
    int import_fd = os_dupfd_cloexec(fd);
    if (import_fd < 0) {
@@ -570,7 +745,7 @@ patch(os.path.join(wsi, 'wsi_common_wayland.c'), [
      '      bool mode;                  /* images come from gralloc */\n'
      '      bool want;                  /* the mode this chain was built for (banner_ahb_mode_changed) */\n'
      '      bool retire_said;           /* the "rebuilding it" line was logged once */\n'
-     '      bool linear;                /* allocated with a CPU bit (linear layout) */\n'
+     '      int req;                    /* BANNER_AHB_REQ_*: the gralloc request its buffers use */\n'
      '      bool replaced_list;         /* explicit_info took drm_mod_list\'s place in create.pNext */\n'
      '      uint32_t ahb_format;\n'
      '      uint32_t stride;            /* pixels, gralloc\'s */\n'

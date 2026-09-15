@@ -465,11 +465,13 @@ package(){
 	[ -n "$(gitstr libvulkan_freedreno_wayland_a8xx_upstream.so)" ] && [ "$(gitstr libvulkan_freedreno_wayland_a8xx_upstream.so)" != "$(gitstr libvulkan_freedreno_wayland.so)" ] \
 		|| { echo -e "${red}a8xx_upstream and plain carry the same Mesa git string${nocolor}"; exit 1; }
 	echo "variant tables verified: FD710 in a7xx + a8xx_white; Adreno (TM) 825 in a8xx + a8xx_perf + a8xx_gen8 + a8xx_white; PWR_MAX only in a8xx_perf; deck_emu in a8xx_gen8 + a8xx_white; Adreno 812 / whitebelyash branch only in a8xx_white; a8xx_smxz distinct; a8xx_upstream has Adreno 840 and its own Mesa string"
-	# Every driver carries the zero-copy WSI (the private protocol's interface name is its marker).
+	# Every driver carries the zero-copy WSI (the private protocol's interface name is its marker),
+	# and its UBWC request (gralloc vendor usage bit 28; one of its log strings is the marker).
 	for f in $turnips; do
 		has "$f" "banner_ahb_v1" || fail_strings "$f does not carry the banner_ahb_v1 zero-copy WSI"
+		has "$f" "gralloc answered the UBWC request with a linear buffer" || fail_strings "$f does not carry the zero-copy UBWC request"
 	done
-	echo "zero-copy WSI (banner_ahb_v1) present in every driver"
+	echo "zero-copy WSI (banner_ahb_v1) with the UBWC request present in every driver"
 	echo "== NEEDED / SONAME =="
 	for f in *.so*; do
 		[ -f "$f" ] || continue
@@ -520,6 +522,8 @@ PYICD
 		echo "  when there is no usable node (main_device 0:0 / undescribable; patches/wayland/egl_wayland_no_drm_node.py)."
 		echo "Zero-copy layers: with BANNER_WSI_AHB=1 and a compositor advertising banner_ahb_v1, swapchain images are"
 		echo "  gralloc AHardwareBuffers handed to the compositor (patches/wayland/banner_ahb_wsi.py); off = unchanged WSI."
+		echo "  UBWC (gralloc vendor usage bit 28) when the compositor offers qcom_compressed and gralloc's handle is"
+		echo "  readable ('gmsm'), else linear; wine_debug.log names the layout once per swapchain."
 		echo "Turnip drivers (same flags and Wayland changes; ICD manifests in share/vulkan/icd.d):"
 		echo "  lib/libvulkan_freedreno_wayland.so           plain: Mesa $mesa_hash, no device patches"
 		echo "                                               Adreno 6xx, 730/740/750"
