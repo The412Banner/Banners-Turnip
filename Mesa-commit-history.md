@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260925-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260925-r5) | 2026-09-25 | [`ffdbb19`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ffdbb19c2c3f705c9d79b6b932fb93d486128135) | radeonsi: invalidate I$/SMEM$/VMEM$ at IB start on gfx12 | Vulkan 1.4.363 |
 | [v26.3.0-20260925-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260925-r4) | 2026-09-25 | [`b6cac6c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b6cac6ce3d2baf1279e7e087940ac4ed3276d1d5) | nir/validate: Validate that i2iN opcodes are only used for sign-extension | Vulkan 1.4.363 |
 | [v26.3.0-20260925-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260925-r3) | 2026-09-25 | [`05e6c96`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/05e6c9622e135ac2aeaf56ec70222642627e2162) | etnaviv: Derive the HALTI5 vertex shader cache state from core info | Vulkan 1.4.363 |
 | [v26.3.0-20260925-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260925-r2) | 2026-09-25 | [`b739817`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b739817b7e816d9728be1aad9616127c2c84e926) | ir3: don't use MGEN.B for nir_op_bfm on a3xx | Vulkan 1.4.363 |
