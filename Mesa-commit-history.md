@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20260926-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260926-r2) | 2026-09-26 | [`82d4f86`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/82d4f86a0a1e9f76b2de4fa77c6c8e6acaf06aa9) | jay/nir_lower_fsign: use u2u instead of i2i for downcasts | Vulkan 1.4.363 |
 | [v26.3.0-20260926](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260926) | 2026-09-26 | [`a5d39a4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a5d39a4b743b719cfc2a0da410910ea3fd8ff770) | intel/ci: Update expectation for RPL | Vulkan 1.4.363 |
 | [v26.3.0-20260925-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260925-r6) | 2026-09-25 | [`ce23b4a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ce23b4a7f502cacfd1941e67a0725c6301f229f8) | svga: Implement GL_ARB_shader_texture_image_samples | Vulkan 1.4.363 |
 | [v26.3.0-20260925-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20260925-r5) | 2026-09-25 | [`ffdbb19`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ffdbb19c2c3f705c9d79b6b932fb93d486128135) | radeonsi: invalidate I$/SMEM$/VMEM$ at IB start on gfx12 | Vulkan 1.4.363 |
