@@ -186,7 +186,8 @@ fetch_mesa(){
 apply_linux_patches(){
 	cd "$mesa"
 	local p out rc
-	for p in "$lx_patches/kgsl-drm-node.patch" "$lx_patches/kgsl-no-calibrated-timestamps.patch"; do
+	for p in "$lx_patches/kgsl-drm-node.patch" "$lx_patches/kgsl-no-calibrated-timestamps.patch" \
+	         "$lx_patches/kgsl-syncobj-merge-ts-fd.patch"; do
 		[ -f "$p" ] || die "missing $p"
 		log "applying $(basename "$p")"
 		rc=0
@@ -203,6 +204,8 @@ apply_linux_patches(){
 		|| die "kgsl-no-calibrated-timestamps did not reach tu_device.cc"
 	grep -q "kgsl_device_get_gpu_timestamp" src/freedreno/vulkan/tu_knl_kgsl.cc \
 		&& die "kgsl_device_get_gpu_timestamp is still in tu_knl_kgsl.cc"
+	[ "$(grep -c "int ret_fd = kgsl_syncobj_ts_to_fd(&ret)" src/freedreno/vulkan/tu_knl_kgsl.cc)" = 2 ] \
+		|| die "kgsl-syncobj-merge-ts-fd did not reach tu_knl_kgsl.cc"
 
 	# Termux 0014, as the Wayland leg does it: the KGSL timestamp wait must not assert on an
 	# unexpected errno. The kernel is the same Android kernel on this path.

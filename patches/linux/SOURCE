@@ -13,3 +13,12 @@ kgsl-no-calibrated-timestamps.patch
   were advertised from has_persistent_counter alone - so a compositor that used
   them aborted the process. Gates all three on the kernel interface actually
   implementing the call. Ported from Max's fix.
+
+kgsl-syncobj-merge-ts-fd.patch (DroidDeck, 2026-09-26; still in Mesa main)
+  kgsl_syncobj_merge converted the wrong syncobj when a timestamp result met a
+  sync-file: it called kgsl_syncobj_ts_to_fd on the fd syncobj, which has no queue
+  (NULL dereference in release builds, an assert in debug ones), and the
+  two-queues branch merged an fd the timestamp result never had. A submit that
+  waits on two semaphores of the two kinds - Cemu's every frame: the previous
+  command buffer plus the swapchain acquire - crashed on the first frame. Now the
+  timestamp side becomes the fence and is merged with the fd.
