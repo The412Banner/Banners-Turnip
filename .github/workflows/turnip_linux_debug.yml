@@ -47,7 +47,7 @@ jobs:
             *) echo "::error::unknown variant $VARIANT"; exit 1 ;;
           esac
           export EXTRA_PATCH EXTRA_SCRIPT
-          KIND=debug; [ -n "$KEEP_SYMBOLS" ] || KIND=test
+          KIND=debug; [ -n "${KEEP_SYMBOLS:-}" ] || KIND=test
           export ZIP_NAME="Turnip-${KIND}-${MESA_COMMIT:0:10}-${VARIANT}-Linux.zip"
           export META_NAME="Mesa Turnip ${KIND} ${MESA_COMMIT:0:10} ${VARIANT}-Linux"
           export PACKAGE_VERSION=1
