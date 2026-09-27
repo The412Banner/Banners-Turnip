@@ -12,6 +12,10 @@ on:
         description: "regular | a8xx | 710-720-test"
         required: false
         default: "regular"
+      symbols:
+        description: "true = debug info kept (for gdb); false = a normal release-mode driver, still artifact-only"
+        required: false
+        default: "true"
 
 jobs:
   linux-debug:
@@ -30,7 +34,7 @@ jobs:
         env:
           MESA_COMMIT: ${{ inputs.mesa_commit }}
           VARIANT: ${{ inputs.variant }}
-          KEEP_SYMBOLS: "1"
+          KEEP_SYMBOLS: ${{ inputs.symbols == 'false' && '' || '1' }}
         run: |
           set -euo pipefail
           [[ "$MESA_COMMIT" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::mesa_commit must be a full 40-hex commit"; exit 1; }
@@ -41,8 +45,9 @@ jobs:
             *) echo "::error::unknown variant $VARIANT"; exit 1 ;;
           esac
           export EXTRA_PATCH EXTRA_SCRIPT
-          export ZIP_NAME="Turnip-debug-${MESA_COMMIT:0:10}-${VARIANT}-Linux.zip"
-          export META_NAME="Mesa Turnip debug ${MESA_COMMIT:0:10} ${VARIANT}-Linux"
+          KIND=debug; [ -n "$KEEP_SYMBOLS" ] || KIND=test
+          export ZIP_NAME="Turnip-${KIND}-${MESA_COMMIT:0:10}-${VARIANT}-Linux.zip"
+          export META_NAME="Mesa Turnip ${KIND} ${MESA_COMMIT:0:10} ${VARIANT}-Linux"
           export PACKAGE_VERSION=1
           chmod +x build_turnip_linux.sh
           ./build_turnip_linux.sh
@@ -50,4 +55,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: turnip-linux-debug-${{ inputs.variant }}
-          path: linux_workdir/Turnip-debug-*-Linux.zip
+          path: linux_workdir/Turnip-*-Linux.zip
