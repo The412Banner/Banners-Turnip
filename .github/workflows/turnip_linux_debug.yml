@@ -34,10 +34,12 @@ jobs:
         env:
           MESA_COMMIT: ${{ inputs.mesa_commit }}
           VARIANT: ${{ inputs.variant }}
-          KEEP_SYMBOLS: ${{ inputs.symbols == 'false' && '' || '1' }}
+          SYMBOLS: ${{ inputs.symbols }}
         run: |
           set -euo pipefail
           [[ "$MESA_COMMIT" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::mesa_commit must be a full 40-hex commit"; exit 1; }
+          # An empty value is false to a GitHub expression, so the switch is made here.
+          if [ "$SYMBOLS" = "false" ]; then unset KEEP_SYMBOLS; else export KEEP_SYMBOLS=1; fi
           case "$VARIANT" in
             regular) EXTRA_PATCH=""; EXTRA_SCRIPT="" ;;
             a8xx) EXTRA_PATCH="patches/a8xx_gen8.patch"; EXTRA_SCRIPT="patches/a8xx_shared_mem.py" ;;
