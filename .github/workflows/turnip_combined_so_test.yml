@@ -1,0 +1,67 @@
+name: TEST Combined Android + Wayland Turnip (one .so)
+
+# Test only: builds build_turnip_combined_so.sh for two drivers and uploads the zips as artifacts.
+# Publishes nothing (no tag, release or README change).
+on:
+  # A workflow that exists only on this branch cannot be dispatched, so a push here runs it.
+  push:
+    branches: [test/combined-android-wayland-so]
+  workflow_dispatch:
+    inputs:
+      mesa_commit:
+        description: "Full 40-hex Mesa commit (empty = mesa_hash.txt, the latest release's commit)"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  combined:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variant: regular
+            suffix: ""
+            extra_patch: ""
+            extra_script: "patches/a840v2.py"
+          - variant: a8xx
+            suffix: "-A8xx"
+            extra_patch: "patches/a8xx_gen8.patch"
+            extra_script: "patches/a8xx_shared_mem.py:patches/a840v2.py"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build unzip flex bison glslang-tools curl ccache pkg-config \
+            clang lld llvm python3-pip zip patch patchelf binutils
+          pip3 install --break-system-packages meson mako pyyaml packaging
+
+      - name: Build
+        env:
+          INPUT_COMMIT: ${{ inputs.mesa_commit }}
+          VARIANT: ${{ matrix.variant }}
+          EXTRA_PATCH: ${{ matrix.extra_patch }}
+          EXTRA_SCRIPT: ${{ matrix.extra_script }}
+        run: |
+          export MESA_COMMIT="${INPUT_COMMIT:-$(tr -d '[:space:]' < mesa_hash.txt)}"
+          short="${MESA_COMMIT:0:7}"
+          export ZIP_NAME="Turnip-Combined-TEST${{ matrix.suffix }}-${short}.zip"
+          export META_NAME="Turnip Combined TEST${{ matrix.suffix }} ${short}"
+          ccache -M 2G
+          chmod +x build_turnip_combined_so.sh
+          ./build_turnip_combined_so.sh
+
+      - name: Upload zip
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 14
+          name: combined-${{ matrix.variant }}
+          path: combined_workdir/Turnip-Combined-TEST*.zip
+          if-no-files-found: error
