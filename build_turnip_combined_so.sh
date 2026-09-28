@@ -10,6 +10,9 @@
 #   * vk_icd* exported         The Android version script (vulkan-android.sym) exports only HMI,
 #                             so the Khronos loader finds no entry point and skips the driver --
 #                             VK_ERROR_INCOMPATIBLE_DRIVER. Found by this build's own export check.
+#   * old-libwayland compat    BannerHub/GameHub loads its own older libwayland-client first, which
+#                             lacks wl_display_dispatch_queue_timeout / wl_fixes_interface; Mesa's
+#                             fallbacks are used instead so the driver loads against either.
 #   * -Dandroid-strict=false  Mesa defaults it to true, and ANDROID_STRICT hides every instance
 #                             extension outside Android's allow-list -- VK_KHR_wayland_surface
 #                             included -- and refuses them in vkCreateInstance (vk_instance.c).
@@ -131,6 +134,29 @@ open(p, 'a').write("vk_icdGetInstanceProcAddr\nvk_icdNegotiateLoaderICDInterface
                    "(optional) vk_icdGetPhysicalDeviceProcAddr\n")
 print(open('src/vulkan/vulkan-android.sym').read())
 PY
+	# Load against ANY libwayland-client >= 1.22, not just the one we build with. A host app may put
+	# its own older copy first on the library path (BannerHub/GameHub ships one without
+	# wl_display_dispatch_queue_timeout / wl_fixes_interface, and the dlopen then fails on an
+	# undefined symbol). Mesa has a fallback for each; this makes it use them.
+	python3 - <<'PY' || die "old-libwayland compatibility patch failed"
+p = 'meson.build'
+s = open(p).read()
+for d in ("pre_args += ['-DHAVE_WL_DISPATCH_QUEUE_TIMEOUT']", "pre_args += ['-DHAVE_WL_CREATE_QUEUE_WITH_NAME']"):
+    assert s.count(d) == 1, d + " not found in meson.build"
+    s = s.replace(d, "message('combined build: " + d.split("'")[1] + " left off (old-libwayland compat)')", 1)
+open(p, 'w').write(s)
+p = 'src/vulkan/wsi/wsi_common_wayland.c'
+s = open(p).read()
+old = """#if defined(WL_FIXES_ACK_GLOBAL_REMOVE)
+#define MESA_WL_FIXES_VERSION 2
+#elif defined(WL_FIXES_INTERFACE)
+#define MESA_WL_FIXES_VERSION 1
+#endif"""
+assert s.count(old) == 1, "MESA_WL_FIXES_VERSION block not found"
+s = s.replace(old, "/* combined build: wl_fixes left out (old-libwayland compat) */", 1)
+open(p, 'w').write(s)
+print("old-libwayland compat: applied")
+PY
 	python3 "$wl_patches/banner_ahb_wsi.py" . || die "banner_ahb_wsi.py did not apply"
 	bash "$repo/patches/common/apply_common.sh" . || die "patches/common did not apply"
 
@@ -240,6 +266,10 @@ package(){
 	local wl; wl="$(echo "$syms" | grep -c ' UND .*wl_' || true)"
 	[ "$wl" -gt 10 ] || die "only $wl wl_* imports: the Wayland WSI is not in"
 	grep -q "VK_KHR_wayland_surface" "$so" || die "VK_KHR_wayland_surface string missing"
+	# Imports that only libwayland-client >= 1.23 / 1.24 has must not be here (see apply_patches).
+	for sym in wl_display_dispatch_queue_timeout wl_display_create_queue_with_name wl_fixes_interface; do
+		echo "$syms" | grep -q " UND .*\b$sym\b" && die "imports $sym: will not load against an older libwayland-client"
+	done
 	grep -q "banner_ahb_v1" "$so" || die "banner_ahb_v1 missing (zero-copy patch not in)"
 	for l in libwayland-client.so libdrm.so libffi.so libandroid-support.so; do
 		log "$l NEEDED: $("$re" -d "$stage/$l" | grep -oP 'NEEDED.*\[\K[^]]+' | tr '\n' ' ')"
