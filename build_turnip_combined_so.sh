@@ -44,7 +44,7 @@ ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 sdkver=36      # Mesa platform-sdk-version, as the Android release
 clangapi=34    # the NDK compiler the Android release uses
 termux_repo="https://packages-cf.termux.dev/apt/termux-main"
-termux_pkgs="libwayland libwayland-protocols libdrm libffi"
+termux_pkgs="libwayland libwayland-protocols libdrm libffi libandroid-support"
 termux_host_pkgs="libwayland-cross-scanner"
 sysroot="$workdir/termux"
 tprefix="$sysroot/data/data/com.termux/files/usr"
@@ -78,7 +78,7 @@ prepare(){
 		fetch "$termux_repo/$fn" "debs/$p.deb"
 		(cd debs && rm -rf x && mkdir x && cd x && ar x "../$p.deb" && tar -xf data.tar.* -C "$sysroot") || die "cannot unpack $p.deb"
 	done
-	for l in libwayland-client.so libdrm.so libffi.so; do
+	for l in libwayland-client.so libdrm.so libffi.so libandroid-support.so; do
 		[ -e "$tprefix/lib/$l" ] || die "Termux sysroot has no $l"
 	done
 
@@ -223,7 +223,7 @@ package(){
 	local re="$ndk/llvm-readelf" githash vk_patch vk_minor driver_version
 	rm -rf "$stage" && mkdir -p "$stage"
 	cp -L build-combined/src/freedreno/vulkan/libvulkan_freedreno.so "$stage/"
-	for l in libwayland-client.so libdrm.so libffi.so; do cp -L "$tprefix/lib/$l" "$stage/$l"; done
+	for l in libwayland-client.so libdrm.so libffi.so libandroid-support.so; do cp -L "$tprefix/lib/$l" "$stage/$l"; done
 	for l in libvulkan_freedreno.so libwayland-client.so libdrm.so; do
 		patchelf --set-rpath '$ORIGIN' "$stage/$l" || die "patchelf $l failed"
 	done
@@ -241,7 +241,7 @@ package(){
 	[ "$wl" -gt 10 ] || die "only $wl wl_* imports: the Wayland WSI is not in"
 	grep -q "VK_KHR_wayland_surface" "$so" || die "VK_KHR_wayland_surface string missing"
 	grep -q "banner_ahb_v1" "$so" || die "banner_ahb_v1 missing (zero-copy patch not in)"
-	for l in libwayland-client.so libdrm.so libffi.so; do
+	for l in libwayland-client.so libdrm.so libffi.so libandroid-support.so; do
 		log "$l NEEDED: $("$re" -d "$stage/$l" | grep -oP 'NEEDED.*\[\K[^]]+' | tr '\n' ' ')"
 	done
 	log "$wl wl_* imports, HMI + vk_icd* exported, RUNPATH \$ORIGIN"
@@ -265,7 +265,7 @@ package(){
 EOF
 	cat "$stage/meta.json"
 	rm -f "$workdir/$ZIP_NAME"
-	(cd "$stage" && zip -q -X "$workdir/$ZIP_NAME" libvulkan_freedreno.so libwayland-client.so libdrm.so libffi.so meta.json)
+	(cd "$stage" && zip -q -X "$workdir/$ZIP_NAME" libvulkan_freedreno.so libwayland-client.so libdrm.so libffi.so libandroid-support.so meta.json)
 	ls -la "$stage" "$workdir/$ZIP_NAME"
 	log "built $workdir/$ZIP_NAME"
 }
