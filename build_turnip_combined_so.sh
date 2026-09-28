@@ -7,6 +7,9 @@
 # 2026-09-12) was the Android release recipe plus -Dplatforms=android,wayland; it loaded through
 # AdrenoTools but every Wayland launch died with VK_ERROR_INCOMPATIBLE_DRIVER. Against that build
 # this one changes:
+#   * vk_icd* exported         The Android version script (vulkan-android.sym) exports only HMI,
+#                             so the Khronos loader finds no entry point and skips the driver --
+#                             VK_ERROR_INCOMPATIBLE_DRIVER. Found by this build's own export check.
 #   * -Dandroid-strict=false  Mesa defaults it to true, and ANDROID_STRICT hides every instance
 #                             extension outside Android's allow-list -- VK_KHR_wayland_surface
 #                             included -- and refuses them in vkCreateInstance (vk_instance.c).
@@ -109,6 +112,24 @@ new = """      } else if (ret == -1) {
 print('KGSL wait assert -> warning:', 'applied' if old in s else 'not-found')
 if old in s:
     open(p, 'w').write(s.replace(old, new, 1))
+PY
+	# The Android platform's version script exports only HMI and makes everything else local,
+	# including the three loader entry points the Khronos loader in the Wine container dlsym()s.
+	# Without them the loader skips the ICD and vkCreateInstance returns
+	# VK_ERROR_INCOMPATIBLE_DRIVER -- the 2026-09-12 failure. The functions are compiled on every
+	# platform (vk_instance.c, tu_device.cc); only the export list hides them.
+	python3 - <<'PY' || die "vulkan-android.sym patch failed"
+p = 'src/vulkan/vulkan-android.sym'
+s = open(p).read()
+old = "\t\tHMI;\n"
+assert s.count(old) == 1, "HMI; anchor not found in vulkan-android.sym"
+s = s.replace(old, old + "\t\tvk_icdGetInstanceProcAddr;\n\t\tvk_icdGetPhysicalDeviceProcAddr;\n"
+              "\t\tvk_icdNegotiateLoaderICDInterfaceVersion;\n", 1)
+open(p, 'w').write(s)
+p = 'src/vulkan/vulkan-icd-android-symbols.txt'
+open(p, 'a').write("vk_icdGetInstanceProcAddr\nvk_icdNegotiateLoaderICDInterfaceVersion\n"
+                   "(optional) vk_icdGetPhysicalDeviceProcAddr\n")
+print(open('src/vulkan/vulkan-android.sym').read())
 PY
 	python3 "$wl_patches/banner_ahb_wsi.py" . || die "banner_ahb_wsi.py did not apply"
 	bash "$repo/patches/common/apply_common.sh" . || die "patches/common did not apply"
