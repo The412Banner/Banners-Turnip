@@ -46,4 +46,5 @@ buffer is ever rendered into while the display scans it (tear-free kept); only t
   compositor tick the game waits for the display. The wrapper gets 3600+ only because it ignores the
   display fence (renders into a buffer the display may still scan out). Correct fix: more images for
   gralloc chains in MAILBOX/IMMEDIATE (default +2, BANNER_WSI_AHB_EXTRA_IMAGES=0..4 to tune on device).
-- Pushed image-count change; CI run: (see next line)
+- Pushed image-count change f7ac07e; CI 36505744731 SUCCESS (headSha verified). Zip Turnip-Wayland-ZCFIX-TEST-f7ac07e.zip sha256 13db8fe6bb39119b4cf42dd705ed435ad288e756e94b18055afe44a4ee4aec44, installed as imported:Turnip-ZCFIX-TEST-f7ac07e.
+- Device run zcfix-nozc (a21b38c, zc OFF, copy path, banner code inactive): 501 / 240 / 381 / 3377 / 358 / 241 / 241 / 228 (= bundled-nozc, no regression).
