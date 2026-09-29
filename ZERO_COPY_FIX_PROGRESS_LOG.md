@@ -31,3 +31,8 @@ buffer is ever rendered into while the display scans it (tear-free kept); only t
 
 ## Runs / results
 - CI run 36505095265 started for a21b38c (headSha verified), Mesa 9f1e484.
+- CI 36505095265 SUCCESS (headSha a21b38c verified). Zip Turnip-Wayland-ZCFIX-TEST-a21b38c.zip
+  sha256 2fb7177c1a63a0f0c8cd7708c327f12024c0aad0a38973f97237e9e02fc1c673, staged in /sdcard/Download/Wayland/,
+  installed on device as imported:Turnip-ZCFIX-TEST-a21b38c.
+- Device baseline (harness copy cube-zc.sh that waits for the NEW session log), combined 9f1e484, zc on:
+  297 / 261 / 312 / 270 / 326 / 252 / 254 / 239; log: ~2500-3000 releases per 10 s, ~1200 of them held (= 120 Hz).
