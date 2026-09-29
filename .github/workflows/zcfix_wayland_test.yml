@@ -1,0 +1,77 @@
+name: Wayland zero-copy ceiling fix (test build)
+
+# Exists only on fix/wayland-zero-copy-ceiling. Push-triggered (a workflow that is only on a
+# non-default branch cannot be dispatched). Builds ONE regular Wayland Turnip zip as an artifact;
+# publishes nothing (no tag, release or README commit).
+on:
+  push:
+    branches: [fix/wayland-zero-copy-ceiling]
+    paths-ignore:
+      - 'ZERO_COPY_FIX_PROGRESS_LOG.md'
+
+permissions:
+  contents: read
+
+jobs:
+  wayland:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build unzip flex bison glslang-tools curl ccache pkg-config \
+            clang lld llvm python3-pip zip patch binutils
+          pip3 install --break-system-packages meson mako pyyaml packaging
+
+      - name: Names
+        id: n
+        run: |
+          SHA=$(git rev-parse --short=7 HEAD)
+          echo "zip=Turnip-Wayland-ZCFIX-TEST-${SHA}.zip" >> $GITHUB_OUTPUT
+          echo "meta=Turnip Wayland ZCFIX TEST ${SHA}" >> $GITHUB_OUTPUT
+
+      - name: Build (Wayland, regular)
+        env:
+          # Same Mesa as the combined test driver (9f1e484), so only the WSI change differs.
+          MESA_COMMIT: 9f1e484e2e96759b1b45e7247c0bf34d52fc71b6
+          ZIP_NAME: ${{ steps.n.outputs.zip }}
+          META_NAME: ${{ steps.n.outputs.meta }}
+          PACKAGE_VERSION: "1"
+          VARIANT: regular
+        run: |
+          ccache -M 2G
+          chmod +x build_turnip_wayland.sh
+          ./build_turnip_wayland.sh
+
+      - name: Verify Wayland ZIP
+        run: |
+          python3 .github/scripts/verify_driver_zip.py --kind wayland \
+            --zip "wayland_workdir/${{ steps.n.outputs.zip }}" --variant regular \
+            --expect-name "${{ steps.n.outputs.meta }}" --expect-package-version 1 \
+            --layer-abi patches/wayland/layer-abi \
+            --build-report wayland_workdir/build-report.json --report report-wayland-regular.json
+          grep -c banner_ahb_pick_free wayland_workdir/mesa/src/vulkan/wsi/wsi_common_wayland.c
+          sha256sum "wayland_workdir/${{ steps.n.outputs.zip }}"
+
+      - name: Upload Wayland driver ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 7
+          name: turnip-wayland-zcfix
+          path: wayland_workdir/Turnip-Wayland-ZCFIX-TEST-*.zip
+          if-no-files-found: error
+
+      - name: Upload build evidence on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 7
+          name: wayland-zcfix-failed
+          path: |
+            wayland_workdir/mesa/build-wayland/meson-logs/meson-log.txt
+            wayland_workdir/build-report.json
+          if-no-files-found: ignore

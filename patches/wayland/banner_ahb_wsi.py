@@ -17,6 +17,18 @@ render fence is already in the dma-buf before wl_surface.commit, the compositor 
 layer's acquire fence, and imports the display's release fence back before wl_buffer.release, so
 the WSI's existing acquire path (wsi_create_sync_for_dma_buf_wait) waits on it.
 
+Acquire order (the zero-copy fps ceiling). That display release fence only signals when the display
+stops scanning the buffer out, about one refresh after the compositor let go of it, and Mesa's
+acquire picks the lowest-numbered free image: a buffer just back from the layer was taken straight
+away while the other free images sat idle, and the game's GPU queue stalled on the display once per
+refresh (uncapped MAILBOX topped out at ~2x the refresh rate, GPU ~27 % busy). For a gralloc chain
+the acquire now polls each free image's dma-buf (POLLOUT = every fence signalled, POLLIN = the
+writers, i.e. our own render, are done; a buffer ready for POLLIN but not POLLOUT is waiting only on
+the display's read fence) and takes, in order: an idle image, one still waiting only on our own
+earlier rendering, and only then one the display still holds. Nothing is ever handed out without its
+fences: the acquire semaphore still carries every fence of the dma-buf, so this changes which free
+image is chosen, never whether it is waited for.
+
 Who decides, and when:
 
   * banner_ahb_v1 version 2 (the compositor sends `mode`, which it does right after bind and again
@@ -105,6 +117,7 @@ helpers = r'''
  * few NDK types used are declared here (they are stable ABI).
  */
 #include <dlfcn.h>
+#include <poll.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <sys/socket.h>
@@ -699,6 +712,39 @@ banner_ahb_attach(struct wsi_wl_swapchain *chain, struct wsi_wl_image *image, st
    chain->banner.attached++;
 }
 
+/* Which free image the implicit acquire hands out on a gralloc chain (see "Acquire order" at the top
+ * of banner_ahb_wsi.py): -1 when none is free. dma-buf poll with a zero timeout never blocks; a fence
+ * still pending simply reads as "not ready" (also while an earlier poll's callback is armed). */
+static int
+banner_ahb_pick_free(struct wsi_wl_swapchain *chain)
+{
+   int own = -1, display = -1;
+   for (uint32_t i = 0; i < chain->base.image_count; i++) {
+      if (chain->images[i].busy)
+         continue;
+      const int fd = chain->images[i].base.dma_buf_fd;
+      struct pollfd p = {.fd = fd, .events = POLLIN | POLLOUT};
+      if (fd < 0 || poll(&p, 1, 0) < 0 || (p.revents & (POLLERR | POLLNVAL)))
+         return (int)i; /* can't tell: Mesa's own order */
+      if (p.revents & POLLOUT)
+         return (int)i; /* every fence signalled */
+      if (!(p.revents & POLLIN)) {
+         if (own < 0)
+            own = (int)i; /* our own rendering into it still runs: the queue is in order anyway */
+      } else if (display < 0) {
+         display = (int)i; /* only the display's release fence is left */
+      }
+   }
+   if (own >= 0 || display < 0)
+      return own;
+   if (!chain->banner.held_said) {
+      chain->banner.held_said = true;
+      mesa_logi("banner-ahb: every free image is still held by the display: the acquire waits for it "
+                "(%u images)", chain->base.image_count);
+   }
+   return display;
+}
+
 static void
 banner_ahb_image_fini(struct wsi_wl_image *image)
 {
@@ -745,6 +791,7 @@ patch(os.path.join(wsi, 'wsi_common_wayland.c'), [
      '      bool mode;                  /* images come from gralloc */\n'
      '      bool want;                  /* the mode this chain was built for (banner_ahb_mode_changed) */\n'
      '      bool retire_said;           /* the "rebuilding it" line was logged once */\n'
+     '      bool held_said;             /* the "every free image is held" line was logged once */\n'
      '      int req;                    /* BANNER_AHB_REQ_*: the gralloc request its buffers use */\n'
      '      bool replaced_list;         /* explicit_info took drm_mod_list\'s place in create.pNext */\n'
      '      uint32_t ahb_format;\n'
@@ -804,6 +851,23 @@ patch(os.path.join(wsi, 'wsi_common_wayland.c'), [
      '      zwp_linux_buffer_params_v1_destroy(params);\n'
      '      loader_wayland_wrap_buffer(&image->wayland_buffer, buffer);\n'
      '      banner_ahb_attach(chain, image, buffer);\n', 1),
+    # implicit acquire: on a gralloc chain, prefer a free image the display is done with
+    ('      /* Try to find a free image. */\n'
+     '      for (uint32_t i = 0; i < chain->base.image_count; i++) {\n'
+     '         if (!chain->images[i].busy) {\n',
+     '      /* Zero-copy: prefer a free image the display is done with (banner_ahb_pick_free). */\n'
+     '      if (chain->banner.mode) {\n'
+     '         int banner_i = banner_ahb_pick_free(chain);\n'
+     '         if (banner_i >= 0) {\n'
+     '            *image_index = (uint32_t)banner_i;\n'
+     '            chain->images[banner_i].busy = true;\n'
+     '            loader_wayland_buffer_set_flow(&chain->images[banner_i].wayland_buffer, &flow);\n'
+     '            return (chain->suboptimal ? VK_SUBOPTIMAL_KHR : VK_SUCCESS);\n'
+     '         }\n'
+     '      }\n'
+     '      /* Try to find a free image. */\n'
+     '      for (uint32_t i = 0; i < chain->base.image_count; i++) {\n'
+     '         if (!chain->images[i].busy) {\n', 1),
     # teardown
     ('         loader_wayland_buffer_destroy(&chain->images[i].wayland_buffer);\n'
      '         wsi_destroy_image(&chain->base, &chain->images[i].base);\n',

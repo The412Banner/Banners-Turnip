@@ -1,0 +1,32 @@
+# Wayland zero-copy fps ceiling — progress log
+
+Branch `fix/wayland-zero-copy-ceiling` (off A8xx 10497a9). Test workflow `zcfix_wayland_test.yml`
+exists only here, push-triggered, one regular Wayland zip as an artifact, publishes nothing.
+
+## Symptom (device, 2026-09-28, Pocket FIT / Adreno 750, 120 Hz panel)
+Zero-copy ON with current-Mesa Wayland Turnip: AIO uncapped mailbox tops out at ~240-320 fps on
+every API (D3D11 cube 274 vs 3423 with zero-copy off), GPU ~27 % busy. The Pipetto wrapper port of
+the same WSI patch has no ceiling (D3D11 3632).
+
+## Root cause
+- Compositor (read-only, bannerlators feat/linux-gamescope-runtime):
+  `ahb_swapchain.c` handle_released() imports SurfaceFlinger's previous-release fence into the
+  dma-buf (DMA_BUF_IOCTL_IMPORT_SYNC_FILE, READ) and then sends wl_buffer.release. The release fence
+  signals only when the display stops scanning the buffer out (~one refresh later). Log of a capped
+  run: "release 6.76/17.66 ms (2393, 1200 held)" — half of all frames were on the layer.
+- Mesa main `wsi_wl_swapchain_acquire_next_image_implicit()` returns the LOWEST-numbered non-busy
+  image, and `wsi_common_acquire_next_image2()` -> `wsi_signal_semaphore_for_image()` ->
+  `wsi_create_sync_for_dma_buf_wait()` exports every fence of that dma-buf into the acquire
+  semaphore. So a buffer freshly back from the layer is handed out at once and the game's GPU queue
+  waits on the display, once per refresh, while other free images sit idle -> throughput ~2x refresh.
+- Why the wrapper has no ceiling: its vk_physical_device never sets `supported_sync_types`
+  (wrapper_physical_device.c), so `wsi_signal_semaphore_for_image()` returns early and the acquire
+  never waits on the dma-buf at all.
+
+## Fix
+`patches/wayland/banner_ahb_wsi.py`: on a gralloc (banner) chain the implicit acquire polls each free
+image's dma-buf (poll timeout 0: POLLOUT = all fences done, POLLIN = writers done) and picks
+idle > only-our-own-render-pending > display-held. The semaphore still carries every fence, so no
+buffer is ever rendered into while the display scans it (tear-free kept); only the choice changes.
+
+## Runs / results
