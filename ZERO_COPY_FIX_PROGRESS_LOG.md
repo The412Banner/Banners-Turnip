@@ -48,3 +48,14 @@ buffer is ever rendered into while the display scans it (tear-free kept); only t
   gralloc chains in MAILBOX/IMMEDIATE (default +2, BANNER_WSI_AHB_EXTRA_IMAGES=0..4 to tune on device).
 - Pushed image-count change f7ac07e; CI 36505744731 SUCCESS (headSha verified). Zip Turnip-Wayland-ZCFIX-TEST-f7ac07e.zip sha256 13db8fe6bb39119b4cf42dd705ed435ad288e756e94b18055afe44a4ee4aec44, installed as imported:Turnip-ZCFIX-TEST-f7ac07e.
 - Device run zcfix-nozc (a21b38c, zc OFF, copy path, banner code inactive): 501 / 240 / 381 / 3377 / 358 / 241 / 241 / 228 (= bundled-nozc, no regression).
+- Device run zcfix2-zc (f7ac07e, zc ON): 541 / 269 / 378 / 3658 / 355 / 241 / 242 / 239 — ceiling GONE
+  (matches or beats zero-copy OFF 535 / 240 / 397 / 3423 / 356 / 241 / 240 / 229). Compositor: "AHB swapchain
+  (7 images, ... UBWC)", "presenting ... without a copy", 1200 zero-copy frames / 10 s, D3D11 slot 36749
+  GPU frames / 10 s; HUD GPU 86 % in D3D11 (was ~27 %). Screenshots clean (no corruption).
+
+## Carry-over
+- `wayland` branch (layer's bundled drivers, Mesa 7cda7850): its banner_ahb_wsi.py is byte-identical to A8xx's
+  and all three new anchors exist verbatim in 7cda7850's wsi_common_wayland.c -> cherry-pick the .py change.
+- Combined .so (build_turnip_combined_so.sh): uses the same patches/wayland/banner_ahb_wsi.py -> needs the same
+  change on its branch (test/combined-android-wayland-so) to lose the ceiling in zero-copy.
+- A8xx's regular Combined release Wayland legs (build_turnip_wayland.sh) pick it up once merged to A8xx.
