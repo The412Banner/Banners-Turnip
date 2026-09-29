@@ -30,3 +30,4 @@ idle > only-our-own-render-pending > display-held. The semaphore still carries e
 buffer is ever rendered into while the display scans it (tear-free kept); only the choice changes.
 
 ## Runs / results
+- CI run 36505095265 started for a21b38c (headSha verified), Mesa 9f1e484.
