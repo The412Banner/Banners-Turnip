@@ -36,3 +36,14 @@ buffer is ever rendered into while the display scans it (tear-free kept); only t
   installed on device as imported:Turnip-ZCFIX-TEST-a21b38c.
 - Device baseline (harness copy cube-zc.sh that waits for the NEW session log), combined 9f1e484, zc on:
   297 / 261 / 312 / 270 / 326 / 252 / 254 / 239; log: ~2500-3000 releases per 10 s, ~1200 of them held (= 120 Hz).
+- Device run zcfix-zc (a21b38c, zc on): 464 / 268 / 404 / 483 / 359 / 243 / 243 / 239.
+  D3D12 (404 vs zc-off 397) and D3D10 (359 vs 356) now match the copy path; Vulkan 297 -> 464 (zc-off 535);
+  D3D11 cube 270 -> 483 but zc-off does 3423. Still "presenting ... without a copy".
+  Note: OpenGL / D3D9 / D3D8 / DDraw are ~240 = 2x120 Hz with EVERY driver and with zero-copy OFF too
+  (wrapper run a1 log: 2362-2424 GPU frames / 10 s in those slots) -> not part of the zero-copy ceiling.
+- Remaining D3D11 limit: images. 5 images; the layer holds up to 3 (displayed, pending in SurfaceFlinger,
+  released-but-display-fenced), the surface's current buffer 1, the one being rendered 1 -> after each
+  compositor tick the game waits for the display. The wrapper gets 3600+ only because it ignores the
+  display fence (renders into a buffer the display may still scan out). Correct fix: more images for
+  gralloc chains in MAILBOX/IMMEDIATE (default +2, BANNER_WSI_AHB_EXTRA_IMAGES=0..4 to tune on device).
+- Pushed image-count change; CI run: (see next line)

@@ -29,6 +29,15 @@ earlier rendering, and only then one the display still holds. Nothing is ever ha
 fences: the acquire semaphore still carries every fence of the dma-buf, so this changes which free
 image is chosen, never whether it is waited for.
 
+Image count. Even so a 5-image chain runs dry: the layer holds up to three buffers (on screen, queued
+in SurfaceFlinger, and the one just released whose fence is still pending), the surface keeps its
+current buffer, and one is being rendered, so after every compositor tick the game waited for the
+display (D3D11 cube ~480 fps with zero-copy vs ~3400 with the copy path). A MAILBOX / IMMEDIATE
+swapchain created while the compositor wants gralloc images therefore gets BANNER_AHB_EXTRA_IMAGES
+(2) more images than Mesa would give it; BANNER_WSI_AHB_EXTRA_IMAGES=0..4 overrides that. FIFO chains
+are left alone (more images there would only add latency). Vulkan lets the implementation create
+more images than minImageCount; every program reads the real count back.
+
 Who decides, and when:
 
   * banner_ahb_v1 version 2 (the compositor sends `mode`, which it does right after bind and again
@@ -148,6 +157,10 @@ struct banner_native_handle { int version; int numFds; int numInts; int data[]; 
 #define BANNER_QTI_FLAG_UBWC                0x08000000u /* PRIV_FLAGS_UBWC_ALIGNED */
 #define BANNER_QTI_FLAG_UBWC_PI             0x40000000u /* PRIV_FLAGS_UBWC_ALIGNED_PI (YUV only): not ours */
 
+/* Extra images for a gralloc MAILBOX / IMMEDIATE chain (see "Image count" in banner_ahb_wsi.py). */
+#define BANNER_AHB_EXTRA_IMAGES     2u
+#define BANNER_AHB_EXTRA_IMAGES_MAX 4u
+
 /* The gralloc requests a chain's buffers can be allocated with, in the order they are tried. */
 enum {
    BANNER_AHB_REQ_UBWC,   /* + VENDOR_0, no CPU bit: UBWC where gralloc can */
@@ -223,6 +236,21 @@ banner_ahb_want(const struct wsi_wl_display *display)
    if (banner_ahb_env_disabled())
       return false;
    return display->banner_ahb_mode;
+}
+
+/* How many images to add to a swapchain being created: only while the compositor wants gralloc
+ * images, and only for the non-blocking present modes. */
+static uint32_t
+banner_ahb_extra_images(const struct wsi_wl_display *display, VkPresentModeKHR mode)
+{
+   if (mode != VK_PRESENT_MODE_MAILBOX_KHR && mode != VK_PRESENT_MODE_IMMEDIATE_KHR)
+      return 0;
+   if (!banner_ahb_want(display))
+      return 0;
+   const char *e = getenv("BANNER_WSI_AHB_EXTRA_IMAGES");
+   if (e && e[0] >= '0' && e[0] <= '9')
+      return MIN2((uint32_t)atoi(e), BANNER_AHB_EXTRA_IMAGES_MAX);
+   return BANNER_AHB_EXTRA_IMAGES;
 }
 
 static void
@@ -836,6 +864,16 @@ patch(os.path.join(wsi, 'wsi_common_wayland.c'), [
      '         }\n'
      '         if (banner_ahb_skip_format(&display, disp_fmt->vk_format))\n'
      '            continue;\n', 2),
+    # swapchain creation: room for the extra gralloc images, then add them for MAILBOX / IMMEDIATE
+    ('   size_t size = sizeof(*chain) + MAX2(WSI_WL_BUMPED_NUM_IMAGES, pCreateInfo->minImageCount) * sizeof(chain->images[0]);\n',
+     '   size_t size = sizeof(*chain) + (MAX2(WSI_WL_BUMPED_NUM_IMAGES, pCreateInfo->minImageCount) +\n'
+     '                                   BANNER_AHB_EXTRA_IMAGES_MAX) * sizeof(chain->images[0]);\n', 1),
+    ('   VkPresentModeKHR present_mode = wsi_swapchain_get_present_mode(wsi_device, pCreateInfo);\n',
+     '   /* Bannerlator zero-copy: a gralloc chain\'s buffers spend longer with the display (see\n'
+     '    * banner_ahb_extra_images); the allocation above has room for these. */\n'
+     '   num_images += banner_ahb_extra_images(wsi_wl_surface->display, pCreateInfo->presentMode);\n'
+     '\n'
+     '   VkPresentModeKHR present_mode = wsi_swapchain_get_present_mode(wsi_device, pCreateInfo);\n', 1),
     # swapchain creation: decide before the images are made
     ('   for (uint32_t i = 0; i < chain->base.image_count; i++) {\n'
      '      result = wsi_wl_image_init(chain, &chain->images[i],\n'
