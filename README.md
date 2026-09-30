@@ -56,6 +56,16 @@ These are fixes and features **not in Mesa `main`**, so every ZIP carries a fix:
 | [`winnative/0001`](patches/common/winnative/0001-tu-Emulate-VK_EXT_mesh_shader-with-compute.patch), [`0002`](patches/common/winnative/0002-tu-ir3-Support-a-required-subgroup-size-of-half-a-wa.patch) — *DirectX 12 Ultimate: mesh shaders + wave32* | Turnip has no `VK_EXT_mesh_shader`, so VKD3D-Proton can't offer DX12 mesh shaders, and it rejects `WaveSize(32)` shaders on A8xx's 64-wide waves. Games that need them (FINAL FANTASY VII REBIRTH, Alan Wake 2) render wrong or not at all. | Task and mesh shaders run as compute into a ring that a generated vertex shader draws; render passes with mesh draws use sysmem. On Adreno 7xx and 8xx only. A required subgroup size of 32 works on A8xx (each half-wave is a subgroup). From Max (MaxsTechReview) in [WinNative-Emu/Drivers](https://github.com/WinNative-Emu/Drivers). |
 | [`winnative/0003`](patches/common/winnative/0003-ir3-Sanitize-cube-map-directions-on-A8XX.patch), [`0004`](patches/common/winnative/0004-tu-Invalidate-bindless-descriptors-through-the-A8XX-.patch), [`0005`](patches/common/winnative/0005-tu-kgsl-Fetch-A8XX-command-streams-through-a-virtual.patch), [`0006`](patches/common/winnative/0006-tu-kgsl-Cache-retired-A8XX-IB-storage.patch) — *A8xx GPU hangs* | Four Adreno 8xx hangs found in FINAL FANTASY VII REBIRTH: a cube-map lookup with an empty direction, stale bindless descriptors, freeing command memory, and churning that memory during play. | Each fix only takes effect on Adreno 8xx; older GPUs are unchanged. `TU_KGSL_IB_CACHE=false` turns off 0006 for comparison. From Max, as above. |
 
+### Android buffer fixes (X11 / AdrenoTools zips)
+
+Three changes to how the driver reads Android's screen buffers, from [Droid-Deck/Drivers](https://github.com/Droid-Deck/Drivers). They are in the four X11 zips only: the Wayland and Linux drivers don't use Android's buffer code. Applied by [`apply_android.sh`](patches/android/apply_android.sh), which fails the build if one goes missing. Notes: [`patches/android/SOURCE`](patches/android/SOURCE).
+
+| Change | What it does |
+| :--- | :--- |
+| [`gralloc_ubwc_detect.py`](patches/android/gralloc_ubwc_detect.py) (Max) | Newer Qualcomm phones stopped marking their compressed (UBWC) buffers the old way, so the driver read them as uncompressed and the picture could come out distorted. They are recognised again. The A8xx zip already had an older form of this fix. |
+| [`add_aimapper_gralloc.py`](patches/android/add_aimapper_gralloc.py) + [`u_gralloc_aimapper.c`](patches/android/aimapper/u_gralloc_aimapper.c) (Leb-Sun) | An IMapper5 buffer reader, for newer Android devices whose buffers the older readers can't handle. |
+| [`add_ubwc_swapchain_usage.py`](patches/android/add_ubwc_swapchain_usage.py) (Leb-Sun) | Asks Android for compressed swapchain buffers, which saves memory bandwidth (RedMagic work). |
+
 ### A6xx / A7xx — Standard
 
 Mesa `main` plus the [fixes every driver carries](#fixes-in-every-driver), with no GPU-specific patches. Compatible with Adreno 600–700 series GPUs (Snapdragon 600–800 series, including 7 Gen and 8 Gen 1–3).
