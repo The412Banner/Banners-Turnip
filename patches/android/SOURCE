@@ -1,0 +1,22 @@
+Android-platform changes, applied by apply_android.sh in the AdrenoTools (X11) legs only
+(build_turnip.sh, after EXTRA_PATCH). The Wayland legs build Mesa Linux-style on bionic and the
+Linux legs are glibc, so neither uses Mesa's Android gralloc / AHB code.
+
+From Droid-Deck/Drivers patches/scripts (2026-09-30, 990e000):
+
+gralloc_ubwc_detect.py (Max)
+  Newer Qualcomm gralloc no longer writes the 'gmsm' header, so u_gralloc_fallback never saw
+  UBWC buffers and gave them a linear modifier (distorted picture). Keeps the numInts >= 2 guard.
+  The A8xx gen8 stack has an older form of the same change ("HACK: u_gralloc: always use ubwc
+  detection path"); on that leg the script sees it and skips.
+
+add_aimapper_gralloc.py + aimapper/u_gralloc_aimapper.c (Leb-Sun, MIT)
+  An IMapper5 stable-C gralloc backend (AIMapper_loadIMapper, loaded as an SP-HAL through
+  libvndksupport), tried before the libdrm fallback, for devices whose gralloc the older
+  backends cannot read.
+
+add_ubwc_swapchain_usage.py (Leb-Sun)
+  Answers VkAndroidHardwareBufferUsageANDROID with the vendor UBWC usage bit (0x10000000) when
+  the image has no CPU access, so AHB swapchain buffers are allocated compressed (RedMagic).
+
+mesa_edit.py is Droid-Deck's anchor-or-fail helper: a missing anchor stops the build.

@@ -82,6 +82,9 @@ build_lib_for_android(){
 		patch -p1 -N --fuzz=4 < "../../$EXTRA_PATCH" || echo -e "${red}Warning: partial patch failures, continuing...${nocolor}"
 	fi
 
+	# Android gralloc / AHB swapchain changes (patches/android/SOURCE); fails the build if one does not land.
+	bash ../../patches/android/apply_android.sh . || { echo -e "${red}patches/android did not apply, aborting!${nocolor}"; exit 1; }
+
 	# Apply optional Python scripts if EXTRA_SCRIPT is set (colon-separated list)
 	# freedreno_devices.py: reset if patch left it with syntax errors, then re-apply cleanly
 	if [ -n "$EXTRA_SCRIPT" ]; then
