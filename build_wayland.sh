@@ -39,6 +39,9 @@ termux_repo="https://packages-cf.termux.dev/apt/termux-main"
 # This repo: prepare() cd's into the work dir, so resolve it before anything moves.
 repo="$(cd "$(dirname "$0")" && pwd)"
 termux_pkgs="libwayland libwayland-protocols libdrm libffi"
+# EGL's X11 platform (kopper over VK_KHR_xcb_surface) for winex11's EGL backend: Xlib/xcb and the
+# extensions Mesa's platform_x11 links (dri3, present, sync, xfixes, randr, shm, xshmfence).
+termux_pkgs="$termux_pkgs libx11 libxcb libxau libxdmcp libxext libxfixes libxrandr libxrender libxshmfence libxxf86vm xorgproto"
 # Mesa wants a wayland-scanner of exactly the libwayland version; Termux ships an x86_64 one.
 termux_host_pkgs="libwayland-cross-scanner"
 sysroot="$workdir/termux"
@@ -271,7 +274,8 @@ configure(){	# <mesa dir> <build dir>
 		-Dbuildtype=release \
 		-Dstrip=false \
 		-Db_ndebug=true \
-		-Dplatforms=wayland \
+		-Dplatforms=x11,wayland \
+		-Dxlib-lease=disabled \
 		-Dgallium-drivers=zink \
 		-Dvulkan-drivers=freedreno \
 		-Dfreedreno-kmds=msm,kgsl \
@@ -314,6 +318,9 @@ build(){
 	ninja -C "$workdir/mesa/build-wayland"
 	rm -rf "$out" && DESTDIR="$out" ninja -C "$workdir/mesa/build-wayland" install
 	cp -L "$workdir/mesa/build-wayland/src/freedreno/vulkan/libvulkan_freedreno.so" "$out/usr/lib/libvulkan_freedreno_wayland.so"
+
+	# BANNER_PLAIN_ONLY=1: stop after the plain tree (Turnip + EGL + Zink), for EGL experiments.
+	if [ "${BANNER_PLAIN_ONLY:-0}" = 1 ]; then echo "BANNER_PLAIN_ONLY: skipping the driver variants"; return 0; fi
 
 	# a7xx: Vauzi-17/710 3.6.
 	apply_wayland_patches mesa-a7xx
@@ -561,4 +568,16 @@ PYICD
 
 prepare
 build
+if [ "${BANNER_PLAIN_ONLY:-0}" = 1 ]; then
+	# EGL experiment: the plain tree's installed libs plus the Termux libs they link, no driver variants.
+	pkg="$workdir/banner-mesa-wayland"; rm -rf "$pkg" && mkdir -p "$pkg/lib"
+	cp -aL "$out/usr/lib/"*.so* "$pkg/lib/" 2>/dev/null || true
+	for l in libwayland-client libdrm libffi libX11 libX11-xcb libxcb libxcb-dri3 libxcb-present libxcb-sync libxcb-xfixes libxcb-randr libxcb-shm libxshmfence libXau libXdmcp libXext libXfixes libXrandr libXrender; do
+		cp -aL "$tprefix/lib/$l.so"* "$pkg/lib/" 2>/dev/null || true
+	done
+	for f in "$pkg/lib/"libEGL.so* "$pkg/lib/"libgallium-*.so; do echo "== $(basename "$f")"; "$ndk/llvm-readelf" -d "$f" | grep NEEDED; done
+	"$ndk/llvm-strings" "$pkg/lib/libEGL.so.1" | grep -E "dri2_(x11|wl)_|platform_x11|EGL_KHR_platform_x11" | sort -u | head -20
+	ls -la "$pkg/lib"
+	exit 0
+fi
 package

@@ -59,7 +59,7 @@ jobs:
         run: |
           ccache -M 2G
           chmod +x build_wayland.sh
-          ./build_wayland.sh
+          BANNER_PLAIN_ONLY=1 ./build_wayland.sh
           ccache -s
 
       - name: Upload
@@ -80,6 +80,7 @@ jobs:
           if-no-files-found: ignore
 
   turnip-combined:
+    if: false  # exp/egl-x11-platform: EGL experiment only
     # The release recipe plus the Wayland WSI: one AdrenoTools-style zip for X11 and Wayland.
     runs-on: ubuntu-24.04
     steps:
