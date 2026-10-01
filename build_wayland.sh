@@ -572,6 +572,7 @@ if [ "${BANNER_PLAIN_ONLY:-0}" = 1 ]; then
 	# EGL experiment: the plain tree's installed libs plus the Termux libs they link, no driver variants.
 	pkg="$workdir/banner-mesa-wayland"; rm -rf "$pkg" && mkdir -p "$pkg/lib"
 	cp -aL "$out/usr/lib/"*.so* "$pkg/lib/" 2>/dev/null || true
+	(cd "$pkg/lib" && { [ -e libEGL.so.1 ] || cp -L libEGL.so libEGL.so.1; } && { [ -e libGLESv2.so.2 ] || cp -L libGLESv2.so libGLESv2.so.2; })
 	for l in libwayland-client libdrm libffi libX11 libX11-xcb libxcb libxcb-dri3 libxcb-present libxcb-sync libxcb-xfixes libxcb-randr libxcb-shm libxshmfence libXau libXdmcp libXext libXfixes libXrandr libXrender; do
 		cp -aL "$tprefix/lib/$l.so"* "$pkg/lib/" 2>/dev/null || true
 	done
