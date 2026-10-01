@@ -284,7 +284,7 @@ configure(){	# <mesa dir> <build dir>
 		-Dopengl=true \
 		-Dgles1=disabled \
 		-Dgles2=enabled \
-		-Dglx=disabled \
+		-Dglx=dri \
 		-Dgbm=disabled \
 		-Dglvnd=disabled \
 		-Dllvm=disabled \
@@ -573,7 +573,10 @@ if [ "${BANNER_PLAIN_ONLY:-0}" = 1 ]; then
 	pkg="$workdir/banner-mesa-wayland"; rm -rf "$pkg" && mkdir -p "$pkg/lib"
 	cp -aL "$out/usr/lib/"*.so* "$pkg/lib/" 2>/dev/null || true
 	(cd "$pkg/lib" && { [ -e libEGL.so.1 ] || cp -L libEGL.so libEGL.so.1; } && { [ -e libGLESv2.so.2 ] || cp -L libGLESv2.so libGLESv2.so.2; })
-	for l in libwayland-client libdrm libffi libX11 libX11-xcb libxcb libxcb-dri3 libxcb-present libxcb-sync libxcb-xfixes libxcb-randr libxcb-shm libxshmfence libXau libXdmcp libXext libXfixes libXrandr libXrender; do
+	(cd "$pkg/lib" && { [ -e libGL.so.1 ] || { [ -e libGL.so ] && cp -L libGL.so libGL.so.1; } || true; })
+	echo "== GLX libGL:"; ls -la "$pkg/lib"/libGL* 2>/dev/null || echo "no libGL built"
+	[ -e "$pkg/lib/libGL.so.1" ] && { "$ndk/llvm-readelf" -d "$pkg/lib/libGL.so.1" | grep NEEDED; "$ndk/llvm-strings" "$pkg/lib/libGL.so.1" | grep -E "kopper|drisw|dri3" | sort -u | head -12; }
+	for l in libwayland-client libdrm libffi libX11 libX11-xcb libxcb libxcb-glx libXxf86vm libxcb-dri2 libxcb-dri3 libxcb-present libxcb-sync libxcb-xfixes libxcb-randr libxcb-shm libxshmfence libXau libXdmcp libXext libXfixes libXrandr libXrender; do
 		cp -aL "$tprefix/lib/$l.so"* "$pkg/lib/" 2>/dev/null || true
 	done
 	for f in "$pkg/lib/"libEGL.so* "$pkg/lib/"libgallium-*.so; do echo "== $(basename "$f")"; "$ndk/llvm-readelf" -d "$f" | grep NEEDED; done
