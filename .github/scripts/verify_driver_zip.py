@@ -62,8 +62,9 @@ LINUX_NEEDED_ALLOWED = LINUX_NEEDED_REQUIRED | {
 # Anything from the Android side means the build picked up the wrong sysroot.
 LINUX_NEEDED_FORBIDDEN = {"libc.so", "libm.so", "libdl.so", "liblog.so", "libsync.so",
                           "libhardware.so", "libnativewindow.so", "libc++_shared.so", "libz.so"}
-# The two KGSL fixes, as strings that only exist because they were applied.
-LINUX_MARKERS = ["wait_timestamp_safe: errno %d (%s)"]
+# Strings that only exist because patches/common/mesa-44838 (Danil's KGSL sync series) was applied.
+LINUX_MARKERS = ["KGSL timestamp %s failed: context %u, timestamp %u, errno %d (%s)",
+                 "KGSL sync FD wait failed: fd %d, errno %d (%s)"]
 GPU_NAME_RE = re.compile(rb"(?<=\x00)(FD[0-9]{3}|Adreno \(TM\) [0-9X][0-9X-]*|Adreno X[0-9][0-9-]*)(?=\x00)")
 
 
