@@ -204,26 +204,7 @@ apply_linux_patches(){
 	grep -q "kgsl_device_get_gpu_timestamp" src/freedreno/vulkan/tu_knl_kgsl.cc \
 		&& die "kgsl_device_get_gpu_timestamp is still in tu_knl_kgsl.cc"
 
-	# Termux 0014, as the Wayland leg does it: the KGSL timestamp wait must not assert on an
-	# unexpected errno. The kernel is the same Android kernel on this path.
-	kgsl_assert="$(python3 - <<'PY'
-p = 'src/freedreno/vulkan/tu_knl_kgsl.cc'
-s = open(p).read()
-old = """      } else if (ret == -1) {
-         assert(errno == ETIMEDOUT);
-         return VK_TIMEOUT;"""
-new = """      } else if (ret == -1) {
-         if (errno != ETIMEDOUT)
-            mesa_logw("wait_timestamp_safe: errno %d (%s)", errno, strerror(errno));
-         return VK_TIMEOUT;"""
-if old in s:
-    open(p, 'w').write(s.replace(old, new, 1))
-    print('applied')
-else:
-    print('not-found')
-PY
-)"
-	log "KGSL timestamp-wait assert -> warning: $kgsl_assert"
+	# (Termux 0014, the timestamp-wait assert, is gone: mesa-44838/0001 returns the error instead.)
 	# KGSL fixes every leg ships (patches/common/SOURCE).
 	bash "$repo/patches/common/apply_common.sh" . || die "patches/common did not apply"
 

@@ -1,0 +1,127 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <dpiliaiev@igalia.com>
+Date: Wed, 30 Sep 2026 19:57:31 +0200
+Subject: [PATCH] tu/kgsl: Distinguish timestamp and sync wait errors
+
+Would allow catching device loss earlier.
+
+Assisted-by: LLM
+Signed-off-by: Danylo Piliaiev <dpiliaiev@igalia.com>
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 48 +++++++++++++++++++----------
+ 1 file changed, 31 insertions(+), 17 deletions(-)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index bec37206..1614c0f8 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -826,14 +826,26 @@ get_relative_ms(uint64_t abs_timeout_ns)
+    return abs_timeout_ms - cur_time_ms;
+ }
+ 
++static VkResult
++kgsl_timestamp_error(
++   struct tu_device *device, unsigned int context_id, unsigned int timestamp, const char *operation, int error)
++{
++   if (error == ETIMEDOUT)
++      return VK_TIMEOUT;
++
++   if (error == EDEADLK || error == EPROTO)
++      return vk_device_set_lost(&device->vk, "KGSL timestamp %s failed: context %u, timestamp %u, errno %d (%s)",
++                                operation, context_id, timestamp, error, strerror(error));
++
++   return vk_errorf(device, VK_ERROR_UNKNOWN, "KGSL timestamp %s failed: context %u, timestamp %u, errno %d (%s)",
++                    operation, context_id, timestamp, error, strerror(error));
++}
++
+ /* safe_ioctl is not enough as restarted waits would not adjust the timeout
+  * which could lead to waiting substantially longer than requested
+  */
+ static VkResult
+-wait_timestamp_safe(int fd,
+-                    unsigned int context_id,
+-                    unsigned int timestamp,
+-                    uint64_t abs_timeout_ns)
++wait_timestamp_safe(struct tu_device *device, unsigned int context_id, unsigned int timestamp, uint64_t abs_timeout_ns)
+ {
+    struct kgsl_device_waittimestamp_ctxtid wait = {
+       .context_id = context_id,
+@@ -842,7 +854,7 @@ wait_timestamp_safe(int fd,
+    };
+ 
+    while (true) {
+-      int ret = ioctl(fd, IOCTL_KGSL_DEVICE_WAITTIMESTAMP_CTXTID, &wait);
++      int ret = ioctl(device->fd, IOCTL_KGSL_DEVICE_WAITTIMESTAMP_CTXTID, &wait);
+ 
+       if (ret == -1 && (errno == EINTR || errno == EAGAIN)) {
+          int timeout_ms = get_relative_ms(abs_timeout_ns);
+@@ -853,8 +865,7 @@ wait_timestamp_safe(int fd,
+ 
+          wait.timeout = timeout_ms;
+       } else if (ret == -1) {
+-         assert(errno == ETIMEDOUT);
+-         return VK_TIMEOUT;
++         return kgsl_timestamp_error(device, context_id, timestamp, "wait", errno);
+       } else {
+          return VK_SUCCESS;
+       }
+@@ -867,8 +878,7 @@ kgsl_queue_wait_fence(struct tu_queue *queue, uint32_t fence,
+ {
+    uint64_t abs_timeout_ns = os_time_get_nano() + timeout_ns;
+ 
+-   return wait_timestamp_safe(queue->device->fd, queue->msm_queue_id,
+-                              fence, abs_timeout_ns);
++   return wait_timestamp_safe(queue->device, queue->msm_queue_id, fence, abs_timeout_ns);
+ }
+ 
+ static VkResult
+@@ -899,9 +909,11 @@ kgsl_syncobj_wait(struct tu_device *device,
+                                          &device->submit_mutex, &abstime);
+          }
+          if (ret != 0) {
+-            assert(ret == ETIMEDOUT);
+             pthread_mutex_unlock(&device->submit_mutex);
+-            return VK_TIMEOUT;
++            if (ret == ETIMEDOUT)
++               return VK_TIMEOUT;
++
++            return vk_errorf(device, VK_ERROR_UNKNOWN, "KGSL pending sync wait failed: %s", strerror(ret));
+          }
+       }
+ 
+@@ -916,15 +928,18 @@ kgsl_syncobj_wait(struct tu_device *device,
+       return VK_TIMEOUT;
+ 
+    case KGSL_SYNCOBJ_STATE_TS: {
+-      return wait_timestamp_safe(device->fd, s->queue->msm_queue_id,
+-                                 s->timestamp, abs_timeout_ns);
++      return wait_timestamp_safe(device, s->queue->msm_queue_id, s->timestamp, abs_timeout_ns);
+    }
+ 
+    case KGSL_SYNCOBJ_STATE_FD: {
+       int ret = sync_wait(s->fd, get_relative_ms(abs_timeout_ns));
+       if (ret) {
+-         assert(errno == ETIME);
+-         return VK_TIMEOUT;
++         const int error = errno;
++         if (error == ETIME)
++            return VK_TIMEOUT;
++
++         return vk_errorf(device, VK_ERROR_UNKNOWN, "KGSL sync FD wait failed: fd %d, errno %d (%s)", s->fd, error,
++                          strerror(error));
+       } else {
+          return VK_SUCCESS;
+       }
+@@ -1014,8 +1029,7 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+    }
+ 
+    if (u_vector_length(&poll_fds) == 0) {
+-      result = wait_timestamp_safe(device->fd, queue->msm_queue_id,
+-                                   lowest_timestamp, MIN2(abs_timeout_ns, INT64_MAX));
++      result = wait_timestamp_safe(device, queue->msm_queue_id, lowest_timestamp, MIN2(abs_timeout_ns, INT64_MAX));
+    } else {
+       int ret, i;
+ 
+-- 
+2.47.3
+

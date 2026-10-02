@@ -1,0 +1,30 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <dpiliaiev@igalia.com>
+Date: Wed, 30 Sep 2026 19:57:31 +0200
+Subject: [PATCH] tu/kgsl: Prevent OOB array access in
+ kgsl_syncobj_foreach_state
+
+Generated-by: LLM
+Signed-off-by: Danylo Piliaiev <dpiliaiev@igalia.com>
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index e4c243cd..75c4cb30 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -962,8 +962,8 @@ kgsl_syncobj_wait(struct tu_device *device,
+    }
+ }
+ 
+-#define kgsl_syncobj_foreach_state(syncobjs, filter) \
+-   for (uint32_t i = 0; sync = syncobjs[i], i < count; i++) \
++#define kgsl_syncobj_foreach_state(syncobjs, filter)                                                                   \
++   for (uint32_t i = 0; i < count && (sync = syncobjs[i]); i++)                                                        \
+       if (sync->state == filter)
+ 
+ static VkResult
+-- 
+2.47.3
+

@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <dpiliaiev@igalia.com>
+Date: Wed, 30 Sep 2026 19:57:31 +0200
+Subject: [PATCH] tu/kgsl: Prevent overflow in kgsl_queue_wait_fence
+
+Generated-by: LLM
+Signed-off-by: Danylo Piliaiev <dpiliaiev@igalia.com>
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index 8ee09d5c..e4c243cd 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -888,7 +888,7 @@ static VkResult
+ kgsl_queue_wait_fence(struct tu_queue *queue, uint32_t fence,
+                       uint64_t timeout_ns)
+ {
+-   uint64_t abs_timeout_ns = os_time_get_nano() + timeout_ns;
++   uint64_t abs_timeout_ns = os_time_get_absolute_timeout(timeout_ns);
+ 
+    return wait_timestamp_safe(queue->device, queue->msm_queue_id, fence, abs_timeout_ns);
+ }
+-- 
+2.47.3
+

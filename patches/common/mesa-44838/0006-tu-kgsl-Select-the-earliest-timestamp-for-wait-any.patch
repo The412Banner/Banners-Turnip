@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <dpiliaiev@igalia.com>
+Date: Wed, 30 Sep 2026 19:57:31 +0200
+Subject: [PATCH] tu/kgsl: Select the earliest timestamp for wait-any
+
+There was a mistake in the comparison call.
+
+Generated-by: LLM
+Signed-off-by: Danylo Piliaiev <dpiliaiev@igalia.com>
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index 75c4cb30..b57aaedf 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -1019,7 +1019,7 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+       /* TSs could be merged by finding the one with the lowest timestamp */
+       bool first_ts = true;
+       kgsl_syncobj_foreach_state(syncobjs, KGSL_SYNCOBJ_STATE_TS) {
+-         if (first_ts || timestamp_cmp(sync->timestamp, lowest_timestamp)) {
++         if (first_ts || timestamp_cmp(lowest_timestamp, sync->timestamp)) {
+             first_ts = false;
+             lowest_timestamp = sync->timestamp;
+          }
+-- 
+2.47.3
+

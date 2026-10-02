@@ -1,0 +1,84 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <dpiliaiev@igalia.com>
+Date: Thu, 1 Oct 2026 12:01:56 +0200
+Subject: [PATCH] tu/kgsl: Handle syncobj errors in queue_submit
+
+dup failure shouldn't result in an inconsistent state.
+
+Assisted-by: LLM
+Signed-off-by: Danylo Piliaiev <dpiliaiev@igalia.com>
+Generated-by: LLM
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 34 +++++++++++++++++++----------
+ 1 file changed, 22 insertions(+), 12 deletions(-)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index a230de11..5c5f0de5 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -762,15 +762,17 @@ kgsl_sync_error(struct tu_device *device, const char *operation, int error)
+    return vk_errorf(device, result, "KGSL %s failed: %s", operation, strerror(error));
+ }
+ 
+-static struct kgsl_syncobj
+-kgsl_syncobj_dup(struct kgsl_syncobj *s)
++static VkResult
++kgsl_syncobj_dup(struct tu_device *device, const struct kgsl_syncobj *s, struct kgsl_syncobj *out)
+ {
+-   struct kgsl_syncobj dups = *s;
+-   if (s->state == KGSL_SYNCOBJ_STATE_FD && s->fd >= 0) {
+-      dups.fd = dup(s->fd);
+-      assert(dups.fd >= 0);
++   struct kgsl_syncobj copy = *s;
++   if (s->state == KGSL_SYNCOBJ_STATE_FD) {
++      copy.fd = os_dupfd_cloexec(s->fd);
++      if (copy.fd < 0)
++         return kgsl_sync_error(device, "sync FD duplication", errno);
+    }
+-   return dups;
++   *out = copy;
++   return VK_SUCCESS;
+ }
+ 
+ static int
+@@ -1521,8 +1523,8 @@ kgsl_queue_submit(struct tu_queue *queue, void *_submit,
+ 
+       wait_semaphores[wait_count] = &last_submit_sync;
+ 
+-      struct kgsl_syncobj wait_sync =
+-         kgsl_syncobj_merge(wait_semaphores, wait_count + 1);
++      struct kgsl_syncobj wait_sync = kgsl_syncobj_merge(wait_semaphores, wait_count + 1);
++      VkResult result = VK_SUCCESS;
+       assert(wait_sync.state !=
+              KGSL_SYNCOBJ_STATE_UNSIGNALED); // Would wait forever
+ 
+@@ -1537,15 +1539,23 @@ kgsl_queue_submit(struct tu_queue *queue, void *_submit,
+          kgsl_syncobj_reset(signal_sync);
+          *signal_sync = wait_sync;
+       } else {
++         struct kgsl_syncobj copies[signal_count];
++         for (uint32_t i = 0; i < signal_count; i++) {
++            result = kgsl_syncobj_dup(queue->device, &wait_sync, &copies[i]);
++            if (result != VK_SUCCESS) {
++               for (uint32_t j = 0; j < i; j++)
++                  kgsl_syncobj_destroy(&copies[j]);
++               kgsl_syncobj_destroy(&wait_sync);
++               return result;
++            }
++         }
+          for (uint32_t i = 0; i < signal_count; i++) {
+             struct kgsl_syncobj *signal_sync =
+                &container_of(signals[i].sync, struct vk_kgsl_syncobj, vk)
+                    ->syncobj;
+-
+             kgsl_syncobj_reset(signal_sync);
+-            *signal_sync = kgsl_syncobj_dup(&wait_sync);
++            *signal_sync = copies[i];
+          }
+-
+          kgsl_syncobj_destroy(&wait_sync);
+       }
+ 
+-- 
+2.47.3
+

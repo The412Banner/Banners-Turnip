@@ -1,0 +1,77 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <dpiliaiev@igalia.com>
+Date: Thu, 1 Oct 2026 12:01:56 +0200
+Subject: [PATCH] tu/kgsl: Handle FD-only waits in wait_any
+
+We shouldn't try to call timestamp_to_fd when inputs are only
+FDs - it dereferences NULL queue.
+Handle timestamp_to_fd conversion failure along the way.
+
+Assisted-by: LLM
+Signed-off-by: Danylo Piliaiev <dpiliaiev@igalia.com>
+Generated-by: LLM
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index 94f47a2a..c9f9f87f 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -1023,10 +1023,17 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+    if (convert_ts_to_fd || num_fds > 0)
+       u_vector_init(&poll_fds, 4, sizeof(struct pollfd));
+ 
++   uint32_t owned_fds = 0;
++
+    if (convert_ts_to_fd) {
+       kgsl_syncobj_foreach_state(syncobjs, KGSL_SYNCOBJ_STATE_TS) {
+          struct pollfd *poll_fd = (struct pollfd *) u_vector_add(&poll_fds);
+          poll_fd->fd = timestamp_to_fd(sync->queue, sync->timestamp);
++         if (poll_fd->fd < 0) {
++            result = kgsl_sync_error(device, "timestamp fence creation", errno);
++            goto finish;
++         }
++         owned_fds++;
+          poll_fd->events = POLLIN;
+       }
+    } else {
+@@ -1039,9 +1046,14 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+          }
+       }
+ 
+-      if (num_fds) {
++      if (num_fds && queue) {
+          struct pollfd *poll_fd = (struct pollfd *) u_vector_add(&poll_fds);
+          poll_fd->fd = timestamp_to_fd(queue, lowest_timestamp);
++         if (poll_fd->fd < 0) {
++            result = kgsl_sync_error(device, "timestamp fence creation", errno);
++            goto finish;
++         }
++         owned_fds++;
+          poll_fd->events = POLLIN;
+       }
+    }
+@@ -1079,9 +1091,6 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+       } while (ret == -1 && (errno == EINTR || errno == EAGAIN));
+ 
+       const int error = errno;
+-      for (uint32_t i = 0; i < fds_count - num_fds; i++)
+-         close(fds[i].fd);
+-
+       if (ret > 0) {
+          result = VK_SUCCESS;
+       } else if (ret == 0) {
+@@ -1092,6 +1101,9 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+       }
+    }
+ 
++finish:
++   for (uint32_t i = 0; i < owned_fds; i++)
++      close(((struct pollfd *) poll_fds.data)[i].fd);
+    u_vector_finish(&poll_fds);
+    return result;
+ }
+-- 
+2.47.3
+

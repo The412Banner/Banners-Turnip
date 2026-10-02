@@ -2,6 +2,13 @@
 
 **Patch:** `patches/common/kgsl-zero-timeout-poll.patch` (applied to every leg — Android, Wayland,
 Linux, perf — by `patches/common/apply_common.sh`, which fails the build if the fix is missing).
+
+> **Since 2026-10-01** our patch is replaced by Danylo Piliaiev's upstream version of the same fix,
+> [`patches/common/mesa-44838/0002`](../patches/common/mesa-44838/0002-tu-kgsl-Prevent-indefinite-wait-times-for-0-timeout-.patch)
+> from Mesa MR [!44838](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/44838), which credits
+> The412Banner. It does the same thing (a zero-timeout wait reads the retired timestamp instead of
+> calling WAITTIMESTAMP) and also turns waits whose deadline runs out during an EINTR retry into polls.
+> The report below describes our original patch.
 **Branch:** `fix/kgsl-zero-timeout-poll`. **Found:** 2026-09-29 on an AYANEO Pocket FIT (Snapdragon 8
 Gen 3, Adreno 750) while chasing why D3D12 was slower on Bannerlator's Wayland backend than on X11.
 **Upstream status:** still present in Mesa main (`97b154f`, 2026-09-29).

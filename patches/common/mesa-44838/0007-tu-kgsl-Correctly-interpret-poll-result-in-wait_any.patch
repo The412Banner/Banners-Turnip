@@ -1,0 +1,44 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <dpiliaiev@igalia.com>
+Date: Wed, 30 Sep 2026 19:57:31 +0200
+Subject: [PATCH] tu/kgsl: Correctly interpret `poll` result in wait_any
+
+For `poll`:
+- `> 0` - For how many FDs `revents` was set;
+- `== 0` - timeout.
+
+Assisted-by: LLM
+Signed-off-by: Danylo Piliaiev <dpiliaiev@igalia.com>
+Generated-by: LLM
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index b57aaedf..40e87617 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -1064,14 +1064,17 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+          }
+       } while (ret == -1 && (errno == EINTR || errno == EAGAIN));
+ 
++      const int error = errno;
+       for (uint32_t i = 0; i < fds_count - num_fds; i++)
+          close(fds[i].fd);
+ 
+-      if (ret != 0) {
+-         assert(errno == ETIME);
++      if (ret > 0) {
++         result = VK_SUCCESS;
++      } else if (ret == 0) {
+          result = VK_TIMEOUT;
+       } else {
+-         result = VK_SUCCESS;
++         result =
++            vk_errorf(device, VK_ERROR_UNKNOWN, "KGSL sync FD poll failed: errno %d (%s)", error, strerror(error));
+       }
+    }
+ 
+-- 
+2.47.3
+

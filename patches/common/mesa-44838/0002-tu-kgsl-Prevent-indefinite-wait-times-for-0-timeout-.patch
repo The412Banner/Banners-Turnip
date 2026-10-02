@@ -1,0 +1,84 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <dpiliaiev@igalia.com>
+Date: Wed, 30 Sep 2026 19:57:31 +0200
+Subject: [PATCH] tu/kgsl: Prevent indefinite wait times for 0 timeout waits
+
+WAITTIMESTAMP_CTXTID is translated 0 wait into the forever wait (see
+kgsl `adreno_drawctxt_wait`), and thus such wait can cause indefinite
+wait times instead of returning immediately.
+
+Credits to The412Banner for finding that this what was causing
+GPU underutilization.
+
+Assisted-by: LLM
+Signed-off-by: Danylo Piliaiev <dpiliaiev@igalia.com>
+Generated-by: LLM
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 39 ++++++++++++++++++-----------
+ 1 file changed, 25 insertions(+), 14 deletions(-)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index 1614c0f8..898425c8 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -841,6 +841,21 @@ kgsl_timestamp_error(
+                     operation, context_id, timestamp, error, strerror(error));
+ }
+ 
++static VkResult
++kgsl_poll_timestamp(struct tu_device *device, unsigned int context_id, unsigned int timestamp)
++{
++   struct kgsl_cmdstream_readtimestamp_ctxtid read = {
++      .context_id = context_id,
++      .type = KGSL_TIMESTAMP_RETIRED,
++   };
++
++   if (safe_ioctl(device->fd, IOCTL_KGSL_CMDSTREAM_READTIMESTAMP_CTXTID, &read))
++      return vk_errorf(device, VK_ERROR_UNKNOWN, "KGSL timestamp read failed: context %u, timestamp %u, errno %d (%s)",
++                       context_id, timestamp, errno, strerror(errno));
++
++   return timestamp_cmp(read.timestamp, timestamp) ? VK_SUCCESS : VK_TIMEOUT;
++}
++
+ /* safe_ioctl is not enough as restarted waits would not adjust the timeout
+  * which could lead to waiting substantially longer than requested
+  */
+@@ -850,25 +865,21 @@ wait_timestamp_safe(struct tu_device *device, unsigned int context_id, unsigned
+    struct kgsl_device_waittimestamp_ctxtid wait = {
+       .context_id = context_id,
+       .timestamp = timestamp,
+-      .timeout = get_relative_ms(abs_timeout_ns),
+    };
+ 
+    while (true) {
+-      int ret = ioctl(device->fd, IOCTL_KGSL_DEVICE_WAITTIMESTAMP_CTXTID, &wait);
+-
+-      if (ret == -1 && (errno == EINTR || errno == EAGAIN)) {
+-         int timeout_ms = get_relative_ms(abs_timeout_ns);
+-
+-         /* update timeout to consider time that has passed since the start */
+-         if (timeout_ms == 0)
+-            return VK_TIMEOUT;
++      int timeout_ms = get_relative_ms(abs_timeout_ns);
++      if (timeout_ms == 0)
++         return kgsl_poll_timestamp(device, context_id, timestamp);
+ 
+-         wait.timeout = timeout_ms;
+-      } else if (ret == -1) {
+-         return kgsl_timestamp_error(device, context_id, timestamp, "wait", errno);
+-      } else {
++      wait.timeout = timeout_ms;
++      int ret = ioctl(device->fd, IOCTL_KGSL_DEVICE_WAITTIMESTAMP_CTXTID, &wait);
++      if (ret == 0)
+          return VK_SUCCESS;
+-      }
++
++      const int error = errno;
++      if (error != EINTR && error != EAGAIN)
++         return kgsl_timestamp_error(device, context_id, timestamp, "wait", error);
+    }
+ }
+ 
+-- 
+2.47.3
+

@@ -250,13 +250,21 @@ def main():
     w("**🩹 Fixes in every driver** (bugs still in Mesa `main`; every zip carries them, see "
       + link("patches/common/SOURCE") + "):")
     w("")
-    w("- **DirectX 12 no longer waits on the GPU every frame** (" + link("patches/common/kgsl-zero-timeout-poll.patch")
+    k = "patches/common/mesa-44838/"
+    w("- **DirectX 12 no longer waits on the GPU every frame** (" + link(k + "0002-tu-kgsl-Prevent-indefinite-wait-times-for-0-timeout-.patch")
       + "). A quick \"is the GPU done yet?\" check was sent to the kernel as \"wait until it's done\", so the CPU "
       "and GPU took turns with VKD3D-Proton. Now it answers at once. On an Adreno 750, a DirectX 12 demo went from "
       "378 to 1422 fps on X11 and from 588 to 3449 fps on Wayland ([report](" + REPO_BLOB.format(repo=a.repo, ref=a.ref,
       path="docs/KGSL_ZERO_TIMEOUT_POLL.md") + ")).")
-    w("- **No crash when a frame waits on two kinds of sync at once** (" + link("patches/common/kgsl-syncobj-merge-ts-fd.patch")
-      + "). Cemu crashed on its first frame; proven fixed with Cemu, RPCS3 and Dolphin.")
+    w("- **No crash when a frame waits on two kinds of sync at once** (" + link(k + "0010-tu-kgsl-Correctly-merge-timestamps-and-sync-files.patch")
+      + "). Cemu crashed on its first frame.")
+    w("- **The rest of the KGSL sync clean-up:** wait-any picks the earliest timestamp, reads `poll()` correctly and no "
+      "longer crashes on FD-only waits; no out-of-bounds read, timeout overflow or profiling leak; errors are returned "
+      "instead of hitting asserts.")
+    w("")
+    w("All three are Danylo Piliaiev's 13-patch series from Mesa MR "
+      "[!44838](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/44838), which took our two fixes upstream "
+      "and replaced our own patches.")
     w("")
     wn = "patches/a8xx-winnative/"
     w("**🧩 A8xx driver only:** Max's WinNative series (MaxsTechReview, " + link(wn + "0001-tu-Emulate-VK_EXT_mesh_shader-with-compute.patch")

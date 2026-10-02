@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Danylo Piliaiev <dpiliaiev@igalia.com>
+Date: Wed, 30 Sep 2026 19:57:31 +0200
+Subject: [PATCH] tu/kgsl: Always round up the wait timeout
+
+Previously it could be either round up or down, depending on values.
+Mostly a nit, but better be consistent.
+
+Assisted-by: LLM
+Signed-off-by: Danylo Piliaiev <dpiliaiev@igalia.com>
+Generated-by: LLM
+---
+ src/freedreno/vulkan/tu_knl_kgsl.cc | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index 898425c8..8ee09d5c 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -818,12 +818,13 @@ get_relative_ms(uint64_t abs_timeout_ns)
+        */
+       return -1;
+ 
+-   uint64_t cur_time_ms = os_time_get_nano() / 1000000;
+-   uint64_t abs_timeout_ms = abs_timeout_ns / 1000000;
+-   if (abs_timeout_ms <= cur_time_ms)
++   uint64_t cur_time_ns = os_time_get_nano();
++   if (abs_timeout_ns <= cur_time_ns)
+       return 0;
+ 
+-   return abs_timeout_ms - cur_time_ms;
++   uint64_t relative_ns = abs_timeout_ns - cur_time_ns;
++   uint64_t relative_ms = relative_ns / 1000000 + (relative_ns % 1000000 != 0);
++   return relative_ms > INT_MAX ? -1 : relative_ms;
+ }
+ 
+ static VkResult
+-- 
+2.47.3
+

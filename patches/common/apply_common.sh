@@ -10,17 +10,20 @@ here="$(cd "$(dirname "$0")" && pwd)"
 # Max's WinNative series (patches/a8xx-winnative/0001-0006: mesh shaders, wave32, A8xx hang fixes)
 # goes on the A8xx driver only. Mesh shaders and wave32 also switch on for A7xx (and wave32 for
 # A6xx gen4), where they can steer DX12 games onto slower emulated paths, so the A6xx/A7xx drivers
-# carry only our fixes. The A8xx driver is the one whose EXTRA_PATCH is the gen8 stack.
+# carry only the KGSL series. The A8xx driver is the one whose EXTRA_PATCH is the gen8 stack.
 a8xx=0
 case "${EXTRA_PATCH:-}" in *a8xx_gen8*) a8xx=1 ;; esac
-series=("$here/kgsl-syncobj-merge-ts-fd.patch")
+# Danylo Piliaiev's KGSL sync series (Mesa MR !44838, patches/common/mesa-44838/0001-0013). It carries
+# both of our KGSL fixes (0002 = the zero-timeout poll, 0010 = the timestamp/sync-file merge) plus
+# eleven more of his, so it replaced our own two patches. It goes first: Max's 0005/0006 build on it.
+series=("$here"/mesa-44838/0*.patch)
+[ "${#series[@]}" = 13 ] || { echo "[common] expected 13 patches in mesa-44838/" >&2; exit 1; }
 if [ "$a8xx" = 1 ]; then
 	series+=("$here"/../a8xx-winnative/0*.patch)
 	[ "$(ls "$here"/../a8xx-winnative/0*.patch | wc -l)" = 6 ] \
 		|| { echo "[common] expected 6 patches in a8xx-winnative/" >&2; exit 1; }
 fi
-series+=("$here/kgsl-zero-timeout-poll.patch")
-echo "[common] driver: $([ "$a8xx" = 1 ] && echo "A8xx (our fixes + Max's series)" || echo "A6xx/A7xx (our fixes only)")"
+echo "[common] driver: $([ "$a8xx" = 1 ] && echo "A8xx (KGSL series + Max's series)" || echo "A6xx/A7xx (KGSL series only)")"
 
 for p in "${series[@]}"; do
 	echo "[common] applying $(basename "$p")"
@@ -31,8 +34,10 @@ for p in "${series[@]}"; do
 done
 
 # Assert the result rather than trust the patch.
-[ "$(grep -c "int ret_fd = kgsl_syncobj_ts_to_fd(&ret)" src/freedreno/vulkan/tu_knl_kgsl.cc)" = 2 ] \
-	|| { echo "[common] kgsl-syncobj-merge-ts-fd did not reach tu_knl_kgsl.cc" >&2; exit 1; }
+grep -q "return kgsl_poll_timestamp(device, context_id, timestamp);" src/freedreno/vulkan/tu_knl_kgsl.cc \
+	|| { echo "[common] mesa-44838/0002 (zero-timeout poll) did not reach tu_knl_kgsl.cc" >&2; exit 1; }
+grep -q "Queues don't match or sync is an FD - convert aggregate \`ret\` to FD." src/freedreno/vulkan/tu_knl_kgsl.cc \
+	|| { echo "[common] mesa-44838/0010 (timestamp/sync-file merge) did not reach tu_knl_kgsl.cc" >&2; exit 1; }
 if [ "$a8xx" = 1 ]; then
 	[ -f src/freedreno/vulkan/tu_mesh.cc ] && grep -q "EXT_mesh_shader = tu_has_mesh_shader(device)" src/freedreno/vulkan/tu_device.cc \
 		|| { echo "[common] winnative/0001 (mesh shaders) did not reach tu_mesh.cc / tu_device.cc" >&2; exit 1; }
@@ -52,5 +57,3 @@ else
 	[ ! -f src/freedreno/vulkan/tu_mesh.cc ] \
 		|| { echo "[common] Max's mesh patch reached a non-A8xx driver" >&2; exit 1; }
 fi
-grep -q "kgsl_timestamp_retired(fd, context_id, timestamp) ? VK_SUCCESS : VK_TIMEOUT" src/freedreno/vulkan/tu_knl_kgsl.cc \
-	|| { echo "[common] kgsl-zero-timeout-poll did not reach tu_knl_kgsl.cc" >&2; exit 1; }

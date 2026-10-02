@@ -2,28 +2,41 @@ Fixes every leg applies (build_turnip.sh, build_turnip_perf.sh, build_turnip_way
 build_turnip_linux.sh) through apply_common.sh, before the variant's own EXTRA_PATCH/EXTRA_SCRIPT.
 They are KGSL-backend bugs, so Android builds carry them too.
 
-kgsl-syncobj-merge-ts-fd.patch (DroidDeck, 2026-09-26; still in Mesa main)
-  kgsl_syncobj_merge converted the wrong syncobj when a timestamp result met a
-  sync-file: it called kgsl_syncobj_ts_to_fd on the fd syncobj, which has no queue
-  (NULL dereference in release builds, an assert in debug ones), and the
-  two-queues branch merged an fd the timestamp result never had. A submit that
-  waits on two semaphores of the two kinds - Cemu's every frame: the previous
-  command buffer plus the swapchain acquire - crashed on the first frame. Now the
-  timestamp side becomes the fence and is merged with the fd.
-  Device-proven on the Linux leg (Cemu SM3DW/Deus Ex/Wipeout 3; RPCS3, Dolphin,
-  Steam unchanged). Drop it once Mesa main carries an equivalent fix.
+mesa-44838/0001-0013 (Danylo Piliaiev, Mesa MR !44838 "tu/kgsl: A bunch of fixes for KGSL sync",
+  branch Danil/mesa turnip/fix/kgsl-bunch-of-fixes at d7b5feb1, opened 2026-10-01; still open)
+  Taken as-is with git format-patch, kept under his names and numbers so they can be diffed
+  against the MR. Every patch touches only tu_knl_kgsl.cc and none checks the chip, so every
+  driver gets them. They replace our two patches (taken out 2026-10-01):
+  - 0002 "Prevent indefinite wait times for 0 timeout waits" = our kgsl-zero-timeout-poll.patch
+    (The412Banner, 2026-09-29; the commit credits us). WAITTIMESTAMP_CTXTID with timeout 0 is
+    KGSL's "wait forever"; vkd3d-proton's timeline polls ran CPU and GPU in lock-step. A poll
+    now reads READTIMESTAMP_CTXTID (retired). Report: docs/KGSL_ZERO_TIMEOUT_POLL.md.
+  - 0010 "Correctly merge timestamps and sync files" = our kgsl-syncobj-merge-ts-fd.patch
+    (DroidDeck, 2026-09-26): kgsl_syncobj_merge converted the wrong syncobj when a timestamp met
+    a sync file (Cemu crashed on its first frame) and mis-merged timestamps from two queues.
+    Ours was device-proven with Cemu, RPCS3 and Dolphin on the Linux leg.
+  - The other eleven are his: wait-any picks the earliest timestamp (0006), reads poll()
+    correctly (0007) and handles FD-only waits without a NULL queue (0011); no OOB read in
+    kgsl_syncobj_foreach_state (0005); no overflow in kgsl_queue_wait_fence (0004); timeouts
+    always round up (0003); profiling obj leak (0012/0013); errors returned (or device lost)
+    instead of asserts (0001, 0008, 0009).
+  0001 also removes the assert(errno == ETIMEDOUT) in wait_timestamp_safe, so the Wayland and
+  Linux legs no longer apply their own edit of it (Termux 0014): it ran first and made 0001 reject.
+  Verified 2026-10-01 on Mesa main ab10c108 for every leg's recipe (Android, Wayland pre-steps,
+  Linux pre-patches x Standard, A8xx + Max's series + gen8 stack, 710-720, 8G2 One UI): zero
+  rejects, zero fuzz (offsets only). Drop the whole directory once !44838 is in Mesa main.
 
 A8XX DRIVER ONLY (since 2026-09-30, after r7): ../a8xx-winnative/0001-0006 are applied by
 apply_common.sh only when EXTRA_PATCH is the gen8 stack. 0001 (mesh) and 0002 (wave32) also switch
 on for A7xx (0002 for A6xx gen4 too: has_getfiberid), where they can steer DX12 games onto
 emulated paths (compute mesh + forced sysmem, half-wave subgroups); a user felt A7xx slower on
-r6/r7. The A6xx/A7xx drivers therefore carry only kgsl-syncobj-merge-ts-fd + kgsl-zero-timeout-poll,
+r6/r7. The A6xx/A7xx drivers therefore carry only mesa-44838/,
 and apply_common.sh fails if tu_mesh.cc reaches a non-A8xx driver.
 
 a8xx-winnative/0001-0006 (Max / MaxsTechReview, WinNative-Emu/Drivers linux/patches, GPL-3.0;
   0001-0005 2026-09-27/28, 0006 c71f600a 2026-09-29). Kept under Max's own names and numbers so
   they can be diffed against his repo; they build on each other and apply in that order, after
-  kgsl-syncobj-merge-ts-fd and before kgsl-zero-timeout-poll. Replaces our earlier renamed copies of
+  mesa-44838/ (0005/0006 apply on top of it with offsets only). Replaces our earlier renamed copies of
   0003-0005 (a8xx-*.patch, 2026-09-28), which had 0004 adapted because 0001 was missing.
   - 0001 mesh shaders: VK_EXT_mesh_shader emulated with compute. Task/mesh shaders write into a
     device ring that a generated vertex shader draws; render passes with mesh draws use sysmem.
@@ -48,14 +61,3 @@ a8xx-winnative/0001-0006 (Max / MaxsTechReview, WinNative-Emu/Drivers linux/patc
   710-720, 8G2 One UI; Android, Wayland pre-steps, Linux pre-patches): zero rejects, zero fuzz.
   When Mesa moves and one stops applying, rebase it here (or pull Max's rebase) - never drop it
   silently.
-
-kgsl-zero-timeout-poll.patch (The412Banner, 2026-09-29; still in Mesa main)
-  wait_timestamp_safe() turned a poll (a timeout that is zero or already past) into
-  IOCTL_KGSL_DEVICE_WAITTIMESTAMP_CTXTID with timeout 0, which KGSL treats as "wait
-  forever". Mesa's emulated timeline semaphores poll from vk_sync_timeline_gc_locked on
-  every submit that signals a timeline, while holding the timeline mutex, so vkd3d-proton
-  (a timeline signal per submit plus a fence thread on the same mutex) ran CPU and GPU in
-  lock-step. A poll now reads IOCTL_KGSL_CMDSTREAM_READTIMESTAMP_CTXTID (retired) and
-  answers VK_SUCCESS / VK_TIMEOUT without waiting. Found on Bannerlator's Wayland adapter
-  (Pocket FIT A750): a D3D12 demo capped at ~615 fps went to 4335 fps with the same answer
-  given from outside the driver; X11 D3D12 (809 fps) had the same stall, milder.
