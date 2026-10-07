@@ -107,12 +107,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.363 |
-| **Commit** | [`d2c670a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2c670a02f540024806bd68e07fd442bb43c2bc8) |
-| **Commit date** | 2026-10-06 |
-| **Commit title** | intel/dev: Add assert to ensure stage is not MESA_SHADER_NONE in intel_use_jay_for_stage |
-| **Build date** | 20261006 |
+| **Commit** | [`0b2fa04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b2fa0445c2cdf6ab5e3a00214954670f0e0d2af) |
+| **Commit date** | 2026-10-07 |
+| **Commit title** | kraid/ra: Prefer not moving source registers for vectors |
+| **Build date** | 20261007 |
 | **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 4 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v26.3.0-20261006-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261006-r6) |
+| **Release** | [v26.3.0-20261007](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261007) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -122,12 +122,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20261007](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261007) | 2026-10-07 | [`0b2fa04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b2fa0445c2cdf6ab5e3a00214954670f0e0d2af) | kraid/ra: Prefer not moving source registers for vectors | Vulkan 1.4.363 |
 | [v26.3.0-20261006-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261006-r6) | 2026-10-06 | [`d2c670a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2c670a02f540024806bd68e07fd442bb43c2bc8) | intel/dev: Add assert to ensure stage is not MESA_SHADER_NONE in intel_use_jay_for_stage | Vulkan 1.4.363 |
 | [v26.3.0-20261006-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261006-r5) | 2026-10-06 | [`c2188da`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2188da5409b8dcf574480365202f25562856a8d) | pan/nir: Rework b2i/b2f lowering | Vulkan 1.4.363 |
 | [v26.3.0-20261006-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261006-r4) | 2026-10-06 | [`2c5d7f4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2c5d7f4362225748a5de78e4469b22888ddd75bb) | radv: force exact GLSLstd450Fma for No Man Sky | Vulkan 1.4.363 |
 | [v26.3.0-20261006-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261006-r3) | 2026-10-06 | [`21500c6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/21500c65d69387f927c8d0a0b737d6edaead1535) | crnm: group argument definitions | Vulkan 1.4.363 |
 | [v26.3.0-20261006-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261006-r2) | 2026-10-06 | [`755de2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/755de2b7768f702d7e867656cc15359e4f8b26f9) | kraid: Set lower_hadd64 | Vulkan 1.4.363 |
-| [v26.3.0-20261006](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261006) | 2026-10-06 | [`7e33240`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7e33240734c26168ef36b39754d2fba81931459f) | kraid: Properly handle OpCopy of 64-bit FAU pre-v12 | Vulkan 1.4.363 |
 <!-- RECENT_BUILDS_END -->
 
 ---
