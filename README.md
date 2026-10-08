@@ -107,12 +107,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 | :--- | :--- |
 | **Mesa version** | 26.3.0 |
 | **Vulkan version** | Vulkan 1.4.363 |
-| **Commit** | [`e11d8ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e11d8ed6195c1d617633bd04a35a29d9b1984fdb) |
-| **Commit date** | 2026-10-07 |
-| **Commit title** | anv: Remove unused mem_ctx in internal shader deserialization |
-| **Build date** | 20261007 |
+| **Commit** | [`a1ab82b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1ab82b2a763487ae709ee1aa34f8bf879bd7b7c) |
+| **Commit date** | 2026-10-08 |
+| **Commit title** | panvk/jm: switch indirect varying bufs to poly_heap |
+| **Build date** | 20261008 |
 | **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 4 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v26.3.0-20261007-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261007-r4) |
+| **Release** | [v26.3.0-20261008](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261008) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -122,11 +122,11 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20261008](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261008) | 2026-10-08 | [`a1ab82b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1ab82b2a763487ae709ee1aa34f8bf879bd7b7c) | panvk/jm: switch indirect varying bufs to poly_heap | Vulkan 1.4.363 |
 | [v26.3.0-20261007-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261007-r4) | 2026-10-07 | [`e11d8ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e11d8ed6195c1d617633bd04a35a29d9b1984fdb) | anv: Remove unused mem_ctx in internal shader deserialization | Vulkan 1.4.363 |
 | [v26.3.0-20261007-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261007-r3) | 2026-10-07 | [`2ba56a0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2ba56a09706adefcedc0babd9486380108ecddf2) | lavapipe: Unwrap trace screen and context before llvmpipe calls | Vulkan 1.4.363 |
 | [v26.3.0-20261007-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261007-r2) | 2026-10-07 | [`9ce7a2e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ce7a2ef35ae1ab06e024860a0f247962ab11b95) | nir/instr_set: compare tex dest_type instead of bit size when CSEing texture instructions | Vulkan 1.4.363 |
 | [v26.3.0-20261007](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261007) | 2026-10-07 | [`0b2fa04`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0b2fa0445c2cdf6ab5e3a00214954670f0e0d2af) | kraid/ra: Prefer not moving source registers for vectors | Vulkan 1.4.363 |
-| [v26.3.0-20261006-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261006-r6) | 2026-10-06 | [`d2c670a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d2c670a02f540024806bd68e07fd442bb43c2bc8) | intel/dev: Add assert to ensure stage is not MESA_SHADER_NONE in intel_use_jay_for_stage | Vulkan 1.4.363 |
 <!-- RECENT_BUILDS_END -->
 
 ---

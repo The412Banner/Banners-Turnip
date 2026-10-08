@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v26.3.0-20261008](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261008) | 2026-10-08 | [`a1ab82b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1ab82b2a763487ae709ee1aa34f8bf879bd7b7c) | panvk/jm: switch indirect varying bufs to poly_heap | Vulkan 1.4.363 |
 | [v26.3.0-20261007-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261007-r4) | 2026-10-07 | [`e11d8ed`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e11d8ed6195c1d617633bd04a35a29d9b1984fdb) | anv: Remove unused mem_ctx in internal shader deserialization | Vulkan 1.4.363 |
 | [v26.3.0-20261007-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261007-r3) | 2026-10-07 | [`2ba56a0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2ba56a09706adefcedc0babd9486380108ecddf2) | lavapipe: Unwrap trace screen and context before llvmpipe calls | Vulkan 1.4.363 |
 | [v26.3.0-20261007-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v26.3.0-20261007-r2) | 2026-10-07 | [`9ce7a2e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9ce7a2ef35ae1ab06e024860a0f247962ab11b95) | nir/instr_set: compare tex dest_type instead of bit size when CSEing texture instructions | Vulkan 1.4.363 |
