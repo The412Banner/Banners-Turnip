@@ -1,10 +1,12 @@
 # KGSL zero-timeout poll: a timeline "poll" that waited for the GPU
 
-**Patch:** `patches/common/kgsl-zero-timeout-poll.patch` (applied to every leg — Android, Wayland,
-Linux, perf — by `patches/common/apply_common.sh`, which fails the build if the fix is missing).
+**Status:** fixed in Mesa `main` since 2026-10-08 (e984ef29 "tu/kgsl: Prevent indefinite wait times
+for 0 timeout waits", MR 44838, crediting The412Banner). The patch this repo carried,
+`patches/common/kgsl-zero-timeout-poll.patch`, was dropped on 2026-10-10; `apply_common.sh` now asserts
+Mesa has the fix. The rest of this document is the original report.
 **Branch:** `fix/kgsl-zero-timeout-poll`. **Found:** 2026-09-29 on an AYANEO Pocket FIT (Snapdragon 8
 Gen 3, Adreno 750) while chasing why D3D12 was slower on Bannerlator's Wayland backend than on X11.
-**Upstream status:** still present in Mesa main (`97b154f`, 2026-09-29).
+**Upstream status:** fixed by MR 44838 (2026-10-08); the report below predates it.
 
 ## Summary
 

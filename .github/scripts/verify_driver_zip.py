@@ -62,8 +62,11 @@ LINUX_NEEDED_ALLOWED = LINUX_NEEDED_REQUIRED | {
 # Anything from the Android side means the build picked up the wrong sysroot.
 LINUX_NEEDED_FORBIDDEN = {"libc.so", "libm.so", "libdl.so", "liblog.so", "libsync.so",
                           "libhardware.so", "libnativewindow.so", "libc++_shared.so", "libz.so"}
-# The two KGSL fixes, as strings that only exist because they were applied.
-LINUX_MARKERS = ["wait_timestamp_safe: errno %d (%s)"]
+# The KGSL timestamp wait must report an unexpected errno instead of asserting on it. Mesa does that
+# itself since MR 44838 (kgsl_timestamp_error, 2026-10-08); before it, the build scripts rewrote the
+# assert into a warning. Either string proves the shipped driver does not assert there.
+LINUX_MARKERS = [("KGSL timestamp %s failed: context %u, timestamp %u, errno %d (%s)",
+                  "wait_timestamp_safe: errno %d (%s)")]
 GPU_NAME_RE = re.compile(rb"(?<=\x00)(FD[0-9]{3}|Adreno \(TM\) [0-9X][0-9X-]*|Adreno X[0-9][0-9-]*)(?=\x00)")
 
 
@@ -230,8 +233,9 @@ def main():
         c.check(len(wl_symbols) > 0, f"has wl_ symbols, so the Wayland WSI is in ({len(wl_symbols)})")
         c.check(len(xcb_symbols) > 0, f"has xcb_ symbols, so the X11 WSI is in ({len(xcb_symbols)})")
         c.check(b"kgsl" in so, "carries a 'kgsl' string (the KGSL backend is compiled in)")
-        for m in LINUX_MARKERS:
-            c.check(m.encode() in so, f"carries the KGSL patch marker '{m}'")
+        for upstream, ours in LINUX_MARKERS:
+            c.check(upstream.encode() in so or ours.encode() in so,
+                    f"the KGSL timestamp wait reports an unexpected errno instead of asserting ('{upstream}' or '{ours}')")
         c.check(min_glibc != "", f"a minimum glibc could be read from the binary (got '{min_glibc}')")
         c.check(str(meta.get("minGlibc")) == min_glibc,
                 f"meta.json minGlibc == {min_glibc} (got {meta.get('minGlibc')})")

@@ -1,8 +1,13 @@
-Fixes every leg applies (build_turnip.sh, build_turnip_perf.sh, build_turnip_wayland.sh,
+Patches every leg applies (build_turnip.sh, build_turnip_perf.sh, build_turnip_wayland.sh,
 build_turnip_linux.sh) through apply_common.sh, before the variant's own EXTRA_PATCH/EXTRA_SCRIPT.
-They are KGSL-backend bugs, so Android builds carry them too.
+Since 2026-10-10 there are none of our own left: both KGSL fixes below went upstream in Mesa MR 44838
+(Danylo Piliaiev, merged 2026-10-08), and apply_common.sh asserts the Mesa tree carries them. Max's
+A8xx series (below) is the only thing it still applies, on the A8xx driver.
 
-kgsl-syncobj-merge-ts-fd.patch (DroidDeck, 2026-09-26; still in Mesa main)
+kgsl-syncobj-merge-ts-fd.patch (DroidDeck, 2026-09-26) - DROPPED 2026-10-10: Mesa main carries
+  the fix since 1da50a1b "tu/kgsl: Correctly merge timestamps and sync files" (Danylo Piliaiev,
+  MR 44838, merged 2026-10-08), which rewrote kgsl_syncobj_merge; apply_common.sh now asserts that
+  rewrite is present instead of patching it. What the patch fixed, for the record:
   kgsl_syncobj_merge converted the wrong syncobj when a timestamp result met a
   sync-file: it called kgsl_syncobj_ts_to_fd on the fd syncobj, which has no queue
   (NULL dereference in release builds, an assert in debug ones), and the
@@ -11,19 +16,18 @@ kgsl-syncobj-merge-ts-fd.patch (DroidDeck, 2026-09-26; still in Mesa main)
   command buffer plus the swapchain acquire - crashed on the first frame. Now the
   timestamp side becomes the fence and is merged with the fd.
   Device-proven on the Linux leg (Cemu SM3DW/Deus Ex/Wipeout 3; RPCS3, Dolphin,
-  Steam unchanged). Drop it once Mesa main carries an equivalent fix.
+  Steam unchanged).
 
 A8XX DRIVER ONLY (since 2026-09-30, after r7): ../a8xx-winnative/0001-0005 are applied by
 apply_common.sh only when EXTRA_PATCH is the gen8 stack. 0001 (mesh) and 0002 (wave32) also switch
 on for A7xx (0002 for A6xx gen4 too: has_getfiberid), where they can steer DX12 games onto
 emulated paths (compute mesh + forced sysmem, half-wave subgroups); a user felt A7xx slower on
-r6/r7. The A6xx/A7xx drivers therefore carry only kgsl-syncobj-merge-ts-fd + kgsl-zero-timeout-poll,
+r6/r7. The A6xx/A7xx drivers therefore carry no patches,
 and apply_common.sh fails if tu_mesh.cc reaches a non-A8xx driver.
 
 a8xx-winnative/0001-0006 (Max / MaxsTechReview, WinNative-Emu/Drivers linux/patches, GPL-3.0;
   0001-0005 2026-09-27/28, 0006 c71f600a 2026-09-29). Kept under Max's own names and numbers so
-  they can be diffed against his repo; they build on each other and apply in that order, after
-  kgsl-syncobj-merge-ts-fd and before kgsl-zero-timeout-poll. Replaces our earlier renamed copies of
+  they can be diffed against his repo; they build on each other and apply in that order. Replaces our earlier renamed copies of
   0003-0005 (a8xx-*.patch, 2026-09-28), which had 0004 adapted because 0001 was missing.
   - 0001 mesh shaders: VK_EXT_mesh_shader emulated with compute. Task/mesh shaders write into a
     device ring that a generated vertex shader draws; render passes with mesh draws use sysmem.
@@ -48,7 +52,11 @@ a8xx-winnative/0001-0006 (Max / MaxsTechReview, WinNative-Emu/Drivers linux/patc
   When Mesa moves and one stops applying, rebase it here (or pull Max's rebase) - never drop it
   silently.
 
-kgsl-zero-timeout-poll.patch (The412Banner, 2026-09-29; still in Mesa main)
+kgsl-zero-timeout-poll.patch (The412Banner, 2026-09-29) - DROPPED 2026-10-10: Mesa main carries
+  the fix since e984ef29 "tu/kgsl: Prevent indefinite wait times for 0 timeout waits" (MR 44838,
+  merged 2026-10-08, crediting The412Banner for the find): a zero timeout now reads the retired
+  timestamp through kgsl_poll_timestamp(). Our patch applied with fuzz onto the rewritten
+  wait_timestamp_safe() and no longer compiled (the fd it used became device->fd). What it fixed:
   wait_timestamp_safe() turned a poll (a timeout that is zero or already past) into
   IOCTL_KGSL_DEVICE_WAITTIMESTAMP_CTXTID with timeout 0, which KGSL treats as "wait
   forever". Mesa's emulated timeline semaphores poll from vk_sync_timeline_gc_locked on

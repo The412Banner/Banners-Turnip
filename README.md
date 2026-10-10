@@ -47,16 +47,16 @@ Each release ships four drivers, each as three ZIPs built from the same Mesa com
 
 ### Fixes in every driver
 
-These are bugs in Turnip's Adreno (KGSL) code that are **still in Mesa `main`**, so every ZIP carries a fix: Standard, A8xx, A710/720/722 and 8 Gen 2 One UI, for X11, Wayland and Linux alike. They live in [`patches/common/`](patches/common) and are applied by [`apply_common.sh`](patches/common/apply_common.sh), which fails the build if a fix goes missing. Each one is dropped once Mesa carries its own fix. Full notes: [`patches/common/SOURCE`](patches/common/SOURCE). Max's WinNative series (mesh shaders, wave32, A8xx hang fixes) is [A8xx only](#a8xx--experimental).
+Two bugs in Turnip's Adreno (KGSL) code were found here and carried as patches in every ZIP until Mesa fixed them. Both landed in Mesa `main` on 2026-10-08 in [MR 44838](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/44838), so every driver built since has them from Mesa itself, and [`apply_common.sh`](patches/common/apply_common.sh) fails the build if a Mesa without them is ever used. Notes on both: [`patches/common/SOURCE`](patches/common/SOURCE). Max's WinNative series (mesh shaders, wave32, A8xx hang fixes) is [A8xx only](#a8xx--experimental).
 
-| Fix | What was wrong | What it changes |
+| Fix (now in Mesa) | What was wrong | What it changes |
 | :--- | :--- | :--- |
-| [`kgsl-zero-timeout-poll.patch`](patches/common/kgsl-zero-timeout-poll.patch) — *DirectX 12 no longer waits on the GPU every frame* | A quick "has the GPU finished yet?" check was sent to the kernel as a wait with a zero time limit, and the Adreno kernel driver reads zero as "wait forever". VKD3D-Proton makes that check on every frame, so the CPU and GPU took turns instead of working at the same time. | The check now reads the GPU's last finished job and answers at once. On an Adreno 750, a DirectX 12 demo went from 378 to 1422 fps on X11 and from 588 to 3449 fps on Bannerlator's Wayland. [Full report](docs/KGSL_ZERO_TIMEOUT_POLL.md). |
-| [`kgsl-syncobj-merge-ts-fd.patch`](patches/common/kgsl-syncobj-merge-ts-fd.patch) — *no crash when a frame waits on two kinds of sync* | When a submit waited on a GPU timestamp and a sync file together, the driver converted the wrong one and crashed. Cemu does that on every frame, so it crashed on its first frame. | The timestamp side is turned into the sync file and merged correctly. Proven with Cemu, RPCS3 and Dolphin in DroidDeck. |
+| *DirectX 12 no longer waits on the GPU every frame* ([e984ef29](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e984ef29), credited to The412Banner) | A quick "has the GPU finished yet?" check was sent to the kernel as a wait with a zero time limit, and the Adreno kernel driver reads zero as "wait forever". VKD3D-Proton makes that check on every frame, so the CPU and GPU took turns instead of working at the same time. | The check now reads the GPU's last finished job and answers at once. On an Adreno 750, a DirectX 12 demo went from 378 to 1422 fps on X11 and from 588 to 3449 fps on Bannerlator's Wayland. [Full report](docs/KGSL_ZERO_TIMEOUT_POLL.md). |
+| *No crash when a frame waits on two kinds of sync* ([1da50a1b](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1da50a1b)) | When a submit waited on a GPU timestamp and a sync file together, the driver converted the wrong one and crashed. Cemu does that on every frame, so it crashed on its first frame. | The timestamp side is turned into the sync file and merged correctly. Proven with Cemu, RPCS3 and Dolphin in DroidDeck. |
 
 ### A6xx / A7xx — Standard
 
-Mesa `main` plus the [fixes every driver carries](#fixes-in-every-driver), with no GPU-specific patches. No mesh shaders or wave32: on A7xx those can steer DirectX 12 games onto slower emulated paths, so they stay on the A8xx driver. Compatible with Adreno 600–700 series GPUs (Snapdragon 600–800 series, including 7 Gen and 8 Gen 1–3).
+Mesa `main` (which now carries [both fixes found here](#fixes-in-every-driver)), with no GPU-specific patches. No mesh shaders or wave32: on A7xx those can steer DirectX 12 games onto slower emulated paths, so they stay on the A8xx driver. Compatible with Adreno 600–700 series GPUs (Snapdragon 600–800 series, including 7 Gen and 8 Gen 1–3).
 
 ### 8 Gen 2 One UI
 
