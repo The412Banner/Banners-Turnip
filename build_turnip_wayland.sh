@@ -106,7 +106,8 @@ apply_wayland_patches(){
 	grep -q "Linux-style build on bionic" src/util/detect_os.h || die "detect_os.h: Android detection guard not found"
 	grep -q "Linux-style build on bionic" include/vulkan/vk_android_native_buffer.h || die "vk_android_native_buffer.h: Android guard not found"
 
-	# Termux 0014: the KGSL timestamp wait must not assert on an unexpected errno.
+	# Termux 0014: the KGSL timestamp wait must not assert on an unexpected errno. Mesa does this
+	# itself since MR 44838 (2026-10-08); the rewrite is kept for an older Mesa and skipped otherwise.
 	kgsl_assert="$(python3 - <<'PY'
 p = 'src/freedreno/vulkan/tu_knl_kgsl.cc'
 s = open(p).read()
@@ -120,11 +121,16 @@ new = """      } else if (ret == -1) {
 if old in s:
     open(p, 'w').write(s.replace(old, new, 1))
     print('applied')
+elif 'kgsl_timestamp_error(' in s:
+    # Mesa MR 44838 (b7ad24ad, 2026-10-08) removed the assert: every errno now goes through
+    # kgsl_timestamp_error(), which logs it and returns VK_TIMEOUT / device lost.
+    print('upstream')
 else:
     print('not-found')
 PY
 )"
 	log "KGSL timestamp-wait assert -> warning: $kgsl_assert"
+	[ "$kgsl_assert" != not-found ] || die "the KGSL timestamp wait has neither the assert nor upstream's kgsl_timestamp_error(): look at wait_timestamp_safe()"
 
 	# bionic has no pthread_cancel (VK_KHR_display WSI, built because libdrm is linked).
 	python3 "$wl_patches/no_pthread_cancel.py" src/vulkan/wsi/wsi_common_display.c \

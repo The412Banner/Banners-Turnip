@@ -247,16 +247,17 @@ def main():
     def link(path):
         return f"[`{os.path.basename(path)}`]({REPO_BLOB.format(repo=a.repo, ref=a.ref, path=path)})"
 
-    w("**🩹 Fixes in every driver** (bugs still in Mesa `main`; every zip carries them, see "
+    w("**🩹 Fixes in every driver** (both found here, both now in Mesa `main` since "
+      "[MR 44838](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/44838), 2026-10-08; see "
       + link("patches/common/SOURCE") + "):")
     w("")
-    w("- **DirectX 12 no longer waits on the GPU every frame** (" + link("patches/common/kgsl-zero-timeout-poll.patch")
-      + "). A quick \"is the GPU done yet?\" check was sent to the kernel as \"wait until it's done\", so the CPU "
-      "and GPU took turns with VKD3D-Proton. Now it answers at once. On an Adreno 750, a DirectX 12 demo went from "
-      "378 to 1422 fps on X11 and from 588 to 3449 fps on Wayland ([report](" + REPO_BLOB.format(repo=a.repo, ref=a.ref,
-      path="docs/KGSL_ZERO_TIMEOUT_POLL.md") + ")).")
-    w("- **No crash when a frame waits on two kinds of sync at once** (" + link("patches/common/kgsl-syncobj-merge-ts-fd.patch")
-      + "). Cemu crashed on its first frame; proven fixed with Cemu, RPCS3 and Dolphin.")
+    w("- **DirectX 12 no longer waits on the GPU every frame**. A quick \"is the GPU done yet?\" check was sent to the "
+      "kernel as \"wait until it's done\", so the CPU and GPU took turns with VKD3D-Proton. Now it answers at once. On an "
+      "Adreno 750, a DirectX 12 demo went from 378 to 1422 fps on X11 and from 588 to 3449 fps on Wayland ([report]("
+      + REPO_BLOB.format(repo=a.repo, ref=a.ref, path="docs/KGSL_ZERO_TIMEOUT_POLL.md") + ")). Mesa credits "
+      "The412Banner for the find.")
+    w("- **No crash when a frame waits on two kinds of sync at once**. Cemu crashed on its first frame; proven fixed "
+      "with Cemu, RPCS3 and Dolphin.")
     w("")
     wn = "patches/a8xx-winnative/"
     w("**🧩 A8xx driver only:** Max's WinNative series (MaxsTechReview, " + link(wn + "0001-tu-Emulate-VK_EXT_mesh_shader-with-compute.patch")
