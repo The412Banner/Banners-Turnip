@@ -68,7 +68,7 @@ Injects hardware-specific GPU entries and magic registers for Adreno 710, 720, a
 
 ### A8xx — Experimental
 
-Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830, A840). Built from Mesa `main` with the [fixes every driver carries](#fixes-in-every-driver) and the following on top (the same for the X11, Wayland and Linux ZIPs). Max's WinNative series ([`patches/a8xx-winnative/`](patches/a8xx-winnative), from [WinNative-Emu/Drivers](https://github.com/WinNative-Emu/Drivers)) is applied by `apply_common.sh` for this driver only:
+Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830, A840). Built from Mesa `main` (which now carries [both fixes found here](#fixes-in-every-driver)) and the following on top (the same for the X11, Wayland and Linux ZIPs). Max's WinNative series ([`patches/a8xx-winnative/`](patches/a8xx-winnative), from [WinNative-Emu/Drivers](https://github.com/WinNative-Emu/Drivers)) is applied by `apply_common.sh` for this driver only:
 
 | Patch | What it does |
 | :--- | :--- |
