@@ -17,8 +17,9 @@ DEVICES_PY = "src/freedreno/common/freedreno_devices.py"
 with open(DEVICES_PY, "r") as f:
     content = f.read()
 
-if re.search(r"chip_id=0x(ffff)?44050a21", content, re.IGNORECASE):
-    print("  A840v2 chip_id already present, skipping")
+if (re.search(r"chip_id=0x(ffff)?44050a21", content, re.IGNORECASE) and
+        re.search(r"chip_id=0x(ffff)?44050a30", content, re.IGNORECASE)):
+    print("  A840 extra chip_ids already present, skipping")
     sys.exit(0)
 
 m = re.search(r'^(\s*)GPUId\(chip_id=0xffff44050a31, name="[^"]*"\),\n', content,
@@ -29,7 +30,9 @@ if not m:
 
 indent = m.group(1)
 extra = (f'{indent}GPUId(chip_id=0xffff44050A21, name="Adreno (TM) 840v2"),\n'
-         f'{indent}GPUId(chip_id=0x44050A21, name="Adreno (TM) 840v2"), # KGSL\n')
+           f'{indent}GPUId(chip_id=0x44050A21, name="Adreno (TM) 840v2"), # KGSL\n'
+           f'{indent}GPUId(chip_id=0xffff44050A30, name="Adreno (TM) 840"),\n'
+           f'{indent}GPUId(chip_id=0x44050A30, name="Adreno (TM) 840"), # KGSL\n')
 content = content[:m.end()] + extra + content[m.end():]
 
 try:
