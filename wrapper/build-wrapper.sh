@@ -100,6 +100,8 @@ CROSS
     ninja -C "$build" src/vulkan/wrapper/libvulkan_wrapper.so
     WRAPPER_SO="$build/src/vulkan/wrapper/libvulkan_wrapper.so"
     ADRENOTOOLS_SRC="$REPO_ROOT/subprojects/libadrenotools"
+    # Pipetto's tree names the meson subproject "adrenotools".
+    [ -d "$ADRENOTOOLS_SRC" ] || ADRENOTOOLS_SRC="$REPO_ROOT/subprojects/adrenotools"
     [ -f "$WRAPPER_SO" ] || die "libvulkan_wrapper.so was not built"
 }
 
