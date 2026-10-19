@@ -1,4 +1,4 @@
-name: Wrapper (Pipetto wrapper-dev) test build
+name: Wrapper (Pipetto wrapper-dev / wrapper-25) test build
 
 # Test build only: runs on pushes to this branch, uploads the .tzst as an artifact. No release.
 on:
@@ -9,10 +9,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { tag: dev, ref: wrapper-dev, commit: 73a777b316 }
+          - { tag: "25", ref: wrapper-25, commit: ac54448c }
     env:
       MESA_REPO: https://github.com/Pipetto-crypto/mesa
-      MESA_REF: wrapper-dev
-      MESA_COMMIT: 73a777b316
+      MESA_REF: ${{ matrix.ref }}
+      MESA_COMMIT: ${{ matrix.commit }}
+      WRAPPER_TAG: ${{ matrix.tag }}
     steps:
       - uses: actions/checkout@v4
 
@@ -22,7 +29,7 @@ jobs:
           sudo apt-get install -y -qq cmake zstd file pkg-config bison flex glslang-tools
           python3 -m pip install --quiet mako PyYAML meson ninja packaging
 
-      - name: Fetch Pipetto mesa (wrapper-dev)
+      - name: Fetch Pipetto mesa (${{ matrix.ref }})
         run: |
           git clone --filter=blob:none -b "$MESA_REF" "$MESA_REPO" mesa
           git -C mesa checkout --quiet "$MESA_COMMIT"
@@ -37,7 +44,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: wrapper-pipetto-dev
+          name: wrapper-pipetto-${{ matrix.tag }}
           path: |
             out/*.tzst
             out/*.sha256

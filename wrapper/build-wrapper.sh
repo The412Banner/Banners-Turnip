@@ -149,7 +149,7 @@ JSON
     find "$stage" -type d -exec chmod 700 {} +
     find "$stage" -type f -exec chmod 600 {} +
 
-    TZST_NAME="wrapper-pipetto-dev-$(git -C "$REPO_ROOT" rev-parse --short=8 HEAD)-$BUILD_DATE.tzst"
+    TZST_NAME="wrapper-pipetto-${WRAPPER_TAG:-dev}-$(git -C "$REPO_ROOT" rev-parse --short=8 HEAD)-$BUILD_DATE.tzst"
     tar -C "$stage" --owner=0 --group=0 --numeric-owner --sort=name -cf - usr | zstd -19 -T0 -q -o "$OUT_DIR/$TZST_NAME" -f
     (cd "$OUT_DIR" && sha256sum "$TZST_NAME" > "$TZST_NAME.sha256")
 }
