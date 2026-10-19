@@ -1,0 +1,45 @@
+name: Wrapper (Pipetto wrapper-dev) test build
+
+# Test build only: runs on pushes to this branch, uploads the .tzst as an artifact. No release.
+on:
+  push:
+    branches: [wrapper-dev-test]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      MESA_REPO: https://github.com/Pipetto-crypto/mesa
+      MESA_REF: wrapper-dev
+      MESA_COMMIT: 73a777b316
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq cmake zstd file pkg-config bison flex glslang-tools
+          python3 -m pip install --quiet mako PyYAML meson ninja packaging
+
+      - name: Fetch Pipetto mesa (wrapper-dev)
+        run: |
+          git clone --filter=blob:none -b "$MESA_REF" "$MESA_REPO" mesa
+          git -C mesa checkout --quiet "$MESA_COMMIT"
+          git -C mesa log -1 --format='%H %ad %an: %s'
+
+      - name: Build wrapper
+        id: build
+        env:
+          MESA_DIR: ${{ github.workspace }}/mesa
+          OUT_DIR: ${{ github.workspace }}/out
+        run: bash wrapper/build-wrapper.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wrapper-pipetto-dev
+          path: |
+            out/*.tzst
+            out/*.sha256
+            out/libvulkan_wrapper.so.unstripped
+          if-no-files-found: error
