@@ -16,6 +16,9 @@ a8xx=0
 case "${EXTRA_PATCH:-}" in *a8xx_gen8*) a8xx=1 ;; esac
 series=()
 if [ "$a8xx" = 1 ]; then
+	# Mesa MR 45384 (Qualcomm, open): Adreno 850/845 device entries + FDM offset for GMEM fetches.
+	# Applied first, onto plain Mesa. Drop it once Mesa main carries it (the patch then fails here).
+	series+=("$here"/../a8xx-mr45384/0*.patch)
 	series+=("$here"/../a8xx-winnative/0*.patch)
 	[ "$(ls "$here"/../a8xx-winnative/0*.patch | wc -l)" = 5 ] \
 		|| { echo "[common] expected 5 patches in a8xx-winnative/" >&2; exit 1; }
@@ -48,6 +51,11 @@ if [ "$a8xx" = 1 ]; then
 		|| { echo "[common] winnative/0004 (bindless invalidate) did not reach tu_cmd_buffer.h" >&2; exit 1; }
 	grep -q "KGSL_MEMFLAGS_VBO" src/freedreno/vulkan/tu_knl_kgsl.cc \
 		|| { echo "[common] winnative/0005 (IB VBO alias) did not reach tu_knl_kgsl.cc" >&2; exit 1; }
+	grep -q 'chip_id=0xffff44051431, name="Adreno (TM) 850"' src/freedreno/common/freedreno_devices.py \
+		&& grep -q 'chip_id=0xffff44041430, name="Adreno (TM) 845"' src/freedreno/common/freedreno_devices.py \
+		|| { echo "[common] mr45384/0001 (Adreno 850/845) did not reach freedreno_devices.py" >&2; exit 1; }
+	grep -q "fdm_offset_en = p.fdm_offset_en" src/freedreno/vulkan/tu_cmd_buffer.cc \
+		|| { echo "[common] mr45384/0002 (FDM offset) did not reach tu_cmd_buffer.cc" >&2; exit 1; }
 else
 	[ ! -f src/freedreno/vulkan/tu_mesh.cc ] \
 		|| { echo "[common] Max's mesh patch reached a non-A8xx driver" >&2; exit 1; }

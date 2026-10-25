@@ -66,3 +66,12 @@ kgsl-zero-timeout-poll.patch (The412Banner, 2026-09-29) - DROPPED 2026-10-10: Me
   answers VK_SUCCESS / VK_TIMEOUT without waiting. Found on Bannerlator's Wayland adapter
   (Pocket FIT A750): a D3D12 demo capped at ~615 fps went to 4335 fps with the same answer
   given from outside the driver; X11 D3D12 (809 fps) had the same stall, milder.
+
+a8xx-mr45384/0001-0002 (A8XX DRIVER ONLY, added 2026-10-25 on Kimchi's request): Mesa MR 45384
+  "freedreno: add basic device support for Adreno 850 and 845" (Lakshman Chandu Kondreddy /
+  Tupili Krishna Gowtham Reddy, Qualcomm; open, head 4910c656). 0001 adds the Adreno 850
+  (0xffff44051431) and 845 (0xffff44041430) device entries; 0002 sets FDM_OFFSET_EN in the
+  A8xx bin size for GMEM attachment fetches. Exported unchanged with git format-patch. Applied
+  first, before Max's series; our a8xx_shared_mem.py then raises their cs_shared_mem_size to
+  64 KB like every other A8xx. Not device-tested by us (no 850/845 device). Drop both once Mesa
+  main carries the MR: the patch then fails here and the A8xx legs stop on purpose.
