@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261029-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261029-r2) | 2026-10-29 | [`8f6e054`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8f6e054ab4b2af20ad157ca1fc2804e433f2b617) | pan/ds: Report correct gpu_clock_id | Vulkan 1.4.366 |
 | [v27.0.0-20261029](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261029) | 2026-10-29 | [`1c3a936`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1c3a936490f9f0951188218e136cd03bca497386) | Replace `reallocarray` with `realloc` in lp_scene.c | Vulkan 1.4.366 |
 | [v27.0.0-20261028-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261028-r5) | 2026-10-28 | [`5510fc7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5510fc760a29c94dc1f441e83ba61e97b30e6925) | zink/ci: mark pv-waveletvolume-v2 as flaky on vangogh | Vulkan 1.4.366 |
 | [v27.0.0-20261028-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261028-r4) | 2026-10-28 | [`087e1fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/087e1fe4e6a5e1d30f30538112fd8cd62f4167f6) | panvk: fix mark_all_access_non_uniform metadata preservation | Vulkan 1.4.366 |
