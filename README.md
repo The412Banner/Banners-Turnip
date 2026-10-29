@@ -107,12 +107,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.366 |
-| **Commit** | [`5510fc7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5510fc760a29c94dc1f441e83ba61e97b30e6925) |
-| **Commit date** | 2026-10-28 |
-| **Commit title** | zink/ci: mark pv-waveletvolume-v2 as flaky on vangogh |
-| **Build date** | 20261028 |
+| **Commit** | [`1c3a936`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1c3a936490f9f0951188218e136cd03bca497386) |
+| **Commit date** | 2026-10-29 |
+| **Commit title** | Replace `reallocarray` with `realloc` in lp_scene.c |
+| **Build date** | 20261029 |
 | **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 4 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v27.0.0-20261028-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261028-r5) |
+| **Release** | [v27.0.0-20261029](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261029) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -122,11 +122,11 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261029](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261029) | 2026-10-29 | [`1c3a936`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1c3a936490f9f0951188218e136cd03bca497386) | Replace `reallocarray` with `realloc` in lp_scene.c | Vulkan 1.4.366 |
 | [v27.0.0-20261028-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261028-r5) | 2026-10-28 | [`5510fc7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5510fc760a29c94dc1f441e83ba61e97b30e6925) | zink/ci: mark pv-waveletvolume-v2 as flaky on vangogh | Vulkan 1.4.366 |
 | [v27.0.0-20261028-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261028-r4) | 2026-10-28 | [`087e1fe`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/087e1fe4e6a5e1d30f30538112fd8cd62f4167f6) | panvk: fix mark_all_access_non_uniform metadata preservation | Vulkan 1.4.366 |
 | [v27.0.0-20261028-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261028-r3) | 2026-10-28 | [`9c82a78`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9c82a78f18dd60907e380dec60c46336eab64b25) | freedreno: Match FD735 regardless of the speed bin fuse | Vulkan 1.4.366 |
 | [v27.0.0-20261028-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261028-r2) | 2026-10-28 | [`177e630`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/177e630169bf9953d596ce205bd15685e6a6f552) | radv/amdgpu: fix BO list leak on command submit failure | Vulkan 1.4.363 |
-| [v27.0.0-20261028](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261028) | 2026-10-28 | [`05cf21b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/05cf21be7fccc091c31bf07452404faca8368943) | kraid/validate: Ensure all swizzles are legal after legalize_src_swizzles | Vulkan 1.4.363 |
 <!-- RECENT_BUILDS_END -->
 
 ---
