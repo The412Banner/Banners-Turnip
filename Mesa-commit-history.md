@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261030-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261030-r4) | 2026-10-30 | [`367aea1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/367aea118c1b54615151e283ecce969a31954a4a) | hk: Add hk_geometry_heap_size_mb drirc option | Vulkan 1.4.366 |
 | [v27.0.0-20261030-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261030-r3) | 2026-10-30 | [`ec58640`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec586407f5b11a7c200e52beb7fe0fe8eb17a376) | gfxstream: pass dedicated allocation info on blob and AHB exports | Vulkan 1.4.366 |
 | [v27.0.0-20261030-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261030-r2) | 2026-10-30 | [`15c6672`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/15c66721a523be25a08a95859353e9a06be59dc9) | etnaviv: Track pending resource status by GEM handle | Vulkan 1.4.366 |
 | [v27.0.0-20261030](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261030) | 2026-10-30 | [`77452b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/77452b9092cc44d76d92180a12d3aaaf27a98382) | radeonsi: dirty DB_Z_INFO when the sample count changes without Z/S | Vulkan 1.4.366 |
