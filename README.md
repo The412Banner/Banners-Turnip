@@ -107,12 +107,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.366 |
-| **Commit** | [`daa925c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/daa925c3bc78697cc214317ee330a39d1acda19f) |
-| **Commit date** | 2026-10-29 |
-| **Commit title** | anv: stricter check for companion_rcs_cmd_buffer when chaining |
-| **Build date** | 20261029 |
+| **Commit** | [`77452b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/77452b9092cc44d76d92180a12d3aaaf27a98382) |
+| **Commit date** | 2026-10-30 |
+| **Commit title** | radeonsi: dirty DB_Z_INFO when the sample count changes without Z/S |
+| **Build date** | 20261030 |
 | **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 4 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v27.0.0-20261029-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261029-r4) |
+| **Release** | [v27.0.0-20261030](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261030) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -122,11 +122,11 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261030](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261030) | 2026-10-30 | [`77452b9`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/77452b9092cc44d76d92180a12d3aaaf27a98382) | radeonsi: dirty DB_Z_INFO when the sample count changes without Z/S | Vulkan 1.4.366 |
 | [v27.0.0-20261029-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261029-r4) | 2026-10-29 | [`daa925c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/daa925c3bc78697cc214317ee330a39d1acda19f) | anv: stricter check for companion_rcs_cmd_buffer when chaining | Vulkan 1.4.366 |
 | [v27.0.0-20261029-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261029-r3) | 2026-10-29 | [`393bf0d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/393bf0d1467c4a7e208fd0d36b05b99438926079) | venus: descriptor size cache to only query supported types | Vulkan 1.4.366 |
 | [v27.0.0-20261029-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261029-r2) | 2026-10-29 | [`8f6e054`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8f6e054ab4b2af20ad157ca1fc2804e433f2b617) | pan/ds: Report correct gpu_clock_id | Vulkan 1.4.366 |
 | [v27.0.0-20261029](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261029) | 2026-10-29 | [`1c3a936`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1c3a936490f9f0951188218e136cd03bca497386) | Replace `reallocarray` with `realloc` in lp_scene.c | Vulkan 1.4.366 |
-| [v27.0.0-20261028-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261028-r5) | 2026-10-28 | [`5510fc7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5510fc760a29c94dc1f441e83ba61e97b30e6925) | zink/ci: mark pv-waveletvolume-v2 as flaky on vangogh | Vulkan 1.4.366 |
 <!-- RECENT_BUILDS_END -->
 
 ---
