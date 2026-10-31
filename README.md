@@ -107,12 +107,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.366 |
-| **Commit** | [`3d167c0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d167c082424b24a3ccd9f052e82118bdd05ee27) |
+| **Commit** | [`cb0e786`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cb0e78684ac5417bb520c2427072e475269aba30) |
 | **Commit date** | 2026-10-31 |
-| **Commit title** | freedreno/a3xx: deal with VS which does not write position. |
+| **Commit title** | nak: Always apply opt_fall_through |
 | **Build date** | 20261031 |
 | **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 4 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v27.0.0-20261031-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031-r3) |
+| **Release** | [v27.0.0-20261031-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -122,10 +122,10 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261031-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031-r4) | 2026-10-31 | [`cb0e786`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cb0e78684ac5417bb520c2427072e475269aba30) | nak: Always apply opt_fall_through | Vulkan 1.4.366 |
 | [v27.0.0-20261031-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031-r3) | 2026-10-31 | [`3d167c0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d167c082424b24a3ccd9f052e82118bdd05ee27) | freedreno/a3xx: deal with VS which does not write position. | Vulkan 1.4.366 |
 | [v27.0.0-20261031-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031-r2) | 2026-10-31 | [`fd8ef2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd8ef2befafd01190e33f12dbfd109b924c8ebc3) | asahi: drop NIR_PASS from poly_nir_lower_gs calls | Vulkan 1.4.366 |
 | [v27.0.0-20261031](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031) | 2026-10-31 | [`2e18987`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2e1898729c9cb2c614e2027f61c2fc4702d200a6) | lavapipe: fix pipeline cache size return and checks | Vulkan 1.4.366 |
-| [v27.0.0-20261030-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261030-r4) | 2026-10-30 | [`367aea1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/367aea118c1b54615151e283ecce969a31954a4a) | hk: Add hk_geometry_heap_size_mb drirc option | Vulkan 1.4.366 |
 <!-- RECENT_BUILDS_END -->
 
 ---
