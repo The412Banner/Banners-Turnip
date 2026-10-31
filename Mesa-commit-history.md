@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261031-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031-r2) | 2026-10-31 | [`fd8ef2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd8ef2befafd01190e33f12dbfd109b924c8ebc3) | asahi: drop NIR_PASS from poly_nir_lower_gs calls | Vulkan 1.4.366 |
 | [v27.0.0-20261031](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031) | 2026-10-30 | [`2e18987`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2e1898729c9cb2c614e2027f61c2fc4702d200a6) | lavapipe: fix pipeline cache size return and checks | Vulkan 1.4.366 |
 | [v27.0.0-20261030-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261030-r4) | 2026-10-30 | [`367aea1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/367aea118c1b54615151e283ecce969a31954a4a) | hk: Add hk_geometry_heap_size_mb drirc option | Vulkan 1.4.366 |
 | [v27.0.0-20261030-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261030-r3) | 2026-10-30 | [`ec58640`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ec586407f5b11a7c200e52beb7fe0fe8eb17a376) | gfxstream: pass dedicated allocation info on blob and AHB exports | Vulkan 1.4.366 |
