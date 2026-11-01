@@ -1,0 +1,33 @@
+From: whitebelyash <whbexiumwork@gmail.com>
+Subject: [PATCH] u_gralloc: always use the UBWC detection path
+
+u_gralloc checks whether a buffer was allocated by the Qualcomm vendor
+gralloc by comparing the 'gmsm' magic with the buffer handle data. Newer
+gralloc versions no longer store it, so the check never succeeded and the
+buffer never got the proper DRM format modifier, which caused a heavily
+distorted picture on screen.
+
+Based on whitebelyash/mesa-unified@6c6acf4ddaacf65bed00eb0e100dc24bc399618f.
+Unlike the original, this keeps the numInts >= 2 check so handles without
+the extra ints are not read out of bounds.
+---
+diff --git a/src/util/u_gralloc/u_gralloc_fallback.c b/src/util/u_gralloc/u_gralloc_fallback.c
+index 44fb32d..4d85683 100644
+--- a/src/util/u_gralloc/u_gralloc_fallback.c
++++ b/src/util/u_gralloc/u_gralloc_fallback.c
+@@ -148,8 +148,13 @@ fallback_gralloc_get_buffer_info(struct u_gralloc *gralloc,
+    out->strides[0] = stride;
+ 
+ #ifdef HAS_FREEDRENO
+-   uint32_t gmsm = ('g' << 24) | ('m' << 16) | ('s' << 8) | 'm';
+-   if (hnd->handle->numInts >= 2 && hnd->handle->data[hnd->handle->numFds] == gmsm) {
++   /* HACK: newer Qualcomm gralloc versions no longer store the 'gmsm' magic
++    * in the handle, so checking for it skipped UBWC detection and left
++    * UBWC buffers marked as linear (heavily distorted output). Read the
++    * UBWC flag whenever the handle has the ints for it.
++    * TODO: find another way to detect a Qualcomm vendor allocated buffer.
++    */
++   if (hnd->handle->numInts >= 2) {
+       /* This UBWC flag was introduced in a5xx. */
+       bool ubwc = hnd->handle->data[hnd->handle->numFds + 1] & 0x08000000;
+       out->modifier = ubwc ? DRM_FORMAT_MOD_QCOM_COMPRESSED : DRM_FORMAT_MOD_LINEAR;
