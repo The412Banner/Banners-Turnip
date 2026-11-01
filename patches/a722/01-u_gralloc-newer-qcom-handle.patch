@@ -1,0 +1,27 @@
+--- a/src/util/u_gralloc/u_gralloc_fallback.c
++++ b/src/util/u_gralloc/u_gralloc_fallback.c
+@@ -149,9 +149,22 @@
+ 
+ #ifdef HAS_FREEDRENO
+    uint32_t gmsm = ('g' << 24) | ('m' << 16) | ('s' << 8) | 'm';
+-   if (hnd->handle->numInts >= 2 && hnd->handle->data[hnd->handle->numFds] == gmsm) {
++   const int *ints = &hnd->handle->data[hnd->handle->numFds];
++   int num_ints = hnd->handle->numInts;
++   if (num_ints >= 2 && ints[0] == gmsm) {
+       /* This UBWC flag was introduced in a5xx. */
+-      bool ubwc = hnd->handle->data[hnd->handle->numFds + 1] & 0x08000000;
++      bool ubwc = ints[1] & 0x08000000;
++      out->modifier = ubwc ? DRM_FORMAT_MOD_QCOM_COMPRESSED : DRM_FORMAT_MOD_LINEAR;
++   } else if (num_ints >= 9 && hnd->pixel_stride > 0 &&
++              ints[8] == hnd->hal_format && ints[4] == hnd->pixel_stride) {
++      /* Newer Qualcomm grallocs (seen on Android 14, Adreno 722) no longer
++       * store the 'gmsm' magic. Their handle ints are: ?, ?, flags,
++       * stride in bytes, aligned width, aligned height, width, height,
++       * format, ... Recognize that layout by the format and the aligned
++       * width matching what the buffer reports, then read the same
++       * UBWC flag from the flags field.
++       */
++      bool ubwc = ints[2] & 0x08000000;
+       out->modifier = ubwc ? DRM_FORMAT_MOD_QCOM_COMPRESSED : DRM_FORMAT_MOD_LINEAR;
+    }
+ #endif

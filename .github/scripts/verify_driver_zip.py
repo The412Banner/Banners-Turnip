@@ -39,6 +39,9 @@ VARIANT_MARKERS = {
     "710-720-test": ["FD710", "FD720", "FD722"],
     # A boolean in the device table: no string to look for. patches/8g2_oneui.py fails the build if it cannot apply.
     "8g2-oneui": [],
+    # Upstream's own A722 entry (no device patch) + the gralloc fix, which adds no string;
+    # patches/a722/apply_gralloc_fix.py fails the build if it cannot apply.
+    "a722": [],
 }
 WAYLAND_MARKERS = [
     "banner_ahb_v1",                                            # banner_ahb_wsi.py protocol
