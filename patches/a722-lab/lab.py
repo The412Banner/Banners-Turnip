@@ -17,7 +17,11 @@ for s in steps:
     pa = os.path.join(here, "steps", s + ".patch")
     if os.path.exists(py):
         print(f"[lab] step {s}")
-        runpy.run_path(py, run_name="__main__")
+        try:
+            runpy.run_path(py, run_name="__main__")
+        except SystemExit as e:
+            if e.code not in (None, 0):
+                raise
     elif os.path.exists(pa):
         print(f"[lab] patch {s}")
         subprocess.run(["git", "apply", "--check", pa], check=True)
