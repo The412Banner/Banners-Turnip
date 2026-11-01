@@ -120,28 +120,13 @@ jobs:
       fail-fast: false
       matrix:
         # Shared with the Wayland legs (alias below): one recipe per driver.
+        # fix/a722-blob-regs (branch only, do not merge): build just the 710-720-Test drivers.
         include: &drivers
-          - variant: regular
-            suffix: ""
-            extra_patch: ""
-            extra_script: ""
-            meta_desc: ""
-          - variant: a8xx
-            suffix: "-A8xx"
-            extra_patch: "patches/a8xx_gen8.patch"
-            extra_script: "patches/a8xx_shared_mem.py"
-            meta_desc: "A8xx experimental Turnip driver for Snapdragon 8 Elite (A840/A830/A829/A825/A812/A810). whitebelyash turnip/gen8 A8xx stack on top of Mesa main (matches tu_v29 / StevenMXZ v33). KGSL build."
           - variant: 710-720-test
             suffix: "-710-720-Test"
             extra_patch: "patches/710-720/01-u_gralloc-always-use-ubwc-detection.patch"
             extra_script: "patches/a710-720.py"
             meta_desc: "EXPERIMENTAL — Adreno 710, 720, and 722 on Mesa main (710/720 upstream, A722 with hardware-captured registers) plus the UBWC gralloc fix. Unverified on real hardware — use sysmem mode. All other GPUs unaffected."
-          - variant: 8g2-oneui
-            suffix: "-8G2-OneUI"
-            extra_patch: ""
-            extra_script: "patches/8g2_oneui.py"
-            meta_desc: "Standard A6xx/A7xx driver with the Adreno 740 (Snapdragon 8 Gen 2) UBWC flag hint turned on, to match newer system drivers such as Samsung One UI and stop UI glitches and flicker. Only for 8 Gen 2 devices on newer firmware; on others it causes the glitch. All other GPUs unaffected."
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
