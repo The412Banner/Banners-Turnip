@@ -107,12 +107,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.366 |
-| **Commit** | [`cb0e786`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cb0e78684ac5417bb520c2427072e475269aba30) |
+| **Commit** | [`44989e5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44989e5a489c0ddbc79d2019f2c236699251c69e) |
 | **Commit date** | 2026-10-31 |
-| **Commit title** | nak: Always apply opt_fall_through |
-| **Build date** | 20261031 |
-| **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 4 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v27.0.0-20261031-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031-r4) |
+| **Commit title** | zink: enable subgroups even if shaderFloat64 is not exposed |
+| **Build date** | 20261101 |
+| **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 4 ZIPs · Linux runtime: 3 ZIPs |
+| **Release** | [v27.0.0-20261101](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261101) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -122,6 +122,7 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261101](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261101) | 2026-11-01 | [`44989e5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44989e5a489c0ddbc79d2019f2c236699251c69e) | zink: enable subgroups even if shaderFloat64 is not exposed | Vulkan 1.4.366 |
 | [v27.0.0-20261031-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031-r4) | 2026-10-31 | [`cb0e786`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cb0e78684ac5417bb520c2427072e475269aba30) | nak: Always apply opt_fall_through | Vulkan 1.4.366 |
 | [v27.0.0-20261031-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031-r3) | 2026-10-31 | [`3d167c0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3d167c082424b24a3ccd9f052e82118bdd05ee27) | freedreno/a3xx: deal with VS which does not write position. | Vulkan 1.4.366 |
 | [v27.0.0-20261031-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261031-r2) | 2026-10-31 | [`fd8ef2b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fd8ef2befafd01190e33f12dbfd109b924c8ebc3) | asahi: drop NIR_PASS from poly_nir_lower_gs calls | Vulkan 1.4.366 |
