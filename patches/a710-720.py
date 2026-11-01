@@ -9,6 +9,18 @@ script replaces it with Vauzi-17/710's A722 regs (captured from real A722
 blob command streams as .rd traces, decoded with cffdump) and num_ccu = 2
 (Vauzi-17/710 5db89bd, tested on A720/A722 hardware).
 
+2026-11-01: four values corrected to what the Qualcomm driver (V@0800.73,
+Retroid Pocket Duo) writes, from DriverLab .rd captures of the same CTS tests
+on both drivers:
+  PC_MODE_CNTL        0x3f -> 0x1f1f
+  SP_UNKNOWN_AB01     1    -> 0      (1 is the GLES value; Vulkan writes 0)
+  TPL1_DBG_ECO_CNTL1  UBWC flag hint off (enable_tp_ubwc_flag_hint = False);
+                      a7xx_gen1 turned it on, giving 0x40700 instead of 0x700.
+                      Mesa notes this bit must match the system driver.
+  SP_CHICKEN_BITS     EOLM bit off (has_eolm_eogm = False): 0x402 -> 0x400.
+num_ccu = 2 is confirmed by the blob's GMEM CCU color offset (0xFC000 =
+1 MB - 2 CCUs x 64 KB / 8).
+
 Chip IDs:
   A722: 0x43020100 + wildcard 0xffff43020100
 
@@ -43,7 +55,7 @@ a722_raw_magic_regs = [
         [A6XXRegs.REG_A7XX_SP_HLSQ_DBG_ECO_CNTL, 0x00000000],
         [A6XXRegs.REG_A6XX_SP_DBG_ECO_CNTL, 0x11000000],
 
-        [A6XXRegs.REG_A6XX_PC_MODE_CNTL, 0x0000003f],
+        [A6XXRegs.REG_A6XX_PC_MODE_CNTL, 0x00001f1f],
         [A6XXRegs.REG_A6XX_PC_DBG_ECO_CNTL, 0x20100000],
         [A6XXRegs.REG_A7XX_PC_UNKNOWN_9E24, 0x01fc7f00],
 
@@ -54,7 +66,7 @@ a722_raw_magic_regs = [
         [A6XXRegs.REG_A7XX_SP_HLSQ_DBG_ECO_CNTL_1, 0x00000000],
         [A6XXRegs.REG_A7XX_SP_HLSQ_MODE_CNTL, 0x00000000],
 
-        [A6XXRegs.REG_A7XX_SP_UNKNOWN_AB01, 0x00000001],
+        [A6XXRegs.REG_A7XX_SP_UNKNOWN_AB01, 0x00000000],
         [A6XXRegs.REG_A7XX_SP_UNKNOWN_AB22, 0x00000000],
         [A6XXRegs.REG_A7XX_SP_UNKNOWN_B310, 0x00000000],
 
@@ -84,7 +96,9 @@ add_gpus([
         GPUId(chip_id=0xffff43020100, name="FD722"),
     ], A6xxGPUInfo(
         CHIP.A7XX,
-        [a7xx_base, a7xx_gen1],
+        [a7xx_base, a7xx_gen1,
+         # Match the Qualcomm driver: UBWC flag hint off, no EOLM/EOGM.
+         GPUProps(enable_tp_ubwc_flag_hint = False, has_eolm_eogm = False)],
         num_ccu = 2,
         tile_align_w = 64,
         tile_align_h = 32,
