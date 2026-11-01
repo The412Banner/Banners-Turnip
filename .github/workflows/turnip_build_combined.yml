@@ -1,495 +1,59 @@
-name: Build Turnip (Combined)
+# BRANCH-ONLY (feat/a722-upstream, never merge this file): turnip_build_combined.yml replaced by the A722 lab build.
+# Branch-only lab workflow (feat/a722-upstream): builds several Android KGSL Turnip drivers in one
+# run, each = Mesa at one pinned commit + the lab steps named in "variants". No release, no README.
+name: A722 lab build
 
 on:
   workflow_dispatch:
     inputs:
-      dry_run:
-        description: "Build and verify all six drivers and write the release body, but publish nothing (no tag, release or README commit)"
-        type: boolean
-        default: false
       mesa_commit:
-        description: "Full 40-hex Mesa commit to build (empty = mesa/mesa main HEAD)"
-        type: string
-        default: ""
-      simulate_wayland_failure:
-        description: "Dry runs only: fail this Wayland leg on purpose (regular / a8xx / 710-720-test) to test a partial release"
-        type: string
-        default: ""
-      simulate_linux_failure:
-        description: "Dry runs only: fail this Linux leg on purpose (regular / a8xx / 710-720-test) to test a partial release"
-        type: string
-        default: ""
-
-permissions:
-  contents: write
-
-# One release run at a time, so the -rN counter the resolve job picks is still free when the
-# release job publishes. A newer queued run replaces an older queued one (it builds a newer Mesa).
-concurrency:
-  group: turnip-combined-${{ inputs.dry_run && 'dry-run' || 'release' }}
-  cancel-in-progress: false
+        description: "Full 40-hex Mesa commit"
+        required: true
+      variants:
+        description: 'JSON list: [{"name":"up","steps":""},{"name":"own722","steps":"own722"}]'
+        required: true
 
 jobs:
-  # The Mesa commit and the release tag, decided once for every leg: all six drivers are built
-  # from the same commit and named from the same tag.
-  resolve:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    outputs:
-      commit: ${{ steps.r.outputs.commit }}
-      tag: ${{ steps.r.outputs.tag }}
-      day_num: ${{ steps.r.outputs.day_num }}
-    steps:
-      - name: Resolve Mesa commit and release tag
-        id: r
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          INPUT_COMMIT: ${{ inputs.mesa_commit }}
-          DRY_RUN: ${{ inputs.dry_run }}
-        run: |
-          if [ -n "$INPUT_COMMIT" ] && ! [[ "$INPUT_COMMIT" =~ ^[0-9a-f]{40}$ ]]; then
-            echo "::error::mesa_commit must be a full 40-hex commit"; exit 1
-          fi
-          REF="${INPUT_COMMIT:-refs/heads/main}"
-          git init -q mesa
-          git -C mesa remote add origin https://gitlab.freedesktop.org/mesa/mesa.git
-          ok=0
-          for i in 1 2 3 4 5 6; do
-            if git -C mesa fetch -q --depth=1 origin "$REF"; then ok=1; break; fi
-            echo "Mesa fetch attempt $i failed, retrying in 45 s"; sleep 45
-          done
-          [ "$ok" = 1 ] || { echo "::error::could not fetch Mesa $REF"; exit 1; }
-          git -C mesa checkout -q FETCH_HEAD
-
-          MESA_VERSION=$(cat mesa/VERSION 2>/dev/null | sed 's/-devel.*//' | tr -d '[:space:]' || echo "unknown")
-          BUILD_DATE=$(date +%Y%m%d)
-          GITHASH=$(git -C mesa rev-parse --short HEAD)
-          GITHASH_FULL=$(git -C mesa rev-parse HEAD)
-          COMMIT_DATE=$(git -C mesa log -1 --format="%ci" | cut -d' ' -f1)
-          COMMIT_TITLE=$(git -C mesa log -1 --format="%s")
-          TAG="v${MESA_VERSION}-${BUILD_DATE}"
-          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" &>/dev/null; then
-            EXISTING=$(gh release list --repo "$GITHUB_REPOSITORY" --limit 100 --json tagName \
-              | jq -r '.[].tagName' \
-              | { grep -oP "^v${MESA_VERSION}-${BUILD_DATE}-r\K[0-9]+$" || true; } \
-              | sort -n \
-              | tail -1)
-            NEXT_R=$(( ${EXISTING:-1} + 1 ))
-            TAG="${TAG}-r${NEXT_R}"
-            echo "Tag already exists — using ${TAG}"
-          fi
-          if [[ "$TAG" =~ -r([0-9]+)$ ]]; then
-            DAY_NUM="${BASH_REMATCH[1]}"
-          else
-            DAY_NUM="1"
-          fi
-          VK_PATCH=$(grep '^#define VK_HEADER_VERSION ' mesa/include/vulkan/vulkan_core.h | awk '{print $3}')
-          VK_MINOR=$(grep 'define TU_API_VERSION' mesa/src/freedreno/vulkan/tu_device.cc | grep -oP 'VK_MAKE_VERSION\(\s*[0-9]+,\s*\K[0-9]+')
-          VULKAN_VERSION="Vulkan 1.${VK_MINOR}.${VK_PATCH}"
-          [[ "$GITHASH_FULL" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::no Mesa commit"; exit 1; }
-
-          mkdir -p release-info
-          printf '%s\n' "$TAG"            > release-info/tag.txt
-          printf '%s\n' "$MESA_VERSION"   > release-info/mesa_version.txt
-          printf '%s\n' "$BUILD_DATE"     > release-info/build_date.txt
-          printf '%s\n' "$GITHASH"        > release-info/githash.txt
-          printf '%s\n' "$GITHASH_FULL"   > release-info/githash_full.txt
-          printf '%s\n' "$COMMIT_DATE"    > release-info/commit_date.txt
-          printf '%s\n' "$COMMIT_TITLE"   > release-info/commit_title.txt
-          printf '%s\n' "$VULKAN_VERSION" > release-info/vulkan_version.txt
-
-          echo "commit=${GITHASH_FULL}" >> "$GITHUB_OUTPUT"
-          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
-          echo "day_num=${DAY_NUM}" >> "$GITHUB_OUTPUT"
-          echo "Mesa ${MESA_VERSION} ${GITHASH_FULL} (${COMMIT_DATE}) — tag ${TAG}, ${VULKAN_VERSION}, dry_run=${DRY_RUN:-false}"
-
-      - name: Upload release info
-        uses: actions/upload-artifact@v4
-        with:
-          retention-days: 7
-          name: release-info
-          path: release-info/
-
-  # Android (AdrenoTools) drivers: the release zips external catalogs match on. Names and the
-  # build recipe are unchanged; the legs are pinned to the resolved commit and checked after zipping.
   build:
     runs-on: ubuntu-latest
-    needs: resolve
-    timeout-minutes: 90
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
-        # Shared with the Wayland legs (alias below): one recipe per driver.
-        include: &drivers
-          - variant: regular
-            suffix: ""
-            extra_patch: ""
-            extra_script: ""
-            meta_desc: ""
-          - variant: a8xx
-            suffix: "-A8xx"
-            extra_patch: "patches/a8xx_gen8.patch"
-            extra_script: "patches/a8xx_shared_mem.py"
-            meta_desc: "A8xx experimental Turnip driver for Snapdragon 8 Elite (A840/A830/A829/A825/A812/A810). whitebelyash turnip/gen8 A8xx stack on top of Mesa main (matches tu_v29 / StevenMXZ v33). KGSL build."
-          - variant: 710-720-test
-            suffix: "-710-720-Test"
-            extra_patch: "patches/710-720/01-u_gralloc-always-use-ubwc-detection.patch"
-            extra_script: "patches/a710-720.py"
-            meta_desc: "EXPERIMENTAL — Adreno 710, 720, and 722 on Mesa main (710/720 upstream, A722 with hardware-captured registers) plus the UBWC gralloc fix. Unverified on real hardware — use sysmem mode. All other GPUs unaffected."
-          - variant: 8g2-oneui
-            suffix: "-8G2-OneUI"
-            extra_patch: ""
-            extra_script: "patches/8g2_oneui.py"
-            meta_desc: "Standard A6xx/A7xx driver with the Adreno 740 (Snapdragon 8 Gen 2) UBWC flag hint turned on, to match newer system drivers such as Samsung One UI and stop UI glitches and flicker. Only for 8 Gen 2 devices on newer firmware; on others it causes the glitch. All other GPUs unaffected."
-
+        v: ${{ fromJSON(inputs.variants) }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch ccache
           pip3 install --break-system-packages meson mako
 
       - name: Build
+        shell: bash
+        env:
+          MESA_COMMIT: ${{ inputs.mesa_commit }}
+          LAB_STEPS: ${{ matrix.v.steps }}
+          EXTRA_SCRIPT: patches/a722-lab/lab.py
+          META_NAME: LAB-${{ github.run_number }}-${{ matrix.v.name }}
+          META_DESC: "A722 lab build (feat/a722-upstream, not a release). Mesa ${{ inputs.mesa_commit }} + steps: ${{ matrix.v.steps }}"
+          BUILD_VERSION: ${{ github.run_number }}
         run: |
           chmod +x build_turnip.sh
-          export BUILD_VERSION="${{ github.run_number }}"
-          export MESA_COMMIT="${{ needs.resolve.outputs.commit }}"
-          [[ -n "${{ matrix.extra_patch }}" ]] && export EXTRA_PATCH="${{ matrix.extra_patch }}"
-          [[ -n "${{ matrix.extra_script }}" ]] && export EXTRA_SCRIPT="${{ matrix.extra_script }}"
-          ./build_turnip.sh
+          ./build_turnip.sh 2>&1 | tee build.log
+          grep -q '^\[lab\] steps:' build.log || { echo "lab.py did not run"; exit 1; }
+          z=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
+          [ -f "$z" ] || { echo "no zip"; exit 1; }
+          mkdir out && cd out && unzip -q "../$z"
+          test -s libvulkan_freedreno.so && test -s meta.json
+          python3 -c "import json;m=json.load(open('meta.json'));assert m['name']=='LAB-${{ github.run_number }}-${{ matrix.v.name }}',m['name'];print(m)"
+          git -C ../turnip_workdir/mesa rev-parse HEAD > mesa_commit.txt
+          echo "${LAB_STEPS}" > lab_steps.txt
+          sha256sum libvulkan_freedreno.so | tee so.sha256
 
-      - name: Rename ZIP
-        id: info
-        env:
-          TAG: ${{ needs.resolve.outputs.tag }}
-          DAY_NUM: ${{ needs.resolve.outputs.day_num }}
-          MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
-        run: |
-          BUILT=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo "unknown")
-          if [ "$BUILT" != "$MESA_COMMIT" ]; then
-            echo "::error::this leg built Mesa ${BUILT}, the run resolved ${MESA_COMMIT}"; exit 1
-          fi
-          ZIP_NAME="Turnip-${TAG}${{ matrix.suffix }}.zip"
-          SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
-          UNZIP_DIR=$(mktemp -d)
-          unzip -q "$SRC" -d "$UNZIP_DIR"
-          META_NAME="Mesa Turnip ${TAG}${{ matrix.suffix }}"
-          META_DESC="${{ matrix.meta_desc }}"
-          python3 -c "import json,sys; p='${UNZIP_DIR}/meta.json'; m=json.load(open(p)); m['name']='${META_NAME}'; m['packageVersion']='${DAY_NUM}'; d='${META_DESC}'; m.update({'description':d} if d else {}); json.dump(m,open(p,'w'),indent=2); print('meta.json:',m['name'],'| packageVersion:',m['packageVersion'])"
-          (cd "$UNZIP_DIR" && zip -q - *) > "turnip_workdir/${ZIP_NAME}"
-          echo "zip_name=${ZIP_NAME}" >> $GITHUB_OUTPUT
-
-      - name: Verify driver ZIP
-        env:
-          ZIP_NAME: ${{ steps.info.outputs.zip_name }}
-          TAG: ${{ needs.resolve.outputs.tag }}
-          DAY_NUM: ${{ needs.resolve.outputs.day_num }}
-          MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
-          VARIANT: ${{ matrix.variant }}
-          SUFFIX: ${{ matrix.suffix }}
-          EXTRA_PATCH: ${{ matrix.extra_patch }}
-          EXTRA_SCRIPT: ${{ matrix.extra_script }}
-        run: |
-          python3 -c "import json,os; json.dump({k.lower(): os.environ[k] for k in ('MESA_COMMIT','EXTRA_PATCH','EXTRA_SCRIPT')}, open('build-report.json','w'))"
-          python3 .github/scripts/verify_driver_zip.py --kind android \
-            --zip "turnip_workdir/${ZIP_NAME}" --variant "$VARIANT" \
-            --expect-name "Mesa Turnip ${TAG}${SUFFIX}" --expect-package-version "$DAY_NUM" \
-            --build-report build-report.json --report "report-android-${VARIANT}.json"
-
-      - name: Upload driver ZIP
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
+          name: ${{ matrix.v.name }}
+          path: out/
           retention-days: 7
-          name: turnip-${{ matrix.variant }}
-          path: turnip_workdir/Turnip-*.zip
-          if-no-files-found: error
-
-      - name: Upload verification report
-        uses: actions/upload-artifact@v4
-        with:
-          retention-days: 7
-          name: report-android-${{ matrix.variant }}
-          path: report-android-*.json
-          if-no-files-found: error
-
-  # Wayland (Linux-style ICD) builds of the same three drivers for Bannerlator's Wayland
-  # containers. Independent of the Android legs: a failure here only drops that one zip.
-  wayland:
-    runs-on: ubuntu-24.04
-    needs: resolve
-    timeout-minutes: 90
-    strategy:
-      fail-fast: false
-      matrix:
-        include: *drivers
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ninja-build unzip flex bison glslang-tools curl ccache pkg-config \
-            clang lld llvm python3-pip zip patch binutils
-          pip3 install --break-system-packages meson mako pyyaml packaging
-
-      - name: Build (Wayland)
-        env:
-          MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
-          ZIP_NAME: Turnip-${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Wayland.zip
-          META_NAME: Mesa Turnip ${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Wayland
-          PACKAGE_VERSION: ${{ needs.resolve.outputs.day_num }}
-          META_DESC: ${{ matrix.meta_desc }}
-          EXTRA_PATCH: ${{ matrix.extra_patch }}
-          EXTRA_SCRIPT: ${{ matrix.extra_script }}
-          VARIANT: ${{ matrix.variant }}
-          DRY_RUN: ${{ inputs.dry_run }}
-          SIMULATE_FAILURE: ${{ inputs.simulate_wayland_failure }}
-        run: |
-          if [ "$DRY_RUN" = "true" ] && [ -n "$SIMULATE_FAILURE" ] && [ "$SIMULATE_FAILURE" = "$VARIANT" ]; then
-            echo "::error::simulated Wayland build failure for $VARIANT (dry-run test)"; exit 1
-          fi
-          ccache -M 2G
-          chmod +x build_turnip_wayland.sh
-          ./build_turnip_wayland.sh
-
-      - name: Verify Wayland ZIP
-        env:
-          ZIP_NAME: Turnip-${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Wayland.zip
-          META_NAME: Mesa Turnip ${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Wayland
-          PACKAGE_VERSION: ${{ needs.resolve.outputs.day_num }}
-          VARIANT: ${{ matrix.variant }}
-        run: |
-          python3 .github/scripts/verify_driver_zip.py --kind wayland \
-            --zip "wayland_workdir/${ZIP_NAME}" --variant "$VARIANT" \
-            --expect-name "$META_NAME" --expect-package-version "$PACKAGE_VERSION" \
-            --layer-abi patches/wayland/layer-abi \
-            --build-report wayland_workdir/build-report.json --report "report-wayland-${VARIANT}.json"
-
-      - name: Upload Wayland driver ZIP
-        uses: actions/upload-artifact@v4
-        with:
-          retention-days: 7
-          name: turnip-wayland-${{ matrix.variant }}
-          path: wayland_workdir/Turnip-*-Wayland.zip
-          if-no-files-found: error
-
-      - name: Upload verification report
-        uses: actions/upload-artifact@v4
-        with:
-          retention-days: 7
-          name: report-wayland-${{ matrix.variant }}
-          path: report-wayland-*.json
-          if-no-files-found: error
-
-      - name: Upload build evidence on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          retention-days: 7
-          name: wayland-failed-${{ matrix.variant }}
-          path: |
-            wayland_workdir/mesa/build-wayland/meson-logs/meson-log.txt
-            wayland_workdir/build-report.json
-            wayland_workdir/termux-versions.txt
-          if-no-files-found: ignore
-
-  # Linux (glibc ICD) builds of the same three drivers for Bannerlator's Linux runtime: the driver
-  # that draws the native ARM64 Steam client and the games it launches. Independent of the other
-  # legs: a failure here only drops that one zip.
-  linux:
-    runs-on: ubuntu-24.04
-    needs: resolve
-    timeout-minutes: 90
-    strategy:
-      fail-fast: false
-      matrix:
-        include: *drivers
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ninja-build unzip flex bison cmake glslang-tools curl pkg-config \
-            gcc-aarch64-linux-gnu g++-aarch64-linux-gnu binutils-aarch64-linux-gnu \
-            python3-pip zip patch tar zstd xz-utils
-          # Ubuntu ships meson 1.3; Mesa 26.x needs >= 1.4, so take it from pip.
-          pip3 install --break-system-packages 'meson>=1.5' mako pyyaml packaging
-          meson --version && aarch64-linux-gnu-gcc --version | head -1
-
-      - name: Build (Linux)
-        env:
-          MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
-          ZIP_NAME: Turnip-${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Linux.zip
-          META_NAME: Mesa Turnip ${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Linux
-          PACKAGE_VERSION: ${{ needs.resolve.outputs.day_num }}
-          META_DESC: ${{ matrix.meta_desc }}
-          EXTRA_PATCH: ${{ matrix.extra_patch }}
-          EXTRA_SCRIPT: ${{ matrix.extra_script }}
-          VARIANT: ${{ matrix.variant }}
-          DRY_RUN: ${{ inputs.dry_run }}
-          SIMULATE_FAILURE: ${{ inputs.simulate_linux_failure }}
-        run: |
-          if [ "$DRY_RUN" = "true" ] && [ -n "$SIMULATE_FAILURE" ] && [ "$SIMULATE_FAILURE" = "$VARIANT" ]; then
-            echo "::error::simulated Linux build failure for $VARIANT (dry-run test)"; exit 1
-          fi
-          chmod +x build_turnip_linux.sh
-          ./build_turnip_linux.sh
-
-      - name: Verify Linux ZIP
-        env:
-          ZIP_NAME: Turnip-${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Linux.zip
-          META_NAME: Mesa Turnip ${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Linux
-          PACKAGE_VERSION: ${{ needs.resolve.outputs.day_num }}
-          VARIANT: ${{ matrix.variant }}
-        run: |
-          python3 .github/scripts/verify_driver_zip.py --kind linux \
-            --zip "linux_workdir/${ZIP_NAME}" --variant "$VARIANT" \
-            --expect-name "$META_NAME" --expect-package-version "$PACKAGE_VERSION" \
-            --build-report linux_workdir/build-report.json --report "report-linux-${VARIANT}.json" \
-            --readelf aarch64-linux-gnu-readelf
-
-      - name: Upload Linux driver ZIP
-        uses: actions/upload-artifact@v4
-        with:
-          retention-days: 7
-          name: turnip-linux-${{ matrix.variant }}
-          path: linux_workdir/Turnip-*-Linux.zip
-          if-no-files-found: error
-
-      - name: Upload verification report
-        uses: actions/upload-artifact@v4
-        with:
-          retention-days: 7
-          name: report-linux-${{ matrix.variant }}
-          path: report-linux-*.json
-          if-no-files-found: error
-
-      - name: Upload build evidence on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          retention-days: 7
-          name: linux-failed-${{ matrix.variant }}
-          path: |
-            linux_workdir/mesa/build-linux/meson-logs/meson-log.txt
-            linux_workdir/build-report.json
-            linux_workdir/sysroot-packages.txt
-          if-no-files-found: ignore
-
-  release:
-    runs-on: ubuntu-latest
-    needs: [resolve, build, wayland, linux]
-    # Publish whatever drivers built and verified. A failed leg (an experimental Android driver
-    # against bleeding-edge Mesa, or any Wayland or Linux build) must NOT block the standard driver most
-    # users grab; the failed leg still shows red and the release body names it.
-    if: ${{ !cancelled() && needs.resolve.result == 'success' }}
-    timeout-minutes: 30
-
-    steps:
-      - name: Checkout repo (patch files, scripts)
-        uses: actions/checkout@v4
-
-      - name: Download driver ZIPs
-        uses: actions/download-artifact@v4
-        with:
-          pattern: turnip-*
-          merge-multiple: true
-          path: ./zips
-        continue-on-error: true
-
-      - name: Download verification reports
-        uses: actions/download-artifact@v4
-        with:
-          pattern: report-*
-          merge-multiple: true
-          path: ./reports
-        continue-on-error: true
-
-      - name: Download release info
-        uses: actions/download-artifact@v4
-        with:
-          name: release-info
-          path: ./release-info
-
-      - name: Write release body
-        run: |
-          mkdir -p zips reports
-          echo "Drivers present this run:"; ls -la zips/
-          rc=0
-          python3 .github/scripts/release_body.py --info release-info --zips zips --reports reports \
-            --out release_body.md --assets release_assets.txt || rc=$?
-          if [ "$rc" != 0 ]; then
-            echo "::error::no release: the standard Android driver did not build/verify (release_body.py exit $rc)"
-            exit 1
-          fi
-          echo "================ release body ================"
-          cat release_body.md
-          echo "================ assets ================"
-          cat release_assets.txt
-          { echo "## Release body (${{ inputs.dry_run && 'dry run: NOT published' || 'to publish' }})"; echo; cat release_body.md; } >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Upload release body
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          retention-days: 7
-          name: release-body
-          path: |
-            release_body.md
-            release_assets.txt
-          if-no-files-found: ignore
-
-      - name: Create release
-        if: ${{ !inputs.dry_run }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TAG=$(cat release-info/tag.txt)
-          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" &>/dev/null; then
-            echo "::error::release $TAG already exists (another run published it); the zips carry this tag in meta.json, not re-publishing"
-            exit 1
-          fi
-          mapfile -t ASSETS < release_assets.txt
-          gh release create "$TAG" \
-            --repo "$GITHUB_REPOSITORY" \
-            --title "Turnip ${TAG}" \
-            --notes-file release_body.md \
-            "${ASSETS[@]}"
-
-      - name: Update README with build info
-        if: ${{ !inputs.dry_run }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin A8xx
-          git checkout A8xx
-          git pull --rebase origin A8xx
-          export BT_TAG=$(cat release-info/tag.txt)
-          export BT_MESA_VERSION=$(cat release-info/mesa_version.txt)
-          export BT_BUILD_DATE=$(cat release-info/build_date.txt)
-          export BT_GITHASH=$(cat release-info/githash.txt)
-          export BT_GITHASH_FULL=$(cat release-info/githash_full.txt)
-          export BT_COMMIT_DATE=$(cat release-info/commit_date.txt)
-          export BT_COMMIT_TITLE=$(cat release-info/commit_title.txt)
-          export BT_VULKAN_VERSION=$(cat release-info/vulkan_version.txt)
-          export BT_REPO="$GITHUB_REPOSITORY"
-          python3 .github/scripts/update_readme.py
-          python3 .github/scripts/update_builds.py
-          git add README.md Mesa-commit-history.md
-          git diff --staged --quiet || git commit -m "docs: update build info [$BT_TAG]"
-          for i in 1 2 3; do
-            git push origin A8xx && exit 0
-            echo "push attempt $i rejected, rebasing"; sleep 5
-            git pull --rebase origin A8xx
-          done
-          exit 1
