@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261102-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102-r3) | 2026-11-02 | [`342d310`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/342d310d325fe3c7c13e1ccd468e400b79a837b5) | r600: Implement alpha to coverage dither control on pre-EG | Vulkan 1.4.367 |
 | [v27.0.0-20261102-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102-r2) | 2026-11-02 | [`3865361`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3865361d218c5b4df772dcb596bdb2b81b746202) | docs: add an LLM policy for RADV | Vulkan 1.4.366 |
 | [v27.0.0-20261102](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102) | 2026-11-02 | [`1618a1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1618a1ae4fbcfae747a2b28205b79151dbcf2855) | lavapipe: pack rendering_state dirty flags into bitfields | Vulkan 1.4.366 |
 | [v27.0.0-20261101-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261101-r5) | 2026-11-01 | [`ae9e17f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae9e17fc684b2fe0ee55fe0d32584e0834a1759f) | venus: terminate pNext properly in vn_fix_command_buffer_begin_info | Vulkan 1.4.366 |
