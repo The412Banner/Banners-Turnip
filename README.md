@@ -107,12 +107,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.366 |
-| **Commit** | [`ae9e17f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae9e17fc684b2fe0ee55fe0d32584e0834a1759f) |
-| **Commit date** | 2026-11-01 |
-| **Commit title** | venus: terminate pNext properly in vn_fix_command_buffer_begin_info |
-| **Build date** | 20261101 |
+| **Commit** | [`1618a1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1618a1ae4fbcfae747a2b28205b79151dbcf2855) |
+| **Commit date** | 2026-11-02 |
+| **Commit title** | lavapipe: pack rendering_state dirty flags into bitfields |
+| **Build date** | 20261102 |
 | **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 0 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v27.0.0-20261101-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261101-r5) |
+| **Release** | [v27.0.0-20261102](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -122,12 +122,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261102](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102) | 2026-11-02 | [`1618a1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1618a1ae4fbcfae747a2b28205b79151dbcf2855) | lavapipe: pack rendering_state dirty flags into bitfields | Vulkan 1.4.366 |
 | [v27.0.0-20261101-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261101-r5) | 2026-11-01 | [`ae9e17f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae9e17fc684b2fe0ee55fe0d32584e0834a1759f) | venus: terminate pNext properly in vn_fix_command_buffer_begin_info | Vulkan 1.4.366 |
 | [v27.0.0-20261101-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261101-r4) | 2026-11-01 | [`01bab93`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/01bab9302a6bf0a082c7ba8c49d74427cf10b0cf) | llvmpipe: hash cpu caps up to num_L3_caches, not 5 dwords | Vulkan 1.4.366 |
 | [a722-pure-pre1](https://github.com/The412Banner/Banners-Turnip/releases/tag/a722-pure-pre1) | 2026-11-01 |  |  |  |
 | [v27.0.0-20261101-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261101-r3) | 2026-11-01 | [`1d4b5ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1d4b5ef4a5562b6e2dba2cb5aacd60787979ba86) | nv30: invalidate currently bound sampler during clear | Vulkan 1.4.366 |
 | [v27.0.0-20261101-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261101-r2) | 2026-11-01 | [`3a36210`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3a36210e3d376d1c1e7dc7a25458b4258b9332d2) | nv30: Fixes for VS branching/looping | Vulkan 1.4.366 |
-| [v27.0.0-20261101](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261101) | 2026-11-01 | [`44989e5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/44989e5a489c0ddbc79d2019f2c236699251c69e) | zink: enable subgroups even if shaderFloat64 is not exposed | Vulkan 1.4.366 |
 <!-- RECENT_BUILDS_END -->
 
 ---
