@@ -107,12 +107,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.367 |
-| **Commit** | [`4ba5722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ba5722a2afac4768c8b332dc17b6ceae6b35762) |
+| **Commit** | [`1f9c4d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1f9c4d529f4cfb332f5abfabbd0918f5d5f6cb4e) |
 | **Commit date** | 2026-11-03 |
-| **Commit title** | meson: bump required version to 1.7 |
+| **Commit title** | freedreno : Take only in fence as a hint for explicit sync |
 | **Build date** | 20261103 |
 | **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 0 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v27.0.0-20261103-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r2) |
+| **Release** | [v27.0.0-20261103-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -122,6 +122,7 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261103-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r3) | 2026-11-03 | [`1f9c4d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1f9c4d529f4cfb332f5abfabbd0918f5d5f6cb4e) | freedreno : Take only in fence as a hint for explicit sync | Vulkan 1.4.367 |
 | [v27.0.0-20261103-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r2) | 2026-11-03 | [`4ba5722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ba5722a2afac4768c8b332dc17b6ceae6b35762) | meson: bump required version to 1.7 | Vulkan 1.4.367 |
 | [v27.0.0-20261103](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103) | 2026-11-03 | [`a1c0542`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1c054214a4a3fdd260e7925429a0221614f7207) | nir/algebraic: filter automaton states by source position | Vulkan 1.4.367 |
 | [v27.0.0-20261102-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102-r3) | 2026-11-02 | [`342d310`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/342d310d325fe3c7c13e1ccd468e400b79a837b5) | r600: Implement alpha to coverage dither control on pre-EG | Vulkan 1.4.367 |
