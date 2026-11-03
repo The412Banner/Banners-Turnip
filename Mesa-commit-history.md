@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261103-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r4) | 2026-11-03 | [`bcbae8c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bcbae8c32b6a165e1af08273bbfb17c6efa238cb) | nir: Make nir_parameter::mode its own enum | Vulkan 1.4.367 |
 | [v27.0.0-20261103-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r3) | 2026-11-03 | [`1f9c4d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1f9c4d529f4cfb332f5abfabbd0918f5d5f6cb4e) | freedreno : Take only in fence as a hint for explicit sync | Vulkan 1.4.367 |
 | [v27.0.0-20261103-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r2) | 2026-11-03 | [`4ba5722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ba5722a2afac4768c8b332dc17b6ceae6b35762) | meson: bump required version to 1.7 | Vulkan 1.4.367 |
 | [v27.0.0-20261103](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103) | 2026-11-02 | [`a1c0542`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1c054214a4a3fdd260e7925429a0221614f7207) | nir/algebraic: filter automaton states by source position | Vulkan 1.4.367 |
