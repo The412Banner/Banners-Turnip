@@ -107,12 +107,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.367 |
-| **Commit** | [`a1c0542`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1c054214a4a3fdd260e7925429a0221614f7207) |
-| **Commit date** | 2026-11-02 |
-| **Commit title** | nir/algebraic: filter automaton states by source position |
+| **Commit** | [`4ba5722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ba5722a2afac4768c8b332dc17b6ceae6b35762) |
+| **Commit date** | 2026-11-03 |
+| **Commit title** | meson: bump required version to 1.7 |
 | **Build date** | 20261103 |
 | **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 0 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v27.0.0-20261103](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103) |
+| **Release** | [v27.0.0-20261103-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -122,10 +122,9 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261103-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r2) | 2026-11-03 | [`4ba5722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ba5722a2afac4768c8b332dc17b6ceae6b35762) | meson: bump required version to 1.7 | Vulkan 1.4.367 |
 | [v27.0.0-20261103](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103) | 2026-11-03 | [`a1c0542`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1c054214a4a3fdd260e7925429a0221614f7207) | nir/algebraic: filter automaton states by source position | Vulkan 1.4.367 |
 | [v27.0.0-20261102-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102-r3) | 2026-11-02 | [`342d310`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/342d310d325fe3c7c13e1ccd468e400b79a837b5) | r600: Implement alpha to coverage dither control on pre-EG | Vulkan 1.4.367 |
-| [v27.0.0-20261102-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102-r2) | 2026-11-02 | [`3865361`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3865361d218c5b4df772dcb596bdb2b81b746202) | docs: add an LLM policy for RADV | Vulkan 1.4.366 |
-| [v27.0.0-20261102](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102) | 2026-11-02 | [`1618a1a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1618a1ae4fbcfae747a2b28205b79151dbcf2855) | lavapipe: pack rendering_state dirty flags into bitfields | Vulkan 1.4.366 |
 <!-- RECENT_BUILDS_END -->
 
 ---

@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261103-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r2) | 2026-11-03 | [`4ba5722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ba5722a2afac4768c8b332dc17b6ceae6b35762) | meson: bump required version to 1.7 | Vulkan 1.4.367 |
 | [v27.0.0-20261103](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103) | 2026-11-02 | [`a1c0542`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/a1c054214a4a3fdd260e7925429a0221614f7207) | nir/algebraic: filter automaton states by source position | Vulkan 1.4.367 |
 | [v27.0.0-20261102-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102-r3) | 2026-11-02 | [`342d310`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/342d310d325fe3c7c13e1ccd468e400b79a837b5) | r600: Implement alpha to coverage dither control on pre-EG | Vulkan 1.4.367 |
 | [v27.0.0-20261102-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261102-r2) | 2026-11-02 | [`3865361`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3865361d218c5b4df772dcb596bdb2b81b746202) | docs: add an LLM policy for RADV | Vulkan 1.4.366 |
