@@ -54,11 +54,12 @@ Two bugs in Turnip's Adreno (KGSL) code were found here and carried as patches i
 | *DirectX 12 no longer waits on the GPU every frame* ([e984ef29](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e984ef29), credited to The412Banner) | A quick "has the GPU finished yet?" check was sent to the kernel as a wait with a zero time limit, and the Adreno kernel driver reads zero as "wait forever". VKD3D-Proton makes that check on every frame, so the CPU and GPU took turns instead of working at the same time. | The check now reads the GPU's last finished job and answers at once. On an Adreno 750, a DirectX 12 demo went from 378 to 1422 fps on X11 and from 588 to 3449 fps on Bannerlator's Wayland. [Full report](docs/KGSL_ZERO_TIMEOUT_POLL.md). |
 | *No crash when a frame waits on two kinds of sync* ([1da50a1b](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1da50a1b)) | When a submit waited on a GPU timestamp and a sync file together, the driver converted the wrong one and crashed. Cemu does that on every frame, so it crashed on its first frame. | The timestamp side is turned into the sync file and merged correctly. Proven with Cemu, RPCS3 and Dolphin in DroidDeck. |
 
-One game fix is added here and is not in Mesa yet:
+Two game fixes are added here and are not in Mesa yet:
 
 | Fix (this repo) | What was wrong | What it changes |
 | :--- | :--- | :--- |
 | *MIO: Memories in Orbit draws its whole level on Adreno 7xx* (since 22ed1e9e) | MIO reads its 650 MB level geometry through storage buffers of 512 MiB and 138 MiB. Turnip caps a storage buffer at 128 MiB on A7xx, so most of the level read back as empty: no floor, flat fog-coloured slabs. A8xx allows 2 GiB, so only 8 Elite devices worked. | Every driver turns on Mesa's `tu_enable_ssbo_emulation` for `mio.exe`. Proven on an Adreno 750 with the same save (on, off, and forced off). With other Turnip builds from after 2026-06-10, set `tu_enable_ssbo_emulation=true` yourself. [Full report](docs/MIO_A7XX_SSBO_LIMIT.md). |
+| *UNCHARTED: Legacy of Thieves Collection on Adreno 7xx* | The game needs `tu_enable_ssbo_emulation` on A7xx (user report on an Adreno 750: the same driver with the variable set by hand fixed it). | Every driver turns on `tu_enable_ssbo_emulation` for `u4.exe`, `tll.exe`, `u4-l.exe` and `tll-l.exe`. With other Turnip builds from after 2026-06-10, set `tu_enable_ssbo_emulation=true` yourself. |
 
 Wayland ZIPs were missing from v27.0.0-20261101-r5 through v27.0.0-20261103-r4 after a Mesa header change; fixed in 80fd599c ([details](docs/WAYLAND_ANDROID_GUARD.md)).
 

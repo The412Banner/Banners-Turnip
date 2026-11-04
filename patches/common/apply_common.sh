@@ -79,3 +79,25 @@ fi
 grep -q 'application_name_match="^mio\\.exe$"' "$conf" \
 	|| { echo "[common] MIO tu_enable_ssbo_emulation entry did not reach 00-turnip-defaults.conf" >&2; exit 1; }
 echo "[common] MIO: tu_enable_ssbo_emulation entry present"
+
+# UNCHARTED: Legacy of Thieves Collection ships u4.exe, tll.exe, u4-l.exe and tll-l.exe. On Adreno 750 it
+# needs tu_enable_ssbo_emulation (user report 2026-11-03, same driver with the variable set by hand).
+# The dot is written as [.] because the static conf generator copies the pattern into a C string.
+uncharted_match='^(u4|tll)(-l)?[.]exe$'
+if ! grep -qF "application_name_match=\"$uncharted_match\"" "$conf"; then
+	python3 - "$conf" "$uncharted_match" <<'PY'
+import sys
+p, match = sys.argv[1], sys.argv[2]
+s = open(p).read()
+entry = f'''        <application name="UNCHARTED: Legacy of Thieves Collection" application_name_match="{match}">
+            <!-- u4.exe, tll.exe, u4-l.exe, tll-l.exe: needs tu_enable_ssbo_emulation on A7xx -->
+            <option name="tu_enable_ssbo_emulation" value="true" />
+        </application>
+'''
+i = s.rindex('    </device>')
+open(p, 'w').write(s[:i] + entry + s[i:])
+PY
+fi
+grep -qF "application_name_match=\"$uncharted_match\"" "$conf" \
+	|| { echo "[common] UNCHARTED tu_enable_ssbo_emulation entry did not reach 00-turnip-defaults.conf" >&2; exit 1; }
+echo "[common] UNCHARTED: tu_enable_ssbo_emulation entry present"
