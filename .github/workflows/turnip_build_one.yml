@@ -1,0 +1,262 @@
+name: Build Turnip (One)
+
+# One Turnip driver for every Adreno: A6xx, A7xx, A710/720/722 and A8xx in a single
+# libvulkan_freedreno.so. Turnip already picks each GPU's settings from its device table by chip
+# ID; the recipe is the A8xx one plus the A722 entry, and patches/one/one_gpu_gates.py limits the
+# A8xx recipe's global changes to A8xx chips. Always Mesa main HEAD (or the commit given).
+# Android, Wayland and Linux legs. Artifacts only: no tag, no release, no README commit.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mesa_commit:
+        description: "Full 40-hex Mesa commit to build (empty = mesa/mesa main HEAD)"
+        type: string
+        default: ""
+  push:
+    branches: [feat/one-driver]
+    paths:
+      - ".github/workflows/turnip_build_one.yml"
+      - ".github/scripts/verify_driver_zip.py"
+      - "patches/**"
+      - "build_turnip.sh"
+      - "build_turnip_wayland.sh"
+      - "build_turnip_linux.sh"
+
+permissions:
+  contents: read
+
+# A newer run builds a newer Mesa: it replaces an older one still running.
+concurrency:
+  group: turnip-one-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VARIANT: one
+  SUFFIX: -One
+  EXTRA_PATCH: patches/a8xx_gen8.patch
+  EXTRA_SCRIPT: patches/a710-720.py:patches/one/one_gpu_gates.py
+  META_DESC: "One Turnip driver for all Adreno A6xx, A7xx, A710/720/722 and A8xx: the GPU is detected by chip ID at startup. Mesa main. KGSL build. Not tested on a device."
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      commit: ${{ steps.r.outputs.commit }}
+      name: ${{ steps.r.outputs.name }}
+    steps:
+      - name: Resolve Mesa commit
+        id: r
+        env:
+          INPUT_COMMIT: ${{ inputs.mesa_commit }}
+        run: |
+          if [ -n "$INPUT_COMMIT" ] && ! [[ "$INPUT_COMMIT" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::mesa_commit must be a full 40-hex commit"; exit 1
+          fi
+          REF="${INPUT_COMMIT:-refs/heads/main}"
+          git init -q mesa
+          git -C mesa remote add origin https://gitlab.freedesktop.org/mesa/mesa.git
+          ok=0
+          for i in 1 2 3 4 5 6; do
+            if git -C mesa fetch -q --depth=1 origin "$REF"; then ok=1; break; fi
+            echo "Mesa fetch attempt $i failed, retrying in 45 s"; sleep 45
+          done
+          [ "$ok" = 1 ] || { echo "::error::could not fetch Mesa $REF"; exit 1; }
+          git -C mesa checkout -q FETCH_HEAD
+          FULL=$(git -C mesa rev-parse HEAD)
+          [[ "$FULL" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::no Mesa commit"; exit 1; }
+          VER=$(sed 's/-devel.*//' mesa/VERSION | tr -d '[:space:]')
+          NAME="v${VER}-$(date -u +%Y%m%d)-${FULL:0:9}"
+          echo "commit=${FULL}" >> "$GITHUB_OUTPUT"
+          echo "name=${NAME}" >> "$GITHUB_OUTPUT"
+          {
+            echo "## Turnip One ${NAME}"
+            echo
+            echo "Mesa \`${FULL}\` ($(git -C mesa log -1 --format='%ci') — $(git -C mesa log -1 --format='%s'))"
+            echo
+            echo "Artifacts only: nothing is published."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  android:
+    runs-on: ubuntu-latest
+    needs: resolve
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
+          pip3 install --break-system-packages meson mako
+
+      - name: Build
+        env:
+          MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
+          BUILD_VERSION: ${{ github.run_number }}
+        run: |
+          chmod +x build_turnip.sh
+          ./build_turnip.sh
+
+      - name: Name ZIP
+        id: info
+        env:
+          MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
+          NAME: ${{ needs.resolve.outputs.name }}
+          RUN_NUMBER: ${{ github.run_number }}
+        run: |
+          BUILT=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo unknown)
+          [ "$BUILT" = "$MESA_COMMIT" ] || { echo "::error::built Mesa ${BUILT}, resolved ${MESA_COMMIT}"; exit 1; }
+          ZIP_NAME="Turnip-${NAME}${SUFFIX}.zip"
+          SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
+          D=$(mktemp -d)
+          unzip -q "$SRC" -d "$D"
+          META_NAME="Mesa Turnip ${NAME}${SUFFIX}" python3 - "$D/meta.json" <<'PY'
+          import json, os, sys
+          p = sys.argv[1]
+          m = json.load(open(p))
+          m["name"] = os.environ["META_NAME"]
+          m["packageVersion"] = os.environ["RUN_NUMBER"]
+          m["description"] = os.environ["META_DESC"]
+          json.dump(m, open(p, "w"), indent=2)
+          print("meta.json:", m["name"], "| packageVersion:", m["packageVersion"])
+          PY
+          (cd "$D" && zip -q - *) > "turnip_workdir/${ZIP_NAME}"
+          echo "zip_name=${ZIP_NAME}" >> "$GITHUB_OUTPUT"
+
+      - name: Verify ZIP
+        env:
+          ZIP_NAME: ${{ steps.info.outputs.zip_name }}
+          NAME: ${{ needs.resolve.outputs.name }}
+          MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
+        run: |
+          python3 -c "import json,os; json.dump({k.lower(): os.environ[k] for k in ('MESA_COMMIT','EXTRA_PATCH','EXTRA_SCRIPT')}, open('build-report.json','w'))"
+          python3 .github/scripts/verify_driver_zip.py --kind android \
+            --zip "turnip_workdir/${ZIP_NAME}" --variant "$VARIANT" \
+            --expect-name "Mesa Turnip ${NAME}${SUFFIX}" --expect-package-version "${{ github.run_number }}" \
+            --build-report build-report.json --report report-android-one.json
+
+      - name: Upload driver ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 14
+          name: turnip-one-android
+          path: |
+            turnip_workdir/Turnip-*-One.zip
+            report-android-one.json
+          if-no-files-found: error
+
+  wayland:
+    runs-on: ubuntu-24.04
+    needs: resolve
+    timeout-minutes: 90
+    env:
+      MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
+      ZIP_NAME: Turnip-${{ needs.resolve.outputs.name }}-One-Wayland.zip
+      META_NAME: Mesa Turnip ${{ needs.resolve.outputs.name }}-One-Wayland
+      PACKAGE_VERSION: ${{ github.run_number }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build unzip flex bison glslang-tools curl ccache pkg-config \
+            clang lld llvm python3-pip zip patch binutils
+          pip3 install --break-system-packages meson mako pyyaml packaging
+
+      - name: Build (Wayland)
+        run: |
+          ccache -M 2G
+          chmod +x build_turnip_wayland.sh
+          ./build_turnip_wayland.sh
+
+      - name: Verify Wayland ZIP
+        run: |
+          python3 .github/scripts/verify_driver_zip.py --kind wayland \
+            --zip "wayland_workdir/${ZIP_NAME}" --variant "$VARIANT" \
+            --expect-name "$META_NAME" --expect-package-version "$PACKAGE_VERSION" \
+            --layer-abi patches/wayland/layer-abi \
+            --build-report wayland_workdir/build-report.json --report report-wayland-one.json
+
+      - name: Upload driver ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 14
+          name: turnip-one-wayland
+          path: |
+            wayland_workdir/Turnip-*-One-Wayland.zip
+            report-wayland-one.json
+          if-no-files-found: error
+
+      - name: Upload build evidence on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 14
+          name: one-wayland-failed
+          path: |
+            wayland_workdir/mesa/build-wayland/meson-logs/meson-log.txt
+            wayland_workdir/build-report.json
+            wayland_workdir/termux-versions.txt
+          if-no-files-found: ignore
+
+  linux:
+    runs-on: ubuntu-24.04
+    needs: resolve
+    timeout-minutes: 90
+    env:
+      MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
+      ZIP_NAME: Turnip-${{ needs.resolve.outputs.name }}-One-Linux.zip
+      META_NAME: Mesa Turnip ${{ needs.resolve.outputs.name }}-One-Linux
+      PACKAGE_VERSION: ${{ github.run_number }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build unzip flex bison cmake glslang-tools curl pkg-config \
+            gcc-aarch64-linux-gnu g++-aarch64-linux-gnu binutils-aarch64-linux-gnu \
+            python3-pip zip patch tar zstd xz-utils
+          pip3 install --break-system-packages 'meson>=1.5' mako pyyaml packaging
+          meson --version && aarch64-linux-gnu-gcc --version | head -1
+
+      - name: Build (Linux)
+        run: |
+          chmod +x build_turnip_linux.sh
+          ./build_turnip_linux.sh
+
+      - name: Verify Linux ZIP
+        run: |
+          python3 .github/scripts/verify_driver_zip.py --kind linux \
+            --zip "linux_workdir/${ZIP_NAME}" --variant "$VARIANT" \
+            --expect-name "$META_NAME" --expect-package-version "$PACKAGE_VERSION" \
+            --build-report linux_workdir/build-report.json --report report-linux-one.json \
+            --readelf aarch64-linux-gnu-readelf
+
+      - name: Upload driver ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 14
+          name: turnip-one-linux
+          path: |
+            linux_workdir/Turnip-*-One-Linux.zip
+            report-linux-one.json
+          if-no-files-found: error
+
+      - name: Upload build evidence on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 14
+          name: one-linux-failed
+          path: |
+            linux_workdir/mesa/build-linux/meson-logs/meson-log.txt
+            linux_workdir/build-report.json
+            linux_workdir/sysroot-packages.txt
+          if-no-files-found: ignore
