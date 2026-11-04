@@ -259,9 +259,17 @@ def main():
     w("- **No crash when a frame waits on two kinds of sync at once**. Cemu crashed on its first frame; proven fixed "
       "with Cemu, RPCS3 and Dolphin.")
     w("")
+    w("**🎮 Game fix in every driver** (added here, not in Mesa yet; see " + link("patches/common/apply_common.sh") + "):")
+    w("")
+    w("- **MIO: Memories in Orbit draws its whole level on Adreno 7xx**. MIO reads its 650 MB level geometry through "
+      "storage buffers of 512 MiB and 138 MiB, and Turnip allows 128 MiB on A7xx, so most of the level was missing. "
+      "Every driver turns on `tu_enable_ssbo_emulation` for `mio.exe`; proven on an Adreno 750 ([report]("
+      + REPO_BLOB.format(repo=a.repo, ref=a.ref, path="docs/MIO_A7XX_SSBO_LIMIT.md") + ")). With other Turnip builds "
+      "from after 2026-06-10, set `tu_enable_ssbo_emulation=true` yourself.")
+    w("")
     wn = "patches/a8xx-winnative/"
     w("**🧩 A8xx driver only:** Max's WinNative series (MaxsTechReview, " + link(wn + "0001-tu-Emulate-VK_EXT_mesh_shader-with-compute.patch")
-      + " … " + link(wn + "0005-tu-kgsl-Fetch-A8XX-command-streams-through-a-virtual.patch") + "). The A6xx / A7xx drivers carry no patches: both fixes above come from Mesa itself.")
+      + " … " + link(wn + "0005-tu-kgsl-Fetch-A8XX-command-streams-through-a-virtual.patch") + "). The A6xx / A7xx drivers carry no code patches, only the MIO game entry above: both fixes above come from Mesa itself.")
     w("")
     w("- **DirectX 12 Ultimate: mesh shaders + wave32** (0001, 0002). `VK_EXT_mesh_shader` is emulated with compute, "
       "so VKD3D-Proton can offer mesh shaders to games that need them (FINAL FANTASY VII REBIRTH, Alan Wake 2); "
@@ -272,7 +280,7 @@ def main():
     w("<details>")
     w("<summary>Build details and checksums</summary>")
     w("")
-    w("- **Standard:** Mesa `main` as is (both fixes above are in Mesa now), no GPU-specific patches, no mesh shaders or wave32.")
+    w("- **Standard:** Mesa `main` as is (both fixes above are in Mesa now) plus the MIO game entry, no GPU-specific patches, no mesh shaders or wave32.")
     a8_desc = f"whitebelyash's `turnip/gen8` stack ({link(a8_patch)}"
     a8_desc += f", {len(a8_commits)} commits)" if a8_commits else ")"
     if a8_scripts:
