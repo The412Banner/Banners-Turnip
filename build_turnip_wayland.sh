@@ -101,10 +101,24 @@ apply_wayland_patches(){
 	cd "$mesa"
 	# A Linux-style build on bionic, like Termux's Mesa: Mesa's Android detection off.
 	sed -i 's/^#if defined(__ANDROID__)$/#if 0 \/* Linux-style build on bionic *\//' src/util/detect_os.h
-	sed -i 's/^#if defined(__ANDROID__) || defined(ANDROID)$/#if 0 \/* Linux-style build on bionic *\//' include/vulkan/vk_android_native_buffer.h
 	sed -i '/^#elif\|^#if/s/DETECT_OS_ANDROID/defined(__ANDROID__)/' src/util/u_process.c
 	grep -q "Linux-style build on bionic" src/util/detect_os.h || die "detect_os.h: Android detection guard not found"
-	grep -q "Linux-style build on bionic" include/vulkan/vk_android_native_buffer.h || die "vk_android_native_buffer.h: Android guard not found"
+	# vk_android_native_buffer.h: before Mesa 159aec41 (2026-11-01) its native_handle include was keyed
+	# on __ANDROID__, which bionic defines, so that guard is turned off. Since 159aec41 it is keyed on
+	# VK_USE_PLATFORM_ANDROID_KHR, which src/vulkan/meson.build defines only for -Dplatforms=android,
+	# so this -Dplatforms=wayland build already takes the non-Android branch and needs no edit.
+	anb=include/vulkan/vk_android_native_buffer.h
+	if grep -q '^#if defined(__ANDROID__) || defined(ANDROID)$' "$anb"; then
+		sed -i 's/^#if defined(__ANDROID__) || defined(ANDROID)$/#if 0 \/* Linux-style build on bionic *\//' "$anb"
+		grep -q "Linux-style build on bionic" "$anb" || die "vk_android_native_buffer.h: Android guard not rewritten"
+	elif grep -q '^#ifdef VK_USE_PLATFORM_ANDROID_KHR$' "$anb"; then
+		grep -q "vulkan_wsi_list += '-DVK_USE_PLATFORM_ANDROID_KHR'" src/vulkan/meson.build \
+			&& grep -B1 "vulkan_wsi_list += '-DVK_USE_PLATFORM_ANDROID_KHR'" src/vulkan/meson.build | grep -q 'if with_platform_android' \
+			|| die "vk_android_native_buffer.h: VK_USE_PLATFORM_ANDROID_KHR is no longer tied to -Dplatforms=android"
+		log "vk_android_native_buffer.h keyed on VK_USE_PLATFORM_ANDROID_KHR: nothing to change for -Dplatforms=wayland"
+	else
+		die "vk_android_native_buffer.h: Android guard not found"
+	fi
 
 	# Termux 0014: the KGSL timestamp wait must not assert on an unexpected errno. Mesa does this
 	# itself since MR 44838 (2026-10-08); the rewrite is kept for an older Mesa and skipped otherwise.
