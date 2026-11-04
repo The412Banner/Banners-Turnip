@@ -56,3 +56,26 @@ fi
 # reads the retired timestamp (kgsl_poll_timestamp) instead of reaching the wait ioctl.
 grep -q "return kgsl_poll_timestamp(device, context_id, timestamp);" src/freedreno/vulkan/tu_knl_kgsl.cc \
 	|| { echo "[common] Mesa lacks the upstream zero-timeout poll fix (MR 44838); this Mesa is too old" >&2; exit 1; }
+
+# MIO: Memories in Orbit reads a 650 MB mesh buffer through 512 MiB + 138 MiB storage-buffer views.
+# A7xx caps SSBO ranges at 128 MiB unless tu_enable_ssbo_emulation is on, so most level geometry is
+# missing (proven on Adreno 750 with the same save, 2026-11-03). Mesa's conf has no entry for it yet;
+# vkd3d-proton reports the exe name as the application name. The option is ignored outside A7xx.
+conf=src/freedreno/vulkan/00-turnip-defaults.conf
+if ! grep -q 'application_name_match="^mio\\.exe$"' "$conf"; then
+	python3 - "$conf" <<'PY'
+import sys
+p = sys.argv[1]
+s = open(p).read()
+entry = '''        <application name="MIO: Memories in Orbit" application_name_match="^mio\\.exe$">
+            <!-- 650 MB mesh buffer read through 512 MiB + 138 MiB SSBO views: level geometry missing on A7xx -->
+            <option name="tu_enable_ssbo_emulation" value="true" />
+        </application>
+'''
+i = s.rindex('    </device>')
+open(p, 'w').write(s[:i] + entry + s[i:])
+PY
+fi
+grep -q 'application_name_match="^mio\\.exe$"' "$conf" \
+	|| { echo "[common] MIO tu_enable_ssbo_emulation entry did not reach 00-turnip-defaults.conf" >&2; exit 1; }
+echo "[common] MIO: tu_enable_ssbo_emulation entry present"
