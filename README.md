@@ -116,12 +116,12 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.367 |
-| **Commit** | [`ae47f65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae47f65f7de25c3d1f3035fcefacfc57a1156202) |
+| **Commit** | [`6c4d70f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c4d70f284cbad6e7aa1ce15be104bf480cadd94) |
 | **Commit date** | 2026-11-04 |
-| **Commit title** | intel/compiler: Archive shader binaries as separate MDA objects |
+| **Commit title** | ci: bump fedora from 44 to 45 |
 | **Build date** | 20261104 |
 | **Downloads** | X11 / AdrenoTools: 4 ZIPs · Bannerlator Wayland: 4 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v27.0.0-20261104-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r3) |
+| **Release** | [v27.0.0-20261104-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -131,11 +131,10 @@ Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game 
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261104-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r4) | 2026-11-04 | [`6c4d70f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c4d70f284cbad6e7aa1ce15be104bf480cadd94) | ci: bump fedora from 44 to 45 | Vulkan 1.4.367 |
 | [v27.0.0-20261104-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r3) | 2026-11-04 | [`ae47f65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae47f65f7de25c3d1f3035fcefacfc57a1156202) | intel/compiler: Archive shader binaries as separate MDA objects | Vulkan 1.4.367 |
 | [v27.0.0-20261104-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r2) | 2026-11-04 | [`98a55f4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/98a55f454dff645be1c88284634126a2c17fd416) | ac/nir/clear_copy_buffer: Don't round up the number of components for the first thread | Vulkan 1.4.367 |
 | [v27.0.0-20261103-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r4) | 2026-11-03 | [`bcbae8c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bcbae8c32b6a165e1af08273bbfb17c6efa238cb) | nir: Make nir_parameter::mode its own enum | Vulkan 1.4.367 |
-| [v27.0.0-20261103-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r3) | 2026-11-03 | [`1f9c4d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1f9c4d529f4cfb332f5abfabbd0918f5d5f6cb4e) | freedreno : Take only in fence as a hint for explicit sync | Vulkan 1.4.367 |
-| [v27.0.0-20261103-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r2) | 2026-11-03 | [`4ba5722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ba5722a2afac4768c8b332dc17b6ceae6b35762) | meson: bump required version to 1.7 | Vulkan 1.4.367 |
 <!-- RECENT_BUILDS_END -->
 
 ---
