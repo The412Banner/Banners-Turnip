@@ -35,7 +35,7 @@ env:
   VARIANT: one
   SUFFIX: -One
   EXTRA_PATCH: patches/a8xx_gen8.patch
-  EXTRA_SCRIPT: patches/a710-720.py:patches/one/one_gpu_gates.py
+  EXTRA_SCRIPT: patches/a8xx_shared_mem.py:patches/a710-720.py:patches/one/one_gpu_gates.py
   META_DESC: "One Turnip driver for all Adreno A6xx, A7xx, A710/720/722 and A8xx: the GPU is detected by chip ID at startup. Mesa main. KGSL build. Not tested on a device."
 
 jobs:

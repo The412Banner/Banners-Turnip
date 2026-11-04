@@ -8,8 +8,9 @@ single libvulkan_freedreno.so carries every GPU's settings and Turnip picks them
 chip ID at startup. Four parts of the A8xx recipe act on every GPU; this script turns
 each one into a check on the chip, so A6xx and A7xx keep what the standard driver does:
 
-  1. cs_shared_mem_size 32 KiB -> 64 KiB: only in the CHIP.A8XX device entries
-     (patches/a8xx_shared_mem.py changes all of them; the One recipe does not run it).
+  1. Compute shared memory: patches/a8xx_shared_mem.py (run first, as in the A8xx
+     recipe) keeps A8xx at 32 KiB; 64 KiB gave wrong results on an Adreno 830. This
+     script checks that no device entry reports more than 32 KiB.
   2. gen8 "HACK: tu: enforce TU_DEBUG=nocb": only when the device is gen 8.
   3. winnative 0001 mesh shaders: exposed on chip >= 8 instead of >= 7, and the
      task/mesh required-subgroup stage bits only where mesh shaders are exposed.
@@ -50,38 +51,19 @@ def edit(path, old, new, label):
     print(f"  {label}: gated")
 
 
-# 1. Shared memory: 64 KiB on A8XX entries only.
+# 1. Shared memory: no entry above 32 KiB (patches/a8xx_shared_mem.py keeps A8xx there).
 devices = Path("src/freedreno/common/freedreno_devices.py")
 src = devices.read_text()
-starts = [m.start() for m in re.finditer(r"^add_gpus\(", src, re.M)]
-if not starts:
-    fail("no add_gpus( blocks in freedreno_devices.py")
+sizes = [int(m.group(1)) for m in re.finditer(r"cs_shared_mem_size = (\d+) \* 1024", src)]
+a8 = sum(1 for b in src.split("add_gpus(")[1:] if "CHIP.A8XX" in b)
+if not sizes:
+    fail("no cs_shared_mem_size in freedreno_devices.py")
+elif max(sizes) > 32:
+    fail(f"a device entry reports {max(sizes)} KiB compute shared memory (limit 32 KiB)")
+elif a8 == 0:
+    fail("no CHIP.A8XX entries: the gen8 stack is missing")
 else:
-    out = [src[: starts[0]]]
-    a8 = changed = 0
-    for i, st in enumerate(starts):
-        end = starts[i + 1] if i + 1 < len(starts) else len(src)
-        block = src[st:end]
-        if "CHIP.A8XX" in block:
-            a8 += 1
-            if "cs_shared_mem_size = 32 * 1024" in block:
-                block = block.replace("cs_shared_mem_size = 32 * 1024",
-                                      "cs_shared_mem_size = 64 * 1024")
-                changed += 1
-            elif "cs_shared_mem_size = 64 * 1024" not in block:
-                fail(f"A8XX block at offset {st} has no cs_shared_mem_size")
-        elif "cs_shared_mem_size = 64 * 1024" in block:
-            fail(f"non-A8XX block at offset {st} has 64 KiB shared memory")
-        out.append(block)
-    new_src = "".join(out)
-    try:
-        compile(new_src, str(devices), "exec")
-    except SyntaxError as e:
-        fail(f"freedreno_devices.py syntax error after edit: line {e.lineno}: {e.msg}")
-    if a8 == 0:
-        fail("no CHIP.A8XX entries: the gen8 stack is missing")
-    devices.write_text(new_src)
-    print(f"  shared memory: {a8} A8XX entries ({changed} changed to 64 KiB), other entries unchanged")
+    print(f"  shared memory: {len(sizes)} entries, none above 32 KiB ({a8} A8XX)")
 
 dev = "src/freedreno/vulkan/tu_device.cc"
 
