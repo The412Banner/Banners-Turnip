@@ -8,9 +8,9 @@ single libvulkan_freedreno.so carries every GPU's settings and Turnip picks them
 chip ID at startup. Four parts of the A8xx recipe act on every GPU; this script turns
 each one into a check on the chip, so A6xx and A7xx keep what the standard driver does:
 
-  1. Compute shared memory: patches/a8xx_shared_mem.py (run first, as in the A8xx
-     recipe) keeps A8xx at 32 KiB; 64 KiB gave wrong results on an Adreno 830. This
-     script checks that no device entry reports more than 32 KiB.
+  1. Compute shared memory: the A8xx recipe no longer raises it to 64 KiB (that gave
+     wrong results on an Adreno 830); this script checks that no device entry
+     reports more than 32 KiB.
   2. gen8 "HACK: tu: enforce TU_DEBUG=nocb": only when the device is gen 8.
   3. winnative 0001 mesh shaders: exposed on chip >= 8 instead of >= 7, and the
      task/mesh required-subgroup stage bits only where mesh shaders are exposed.
@@ -51,7 +51,7 @@ def edit(path, old, new, label):
     print(f"  {label}: gated")
 
 
-# 1. Shared memory: no entry above 32 KiB (patches/a8xx_shared_mem.py keeps A8xx there).
+# 1. Shared memory: no entry above 32 KiB.
 devices = Path("src/freedreno/common/freedreno_devices.py")
 src = devices.read_text()
 sizes = [int(m.group(1)) for m in re.finditer(r"cs_shared_mem_size = (\d+) \* 1024", src)]
