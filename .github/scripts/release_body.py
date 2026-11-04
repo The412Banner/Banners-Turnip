@@ -239,7 +239,7 @@ def main():
 
     a8 = legs[("a8xx", "android")]["report"] or legs[("a8xx", "wayland")]["report"] or {}
     a8_patch = a8.get("extra_patch") or "patches/a8xx_gen8.patch"
-    a8_scripts = [x for x in (a8.get("extra_script") or "patches/a8xx_shared_mem.py").split(":") if x]
+    a8_scripts = [x for x in (a8.get("extra_script") or "").split(":") if x]
     a8_commits = patch_commits(os.path.join(a.workdir, a8_patch))
     t7 = legs[("710-720-test", "android")]["report"] or legs[("710-720-test", "wayland")]["report"] or {}
     t7_scripts = [x for x in (t7.get("extra_script") or "patches/a710-720.py").split(":") if x]

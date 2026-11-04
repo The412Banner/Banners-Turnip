@@ -129,7 +129,7 @@ jobs:
           - variant: a8xx
             suffix: "-A8xx"
             extra_patch: "patches/a8xx_gen8.patch"
-            extra_script: "patches/a8xx_shared_mem.py"
+            extra_script: ""
             meta_desc: "A8xx experimental Turnip driver for Snapdragon 8 Elite (A840/A830/A829/A825/A812/A810). whitebelyash turnip/gen8 A8xx stack on top of Mesa main (matches tu_v29 / StevenMXZ v33). KGSL build."
           - variant: 710-720-test
             suffix: "-710-720-Test"
