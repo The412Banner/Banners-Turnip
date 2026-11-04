@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261104](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104) | 2026-11-03 | [`98a55f4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/98a55f454dff645be1c88284634126a2c17fd416) | ac/nir/clear_copy_buffer: Don't round up the number of components for the first thread | Vulkan 1.4.367 |
 | [v27.0.0-20261103-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r4) | 2026-11-03 | [`bcbae8c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/bcbae8c32b6a165e1af08273bbfb17c6efa238cb) | nir: Make nir_parameter::mode its own enum | Vulkan 1.4.367 |
 | [v27.0.0-20261103-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r3) | 2026-11-03 | [`1f9c4d5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1f9c4d529f4cfb332f5abfabbd0918f5d5f6cb4e) | freedreno : Take only in fence as a hint for explicit sync | Vulkan 1.4.367 |
 | [v27.0.0-20261103-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261103-r2) | 2026-11-03 | [`4ba5722`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4ba5722a2afac4768c8b332dc17b6ceae6b35762) | meson: bump required version to 1.7 | Vulkan 1.4.367 |
