@@ -34,7 +34,20 @@ def die(msg):
     sys.exit(f"one_fixes.py: {msg}")
 
 
+# LAB ONLY (branch lab/aio-a8xx-ab, never merged): ONE_FIXES_SKIP="rel,rel" leaves those steps out for A/B builds.
+SKIP = {x.strip() for x in __import__("os").environ.get("ONE_FIXES_SKIP", "").split(",") if x.strip()}
+
+
+def skipped(rel):
+    if rel in SKIP:
+        print(f"  {rel}: SKIPPED (ONE_FIXES_SKIP, lab build)")
+        return True
+    return False
+
+
 def run_patch(rel):
+    if skipped(rel):
+        return
     p = DD / rel
     if subprocess.run(["git", "apply", "--check", str(p)], capture_output=True).returncode == 0:
         subprocess.run(["git", "apply", "--whitespace=nowarn", str(p)], check=True)
@@ -47,6 +60,8 @@ def run_patch(rel):
 
 
 def run_script(rel):
+    if skipped(rel):
+        return
     r = subprocess.run([sys.executable, str(DD / rel)], capture_output=True, text=True)
     for line in (r.stdout + r.stderr).strip().splitlines():
         print(f"  {rel}: {line}")

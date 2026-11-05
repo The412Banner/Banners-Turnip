@@ -1,0 +1,86 @@
+name: Lab - Banners-AIO fix A/B (never merge)
+
+# LAB ONLY (branch lab/aio-a8xx-ab). Builds the Banners-AIO Android driver several times from ONE Mesa
+# commit: all fixes, none of patches/one/one_fixes.py, and each fix left out once (ONE_FIXES_SKIP), to find
+# which change slowed the DriverLab "card" scene on the Adreno 830. Artifacts only.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mesa_commit:
+        description: "Full 40-hex Mesa commit (same for every variant)"
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  EXTRA_PATCH: patches/a8xx_gen8.patch
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { v: all,          scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py", skip: "" }
+          - { v: nofixes,      scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py",                           skip: "" }
+          - { v: no-tuflush,   scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py", skip: "tu/0001-tu-flush-before-suspended-render-pass-chain.patch" }
+          - { v: no-nirwrap,   scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py", skip: "nir/0001-nir-lower-explicit-io-keep-32bit-offset-wrap.patch" }
+          - { v: no-heap,      scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py", skip: "scripts/process_heap_usage.py" }
+          - { v: no-aimapper,  scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py", skip: "scripts/add_aimapper_gralloc.py" }
+          - { v: no-ubwc,      scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py", skip: "scripts/add_ubwc_swapchain_usage.py" }
+          - { v: no-lrz,       scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py", skip: "lrz/0001-tu-a8xx-lrz-reset-cntl-after-flush.patch" }
+          - { v: no-resolve,   scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py", skip: "scripts/a8xx_resolve_cr_cntl.py" }
+          - { v: no-hyst,      scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py", skip: "scripts/a8xx_sp_hysteresis.py" }
+          - { v: no-lrzmask,   scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py", skip: "scripts/a8xx_lrz_color_mask.py" }
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
+          pip3 install --break-system-packages meson mako
+
+      - name: Build
+        env:
+          MESA_COMMIT: ${{ inputs.mesa_commit }}
+          BUILD_VERSION: ${{ github.run_number }}
+          EXTRA_SCRIPT: ${{ matrix.scripts }}
+          ONE_FIXES_SKIP: ${{ matrix.skip }}
+        run: |
+          [[ "$MESA_COMMIT" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::mesa_commit must be 40 hex"; exit 1; }
+          chmod +x build_turnip.sh
+          ./build_turnip.sh
+
+      - name: Name ZIP
+        env:
+          MESA_COMMIT: ${{ inputs.mesa_commit }}
+          V: ${{ matrix.v }}
+        run: |
+          BUILT=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo unknown)
+          [ "$BUILT" = "$MESA_COMMIT" ] || { echo "::error::built Mesa ${BUILT}, asked ${MESA_COMMIT}"; exit 1; }
+          SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
+          D=$(mktemp -d); unzip -q "$SRC" -d "$D"
+          python3 - "$D/meta.json" <<'PY'
+          import json, os, sys
+          p = sys.argv[1]; m = json.load(open(p))
+          m["name"] = f"Banners-AIO lab {os.environ['V']} {os.environ['MESA_COMMIT'][:9]}"
+          m["description"] = "LAB A/B build, not for use"
+          json.dump(m, open(p, "w"), indent=2); print("meta.json:", m["name"])
+          PY
+          (cd "$D" && zip -q - *) > "Banners-AIO-lab-${V}.zip"
+          sha256sum "Banners-AIO-lab-${V}.zip"
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 7
+          name: lab-aio-${{ matrix.v }}
+          path: Banners-AIO-lab-${{ matrix.v }}.zip
+          if-no-files-found: error
