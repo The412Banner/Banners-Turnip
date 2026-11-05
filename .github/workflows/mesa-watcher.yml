@@ -2,7 +2,7 @@ name: Mesa Upstream Watcher
 
 on:
   schedule:
-    - cron: '0 * * * *' # Every hour
+    - cron: '17,47 * * * *' # Twice an hour, away from :00 (GitHub drops many scheduled runs at the top of the hour)
   workflow_dispatch:
 
 permissions:
