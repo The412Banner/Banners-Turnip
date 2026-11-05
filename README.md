@@ -128,7 +128,7 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | **Commit title** | nir/opt_reassociate: Split int/float scalar options |
 | **Build date** | 20261105 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261105-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r4) |
+| **Release** | [v27.0.0-20261105-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -138,7 +138,7 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v27.0.0-20261105-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r4) | 2026-11-05 | [`579079f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/579079fb1b07f972d24dde8d801b84a408088bad) | nir/opt_reassociate: Split int/float scalar options | Vulkan 1.4.367 |
+| [v27.0.0-20261105-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r5) | 2026-11-05 | [`579079f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/579079fb1b07f972d24dde8d801b84a408088bad) | nir/opt_reassociate: Split int/float scalar options | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r3) | 2026-11-05 | [`2008a72`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2008a72ead66ec5f0dbb414fc467502818ba193e) | RADV: Use radv_print_shader_disasm to print shader disassembly instead of just disasm_string | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r2) | 2026-11-05 | [`0848c37`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0848c37191edeb6572363577a351fb6ab2d2c4f8) | rusticl: implement cl_khr_external_memory | Vulkan 1.4.367 |
 | [v27.0.0-20261105](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105) | 2026-11-05 | [`4e32ef6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e32ef686bb57be709fa176e62b2e72a884fe886) | pvr: Support pipeline executable properties VkPipelineCreateFlags2 flags | Vulkan 1.4.367 |
