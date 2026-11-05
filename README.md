@@ -29,7 +29,7 @@ The three differ in what they link against, which is what decides where each one
 
 ## Driver Variants & Downloads
 
-Each release ships four drivers, each as three ZIPs built from the same Mesa commit and patches. Pick the driver for your GPU, then the ZIP for where you use it:
+Each release ships five drivers, each as three ZIPs built from the same Mesa commit and patches. Pick the driver for your GPU, then the ZIP for where you use it:
 
 | Driver | GPUs | X11 / AdrenoTools ZIP | Bannerlator Wayland ZIP | Linux runtime ZIP |
 | :--- | :--- | :--- | :--- | :--- |
@@ -37,10 +37,12 @@ Each release ships four drivers, each as three ZIPs built from the same Mesa com
 | **A8xx** (experimental) | Adreno 810 / 825 / 829 / 830 / 840 (Snapdragon 8 Elite) | `Turnip-<tag>-A8xx.zip` | `Turnip-<tag>-A8xx-Wayland.zip` | `Turnip-<tag>-A8xx-Linux.zip` |
 | **A710 / A720 / A722** (experimental) | Adreno 710 / 720 / 722 | `Turnip-<tag>-710-720-Test.zip` | `Turnip-<tag>-710-720-Test-Wayland.zip` | `Turnip-<tag>-710-720-Test-Linux.zip` |
 | **8 Gen 2 One UI** | Adreno 740 (Snapdragon 8 Gen 2) whose UI glitches with Standard, e.g. Samsung One UI | `Turnip-<tag>-8G2-OneUI.zip` | `Turnip-<tag>-8G2-OneUI-Wayland.zip` | `Turnip-<tag>-8G2-OneUI-Linux.zip` |
+| **Banners-AIO** (all SoC) | Every Adreno: 6xx, 7xx, 710 / 720 / 722, 8xx | `Banners-AIO-<tag>.zip` | `Banners-AIO-<tag>-Wayland.zip` | `Banners-AIO-<tag>-Linux.zip` |
 
 - **X11 / AdrenoTools ZIP:** BannerHub/BCI, Winlator, Bannerlator X11 containers and any other AdrenoTools app. This is also the driver that **puts the finished frame on the screen** on every path below — it is the only one with the Android surface WSI.
 - **Wayland ZIP:** Bannerlator **Wayland containers** only. It's a Linux-style Vulkan driver (KGSL, Wayland, bionic) with Bannerlator's zero-copy patch, built by [`build_turnip_wayland.sh`](build_turnip_wayland.sh). It doesn't load as an AdrenoTools driver, and an X11 ZIP doesn't work as a Wayland game driver.
 - **Linux runtime ZIP:** Bannerlator's **Linux runtime** — the gamescope session running Valve's native ARM64 Steam client. It's a **glibc** Vulkan ICD (KGSL, Wayland + X11 WSI) built by [`build_turnip_linux.sh`](build_turnip_linux.sh) against the same Arch Linux ARM packages that runtime is made of, plus the two KGSL fixes it needs ([`patches/linux/`](patches/linux)) and the fixes every ZIP carries ([`patches/common/`](patches/common)). It draws the Steam client's own UI (OpenGL → Zink → Vulkan) and every game the client launches (D3D → DXVK/VKD3D → Vulkan). The client and its games are glibc processes, so neither bionic ZIP can be loaded by them at all — and this one can't be loaded by an Android app or a Wine container. It ships the ICD and its manifest only; the libraries are the runtime's own.
+- **Banners-AIO:** the first build of a day adds the Mesa commit to the file name (`Banners-AIO-v27.0.0-20261105-0848c3719.zip`); later builds that day only have their `-rN` tag (`Banners-AIO-v27.0.0-20261105-r2.zip`). In the emulator it shows as `Banners-AIO (all SoC) <tag>`.
 - CI checks every ZIP before it's attached. If a Wayland or Linux build fails, the release still ships its X11 ZIPs and the release notes say which ZIP is missing.
 
 [**Download latest →**](https://github.com/The412Banner/Banners-Turnip/releases/latest) · [**Full build history →**](Mesa-commit-history.md)
@@ -88,13 +90,17 @@ Targets Adreno 800-series (Snapdragon 8 Elite — A810, A825, A829, A830, A840).
 
 Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy; `TU_DEBUG=deck_emu` if a game won't start. **Use at your own risk.**
 
+### Banners-AIO — one driver for every Adreno
+
+The A8xx recipe above plus the A722 entry, in one driver that runs on every Adreno GPU. [`one_gpu_gates.py`](patches/one/one_gpu_gates.py) keeps the A8xx-wide changes on A8xx chips only, so every other GPU behaves like its own driver here, and compute shared memory stays 32 KiB on every GPU. [`one_fixes.py`](patches/one/one_fixes.py) adds fixes that each reach only the GPUs they are for; several come unchanged from [Droid-Deck/Drivers](https://github.com/Droid-Deck/Drivers), with their authors listed in [`patches/one/dd/SOURCE.md`](patches/one/dd/SOURCE.md). The recipe was tested on an Adreno 830, 750 and 722 before it joined the hourly builds.
+
 ---
 
 ## Workflows
 
 | Workflow | Trigger | What it builds |
 | :--- | :--- | :--- |
-| **Build Turnip (Combined)** | Auto (mesa-watcher) or manual | Standard + A8xx + A710/A720/A722, Android, Wayland and Linux builds in parallel from one Mesa commit; each ZIP is checked in CI, then published as a single tagged release with notes written from what built (manual runs can set `dry_run` to build and verify without publishing) |
+| **Build Turnip (Combined)** | Auto (mesa-watcher) or manual | Standard + A8xx + A710/A720/A722 + 8 Gen 2 One UI + Banners-AIO, Android, Wayland and Linux builds in parallel from one Mesa commit; each ZIP is checked in CI, then published as a single tagged release with notes written from what built (manual runs can set `dry_run` to build and verify without publishing) |
 | **Build Turnip A8xx (Experimental)** | Manual | Standalone A8xx test build — faster iteration outside the release cycle |
 | **Build Turnip (Perf 6xx/7xx)** | Manual | A6xx/A7xx only, compiled with `-O3` + ThinLTO for performance testing |
 
@@ -190,6 +196,7 @@ This project wouldn't exist without the hard work and dedication of these commun
 | [**Vauzi**](https://github.com/Vauzi-17) | Author of the [A710/A720/A722 GPU enablement work](https://github.com/Vauzi-17/710) — hardware-specific magic registers, tuned GPU properties, and chip ID research that our experimental 710/720/722 test build is built on. |
 | [**bylaws**](https://github.com/bylaws) | Creator of [libadrenotools](https://github.com/bylaws/libadrenotools) — the driver loading framework that makes all of this usable on Android without root. Without libadrenotools, custom Turnip builds would have no delivery mechanism. |
 | [**Kimchi**](https://github.com/K11MCH1) | Maintainer of [AdrenoToolsDrivers](https://github.com/K11MCH1/AdrenoToolsDrivers) — one of the most well-established and trusted custom driver repositories in the Android GPU community, built on top of libadrenotools. |
+| [**Droid-Deck/Drivers**](https://github.com/Droid-Deck/Drivers) | Fixes used unchanged in Banners-AIO, with permission: K11MCH1 (render-pass flush, 32-bit SSBO offset wrap), Charles DuBose (process memory budget), Leb-Sun (IMapper5 gralloc, UBWC swapchain), Gustash (A8xx LRZ reset), airidosas252 (A8xx 1 GiB buffers), misakayuuki (A845/A850 category-4 repeat). Details in [`patches/one/dd/SOURCE.md`](patches/one/dd/SOURCE.md). |
 | [**StevenMXZ**](https://github.com/StevenMXZ) | For his ongoing Turnip builds and releases that the community relies on, and for making his work openly available for others to build upon. |
 
 Also thanks to anyone I forgot and not listed — the Android GPU community is full of people whose contributions quietly make things work, and they deserve recognition too.

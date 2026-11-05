@@ -38,6 +38,8 @@ jobs:
     outputs:
       commit: ${{ steps.r.outputs.commit }}
       tag: ${{ steps.r.outputs.tag }}
+      aio_stem: ${{ steps.r.outputs.aio_stem }}
+      aio_meta: ${{ steps.r.outputs.aio_meta }}
       day_num: ${{ steps.r.outputs.day_num }}
     steps:
       - name: Resolve Mesa commit and release tag
@@ -97,6 +99,13 @@ jobs:
           printf '%s\n' "$COMMIT_DATE"    > release-info/commit_date.txt
           printf '%s\n' "$COMMIT_TITLE"   > release-info/commit_title.txt
           printf '%s\n' "$VULKAN_VERSION" > release-info/vulkan_version.txt
+          # Banners-AIO names: the first build of a day carries the Mesa commit, later ones only -rN.
+          if [[ "$TAG" =~ -r[0-9]+$ ]]; then AIO_STEM="Banners-AIO-${TAG}"; else AIO_STEM="Banners-AIO-${TAG}-${GITHASH_FULL:0:9}"; fi
+          AIO_META="Banners-AIO (all SoC) ${TAG}"
+          printf '%s\n' "$AIO_STEM"       > release-info/aio_stem.txt
+          printf '%s\n' "$AIO_META"       > release-info/aio_meta.txt
+          echo "aio_stem=${AIO_STEM}" >> "$GITHUB_OUTPUT"
+          echo "aio_meta=${AIO_META}" >> "$GITHUB_OUTPUT"
 
           echo "commit=${GITHASH_FULL}" >> "$GITHUB_OUTPUT"
           echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
@@ -141,6 +150,13 @@ jobs:
             extra_patch: ""
             extra_script: "patches/8g2_oneui.py"
             meta_desc: "Standard A6xx/A7xx driver with the Adreno 740 (Snapdragon 8 Gen 2) UBWC flag hint turned on, to match newer system drivers such as Samsung One UI and stop UI glitches and flicker. Only for 8 Gen 2 devices on newer firmware; on others it causes the glitch. All other GPUs unaffected."
+          # Banners-AIO: one driver for every Adreno. The A8xx recipe plus the A722 entry; the gates keep the
+          # A8xx-wide changes on A8xx chips, the fixes are each limited to their GPUs (patches/one/).
+          - variant: aio
+            suffix: ""
+            extra_patch: "patches/a8xx_gen8.patch"
+            extra_script: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py"
+            meta_desc: "Banners-AIO: one Turnip driver for every Adreno (6xx, 7xx, 710/720/722, 8xx). Each GPU family keeps its own fixes."
 
     steps:
       - name: Checkout
@@ -161,6 +177,22 @@ jobs:
           [[ -n "${{ matrix.extra_script }}" ]] && export EXTRA_SCRIPT="${{ matrix.extra_script }}"
           ./build_turnip.sh
 
+      - name: Driver file name
+        id: names
+        env:
+          TAG: ${{ needs.resolve.outputs.tag }}
+          AIO_STEM: ${{ needs.resolve.outputs.aio_stem }}
+          AIO_META: ${{ needs.resolve.outputs.aio_meta }}
+          VARIANT: ${{ matrix.variant }}
+          SUFFIX: ${{ matrix.suffix }}
+        run: |
+          P=""
+          if [ "$VARIANT" = aio ]; then Z="${AIO_STEM}${P}.zip"; M="${AIO_META}${P}"
+          else Z="Turnip-${TAG}${SUFFIX}${P}.zip"; M="Mesa Turnip ${TAG}${SUFFIX}${P}"; fi
+          echo "zip=$Z" >> "$GITHUB_OUTPUT"
+          echo "meta=$M" >> "$GITHUB_OUTPUT"
+          echo "$Z | $M"
+
       - name: Rename ZIP
         id: info
         env:
@@ -172,11 +204,11 @@ jobs:
           if [ "$BUILT" != "$MESA_COMMIT" ]; then
             echo "::error::this leg built Mesa ${BUILT}, the run resolved ${MESA_COMMIT}"; exit 1
           fi
-          ZIP_NAME="Turnip-${TAG}${{ matrix.suffix }}.zip"
+          ZIP_NAME="${{ steps.names.outputs.zip }}"
           SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
           UNZIP_DIR=$(mktemp -d)
           unzip -q "$SRC" -d "$UNZIP_DIR"
-          META_NAME="Mesa Turnip ${TAG}${{ matrix.suffix }}"
+          META_NAME="${{ steps.names.outputs.meta }}"
           META_DESC="${{ matrix.meta_desc }}"
           python3 -c "import json,sys; p='${UNZIP_DIR}/meta.json'; m=json.load(open(p)); m['name']='${META_NAME}'; m['packageVersion']='${DAY_NUM}'; d='${META_DESC}'; m.update({'description':d} if d else {}); json.dump(m,open(p,'w'),indent=2); print('meta.json:',m['name'],'| packageVersion:',m['packageVersion'])"
           (cd "$UNZIP_DIR" && zip -q - *) > "turnip_workdir/${ZIP_NAME}"
@@ -196,7 +228,7 @@ jobs:
           python3 -c "import json,os; json.dump({k.lower(): os.environ[k] for k in ('MESA_COMMIT','EXTRA_PATCH','EXTRA_SCRIPT')}, open('build-report.json','w'))"
           python3 .github/scripts/verify_driver_zip.py --kind android \
             --zip "turnip_workdir/${ZIP_NAME}" --variant "$VARIANT" \
-            --expect-name "Mesa Turnip ${TAG}${SUFFIX}" --expect-package-version "$DAY_NUM" \
+            --expect-name "${{ steps.names.outputs.meta }}" --expect-package-version "$DAY_NUM" \
             --build-report build-report.json --report "report-android-${VARIANT}.json"
 
       - name: Upload driver ZIP
@@ -204,7 +236,7 @@ jobs:
         with:
           retention-days: 7
           name: turnip-${{ matrix.variant }}
-          path: turnip_workdir/Turnip-*.zip
+          path: turnip_workdir/${{ steps.names.outputs.zip }}
           if-no-files-found: error
 
       - name: Upload verification report
@@ -237,11 +269,27 @@ jobs:
             clang lld llvm python3-pip zip patch binutils
           pip3 install --break-system-packages meson mako pyyaml packaging
 
+      - name: Driver file name
+        id: names
+        env:
+          TAG: ${{ needs.resolve.outputs.tag }}
+          AIO_STEM: ${{ needs.resolve.outputs.aio_stem }}
+          AIO_META: ${{ needs.resolve.outputs.aio_meta }}
+          VARIANT: ${{ matrix.variant }}
+          SUFFIX: ${{ matrix.suffix }}
+        run: |
+          P="-Wayland"
+          if [ "$VARIANT" = aio ]; then Z="${AIO_STEM}${P}.zip"; M="${AIO_META}${P}"
+          else Z="Turnip-${TAG}${SUFFIX}${P}.zip"; M="Mesa Turnip ${TAG}${SUFFIX}${P}"; fi
+          echo "zip=$Z" >> "$GITHUB_OUTPUT"
+          echo "meta=$M" >> "$GITHUB_OUTPUT"
+          echo "$Z | $M"
+
       - name: Build (Wayland)
         env:
           MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
-          ZIP_NAME: Turnip-${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Wayland.zip
-          META_NAME: Mesa Turnip ${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Wayland
+          ZIP_NAME: ${{ steps.names.outputs.zip }}
+          META_NAME: ${{ steps.names.outputs.meta }}
           PACKAGE_VERSION: ${{ needs.resolve.outputs.day_num }}
           META_DESC: ${{ matrix.meta_desc }}
           EXTRA_PATCH: ${{ matrix.extra_patch }}
@@ -259,8 +307,8 @@ jobs:
 
       - name: Verify Wayland ZIP
         env:
-          ZIP_NAME: Turnip-${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Wayland.zip
-          META_NAME: Mesa Turnip ${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Wayland
+          ZIP_NAME: ${{ steps.names.outputs.zip }}
+          META_NAME: ${{ steps.names.outputs.meta }}
           PACKAGE_VERSION: ${{ needs.resolve.outputs.day_num }}
           VARIANT: ${{ matrix.variant }}
         run: |
@@ -275,7 +323,7 @@ jobs:
         with:
           retention-days: 7
           name: turnip-wayland-${{ matrix.variant }}
-          path: wayland_workdir/Turnip-*-Wayland.zip
+          path: wayland_workdir/${{ steps.names.outputs.zip }}
           if-no-files-found: error
 
       - name: Upload verification report
@@ -324,11 +372,27 @@ jobs:
           pip3 install --break-system-packages 'meson>=1.5' mako pyyaml packaging
           meson --version && aarch64-linux-gnu-gcc --version | head -1
 
+      - name: Driver file name
+        id: names
+        env:
+          TAG: ${{ needs.resolve.outputs.tag }}
+          AIO_STEM: ${{ needs.resolve.outputs.aio_stem }}
+          AIO_META: ${{ needs.resolve.outputs.aio_meta }}
+          VARIANT: ${{ matrix.variant }}
+          SUFFIX: ${{ matrix.suffix }}
+        run: |
+          P="-Linux"
+          if [ "$VARIANT" = aio ]; then Z="${AIO_STEM}${P}.zip"; M="${AIO_META}${P}"
+          else Z="Turnip-${TAG}${SUFFIX}${P}.zip"; M="Mesa Turnip ${TAG}${SUFFIX}${P}"; fi
+          echo "zip=$Z" >> "$GITHUB_OUTPUT"
+          echo "meta=$M" >> "$GITHUB_OUTPUT"
+          echo "$Z | $M"
+
       - name: Build (Linux)
         env:
           MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
-          ZIP_NAME: Turnip-${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Linux.zip
-          META_NAME: Mesa Turnip ${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Linux
+          ZIP_NAME: ${{ steps.names.outputs.zip }}
+          META_NAME: ${{ steps.names.outputs.meta }}
           PACKAGE_VERSION: ${{ needs.resolve.outputs.day_num }}
           META_DESC: ${{ matrix.meta_desc }}
           EXTRA_PATCH: ${{ matrix.extra_patch }}
@@ -345,8 +409,8 @@ jobs:
 
       - name: Verify Linux ZIP
         env:
-          ZIP_NAME: Turnip-${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Linux.zip
-          META_NAME: Mesa Turnip ${{ needs.resolve.outputs.tag }}${{ matrix.suffix }}-Linux
+          ZIP_NAME: ${{ steps.names.outputs.zip }}
+          META_NAME: ${{ steps.names.outputs.meta }}
           PACKAGE_VERSION: ${{ needs.resolve.outputs.day_num }}
           VARIANT: ${{ matrix.variant }}
         run: |
@@ -361,7 +425,7 @@ jobs:
         with:
           retention-days: 7
           name: turnip-linux-${{ matrix.variant }}
-          path: linux_workdir/Turnip-*-Linux.zip
+          path: linux_workdir/${{ steps.names.outputs.zip }}
           if-no-files-found: error
 
       - name: Upload verification report

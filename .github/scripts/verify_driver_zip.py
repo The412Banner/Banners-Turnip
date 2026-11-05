@@ -39,6 +39,9 @@ VARIANT_MARKERS = {
     "710-720-test": ["FD710", "FD720", "FD722"],
     # A boolean in the device table: no string to look for. patches/8g2_oneui.py fails the build if it cannot apply.
     "8g2-oneui": [],
+    # Banners-AIO (the One driver): the A8xx recipe plus the A722 entry (patches/one/one_gpu_gates.py asserts the gates).
+    "aio": ["Adreno (TM) 825", "deck_emu", "FD722"],
+    "one": ["Adreno (TM) 825", "deck_emu", "FD722"],
 }
 WAYLAND_MARKERS = [
     "banner_ahb_v1",                                            # banner_ahb_wsi.py protocol

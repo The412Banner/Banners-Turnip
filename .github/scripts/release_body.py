@@ -42,7 +42,19 @@ DRIVERS = [
         "variant": "8g2-oneui", "suffix": "-8G2-OneUI", "label": "8 Gen 2 One UI", "kind": "Device-specific",
         "gpus": "Adreno 740: Snapdragon 8 Gen 2 on newer firmware (Samsung One UI)",
     },
+    {
+        # Named Banners-AIO-<tag>[-<9-char Mesa commit>]: see aio_stem() and the workflow's resolve job.
+        "variant": "aio", "suffix": "", "label": "Banners-AIO", "kind": "All SoC",
+        "gpus": "Every Adreno: 6xx, 7xx, 710 / 720 / 722, 8xx",
+    },
 ]
+
+
+def aio_stem(tag, githash_full):
+    """Banners-AIO file stem: the first build of a day carries the Mesa commit, later ones (-rN) don't."""
+    if re.search(r"-r[0-9]+$", tag):
+        return f"Banners-AIO-{tag}"
+    return f"Banners-AIO-{tag}-{githash_full[:9]}"
 
 
 # One leg of every driver per platform. The suffix is part of the file name catalogs match on,
@@ -124,9 +136,13 @@ def main():
     # Status of each of the nine files.
     legs = {}
     assets = []
+    stem_aio = read_info(a.info, "aio_stem") or aio_stem(tag, githash_full)
     for drv in DRIVERS:
         for platform in PLATFORMS:
-            name = f"Turnip-{tag}{drv['suffix']}{PLATFORM_SUFFIX[platform]}.zip"
+            if drv["variant"] == "aio":
+                name = f"{stem_aio}{PLATFORM_SUFFIX[platform]}.zip"
+            else:
+                name = f"Turnip-{tag}{drv['suffix']}{PLATFORM_SUFFIX[platform]}.zip"
             path = os.path.join(a.zips, name)
             rep = reports.get(name)
             why = ""
@@ -212,6 +228,7 @@ def main():
         "a8xx": ("**A8xx** (experimental)", "Adreno 810 / 812 / 825 / 829 / 830 / 840 (8 Elite)"),
         "710-720-test": ("**A710 / A720 / A722** (experimental, untested on hardware)", "Adreno 710 / 720 / 722"),
         "8g2-oneui": ("**8 Gen 2 One UI**", "Adreno 740 (8 Gen 2) with UI flicker, e.g. Samsung One UI"),
+        "aio": ("**Banners-AIO** (all SoC)", "Every Adreno: 6xx, 7xx, 710 / 720 / 722, 8xx"),
     }
     for d in DRIVERS:
         label, gpus = short[d["variant"]]
@@ -221,6 +238,9 @@ def main():
     w("**Which one?**")
     w("- **X11** (Bannerlator, Winlator, BannerHub, any AdrenoTools app): import the normal zip as a GPU driver. "
       "Not sure which driver? Use **Standard**.")
+    w("- **Banners-AIO:** one zip for every Adreno. Each GPU family keeps its own changes: the A8xx recipe only on "
+      "A8xx chips, the A722 registers only on the A722. Its recipe was tested on an Adreno 830, 750 and 722 before "
+      "it joined these builds; each hourly build is still only checked by CI.")
     w("- **Bannerlator Wayland containers:** *Import Wayland game driver (.zip)*, then pick the `-Wayland` zip.")
     lx = legs[("regular", "linux")]["report"] or {}
     glibc = lx.get("min_glibc") or lx.get("meta", {}).get("minGlibc") or ""
@@ -296,6 +316,11 @@ def main():
       + link(t7_patch) + " is the UBWC fix from Vauzi-17/710's own releases.")
     w("- **8 Gen 2 One UI:** Standard plus " + link("patches/8g2_oneui.py")
       + ": `enable_tp_ubwc_flag_hint` on for the Adreno 740 (Mesa leaves it off to match the older system driver).")
+    w("- **Banners-AIO:** " + link("patches/a8xx_gen8.patch") + " and the A722 entry ("
+      + link("patches/a710-720.py") + "), limited per GPU by " + link("patches/one/one_gpu_gates.py") + ", plus "
+      + link("patches/one/one_fixes.py") + " (fixes for single GPU families, several taken unchanged from "
+      "[Droid-Deck/Drivers](https://github.com/Droid-Deck/Drivers); credits in " + link("patches/one/dd/SOURCE.md")
+      + "). Compute shared memory is 32 KiB on every GPU.")
     w("- **Wayland zips:** the same commit and patches, built as Linux-style Vulkan drivers (KGSL, Wayland, bionic) "
       "with Bannerlator's zero-copy patch. CI checks each one before it is attached. They don't load as AdrenoTools "
       "drivers, and the X11 zips don't work as Wayland game drivers.")
