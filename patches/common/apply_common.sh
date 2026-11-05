@@ -22,7 +22,10 @@ if [ "$a8xx" = 1 ]; then
 fi
 echo "[common] driver: $([ "$a8xx" = 1 ] && echo "A8xx (Max's series)" || echo "A6xx/A7xx (no patches: both KGSL fixes are in Mesa)")"
 
+# LAB ONLY (branch lab/aio-a8xx-ab, never merged): WN_SKIP="0002 0003" leaves those WinNative patches out.
+wn_on() { case " ${WN_SKIP:-} " in *" $1 "*) return 1 ;; esac; return 0; }
 for p in ${series[@]+"${series[@]}"}; do
+	if ! wn_on "$(basename "$p" | cut -c1-4)"; then echo "[common] LAB: SKIPPED $(basename "$p") (WN_SKIP)"; continue; fi
 	echo "[common] applying $(basename "$p")"
 	rc=0
 	out="$(patch -p1 -N --fuzz=3 --no-backup-if-mismatch < "$p" 2>&1)" || rc=$?
@@ -36,17 +39,17 @@ done
 grep -q "kgsl_syncobj_merge(struct tu_device \*device" src/freedreno/vulkan/tu_knl_kgsl.cc \
 	|| { echo "[common] Mesa lacks the upstream kgsl_syncobj_merge fix (MR 44838); this Mesa is too old" >&2; exit 1; }
 if [ "$a8xx" = 1 ]; then
-	[ -f src/freedreno/vulkan/tu_mesh.cc ] && grep -q "EXT_mesh_shader = tu_has_mesh_shader(device)" src/freedreno/vulkan/tu_device.cc \
+	! wn_on 0001 || { [ -f src/freedreno/vulkan/tu_mesh.cc ] && grep -q "EXT_mesh_shader = tu_has_mesh_shader(device)" src/freedreno/vulkan/tu_device.cc; } \
 		|| { echo "[common] winnative/0001 (mesh shaders) did not reach tu_mesh.cc / tu_device.cc" >&2; exit 1; }
-	grep -q "tu_mesh.cc" src/freedreno/vulkan/meson.build \
+	! wn_on 0001 || grep -q "tu_mesh.cc" src/freedreno/vulkan/meson.build \
 		|| { echo "[common] winnative/0001 (mesh shaders) did not reach meson.build" >&2; exit 1; }
-	grep -q "HALF_SUBGROUP_SIZE 32" src/freedreno/ir3/ir3_lower_subgroups.c \
+	! wn_on 0002 || grep -q "HALF_SUBGROUP_SIZE 32" src/freedreno/ir3/ir3_lower_subgroups.c \
 		|| { echo "[common] winnative/0002 (wave32 subgroups) did not reach ir3_lower_subgroups.c" >&2; exit 1; }
-	grep -q "cube_coord_hang_quirk = True" src/freedreno/common/freedreno_devices.py \
+	! wn_on 0003 || grep -q "cube_coord_hang_quirk = True" src/freedreno/common/freedreno_devices.py \
 		|| { echo "[common] winnative/0003 (cube-coord sanitize) did not reach freedreno_devices.py" >&2; exit 1; }
-	grep -q "SP_GFX_BINDLESS_INVALIDATE" src/freedreno/vulkan/tu_cmd_buffer.h \
+	! wn_on 0004 || grep -q "SP_GFX_BINDLESS_INVALIDATE" src/freedreno/vulkan/tu_cmd_buffer.h \
 		|| { echo "[common] winnative/0004 (bindless invalidate) did not reach tu_cmd_buffer.h" >&2; exit 1; }
-	grep -q "KGSL_MEMFLAGS_VBO" src/freedreno/vulkan/tu_knl_kgsl.cc \
+	! wn_on 0005 || grep -q "KGSL_MEMFLAGS_VBO" src/freedreno/vulkan/tu_knl_kgsl.cc \
 		|| { echo "[common] winnative/0005 (IB VBO alias) did not reach tu_knl_kgsl.cc" >&2; exit 1; }
 else
 	[ ! -f src/freedreno/vulkan/tu_mesh.cc ] \
