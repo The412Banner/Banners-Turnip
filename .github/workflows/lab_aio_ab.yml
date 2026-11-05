@@ -5,18 +5,25 @@ name: Lab - Banners-AIO fix A/B (never merge)
 # which change slowed the DriverLab "card" scene on the Adreno 830. Artifacts only.
 
 on:
+  # A workflow only on a side branch cannot be dispatched by hand: the push of this file starts it.
+  push:
+    branches: [lab/aio-a8xx-ab]
+    paths:
+      - ".github/workflows/lab_aio_ab.yml"
   workflow_dispatch:
     inputs:
       mesa_commit:
         description: "Full 40-hex Mesa commit (same for every variant)"
         type: string
-        required: true
+        default: ""
 
 permissions:
   contents: read
 
 env:
   EXTRA_PATCH: patches/a8xx_gen8.patch
+  # Mesa of release v27.0.0-20261105-r3 (its Banners-AIO zip = the "all" reference on the device).
+  LAB_MESA: 2008a72ead66ec5f0dbb414fc467502818ba193e
 
 jobs:
   android:
@@ -49,7 +56,7 @@ jobs:
 
       - name: Build
         env:
-          MESA_COMMIT: ${{ inputs.mesa_commit }}
+          MESA_COMMIT: ${{ inputs.mesa_commit || env.LAB_MESA }}
           BUILD_VERSION: ${{ github.run_number }}
           EXTRA_SCRIPT: ${{ matrix.scripts }}
           ONE_FIXES_SKIP: ${{ matrix.skip }}
@@ -60,7 +67,7 @@ jobs:
 
       - name: Name ZIP
         env:
-          MESA_COMMIT: ${{ inputs.mesa_commit }}
+          MESA_COMMIT: ${{ inputs.mesa_commit || env.LAB_MESA }}
           V: ${{ matrix.v }}
         run: |
           BUILT=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo unknown)
