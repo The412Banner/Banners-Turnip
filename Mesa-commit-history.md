@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261105-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r2) | 2026-11-05 | [`0848c37`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0848c37191edeb6572363577a351fb6ab2d2c4f8) | rusticl: implement cl_khr_external_memory | Vulkan 1.4.367 |
 | [v27.0.0-20261105](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105) | 2026-11-04 | [`4e32ef6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e32ef686bb57be709fa176e62b2e72a884fe886) | pvr: Support pipeline executable properties VkPipelineCreateFlags2 flags | Vulkan 1.4.367 |
 | [v27.0.0-20261104-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r4) | 2026-11-04 | [`6c4d70f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c4d70f284cbad6e7aa1ce15be104bf480cadd94) | ci: bump fedora from 44 to 45 | Vulkan 1.4.367 |
 | [v27.0.0-20261104-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r3) | 2026-11-04 | [`ae47f65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae47f65f7de25c3d1f3035fcefacfc57a1156202) | intel/compiler: Archive shader binaries as separate MDA objects | Vulkan 1.4.367 |
