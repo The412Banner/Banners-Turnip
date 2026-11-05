@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261105-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r3) | 2026-11-05 | [`2008a72`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2008a72ead66ec5f0dbb414fc467502818ba193e) | RADV: Use radv_print_shader_disasm to print shader disassembly instead of just disasm_string | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r2) | 2026-11-05 | [`0848c37`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0848c37191edeb6572363577a351fb6ab2d2c4f8) | rusticl: implement cl_khr_external_memory | Vulkan 1.4.367 |
 | [v27.0.0-20261105](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105) | 2026-11-04 | [`4e32ef6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e32ef686bb57be709fa176e62b2e72a884fe886) | pvr: Support pipeline executable properties VkPipelineCreateFlags2 flags | Vulkan 1.4.367 |
 | [v27.0.0-20261104-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r4) | 2026-11-04 | [`6c4d70f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c4d70f284cbad6e7aa1ce15be104bf480cadd94) | ci: bump fedora from 44 to 45 | Vulkan 1.4.367 |
