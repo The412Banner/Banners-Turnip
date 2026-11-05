@@ -267,60 +267,115 @@ def main():
     def link(path):
         return f"[`{os.path.basename(path)}`]({REPO_BLOB.format(repo=a.repo, ref=a.ref, path=path)})"
 
-    w("**🩹 Fixes in every driver** (both found here, both now in Mesa `main` since "
-      "[MR 44838](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/44838), 2026-10-08; see "
-      + link("patches/common/SOURCE") + "):")
-    w("")
-    w("- **DirectX 12 no longer waits on the GPU every frame**. A quick \"is the GPU done yet?\" check was sent to the "
-      "kernel as \"wait until it's done\", so the CPU and GPU took turns with VKD3D-Proton. Now it answers at once. On an "
-      "Adreno 750, a DirectX 12 demo went from 378 to 1422 fps on X11 and from 588 to 3449 fps on Wayland ([report]("
-      + REPO_BLOB.format(repo=a.repo, ref=a.ref, path="docs/KGSL_ZERO_TIMEOUT_POLL.md") + ")). Mesa credits "
-      "The412Banner for the find.")
-    w("- **No crash when a frame waits on two kinds of sync at once**. Cemu crashed on its first frame; proven fixed "
-      "with Cemu, RPCS3 and Dolphin.")
-    w("")
-    w("**🎮 Game fixes in every driver** (added here, not in Mesa yet; see " + link("patches/common/apply_common.sh") + "):")
-    w("")
-    w("- **MIO: Memories in Orbit draws its whole level on Adreno 7xx**. MIO reads its 650 MB level geometry through "
-      "storage buffers of 512 MiB and 138 MiB, and Turnip allows 128 MiB on A7xx, so most of the level was missing. "
-      "Every driver turns on `tu_enable_ssbo_emulation` for `mio.exe`; proven on an Adreno 750 ([report]("
-      + REPO_BLOB.format(repo=a.repo, ref=a.ref, path="docs/MIO_A7XX_SSBO_LIMIT.md") + ")). With other Turnip builds "
-      "from after 2026-06-10, set `tu_enable_ssbo_emulation=true` yourself.")
-    w("- **UNCHARTED: Legacy of Thieves Collection on Adreno 7xx**. Every driver turns on `tu_enable_ssbo_emulation` "
-      "for `u4.exe`, `tll.exe`, `u4-l.exe` and `tll-l.exe`. With other Turnip builds from after 2026-06-10, set "
-      "`tu_enable_ssbo_emulation=true` yourself.")
-    w("")
+    def details(summary, lines):
+        w("<details>")
+        w(f"<summary>{summary}</summary>")
+        w("")
+        for line in lines:
+            w(line)
+        w("")
+        w("</details>")
+        w("")
+
+    def credit_commits(path):
+        return [f"  - {md_cell(subj)} — *{md_cell(auth or 'unknown')}*" for subj, auth in patch_commits(os.path.join(a.workdir, path))]
+
     wn = "patches/a8xx-winnative/"
-    w("**🧩 A8xx driver only:** Max's WinNative series (MaxsTechReview, " + link(wn + "0001-tu-Emulate-VK_EXT_mesh_shader-with-compute.patch")
-      + " … " + link(wn + "0005-tu-kgsl-Fetch-A8XX-command-streams-through-a-virtual.patch") + "). The A6xx / A7xx drivers carry no code patches, only the game entries above: both fixes above come from Mesa itself.")
+    gh_link = lambda who, url: f"[{who}]({url})"  # noqa: E731
+    vauzi = gh_link("Vauzi-17/710", "https://github.com/Vauzi-17/710")
+    ddrv = gh_link("Droid-Deck/Drivers", "https://github.com/Droid-Deck/Drivers")
+    wnrepo = gh_link("WinNative-Emu/Drivers", "https://github.com/WinNative-Emu/Drivers")
+    mr = "[MR 44838](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/44838)"
+
+    w("### What's in each driver")
     w("")
-    w("- **DirectX 12 Ultimate: mesh shaders + wave32** (0001, 0002). `VK_EXT_mesh_shader` is emulated with compute, "
-      "so VKD3D-Proton can offer mesh shaders to games that need them (FINAL FANTASY VII REBIRTH, Alan Wake 2); "
-      "render passes with mesh draws run in sysmem.")
-    w("- **Three Adreno 8xx GPU hang fixes** (0003-0005): cube-map directions, bindless descriptors, command-stream "
-      "memory. Max's IB cache (0006) is left out: it broke the Linux driver on some Adreno 840s.")
+    w("Tap a driver to see which GPUs it is for, what it changes on top of Mesa, where each change came from "
+      "and who wrote it.")
     w("")
+    details("<b>Every driver</b>: what all five share", [
+        f"- **Base:** Mesa `main` at [`{info['githash']}`]({mesa_url}) ({info['commit_date']}), built for KGSL.",
+        "- **DirectX 12 no longer waits on the GPU every frame.** A quick \"is the GPU done yet?\" check was sent "
+        "to the kernel as \"wait until it's done\", so the CPU and GPU took turns with VKD3D-Proton. On an Adreno 750 "
+        "a DirectX 12 demo went from 378 to 1422 fps on X11 and from 588 to 3449 fps on Wayland ([report]("
+        + REPO_BLOB.format(repo=a.repo, ref=a.ref, path="docs/KGSL_ZERO_TIMEOUT_POLL.md") + ")). Found here "
+        f"(The412Banner); fixed in Mesa by Danylo Piliaiev, {mr} (2026-10-08).",
+        "- **No crash when a frame waits on two kinds of sync at once** (Cemu crashed on its first frame; RPCS3 and "
+        "Dolphin checked too). First fixed in DroidDeck's driver; fixed in Mesa by Danylo Piliaiev (`1da50a1b`, "
+        f"{mr}). See " + link("patches/common/SOURCE") + ".",
+        "- **Game entries** (" + link("patches/common/apply_common.sh") + ", not in Mesa yet): MIO: Memories in Orbit "
+        "and UNCHARTED: Legacy of Thieves Collection turn on `tu_enable_ssbo_emulation` on Adreno 7xx, so their large "
+        "storage buffers work ([MIO report](" + REPO_BLOB.format(repo=a.repo, ref=a.ref, path="docs/MIO_A7XX_SSBO_LIMIT.md")
+        + ")). The option itself is Mesa's, by Job Noorman. With other Turnip builds from after 2026-06-10, set "
+        "`tu_enable_ssbo_emulation=true` yourself.",
+    ])
+    details("<b>Standard</b>: Adreno 6xx / 7xx (8 Gen 3 and older)", [
+        "- Mesa `main` plus **Every driver** above. No GPU-specific patches, no mesh shaders, no wave32.",
+        "- Credit: the Mesa / Freedreno developers.",
+    ])
+    a8_lines = [
+        "- **For:** Adreno 810 / 812 / 825 / 829 / 830 / 840 (Snapdragon 8 Elite). Experimental.",
+        f"- {link(a8_patch)}: whitebelyash's `turnip/gen8` stack ([mesa-unified](https://github.com/whitebelyash/mesa-unified)): "
+        "A8xx GPU entries, UBWC gralloc detection, the `disable_gmem` property, the Steam Deck spoof "
+        "(`TU_DEBUG=deck_emu`), A810 / A812 fixes. Commits and authors:",
+    ] + credit_commits(a8_patch)
+    if "patches/a8xx_shared_mem.py" in a8_scripts:
+        a8_lines.append("- " + link("patches/a8xx_shared_mem.py") + ": compute shared memory 32 → 64 KiB on every "
+                        "entry (whitebelyash, `dcbb41b2`). Known: Vulkan conformance tests above 32 KiB fail on an "
+                        "Adreno 830; Banners-AIO keeps 32 KiB.")
+    else:
+        a8_lines += [f"- {link(x)}" for x in a8_scripts]
+    a8_lines += [
+        "- **Max's WinNative series** (Max / MaxsTechReview, " + wnrepo + ", GPL-3.0), A8xx only: "
+        + link(wn + "0001-tu-Emulate-VK_EXT_mesh_shader-with-compute.patch") + " mesh shaders emulated with compute and "
+        + link(wn + "0002-tu-ir3-Support-a-required-subgroup-size-of-half-a-wa.patch") + " wave32 (DirectX 12 Ultimate "
+        "games such as FINAL FANTASY VII REBIRTH and Alan Wake 2); "
+        + link(wn + "0003-ir3-Sanitize-cube-map-directions-on-A8XX.patch") + ", "
+        + link(wn + "0004-tu-Invalidate-bindless-descriptors-through-the-A8XX-.patch") + ", "
+        + link(wn + "0005-tu-kgsl-Fetch-A8XX-command-streams-through-a-virtual.patch")
+        + " three GPU hang fixes. His IB cache (0006) is left out: it broke the Linux driver on some Adreno 840s.",
+        "- Plus **Every driver** above. Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy, `TU_DEBUG=deck_emu` if a "
+        "game won't start.",
+    ]
+    details("<b>A8xx</b>: Adreno 8xx (Snapdragon 8 Elite)", a8_lines)
+    t7_patch = t7.get("extra_patch") or "patches/710-720/01-u_gralloc-always-use-ubwc-detection.patch"
+    details("<b>A710 / A720 / A722</b>: Adreno 710 / 720 / 722", [
+        "- A710 and A720 come from Mesa `main` itself (upstream since September 2026).",
+        "- " + ", ".join(link(x) for x in t7_scripts) + ": swaps Mesa's A730-based A722 entry for " + vauzi
+        + "'s registers captured on real A722 hardware (`num_ccu = 2`). Credit: Vauzi-17.",
+        "- " + link(t7_patch) + ": UBWC gralloc fix (whitebelyash), as shipped in " + vauzi + "'s releases.",
+        "- Plus **Every driver** above. Tips: `TU_DEBUG=sysmem`; in Winlator also `WRAPPER_BLIT=1`.",
+    ])
+    details("<b>8 Gen 2 One UI</b>: Adreno 740 on newer firmware", [
+        "- Standard plus " + link("patches/8g2_oneui.py") + " (Banners-Turnip): turns on "
+        "`enable_tp_ubwc_flag_hint` for the Adreno 740, to match newer system drivers such as Samsung One UI. Mesa "
+        "leaves it off to match the older system driver.",
+        "- Only if the Standard driver makes the phone's UI glitch or flicker; on other 8 Gen 2 devices it causes "
+        "that glitch. Same switch without changing driver: `FD_DEV_FEATURES=enable_tp_ubwc_flag_hint=1`.",
+    ])
+    details("<b>Banners-AIO</b>: every Adreno, one driver", [
+        "- One `libvulkan_freedreno.so` for every Adreno; Turnip picks each GPU's settings by chip ID. "
+        + link("patches/one/one_gpu_gates.py") + " (Banners-Turnip) keeps the A8xx-wide changes on A8xx chips, so "
+        "every other GPU behaves as in its own driver here. Compute shared memory is 32 KiB on every GPU.",
+        "- **Every GPU:** **Every driver** above, plus from " + ddrv + " (copied unchanged, with permission): "
+        "render-pass barrier flushes kept (UE5 Nanite) and 32-bit SSBO offset wrap (*K11MCH1*); memory budget "
+        "counts the whole process (*Charles DuBose*).",
+        "- **Every GPU on Android:** IMapper5 gralloc backend and UBWC-compressed swapchain buffers (*Leb-Sun*, "
+        + ddrv + ").",
+        "- **A6xx / A7xx:** as Standard plus the above.",
+        "- **A710 / A720 / A722 / A725 / A730:** early preamble and scalar predicates off (*DroidDeck*, " + ddrv + ").",
+        "- **A722:** " + vauzi + "'s registers (*Vauzi-17*) and GMEM off (GMEM gives CCU write page faults on the "
+        "A722 in every Turnip build).",
+        "- **A8xx:** whitebelyash's `turnip/gen8` stack and Max's WinNative 0001-0005 as in the A8xx driver (without "
+        "the 64 KiB script); LRZ controls reset after the end-of-pass flush (*Gustash*); buffer descriptors of 1 GiB "
+        "and more keep their size (*airidosas252*, now also in Mesa); RB_RESOLVE_CR_CNTL, VS / PS hysteresis and LRZ "
+        "color mask as the Qualcomm driver (*adapted from " + vauzi + "*); extra chip IDs for the A829, A845 and "
+        "A850, and no category-4 repeat on the A845 / A850 (*misakayuuki*); GMEM off on the A810 and A829.",
+        "- Sources: " + link("patches/one/one_fixes.py") + " and " + link("patches/one/dd/SOURCE.md") + ". Its recipe "
+        "was tested on an Adreno 830, 750 and 722 before it joined these builds.",
+    ])
     w("<details>")
     w("<summary>Build details and checksums</summary>")
     w("")
-    w("- **Standard:** Mesa `main` as is (both fixes above are in Mesa now) plus the game entries, no GPU-specific patches, no mesh shaders or wave32.")
-    a8_desc = f"whitebelyash's `turnip/gen8` stack ({link(a8_patch)}"
-    a8_desc += f", {len(a8_commits)} commits)" if a8_commits else ")"
-    if a8_scripts:
-        a8_desc += " + " + ", ".join(link(x) for x in a8_scripts)
-    w(f"- **A8xx:** {a8_desc}.")
-    t7_patch = t7.get("extra_patch") or "patches/710-720/01-u_gralloc-always-use-ubwc-detection.patch"
-    w("- **A710 / A720 / A722:** A710 and A720 come from Mesa `main` itself (upstream since September 2026). "
-      + ", ".join(link(x) for x in t7_scripts) + " swaps Mesa's A730-based A722 entry for "
-      "[Vauzi-17/710](https://github.com/Vauzi-17/710)'s hardware-captured A722 registers (`num_ccu = 2`), and "
-      + link(t7_patch) + " is the UBWC fix from Vauzi-17/710's own releases.")
-    w("- **8 Gen 2 One UI:** Standard plus " + link("patches/8g2_oneui.py")
-      + ": `enable_tp_ubwc_flag_hint` on for the Adreno 740 (Mesa leaves it off to match the older system driver).")
-    w("- **Banners-AIO:** " + link("patches/a8xx_gen8.patch") + " and the A722 entry ("
-      + link("patches/a710-720.py") + "), limited per GPU by " + link("patches/one/one_gpu_gates.py") + ", plus "
-      + link("patches/one/one_fixes.py") + " (fixes for single GPU families, several taken unchanged from "
-      "[Droid-Deck/Drivers](https://github.com/Droid-Deck/Drivers); credits in " + link("patches/one/dd/SOURCE.md")
-      + "). Compute shared memory is 32 KiB on every GPU.")
     w("- **Wayland zips:** the same commit and patches, built as Linux-style Vulkan drivers (KGSL, Wayland, bionic) "
       "with Bannerlator's zero-copy patch. CI checks each one before it is attached. They don't load as AdrenoTools "
       "drivers, and the X11 zips don't work as Wayland game drivers.")
