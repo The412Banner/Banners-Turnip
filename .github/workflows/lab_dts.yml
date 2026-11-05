@@ -1,0 +1,83 @@
+name: Lab - A8xx double threadsize off (never merge)
+
+# LAB ONLY (branch lab/aio-a8xx-ab). A8xx and Banners-AIO Android drivers with a8xx_base
+# supports_double_threadsize back to False (patches/lab/a8xx_no_double_threadsize.py), same Mesa as the other labs.
+
+on:
+  # A workflow only on a side branch cannot be dispatched by hand: the push of this file starts it.
+  push:
+    branches: [lab/aio-a8xx-ab]
+    paths:
+      - ".github/workflows/lab_dts.yml"
+  workflow_dispatch:
+    inputs:
+      mesa_commit:
+        description: "Full 40-hex Mesa commit (same for every variant)"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+env:
+  EXTRA_PATCH: patches/a8xx_gen8.patch
+  # Mesa of release v27.0.0-20261105-r3 (its Banners-AIO zip = the "all" reference on the device).
+  LAB_MESA: 2008a72ead66ec5f0dbb414fc467502818ba193e
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { v: a8xx-dtsoff, scripts: "patches/a8xx_shared_mem.py:patches/lab/a8xx_no_double_threadsize.py", skip: "" }
+          - { v: aio-dtsoff,  scripts: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py:patches/lab/a8xx_no_double_threadsize.py", skip: "scripts/a8xx_sp_hysteresis.py" }
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
+          pip3 install --break-system-packages meson mako
+
+      - name: Build
+        env:
+          MESA_COMMIT: ${{ inputs.mesa_commit || env.LAB_MESA }}
+          BUILD_VERSION: ${{ github.run_number }}
+          EXTRA_SCRIPT: ${{ matrix.scripts }}
+          ONE_FIXES_SKIP: ${{ matrix.skip }}
+        run: |
+          [[ "$MESA_COMMIT" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::mesa_commit must be 40 hex"; exit 1; }
+          chmod +x build_turnip.sh
+          ./build_turnip.sh
+
+      - name: Name ZIP
+        env:
+          MESA_COMMIT: ${{ inputs.mesa_commit || env.LAB_MESA }}
+          V: ${{ matrix.v }}
+        run: |
+          BUILT=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo unknown)
+          [ "$BUILT" = "$MESA_COMMIT" ] || { echo "::error::built Mesa ${BUILT}, asked ${MESA_COMMIT}"; exit 1; }
+          SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
+          D=$(mktemp -d); unzip -q "$SRC" -d "$D"
+          python3 - "$D/meta.json" <<'PY'
+          import json, os, sys
+          p = sys.argv[1]; m = json.load(open(p))
+          m["name"] = f"Banners-AIO lab {os.environ['V']} {os.environ['MESA_COMMIT'][:9]}"
+          m["description"] = "LAB A/B build, not for use"
+          json.dump(m, open(p, "w"), indent=2); print("meta.json:", m["name"])
+          PY
+          (cd "$D" && zip -q - *) > "Banners-AIO-lab-${V}.zip"
+          sha256sum "Banners-AIO-lab-${V}.zip"
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 7
+          name: lab-aio-${{ matrix.v }}
+          path: Banners-AIO-lab-${{ matrix.v }}.zip
+          if-no-files-found: error
