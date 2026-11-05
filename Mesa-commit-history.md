@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261105](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105) | 2026-11-04 | [`4e32ef6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e32ef686bb57be709fa176e62b2e72a884fe886) | pvr: Support pipeline executable properties VkPipelineCreateFlags2 flags | Vulkan 1.4.367 |
 | [v27.0.0-20261104-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r4) | 2026-11-04 | [`6c4d70f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6c4d70f284cbad6e7aa1ce15be104bf480cadd94) | ci: bump fedora from 44 to 45 | Vulkan 1.4.367 |
 | [v27.0.0-20261104-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r3) | 2026-11-04 | [`ae47f65`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ae47f65f7de25c3d1f3035fcefacfc57a1156202) | intel/compiler: Archive shader binaries as separate MDA objects | Vulkan 1.4.367 |
 | [v27.0.0-20261104-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261104-r2) | 2026-11-03 | [`98a55f4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/98a55f454dff645be1c88284634126a2c17fd416) | ac/nir/clear_copy_buffer: Don't round up the number of components for the first thread | Vulkan 1.4.367 |
