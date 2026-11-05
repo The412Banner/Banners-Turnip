@@ -15,7 +15,7 @@ find `mesa_edit.py` and `aimapper/` the same way. Used with the authors' permiss
 | lrz/0001-tu-a8xx-lrz-reset-cntl-after-flush.patch | LRZ controls reset after the end-of-pass flush (hang) | A8xx | Gustash |
 | fdl/0001-fdl-a8xx-buffer-num-elements.patch | buffer descriptors of 1 GiB and more keep their size | A8xx | airidosas252 |
 | scripts/a8xx_resolve_cr_cntl.py | RB_RESOLVE_CR_CNTL = 1 as the Qualcomm driver | A8xx | adapted from Vauzi-17/710 |
-| scripts/a8xx_sp_hysteresis.py | VS / PS hysteresis as the Qualcomm driver | A8xx | adapted from Vauzi-17/710 |
+| scripts/a8xx_sp_hysteresis.py | VS / PS hysteresis as the Qualcomm driver (**kept here but not applied** since 2026-11-05: 6 % slower in one DriverLab scene, no measured benefit) | A8xx | adapted from Vauzi-17/710 (Droid-Deck/Drivers b6cbfb43, maxjivi05) |
 | scripts/a8xx_lrz_color_mask.py | GRAS_LRZ_COLOR_COMP_MASK from the MRT write masks | A8xx | adapted from Vauzi-17/710 |
 | scripts/apply_a8xx_cat4_rpt.py | no category-4 repeat (grayscale DXVK / Unity 2D) | A845, A850 | misakayuuki |
 | scripts/apply_a7xx_gen1_quirks.py | early preamble and scalar predicates off | A710, A720, A722, A725, A730 | DroidDeck |

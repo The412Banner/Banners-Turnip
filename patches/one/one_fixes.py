@@ -11,11 +11,14 @@ Android, all Adreno (u_gralloc and vk_android.c are only built for -Dplatforms=a
   dd/scripts/add_aimapper_gralloc.py   IMapper5 gralloc backend
   dd/scripts/add_ubwc_swapchain_usage.py   UBWC swapchain buffers
 A8xx only (code runs under CHIP >= A8XX, or edits A8xx entries):
-  dd/lrz/0001, dd/fdl/0001, dd/scripts/a8xx_resolve_cr_cntl.py, a8xx_sp_hysteresis.py,
-  a8xx_lrz_color_mask.py; apply_a8xx_cat4_rpt.py (A845 / A850 chip IDs only);
+  dd/lrz/0001, dd/fdl/0001, dd/scripts/a8xx_resolve_cr_cntl.py, a8xx_lrz_color_mask.py;
+  apply_a8xx_cat4_rpt.py (A845 / A850 chip IDs only);
   chip IDs A829 0x44030A00, A845 0x44041430, A850 0x44051431; disable_gmem on A810 and A829.
 A7xx gen1 only (A710, A720, A722, A725, A730): dd/scripts/apply_a7xx_gen1_quirks.py
 A722 only: disable_gmem (GMEM gives CCU write page faults on A722 in every Turnip build).
+Not applied: dd/scripts/a8xx_sp_hysteresis.py (VS / PS hysteresis as the Qualcomm driver). Measured on an
+Adreno 830 (2026-11-05, Mesa 2008a72): DriverLab "card" scene 6 % slower with it, AIO 8 APIs no difference,
+no known bug it fixes; Mesa does not set these registers outside its ray-tracing workaround.
 
 Every step must change the tree or find its change already in Mesa; anything else stops the
 build. Sources and authors: dd/SOURCE.md.
@@ -128,7 +131,7 @@ def main():
     for rel in ("lrz/0001-tu-a8xx-lrz-reset-cntl-after-flush.patch",
                 "fdl/0001-fdl-a8xx-buffer-num-elements.patch"):
         run_patch(rel)
-    for rel in ("scripts/a8xx_resolve_cr_cntl.py", "scripts/a8xx_sp_hysteresis.py",
+    for rel in ("scripts/a8xx_resolve_cr_cntl.py",
                 "scripts/a8xx_lrz_color_mask.py", "scripts/apply_a7xx_gen1_quirks.py"):
         run_script(rel)
     devices_edits()

@@ -365,7 +365,7 @@ def main():
         "A722 in every Turnip build).",
         "- **A8xx:** whitebelyash's `turnip/gen8` stack and Max's WinNative 0001-0005 as in the A8xx driver (without "
         "the 64 KiB script); LRZ controls reset after the end-of-pass flush (*Gustash*); buffer descriptors of 1 GiB "
-        "and more keep their size (*airidosas252*, now also in Mesa); RB_RESOLVE_CR_CNTL, VS / PS hysteresis and LRZ "
+        "and more keep their size (*airidosas252*, now also in Mesa); RB_RESOLVE_CR_CNTL and LRZ "
         "color mask as the Qualcomm driver (*adapted from " + vauzi + "*); extra chip IDs for the A829, A845 and "
         "A850, and no category-4 repeat on the A845 / A850 (*misakayuuki*); GMEM off on the A810 and A829.",
         "- Sources: " + link("patches/one/one_fixes.py") + " and " + link("patches/one/dd/SOURCE.md") + ". Its recipe "
