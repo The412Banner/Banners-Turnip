@@ -1,0 +1,95 @@
+name: Lab - A8xx gen8 commit bisect (never merge)
+
+# LAB ONLY (branch lab/aio-a8xx-ab). Builds the A8xx Android driver (hourly A8xx recipe) from one Mesa commit
+# with ONE commit of patches/a8xx_gen8.patch left out per build, to find which gen8 commit breaks the
+# subgroup / reconvergence compute CTS tests on the Adreno 830 (Mesa's Standard driver passes 629 of 660).
+
+on:
+  push:
+    branches: [lab/aio-a8xx-ab]
+    paths:
+      - ".github/workflows/lab_gen8_bisect.yml"
+
+permissions:
+  contents: read
+
+env:
+  EXTRA_SCRIPT: patches/a8xx_shared_mem.py
+  LAB_MESA: 2008a72ead66ec5f0dbb414fc467502818ba193e
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { v: skip00 }
+          - { v: skip01 }
+          - { v: skip02 }
+          - { v: skip03 }
+          - { v: skip04 }
+          - { v: skip05 }
+          - { v: skip06 }
+          - { v: skip07 }
+          - { v: skip08 }
+          - { v: skip09 }
+          - { v: skip10 }
+          - { v: skip11 }
+          - { v: skip12 }
+          - { v: skip13 }
+          - { v: skip14 }
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
+          pip3 install --break-system-packages meson mako
+
+      - name: gen8 series without one commit
+        env:
+          V: ${{ matrix.v }}
+        run: |
+          python3 - <<'PY'
+          import os, re
+          n = int(os.environ["V"][4:])
+          text = open("patches/a8xx_gen8.patch", encoding="utf-8", errors="surrogateescape").read()
+          starts = [m.start() for m in re.finditer(r"^From [0-9a-f]{40} ", text, re.M)]
+          assert len(starts) == 14, len(starts)
+          parts = [text[a:b] for a, b in zip(starts, starts[1:] + [len(text)])]
+          keep = [p for i, p in enumerate(parts, 1) if i != n]
+          subj = re.search(r"^Subject: (.*)$", parts[n - 1], re.M).group(1) if n else "(none)"
+          open("patches/a8xx_gen8-lab.patch", "w", encoding="utf-8", errors="surrogateescape").write("".join(keep))
+          print(f"left out commit {n}: {subj}; {len(keep)} of 14 kept")
+          PY
+
+      - name: Build
+        env:
+          MESA_COMMIT: ${{ env.LAB_MESA }}
+          BUILD_VERSION: ${{ github.run_number }}
+          EXTRA_PATCH: patches/a8xx_gen8-lab.patch
+        run: |
+          chmod +x build_turnip.sh
+          ./build_turnip.sh
+
+      - name: Name ZIP
+        env:
+          V: ${{ matrix.v }}
+        run: |
+          SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
+          D=$(mktemp -d); unzip -q "$SRC" -d "$D"
+          python3 -c "import json,os,sys; p=sys.argv[1]; m=json.load(open(p)); m['name']='A8xx lab gen8 '+os.environ['V']; m['description']='LAB bisect build, not for use'; json.dump(m,open(p,'w'),indent=2)" "$D/meta.json"
+          (cd "$D" && zip -q - *) > "A8xx-lab-gen8-${V}.zip"
+          sha256sum "A8xx-lab-gen8-${V}.zip"
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 7
+          name: lab-gen8-${{ matrix.v }}
+          path: A8xx-lab-gen8-${{ matrix.v }}.zip
+          if-no-files-found: error
