@@ -1,9 +1,10 @@
-name: Build Turnip (One)
+name: Build Banners-One (all SoC)
 
-# One Turnip driver for every Adreno: A6xx, A7xx, A710/720/722 and A8xx in a single
-# libvulkan_freedreno.so. Turnip already picks each GPU's settings from its device table by chip
-# ID; the recipe is the A8xx one plus the A722 entry, and patches/one/one_gpu_gates.py limits the
-# A8xx recipe's global changes to A8xx chips. Always Mesa main HEAD (or the commit given).
+# Banners-One (all SoC): one Turnip driver for every Adreno (A6xx, A7xx, A710/720/722, A8xx) in a
+# single libvulkan_freedreno.so. Turnip picks each GPU's settings from its device table by chip ID.
+# Recipe: the A8xx one plus the A722 entry; patches/one/one_gpu_gates.py limits the A8xx recipe's
+# global changes to A8xx chips; patches/one/one_fixes.py adds fixes, each limited to the GPUs it is
+# for (patches/one/dd/SOURCE.md). Always Mesa main HEAD (or the commit given).
 # Android, Wayland and Linux legs. Artifacts only: no tag, no release, no README commit.
 
 on:
@@ -14,7 +15,7 @@ on:
         type: string
         default: ""
   push:
-    branches: [feat/one-driver]
+    branches: [feat/one-driver, feat/one-fixes]
     paths:
       - ".github/workflows/turnip_build_one.yml"
       - ".github/scripts/verify_driver_zip.py"
@@ -33,10 +34,11 @@ concurrency:
 
 env:
   VARIANT: one
-  SUFFIX: -One
+  DRIVER_NAME: Banners-One
+  DRIVER_LABEL: "Banners-One (all SoC)"
   EXTRA_PATCH: patches/a8xx_gen8.patch
-  EXTRA_SCRIPT: patches/a710-720.py:patches/one/one_gpu_gates.py
-  META_DESC: "One Turnip driver for all Adreno A6xx, A7xx, A710/720/722 and A8xx: the GPU is detected by chip ID at startup. Mesa main. KGSL build. Not tested on a device."
+  EXTRA_SCRIPT: patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py
+  META_DESC: "Banners-One (all SoC): one Turnip driver for Adreno A6xx, A7xx, A710/720/722 and A8xx, settings picked by chip ID at startup. Mesa main. KGSL build."
 
 jobs:
   resolve:
@@ -71,7 +73,7 @@ jobs:
           echo "commit=${FULL}" >> "$GITHUB_OUTPUT"
           echo "name=${NAME}" >> "$GITHUB_OUTPUT"
           {
-            echo "## Turnip One ${NAME}"
+            echo "## Banners-One (all SoC) ${NAME}"
             echo
             echo "Mesa \`${FULL}\` ($(git -C mesa log -1 --format='%ci') — $(git -C mesa log -1 --format='%s'))"
             echo
@@ -109,11 +111,11 @@ jobs:
         run: |
           BUILT=$(git -C turnip_workdir/mesa rev-parse HEAD 2>/dev/null || echo unknown)
           [ "$BUILT" = "$MESA_COMMIT" ] || { echo "::error::built Mesa ${BUILT}, resolved ${MESA_COMMIT}"; exit 1; }
-          ZIP_NAME="Turnip-${NAME}${SUFFIX}.zip"
+          ZIP_NAME="${DRIVER_NAME}-${NAME}.zip"
           SRC=$(ls turnip_workdir/mesa-turnip-*.zip | head -1)
           D=$(mktemp -d)
           unzip -q "$SRC" -d "$D"
-          META_NAME="Mesa Turnip ${NAME}${SUFFIX}" python3 - "$D/meta.json" <<'PY'
+          META_NAME="${DRIVER_LABEL} ${NAME}" python3 - "$D/meta.json" <<'PY'
           import json, os, sys
           p = sys.argv[1]
           m = json.load(open(p))
@@ -135,7 +137,7 @@ jobs:
           python3 -c "import json,os; json.dump({k.lower(): os.environ[k] for k in ('MESA_COMMIT','EXTRA_PATCH','EXTRA_SCRIPT')}, open('build-report.json','w'))"
           python3 .github/scripts/verify_driver_zip.py --kind android \
             --zip "turnip_workdir/${ZIP_NAME}" --variant "$VARIANT" \
-            --expect-name "Mesa Turnip ${NAME}${SUFFIX}" --expect-package-version "${{ github.run_number }}" \
+            --expect-name "${DRIVER_LABEL} ${NAME}" --expect-package-version "${{ github.run_number }}" \
             --build-report build-report.json --report report-android-one.json
 
       - name: Upload driver ZIP
@@ -144,7 +146,7 @@ jobs:
           retention-days: 14
           name: turnip-one-android
           path: |
-            turnip_workdir/Turnip-*-One.zip
+            turnip_workdir/Banners-One-*.zip
             report-android-one.json
           if-no-files-found: error
 
@@ -154,8 +156,8 @@ jobs:
     timeout-minutes: 90
     env:
       MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
-      ZIP_NAME: Turnip-${{ needs.resolve.outputs.name }}-One-Wayland.zip
-      META_NAME: Mesa Turnip ${{ needs.resolve.outputs.name }}-One-Wayland
+      ZIP_NAME: Banners-One-${{ needs.resolve.outputs.name }}-Wayland.zip
+      META_NAME: Banners-One (all SoC) ${{ needs.resolve.outputs.name }} Wayland
       PACKAGE_VERSION: ${{ github.run_number }}
     steps:
       - name: Checkout
@@ -188,7 +190,7 @@ jobs:
           retention-days: 14
           name: turnip-one-wayland
           path: |
-            wayland_workdir/Turnip-*-One-Wayland.zip
+            wayland_workdir/Banners-One-*-Wayland.zip
             report-wayland-one.json
           if-no-files-found: error
 
@@ -210,8 +212,8 @@ jobs:
     timeout-minutes: 90
     env:
       MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
-      ZIP_NAME: Turnip-${{ needs.resolve.outputs.name }}-One-Linux.zip
-      META_NAME: Mesa Turnip ${{ needs.resolve.outputs.name }}-One-Linux
+      ZIP_NAME: Banners-One-${{ needs.resolve.outputs.name }}-Linux.zip
+      META_NAME: Banners-One (all SoC) ${{ needs.resolve.outputs.name }} Linux
       PACKAGE_VERSION: ${{ github.run_number }}
     steps:
       - name: Checkout
@@ -245,7 +247,7 @@ jobs:
           retention-days: 14
           name: turnip-one-linux
           path: |
-            linux_workdir/Turnip-*-One-Linux.zip
+            linux_workdir/Banners-One-*-Linux.zip
             report-linux-one.json
           if-no-files-found: error
 

@@ -1,0 +1,53 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: K11MCH1 <81425424+K11MCH1@users.noreply.github.com>
+Date: Mon, 2 Nov 2026 20:37:55 +0900
+Subject: [PATCH] tu: Emit pending flushes where a suspended render pass chain
+ starts
+
+Turnip defers a dynamic render pass, and the cache flushes pending
+before it, to tu_cmd_render(). When a suspend/resume chain is still
+suspended at vkEndCommandBuffer(), tu_insert_dynamic_cmdbufs() renders
+the chain at submit time from a new internal command buffer whose cache
+state has no flush bits. The command buffer the chain started in ends
+inside the suspended pass, so tu_EndCommandBuffer() only flushes the
+render pass cache, and the flushes and waits of barriers recorded just
+before the chain are never emitted.
+
+On A8XX, where the CP no longer waits implicitly before reading indirect
+arguments, a COMPUTE_SHADER -> DRAW_INDIRECT barrier then loses its
+CP_WAIT_FOR_ME and wait-for-idle, and indirect draws in the chain read
+their arguments before the compute shader has written them.
+vkd3d-proton records render passes this way (suspended in one command
+buffer, drawn in the next, stored in a third), so Unreal Engine 5
+Nanite and virtual shadow map draws read stale arguments: the near
+ground is black or over-shadowed in Mortal Shell 2. TU_DEBUG=flushall
+hides it.
+
+Emit the pending flushes in the command buffer where the chain starts.
+No barrier can be recorded inside the chain, so nothing else is pending
+when it is rendered. A test that writes the arguments from a long
+compute dispatch and draws them in a chain split across two command
+buffers of one submission drew nothing 30 times out of 30 on an Adreno
+840 before this change and passes with it, in sysmem and GMEM.
+---
+ src/freedreno/vulkan/tu_cmd_buffer.cc | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/freedreno/vulkan/tu_cmd_buffer.cc b/src/freedreno/vulkan/tu_cmd_buffer.cc
+index b347a33..fc854d2 100644
+--- a/src/freedreno/vulkan/tu_cmd_buffer.cc
++++ b/src/freedreno/vulkan/tu_cmd_buffer.cc
+@@ -7459,6 +7459,13 @@ tu_CmdBeginRendering(VkCommandBuffer commandBuffer,
+    cmd->state.suspending = suspending;
+    cmd->state.resuming = resuming;
+ 
++   /* A chain still suspended at vkEndCommandBuffer() is rendered from a new
++    * command buffer by tu_insert_dynamic_cmdbufs(), which starts with no
++    * pending flushes, so emit the flushes of earlier barriers here.
++    */
++   if (suspending && !resuming)
++      tu_emit_cache_flush<CHIP>(cmd);
++
+    if (!resuming && cmd->device->dbg_renderpass_stomp_cs) {
+       tu_cs_emit_call(&cmd->cs, cmd->device->dbg_renderpass_stomp_cs);
+       cmd->state.dirty |= TU_CMD_DIRTY_COMPUTE_DESC_SETS;
