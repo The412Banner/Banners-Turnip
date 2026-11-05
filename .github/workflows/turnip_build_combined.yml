@@ -139,7 +139,7 @@ jobs:
           - variant: a8xx
             suffix: "-A8xx"
             extra_patch: "patches/a8xx_gen8.patch"
-            extra_script: "patches/a8xx_shared_mem.py"
+            extra_script: "patches/a8xx_shared_mem.py:patches/a8xx_no_double_threadsize.py"
             meta_desc: "A8xx experimental Turnip driver for Snapdragon 8 Elite (A840/A830/A829/A825/A812/A810). whitebelyash turnip/gen8 A8xx stack on top of Mesa main (matches tu_v29 / StevenMXZ v33). KGSL build."
           - variant: 710-720-test
             suffix: "-710-720-Test"
@@ -156,7 +156,7 @@ jobs:
           - variant: aio
             suffix: ""
             extra_patch: "patches/a8xx_gen8.patch"
-            extra_script: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py"
+            extra_script: "patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py:patches/a8xx_no_double_threadsize.py"
             meta_desc: "Banners-AIO: one Turnip driver for every Adreno (6xx, 7xx, 710/720/722, 8xx). Each GPU family keeps its own fixes."
 
     steps:

@@ -42,7 +42,7 @@ jobs:
           if [ "$SYMBOLS" = "false" ]; then unset KEEP_SYMBOLS; else export KEEP_SYMBOLS=1; fi
           case "$VARIANT" in
             regular) EXTRA_PATCH=""; EXTRA_SCRIPT="" ;;
-            a8xx) EXTRA_PATCH="patches/a8xx_gen8.patch"; EXTRA_SCRIPT="patches/a8xx_shared_mem.py" ;;
+            a8xx) EXTRA_PATCH="patches/a8xx_gen8.patch"; EXTRA_SCRIPT="patches/a8xx_shared_mem.py:patches/a8xx_no_double_threadsize.py" ;;
             710-720-test) EXTRA_PATCH="patches/710-720/01-u_gralloc-always-use-ubwc-detection.patch"; EXTRA_SCRIPT="patches/a710-720.py" ;;
             *) echo "::error::unknown variant $VARIANT"; exit 1 ;;
           esac

@@ -23,7 +23,7 @@ jobs:
           - variant: a8xx-gen8
             suffix: "-A8xx-gen8"
             extra_patch: "patches/a8xx_gen8.patch"
-            extra_script: "patches/a8xx_shared_mem.py"
+            extra_script: "patches/a8xx_shared_mem.py:patches/a8xx_no_double_threadsize.py"
           - variant: 710-720-test
             suffix: "-710-720-Test"
             extra_patch: "patches/710-720/01-u_gralloc-always-use-ubwc-detection.patch"

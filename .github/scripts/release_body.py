@@ -257,7 +257,7 @@ def main():
 
     a8 = legs[("a8xx", "android")]["report"] or legs[("a8xx", "wayland")]["report"] or {}
     a8_patch = a8.get("extra_patch") or "patches/a8xx_gen8.patch"
-    a8_scripts = [x for x in (a8.get("extra_script") or "patches/a8xx_shared_mem.py").split(":") if x]
+    a8_scripts = [x for x in (a8.get("extra_script") or "patches/a8xx_shared_mem.py:patches/a8xx_no_double_threadsize.py").split(":") if x]
     a8_commits = patch_commits(os.path.join(a.workdir, a8_patch))
     t7 = legs[("710-720-test", "android")]["report"] or legs[("710-720-test", "wayland")]["report"] or {}
     t7_scripts = [x for x in (t7.get("extra_script") or "patches/a710-720.py").split(":") if x]
@@ -316,12 +316,15 @@ def main():
         "A8xx GPU entries, UBWC gralloc detection, the `disable_gmem` property, the Steam Deck spoof "
         "(`TU_DEBUG=deck_emu`), A810 / A812 fixes. Commits and authors:",
     ] + credit_commits(a8_patch)
-    if "patches/a8xx_shared_mem.py" in a8_scripts:
-        a8_lines.append("- " + link("patches/a8xx_shared_mem.py") + ": compute shared memory 32 → 64 KiB on every "
-                        "entry (whitebelyash, `dcbb41b2`). Known: Vulkan conformance tests above 32 KiB fail on an "
-                        "Adreno 830; Banners-AIO keeps 32 KiB.")
-    else:
-        a8_lines += [f"- {link(x)}" for x in a8_scripts]
+    a8_script_notes = {
+        "patches/a8xx_shared_mem.py": ": compute shared memory 32 → 64 KiB on every entry (whitebelyash, "
+        "`dcbb41b2`). Known: Vulkan conformance tests above 32 KiB fail on an Adreno 830; Banners-AIO keeps 32 KiB.",
+        "patches/a8xx_no_double_threadsize.py": ": keeps Mesa's `supports_double_threadsize = False` for A8xx. DVD's "
+        "\"update a8xx family configs\" commit above turns it on, and then subgroup math in compute shaders "
+        "(subgroupAdd, shuffle, ballot, …) returns wrong results on an Adreno 830; with Mesa's value the same tests "
+        "pass and speed is unchanged (Banners-Turnip, 2026-11-05).",
+    }
+    a8_lines += [f"- {link(x)}{a8_script_notes.get(x, '')}" for x in a8_scripts]
     a8_lines += [
         "- **Max's WinNative series** (Max / MaxsTechReview, " + wnrepo + ", GPL-3.0), A8xx only: "
         + link(wn + "0001-tu-Emulate-VK_EXT_mesh_shader-with-compute.patch") + " mesh shaders emulated with compute and "
@@ -364,7 +367,7 @@ def main():
         "- **A722:** " + vauzi + "'s registers (*Vauzi-17*) and GMEM off (GMEM gives CCU write page faults on the "
         "A722 in every Turnip build).",
         "- **A8xx:** whitebelyash's `turnip/gen8` stack and Max's WinNative 0001-0005 as in the A8xx driver (without "
-        "the 64 KiB script); LRZ controls reset after the end-of-pass flush (*Gustash*); buffer descriptors of 1 GiB "
+        "the 64 KiB script, with " + link("patches/a8xx_no_double_threadsize.py") + "); LRZ controls reset after the end-of-pass flush (*Gustash*); buffer descriptors of 1 GiB "
         "and more keep their size (*airidosas252*, now also in Mesa); RB_RESOLVE_CR_CNTL and LRZ "
         "color mask as the Qualcomm driver (*adapted from " + vauzi + "*); extra chip IDs for the A829, A845 and "
         "A850, and no category-4 repeat on the A845 / A850 (*misakayuuki*); GMEM off on the A810 and A829.",
