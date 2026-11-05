@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261105-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r6) | 2026-11-05 | [`58a6812`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58a6812d5dafe20399bc272b261bbdf81f16219c) | lvp: remove useless parameter in lvp_nir_lower_descriptor_heaps() | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r5) | 2026-11-05 | [`579079f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/579079fb1b07f972d24dde8d801b84a408088bad) | nir/opt_reassociate: Split int/float scalar options | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r4) | 2026-11-05 | [`579079f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/579079fb1b07f972d24dde8d801b84a408088bad) | nir/opt_reassociate: Split int/float scalar options | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r3) | 2026-11-05 | [`2008a72`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2008a72ead66ec5f0dbb414fc467502818ba193e) | RADV: Use radv_print_shader_disasm to print shader disassembly instead of just disasm_string | Vulkan 1.4.367 |
