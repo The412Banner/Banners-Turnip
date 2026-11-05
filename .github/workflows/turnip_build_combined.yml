@@ -99,8 +99,9 @@ jobs:
           printf '%s\n' "$COMMIT_DATE"    > release-info/commit_date.txt
           printf '%s\n' "$COMMIT_TITLE"   > release-info/commit_title.txt
           printf '%s\n' "$VULKAN_VERSION" > release-info/vulkan_version.txt
-          # Banners-AIO names: the first build of a day carries the Mesa commit, later ones only -rN.
-          if [[ "$TAG" =~ -r[0-9]+$ ]]; then AIO_STEM="Banners-AIO-${TAG}"; else AIO_STEM="Banners-AIO-${TAG}-${GITHASH_FULL:0:9}"; fi
+          # Banners-AIO file names follow the Turnip-<tag>-<variant> pattern the driver catalogs match on
+          # (DroidDeck lists it as "Banners-AIO"); the emulator name stays "Banners-AIO (all SoC) <tag>".
+          AIO_STEM="Turnip-${TAG}-Banners-AIO"
           AIO_META="Banners-AIO (all SoC) ${TAG}"
           printf '%s\n' "$AIO_STEM"       > release-info/aio_stem.txt
           printf '%s\n' "$AIO_META"       > release-info/aio_meta.txt

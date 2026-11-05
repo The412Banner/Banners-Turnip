@@ -43,7 +43,7 @@ DRIVERS = [
         "gpus": "Adreno 740: Snapdragon 8 Gen 2 on newer firmware (Samsung One UI)",
     },
     {
-        # Named Banners-AIO-<tag>[-<9-char Mesa commit>]: see aio_stem() and the workflow's resolve job.
+        # Named Turnip-<tag>-Banners-AIO: see aio_stem() and the workflow's resolve job.
         "variant": "aio", "suffix": "", "label": "Banners-AIO", "kind": "All SoC",
         "gpus": "Every Adreno: 6xx, 7xx, 710 / 720 / 722, 8xx",
     },
@@ -51,10 +51,8 @@ DRIVERS = [
 
 
 def aio_stem(tag, githash_full):
-    """Banners-AIO file stem: the first build of a day carries the Mesa commit, later ones (-rN) don't."""
-    if re.search(r"-r[0-9]+$", tag):
-        return f"Banners-AIO-{tag}"
-    return f"Banners-AIO-{tag}-{githash_full[:9]}"
+    """Banners-AIO file stem, in the Turnip-<tag>-<variant> pattern the driver catalogs match on."""
+    return f"Turnip-{tag}-Banners-AIO"
 
 
 # One leg of every driver per platform. The suffix is part of the file name catalogs match on,
