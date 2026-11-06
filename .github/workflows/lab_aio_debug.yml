@@ -1,0 +1,81 @@
+name: Lab - Banners-AIO r2 with debug info
+
+# Lab branch only, never merged, publishes nothing. Rebuilds the released
+# Turnip-v27.0.0-20261106-r2-Banners-AIO driver (Mesa 35a0fef, same patches) with -g and
+# without stripping, strips a copy, and checks every loaded section against the released
+# file. The debug build is the answer key for the DriverLab source-code accuracy check.
+on:
+  push:
+    branches: [lab/aio-debug-r2]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
+          pip3 install --break-system-packages meson mako pyelftools
+
+      - name: Build (Banners-AIO recipe, debug info kept)
+        env:
+          KEEP_SYMBOLS: "1"
+          BUILD_VERSION: r2-debug
+          MESA_COMMIT: 35a0fef154b0fc9939674db4f943326b3f3724d3
+          EXTRA_PATCH: patches/a8xx_gen8.patch
+          EXTRA_SCRIPT: patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py:patches/a8xx_no_double_threadsize.py
+        run: |
+          chmod +x build_turnip.sh
+          ./build_turnip.sh
+          BUILT=$(git -C turnip_workdir/mesa rev-parse HEAD)
+          [ "$BUILT" = "$MESA_COMMIT" ] || { echo "::error::built Mesa $BUILT, wanted $MESA_COMMIT"; exit 1; }
+
+      - name: Strip a copy and compare with the released r2 Banners-AIO
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          B=turnip_workdir/android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/bin
+          mkdir -p out rel
+          cp /tmp/turnip-main/lib/libvulkan_freedreno.so out/libvulkan_freedreno-debug.so
+          "$B/llvm-strip" -o out/libvulkan_freedreno-stripped.so out/libvulkan_freedreno-debug.so
+          gh release download v27.0.0-20261106-r2 -R "${{ github.repository }}" -p 'Turnip-v27.0.0-20261106-r2-Banners-AIO.zip' -D rel
+          unzip -o -q rel/Turnip-v27.0.0-20261106-r2-Banners-AIO.zip -d rel
+          sha256sum rel/Turnip-v27.0.0-20261106-r2-Banners-AIO.zip rel/libvulkan_freedreno.so out/*.so | tee out/sha256.txt
+          "$B/llvm-readelf" -S --wide rel/libvulkan_freedreno.so > out/sections-released.txt
+          "$B/llvm-readelf" -S --wide out/libvulkan_freedreno-debug.so > out/sections-debug.txt
+          "$B/llvm-nm" --defined-only --print-size --numeric-sort out/libvulkan_freedreno-debug.so > out/symbols-debug.txt || true
+          "$B/llvm-dwarfdump" --statistics out/libvulkan_freedreno-debug.so > out/dwarf-statistics.json || true
+          python3 - rel/libvulkan_freedreno.so out/libvulkan_freedreno-stripped.so <<'EOF' | tee out/compare.txt
+          import hashlib, sys
+          from elftools.elf.elffile import ELFFile
+          def secs(p):
+              f = ELFFile(open(p, 'rb'))
+              return {s.name: s for s in f.iter_sections() if s['sh_flags'] & 2}
+          a, b = secs(sys.argv[1]), secs(sys.argv[2])
+          same = diff = 0
+          for n in sorted(set(a) | set(b), key=lambda n: (a.get(n) or b.get(n))['sh_addr']):
+              if n not in a or n not in b:
+                  print(f"ONLY-IN-{'released' if n in a else 'debug'} {n}"); diff += 1; continue
+              x, y = a[n], b[n]
+              dx = x.data() if x['sh_type'] != 'SHT_NOBITS' else b''
+              dy = y.data() if y['sh_type'] != 'SHT_NOBITS' else b''
+              ok = x['sh_addr'] == y['sh_addr'] and x['sh_size'] == y['sh_size'] and dx == dy
+              tag = 'SAME' if ok else 'DIFF'
+              print(f"{tag} {n} addr {x['sh_addr']:#x}/{y['sh_addr']:#x} size {x['sh_size']}/{y['sh_size']} sha {hashlib.sha256(dx).hexdigest()[:12]}/{hashlib.sha256(dy).hexdigest()[:12]}")
+              if ok: same += 1
+              elif n != '.note.gnu.build-id': diff += 1
+          print(f"RESULT loaded sections same={same} differing(excluding build-id)={diff}")
+          EOF
+          ls -l out
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: aio-r2-debug
+          path: out/

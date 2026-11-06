@@ -120,12 +120,17 @@ build_lib_for_android(){
 
 	GITHASH=$(git rev-parse --short HEAD)
 
+	# KEEP_SYMBOLS=1 (lab only): same recipe plus -g, not stripped, so a stripped copy can be checked
+	# against the released driver and scored against its debug info.
+	_g=""; _strip=true
+	if [ -n "${KEEP_SYMBOLS:-}" ]; then _g=", '-g'"; _strip=false; echo "KEEP_SYMBOLS: -g, not stripped"; fi
+
 	echo "Generating build files..."
 	cat <<EOF >"android-aarch64.txt"
 [binaries]
 ar = '$ndk/llvm-ar'
-c = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang']
-cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
+c = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang'$_g]
+cpp = ['ccache', '$ndk/aarch64-linux-android$sdkver-clang++'$_g, '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']
 c_ld = '$ndk/ld.lld'
 cpp_ld = '$ndk/ld.lld'
 strip = '$ndk/llvm-strip'
@@ -157,7 +162,7 @@ EOF
 		--native-file "native.txt" \
 		--prefix /tmp/turnip-$1 \
 		-Dbuildtype=release \
-		-Dstrip=true \
+		-Dstrip=$_strip \
 		-Dplatforms=android \
 		-Dvideo-codecs= \
 		-Dplatform-sdk-version="$sdkver" \
