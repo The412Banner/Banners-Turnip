@@ -120,6 +120,11 @@ build_lib_for_android(){
 
 	GITHASH=$(git rev-parse --short HEAD)
 
+	# SYMBOLS_DIR (release legs): meson does not strip; the driver is stripped below with the same
+	# llvm-strip call meson makes (no options), so the shipped file is unchanged byte for byte, and
+	# the unstripped copy feeds the DriverLab names file.
+	_strip=true; [ -n "${SYMBOLS_DIR:-}" ] && _strip=false
+
 	echo "Generating build files..."
 	cat <<EOF >"android-aarch64.txt"
 [binaries]
@@ -152,23 +157,26 @@ cpu = 'x86_64'
 endian = 'little'
 EOF
 
+	_mesa_opts=(
+		-Dbuildtype=release
+		-Dplatforms=android
+		-Dvideo-codecs=
+		-Dplatform-sdk-version="$sdkver"
+		-Dandroid-stub=true
+		-Dgallium-drivers=
+		-Dvulkan-drivers=freedreno
+		-Dvulkan-beta=true
+		-Dfreedreno-kmds=kgsl
+		-Degl=disabled
+		-Dplatform-sdk-version=36
+		-Dandroid-libbacktrace=disabled
+	)
 	meson setup build-android-aarch64 \
 		--cross-file "android-aarch64.txt" \
 		--native-file "native.txt" \
 		--prefix /tmp/turnip-$1 \
-		-Dbuildtype=release \
-		-Dstrip=true \
-		-Dplatforms=android \
-		-Dvideo-codecs= \
-		-Dplatform-sdk-version="$sdkver" \
-		-Dandroid-stub=true \
-		-Dgallium-drivers= \
-		-Dvulkan-drivers=freedreno \
-		-Dvulkan-beta=true \
-		-Dfreedreno-kmds=kgsl \
-		-Degl=disabled \
-		-Dplatform-sdk-version=36 \
-		-Dandroid-libbacktrace=disabled \
+		-Dstrip=$_strip \
+		"${_mesa_opts[@]}" \
 		--reconfigure
 
 	echo "Compiling build files..."
@@ -176,6 +184,22 @@ EOF
 
 	if ! [ -f /tmp/turnip-$1/lib/libvulkan_freedreno.so ]; then
 		echo -e "${red}Build failed!${nocolor}" && exit 1
+	fi
+
+	if [ -n "${SYMBOLS_DIR:-}" ]; then
+		mkdir -p "$SYMBOLS_DIR"
+		cp /tmp/turnip-$1/lib/libvulkan_freedreno.so "$SYMBOLS_DIR/unstripped.so"
+		"$ndk/llvm-strip" /tmp/turnip-$1/lib/libvulkan_freedreno.so
+		# A second build with -g, only for the source file and line of each function in the names
+		# file. -g changes the order of some instructions, so this build is never shipped.
+		sed "s|-clang'|-clang', '-g'|; s|-clang++'|-clang++', '-g'|" android-aarch64.txt > android-aarch64-g.txt
+		if meson setup build-android-aarch64-g --cross-file android-aarch64-g.txt --native-file native.txt \
+				--prefix /tmp/turnip-$1-g -Dstrip=false "${_mesa_opts[@]}" > "$SYMBOLS_DIR/g-setup.log" 2>&1 &&
+			ninja -C build-android-aarch64-g src/freedreno/vulkan/libvulkan_freedreno.so > "$SYMBOLS_DIR/g-build.log" 2>&1; then
+			cp build-android-aarch64-g/src/freedreno/vulkan/libvulkan_freedreno.so "$SYMBOLS_DIR/debug.so"
+		else
+			echo "warning: the -g build failed (see $SYMBOLS_DIR/g-*.log); the names file will have no source lines"
+		fi
 	fi
 
 	echo "Making the archive..."

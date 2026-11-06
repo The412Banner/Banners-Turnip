@@ -176,6 +176,8 @@ jobs:
           export MESA_COMMIT="${{ needs.resolve.outputs.commit }}"
           [[ -n "${{ matrix.extra_patch }}" ]] && export EXTRA_PATCH="${{ matrix.extra_patch }}"
           [[ -n "${{ matrix.extra_script }}" ]] && export EXTRA_SCRIPT="${{ matrix.extra_script }}"
+          # Names file for DriverLab: keep an unstripped copy (the shipped driver is unchanged).
+          export SYMBOLS_DIR="$PWD/symbols-work"
           ./build_turnip.sh
 
       - name: Driver file name
@@ -231,6 +233,32 @@ jobs:
             --zip "turnip_workdir/${ZIP_NAME}" --variant "$VARIANT" \
             --expect-name "${{ steps.names.outputs.meta }}" --expect-package-version "$DAY_NUM" \
             --build-report build-report.json --report "report-android-${VARIANT}.json"
+
+      # DriverLab names file (symbols-<build ID>.tsv.gz): function names and Mesa source lines of this
+      # driver. Optional: a failure here never blocks the driver.
+      - name: Names file for DriverLab
+        id: symbols
+        continue-on-error: true
+        env:
+          ZIP_NAME: ${{ steps.info.outputs.zip_name }}
+          TAG: ${{ needs.resolve.outputs.tag }}
+          MESA_COMMIT: ${{ needs.resolve.outputs.commit }}
+          VARIANT: ${{ matrix.variant }}
+        run: |
+          python3 .github/scripts/make_symbols.py --zip "turnip_workdir/${ZIP_NAME}" \
+            --unstripped symbols-work/unstripped.so --debug symbols-work/debug.so \
+            --ndk-bin turnip_workdir/android-ndk-r29/toolchains/llvm/prebuilt/linux-x86_64/bin \
+            --tag "$TAG" --variant "$VARIANT" --mesa-commit "$MESA_COMMIT" --out symbols-out
+
+      - name: Upload names file
+        if: steps.symbols.outcome == 'success'
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 7
+          name: symbols-${{ matrix.variant }}
+          path: symbols-out/symbols-*.tsv.gz
+          if-no-files-found: ignore
 
       - name: Upload driver ZIP
         uses: actions/upload-artifact@v4
@@ -484,6 +512,14 @@ jobs:
           name: release-info
           path: ./release-info
 
+      - name: Download names files
+        uses: actions/download-artifact@v4
+        with:
+          pattern: symbols-*
+          merge-multiple: true
+          path: ./symbols
+        continue-on-error: true
+
       - name: Write release body
         run: |
           mkdir -p zips reports
@@ -523,6 +559,12 @@ jobs:
             exit 1
           fi
           mapfile -t ASSETS < release_assets.txt
+          # DriverLab names files: not drivers (catalogs only take .zip files).
+          SYMS=(symbols/symbols-*.tsv.gz)
+          if [ -f "${SYMS[0]}" ]; then
+            ASSETS+=("${SYMS[@]}")
+            printf '\n### Names files\n`symbols-<build ID>.tsv.gz`: function names and Mesa source lines of the Android drivers above, for the source-code view in [DriverLab](https://github.com/The412Banner/DriverLab). Not needed to use the drivers.\n' >> release_body.md
+          fi
           gh release create "$TAG" \
             --repo "$GITHUB_REPOSITORY" \
             --title "Turnip ${TAG}" \
