@@ -59,20 +59,24 @@ def seed(e, xs, pre='', post=''):
     dt = time.time() - t1
     if post: e.cmd(post)
     return dt
-# E: aaa, then af with variable analysis off
-e = Engine(REL); t0 = time.time(); e.cmd('aaa'); t_aaa = time.time() - t0
-new = sorted(SEEDS - set(afl(e)))
-dt = seed(e, new, 'e anal.vars=false', 'e anal.vars=true'); E = afl(e)
-r['E_aaa_then_af_novars'] = {'aaa_s': round(t_aaa, 1), 'af_s': round(dt, 1), **sc(E)}
-e.close()
-# F: af at all pointers first (vars off), then aaa
-e = Engine(REL); dt = seed(e, sorted(SEEDS), 'e anal.vars=false', 'e anal.vars=true'); t0 = time.time(); e.cmd('aaa'); t_aaa = time.time() - t0; F = afl(e)
-r['F_af_first_then_aaa'] = {'af_s': round(dt, 1), 'aaa_s': round(t_aaa, 1), **sc(F)}
-e.close()
-# G: aaa, then af with vars off and no jump tables / no recursion into calls
-e = Engine(REL); e.cmd('aaa'); new = sorted(SEEDS - set(afl(e)))
-dt = seed(e, new, 'e anal.vars=false;e anal.calls=false', 'e anal.vars=true;e anal.calls=true'); G = afl(e)
-r['G_aaa_then_af_novars_nocalls'] = {'af_s': round(dt, 1), **sc(G)}
+# H: exactly the app (DriverLab prepare + finishList): af at every pointer with vars off, aaa, then
+# drop starts with no reference or only jumps (kept: pointers and named functions).
+e = Engine(REL); t0 = time.time()
+e.cmd('e anal.vars=false')
+for i in range(0, len(SEEDS), 100): e.cmd(';'.join(f'af @ {x:#x}' for x in sorted(SEEDS)[i:i + 100]))
+e.cmd('e anal.vars=true'); t_af = time.time() - t0
+t0 = time.time(); e.cmd('aaa'); t_aaa = time.time() - t0
+H = afl(e); t0 = time.time(); keep = {}
+for a, v in H.items():
+    if a in SEEDS or not v[1].startswith('fcn.'): keep[a] = v; continue
+    ks = {(re.search(r'\[(CALL|CODE|DATA|STRING|NULL)', l) or [None, 'other'])[1] for l in e.cmd(f'axt @ {a:#x}').splitlines() if l.strip()}
+    if not ks or ('CALL' not in ks and 'CODE' in ks): continue
+    keep[a] = v
+t_axt = time.time() - t0
+size_exact = sum(1 for a in keep if a in truth and keep[a][0] == truth[a])
+hit = sum(1 for a in keep if a in truth)
+r['H_app'] = {'af_s': round(t_af, 1), 'aaa_s': round(t_aaa, 1), 'axt_s': round(t_axt, 1), 'before_rule': sc(H), **sc(keep),
+              'size_exact_pct': round(100 * size_exact / max(1, hit), 2)}
 e.close()
 json.dump(r, open(os.path.join(OUT, 'probe.json'), 'w'), indent=1, default=dict)
 print(json.dumps(r, indent=1, default=dict))
