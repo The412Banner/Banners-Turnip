@@ -123,12 +123,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.367 |
-| **Commit** | [`e6dd90e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6dd90e0e2beb4745376eba2b65fdb21db72983f) |
+| **Commit** | [`9187bd6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9187bd6a97ae438eea58b2309d0a566b46594a6f) |
 | **Commit date** | 2026-11-06 |
-| **Commit title** | kraid/disasm: Delete NullWriter |
+| **Commit title** | mr-label-maker: label src/glx/apple/ changes as ~macOS |
 | **Build date** | 20261106 |
-| **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 4 ZIPs |
-| **Release** | [v27.0.0-20261106-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r3) |
+| **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
+| **Release** | [v27.0.0-20261106-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -138,10 +138,10 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261106-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r4) | 2026-11-06 | [`9187bd6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9187bd6a97ae438eea58b2309d0a566b46594a6f) | mr-label-maker: label src/glx/apple/ changes as ~macOS | Vulkan 1.4.367 |
 | [v27.0.0-20261106-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r3) | 2026-11-06 | [`e6dd90e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6dd90e0e2beb4745376eba2b65fdb21db72983f) | kraid/disasm: Delete NullWriter | Vulkan 1.4.367 |
 | [v27.0.0-20261106-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r2) | 2026-11-06 | [`35a0fef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35a0fef154b0fc9939674db4f943326b3f3724d3) | radv: rename some Vulkan definitions that have been promoted | Vulkan 1.4.367 |
 | [v27.0.0-20261106](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106) | 2026-11-06 | [`95b851b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95b851be423986d42b09cd70c749c8c9c552398d) | amd/common: mask count for SDMA_OPCODE_WRITE in ib parser | Vulkan 1.4.367 |
-| [v27.0.0-20261105-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r6) | 2026-11-05 | [`58a6812`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58a6812d5dafe20399bc272b261bbdf81f16219c) | lvp: remove useless parameter in lvp_nir_lower_descriptor_heaps() | Vulkan 1.4.367 |
 <!-- RECENT_BUILDS_END -->
 
 ---
