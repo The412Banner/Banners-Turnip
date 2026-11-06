@@ -123,7 +123,9 @@ build_lib_for_android(){
 	# KEEP_SYMBOLS=1 (lab only): same recipe plus -g, not stripped, so a stripped copy can be checked
 	# against the released driver and scored against its debug info.
 	_g=""; _strip=true
-	if [ -n "${KEEP_SYMBOLS:-}" ]; then _g=", '-g'"; _strip=false; echo "KEEP_SYMBOLS: -g, not stripped"; fi
+	# KEEP_SYMBOLS=symtab: no -g (code as released), only the symbol table kept.
+	if [ "${KEEP_SYMBOLS:-}" = symtab ]; then _strip=false; echo "KEEP_SYMBOLS: symbol table only, not stripped"
+	elif [ -n "${KEEP_SYMBOLS:-}" ]; then _g=", '-g'"; _strip=false; echo "KEEP_SYMBOLS: -g, not stripped"; fi
 
 	echo "Generating build files..."
 	cat <<EOF >"android-aarch64.txt"

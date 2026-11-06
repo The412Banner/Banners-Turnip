@@ -24,8 +24,8 @@ jobs:
 
       - name: Build (Banners-AIO recipe, debug info kept)
         env:
-          KEEP_SYMBOLS: "1"
-          BUILD_VERSION: r2-debug
+          KEEP_SYMBOLS: symtab
+          BUILD_VERSION: r2-symtab
           MESA_COMMIT: 35a0fef154b0fc9939674db4f943326b3f3724d3
           EXTRA_PATCH: patches/a8xx_gen8.patch
           EXTRA_SCRIPT: patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py:patches/a8xx_no_double_threadsize.py
@@ -77,5 +77,5 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: aio-r2-debug
+          name: aio-r2-symtab
           path: out/
