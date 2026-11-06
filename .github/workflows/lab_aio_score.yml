@@ -66,13 +66,18 @@ jobs:
           unzip -o -q rel/*.zip -d rel
           gh run download 42202951420 -R "${{ github.repository }}" -n aio-r2-symtab -D sym
           gh run download 42202362422 -R "${{ github.repository }}" -n aio-r2-debug -D dbg
+          gh run download 42209617852 -R "${{ github.repository }}" -n symbols-aio -D names
           sha256sum rel/libvulkan_freedreno.so sym/libvulkan_freedreno-debug.so dbg/libvulkan_freedreno-debug.so
           cat sym/compare.txt | tail -3
 
       - name: Score
         run: |
           echo "engine: $RIZIN / $GHIDRA_PLUGIN / $SLEIGH"
-          python3 lab/score.py rel/libvulkan_freedreno.so sym/libvulkan_freedreno-debug.so dbg/libvulkan_freedreno-debug.so out
+          if [ -f lab/RUN_PROBE ]; then
+            python3 lab/probe.py rel/libvulkan_freedreno.so sym/libvulkan_freedreno-debug.so names/symbols-*.tsv.gz out
+          else
+            python3 lab/score.py rel/libvulkan_freedreno.so sym/libvulkan_freedreno-debug.so dbg/libvulkan_freedreno-debug.so out
+          fi
 
       - uses: actions/upload-artifact@v4
         if: always()
