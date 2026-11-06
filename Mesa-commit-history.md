@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261106-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r2) | 2026-11-06 | [`35a0fef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35a0fef154b0fc9939674db4f943326b3f3724d3) | radv: rename some Vulkan definitions that have been promoted | Vulkan 1.4.367 |
 | [v27.0.0-20261106](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106) | 2026-11-06 | [`95b851b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95b851be423986d42b09cd70c749c8c9c552398d) | amd/common: mask count for SDMA_OPCODE_WRITE in ib parser | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r6) | 2026-11-05 | [`58a6812`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58a6812d5dafe20399bc272b261bbdf81f16219c) | lvp: remove useless parameter in lvp_nir_lower_descriptor_heaps() | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r5) | 2026-11-05 | [`579079f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/579079fb1b07f972d24dde8d801b84a408088bad) | nir/opt_reassociate: Split int/float scalar options | Vulkan 1.4.367 |
