@@ -123,12 +123,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.367 |
-| **Commit** | [`58a6812`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58a6812d5dafe20399bc272b261bbdf81f16219c) |
-| **Commit date** | 2026-11-05 |
-| **Commit title** | lvp: remove useless parameter in lvp_nir_lower_descriptor_heaps() |
-| **Build date** | 20261105 |
+| **Commit** | [`95b851b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95b851be423986d42b09cd70c749c8c9c552398d) |
+| **Commit date** | 2026-11-06 |
+| **Commit title** | amd/common: mask count for SDMA_OPCODE_WRITE in ib parser |
+| **Build date** | 20261106 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261105-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r6) |
+| **Release** | [v27.0.0-20261106](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -138,11 +138,11 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261106](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106) | 2026-11-06 | [`95b851b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95b851be423986d42b09cd70c749c8c9c552398d) | amd/common: mask count for SDMA_OPCODE_WRITE in ib parser | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r6](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r6) | 2026-11-05 | [`58a6812`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/58a6812d5dafe20399bc272b261bbdf81f16219c) | lvp: remove useless parameter in lvp_nir_lower_descriptor_heaps() | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r5) | 2026-11-05 | [`579079f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/579079fb1b07f972d24dde8d801b84a408088bad) | nir/opt_reassociate: Split int/float scalar options | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r3) | 2026-11-05 | [`2008a72`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2008a72ead66ec5f0dbb414fc467502818ba193e) | RADV: Use radv_print_shader_disasm to print shader disassembly instead of just disasm_string | Vulkan 1.4.367 |
 | [v27.0.0-20261105-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105-r2) | 2026-11-05 | [`0848c37`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0848c37191edeb6572363577a351fb6ab2d2c4f8) | rusticl: implement cl_khr_external_memory | Vulkan 1.4.367 |
-| [v27.0.0-20261105](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261105) | 2026-11-05 | [`4e32ef6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4e32ef686bb57be709fa176e62b2e72a884fe886) | pvr: Support pipeline executable properties VkPipelineCreateFlags2 flags | Vulkan 1.4.367 |
 <!-- RECENT_BUILDS_END -->
 
 ---
