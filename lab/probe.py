@@ -52,63 +52,27 @@ def sc(fl):
 SEEDS = seedmod.code_pointers(REL)
 r = {}
 
-# A
-e = Engine(REL); t0 = time.time(); e.cmd('aaa'); ta_ = time.time() - t0
-a0 = afl(e); new = sorted(SEEDS - set(a0)); t1 = time.time()
-for i in range(0, len(new), 100): e.cmd(';'.join(f'af @ {x:#x}' for x in new[i:i + 100]))
-tA = time.time() - t1; A = afl(e)
-r['A_aaa_then_af'] = {'aaa_s': round(ta_, 1), 'af_s': round(tA, 1), **sc(A)}
-# C: xref kinds for every start
-kinds = {}
-t2 = time.time()
-for a in sorted(A):
-    ks = set()
-    for l in e.cmd(f'axt @ {a:#x}').splitlines():
-        m = re.search(r'\[(CALL|CODE|DATA|STRING|NULL)[^\]]*\]', l)
-        if m: ks.add(m.group(1))
-        elif l.strip(): ks.add(l.split()[0][:12])
-    kinds[a] = ks
-r['C_axt_seconds'] = round(time.time() - t2, 1)
-def k(ks): return 'call' if 'CALL' in ks else 'code-only' if 'CODE' in ks else 'data-only' if 'DATA' in ks else 'none' if not ks else 'other'
-from collections import Counter
-r['C_real'] = Counter(k(kinds[a]) for a in A if a in T)
-r['C_fake'] = Counter(k(kinds[a]) for a in A if a not in T and ta <= a < ta + tl)
-for rule, keep in {
-    'drop code-only': lambda a: k(kinds[a]) != 'code-only' or a in SEEDS,
-    'drop code-only and none': lambda a: k(kinds[a]) not in ('code-only', 'none') or a in SEEDS,
-}.items():
-    r['C_rule ' + rule] = sc({a: v for a, v in A.items() if keep(a)})
+def seed(e, xs, pre='', post=''):
+    if pre: e.cmd(pre)
+    t1 = time.time()
+    for i in range(0, len(xs), 100): e.cmd(';'.join(f'af @ {x:#x}' for x in xs[i:i + 100]))
+    dt = time.time() - t1
+    if post: e.cmd(post)
+    return dt
+# E: aaa, then af with variable analysis off
+e = Engine(REL); t0 = time.time(); e.cmd('aaa'); t_aaa = time.time() - t0
+new = sorted(SEEDS - set(afl(e)))
+dt = seed(e, new, 'e anal.vars=false', 'e anal.vars=true'); E = afl(e)
+r['E_aaa_then_af_novars'] = {'aaa_s': round(t_aaa, 1), 'af_s': round(dt, 1), **sc(E)}
 e.close()
-# B
-e = Engine(REL); t0 = time.time()
-for i in range(0, len(SEEDS), 200): e.cmd(';'.join(f'f sym.dlptr_{x:x} @ {x:#x}' for x in sorted(SEEDS)[i:i + 200]))
-e.cmd('aaa'); tB = time.time() - t0; B = afl(e)
-r['B_flags_then_aaa'] = {'s': round(tB, 1), **sc(B)}
+# F: af at all pointers first (vars off), then aaa
+e = Engine(REL); dt = seed(e, sorted(SEEDS), 'e anal.vars=false', 'e anal.vars=true'); t0 = time.time(); e.cmd('aaa'); t_aaa = time.time() - t0; F = afl(e)
+r['F_af_first_then_aaa'] = {'af_s': round(dt, 1), 'aaa_s': round(t_aaa, 1), **sc(F)}
 e.close()
-# D: names file, flags only
-names = []
-with gzip.open(NAMES, 'rt') as g:
-    for l in g:
-        if l.startswith('#'): continue
-        p = l.rstrip('\n').split('\t'); names.append((int(p[0], 16), int(p[1]), p[2], p[3]))
-def eng(n):
-    n = n.split('(')[0] if '(' in n and not n.startswith('(') else n
-    n = n.split(' ')[-1]
-    return re.sub(r'[^A-Za-z0-9_.]', '_', n.replace('::', '.')).rstrip('_') or 'x'
-e = Engine(REL); t0 = time.time()
-for i in range(0, len(names), 200): e.cmd(';'.join(f'f {eng(n[2])} {n[1]} @ {n[0]:#x}' for n in names[i:i + 200]))
-tD = time.time() - t0
-samples = [n for n in names if n[2].startswith(('tu_CreateDevice', 'tu_SetEvent', '_vk_device_set_lost', 'tu_physical_device_init'))][:4]
-outs = {}
-t1 = time.time()
-for a, sz, n, sym in samples:
-    c = e.cmd(f'af @ {a:#x};afn {eng(n)} @ {a:#x};pdg @ {a:#x}')
-    outs[n[:40]] = c
-    open(os.path.join(OUT, f'D-{a:x}.c'), 'w').write(c)
-tDp = time.time() - t1
-called_named = sum(len(re.findall(r'\b(fcn\.[0-9a-f]+)\(', c)) for c in outs.values())
-called_real = sum(len(re.findall(r'\b(?!fcn\.)([A-Za-z_][A-Za-z0-9_.]{2,})\(', c)) for c in outs.values())
-r['D_names_flags'] = {'flags_s': round(tD, 1), 'pdg4_s': round(tDp, 1), 'calls_shown_as_fcn': called_named, 'calls_with_names': called_real}
+# G: aaa, then af with vars off and no jump tables / no recursion into calls
+e = Engine(REL); e.cmd('aaa'); new = sorted(SEEDS - set(afl(e)))
+dt = seed(e, new, 'e anal.vars=false;e anal.calls=false', 'e anal.vars=true;e anal.calls=true'); G = afl(e)
+r['G_aaa_then_af_novars_nocalls'] = {'af_s': round(dt, 1), **sc(G)}
 e.close()
 json.dump(r, open(os.path.join(OUT, 'probe.json'), 'w'), indent=1, default=dict)
 print(json.dumps(r, indent=1, default=dict))
