@@ -26,7 +26,15 @@ jobs:
           sudo apt-get install -y ninja-build cmake pkg-config llvm unzip
           pip3 install --break-system-packages 'meson>=1.5' pyelftools
 
+      - name: Engine cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: eng/host
+          key: rz-v0.9.1-ghidra-v0.9.0-${{ runner.os }}-host-v1
+
       - name: Build rizin v0.9.1 + rz-ghidra v0.9.0 (as native/inspect/build-inspect.sh, host part)
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           set -euo pipefail
           W=$PWD/eng; mkdir -p $W; cd $W
@@ -37,12 +45,16 @@ jobs:
           cmake -S rz-ghidra -B gh-host -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="$W/host" -DCMAKE_INSTALL_PREFIX="$W/host" -DBUILD_SLEIGH_PLUGIN=OFF > gh-setup.log 2>&1 || { tail -50 gh-setup.log; exit 1; }
           cmake --build gh-host -j "$(nproc)" > gh-build.log 2>&1 || { tail -50 gh-build.log; exit 1; }
           cmake --install gh-host > gh-install.log 2>&1 || { tail -50 gh-install.log; exit 1; }
+
+      - name: Engine paths
+        run: |
+          W=$PWD/eng
           echo "RIZIN=$W/host/bin/rizin" >> "$GITHUB_ENV"
           echo "GHIDRA_PLUGIN=$(find $W/host -name 'core_ghidra.so' | head -1)" >> "$GITHUB_ENV"
           echo "SLEIGH=$(dirname "$(find $W/host -name 'AARCH64.sla' | head -1)")" >> "$GITHUB_ENV"
           echo "LD_LIBRARY_PATH=$W/host/lib:$W/host/lib/x86_64-linux-gnu" >> "$GITHUB_ENV"
           echo "SYMBOLIZER=$(command -v llvm-symbolizer)" >> "$GITHUB_ENV"
-          $W/host/bin/rizin -v | head -2
+          LD_LIBRARY_PATH=$W/host/lib:$W/host/lib/x86_64-linux-gnu $W/host/bin/rizin -v | head -2
 
       - name: Get the drivers
         env:
