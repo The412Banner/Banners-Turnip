@@ -62,7 +62,7 @@ jobs:
           p = sys.argv[1]
           m = json.load(open(p))
           m["name"] = os.environ["META_NAME"]
-          m["description"] = "Banners-AIO + TurnipZ 0.3.0 mutable/BGRA port (lab, A6xx on). Mesa 9187bd6."
+          m["description"] = "Banners-AIO + TurnipZ 0.3.0 port (lab): mutable/BGRA on A6xx, A650 fixes. Mesa 9187bd6."
           json.dump(m, open(p, "w"), indent=2)
           print("meta.json:", m["name"])
           PY

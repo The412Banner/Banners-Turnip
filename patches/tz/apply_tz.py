@@ -11,6 +11,12 @@ clear colours swap, and images seen with other swapped views fall back to linear
 Per GPU family (tu_tz_config): on for A6xx (TurnipZ's target), off elsewhere until tested.
 Env TU_TZ_MUTABLE (0-4) and TU_TZ_BGRA (0 or 3) override.
 
+Adreno 650 only (tz.a650, env TU_TZ_A650=0/1 overrides), also from TurnipZ 0.3.0: autotune default
+prefer_sysmem, fewer A6xx waits at barriers (tu_flush_for_stage / vk2tu_dst_stage), sampler
+(anisotropy <= 4x, LOD bias +0.45, nearest mip), KGSL contexts with NO_SNAPSHOT | FAULT_INFO,
+GPU-hang recovery (lost contexts replaced, waits on them done), Android shader cache in the app's
+cache folder (256 MB), 3584 MiB heap, UBWC metadata cleared on bind.
+
 Runs from the Mesa source root after the AIO recipe; applies tz_port.patch with git apply and
 fails the build if it does not apply exactly.
 """
@@ -30,8 +36,10 @@ checks = {
     "src/freedreno/vulkan/tu_image.cc": "tz_mutable_keep_format",
     "src/freedreno/vulkan/tu_shader.cc": "tz_lower_rt_swap",
     "src/freedreno/vulkan/tu_device.cc": "TU_TZ_MUTABLE",
+    "src/freedreno/vulkan/tu_knl_kgsl.cc": "tz_replace_context",
+    "src/freedreno/vulkan/tu_sampler.cc": "tz_tex",
 }
 for path, marker in checks.items():
     if marker not in open(path).read():
         sys.exit(f"apply_tz.py: marker {marker!r} missing in {path}")
-print("apply_tz.py: TurnipZ 0.3.0 mutable/BGRA port applied")
+print("apply_tz.py: TurnipZ 0.3.0 port applied (mutable/BGRA all families by switch, A650 fixes)")

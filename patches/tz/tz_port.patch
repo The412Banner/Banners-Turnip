@@ -65,6 +65,19 @@ index 923fd0326e6..b3a509f2e66 100644
     uint32_t frag_size;
     uint32_t __pad_09;
     uint32_t frag_offset;
+diff --git a/src/freedreno/vulkan/tu_autotune.cc b/src/freedreno/vulkan/tu_autotune.cc
+index c7551c16434..1d3e8bc9a14 100644
+--- a/src/freedreno/vulkan/tu_autotune.cc
++++ b/src/freedreno/vulkan/tu_autotune.cc
+@@ -279,6 +279,8 @@ tu_autotune::get_env_config()
+ 
+       if (algo_str)
+          algo_strv = algo_str;
++      else if (device->physical_device->tz.a650)
++         algo_strv = "prefer_sysmem"; /* TurnipZ 0.3.0 default, before drirc */
+       else if (device->instance->drirc.perf.autotune_algo)
+          algo_strv = device->instance->drirc.perf.autotune_algo;
+ 
 diff --git a/src/freedreno/vulkan/tu_clear_blit.cc b/src/freedreno/vulkan/tu_clear_blit.cc
 index 596297e0828..f6f9025561e 100644
 --- a/src/freedreno/vulkan/tu_clear_blit.cc
@@ -102,10 +115,36 @@ index 596297e0828..f6f9025561e 100644
        if ((pAttachments[j].aspectMask & VK_IMAGE_ASPECT_DEPTH_BIT) == 0)
           continue;
 diff --git a/src/freedreno/vulkan/tu_cmd_buffer.cc b/src/freedreno/vulkan/tu_cmd_buffer.cc
-index c14686043c0..3a5559b225c 100644
+index c14686043c0..ffc01d9dec7 100644
 --- a/src/freedreno/vulkan/tu_cmd_buffer.cc
 +++ b/src/freedreno/vulkan/tu_cmd_buffer.cc
-@@ -7260,6 +7260,18 @@ tu_CmdBeginRenderPass2(VkCommandBuffer commandBuffer,
+@@ -6297,6 +6297,16 @@ vk2tu_dst_stage(struct tu_device *dev,
+       stage = MIN2(stage, new_stage);
+    }
+ 
++   /* TurnipZ 0.3.0 (A650): "all graphics/commands" destinations do not make
++    * the CP wait unless the CP itself reads (indirect, predicate, FDM).
++    */
++   if (stage == TU_STAGE_BV_CP && dev->physical_device->tz.a650 &&
++       dev->physical_device->info->chip == 6 &&
++       !(vk_stages & (VK_PIPELINE_STAGE_2_DRAW_INDIRECT_BIT |
++                      VK_PIPELINE_STAGE_2_CONDITIONAL_RENDERING_BIT_EXT |
++                      VK_PIPELINE_STAGE_2_FRAGMENT_DENSITY_PROCESS_BIT_EXT)))
++      stage = TU_STAGE_BR;
++
+    return stage;
+ }
+ 
+@@ -6334,7 +6344,7 @@ tu_flush_for_stage(struct tu_cache_state *cache,
+       } else {
+          if (CHIP >= A7XX && by_region)
+             cache->flush_bits |= TU_CMD_FLAG_SUBPASS_SLICE_FENCE;
+-         else
++         else if (!(CHIP == A6XX && tu_tz_barrier_relax)) /* TurnipZ (A650) */
+             cache->flush_bits |= TU_CMD_FLAG_WAIT_FOR_IDLE;
+       }
+    }
+@@ -7260,6 +7270,18 @@ tu_CmdBeginRenderPass2(VkCommandBuffer commandBuffer,
              idx = att->remapped_clear_att;
           cmd->state.clear_values[idx] = pRenderPassBegin->pClearValues[i];
        }
@@ -124,7 +163,7 @@ index c14686043c0..3a5559b225c 100644
     }
  
     tu_choose_gmem_layout(cmd);
-@@ -7358,6 +7370,16 @@ tu_CmdBeginRendering(VkCommandBuffer commandBuffer,
+@@ -7358,6 +7380,16 @@ tu_CmdBeginRendering(VkCommandBuffer commandBuffer,
  
        cmd->state.clear_values[a] =
           pRenderingInfo->pColorAttachments[i].clearValue;
@@ -141,7 +180,7 @@ index c14686043c0..3a5559b225c 100644
  
        /* With MSRTSS, the user's attachment corresponds to the
         * resolve/unresolve attachment, not the color attachment. The color
-@@ -8518,7 +8540,7 @@ tu_emit_fdm_params(struct tu_cmd_buffer *cmd,
+@@ -8518,7 +8550,7 @@ tu_emit_fdm_params(struct tu_cmd_buffer *cmd,
     tu_cs_emit(cs, fs->fs.sample_shading ?
                cmd->vk.dynamic_graphics_state.ms.rasterization_samples : 1);
     tu_cs_emit(cs, cmd->vk.dynamic_graphics_state.ms.alpha_to_coverage_enable);
@@ -150,7 +189,7 @@ index c14686043c0..3a5559b225c 100644
     tu_cs_emit(cs, 0);
  
     STATIC_ASSERT(IR3_DP_FS(frag_size) == IR3_DP_FS_DYNAMIC + 4);
-@@ -8887,8 +8909,28 @@ tu6_draw_common(struct tu_cmd_buffer *cmd,
+@@ -8887,8 +8919,28 @@ tu6_draw_common(struct tu_cmd_buffer *cmd,
        tu6_update_msaa<CHIP>(cmd);
     }
  
@@ -215,10 +254,85 @@ index 0a9140b6a66..a681eed599c 100644
     } else {
        memcpy(dst, iview->view.descriptor, sizeof(iview->view.descriptor));
 diff --git a/src/freedreno/vulkan/tu_device.cc b/src/freedreno/vulkan/tu_device.cc
-index 99852f6e24d..51d15890fae 100644
+index 99852f6e24d..d57878138c0 100644
 --- a/src/freedreno/vulkan/tu_device.cc
 +++ b/src/freedreno/vulkan/tu_device.cc
-@@ -1836,6 +1836,23 @@ tu_physical_device_init(struct tu_physical_device *device,
+@@ -9,6 +9,11 @@
+ 
+ #include "tu_device.h"
+ 
++#include <errno.h>
++#include <fcntl.h>
++#include <sys/stat.h>
++#include <unistd.h>
++
+ #include "drm-uapi/drm_fourcc.h"
+ #include "git_sha1.h"
+ #include "perfcntrs/freedreno_perfcntr.h"
+@@ -1789,6 +1794,62 @@ static const VkQueueFamilyProperties tu_sparse_queue_family_properties = {
+    .minImageTransferGranularity = { 1, 1, 1 },
+ };
+ 
++bool tu_tz_barrier_relax = false;
++
++#if DETECT_OS_ANDROID
++/* TurnipZ 0.3.0 (A650): keep the Mesa disk shader cache in the app's own
++ * cache folder (Android has no HOME/XDG cache for apps), unless the app set
++ * MESA_SHADER_CACHE_DISABLE or MESA_SHADER_CACHE_DIR itself.
++ */
++static void
++tz_setup_shader_cache(void)
++{
++   if (getenv("MESA_SHADER_CACHE_DISABLE") || getenv("MESA_SHADER_CACHE_DIR"))
++      return;
++
++   char cmdline[256] = "";
++   int fd = open("/proc/self/cmdline", O_RDONLY | O_CLOEXEC);
++   if (fd >= 0) {
++      ssize_t n = read(fd, cmdline, sizeof(cmdline) - 1);
++      close(fd);
++      cmdline[n > 0 ? n : 0] = '\0';
++   }
++   char *colon = strchr(cmdline, ':');
++   if (colon)
++      *colon = '\0';
++   const char *pkg = strrchr(cmdline, '/');
++   pkg = pkg ? pkg + 1 : cmdline;
++   if (!*pkg)
++      pkg = "dev.eden.eden_emulator";
++
++   char path[512];
++   snprintf(path, sizeof(path), "/data/data/%s/cache/mesa_shader_cache", pkg);
++   for (char *p = path + 1;; p++) {
++      if (*p != '/' && *p != '\0')
++         continue;
++      char c = *p;
++      *p = '\0';
++      struct stat st;
++      bool ok;
++      if (stat(path, &st) == 0)
++         ok = S_ISDIR(st.st_mode);
++      else
++         ok = mkdir(path, 0775) == 0 || errno == EEXIST;
++      *p = c;
++      if (!ok) {
++         mesa_loge("TU: shader cache: cannot create %s", path);
++         return;
++      }
++      if (!c)
++         break;
++   }
++
++   setenv("MESA_SHADER_CACHE_DIR", path, 1);
++   setenv("MESA_SHADER_CACHE_MAX_SIZE", "256M", 1);
++   setenv("MESA_SHADER_CACHE_DISABLE", "false", 1);
++}
++#endif
++
+ VkResult
+ tu_physical_device_init(struct tu_physical_device *device,
+                         struct tu_instance *instance)
+@@ -1836,6 +1897,29 @@ tu_physical_device_init(struct tu_physical_device *device,
        device->dev_info = info;
        device->info = &device->dev_info;
  
@@ -237,16 +351,43 @@ index 99852f6e24d..51d15890fae 100644
 +         if (tz_opt)
 +            device->tz.bgra_level = atoi(tz_opt) >= 3 ? 3 : 0;
 +         device->tz.rt_swap = device->tz.bgra_level >= 3;
++         device->tz.a650 = a6xx && fd_dev_gpu_id(&device->dev_id) == 650;
++         tz_opt = os_get_option("TU_TZ_A650");
++         if (tz_opt)
++            device->tz.a650 = atoi(tz_opt) != 0;
++         if (device->tz.a650 && a6xx)
++            tu_tz_barrier_relax = true;
 +      }
 +
        device->usable_gmem_size_gmem =
           fd6_calc_gmem_cache_offsets(&info, device->gmem_size,
                                       &device->config_gmem,
+@@ -1994,6 +2078,10 @@ tu_physical_device_init(struct tu_physical_device *device,
+     */
+    char buf[VK_UUID_SIZE * 2 + 1];
+    mesa_bytes_to_hex(buf, device->cache_uuid, VK_UUID_SIZE);
++#if DETECT_OS_ANDROID
++   if (device->tz.a650)
++      tz_setup_shader_cache();
++#endif
+    device->vk.disk_cache = disk_cache_create(device->name, buf, 0);
+ 
+    device->vk.pipeline_cache_import_ops = cache_import_ops;
+@@ -2261,6 +2349,9 @@ tu_GetPhysicalDeviceMemoryProperties2(VkPhysicalDevice pdev,
+    VkPhysicalDeviceMemoryProperties *props = &props2->memoryProperties;
+    props->memoryHeapCount = 1;
+    props->memoryHeaps[0].size = physical_device->heap.size;
++   /* TurnipZ 0.3.0 (A650): report at most 3584 MiB. */
++   if (physical_device->tz.a650)
++      props->memoryHeaps[0].size = MIN2(physical_device->heap.size, 3584ull << 20);
+    props->memoryHeaps[0].flags = physical_device->heap.flags;
+ 
+    props->memoryTypeCount = physical_device->memory.type_count;
 diff --git a/src/freedreno/vulkan/tu_device.h b/src/freedreno/vulkan/tu_device.h
-index 3e1211a2bc5..a588caf78c6 100644
+index 3e1211a2bc5..bd4356a480a 100644
 --- a/src/freedreno/vulkan/tu_device.h
 +++ b/src/freedreno/vulkan/tu_device.h
-@@ -89,6 +89,17 @@ struct tu_queue_family {
+@@ -89,6 +89,26 @@ struct tu_queue_family {
  
  extern uint64_t os_page_size;
  
@@ -259,12 +400,21 @@ index 3e1211a2bc5..a588caf78c6 100644
 +   uint8_t mutable_level; /* 0 = upstream, 4 = TurnipZ 0.3.0 */
 +   uint8_t bgra_level;    /* 0 = upstream, 3 = TurnipZ 0.3.0 */
 +   bool rt_swap;          /* shader-side R/B swap for swapped render targets */
++   /* TurnipZ 0.3.0 fixes kept to the Adreno 650 (its tuning target):
++    * sysmem default, fewer A6xx waits, sampler, KGSL context flags,
++    * GPU-hang recovery, shader cache, 3.5 GiB heap, UBWC clear on bind.
++    * TU_TZ_A650=0/1 overrides.
++    */
++   bool a650;
 +};
++
++/* TurnipZ barrier level 2 on the A650 (tu_flush_for_stage has no device). */
++extern bool tu_tz_barrier_relax;
 +
  struct tu_physical_device
  {
     struct vk_physical_device vk;
-@@ -184,6 +195,8 @@ struct tu_physical_device
+@@ -184,6 +204,8 @@ struct tu_physical_device
     struct fd_dev_info dev_info;
     const struct fd_dev_info *info;
  
@@ -274,7 +424,7 @@ index 3e1211a2bc5..a588caf78c6 100644
     int msm_minor_version;
  
 diff --git a/src/freedreno/vulkan/tu_image.cc b/src/freedreno/vulkan/tu_image.cc
-index 478a63b71d4..508e22d9a89 100644
+index 478a63b71d4..f584ecb66f6 100644
 --- a/src/freedreno/vulkan/tu_image.cc
 +++ b/src/freedreno/vulkan/tu_image.cc
 @@ -9,6 +9,9 @@
@@ -580,6 +730,41 @@ index 478a63b71d4..508e22d9a89 100644
  
     /* VK_EXT_image_compression_control: honor the application's request to
      * disable compression for this image.
+@@ -1139,6 +1376,34 @@ tu_image_bind(struct tu_device *device,
+    image->mem_offset = offset;
+    image->iova = mem->iova + offset;
+ 
++   /* TurnipZ 0.3.0 (A650): start every bound, non-external UBWC image with
++    * cleared UBWC metadata so stale flags from earlier use of the memory
++    * cannot corrupt pixels.
++    */
++   if (device->physical_device->tz.a650 && mem->bo && !mem->bo->lazy &&
++       !image->vk.external_handle_types) {
++      for (unsigned p = 0; p < ARRAY_SIZE(image->layout); p++) {
++         const struct fdl_layout *layout = &image->layout[p];
++         if (!layout->ubwc || !layout->ubwc_layer_size)
++            continue;
++         uint64_t size = layout->ubwc_layer_size *
++                         MAX2(image->vk.array_layers, 1u) *
++                         MAX2(image->vk.extent.depth, 1u);
++         uint64_t start = offset + layout->ubwc_slices[0].offset;
++         if (start + size > mem->bo->size)
++            continue;
++         if (!mem->bo->map) {
++            result = tu_bo_map(device, mem->bo, NULL);
++            if (result != VK_SUCCESS)
++               return result;
++         }
++         memset(static_cast<char *>(mem->bo->map) + start, 0, size);
++         if (mem->bo->cached_non_coherent)
++            tu_bo_sync_cache(device, mem->bo, start, size,
++                             TU_MEM_SYNC_CACHE_TO_GPU);
++      }
++   }
++
+    if (image->vk.usage & (VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT |
+                           VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT)) {
+       assert(mem->bo); /* Transient images cannot have these usages */
 diff --git a/src/freedreno/vulkan/tu_image.h b/src/freedreno/vulkan/tu_image.h
 index 28de9828cf4..217d2a6d345 100644
 --- a/src/freedreno/vulkan/tu_image.h
@@ -616,6 +801,358 @@ index 28de9828cf4..217d2a6d345 100644
  VK_DEFINE_NONDISP_HANDLE_CASTS(tu_image_view, vk.base, VkImageView,
                                 VK_OBJECT_TYPE_IMAGE_VIEW);
  
+diff --git a/src/freedreno/vulkan/tu_knl_kgsl.cc b/src/freedreno/vulkan/tu_knl_kgsl.cc
+index 266d151dda0..8a825c8cdd0 100644
+--- a/src/freedreno/vulkan/tu_knl_kgsl.cc
++++ b/src/freedreno/vulkan/tu_knl_kgsl.cc
+@@ -27,6 +27,8 @@
+ #include "tu_cs.h"
+ #include "tu_device.h"
+ #include "tu_dynamic_rendering.h"
++#include <mutex>
++
+ #include "tu_knl.h"
+ #include "tu_queue.h"
+ #include "tu_rmv.h"
+@@ -56,6 +58,19 @@ kgsl_submitqueue_new(struct tu_device *dev, struct tu_queue *queue)
+               KGSL_CONTEXT_PREAMBLE,
+    };
+ 
++   /* TurnipZ 0.3.0 (A650): no GPU snapshot on a fault and fault info,
++    * falling back to the plain flags if the kernel refuses them.
++    */
++   if (dev->physical_device->tz.a650) {
++      struct kgsl_drawctxt_create tz_req = {
++         .flags = req.flags | KGSL_CONTEXT_NO_SNAPSHOT | KGSL_CONTEXT_FAULT_INFO,
++      };
++      if (!safe_ioctl(dev->physical_device->local_fd, IOCTL_KGSL_DRAWCTXT_CREATE, &tz_req)) {
++         queue->msm_queue_id = tz_req.drawctxt_id;
++         return 0;
++      }
++   }
++
+    int ret = safe_ioctl(dev->physical_device->local_fd, IOCTL_KGSL_DRAWCTXT_CREATE, &req);
+    if (ret)
+       return ret;
+@@ -75,6 +90,65 @@ kgsl_submitqueue_close(struct tu_device *dev, struct tu_queue *queue)
+    safe_ioctl(dev->physical_device->local_fd, IOCTL_KGSL_DRAWCTXT_DESTROY, &req);
+ }
+ 
++/* TurnipZ 0.3.0 (A650) GPU-hang recovery: KGSL contexts lost to a GPU fault
++ * are remembered (up to 16); waits on them count as done and the queue gets
++ * a new context instead of the whole device being lost.
++ */
++static std::mutex tz_lost_mutex;
++static uint32_t tz_lost_ids[16];
++static uint32_t tz_lost_count;
++
++static bool
++tz_ctx_lost(const struct tu_device *dev, uint32_t ctx)
++{
++   if (!dev->physical_device->tz.a650)
++      return false;
++   std::lock_guard<std::mutex> lock(tz_lost_mutex);
++   for (uint32_t i = 0; i < tz_lost_count; i++) {
++      if (tz_lost_ids[i] == ctx)
++         return true;
++   }
++   return false;
++}
++
++static bool
++tz_mark_lost(const struct tu_device *dev, uint32_t ctx)
++{
++   if (!dev->physical_device->tz.a650)
++      return false;
++   std::lock_guard<std::mutex> lock(tz_lost_mutex);
++   for (uint32_t i = 0; i < tz_lost_count; i++) {
++      if (tz_lost_ids[i] == ctx)
++         return true;
++   }
++   if (tz_lost_count >= ARRAY_SIZE(tz_lost_ids))
++      return false;
++   tz_lost_ids[tz_lost_count++] = ctx;
++   return true;
++}
++
++static void
++tz_log_recovery(const char *what, uint32_t ctx)
++{
++   static std::once_flag once;
++   std::call_once(once, [&] {
++      mesa_logw("TU: GPU fault on KGSL context %u (%s), continuing", ctx, what);
++   });
++}
++
++static bool
++tz_replace_context(struct tu_device *dev, struct tu_queue *queue)
++{
++   uint32_t old_id = queue->msm_queue_id;
++   if (kgsl_submitqueue_new(dev, queue)) {
++      queue->msm_queue_id = old_id;
++      return false;
++   }
++   /* Timestamps restart on the new context. */
++   p_atomic_set(&queue->fence, -1);
++   return true;
++}
++
+ static void kgsl_bo_finish(struct tu_device *dev, struct tu_bo *bo);
+ 
+ static VkResult
+@@ -824,6 +898,7 @@ struct kgsl_syncobj
+ 
+    struct tu_queue *queue;
+    uint32_t timestamp;
++   uint32_t ctx_id; /* KGSL context the timestamp belongs to (TurnipZ) */
+ 
+    int fd;
+ };
+@@ -883,13 +958,13 @@ kgsl_syncobj_dup(struct tu_device *device, const struct kgsl_syncobj *s, struct
+ }
+ 
+ static int
+-timestamp_to_fd(struct tu_queue *queue, uint32_t timestamp)
++timestamp_to_fd(struct tu_queue *queue, uint32_t ctx_id, uint32_t timestamp)
+ {
+    int fd;
+    struct kgsl_timestamp_event event = {
+       .type = KGSL_TIMESTAMP_EVENT_FENCE,
+       .timestamp = timestamp,
+-      .context_id = queue->msm_queue_id,
++      .context_id = ctx_id,
+       .priv = &fd,
+       .len = sizeof(fd),
+    };
+@@ -905,7 +980,7 @@ static int
+ kgsl_syncobj_ts_to_fd(const struct kgsl_syncobj *syncobj)
+ {
+    assert(syncobj->state == KGSL_SYNCOBJ_STATE_TS);
+-   return timestamp_to_fd(syncobj->queue, syncobj->timestamp);
++   return timestamp_to_fd(syncobj->queue, syncobj->ctx_id, syncobj->timestamp);
+ }
+ 
+ /* return true if timestamp a is greater (more recent) then b
+@@ -955,6 +1030,16 @@ kgsl_timestamp_error(
+    if (error == ETIMEDOUT)
+       return VK_TIMEOUT;
+ 
++   /* TurnipZ 0.3.0 (A650): waits on a lost context count as done. */
++   if (tz_ctx_lost(device, context_id))
++      return VK_SUCCESS;
++   if ((error == EDEADLK || error == ENOENT) && tz_mark_lost(device, context_id))
++      return VK_SUCCESS;
++   if (error == EPROTO && device->physical_device->tz.a650) {
++      tz_log_recovery("wait", context_id);
++      return VK_SUCCESS;
++   }
++
+    /* - EPROTO - Device faulted since the last check;
+     * - ENOENT - Context has been detached.
+     */
+@@ -1064,7 +1149,9 @@ kgsl_syncobj_wait(struct tu_device *device,
+       return VK_TIMEOUT;
+ 
+    case KGSL_SYNCOBJ_STATE_TS: {
+-      return wait_timestamp_safe(device, s->queue->msm_queue_id, s->timestamp, abs_timeout_ns);
++      if (tz_ctx_lost(device, s->ctx_id))
++         return VK_SUCCESS;
++      return wait_timestamp_safe(device, s->ctx_id, s->timestamp, abs_timeout_ns);
+    }
+ 
+    case KGSL_SYNCOBJ_STATE_FD: {
+@@ -1106,6 +1193,12 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+    kgsl_syncobj_foreach_state(syncobjs, KGSL_SYNCOBJ_STATE_SIGNALED)
+       return VK_SUCCESS;
+ 
++   /* TurnipZ 0.3.0 (A650): a timestamp on a lost context counts as signaled. */
++   kgsl_syncobj_foreach_state(syncobjs, KGSL_SYNCOBJ_STATE_TS) {
++      if (tz_ctx_lost(device, sync->ctx_id))
++         return VK_SUCCESS;
++   }
++
+    kgsl_syncobj_foreach_state(syncobjs, KGSL_SYNCOBJ_STATE_FD)
+       num_fds++;
+ 
+@@ -1113,12 +1206,14 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+     * have to convert them into FDs
+     */
+    bool convert_ts_to_fd = false;
++   uint32_t ctx_id = 0;
+    kgsl_syncobj_foreach_state(syncobjs, KGSL_SYNCOBJ_STATE_TS) {
+-      if (queue != NULL && sync->queue != queue) {
++      if (queue != NULL && (sync->queue != queue || sync->ctx_id != ctx_id)) {
+          convert_ts_to_fd = true;
+          break;
+       }
+       queue = sync->queue;
++      ctx_id = sync->ctx_id;
+    }
+ 
+    /* If we have no FD nor TS syncobjs then we can return immediately */
+@@ -1138,7 +1233,7 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+    if (convert_ts_to_fd) {
+       kgsl_syncobj_foreach_state(syncobjs, KGSL_SYNCOBJ_STATE_TS) {
+          struct pollfd *poll_fd = static_cast<struct pollfd *>(u_vector_add(&poll_fds));
+-         poll_fd->fd = timestamp_to_fd(sync->queue, sync->timestamp);
++         poll_fd->fd = timestamp_to_fd(sync->queue, sync->ctx_id, sync->timestamp);
+          if (poll_fd->fd < 0) {
+             result = kgsl_sync_error(device, "timestamp fence creation", errno);
+             goto finish;
+@@ -1158,7 +1253,7 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+ 
+       if (num_fds && queue) {
+          struct pollfd *poll_fd = static_cast<struct pollfd *>(u_vector_add(&poll_fds));
+-         poll_fd->fd = timestamp_to_fd(queue, lowest_timestamp);
++         poll_fd->fd = timestamp_to_fd(queue, ctx_id, lowest_timestamp);
+          if (poll_fd->fd < 0) {
+             result = kgsl_sync_error(device, "timestamp fence creation", errno);
+             goto finish;
+@@ -1177,7 +1272,7 @@ kgsl_syncobj_wait_any(struct tu_device* device, struct kgsl_syncobj **syncobjs,
+    }
+ 
+    if (u_vector_length(&poll_fds) == 0) {
+-      result = wait_timestamp_safe(device, queue->msm_queue_id, lowest_timestamp, MIN2(abs_timeout_ns, INT64_MAX));
++      result = wait_timestamp_safe(device, ctx_id, lowest_timestamp, MIN2(abs_timeout_ns, INT64_MAX));
+    } else {
+       int ret, i;
+ 
+@@ -1240,6 +1335,10 @@ kgsl_syncobj_export(struct tu_device *device, struct kgsl_syncobj *s, int *pFd)
+    }
+ 
+    case KGSL_SYNCOBJ_STATE_TS: {
++      if (tz_ctx_lost(device, s->ctx_id)) {
++         *pFd = -1; /* already signaled */
++         return VK_SUCCESS;
++      }
+       int fd = kgsl_syncobj_ts_to_fd(s);
+       if (fd < 0)
+          return kgsl_sync_error(device, "timestamp fence export", errno);
+@@ -1283,6 +1382,8 @@ kgsl_syncobj_merge(struct tu_device *device,
+       const struct kgsl_syncobj *sync = syncobjs[i];
+       if (sync->state == KGSL_SYNCOBJ_STATE_SIGNALED)
+          continue;
++      if (sync->state == KGSL_SYNCOBJ_STATE_TS && tz_ctx_lost(device, sync->ctx_id))
++         continue; /* TurnipZ (A650): lost context counts as signaled */
+       if (sync->state == KGSL_SYNCOBJ_STATE_UNSIGNALED) {
+          kgsl_syncobj_reset(&ret);
+          *out = ret;
+@@ -1297,7 +1398,8 @@ kgsl_syncobj_merge(struct tu_device *device,
+          continue;
+       }
+ 
+-      if (ret.state == KGSL_SYNCOBJ_STATE_TS && sync->state == KGSL_SYNCOBJ_STATE_TS && ret.queue == sync->queue) {
++      if (ret.state == KGSL_SYNCOBJ_STATE_TS && sync->state == KGSL_SYNCOBJ_STATE_TS && ret.queue == sync->queue &&
++          ret.ctx_id == sync->ctx_id) {
+          /* On the same queue we can pick the highest TS, since we wait for all. */
+          ret.timestamp = max_ts(ret.timestamp, sync->timestamp);
+          continue;
+@@ -1610,6 +1712,12 @@ kgsl_queue_submit(struct tu_queue *queue, void *_submit,
+    struct tu_kgsl_queue_submit *submit =
+       static_cast<struct tu_kgsl_queue_submit *>(_submit);
+ 
++   /* TurnipZ 0.3.0 (A650): a context lost to a GPU fault gets replaced. */
++   if (tz_ctx_lost(queue->device, queue->msm_queue_id) &&
++       !tz_replace_context(queue->device, queue))
++      return vk_device_set_lost(&queue->device->vk,
++                                "KGSL context lost and not replaceable");
++
+ #if HAVE_PERFETTO
+    uint64_t start_ts = tu_perfetto_begin_submit();
+ #endif
+@@ -1633,7 +1741,8 @@ kgsl_queue_submit(struct tu_queue *queue, void *_submit,
+          last_submit_sync = (struct kgsl_syncobj) {
+             .state = KGSL_SYNCOBJ_STATE_TS,
+             .queue = queue,
+-            .timestamp = queue->fence,
++            .timestamp = (uint32_t)queue->fence,
++            .ctx_id = queue->msm_queue_id,
+          };
+       else
+          last_submit_sync = (struct kgsl_syncobj) {
+@@ -1741,7 +1850,7 @@ kgsl_queue_submit(struct tu_queue *queue, void *_submit,
+       break;
+ 
+    case KGSL_SYNCOBJ_STATE_TS:
+-      ts.context_id = wait_sync.queue->msm_queue_id;
++      ts.context_id = wait_sync.ctx_id;
+       ts.timestamp = wait_sync.timestamp;
+ 
+       has_sync = true;
+@@ -1793,6 +1902,53 @@ kgsl_queue_submit(struct tu_queue *queue, void *_submit,
+       const int error = errno;
+       /* EPROTO - Device faulted since the last check. */
+       profiling_submitted = profiling_buffer && (ret == 0 || error == EPROTO);
++      if (ret && (error == EDEADLK || error == ENOENT) &&
++          tz_mark_lost(queue->device, queue->msm_queue_id)) {
++         /* TurnipZ 0.3.0 (A650): the context is gone; drop this submission,
++          * give the queue a new context and signal what it would have.
++          */
++         kgsl_syncobj_destroy(&wait_sync);
++         uint32_t lost_id = queue->msm_queue_id;
++         if (!tz_replace_context(queue->device, queue)) {
++            result = vk_device_set_lost(&queue->device->vk,
++                                        "KGSL context lost and not replaceable");
++            goto fail_submit;
++         }
++         tz_log_recovery("submit", lost_id);
++         for (uint32_t i = 0; i < signal_count; i++) {
++            struct kgsl_syncobj *signal_sync =
++               &container_of(signals[i].sync, struct vk_kgsl_syncobj, vk)
++                   ->syncobj;
++            kgsl_syncobj_reset(signal_sync);
++            signal_sync->state = KGSL_SYNCOBJ_STATE_SIGNALED;
++         }
++         if (u_trace_submission_data) {
++            u_trace_submission_data->gpu_ts_offset = 0;
++            if (!profiling_submitted) {
++               mtx_lock(&queue->device->kgsl_profiling_mutex);
++               tu_suballoc_bo_free(&queue->device->kgsl_profiling_suballoc,
++                                   &u_trace_submission_data->kgsl_timestamp_bo);
++               u_trace_submission_data->kgsl_timestamp_bo = {};
++               mtx_unlock(&queue->device->kgsl_profiling_mutex);
++            }
++         }
++         return VK_SUCCESS;
++      }
++      if (ret && error == EPROTO && queue->device->physical_device->tz.a650) {
++         /* TurnipZ 0.3.0 (A650): GPU fault reported on submit; carry on with
++          * the queued timestamp.
++          */
++         struct kgsl_cmdstream_readtimestamp_ctxtid rd = {
++            .context_id = queue->msm_queue_id,
++            .type = KGSL_TIMESTAMP_QUEUED,
++         };
++         if (!safe_ioctl(queue->device->fd,
++                         IOCTL_KGSL_CMDSTREAM_READTIMESTAMP_CTXTID, &rd)) {
++            tz_log_recovery("submit", queue->msm_queue_id);
++            req.timestamp = rd.timestamp;
++            ret = 0;
++         }
++      }
+       if (ret) {
+          kgsl_syncobj_destroy(&wait_sync);
+          result = vk_device_set_lost(&queue->device->vk, "submit failed: %s\n", strerror(error));
+@@ -1886,6 +2042,7 @@ kgsl_queue_submit(struct tu_queue *queue, void *_submit,
+       signal_sync->state = KGSL_SYNCOBJ_STATE_TS;
+       signal_sync->queue = queue;
+       signal_sync->timestamp = timestamp;
++      signal_sync->ctx_id = queue->msm_queue_id;
+    }
+ 
+    if (u_trace_submission_data) {
+@@ -1957,6 +2114,11 @@ kgsl_device_check_status(struct tu_device *device)
+ 
+          if (value != KGSL_CTX_STAT_NO_ERROR &&
+             value != KGSL_CTX_STAT_INNOCENT_CONTEXT_RESET_EXT) {
++            /* TurnipZ 0.3.0 (A650): the queue gets a new context on its next
++             * submit instead.
++             */
++            if (tz_mark_lost(device, device->queues[i][q].msm_queue_id))
++               continue;
+             return vk_device_set_lost(&device->vk, "GPU faulted or hung");
+          }
+       }
 diff --git a/src/freedreno/vulkan/tu_pipeline.cc b/src/freedreno/vulkan/tu_pipeline.cc
 index 92a337ab73c..aca2673ecac 100644
 --- a/src/freedreno/vulkan/tu_pipeline.cc
@@ -639,6 +1176,48 @@ index 92a337ab73c..aca2673ecac 100644
     }
  
     if (builder->create_flags &
+diff --git a/src/freedreno/vulkan/tu_sampler.cc b/src/freedreno/vulkan/tu_sampler.cc
+index 2743773dd53..8c75ec9fe53 100644
+--- a/src/freedreno/vulkan/tu_sampler.cc
++++ b/src/freedreno/vulkan/tu_sampler.cc
+@@ -104,9 +104,17 @@ tu_CreateSampler(VkDevice _device,
+       }
+    }
+ 
++   /* TurnipZ 0.3.0 (A650): anisotropy at most 4x, LOD bias +0.45 and
++    * nearest mip filtering, for less texture bandwidth.
++    */
++   const bool tz_tex = device->physical_device->tz.a650;
++   const float max_aniso = tz_tex ? MIN2(pCreateInfo->maxAnisotropy, 4.0f) :
++                                    pCreateInfo->maxAnisotropy;
++   const float lod_bias = pCreateInfo->mipLodBias + (tz_tex ? 0.45f : 0.0f);
+    unsigned aniso = pCreateInfo->anisotropyEnable ?
+-      util_last_bit(MIN2(static_cast<uint32_t>(pCreateInfo->maxAnisotropy) >> 1, 8)) : 0;
+-   bool miplinear = (pCreateInfo->mipmapMode == VK_SAMPLER_MIPMAP_MODE_LINEAR);
++      util_last_bit(MIN2(static_cast<uint32_t>(max_aniso) >> 1, 8)) : 0;
++   bool miplinear = !tz_tex &&
++                    (pCreateInfo->mipmapMode == VK_SAMPLER_MIPMAP_MODE_LINEAR);
+    float min_lod = CLAMP(pCreateInfo->minLod, 0.0f, 4095.0f / 256.0f);
+    float max_lod = CLAMP(pCreateInfo->maxLod, 0.0f, 4095.0f / 256.0f);
+ 
+@@ -121,7 +129,7 @@ tu_CreateSampler(VkDevice _device,
+          A8XX_TEX_SAMP_0_WRAP_S(tu6_tex_wrap(pCreateInfo->addressModeU)) |
+          A8XX_TEX_SAMP_0_WRAP_T(tu6_tex_wrap(pCreateInfo->addressModeV)) |
+          A8XX_TEX_SAMP_0_WRAP_R(tu6_tex_wrap(pCreateInfo->addressModeW)) |
+-         A8XX_TEX_SAMP_0_LOD_BIAS(pCreateInfo->mipLodBias) |
++         A8XX_TEX_SAMP_0_LOD_BIAS(lod_bias) |
+          A8XX_TEX_SAMP_0_ANISO(static_cast<enum a6xx_tex_aniso>(aniso));
+ 
+       sampler->descriptor[1] =
+@@ -155,7 +163,7 @@ tu_CreateSampler(VkDevice _device,
+          A6XX_TEX_SAMP_0_WRAP_S(tu6_tex_wrap(pCreateInfo->addressModeU)) |
+          A6XX_TEX_SAMP_0_WRAP_T(tu6_tex_wrap(pCreateInfo->addressModeV)) |
+          A6XX_TEX_SAMP_0_WRAP_R(tu6_tex_wrap(pCreateInfo->addressModeW)) |
+-         A6XX_TEX_SAMP_0_LOD_BIAS(pCreateInfo->mipLodBias);
++         A6XX_TEX_SAMP_0_LOD_BIAS(lod_bias);
+       sampler->descriptor[1] =
+          COND(pCreateInfo->flags & VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT,
+             A6XX_TEX_SAMP_1_CUBEMAPSEAMLESSFILTOFF) |
 diff --git a/src/freedreno/vulkan/tu_shader.cc b/src/freedreno/vulkan/tu_shader.cc
 index 47b12500551..128708fd4c3 100644
 --- a/src/freedreno/vulkan/tu_shader.cc
