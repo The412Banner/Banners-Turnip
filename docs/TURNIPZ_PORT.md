@@ -68,6 +68,13 @@ CTS `dEQP-VK.image.mutable.*` (10,646 tests) on an Adreno 722 with TurnipZ's lev
 stays on; 60 are MSAA resolves through red/blue-swapped views. The A6xx path is the same code, so
 TurnipZ 0.3.0 most likely shows these on the Adreno 650 too.
 
+With `TU_TZ_SAFE=1` on the same Adreno 722: 84 Fail, all red/blue pairs (MSAA resolve 60, draw then
+copy 18, clear 6). Adreno 750 (port does not apply there): 0 Fail in every configuration.
+
+DriverLab speed on the Adreno 722 (GPU at 1150 MHz, 3 interleaved rounds), levels forced on vs r4:
+`draws` +14 % (58 vs 51), `pipelines` +4 %, other scenes within 0.7 %. Same with `TU_TZ_SAFE=1`.
+Rendering basics (16,300 tests) identical to r4 in every configuration on both devices, no GPU faults.
+
 ## Files
 
 - `patches/tz/tz_port.patch`, applied by `patches/tz/apply_tz.py` after the AIO recipe (fails the
