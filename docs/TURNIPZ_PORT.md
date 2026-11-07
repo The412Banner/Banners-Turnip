@@ -57,8 +57,16 @@ later wait pairs an old timestamp with the new context (TurnipZ does this on one
 | `TU_TZ_MUTABLE` | 0 (upstream) - 4 (TurnipZ 0.3.0) | 4 on A6xx, 0 elsewhere |
 | `TU_TZ_BGRA` | 0 (upstream) or 3 (TurnipZ 0.3.0) | 3 on A6xx, 0 elsewhere |
 | `TU_TZ_A650` | 0 or 1 | 1 on the Adreno 650 |
+| `TU_TZ_SAFE` | 0 or 1 | 0 (not in TurnipZ: UBWC only for view formats with the image's channel layout, MSAA images with swapped views fall back) |
 
-Turning `TU_TZ_MUTABLE`/`TU_TZ_BGRA` on for A7xx or A8xx goes beyond what TurnipZ does.
+Turning `TU_TZ_MUTABLE`/`TU_TZ_BGRA` on for A7xx or A8xx goes beyond what TurnipZ does. The mutable
+logic never applies where `ubwc_all_formats_compatible` is set (A7xx gen3, e.g. the Adreno 750): there
+Mesa already keeps such images tiled and a second swap would be wrong.
+
+CTS `dEQP-VK.image.mutable.*` (10,646 tests) on an Adreno 722 with TurnipZ's levels forced on: 600 Fail
+(r4: 0). About 540 are views with a different channel layout (RGBA8 seen as R32 or R16G16) while UBWC
+stays on; 60 are MSAA resolves through red/blue-swapped views. The A6xx path is the same code, so
+TurnipZ 0.3.0 most likely shows these on the Adreno 650 too.
 
 ## Files
 

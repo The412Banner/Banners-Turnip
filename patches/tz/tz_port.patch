@@ -254,7 +254,7 @@ index 0a9140b6a66..a681eed599c 100644
     } else {
        memcpy(dst, iview->view.descriptor, sizeof(iview->view.descriptor));
 diff --git a/src/freedreno/vulkan/tu_device.cc b/src/freedreno/vulkan/tu_device.cc
-index 99852f6e24d..d57878138c0 100644
+index 99852f6e24d..a3bbac460b9 100644
 --- a/src/freedreno/vulkan/tu_device.cc
 +++ b/src/freedreno/vulkan/tu_device.cc
 @@ -9,6 +9,11 @@
@@ -332,7 +332,7 @@ index 99852f6e24d..d57878138c0 100644
  VkResult
  tu_physical_device_init(struct tu_physical_device *device,
                          struct tu_instance *instance)
-@@ -1836,6 +1897,29 @@ tu_physical_device_init(struct tu_physical_device *device,
+@@ -1836,6 +1897,31 @@ tu_physical_device_init(struct tu_physical_device *device,
        device->dev_info = info;
        device->info = &device->dev_info;
  
@@ -351,6 +351,8 @@ index 99852f6e24d..d57878138c0 100644
 +         if (tz_opt)
 +            device->tz.bgra_level = atoi(tz_opt) >= 3 ? 3 : 0;
 +         device->tz.rt_swap = device->tz.bgra_level >= 3;
++         tz_opt = os_get_option("TU_TZ_SAFE");
++         device->tz.safe = tz_opt && atoi(tz_opt) != 0;
 +         device->tz.a650 = a6xx && fd_dev_gpu_id(&device->dev_id) == 650;
 +         tz_opt = os_get_option("TU_TZ_A650");
 +         if (tz_opt)
@@ -362,7 +364,7 @@ index 99852f6e24d..d57878138c0 100644
        device->usable_gmem_size_gmem =
           fd6_calc_gmem_cache_offsets(&info, device->gmem_size,
                                       &device->config_gmem,
-@@ -1994,6 +2078,10 @@ tu_physical_device_init(struct tu_physical_device *device,
+@@ -1994,6 +2080,10 @@ tu_physical_device_init(struct tu_physical_device *device,
      */
     char buf[VK_UUID_SIZE * 2 + 1];
     mesa_bytes_to_hex(buf, device->cache_uuid, VK_UUID_SIZE);
@@ -373,7 +375,7 @@ index 99852f6e24d..d57878138c0 100644
     device->vk.disk_cache = disk_cache_create(device->name, buf, 0);
  
     device->vk.pipeline_cache_import_ops = cache_import_ops;
-@@ -2261,6 +2349,9 @@ tu_GetPhysicalDeviceMemoryProperties2(VkPhysicalDevice pdev,
+@@ -2261,6 +2351,9 @@ tu_GetPhysicalDeviceMemoryProperties2(VkPhysicalDevice pdev,
     VkPhysicalDeviceMemoryProperties *props = &props2->memoryProperties;
     props->memoryHeapCount = 1;
     props->memoryHeaps[0].size = physical_device->heap.size;
@@ -384,10 +386,10 @@ index 99852f6e24d..d57878138c0 100644
  
     props->memoryTypeCount = physical_device->memory.type_count;
 diff --git a/src/freedreno/vulkan/tu_device.h b/src/freedreno/vulkan/tu_device.h
-index 3e1211a2bc5..bd4356a480a 100644
+index 3e1211a2bc5..ed5d1b82365 100644
 --- a/src/freedreno/vulkan/tu_device.h
 +++ b/src/freedreno/vulkan/tu_device.h
-@@ -89,6 +89,26 @@ struct tu_queue_family {
+@@ -89,6 +89,31 @@ struct tu_queue_family {
  
  extern uint64_t os_page_size;
  
@@ -400,6 +402,11 @@ index 3e1211a2bc5..bd4356a480a 100644
 +   uint8_t mutable_level; /* 0 = upstream, 4 = TurnipZ 0.3.0 */
 +   uint8_t bgra_level;    /* 0 = upstream, 3 = TurnipZ 0.3.0 */
 +   bool rt_swap;          /* shader-side R/B swap for swapped render targets */
++   /* Not in TurnipZ: keep UBWC only for view formats with the image's channel
++    * layout, and no tiled swaps for multisampled images (resolves do not
++    * swap). TU_TZ_SAFE=1.
++    */
++   bool safe;
 +   /* TurnipZ 0.3.0 fixes kept to the Adreno 650 (its tuning target):
 +    * sysmem default, fewer A6xx waits, sampler, KGSL context flags,
 +    * GPU-hang recovery, shader cache, 3.5 GiB heap, UBWC clear on bind.
@@ -414,7 +421,7 @@ index 3e1211a2bc5..bd4356a480a 100644
  struct tu_physical_device
  {
     struct vk_physical_device vk;
-@@ -184,6 +204,8 @@ struct tu_physical_device
+@@ -184,6 +209,8 @@ struct tu_physical_device
     struct fd_dev_info dev_info;
     const struct fd_dev_info *info;
  
@@ -424,7 +431,7 @@ index 3e1211a2bc5..bd4356a480a 100644
     int msm_minor_version;
  
 diff --git a/src/freedreno/vulkan/tu_image.cc b/src/freedreno/vulkan/tu_image.cc
-index 478a63b71d4..f584ecb66f6 100644
+index 478a63b71d4..78bf4b03f45 100644
 --- a/src/freedreno/vulkan/tu_image.cc
 +++ b/src/freedreno/vulkan/tu_image.cc
 @@ -9,6 +9,9 @@
@@ -538,7 +545,7 @@ index 478a63b71d4..f584ecb66f6 100644
     switch (pCreateInfo->viewType) {
     case VK_IMAGE_VIEW_TYPE_1D:
     case VK_IMAGE_VIEW_TYPE_1D_ARRAY:
-@@ -520,6 +610,100 @@ format_list_ubwc_possible(struct tu_device *dev,
+@@ -520,6 +610,127 @@ format_list_ubwc_possible(struct tu_device *dev,
     return true;
  }
  
@@ -590,6 +597,33 @@ index 478a63b71d4..f584ecb66f6 100644
 +   return h < 2 ? 1 : h;
 +}
 +
++/* TU_TZ_SAFE: every view format has the image format's channel layout
++ * (same block size, channel count and channel sizes), so UBWC data stays
++ * readable through each view.
++ */
++static bool
++tz_fmt_list_same_layout(VkFormat format, const VkImageFormatListCreateInfo *fmt_list)
++{
++   if (!fmt_list || !fmt_list->viewFormatCount)
++      return false;
++   const struct util_format_description *d =
++      util_format_description(vk_format_to_pipe_format(format));
++   if (!d)
++      return false;
++   for (uint32_t i = 0; i < fmt_list->viewFormatCount; i++) {
++      const struct util_format_description *v =
++         util_format_description(vk_format_to_pipe_format(fmt_list->pViewFormats[i]));
++      if (!v || v->block.bits != d->block.bits || v->block.width != d->block.width ||
++          v->nr_channels != d->nr_channels)
++         return false;
++      for (unsigned c = 0; c < 4; c++) {
++         if (v->channel[c].size != d->channel[c].size)
++            return false;
++      }
++   }
++   return true;
++}
++
 +/* TurnipZ mutable level 4: formats whose mutable images keep UBWC. */
 +static bool
 +tz_mutable_keep_format(const struct fd_dev_info *info, VkFormat format)
@@ -639,7 +673,7 @@ index 478a63b71d4..f584ecb66f6 100644
  template <chip CHIP>
  VkResult
  tu_image_init(struct tu_device *device, struct tu_image *image,
-@@ -584,10 +768,52 @@ tu_image_init(struct tu_device *device, struct tu_image *image,
+@@ -584,10 +795,58 @@ tu_image_init(struct tu_device *device, struct tu_image *image,
        force_linear_tile = true;
     }
  
@@ -649,9 +683,15 @@ index 478a63b71d4..f584ecb66f6 100644
 +    * tz_mutable_keep_format() at level 4.
 +    */
 +   const struct tu_tz_config *tz = &device->physical_device->tz;
-+   bool tz_cand = tz->mutable_level >= 3 ||
-+                  (tz->mutable_level >= 1 &&
-+                   (pCreateInfo->usage & VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT));
++   /* Only where Mesa itself falls back for mutable images (no
++    * ubwc_all_formats_compatible); elsewhere swapped views are already
++    * handled by the hardware path and a second swap would be wrong.
++    */
++   bool tz_cand =
++      !device->physical_device->info->props.ubwc_all_formats_compatible &&
++      (tz->mutable_level >= 3 ||
++       (tz->mutable_level >= 1 &&
++        (pCreateInfo->usage & VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT)));
 +   bool tz_swapped = false, tz_untracked = true;
 +   bool tz_keep34 = false, tz_keep = false, tz_in_list = true;
 +   bool tz_fdlf = false;
@@ -694,7 +734,7 @@ index 478a63b71d4..f584ecb66f6 100644
                        device->physical_device->info, pCreateInfo->samples,
                        pCreateInfo->mipLevels, device->use_z24uint_s8uint))
        ubwc_enabled = false;
-@@ -628,7 +854,7 @@ tu_image_init(struct tu_device *device, struct tu_image *image,
+@@ -628,7 +887,7 @@ tu_image_init(struct tu_device *device, struct tu_image *image,
              ubwc_enabled = false;
              force_linear_tile = true;
           } else if (!mutable_ubwc_fc) {
@@ -703,11 +743,18 @@ index 478a63b71d4..f584ecb66f6 100644
                 if (fmt_list && fmt_list->viewFormatCount == 2) {
                    perf_debug(
                       device,
-@@ -653,7 +879,16 @@ tu_image_init(struct tu_device *device, struct tu_image *image,
+@@ -653,7 +912,23 @@ tu_image_init(struct tu_device *device, struct tu_image *image,
              bool r8g8_r16 = format_list_reinterprets_r8g8_r16(vk_format_to_pipe_format(image->vk.format), fmt_list);
              bool fmt_list_has_swaps = format_list_has_swaps(fmt_list);
  
 -            if (r8g8_r16 || fmt_list_has_swaps) {
++            if (tz->safe && !tz_untracked) {
++               if (!tz_fmt_list_same_layout(image->vk.format, fmt_list))
++                  ubwc_enabled = false;
++               if (fmt_list_has_swaps && pCreateInfo->samples > VK_SAMPLE_COUNT_1_BIT)
++                  tz_untracked = true; /* upstream fallback below */
++            }
++
 +            /* TurnipZ: tracked images stay tiled despite swaps (views fix the
 +             * swap); images already seen swapped and R8G8/R16 reinterpretation
 +             * fall back to linear and are no longer tracked.
@@ -721,7 +768,7 @@ index 478a63b71d4..f584ecb66f6 100644
                 ubwc_enabled = false;
                 force_linear_tile = true;
              }
-@@ -680,6 +915,8 @@ tu_image_init(struct tu_device *device, struct tu_image *image,
+@@ -680,6 +955,8 @@ tu_image_init(struct tu_device *device, struct tu_image *image,
           }
        }
     }
@@ -730,7 +777,7 @@ index 478a63b71d4..f584ecb66f6 100644
  
     /* VK_EXT_image_compression_control: honor the application's request to
      * disable compression for this image.
-@@ -1139,6 +1376,34 @@ tu_image_bind(struct tu_device *device,
+@@ -1139,6 +1416,34 @@ tu_image_bind(struct tu_device *device,
     image->mem_offset = offset;
     image->iova = mem->iova + offset;
  
