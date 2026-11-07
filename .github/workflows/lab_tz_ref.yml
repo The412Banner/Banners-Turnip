@@ -1,0 +1,98 @@
+name: Lab - TurnipZ reference builds
+
+# Lab branch only (lab/tz-ref), never merged. Plain Mesa at the commit TurnipZ 0.3.0 is built on
+# (6e4a77089e1), no Banners-Turnip patches, built with NDK r27c for API 30 like TurnipZ, kept
+# unstripped so its functions have names. Used to diff TurnipZ 0.3.0 function by function.
+# Four variants, because TurnipZ's exact build options are not known: Vulkan beta extensions on/off,
+# and C++ built with or without -fno-exceptions/-fno-unwind-tables (TurnipZ has C++ unwind data).
+
+on:
+  push:
+    branches: [lab/tz-ref]
+    paths:
+      - ".github/workflows/lab_tz_ref.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab-tz-ref
+  cancel-in-progress: true
+
+env:
+  MESA_COMMIT: 6e4a77089e1db6cb6269ec694de3a1a131f96689
+  NDK: android-ndk-r27c
+  API: "30"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        beta: ["true", "false"]
+        cxx: ["exc", "noexc"]
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build unzip flex bison git python3-pip glslang-tools curl zip pkg-config
+          pip3 install --break-system-packages meson mako
+
+      - name: NDK and Mesa
+        run: |
+          curl -sL "https://dl.google.com/android/repository/${NDK}-linux.zip" -o ndk.zip
+          unzip -q ndk.zip
+          git init -q mesa
+          git -C mesa remote add origin https://gitlab.freedesktop.org/mesa/mesa.git
+          for i in 1 2 3 4 5; do git -C mesa fetch -q --depth=1 origin "$MESA_COMMIT" && break; sleep 30; done
+          git -C mesa checkout -q FETCH_HEAD
+          test "$(git -C mesa rev-parse HEAD)" = "$MESA_COMMIT"
+
+      - name: Build
+        run: |
+          T="$PWD/$NDK/toolchains/llvm/prebuilt/linux-x86_64/bin"
+          if [ "${{ matrix.cxx }}" = noexc ]; then
+            CPP="['$T/aarch64-linux-android${API}-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']"
+          else
+            CPP="['$T/aarch64-linux-android${API}-clang++', '--start-no-unused-arguments', '-static-libstdc++', '--end-no-unused-arguments']"
+          fi
+          cat > cross.txt <<EOF
+          [binaries]
+          ar = '$T/llvm-ar'
+          c = ['$T/aarch64-linux-android${API}-clang']
+          cpp = $CPP
+          c_ld = '$T/ld.lld'
+          cpp_ld = '$T/ld.lld'
+          strip = '$T/llvm-strip'
+          pkg-config = ['env', 'PKG_CONFIG_LIBDIR=$T/pkg-config', '/usr/bin/pkg-config']
+
+          [host_machine]
+          system = 'android'
+          cpu_family = 'aarch64'
+          cpu = 'armv8'
+          endian = 'little'
+          EOF
+          cd mesa
+          meson setup build --cross-file ../cross.txt -Dbuildtype=release -Dstrip=false \
+            -Dplatforms=android -Dplatform-sdk-version=$API -Dandroid-stub=true \
+            -Dgallium-drivers= -Dvulkan-drivers=freedreno -Dvulkan-beta=${{ matrix.beta }} \
+            -Dfreedreno-kmds=kgsl -Degl=disabled -Dandroid-libbacktrace=disabled -Dvideo-codecs= \
+            > ../meson-setup.log 2>&1 || { tail -50 ../meson-setup.log; exit 1; }
+          ninja -C build src/freedreno/vulkan/libvulkan_freedreno.so > ../ninja.log 2>&1 || { tail -80 ../ninja.log; exit 1; }
+          mkdir -p ../out
+          cp build/src/freedreno/vulkan/libvulkan_freedreno.so ../out/libvulkan_freedreno.unstripped.so
+          "$T/llvm-strip" -o ../out/libvulkan_freedreno.so ../out/libvulkan_freedreno.unstripped.so
+          meson configure build > ../out/meson-configure.txt 2>&1 || true
+          cp ../meson-setup.log ../out/
+          sha256sum ../out/*.so | tee ../out/sha256.txt
+          "$T/llvm-readelf" -n ../out/libvulkan_freedreno.so | grep -i "build id" | tee -a ../out/sha256.txt
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: tz-ref-beta${{ matrix.beta }}-${{ matrix.cxx }}
+          retention-days: 14
+          path: out/
+          if-no-files-found: error
