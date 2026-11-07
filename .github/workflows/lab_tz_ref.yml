@@ -31,8 +31,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        beta: ["true", "false"]
-        cxx: ["exc", "noexc"]
+        beta: ["false"]
+        cxx: ["exc"]
     steps:
       - name: Install dependencies
         run: |
@@ -49,6 +49,12 @@ jobs:
           for i in 1 2 3 4 5; do git -C mesa fetch -q --depth=1 origin "$MESA_COMMIT" && break; sleep 30; done
           git -C mesa checkout -q FETCH_HEAD
           test "$(git -C mesa rev-parse HEAD)" = "$MESA_COMMIT"
+          # TurnipZ 0.3.0 adds one NIR intrinsic, load_rt_swap_mask_ir3 (same properties as its neighbour
+          # load_rt_push_constants_amd: no sources, one 32-bit component, CAN_ELIMINATE | CAN_REORDER).
+          # Adding it keeps the intrinsic numbering equal to TurnipZ's, so unchanged NIR/ir3 code matches.
+          grep -q 'system_value("alpha_to_coverage_enable_ir3", 1)' mesa/src/compiler/nir/nir_intrinsics.py
+          sed -i 's/^system_value("alpha_to_coverage_enable_ir3", 1)$/&\nsystem_value("rt_swap_mask_ir3", 1)/' mesa/src/compiler/nir/nir_intrinsics.py
+          grep -c 'system_value("rt_swap_mask_ir3", 1)' mesa/src/compiler/nir/nir_intrinsics.py | grep -qx 1
 
       - name: Build
         run: |
@@ -92,7 +98,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: tz-ref-beta${{ matrix.beta }}-${{ matrix.cxx }}
+          name: tz-ref-beta${{ matrix.beta }}-${{ matrix.cxx }}-intr
           retention-days: 14
           path: out/
           if-no-files-found: error
