@@ -123,12 +123,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.367 |
-| **Commit** | [`79cb049`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79cb04951e5a921af0ea4d03a0db5e7f4e422454) |
+| **Commit** | [`482dee6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/482dee68a4bbce675c03e0f9587c13f342a8e999) |
 | **Commit date** | 2026-11-07 |
-| **Commit title** | gfxstream/codegen: use Boxed<VkT> in generated host Vulkan cereal code |
+| **Commit title** | AGENTS: add poly to the no-AI list |
 | **Build date** | 20261107 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261107](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107) |
+| **Release** | [v27.0.0-20261107-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -138,6 +138,7 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261107-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107-r2) | 2026-11-07 | [`482dee6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/482dee68a4bbce675c03e0f9587c13f342a8e999) | AGENTS: add poly to the no-AI list | Vulkan 1.4.367 |
 | [v27.0.0-20261107](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107) | 2026-11-07 | [`79cb049`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79cb04951e5a921af0ea4d03a0db5e7f4e422454) | gfxstream/codegen: use Boxed&lt;VkT> in generated host Vulkan cereal code | Vulkan 1.4.367 |
 | [v27.0.0-20261106-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r4) | 2026-11-06 | [`9187bd6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9187bd6a97ae438eea58b2309d0a566b46594a6f) | mr-label-maker: label src/glx/apple/ changes as ~macOS | Vulkan 1.4.367 |
 | [v27.0.0-20261106-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r3) | 2026-11-06 | [`e6dd90e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6dd90e0e2beb4745376eba2b65fdb21db72983f) | kraid/disasm: Delete NullWriter | Vulkan 1.4.367 |
