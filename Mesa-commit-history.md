@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261107](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107) | 2026-11-07 | [`79cb049`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79cb04951e5a921af0ea4d03a0db5e7f4e422454) | gfxstream/codegen: use Boxed<VkT> in generated host Vulkan cereal code | Vulkan 1.4.367 |
 | [v27.0.0-20261106-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r4) | 2026-11-06 | [`9187bd6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9187bd6a97ae438eea58b2309d0a566b46594a6f) | mr-label-maker: label src/glx/apple/ changes as ~macOS | Vulkan 1.4.367 |
 | [v27.0.0-20261106-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r3) | 2026-11-06 | [`e6dd90e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6dd90e0e2beb4745376eba2b65fdb21db72983f) | kraid/disasm: Delete NullWriter | Vulkan 1.4.367 |
 | [v27.0.0-20261106-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r2) | 2026-11-06 | [`35a0fef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35a0fef154b0fc9939674db4f943326b3f3724d3) | radv: rename some Vulkan definitions that have been promoted | Vulkan 1.4.367 |
