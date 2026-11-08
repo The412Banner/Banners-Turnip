@@ -123,12 +123,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.367 |
-| **Commit** | [`9187bd6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9187bd6a97ae438eea58b2309d0a566b46594a6f) |
-| **Commit date** | 2026-11-06 |
-| **Commit title** | mr-label-maker: label src/glx/apple/ changes as ~macOS |
-| **Build date** | 20261106 |
+| **Commit** | [`3160097`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/316009797d8de1efdda53646f527821d2993ce24) |
+| **Commit date** | 2026-11-08 |
+| **Commit title** | brw: Remove required flush on NVL-P (B0+) |
+| **Build date** | 20261108 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261106-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r4) |
+| **Release** | [v27.0.0-20261108-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -138,10 +138,11 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
-| [v27.0.0-20261106-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r4) | 2026-11-06 | [`9187bd6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9187bd6a97ae438eea58b2309d0a566b46594a6f) | mr-label-maker: label src/glx/apple/ changes as ~macOS | Vulkan 1.4.367 |
-| [v27.0.0-20261106-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r3) | 2026-11-06 | [`e6dd90e`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e6dd90e0e2beb4745376eba2b65fdb21db72983f) | kraid/disasm: Delete NullWriter | Vulkan 1.4.367 |
-| [v27.0.0-20261106-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106-r2) | 2026-11-06 | [`35a0fef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/35a0fef154b0fc9939674db4f943326b3f3724d3) | radv: rename some Vulkan definitions that have been promoted | Vulkan 1.4.367 |
-| [v27.0.0-20261106](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261106) | 2026-11-06 | [`95b851b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95b851be423986d42b09cd70c749c8c9c552398d) | amd/common: mask count for SDMA_OPCODE_WRITE in ib parser | Vulkan 1.4.367 |
+| [v27.0.0-20261108-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108-r4) | 2026-11-08 | [`3160097`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/316009797d8de1efdda53646f527821d2993ce24) | brw: Remove required flush on NVL-P (B0+) | Vulkan 1.4.367 |
+| [v27.0.0-20261108-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108-r3) | 2026-11-08 | [`6b41b56`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b41b56dea2d3d827cbb118ece95e2ba39a73e1a) | dri: round up the subsampled plane size on dma-buf import | Vulkan 1.4.367 |
+| [v27.0.0-20261108-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108-r2) | 2026-11-08 | [`6384fd6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6384fd6037871b44784d78bf63369bdf05708965) | Revert "rusticl: support cl_khr_icd_unloadable" | Vulkan 1.4.367 |
+| [v27.0.0-20261108](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108) | 2026-11-08 | [`c0235ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c0235eff650720faff05452a06a0a09479b3621f) | freedreno/a5xx: program the 2D source and use BLIT_OP_SCALE | Vulkan 1.4.367 |
+| [v27.0.0-20261107-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107-r4) | 2026-11-07 | [`e549b46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e549b466fcf1237469b6814614d21cbcd144c30b) | broadcom/ci: update kernel | Vulkan 1.4.367 |
 <!-- RECENT_BUILDS_END -->
 
 ---
