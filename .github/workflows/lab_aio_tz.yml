@@ -1,8 +1,11 @@
 name: Lab - Banners-AIO TurnipZ port
 
-# Lab branch feat/aio-tz only, never merged as is. Android leg only: Banners-AIO recipe + the
-# TurnipZ 0.3.0 port (patches/tz). Mesa pinned to the r4 release commit so the A/B against
-# Turnip-v27.0.0-20261106-r4-Banners-AIO.zip only differs by the port. Artifacts only.
+# Lab branch feat/aio-tz only, never merged as is. Banners-AIO recipe + the TurnipZ 0.3.0 port
+# (patches/tz), built twice from the same Mesa commit and recipe:
+#   android - AdrenoTools zip (DroidDeck "display driver", Bannerlator, emulators)
+#   linux   - glibc ICD zip, as the release's Banners-AIO-Linux (DroidDeck "runtime driver")
+# Mesa pinned to the release commit in mesa_hash.txt (v27.0.0-20261108-r4) so an A/B against
+# Turnip-v27.0.0-20261108-r4-Banners-AIO(-Linux).zip only differs by the port. Artifacts only.
 
 on:
   push:
@@ -11,6 +14,7 @@ on:
       - ".github/workflows/lab_aio_tz.yml"
       - "patches/**"
       - "build_turnip.sh"
+      - "build_turnip_linux.sh"
 
 permissions:
   contents: read
@@ -20,7 +24,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  MESA_COMMIT: 9187bd6a97ae438eea58b2309d0a566b46594a6f
+  MESA_COMMIT: 316009797d8de1efdda53646f527821d2993ce24
   VARIANT: aio
   EXTRA_PATCH: patches/a8xx_gen8.patch
   EXTRA_SCRIPT: patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py:patches/a8xx_no_double_threadsize.py:patches/tz/apply_tz.py
@@ -62,7 +66,8 @@ jobs:
           p = sys.argv[1]
           m = json.load(open(p))
           m["name"] = os.environ["META_NAME"]
-          m["description"] = "Banners-AIO + TurnipZ 0.3.0 port (lab): mutable/BGRA on A6xx, A650 fixes. Mesa 9187bd6."
+          m["description"] = ("Banners-AIO + TurnipZ 0.3.0 port (lab): mutable/BGRA on A6xx, A650 fixes. Mesa "
+                              + os.environ["MESA_COMMIT"][:7] + ".")
           json.dump(m, open(p, "w"), indent=2)
           print("meta.json:", m["name"])
           PY
@@ -90,3 +95,77 @@ jobs:
             turnip_workdir/Banners-AIO-TZ-test-*.zip
             report-android-tz.json
           if-no-files-found: error
+
+  # Same driver as a glibc ICD: the steps of the release's linux job (turnip_build_combined.yml)
+  # with this branch's Mesa commit and recipe.
+  linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build unzip flex bison cmake glslang-tools curl pkg-config \
+            gcc-aarch64-linux-gnu g++-aarch64-linux-gnu binutils-aarch64-linux-gnu \
+            python3-pip zip patch tar zstd xz-utils
+          # Ubuntu ships meson 1.3; Mesa 26.x needs >= 1.4, so take it from pip.
+          pip3 install --break-system-packages 'meson>=1.5' mako pyyaml packaging
+          meson --version && aarch64-linux-gnu-gcc --version | head -1
+
+      - name: Driver file name
+        id: names
+        run: |
+          SHA=$(git rev-parse --short=8 HEAD)
+          Z="Banners-AIO-TZ-test-${SHA}-Linux.zip"
+          M="Banners-AIO TZ test ${SHA}-Linux"
+          echo "zip=$Z" >> "$GITHUB_OUTPUT"
+          echo "meta=$M" >> "$GITHUB_OUTPUT"
+          echo "$Z | $M"
+
+      - name: Build (Linux)
+        env:
+          ZIP_NAME: ${{ steps.names.outputs.zip }}
+          META_NAME: ${{ steps.names.outputs.meta }}
+          PACKAGE_VERSION: ${{ github.run_number }}
+        run: |
+          export META_DESC="Banners-AIO + TurnipZ 0.3.0 port (lab): mutable/BGRA on A6xx, A650 fixes. Mesa ${MESA_COMMIT:0:7}."
+          chmod +x build_turnip_linux.sh
+          ./build_turnip_linux.sh
+
+      - name: Verify Linux ZIP
+        env:
+          ZIP_NAME: ${{ steps.names.outputs.zip }}
+          META_NAME: ${{ steps.names.outputs.meta }}
+          PACKAGE_VERSION: ${{ github.run_number }}
+        run: |
+          python3 .github/scripts/verify_driver_zip.py --kind linux \
+            --zip "linux_workdir/${ZIP_NAME}" --variant "$VARIANT" \
+            --expect-name "$META_NAME" --expect-package-version "$PACKAGE_VERSION" \
+            --build-report linux_workdir/build-report.json --report report-linux-tz.json \
+            --readelf aarch64-linux-gnu-readelf
+          unzip -p "linux_workdir/${ZIP_NAME}" libvulkan_freedreno.so | grep -a -c "rt_swap_mask_ir3" || true
+
+      - name: Upload Linux driver ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 14
+          name: aio-tz-linux
+          path: |
+            linux_workdir/${{ steps.names.outputs.zip }}
+            report-linux-tz.json
+          if-no-files-found: error
+
+      - name: Upload build evidence on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 7
+          name: aio-tz-linux-failed
+          path: |
+            linux_workdir/mesa/build-linux/meson-logs/meson-log.txt
+            linux_workdir/build-report.json
+            linux_workdir/sysroot-packages.txt
+          if-no-files-found: ignore
