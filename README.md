@@ -123,12 +123,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.367 |
-| **Commit** | [`e549b46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e549b466fcf1237469b6814614d21cbcd144c30b) |
+| **Commit** | [`c0235ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c0235eff650720faff05452a06a0a09479b3621f) |
 | **Commit date** | 2026-11-07 |
-| **Commit title** | broadcom/ci: update kernel |
-| **Build date** | 20261107 |
+| **Commit title** | freedreno/a5xx: program the 2D source and use BLIT_OP_SCALE |
+| **Build date** | 20261108 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261107-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107-r4) |
+| **Release** | [v27.0.0-20261108](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -138,10 +138,10 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261108](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108) | 2026-11-08 | [`c0235ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c0235eff650720faff05452a06a0a09479b3621f) | freedreno/a5xx: program the 2D source and use BLIT_OP_SCALE | Vulkan 1.4.367 |
 | [v27.0.0-20261107-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107-r4) | 2026-11-07 | [`e549b46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e549b466fcf1237469b6814614d21cbcd144c30b) | broadcom/ci: update kernel | Vulkan 1.4.367 |
 | [v27.0.0-20261107-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107-r3) | 2026-11-07 | [`2648b20`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2648b2059f1a412d64a8700dbbb75bbb4a768b0e) | freedreno/a5xx: program the guard band and ignore the viewport clip codes | Vulkan 1.4.367 |
 | [v27.0.0-20261107-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107-r2) | 2026-11-07 | [`482dee6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/482dee68a4bbce675c03e0f9587c13f342a8e999) | AGENTS: add poly to the no-AI list | Vulkan 1.4.367 |
-| [v27.0.0-20261107](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107) | 2026-11-07 | [`79cb049`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79cb04951e5a921af0ea4d03a0db5e7f4e422454) | gfxstream/codegen: use Boxed&lt;VkT> in generated host Vulkan cereal code | Vulkan 1.4.367 |
 <!-- RECENT_BUILDS_END -->
 
 ---

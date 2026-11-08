@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261108](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108) | 2026-11-07 | [`c0235ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c0235eff650720faff05452a06a0a09479b3621f) | freedreno/a5xx: program the 2D source and use BLIT_OP_SCALE | Vulkan 1.4.367 |
 | [v27.0.0-20261107-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107-r4) | 2026-11-07 | [`e549b46`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e549b466fcf1237469b6814614d21cbcd144c30b) | broadcom/ci: update kernel | Vulkan 1.4.367 |
 | [v27.0.0-20261107-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107-r3) | 2026-11-07 | [`2648b20`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2648b2059f1a412d64a8700dbbb75bbb4a768b0e) | freedreno/a5xx: program the guard band and ignore the viewport clip codes | Vulkan 1.4.367 |
 | [v27.0.0-20261107-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261107-r2) | 2026-11-07 | [`482dee6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/482dee68a4bbce675c03e0f9587c13f342a8e999) | AGENTS: add poly to the no-AI list | Vulkan 1.4.367 |
