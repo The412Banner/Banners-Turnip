@@ -123,12 +123,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.367 |
-| **Commit** | [`586fd4d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/586fd4de6e1959848bc82415973893fb57fc312a) |
-| **Commit date** | 2026-11-08 |
-| **Commit title** | radeonsi: remove old radeonsi_zerovram option |
+| **Commit** | [`d3c007c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c007c5dcef02dcaf0745754f21a879601047ff) |
+| **Commit date** | 2026-11-09 |
+| **Commit title** | gallivm: disable apx feature for now. |
 | **Build date** | 20261109 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261109](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261109) |
+| **Release** | [v27.0.0-20261109-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261109-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -138,11 +138,11 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261109-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261109-r2) | 2026-11-09 | [`d3c007c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c007c5dcef02dcaf0745754f21a879601047ff) | gallivm: disable apx feature for now. | Vulkan 1.4.367 |
 | [v27.0.0-20261109](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261109) | 2026-11-09 | [`586fd4d`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/586fd4de6e1959848bc82415973893fb57fc312a) | radeonsi: remove old radeonsi_zerovram option | Vulkan 1.4.367 |
 | [v27.0.0-20261108-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108-r4) | 2026-11-08 | [`3160097`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/316009797d8de1efdda53646f527821d2993ce24) | brw: Remove required flush on NVL-P (B0+) | Vulkan 1.4.367 |
 | [v27.0.0-20261108-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108-r3) | 2026-11-08 | [`6b41b56`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6b41b56dea2d3d827cbb118ece95e2ba39a73e1a) | dri: round up the subsampled plane size on dma-buf import | Vulkan 1.4.367 |
 | [v27.0.0-20261108-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108-r2) | 2026-11-08 | [`6384fd6`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/6384fd6037871b44784d78bf63369bdf05708965) | Revert "rusticl: support cl_khr_icd_unloadable" | Vulkan 1.4.367 |
-| [v27.0.0-20261108](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261108) | 2026-11-08 | [`c0235ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c0235eff650720faff05452a06a0a09479b3621f) | freedreno/a5xx: program the 2D source and use BLIT_OP_SCALE | Vulkan 1.4.367 |
 <!-- RECENT_BUILDS_END -->
 
 ---
