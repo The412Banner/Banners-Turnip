@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261110-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r2) | 2026-11-10 | [`7b94fd4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7b94fd4650e5d95688b726adb3d0ffb08e074e36) | anv: extract and call anv_queue_drain() during anv_DestroyDevice() | Vulkan 1.4.368 |
 | [v27.0.0-20261110](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110) | 2026-11-09 | [`1c87c60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1c87c60187064c60a10378fa79e20debf0941f97) | tu: WFI before reading registers that were just written | Vulkan 1.4.368 |
 | [v27.0.0-20261109-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261109-r3) | 2026-11-09 | [`5a822a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5a822a8046f9b2f0f40e9ff17b79409475db0e17) | gitlab: Request inxi for all GPUs | Vulkan 1.4.368 |
 | [v27.0.0-20261109-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261109-r2) | 2026-11-09 | [`d3c007c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d3c007c5dcef02dcaf0745754f21a879601047ff) | gallivm: disable apx feature for now. | Vulkan 1.4.367 |
