@@ -123,12 +123,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`7b94fd4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7b94fd4650e5d95688b726adb3d0ffb08e074e36) |
+| **Commit** | [`4f24077`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f24077834328a9693b6e49dc58e92aa799f1379) |
 | **Commit date** | 2026-11-10 |
-| **Commit title** | anv: extract and call anv_queue_drain() during anv_DestroyDevice() |
+| **Commit title** | nir/uub: use a few helpers |
 | **Build date** | 20261110 |
 | **Downloads** | X11 / AdrenoTools: 3 ZIPs · Bannerlator Wayland: 3 ZIPs · Linux runtime: 3 ZIPs |
-| **Release** | [v27.0.0-20261110-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r2) |
+| **Release** | [v27.0.0-20261110-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -138,6 +138,7 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261110-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r3) | 2026-11-10 | [`4f24077`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f24077834328a9693b6e49dc58e92aa799f1379) | nir/uub: use a few helpers | Vulkan 1.4.368 |
 | [v27.0.0-20261110-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r2) | 2026-11-10 | [`7b94fd4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7b94fd4650e5d95688b726adb3d0ffb08e074e36) | anv: extract and call anv_queue_drain() during anv_DestroyDevice() | Vulkan 1.4.368 |
 | [v27.0.0-20261110](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110) | 2026-11-10 | [`1c87c60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1c87c60187064c60a10378fa79e20debf0941f97) | tu: WFI before reading registers that were just written | Vulkan 1.4.368 |
 | [v27.0.0-20261109-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261109-r3) | 2026-11-09 | [`5a822a8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5a822a8046f9b2f0f40e9ff17b79409475db0e17) | gitlab: Request inxi for all GPUs | Vulkan 1.4.368 |
