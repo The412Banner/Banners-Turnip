@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261111-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r2) | 2026-11-11 | [`5223876`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52238762dd44939c2912185f4df00b90d8306225) | kk: Disable KK_WORKAROUND_10 on M3+ | Vulkan 1.4.368 |
 | [v27.0.0-20261111](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111) | 2026-11-10 | [`e04357c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e04357c464296e6b0a0bda612d5b2fb5deb6fa82) | gfxstream: scrub ignored VkPipelineRenderingCreateInfo fields | Vulkan 1.4.368 |
 | [v27.0.0-20261110-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r4) | 2026-11-10 | [`4404b6b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4404b6bb9f858bc768f8d75fce1bcb224f12fceb) | util: Initialize memstream outputs on Xbox | Vulkan 1.4.368 |
 | [v27.0.0-20261110-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r3) | 2026-11-10 | [`4f24077`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f24077834328a9693b6e49dc58e92aa799f1379) | nir/uub: use a few helpers | Vulkan 1.4.368 |
