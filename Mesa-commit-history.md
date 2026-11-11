@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261111-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r4) | 2026-11-11 | [`91a36b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/91a36b060e966e2a1f3957c95d3184b33b03b901) | tu: Don't emit scissors when scissor_count = 0. | Vulkan 1.4.368 |
 | [v27.0.0-20261111-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r3) | 2026-11-11 | [`20a455b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20a455bed795148c07a3adc3eed1e84c5ed4a785) | mailmap: update my email | Vulkan 1.4.368 |
 | [v27.0.0-20261111-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r2) | 2026-11-11 | [`5223876`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52238762dd44939c2912185f4df00b90d8306225) | kk: Disable KK_WORKAROUND_10 on M3+ | Vulkan 1.4.368 |
 | [v27.0.0-20261111](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111) | 2026-11-10 | [`e04357c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e04357c464296e6b0a0bda612d5b2fb5deb6fa82) | gfxstream: scrub ignored VkPipelineRenderingCreateInfo fields | Vulkan 1.4.368 |
