@@ -123,12 +123,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`4404b6b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4404b6bb9f858bc768f8d75fce1bcb224f12fceb) |
+| **Commit** | [`e04357c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e04357c464296e6b0a0bda612d5b2fb5deb6fa82) |
 | **Commit date** | 2026-11-10 |
-| **Commit title** | util: Initialize memstream outputs on Xbox |
-| **Build date** | 20261110 |
+| **Commit title** | gfxstream: scrub ignored VkPipelineRenderingCreateInfo fields |
+| **Build date** | 20261111 |
 | **Downloads** | X11 / AdrenoTools: 3 ZIPs · Bannerlator Wayland: 3 ZIPs · Linux runtime: 3 ZIPs |
-| **Release** | [v27.0.0-20261110-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r4) |
+| **Release** | [v27.0.0-20261111](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -138,10 +138,10 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261111](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111) | 2026-11-11 | [`e04357c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e04357c464296e6b0a0bda612d5b2fb5deb6fa82) | gfxstream: scrub ignored VkPipelineRenderingCreateInfo fields | Vulkan 1.4.368 |
 | [v27.0.0-20261110-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r4) | 2026-11-10 | [`4404b6b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4404b6bb9f858bc768f8d75fce1bcb224f12fceb) | util: Initialize memstream outputs on Xbox | Vulkan 1.4.368 |
 | [v27.0.0-20261110-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r3) | 2026-11-10 | [`4f24077`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f24077834328a9693b6e49dc58e92aa799f1379) | nir/uub: use a few helpers | Vulkan 1.4.368 |
 | [v27.0.0-20261110-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r2) | 2026-11-10 | [`7b94fd4`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7b94fd4650e5d95688b726adb3d0ffb08e074e36) | anv: extract and call anv_queue_drain() during anv_DestroyDevice() | Vulkan 1.4.368 |
-| [v27.0.0-20261110](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110) | 2026-11-10 | [`1c87c60`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1c87c60187064c60a10378fa79e20debf0941f97) | tu: WFI before reading registers that were just written | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
