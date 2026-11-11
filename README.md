@@ -123,12 +123,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`5223876`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52238762dd44939c2912185f4df00b90d8306225) |
+| **Commit** | [`20a455b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20a455bed795148c07a3adc3eed1e84c5ed4a785) |
 | **Commit date** | 2026-11-11 |
-| **Commit title** | kk: Disable KK_WORKAROUND_10 on M3+ |
+| **Commit title** | mailmap: update my email |
 | **Build date** | 20261111 |
 | **Downloads** | X11 / AdrenoTools: 3 ZIPs · Bannerlator Wayland: 3 ZIPs · Linux runtime: 3 ZIPs |
-| **Release** | [v27.0.0-20261111-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r2) |
+| **Release** | [v27.0.0-20261111-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -138,10 +138,10 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261111-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r3) | 2026-11-11 | [`20a455b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20a455bed795148c07a3adc3eed1e84c5ed4a785) | mailmap: update my email | Vulkan 1.4.368 |
 | [v27.0.0-20261111-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r2) | 2026-11-11 | [`5223876`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52238762dd44939c2912185f4df00b90d8306225) | kk: Disable KK_WORKAROUND_10 on M3+ | Vulkan 1.4.368 |
 | [v27.0.0-20261111](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111) | 2026-11-11 | [`e04357c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/e04357c464296e6b0a0bda612d5b2fb5deb6fa82) | gfxstream: scrub ignored VkPipelineRenderingCreateInfo fields | Vulkan 1.4.368 |
 | [v27.0.0-20261110-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r4) | 2026-11-10 | [`4404b6b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4404b6bb9f858bc768f8d75fce1bcb224f12fceb) | util: Initialize memstream outputs on Xbox | Vulkan 1.4.368 |
-| [v27.0.0-20261110-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261110-r3) | 2026-11-10 | [`4f24077`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f24077834328a9693b6e49dc58e92aa799f1379) | nir/uub: use a few helpers | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
