@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261112-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r3) | 2026-11-12 | [`73196ec`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73196ec50b0ea96d6c8f5b100bf6f7f6781b6627) | tu: Allow texel buffer and SSBO emulation on a6xx | Vulkan 1.4.368 |
 | [v27.0.0-20261112-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r2) | 2026-11-12 | [`b0b8025`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0b80253d8158134579e4f59c89fb346b89df0ce) | radeonsi/mm: Create the second context with same flags as main context | Vulkan 1.4.368 |
 | [v27.0.0-20261112](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112) | 2026-11-12 | [`34c83ff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/34c83ff13b3b1d914280c8902d170b60f1e3b161) | jay: Use F32 for accumulator copies inserted by RA | Vulkan 1.4.368 |
 | [v27.0.0-20261111-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r4) | 2026-11-11 | [`91a36b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/91a36b060e966e2a1f3957c95d3184b33b03b901) | tu: Don't emit scissors when scissor_count = 0. | Vulkan 1.4.368 |
