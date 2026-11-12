@@ -1,0 +1,61 @@
+diff --git a/src/freedreno/vulkan/tu_descriptor_set.cc b/src/freedreno/vulkan/tu_descriptor_set.cc
+index 18b9299..34bf3ee 100644
+--- a/src/freedreno/vulkan/tu_descriptor_set.cc
++++ b/src/freedreno/vulkan/tu_descriptor_set.cc
+@@ -670,7 +670,8 @@ tu_descriptor_set_create(struct tu_device *device,
+ 
+       if (!pool->host_memory_base) {
+          uint64_t pool_vma_offset =
+-            util_vma_heap_alloc(&pool->bo_heap, set->size, 1);
++            util_vma_heap_alloc(&pool->bo_heap, set->size,
++                                TU_DESCRIPTOR_SET_ALIGNMENT);
+          if (!pool_vma_offset) {
+             vk_object_free(&device->vk, NULL, set);
+             if (pool->bo_heap.free_size >= set->size)
+@@ -821,8 +822,7 @@ tu_CreateDescriptorPool(VkDevice _device,
+       pool->host_memory_end = reinterpret_cast<uint8_t*>(pool) + size;
+    } else {
+       if (bo_size) {
+-         util_vma_heap_init(&pool->bo_heap, TU_POOL_HEAP_OFFSET,
+-                            bo_size + TU_POOL_HEAP_OFFSET);
++         util_vma_heap_init(&pool->bo_heap, TU_POOL_HEAP_OFFSET, bo_size);
+          pool->bo_heap.alloc_high = false;
+       }
+    }
+@@ -918,8 +918,8 @@ tu_ResetDescriptorPool(VkDevice _device,
+ 
+    if (!pool->host_memory_base && pool->size) {
+       util_vma_heap_finish(&pool->bo_heap);
+-      util_vma_heap_init(&pool->bo_heap, TU_POOL_HEAP_OFFSET,
+-                         pool->size + TU_POOL_HEAP_OFFSET);
++      util_vma_heap_init(&pool->bo_heap, TU_POOL_HEAP_OFFSET, pool->size);
++      pool->bo_heap.alloc_high = false;
+    }
+ 
+    pool->entry_count = 0;
+diff --git a/src/freedreno/vulkan/tu_descriptor_set.h b/src/freedreno/vulkan/tu_descriptor_set.h
+index 74b36ec..b763d10 100644
+--- a/src/freedreno/vulkan/tu_descriptor_set.h
++++ b/src/freedreno/vulkan/tu_descriptor_set.h
+@@ -28,11 +28,18 @@
+  */
+ #define MAX_SET_SIZE ((1 << 28) * 4)
+ 
++/* Descriptor sets have to start on a 64-byte boundary: the low 6 bits of
++ * set_iova hold the bindless descriptor size and are masked off when the
++ * address is used.
++ */
++#define TU_DESCRIPTOR_SET_ALIGNMENT (4 * FDL6_TEX_CONST_DWORDS)
++
+ /* The vma heap reserves 0 to mean NULL; we have to offset by some amount to
+- * ensure we can allocate the entire BO without hitting zero. The actual
+- * amount doesn't matter.
++ * ensure we can allocate the entire BO without hitting zero. The heap aligns
++ * heap addresses, not BO offsets, so the offset has to be a multiple of
++ * TU_DESCRIPTOR_SET_ALIGNMENT.
+  */
+-#define TU_POOL_HEAP_OFFSET 32
++#define TU_POOL_HEAP_OFFSET 64
+ 
+ struct tu_descriptor_set_binding_layout
+ {

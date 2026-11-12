@@ -1,0 +1,23 @@
+Two fixes from DroidDeck's Turnip, copied unchanged from Droid-Deck/Drivers
+(https://github.com/Droid-Deck/Drivers, GPL-3.0) patches/linux/ at
+570daf3c (2026-11-11), under their own names and numbers so they can be diffed against that repo.
+apply_common.sh applies them after Max's series (patches/a8xx-winnative), on the drivers whose
+EXTRA_PATCH is the gen8 stack: A8xx and Banners-AIO.
+
+0006-ir3-shuffle-broadcast.patch (Droid-Deck/Drivers #10; Nikolay Nadorichev, maxjivi05)
+  ir3 lowers shuffle(x, i) to rotate(x, i - gl_SubgroupInvocationID) in a loop with one iteration
+  per distinct relative offset, so a broadcast costs about one iteration per invocation; with the
+  half-wave subgroups patch (a8xx-winnative/0002) the index is never uniform. A uniform index
+  becomes one read_invocation_cond_ir3; a divergent one serves the invocations with the same
+  absolute source and the ones with the same relative offset in the same iteration. Their number:
+  one compute shader in 007 First Light on an Adreno 840 went from 94.6 to 8.4 ms per frame.
+  Banners-AIO: patches/one/one_gpu_gates.py limits it to A8xx (ir3 gen >= 8).
+
+0007-tu-descriptor-pool-heap-alignment.patch (Droid-Deck/Drivers #12; Nikolay Nadorichev, maxjivi05)
+  The descriptor pool heap was initialised with an end address where a size was expected and
+  vkResetDescriptorPool did not restore alloc_high = false, so after a reset sets were handed out
+  from the top at offsets 32 mod 64, the topmost one 32 bytes past the BO. Turnip masks the low 6
+  bits of set_iova, so those sets were read 32 bytes off. Seen by them as invisible Scaleform UI in
+  Detroit: Become Human on an Adreno 840. Not GPU specific: every GPU of Banners-AIO gets it.
+
+Not device-tested here when added (2026-11-12).

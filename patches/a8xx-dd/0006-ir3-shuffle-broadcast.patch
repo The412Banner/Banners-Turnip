@@ -1,0 +1,98 @@
+diff --git a/src/freedreno/ir3/ir3_lower_subgroups.c b/src/freedreno/ir3/ir3_lower_subgroups.c
+index c95780a..2a25cce 100644
+--- a/src/freedreno/ir3/ir3_lower_subgroups.c
++++ b/src/freedreno/ir3/ir3_lower_subgroups.c
+@@ -838,6 +838,67 @@ make_shuffle_uniform(nir_builder *b, nir_def *val, nir_def *index,
+    return nir_load_var(b, result);
+ }
+ 
++/* Variant of make_shuffle_uniform for shuffle(val, abs_index) with a divergent
++ * abs_index. Each iteration takes the absolute index and the relative offset
++ * of the first unserved invocation, and serves every invocation that wants the
++ * same absolute source (a broadcast through read_invocation_cond_ir3) as well
++ * as every invocation that wants the same relative offset (a uniform rotate).
++ * Each iteration retires all invocations of at least one distinct absolute
++ * index and one distinct relative offset, so the loop never takes more
++ * iterations than make_shuffle_uniform, and a broadcast with a divergent index
++ * (e.g. one source per half of the wave) takes one iteration per distinct
++ * source instead of roughly one per invocation. An iteration costs a few more
++ * instructions than in make_shuffle_uniform. All invocations stay active for
++ * the shfl, as in make_shuffle_uniform.
++ */
++static nir_def *
++make_shuffle_mixed(nir_builder *b, nir_def *val, nir_def *abs_index,
++                   nir_def *rel_index)
++{
++   nir_variable *done =
++      nir_local_variable_create(b->impl, glsl_bool_type(), "done");
++   nir_store_var(b, done, nir_imm_false(b), 1);
++   nir_variable *result =
++      nir_local_variable_create(b->impl, glsl_type_for_def(val), "result");
++   nir_store_var(b, result, nir_undef(b, 1, val->bit_size), 1);
++
++   nir_loop *loop = nir_push_loop(b);
++   {
++      nir_def *was_done = nir_load_var(b, done);
++      nir_def *pending = nir_inot(b, was_done);
++      nir_def *next_abs = nir_read_invocation_cond_ir3(
++         b, abs_index->bit_size, abs_index, pending);
++      next_abs->divergent = false;
++      nir_def *next_rel = nir_read_invocation_cond_ir3(
++         b, rel_index->bit_size, rel_index, pending);
++      next_rel->divergent = false;
++
++      nir_def *bcast = nir_read_invocation_cond_ir3(
++         b, val->bit_size, val,
++         nir_ieq(b, nir_load_subgroup_invocation(b), next_abs));
++      bcast->divergent = false;
++      nir_def *rot = shuffle_to_uniform(b, nir_intrinsic_shuffle, val, next_rel);
++
++      nir_def *hit_abs = nir_ieq(b, abs_index, next_abs);
++      nir_def *hit_rel = nir_ieq(b, rel_index, next_rel);
++      nir_def *take_abs = nir_iand(b, pending, hit_abs);
++      nir_def *take_rel =
++         nir_iand(b, pending, nir_iand(b, nir_inot(b, hit_abs), hit_rel));
++
++      nir_def *res = nir_load_var(b, result);
++      res = nir_bcsel(b, take_rel, rot, res);
++      res = nir_bcsel(b, take_abs, bcast, res);
++      nir_store_var(b, result, res, 1);
++
++      nir_def *now_done = nir_ior(b, was_done, nir_ior(b, hit_abs, hit_rel));
++      nir_store_var(b, done, now_done, 1);
++      nir_break_if(b, nir_vote_all(b, 1, now_done));
++   }
++   nir_pop_loop(b, loop);
++
++   return nir_load_var(b, result);
++}
++
+ static nir_def *
+ lower_shuffle(nir_builder *b, nir_instr *instr, void *data)
+ {
+@@ -846,11 +907,25 @@ lower_shuffle(nir_builder *b, nir_instr *instr, void *data)
+    nir_def *index = intrin->src[1].ssa;
+ 
+    if (intrin->intrinsic == nir_intrinsic_shuffle) {
++      nir_def *abs_index = index;
++      /* A uniform absolute index is a broadcast, which needs no loop. The new
++       * paths are only used for 32-bit values; other bit sizes keep the
++       * rotate-based lowering below.
++       */
++      if (!abs_index->divergent && val->bit_size == 32) {
++         nir_def *res = nir_read_invocation_cond_ir3(
++            b, val->bit_size, val,
++            nir_ieq(b, nir_load_subgroup_invocation(b), abs_index));
++         res->divergent = false;
++         return res;
++      }
+       /* The hw only does relative shuffles/rotates so transform shuffle(val, x)
+        * into rotate(val, x - gl_SubgroupInvocationID) which is valid since we
+        * make sure to only use it with uniform indices.
+        */
+       index = nir_isub(b, index, nir_load_subgroup_invocation(b));
++      if (val->bit_size == 32)
++         return make_shuffle_mixed(b, val, abs_index, index);
+    }
+ 
+    if (!index->divergent) {

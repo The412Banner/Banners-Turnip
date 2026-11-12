@@ -334,6 +334,12 @@ def main():
         + link(wn + "0004-tu-Invalidate-bindless-descriptors-through-the-A8XX-.patch") + ", "
         + link(wn + "0005-tu-kgsl-Fetch-A8XX-command-streams-through-a-virtual.patch")
         + " three GPU hang fixes. His IB cache (0006) is left out: it broke the Linux driver on some Adreno 840s.",
+        "- **From DroidDeck's Turnip** (" + ddrv + ", GPL-3.0; *Nikolay Nadorichev*, *maxjivi05*): "
+        + link("patches/a8xx-dd/0006-ir3-shuffle-broadcast.patch") + " subgroup shuffles with a broadcast index no "
+        "longer loop once per invocation, and "
+        + link("patches/a8xx-dd/0007-tu-descriptor-pool-heap-alignment.patch") + " descriptor sets stay aligned "
+        "after vkResetDescriptorPool (invisible UI in Detroit: Become Human). See "
+        + link("patches/a8xx-dd/SOURCE") + ".",
         "- Plus **Every driver** above. Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy, `TU_DEBUG=deck_emu` if a "
         "game won't start.",
     ]
@@ -370,7 +376,11 @@ def main():
         "the 64 KiB script, with " + link("patches/a8xx_no_double_threadsize.py") + "); LRZ controls reset after the end-of-pass flush (*Gustash*); buffer descriptors of 1 GiB "
         "and more keep their size (*airidosas252*, now also in Mesa); RB_RESOLVE_CR_CNTL and LRZ "
         "color mask as the Qualcomm driver (*adapted from " + vauzi + "*); extra chip IDs for the A829, A845 and "
-        "A850, and no category-4 repeat on the A845 / A850 (*misakayuuki*); GMEM off on the A810 and A829.",
+        "A850, and no category-4 repeat on the A845 / A850 (*misakayuuki*); GMEM off on the A810 and A829; the "
+        "shuffle broadcast of " + link("patches/a8xx-dd/SOURCE") + ".",
+        "- **Every GPU:** descriptor sets stay aligned after vkResetDescriptorPool ("
+        + link("patches/a8xx-dd/0007-tu-descriptor-pool-heap-alignment.patch") + ", *Nikolay Nadorichev*, "
+        "*maxjivi05*, " + ddrv + ").",
         "- Sources: " + link("patches/one/one_fixes.py") + " and " + link("patches/one/dd/SOURCE.md") + ". Its recipe "
         "was tested on an Adreno 830, 750 and 722 before it joined these builds.",
     ])

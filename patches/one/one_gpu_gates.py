@@ -20,6 +20,7 @@ each one into a check on the chip, so A6xx and A7xx keep what the standard drive
   5. gen8 pipeline patch "FDM for A810,825,829,830": its A830 check was always true, so
      per-layer FDM and forced sample interpolation were off on every GPU; it now compares
      the two A830 chip IDs.
+  6. a8xx-dd 0006 shuffle broadcast: the new lowering only on ir3 gen >= 8.
 
 Also keeps the numInts >= 2 bounds check that gen8 "HACK: u_gralloc: always use
 ubwc detection path" removed; the UBWC flag is still read without the 'gmsm' magic.
@@ -111,6 +112,32 @@ edit("src/freedreno/vulkan/tu_pipeline.cc",
      "   const bool is_a830 = chip_id == 0xffff44050000ull || chip_id == 0x44050001ull;\n",
      "A830 check in the FDM / sample-interp keys (gen8 pipeline patch)")
 
+# 6. a8xx-dd 0006 shuffle broadcast on A8xx only: the pass gets the shader, and the two new
+#    paths are taken on ir3 gen >= 8; other GPUs keep Mesa's rotate-based lowering.
+sub_file = "src/freedreno/ir3/ir3_lower_subgroups.c"
+edit(sub_file,
+     "   return nir_shader_lower_instructions(nir, filter_shuffle, lower_shuffle,\n"
+     "                                        NULL);\n",
+     "   return nir_shader_lower_instructions(nir, filter_shuffle, lower_shuffle,\n"
+     "                                        shader);\n",
+     "shuffle broadcast (a8xx-dd 0006): pass the shader")
+edit(sub_file,
+     "      nir_def *abs_index = index;\n",
+     "      nir_def *abs_index = index;\n"
+     "      const bool a8xx_shuffle =\n"
+     "         ((const struct ir3_shader *)data)->compiler->gen >= 8;\n",
+     "shuffle broadcast (a8xx-dd 0006): gen check")
+edit(sub_file,
+     "      if (!abs_index->divergent && val->bit_size == 32) {\n",
+     "      if (a8xx_shuffle && !abs_index->divergent && val->bit_size == 32) {\n",
+     "shuffle broadcast (a8xx-dd 0006): uniform index")
+edit(sub_file,
+     "      if (val->bit_size == 32)\n"
+     "         return make_shuffle_mixed(b, val, abs_index, index);\n",
+     "      if (a8xx_shuffle && val->bit_size == 32)\n"
+     "         return make_shuffle_mixed(b, val, abs_index, index);\n",
+     "shuffle broadcast (a8xx-dd 0006): divergent index")
+
 # Gralloc: keep the bounds check the gen8 hack dropped.
 edit("src/util/u_gralloc/u_gralloc_fallback.c",
      "   bool ubwc = hnd->handle->data[hnd->handle->numFds + 1] & 0x08000000;\n"
@@ -129,6 +156,7 @@ checks = [
     ("src/freedreno/common/freedreno_dev_info.h", "disable_gmem", "gen8 stack (disable_gmem property)"),
     ("src/freedreno/vulkan/tu_util.h", "DECK_EMU", "gen8 stack (DECK_EMU)"),
     ("src/freedreno/vulkan/tu_mesh.cc", "", "winnative 0001 (tu_mesh.cc)"),
+    ("src/freedreno/vulkan/tu_descriptor_set.h", "TU_DESCRIPTOR_SET_ALIGNMENT", "a8xx-dd 0007 (descriptor pool alignment)"),
 ]
 for path, needle, label in checks:
     p = Path(path)
