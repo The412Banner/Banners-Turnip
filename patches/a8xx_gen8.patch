@@ -329,10 +329,9 @@ diff --git a/src/freedreno/common/freedreno_devices.py b/src/freedreno/common/fr
 index 452695fc5db..d9c600ef22c 100644
 --- a/src/freedreno/common/freedreno_devices.py
 +++ b/src/freedreno/common/freedreno_devices.py
-@@ -1291,7 +1291,7 @@
+@@ -1291,6 +1291,6 @@
          has_dp2acc = False,
          reg_size_vec4 = 96,
-         has_rt_workaround = False,
 -        supports_double_threadsize = False,
 +        supports_double_threadsize = True,
          has_dual_wave_dispatch = True,

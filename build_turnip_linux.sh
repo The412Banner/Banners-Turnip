@@ -180,13 +180,15 @@ fetch_mesa(){
 	[ "$(git -C "$mesa" rev-parse HEAD)" = "$MESA_COMMIT" ] || die "Mesa checkout is not $MESA_COMMIT"
 }
 
-# The KGSL fixes the Linux runtime needs; both are device-proven there (patches/linux/SOURCE).
+# The KGSL fix the Linux runtime needs, device-proven there (patches/linux/SOURCE). The second one
+# (kgsl-no-calibrated-timestamps) was dropped 2026-11-12: Mesa e4415d24 (MR 46108) implements the
+# KGSL GPU timestamp, so the tree is only checked for it.
 # None of the Wayland leg's bionic work applies here: glibc has pthread_cancel, Mesa's own Linux
 # detection is already right, and the zero-copy AHardwareBuffer layer is Android-only.
 apply_linux_patches(){
 	cd "$mesa"
 	local p out rc
-	for p in "$lx_patches/kgsl-drm-node.patch" "$lx_patches/kgsl-no-calibrated-timestamps.patch"; do
+	for p in "$lx_patches/kgsl-drm-node.patch"; do
 		[ -f "$p" ] || die "missing $p"
 		log "applying $(basename "$p")"
 		rc=0
@@ -196,13 +198,11 @@ apply_linux_patches(){
 		[ -z "$(git status --porcelain --untracked-files=all | grep -E '\.(rej|orig)$' || true)" ] \
 			|| die "$(basename "$p") left .rej/.orig files"
 	done
-	# Assert the result rather than trust the patch: the whole point of both is these three lines.
+	# Assert the result rather than trust the patch: the whole point is these lines.
 	grep -q "local_major = device->master_major" src/freedreno/vulkan/tu_knl_kgsl.cc \
 		|| die "kgsl-drm-node did not reach tu_knl_kgsl.cc"
-	grep -q "bool has_calibrated_timestamps" src/freedreno/vulkan/tu_device.cc \
-		|| die "kgsl-no-calibrated-timestamps did not reach tu_device.cc"
-	grep -q "kgsl_device_get_gpu_timestamp" src/freedreno/vulkan/tu_knl_kgsl.cc \
-		&& die "kgsl_device_get_gpu_timestamp is still in tu_knl_kgsl.cc"
+	grep -q "kgsl_read_calibrated_ts" src/freedreno/vulkan/tu_knl_kgsl.cc \
+		|| die "Mesa lacks the upstream KGSL GPU timestamp (MR 46108); this Mesa is too old"
 
 	# Termux 0014, as the Wayland leg does it: the KGSL timestamp wait must not assert on an
 	# unexpected errno. The kernel is the same Android kernel on this path. Mesa does this itself
@@ -446,7 +446,7 @@ report = {
     "sysroot": {k: pkgs[k] for k in ("glibc", "libdrm", "wayland", "libxcb") if k in pkgs},
     "linux_patches": {
         "kgsl_drm_node": "applied",
-        "kgsl_no_calibrated_timestamps": "applied",
+        "kgsl_calibrated_timestamps": "upstream (MR 46108)",
         "kgsl_wait_assert": os.environ["R_KGSL"],
         "source": os.environ["R_LXSRC"],
     },

@@ -12,7 +12,9 @@ predicated on those tables.
 
 [Banners-Turnip: rebased onto Mesa 4da08cb. Upstream folded tu_shader_serialize/
 deserialize into tu_shader_cache_process_blob(), so the two MESA_SHADER_COMPUTE
-blob hunks became one io.bytes(&shader->mesh) case there. Otherwise unchanged.]
+blob hunks became one io.bytes(&shader->mesh) case there. 2026-11-12: Mesa 573625ed
+made has_rt_workaround the quirk QCTDD10497382_rt_workaround; the compute dispatch
+copy uses FD_QUIRK() now, as Droid-Deck/Drivers f1164787. Otherwise unchanged.]
 ---
 diff --git a/src/compiler/nir/nir_divergence_analysis.c b/src/compiler/nir/nir_divergence_analysis.c
 index 7f5686d1..d670aa48 100644
@@ -547,7 +549,7 @@ index ca6e287e..c0ae61a4 100644
 +                                            .localsizez = local_size[2] - 1));
 +   }
 +
-+   if (cmd->device->physical_device->info->props.has_rt_workaround &&
++   if (FD_QUIRK(cmd->device->physical_device->info, QCTDD10497382_rt_workaround) &&
 +       v->info.uses_ray_intersection) {
 +      tu_set_render_mode<CHIP>(cs, { .shader_uses_rt = true });
 +   }

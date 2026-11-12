@@ -381,8 +381,8 @@ def main():
       "with Bannerlator's zero-copy patch. CI checks each one before it is attached. They don't load as AdrenoTools "
       "drivers, and the X11 zips don't work as Wayland game drivers.")
     w("- **Linux zips:** the same commit and patches, cross-built against glibc (KGSL, Wayland + X11 WSI) for "
-      "Bannerlator's Arch Linux ARM runtime, plus the two KGSL fixes that runtime needs "
-      + link("patches/linux/kgsl-drm-node.patch") + " and " + link("patches/linux/kgsl-no-calibrated-timestamps.patch")
+      "Bannerlator's Arch Linux ARM runtime, plus the KGSL fix that runtime needs "
+      + link("patches/linux/kgsl-drm-node.patch")
       + ". They ship the ICD and its manifest only: the libraries are the runtime's own. CI checks each one.")
     w("")
     w("| File | SHA-256 |")
