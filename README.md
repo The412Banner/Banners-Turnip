@@ -124,12 +124,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`34c83ff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/34c83ff13b3b1d914280c8902d170b60f1e3b161) |
+| **Commit** | [`b0b8025`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0b80253d8158134579e4f59c89fb346b89df0ce) |
 | **Commit date** | 2026-11-12 |
-| **Commit title** | jay: Use F32 for accumulator copies inserted by RA |
+| **Commit title** | radeonsi/mm: Create the second context with same flags as main context |
 | **Build date** | 20261112 |
-| **Downloads** | X11 / AdrenoTools: 3 ZIPs · Bannerlator Wayland: 3 ZIPs · Linux runtime: 0 ZIPs |
-| **Release** | [v27.0.0-20261112](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112) |
+| **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
+| **Release** | [v27.0.0-20261112-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -139,10 +139,10 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261112-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r2) | 2026-11-12 | [`b0b8025`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0b80253d8158134579e4f59c89fb346b89df0ce) | radeonsi/mm: Create the second context with same flags as main context | Vulkan 1.4.368 |
 | [v27.0.0-20261112](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112) | 2026-11-12 | [`34c83ff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/34c83ff13b3b1d914280c8902d170b60f1e3b161) | jay: Use F32 for accumulator copies inserted by RA | Vulkan 1.4.368 |
 | [v27.0.0-20261111-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r4) | 2026-11-11 | [`91a36b0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/91a36b060e966e2a1f3957c95d3184b33b03b901) | tu: Don't emit scissors when scissor_count = 0. | Vulkan 1.4.368 |
 | [v27.0.0-20261111-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r3) | 2026-11-11 | [`20a455b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/20a455bed795148c07a3adc3eed1e84c5ed4a785) | mailmap: update my email | Vulkan 1.4.368 |
-| [v27.0.0-20261111-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261111-r2) | 2026-11-11 | [`5223876`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/52238762dd44939c2912185f4df00b90d8306225) | kk: Disable KK_WORKAROUND_10 on M3+ | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
