@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261113](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113) | 2026-11-13 | [`4fc6add`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4fc6adda4db6f2433be4ade2fa1795d9c2d8047b) | iris: Support 2 dri options of poly trigger in TBIMR (GFX35+) | Vulkan 1.4.368 |
 | [v27.0.0-20261112-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r5) | 2026-11-12 | [`de9afd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/de9afd5d2a223897ae7aa43734ca83a517522b0f) | torx: Depend on idep_mesautilformat for generated format headers | Vulkan 1.4.368 |
 | [v27.0.0-20261112-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r4) | 2026-11-12 | [`0f938ca`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0f938cad4a8a635615518f71a3f099a20d97a485) | Revert "frontends/va: Switch to graphics context when creating protected surface" | Vulkan 1.4.368 |
 | [v27.0.0-20261112-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r3) | 2026-11-12 | [`73196ec`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73196ec50b0ea96d6c8f5b100bf6f7f6781b6627) | tu: Allow texel buffer and SSBO emulation on a6xx | Vulkan 1.4.368 |
