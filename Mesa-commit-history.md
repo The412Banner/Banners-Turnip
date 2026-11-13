@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261113-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113-r3) | 2026-11-13 | [`4dc3d9c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4dc3d9cc9bf1be7627ac6ac74479c600ae511f5e) | teflon/tests: Remove model files from test suite | Vulkan 1.4.368 |
 | [v27.0.0-20261113-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113-r2) | 2026-11-13 | [`9cc3f4f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cc3f4f7ddb3df28348f4e26a960f746ea75f389) | util/rust: add build root to the include dirs | Vulkan 1.4.368 |
 | [v27.0.0-20261113](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113) | 2026-11-13 | [`4fc6add`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4fc6adda4db6f2433be4ade2fa1795d9c2d8047b) | iris: Support 2 dri options of poly trigger in TBIMR (GFX35+) | Vulkan 1.4.368 |
 | [v27.0.0-20261112-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r5) | 2026-11-12 | [`de9afd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/de9afd5d2a223897ae7aa43734ca83a517522b0f) | torx: Depend on idep_mesautilformat for generated format headers | Vulkan 1.4.368 |
