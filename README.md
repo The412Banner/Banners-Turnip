@@ -124,12 +124,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`4fc6add`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4fc6adda4db6f2433be4ade2fa1795d9c2d8047b) |
+| **Commit** | [`9cc3f4f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cc3f4f7ddb3df28348f4e26a960f746ea75f389) |
 | **Commit date** | 2026-11-13 |
-| **Commit title** | iris: Support 2 dri options of poly trigger in TBIMR (GFX35+) |
+| **Commit title** | util/rust: add build root to the include dirs |
 | **Build date** | 20261113 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261113](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113) |
+| **Release** | [v27.0.0-20261113-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -139,12 +139,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261113-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113-r2) | 2026-11-13 | [`9cc3f4f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cc3f4f7ddb3df28348f4e26a960f746ea75f389) | util/rust: add build root to the include dirs | Vulkan 1.4.368 |
 | [v27.0.0-20261113](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113) | 2026-11-13 | [`4fc6add`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4fc6adda4db6f2433be4ade2fa1795d9c2d8047b) | iris: Support 2 dri options of poly trigger in TBIMR (GFX35+) | Vulkan 1.4.368 |
 | [v27.0.0-20261112-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r5) | 2026-11-12 | [`de9afd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/de9afd5d2a223897ae7aa43734ca83a517522b0f) | torx: Depend on idep_mesautilformat for generated format headers | Vulkan 1.4.368 |
 | [v27.0.0-20261112-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r4) | 2026-11-12 | [`0f938ca`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0f938cad4a8a635615518f71a3f099a20d97a485) | Revert "frontends/va: Switch to graphics context when creating protected surface" | Vulkan 1.4.368 |
 | [v27.0.0-20261112-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r3) | 2026-11-12 | [`73196ec`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/73196ec50b0ea96d6c8f5b100bf6f7f6781b6627) | tu: Allow texel buffer and SSBO emulation on a6xx | Vulkan 1.4.368 |
 | [v27.0.0-20261112-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r2) | 2026-11-12 | [`b0b8025`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/b0b80253d8158134579e4f59c89fb346b89df0ce) | radeonsi/mm: Create the second context with same flags as main context | Vulkan 1.4.368 |
-| [v27.0.0-20261112](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112) | 2026-11-12 | [`34c83ff`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/34c83ff13b3b1d914280c8902d170b60f1e3b161) | jay: Use F32 for accumulator copies inserted by RA | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
