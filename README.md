@@ -124,12 +124,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`4dc3d9c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4dc3d9cc9bf1be7627ac6ac74479c600ae511f5e) |
+| **Commit** | [`26a3902`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/26a390213ac469e6c4ea80bade1e89496d136235) |
 | **Commit date** | 2026-11-13 |
-| **Commit title** | teflon/tests: Remove model files from test suite |
+| **Commit title** | etnaviv: Translate depth/stencil via eil |
 | **Build date** | 20261113 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261113-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113-r3) |
+| **Release** | [v27.0.0-20261113-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -139,10 +139,10 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261113-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113-r4) | 2026-11-13 | [`26a3902`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/26a390213ac469e6c4ea80bade1e89496d136235) | etnaviv: Translate depth/stencil via eil | Vulkan 1.4.368 |
 | [v27.0.0-20261113-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113-r3) | 2026-11-13 | [`4dc3d9c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4dc3d9cc9bf1be7627ac6ac74479c600ae511f5e) | teflon/tests: Remove model files from test suite | Vulkan 1.4.368 |
 | [v27.0.0-20261113-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113-r2) | 2026-11-13 | [`9cc3f4f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9cc3f4f7ddb3df28348f4e26a960f746ea75f389) | util/rust: add build root to the include dirs | Vulkan 1.4.368 |
 | [v27.0.0-20261113](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113) | 2026-11-13 | [`4fc6add`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4fc6adda4db6f2433be4ade2fa1795d9c2d8047b) | iris: Support 2 dri options of poly trigger in TBIMR (GFX35+) | Vulkan 1.4.368 |
-| [v27.0.0-20261112-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261112-r5) | 2026-11-12 | [`de9afd5`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/de9afd5d2a223897ae7aa43734ca83a517522b0f) | torx: Depend on idep_mesautilformat for generated format headers | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
