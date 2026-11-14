@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261114-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r4) | 2026-11-14 | [`c9ce420`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c9ce420e39bc5d97d3e54ef54ec9603a45772bb2) | vulkan: fix lookup of VkRenderingAttachmentLocationInfo | Vulkan 1.4.368 |
 | [v27.0.0-20261114-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r3) | 2026-11-14 | [`d4d193a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4d193a299525fa9b417120746bcd7f8af8b8407) | freedreno/ci: Drop redundant RUSTICL_ENABLE variables | Vulkan 1.4.368 |
 | [v27.0.0-20261114-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r2) | 2026-11-14 | [`013e940`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/013e940ca5b36acaef03fcad2da1b666fcdc0eb6) | freedreno/a2xx: sample 1D textures | Vulkan 1.4.368 |
 | [v27.0.0-20261114](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114) | 2026-11-14 | [`5dc8f58`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5dc8f58febcb9c520ea0f0ea3d758dfbf4c67f11) | nak: use fclamp_nv | Vulkan 1.4.368 |
