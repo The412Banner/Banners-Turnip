@@ -124,12 +124,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`013e940`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/013e940ca5b36acaef03fcad2da1b666fcdc0eb6) |
+| **Commit** | [`d4d193a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4d193a299525fa9b417120746bcd7f8af8b8407) |
 | **Commit date** | 2026-11-14 |
-| **Commit title** | freedreno/a2xx: sample 1D textures |
+| **Commit title** | freedreno/ci: Drop redundant RUSTICL_ENABLE variables |
 | **Build date** | 20261114 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261114-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r2) |
+| **Release** | [v27.0.0-20261114-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -139,6 +139,7 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261114-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r3) | 2026-11-14 | [`d4d193a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4d193a299525fa9b417120746bcd7f8af8b8407) | freedreno/ci: Drop redundant RUSTICL_ENABLE variables | Vulkan 1.4.368 |
 | [v27.0.0-20261114-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r2) | 2026-11-14 | [`013e940`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/013e940ca5b36acaef03fcad2da1b666fcdc0eb6) | freedreno/a2xx: sample 1D textures | Vulkan 1.4.368 |
 | [v27.0.0-20261114](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114) | 2026-11-14 | [`5dc8f58`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5dc8f58febcb9c520ea0f0ea3d758dfbf4c67f11) | nak: use fclamp_nv | Vulkan 1.4.368 |
 | [v27.0.0-20261113-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261113-r4) | 2026-11-13 | [`26a3902`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/26a390213ac469e6c4ea80bade1e89496d136235) | etnaviv: Translate depth/stencil via eil | Vulkan 1.4.368 |
