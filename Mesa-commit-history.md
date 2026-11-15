@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261115-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261115-r3) | 2026-11-15 | [`7c839c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c839c81bf20bd4772d551d0fb01383d9eeb956e) | dzn: Apply all dependencies in CmdWaitEvents2 | Vulkan 1.4.368 |
 | [v27.0.0-20261115-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261115-r2) | 2026-11-15 | [`9690e02`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9690e0234504d63fd44ca5a93b5895b757229544) | etnaviv/ml: Fix add/subtract input tensor operand | Vulkan 1.4.368 |
 | [v27.0.0-20261115](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261115) | 2026-11-15 | [`9591426`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95914260c9a6ce20e8df1933d87cf488d6e6d463) | etnaviv/ml: Fix function parameter names | Vulkan 1.4.368 |
 | [v27.0.0-20261114-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r4) | 2026-11-14 | [`c9ce420`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c9ce420e39bc5d97d3e54ef54ec9603a45772bb2) | vulkan: fix lookup of VkRenderingAttachmentLocationInfo | Vulkan 1.4.368 |
