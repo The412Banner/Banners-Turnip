@@ -124,12 +124,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`9591426`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95914260c9a6ce20e8df1933d87cf488d6e6d463) |
+| **Commit** | [`9690e02`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9690e0234504d63fd44ca5a93b5895b757229544) |
 | **Commit date** | 2026-11-15 |
-| **Commit title** | etnaviv/ml: Fix function parameter names |
+| **Commit title** | etnaviv/ml: Fix add/subtract input tensor operand |
 | **Build date** | 20261115 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261115](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261115) |
+| **Release** | [v27.0.0-20261115-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261115-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -139,10 +139,10 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261115-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261115-r2) | 2026-11-15 | [`9690e02`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9690e0234504d63fd44ca5a93b5895b757229544) | etnaviv/ml: Fix add/subtract input tensor operand | Vulkan 1.4.368 |
 | [v27.0.0-20261115](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261115) | 2026-11-15 | [`9591426`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/95914260c9a6ce20e8df1933d87cf488d6e6d463) | etnaviv/ml: Fix function parameter names | Vulkan 1.4.368 |
 | [v27.0.0-20261114-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r4) | 2026-11-14 | [`c9ce420`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c9ce420e39bc5d97d3e54ef54ec9603a45772bb2) | vulkan: fix lookup of VkRenderingAttachmentLocationInfo | Vulkan 1.4.368 |
 | [v27.0.0-20261114-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r3) | 2026-11-14 | [`d4d193a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/d4d193a299525fa9b417120746bcd7f8af8b8407) | freedreno/ci: Drop redundant RUSTICL_ENABLE variables | Vulkan 1.4.368 |
-| [v27.0.0-20261114-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261114-r2) | 2026-11-14 | [`013e940`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/013e940ca5b36acaef03fcad2da1b666fcdc0eb6) | freedreno/a2xx: sample 1D textures | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
