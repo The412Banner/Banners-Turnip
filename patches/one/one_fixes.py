@@ -7,6 +7,7 @@ All GPUs (generic code, no chip check):
   dd/tu/0001   barrier flushes kept at a suspended render pass chain
   dd/nir/0001  32-bit SSBO offset wrap
   dd/scripts/process_heap_usage.py   memory budget counts the whole process
+  dd/scripts/autotune_bandwidth.py   GMEM autotuner bandwidth multiplier 11 -> 10
 Android, all Adreno (u_gralloc and vk_android.c are only built for -Dplatforms=android):
   dd/scripts/add_aimapper_gralloc.py   IMapper5 gralloc backend
   dd/scripts/add_ubwc_swapchain_usage.py   UBWC swapchain buffers
@@ -126,6 +127,7 @@ def main():
                 "nir/0001-nir-lower-explicit-io-keep-32bit-offset-wrap.patch"):
         run_patch(rel)
     run_script("scripts/process_heap_usage.py")
+    run_script("scripts/autotune_bandwidth.py")
     run_script("scripts/add_aimapper_gralloc.py")
     run_script("scripts/add_ubwc_swapchain_usage.py")
     for rel in ("lrz/0001-tu-a8xx-lrz-reset-cntl-after-flush.patch",

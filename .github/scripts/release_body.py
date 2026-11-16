@@ -365,7 +365,7 @@ def main():
         "every other GPU behaves as in its own driver here. Compute shared memory is 32 KiB on every GPU.",
         "- **Every GPU:** **Every driver** above, plus from " + ddrv + " (copied unchanged, with permission): "
         "render-pass barrier flushes kept (UE5 Nanite) and 32-bit SSBO offset wrap (*K11MCH1*); memory budget "
-        "counts the whole process (*Charles DuBose*).",
+        "counts the whole process (*Charles DuBose*); GMEM autotuner bandwidth multiplier 11 -> 10 (*maxjivi05*).",
         "- **Every GPU on Android:** IMapper5 gralloc backend and UBWC-compressed swapchain buffers (*Leb-Sun*, "
         + ddrv + ").",
         "- **A6xx / A7xx:** as Standard plus the above.",
