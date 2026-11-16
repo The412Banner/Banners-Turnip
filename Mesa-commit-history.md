@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261116-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261116-r2) | 2026-11-16 | [`fa0649b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa0649bfcd6950853e14274005c5fc8363128e53) | glsl: Fix linking of various FS inout layout qualifiers pre-GLSL-1.50. | Vulkan 1.4.368 |
 | [v27.0.0-20261116](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261116) | 2026-11-15 | [`13baeb7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/13baeb70c066a9f82d2bcfb29f06e4865212affa) | d3d12: Handle shader variant compilation failures | Vulkan 1.4.368 |
 | [v27.0.0-20261115-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261115-r3) | 2026-11-15 | [`7c839c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c839c81bf20bd4772d551d0fb01383d9eeb956e) | dzn: Apply all dependencies in CmdWaitEvents2 | Vulkan 1.4.368 |
 | [v27.0.0-20261115-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261115-r2) | 2026-11-15 | [`9690e02`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/9690e0234504d63fd44ca5a93b5895b757229544) | etnaviv/ml: Fix add/subtract input tensor operand | Vulkan 1.4.368 |
