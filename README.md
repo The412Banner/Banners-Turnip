@@ -124,12 +124,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`fc11439`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fc114390908817cedb3f0060904d4dbe8773b0e9) |
-| **Commit date** | 2026-11-16 |
-| **Commit title** | anv: Do not expose VIDEO features if DRM without Y0/4 tiling. |
-| **Build date** | 20261116 |
+| **Commit** | [`8c27698`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8c276988e24b1876e5334e3491ac914967488f0a) |
+| **Commit date** | 2026-11-17 |
+| **Commit title** | freedreno/a5xx: Define some more regs I've turned up in RE. |
+| **Build date** | 20261117 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261116-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261116-r3) |
+| **Release** | [v27.0.0-20261117](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261117) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -139,10 +139,9 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261117](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261117) | 2026-11-17 | [`8c27698`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8c276988e24b1876e5334e3491ac914967488f0a) | freedreno/a5xx: Define some more regs I've turned up in RE. | Vulkan 1.4.368 |
 | [v27.0.0-20261116-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261116-r3) | 2026-11-16 | [`fc11439`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fc114390908817cedb3f0060904d4dbe8773b0e9) | anv: Do not expose VIDEO features if DRM without Y0/4 tiling. | Vulkan 1.4.368 |
 | [v27.0.0-20261116-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261116-r2) | 2026-11-16 | [`fa0649b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa0649bfcd6950853e14274005c5fc8363128e53) | glsl: Fix linking of various FS inout layout qualifiers pre-GLSL-1.50. | Vulkan 1.4.368 |
-| [v27.0.0-20261116](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261116) | 2026-11-16 | [`13baeb7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/13baeb70c066a9f82d2bcfb29f06e4865212affa) | d3d12: Handle shader variant compilation failures | Vulkan 1.4.368 |
-| [v27.0.0-20261115-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261115-r3) | 2026-11-15 | [`7c839c8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/7c839c81bf20bd4772d551d0fb01383d9eeb956e) | dzn: Apply all dependencies in CmdWaitEvents2 | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
