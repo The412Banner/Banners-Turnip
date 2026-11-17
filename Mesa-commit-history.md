@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261117-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261117-r2) | 2026-11-17 | [`1fe05a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1fe05a796556db4f7bcdf148a4cf44d12554bb23) | pan/bi: Run CSE before load_store_vectorize | Vulkan 1.4.368 |
 | [v27.0.0-20261117](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261117) | 2026-11-17 | [`8c27698`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8c276988e24b1876e5334e3491ac914967488f0a) | freedreno/a5xx: Define some more regs I've turned up in RE. | Vulkan 1.4.368 |
 | [v27.0.0-20261116-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261116-r3) | 2026-11-16 | [`fc11439`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fc114390908817cedb3f0060904d4dbe8773b0e9) | anv: Do not expose VIDEO features if DRM without Y0/4 tiling. | Vulkan 1.4.368 |
 | [v27.0.0-20261116-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261116-r2) | 2026-11-16 | [`fa0649b`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fa0649bfcd6950853e14274005c5fc8363128e53) | glsl: Fix linking of various FS inout layout qualifiers pre-GLSL-1.50. | Vulkan 1.4.368 |
