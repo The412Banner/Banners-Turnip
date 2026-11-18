@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261118](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118) | 2026-11-18 | [`da2d473`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da2d473159699a511d6509cc3ddbdc8cd5ff457e) | pan: drop bi_lower_divergent_indirects pass | Vulkan 1.4.368 |
 | [v27.0.0-20261117-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261117-r3) | 2026-11-17 | [`01638af`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/01638af585b55e2119c3ed91c8b45205032694df) | docs: update calendar for 26.3.0 | Vulkan 1.4.368 |
 | [v27.0.0-20261117-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261117-r2) | 2026-11-17 | [`1fe05a7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1fe05a796556db4f7bcdf148a4cf44d12554bb23) | pan/bi: Run CSE before load_store_vectorize | Vulkan 1.4.368 |
 | [v27.0.0-20261117](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261117) | 2026-11-17 | [`8c27698`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8c276988e24b1876e5334e3491ac914967488f0a) | freedreno/a5xx: Define some more regs I've turned up in RE. | Vulkan 1.4.368 |
