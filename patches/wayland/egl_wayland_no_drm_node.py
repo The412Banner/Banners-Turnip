@@ -63,18 +63,31 @@ need("   if (disp->Options.ForceSoftware)\n"
      "      return dri2_initialize_wayland_drm(disp);",
      "the stock dispatcher")
 need("zwp_linux_dmabuf_v1_get_default_feedback(", "the DRM path asks for default feedback")
-need("MIN2(version, ZWP_LINUX_DMABUF_V1_GET_DEFAULT_FEEDBACK_SINCE_VERSION)",
-     "dma-buf bound at version 4 so the feedback is read")
+# Mesa main (2026-11) binds the dma-buf global at MIN2(version, the set_sampling_device version), which
+# is newer than the feedback request, so a version 4 global is still bound at 4; the feedback request
+# stays gated on the bound version.
+bind_v4 = "MIN2(version, ZWP_LINUX_DMABUF_V1_GET_DEFAULT_FEEDBACK_SINCE_VERSION)"
+bind_v6 = "MIN2(version, ZWP_LINUX_BUFFER_PARAMS_V1_SET_SAMPLING_DEVICE_SINCE_VERSION)"
+if s.count(bind_v4) != 1:
+    need(bind_v6, "dma-buf bound at least at version 4 so the feedback is read")
+need("zwp_linux_dmabuf_v1_get_version(dri2_dpy->wl_dmabuf) >=\n"
+     "          ZWP_LINUX_DMABUF_V1_GET_DEFAULT_FEEDBACK_SINCE_VERSION)",
+     "the feedback request is gated on the bound version")
 # An unresolvable main_device leaves fd_render_gpu at -1 instead of failing anything itself.
 need("   node = loader_get_render_node(dev);\n"
      "   if (!node)\n"
      "      return;\n",
      "main_device without a render node is ignored")
 
+loader_ext = ("   dri2_dpy->loader_extensions = dri2_dpy->kopper ? kopper_loader_extensions\n"
+              "                                                  : dri2_loader_extensions;\n")
+loader_funcs = ("   dri2_dpy->loader_funcs = dri2_dpy->kopper ? &kopper_loader_funcs\n"
+                "                                             : &dri2_loader_funcs;\n")
+loader_line = loader_ext if s.count(loader_ext) == 1 else loader_funcs
+
 drm_old = ("   dri2_detect_swrast_kopper(disp);\n"
            "\n"
-           "   dri2_dpy->loader_extensions = dri2_dpy->kopper ? kopper_loader_extensions\n"
-           "                                                  : dri2_loader_extensions;\n"
+           + loader_line +
            "\n"
            "   if (!dri2_create_screen(disp))\n"
            "      goto cleanup;\n"
@@ -116,8 +129,7 @@ drm_new = ("   dri2_detect_swrast_kopper(disp);\n"
            "      dri2_dpy->is_render_node = false;\n"
            "   }\n"
            "\n"
-           "   dri2_dpy->loader_extensions = dri2_dpy->kopper ? kopper_loader_extensions\n"
-           "                                                  : dri2_loader_extensions;\n"
+           + loader_line +
            "\n"
            "   if (!dri2_create_screen(disp))\n"
            "      goto cleanup;\n"
