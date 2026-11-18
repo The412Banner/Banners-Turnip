@@ -124,12 +124,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`0e9e108`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e9e1086bb86721e21693763c6bf35415d93fff5) |
+| **Commit** | [`f0a23cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a23cc9c9357e8a865a7cee8cac98de863d8a90) |
 | **Commit date** | 2026-11-18 |
-| **Commit title** | zink: only attempt to resolve when nr_samples > 1 |
+| **Commit title** | docs: update calendar for 26.3.1 |
 | **Build date** | 20261118 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261118-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118-r2) |
+| **Release** | [v27.0.0-20261118-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -139,6 +139,7 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261118-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118-r3) | 2026-11-18 | [`f0a23cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a23cc9c9357e8a865a7cee8cac98de863d8a90) | docs: update calendar for 26.3.1 | Vulkan 1.4.368 |
 | [v27.0.0-20261118-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118-r2) | 2026-11-18 | [`0e9e108`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e9e1086bb86721e21693763c6bf35415d93fff5) | zink: only attempt to resolve when nr_samples > 1 | Vulkan 1.4.368 |
 | [fastgl-x11egl-mesa-d8cfbe8-r1](https://github.com/The412Banner/Banners-Turnip/releases/tag/fastgl-x11egl-mesa-d8cfbe8-r1) | 2026-11-18 |  |  |  |
 | [v27.0.0-20261118](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118) | 2026-11-18 | [`da2d473`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da2d473159699a511d6509cc3ddbdc8cd5ff457e) | pan: drop bi_lower_divergent_indirects pass | Vulkan 1.4.368 |

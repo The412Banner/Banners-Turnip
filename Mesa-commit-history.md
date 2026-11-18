@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261118-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118-r3) | 2026-11-18 | [`f0a23cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a23cc9c9357e8a865a7cee8cac98de863d8a90) | docs: update calendar for 26.3.1 | Vulkan 1.4.368 |
 | [v27.0.0-20261118-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118-r2) | 2026-11-18 | [`0e9e108`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e9e1086bb86721e21693763c6bf35415d93fff5) | zink: only attempt to resolve when nr_samples > 1 | Vulkan 1.4.368 |
 | [v27.0.0-20261118](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118) | 2026-11-18 | [`da2d473`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/da2d473159699a511d6509cc3ddbdc8cd5ff457e) | pan: drop bi_lower_divergent_indirects pass | Vulkan 1.4.368 |
 | [v27.0.0-20261117-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261117-r3) | 2026-11-17 | [`01638af`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/01638af585b55e2119c3ed91c8b45205032694df) | docs: update calendar for 26.3.0 | Vulkan 1.4.368 |
