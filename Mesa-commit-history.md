@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261119-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119-r2) | 2026-11-19 | [`5755e59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5755e59f03b02a6fff2f2b47fb4d7efc5e789125) | vulkan: ignore cbAttachmentCount when needed | Vulkan 1.4.368 |
 | [v27.0.0-20261119](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119) | 2026-11-18 | [`69489e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/69489e2167b011f84c653e46adadb9cf5d20608f) | anv: pDstRange->size in vkCmdFillMemoryKHR can be 0 | Vulkan 1.4.368 |
 | [v27.0.0-20261118-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118-r3) | 2026-11-18 | [`f0a23cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a23cc9c9357e8a865a7cee8cac98de863d8a90) | docs: update calendar for 26.3.1 | Vulkan 1.4.368 |
 | [v27.0.0-20261118-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118-r2) | 2026-11-18 | [`0e9e108`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/0e9e1086bb86721e21693763c6bf35415d93fff5) | zink: only attempt to resolve when nr_samples > 1 | Vulkan 1.4.368 |
