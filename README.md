@@ -124,12 +124,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`2373258`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/23732583a81cf342daa311e46afcf6d05012fae1) |
+| **Commit** | [`cd38201`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cd38201df6d9139ceeeb02e2fd0edd873de4ea10) |
 | **Commit date** | 2026-11-19 |
-| **Commit title** | teflon: Print tensor zero points as decimal |
+| **Commit title** | tu: Fix descriptor set alignment after descriptor pool reset |
 | **Build date** | 20261119 |
-| **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261119-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119-r3) |
+| **Downloads** | X11 / AdrenoTools: 3 ZIPs · Bannerlator Wayland: 3 ZIPs · Linux runtime: 3 ZIPs |
+| **Release** | [v27.0.0-20261119-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119-r4) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -139,10 +139,10 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261119-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119-r4) | 2026-11-19 | [`cd38201`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cd38201df6d9139ceeeb02e2fd0edd873de4ea10) | tu: Fix descriptor set alignment after descriptor pool reset | Vulkan 1.4.368 |
 | [v27.0.0-20261119-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119-r3) | 2026-11-19 | [`2373258`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/23732583a81cf342daa311e46afcf6d05012fae1) | teflon: Print tensor zero points as decimal | Vulkan 1.4.368 |
 | [v27.0.0-20261119-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119-r2) | 2026-11-19 | [`5755e59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5755e59f03b02a6fff2f2b47fb4d7efc5e789125) | vulkan: ignore cbAttachmentCount when needed | Vulkan 1.4.368 |
 | [v27.0.0-20261119](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119) | 2026-11-19 | [`69489e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/69489e2167b011f84c653e46adadb9cf5d20608f) | anv: pDstRange->size in vkCmdFillMemoryKHR can be 0 | Vulkan 1.4.368 |
-| [v27.0.0-20261118-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261118-r3) | 2026-11-18 | [`f0a23cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/f0a23cc9c9357e8a865a7cee8cac98de863d8a90) | docs: update calendar for 26.3.1 | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---

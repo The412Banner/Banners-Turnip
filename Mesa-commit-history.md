@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261119-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119-r4) | 2026-11-19 | [`cd38201`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cd38201df6d9139ceeeb02e2fd0edd873de4ea10) | tu: Fix descriptor set alignment after descriptor pool reset | Vulkan 1.4.368 |
 | [v27.0.0-20261119-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119-r3) | 2026-11-19 | [`2373258`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/23732583a81cf342daa311e46afcf6d05012fae1) | teflon: Print tensor zero points as decimal | Vulkan 1.4.368 |
 | [v27.0.0-20261119-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119-r2) | 2026-11-19 | [`5755e59`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/5755e59f03b02a6fff2f2b47fb4d7efc5e789125) | vulkan: ignore cbAttachmentCount when needed | Vulkan 1.4.368 |
 | [v27.0.0-20261119](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119) | 2026-11-18 | [`69489e2`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/69489e2167b011f84c653e46adadb9cf5d20608f) | anv: pDstRange->size in vkCmdFillMemoryKHR can be 0 | Vulkan 1.4.368 |
