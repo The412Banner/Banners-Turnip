@@ -305,6 +305,10 @@ def main():
         "storage buffers work ([MIO report](" + REPO_BLOB.format(repo=a.repo, ref=a.ref, path="docs/MIO_A7XX_SSBO_LIMIT.md")
         + ")). The option itself is Mesa's, by Job Noorman. With other Turnip builds from after 2026-06-10, set "
         "`tu_enable_ssbo_emulation=true` yourself.",
+        "- **Adreno 8xx VPC cache sizes** (" + link("patches/common/mr46551_vpc_typos.py") + ", Mesa "
+        "[MR 46551](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/46551) by Artem Peshkov, not merged yet): "
+        "corrects two typos in Mesa's new A8xx VPC cache groups (`d6007622`), one reported to hang every app on an "
+        "Adreno 840 (A829, A830 / A831, A840, X2).",
     ])
     details("<b>Standard</b>: Adreno 6xx / 7xx (8 Gen 3 and older)", [
         "- Mesa `main` plus **Every driver** above. No GPU-specific patches, no mesh shaders, no wave32.",
@@ -314,7 +318,8 @@ def main():
         "- **For:** Adreno 810 / 812 / 825 / 829 / 830 / 840 (Snapdragon 8 Elite). Experimental.",
         f"- {link(a8_patch)}: whitebelyash's `turnip/gen8` stack ([mesa-unified](https://github.com/whitebelyash/mesa-unified)): "
         "A8xx GPU entries, UBWC gralloc detection, the `disable_gmem` property, the Steam Deck spoof "
-        "(`TU_DEBUG=deck_emu`), A810 / A812 fixes. Commits and authors:",
+        "(`TU_DEBUG=deck_emu`), A810 / A812 fixes. Rebased 2026-11-20 onto Mesa's VPC cache groups (`d6007622`): "
+        "A810 / A812 / A825 / A829 take their VPC cache sizes from those groups. Commits and authors:",
     ] + credit_commits(a8_patch)
     a8_script_notes = {
         "patches/a8xx_shared_mem.py": ": compute shared memory 32 → 64 KiB on every entry (whitebelyash, "
