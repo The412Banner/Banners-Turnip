@@ -87,15 +87,19 @@ Subject: [PATCH] HACK: u_gralloc: always use ubwc detection path
 u_gralloc checks if the current buffer was allocated by the Qualcomm vendor gralloc by comparing 'gmsm' magic with the buffer data. Since newer gralloc versions this way isn't working anymore, causing the condition to never success - essentially skipping setting proper DRM format modifier. This caused huge distorted picture on the screen because the allocated buffer never got a proper modifier as it should have
 
 Signed-off-by: whitebelyash <whbexiumwork@gmail.com>
+
+[Banners-Turnip 2026-11-20: the UBWC flag is read only when the handle has the two ints
+(numInts >= 2), the bounds check the removed 'gmsm' condition also did. Banners-AIO adds
+it since 2026-11-05 (patches/one/one_gpu_gates.py), StevenMXZ in fix_gralloc_flushall.py.]
 ---
- src/util/u_gralloc/u_gralloc_fallback.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ src/util/u_gralloc/u_gralloc_fallback.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
 
 diff --git a/src/util/u_gralloc/u_gralloc_fallback.c b/src/util/u_gralloc/u_gralloc_fallback.c
 index 44fb32d8cfd5..bb6459c2e29c 100644
 --- a/src/util/u_gralloc/u_gralloc_fallback.c
 +++ b/src/util/u_gralloc/u_gralloc_fallback.c
-@@ -148,12 +148,16 @@ fallback_gralloc_get_buffer_info(struct u_gralloc *gralloc,
+@@ -148,12 +148,18 @@ fallback_gralloc_get_buffer_info(struct u_gralloc *gralloc,
     out->strides[0] = stride;
  
  #ifdef HAS_FREEDRENO
@@ -111,8 +115,10 @@ index 44fb32d8cfd5..bb6459c2e29c 100644
 +   
 +   /* TODO: Actually find a way to detect a Qualcomm vendor allocated buffer */
 +   /* This UBWC flag was introduced in a5xx. */
-+   bool ubwc = hnd->handle->data[hnd->handle->numFds + 1] & 0x08000000;
-+   out->modifier = ubwc ? DRM_FORMAT_MOD_QCOM_COMPRESSED : DRM_FORMAT_MOD_LINEAR;
++   if (hnd->handle->numInts >= 2) {
++      bool ubwc = hnd->handle->data[hnd->handle->numFds + 1] & 0x08000000;
++      out->modifier = ubwc ? DRM_FORMAT_MOD_QCOM_COMPRESSED : DRM_FORMAT_MOD_LINEAR;
++   }
  #endif
  
     return 0;
@@ -758,16 +764,18 @@ As practice has shown, this gives an increase in dx12 games, but does not provid
 
 [Banners-Turnip 2026-11-12: the A830 check was `chip_id == 0xffff44050000 || 0x44050001`,
 which is always true, so the two keys were off on every GPU (A840 included). It compares
-both A830 chip IDs now, as Banners-AIO does since 2026-11-05 and StevenMXZ does in his copy.]
+both A830 chip IDs now, as Banners-AIO does since 2026-11-05 and StevenMXZ does in his copy.
+2026-11-20: every chip ID of Mesa's A830 entry, so also the A830v1 and the A831 (Snapdragon
+Reality Elite), which Mesa a4239c5b put in that entry.]
 ---
- src/freedreno/vulkan/tu_pipeline.cc | 16 ++++++----------
- 1 file changed, 6 insertions(+), 10 deletions(-)
+ src/freedreno/vulkan/tu_pipeline.cc | 17 +++++++----------
+ 1 file changed, 7 insertions(+), 10 deletions(-)
 
 diff --git a/src/freedreno/vulkan/tu_pipeline.cc b/src/freedreno/vulkan/tu_pipeline.cc
 index 46508f0c0c82..219fff57c21c 100644
 --- a/src/freedreno/vulkan/tu_pipeline.cc
 +++ b/src/freedreno/vulkan/tu_pipeline.cc
-@@ -1743,13 +1743,12 @@ tu_pipeline_builder_compile_shaders(struct tu_pipeline_builder *builder,
+@@ -1743,13 +1743,13 @@ tu_pipeline_builder_compile_shaders(struct tu_pipeline_builder *builder,
     };
     VkPipelineCreationFeedback stage_feedbacks[MESA_SHADER_STAGES] = { 0 };
  
@@ -778,7 +786,8 @@ index 46508f0c0c82..219fff57c21c 100644
     const bool is_a829 = chip_id == 0x44030A20ull;
 -   const bool is_target_gpu = is_a810 || is_a825 || is_a829;
 -   /* === КОНЕЦ ДОБАВЛЕНИЯ === */
-+   const bool is_a830 = chip_id == 0xffff44050000ull || chip_id == 0x44050001ull;
++   const bool is_a830 = chip_id == 0xffff44050000ull || chip_id == 0xffff44050001ull ||
++                        chip_id == 0x44050001ull || chip_id == 0x44050100ull;
 +   const bool is_target_gpu = is_a810 || is_a825 || is_a829 || is_a830;
  
     const bool executable_info =
