@@ -9,7 +9,7 @@ cd "${1:?usage: apply_common.sh <mesa-dir>}"
 here="$(cd "$(dirname "$0")" && pwd)"
 
 # Max's WinNative series (patches/a8xx-winnative/0001-0005: mesh shaders, wave32, A8xx hang fixes)
-# and DroidDeck's two fixes (patches/a8xx-dd/0006-0007) go on the A8xx driver only. Mesh shaders and wave32 also switch on for A7xx (and wave32 for
+# and DroidDeck's shuffle fix (patches/a8xx-dd/0006) go on the A8xx driver only. Mesh shaders and wave32 also switch on for A7xx (and wave32 for
 # A6xx gen4), where they can steer DX12 games onto slower emulated paths, so the A6xx/A7xx drivers
 # carry no patches at all. The A8xx driver is the one whose EXTRA_PATCH is the gen8 stack.
 a8xx=0
@@ -19,10 +19,11 @@ if [ "$a8xx" = 1 ]; then
 	series+=("$here"/../a8xx-winnative/0*.patch)
 	[ "$(ls "$here"/../a8xx-winnative/0*.patch | wc -l)" = 5 ] \
 		|| { echo "[common] expected 5 patches in a8xx-winnative/" >&2; exit 1; }
-	# DroidDeck's two fixes (patches/a8xx-dd/SOURCE), after Max's series: 0006 builds on his 0002.
+	# DroidDeck's shuffle fix (patches/a8xx-dd/SOURCE), after Max's series: 0006 builds on his 0002.
+	# Their 0007 (descriptor pool alignment) was dropped 2026-11-20: Mesa has the fix since cd38201df6.
 	series+=("$here"/../a8xx-dd/0*.patch)
-	[ "$(ls "$here"/../a8xx-dd/0*.patch | wc -l)" = 2 ] \
-		|| { echo "[common] expected 2 patches in a8xx-dd/" >&2; exit 1; }
+	[ "$(ls "$here"/../a8xx-dd/0*.patch | wc -l)" = 1 ] \
+		|| { echo "[common] expected 1 patch in a8xx-dd/" >&2; exit 1; }
 fi
 echo "[common] driver: $([ "$a8xx" = 1 ] && echo "A8xx (Max's series)" || echo "A6xx/A7xx (no patches: both KGSL fixes are in Mesa)")"
 
@@ -54,8 +55,10 @@ if [ "$a8xx" = 1 ]; then
 		|| { echo "[common] winnative/0005 (IB VBO alias) did not reach tu_knl_kgsl.cc" >&2; exit 1; }
 	grep -q "make_shuffle_mixed" src/freedreno/ir3/ir3_lower_subgroups.c \
 		|| { echo "[common] a8xx-dd/0006 (shuffle broadcast) did not reach ir3_lower_subgroups.c" >&2; exit 1; }
-	grep -q "TU_DESCRIPTOR_SET_ALIGNMENT" src/freedreno/vulkan/tu_descriptor_set.cc \
-		|| { echo "[common] a8xx-dd/0007 (descriptor pool alignment) did not reach tu_descriptor_set.cc" >&2; exit 1; }
+	# Descriptor set alignment after vkResetDescriptorPool: Mesa carries the fix since cd38201df6
+	# (MR 46498, 2026-11-19), which replaced our a8xx-dd/0007.
+	grep -q "tu_descriptor_pool_heap_init" src/freedreno/vulkan/tu_descriptor_set.cc \
+		|| { echo "[common] Mesa lacks the upstream descriptor set alignment fix (cd38201df6, MR 46498; was a8xx-dd/0007); this Mesa is too old" >&2; exit 1; }
 else
 	[ ! -f src/freedreno/vulkan/tu_mesh.cc ] \
 		|| { echo "[common] Max's mesh patch reached a non-A8xx driver" >&2; exit 1; }

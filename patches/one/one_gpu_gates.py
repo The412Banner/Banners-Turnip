@@ -156,7 +156,7 @@ checks = [
     ("src/freedreno/common/freedreno_dev_info.h", "disable_gmem", "gen8 stack (disable_gmem property)"),
     ("src/freedreno/vulkan/tu_util.h", "DECK_EMU", "gen8 stack (DECK_EMU)"),
     ("src/freedreno/vulkan/tu_mesh.cc", "", "winnative 0001 (tu_mesh.cc)"),
-    ("src/freedreno/vulkan/tu_descriptor_set.h", "TU_DESCRIPTOR_SET_ALIGNMENT", "a8xx-dd 0007 (descriptor pool alignment)"),
+    ("src/freedreno/vulkan/tu_descriptor_set.h", "TU_DESCRIPTOR_SET_ALIGNMENT", "upstream descriptor set alignment fix (Mesa cd38201df6, was a8xx-dd 0007)"),
 ]
 for path, needle, label in checks:
     p = Path(path)

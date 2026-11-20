@@ -1,8 +1,8 @@
-Two fixes from DroidDeck's Turnip, copied unchanged from Droid-Deck/Drivers
+Fixes from DroidDeck's Turnip, copied unchanged from Droid-Deck/Drivers
 (https://github.com/Droid-Deck/Drivers, GPL-3.0) patches/linux/ at
 570daf3c (2026-11-11), under their own names and numbers so they can be diffed against that repo.
 apply_common.sh applies them after Max's series (patches/a8xx-winnative), on the drivers whose
-EXTRA_PATCH is the gen8 stack: A8xx and Banners-AIO.
+EXTRA_PATCH is the gen8 stack: A8xx and Banners-AIO. One is left (0006); 0007 is in Mesa now.
 
 0006-ir3-shuffle-broadcast.patch (Droid-Deck/Drivers #10; Nikolay Nadorichev, maxjivi05)
   ir3 lowers shuffle(x, i) to rotate(x, i - gl_SubgroupInvocationID) in a loop with one iteration
@@ -14,7 +14,14 @@ EXTRA_PATCH is the gen8 stack: A8xx and Banners-AIO.
   Banners-AIO: patches/one/one_gpu_gates.py limits it to A8xx (ir3 gen >= 8).
 
 0007-tu-descriptor-pool-heap-alignment.patch (Droid-Deck/Drivers #12; Nikolay Nadorichev, maxjivi05)
-  The descriptor pool heap was initialised with an end address where a size was expected and
+  - DROPPED 2026-11-20: Mesa main fixes the same bug since cd38201df6 "tu: Fix descriptor set
+  alignment after descriptor pool reset" (Danylo Piliaiev, MR 46498, merged 2026-11-19): alloc_high
+  false after every heap init, heap size = BO size, sets aligned to TU_DESCRIPTOR_SET_ALIGNMENT
+  (64 bytes). From that commit on 0007 no longer applied (all hunks rejected), and the A8xx and
+  Banners-AIO legs failed (runs 44641078460, 44693291638); releases v27.0.0-20261119-r4 and
+  v27.0.0-20261120 went out without those zips. Every driver now gets the fix from Mesa itself;
+  apply_common.sh asserts it (tu_descriptor_pool_heap_init) on the A8xx/AIO drivers.
+  What the patch fixed, for the record: the descriptor pool heap was initialised with an end address where a size was expected and
   vkResetDescriptorPool did not restore alloc_high = false, so after a reset sets were handed out
   from the top at offsets 32 mod 64, the topmost one 32 bytes past the BO. Turnip masks the low 6
   bits of set_iova, so those sets were read 32 bytes off. Seen by them as invisible Scaleform UI in
