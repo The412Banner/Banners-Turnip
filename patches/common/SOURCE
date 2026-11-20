@@ -66,3 +66,16 @@ kgsl-zero-timeout-poll.patch (The412Banner, 2026-09-29) - DROPPED 2026-10-10: Me
   answers VK_SUCCESS / VK_TIMEOUT without waiting. Found on Bannerlator's Wayland adapter
   (Pocket FIT A750): a D3D12 demo capped at ~615 fps went to 4335 fps with the same answer
   given from outside the driver; X11 D3D12 (809 fps) had the same stall, milder.
+
+mr46551_vpc_typos.py (The412Banner, 2026-11-20) - Mesa MR 46551 (Artem Peshkov, opened 2026-11-20,
+  not merged when added), applied to every driver by apply_common.sh. Mesa d60076223315
+  "freedreno/common: Rework gen8 VPC GMEM cache" (Rob Clark, MR 46240, merged 2026-11-19) moved the
+  A8xx sysmem/gmem VPC cache sizes into a8xx_vpc_cache_lg / _med / _sm and wrote two values wrong:
+  lg sysmem_vpc_pos_buf_size = 65 * 1024 (was 65536; A830 / A831 / A840 / X2; the MR reports a GPU
+  hang in every app on an Adreno 840) and med = 48 * 102 = 4896 (A829). The script replaces the
+  typo only where it is still there and asserts 64 * 1024 / 48 * 1024 afterwards, so once Mesa
+  merges the MR it is a check; on a Mesa older than d6007622 (no groups) it does nothing. With it,
+  A830 / A840 / X2 get exactly the values they had before d6007622 (checked on the generated
+  freedreno_devices.h, Mesa 23732583 vs bf593eb0). Delete it once Mesa has the MR.
+  Runs before the A8xx gen8 stack, whose rebased hunks (2026-11-20) were made against the fixed text.
+

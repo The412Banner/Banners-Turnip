@@ -305,6 +305,10 @@ def main():
         "storage buffers work ([MIO report](" + REPO_BLOB.format(repo=a.repo, ref=a.ref, path="docs/MIO_A7XX_SSBO_LIMIT.md")
         + ")). The option itself is Mesa's, by Job Noorman. With other Turnip builds from after 2026-06-10, set "
         "`tu_enable_ssbo_emulation=true` yourself.",
+        "- **Adreno 8xx VPC cache sizes** (" + link("patches/common/mr46551_vpc_typos.py") + ", Mesa "
+        "[MR 46551](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/46551) by Artem Peshkov, not merged yet): "
+        "corrects two typos in Mesa's new A8xx VPC cache groups (`d6007622`), one reported to hang every app on an "
+        "Adreno 840 (A829, A830 / A831, A840, X2).",
     ])
     details("<b>Standard</b>: Adreno 6xx / 7xx (8 Gen 3 and older)", [
         "- Mesa `main` plus **Every driver** above. No GPU-specific patches, no mesh shaders, no wave32.",
@@ -314,7 +318,8 @@ def main():
         "- **For:** Adreno 810 / 812 / 825 / 829 / 830 / 840 (Snapdragon 8 Elite). Experimental.",
         f"- {link(a8_patch)}: whitebelyash's `turnip/gen8` stack ([mesa-unified](https://github.com/whitebelyash/mesa-unified)): "
         "A8xx GPU entries, UBWC gralloc detection, the `disable_gmem` property, the Steam Deck spoof "
-        "(`TU_DEBUG=deck_emu`), A810 / A812 fixes. Commits and authors:",
+        "(`TU_DEBUG=deck_emu`), A810 / A812 fixes. Rebased 2026-11-20 onto Mesa's VPC cache groups (`d6007622`): "
+        "A810 / A812 / A825 / A829 take their VPC cache sizes from those groups. Commits and authors:",
     ] + credit_commits(a8_patch)
     a8_script_notes = {
         "patches/a8xx_shared_mem.py": ": compute shared memory 32 → 64 KiB on every entry (whitebelyash, "
@@ -336,10 +341,7 @@ def main():
         + " three GPU hang fixes. His IB cache (0006) is left out: it broke the Linux driver on some Adreno 840s.",
         "- **From DroidDeck's Turnip** (" + ddrv + ", GPL-3.0; *Nikolay Nadorichev*, *maxjivi05*): "
         + link("patches/a8xx-dd/0006-ir3-shuffle-broadcast.patch") + " subgroup shuffles with a broadcast index no "
-        "longer loop once per invocation, and "
-        + link("patches/a8xx-dd/0007-tu-descriptor-pool-heap-alignment.patch") + " descriptor sets stay aligned "
-        "after vkResetDescriptorPool (invisible UI in Detroit: Become Human). See "
-        + link("patches/a8xx-dd/SOURCE") + ".",
+        "longer loop once per invocation. See " + link("patches/a8xx-dd/SOURCE") + ".",
         "- Plus **Every driver** above. Tips: `TU_DEBUG=sysmem` if an A830 looks glitchy, `TU_DEBUG=deck_emu` if a "
         "game won't start.",
     ]
@@ -378,9 +380,6 @@ def main():
         "color mask as the Qualcomm driver (*adapted from " + vauzi + "*); extra chip IDs for the A829, A845 and "
         "A850, and no category-4 repeat on the A845 / A850 (*misakayuuki*); GMEM off on the A810 and A829; the "
         "shuffle broadcast of " + link("patches/a8xx-dd/SOURCE") + ".",
-        "- **Every GPU:** descriptor sets stay aligned after vkResetDescriptorPool ("
-        + link("patches/a8xx-dd/0007-tu-descriptor-pool-heap-alignment.patch") + ", *Nikolay Nadorichev*, "
-        "*maxjivi05*, " + ddrv + ").",
         "- Sources: " + link("patches/one/one_fixes.py") + " and " + link("patches/one/dd/SOURCE.md") + ". Its recipe "
         "was tested on an Adreno 830, 750 and 722 before it joined these builds.",
     ])

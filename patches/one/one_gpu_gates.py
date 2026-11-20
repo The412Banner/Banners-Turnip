@@ -106,10 +106,12 @@ edit(dev,
 
 # 5. gen8 "tu/pipeline: ... FDM for A810,825,829,830": its A830 check is
 #    `chip_id == 0xffff44050000 || 0x44050001`, always true, so fdm_per_layer and
-#    force_sample_interp were turned off on every GPU. Compare both A830 IDs.
+#    force_sample_interp were turned off on every GPU. Compare every ID of Mesa's A830
+#    entry (A830, A830v1, KGSL A830, KGSL A831).
 edit("src/freedreno/vulkan/tu_pipeline.cc",
      "   const bool is_a830 = chip_id == 0xffff44050000 || 0x44050001;\n",
-     "   const bool is_a830 = chip_id == 0xffff44050000ull || chip_id == 0x44050001ull;\n",
+     "   const bool is_a830 = chip_id == 0xffff44050000ull || chip_id == 0xffff44050001ull ||\n"
+     "                        chip_id == 0x44050001ull || chip_id == 0x44050100ull;\n",
      "A830 check in the FDM / sample-interp keys (gen8 pipeline patch)")
 
 # 6. a8xx-dd 0006 shuffle broadcast on A8xx only: the pass gets the shader, and the two new
@@ -156,7 +158,7 @@ checks = [
     ("src/freedreno/common/freedreno_dev_info.h", "disable_gmem", "gen8 stack (disable_gmem property)"),
     ("src/freedreno/vulkan/tu_util.h", "DECK_EMU", "gen8 stack (DECK_EMU)"),
     ("src/freedreno/vulkan/tu_mesh.cc", "", "winnative 0001 (tu_mesh.cc)"),
-    ("src/freedreno/vulkan/tu_descriptor_set.h", "TU_DESCRIPTOR_SET_ALIGNMENT", "a8xx-dd 0007 (descriptor pool alignment)"),
+    ("src/freedreno/vulkan/tu_descriptor_set.h", "TU_DESCRIPTOR_SET_ALIGNMENT", "upstream descriptor set alignment fix (Mesa cd38201df6, was a8xx-dd 0007)"),
 ]
 for path, needle, label in checks:
     p = Path(path)
