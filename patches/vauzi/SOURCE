@@ -1,0 +1,10 @@
+TEST BUILD ONLY (branch lab/vauzi-a722-lrz, 2026-11-20, not device-tested).
+
+53-a8xx-lrz-bidir-disable.py - copied unchanged from Vauzi-17/710 (GPL-3.0), branch unified,
+  patches/53-a8xx-lrz-bidir-disable.py at 0c610f96 (2026-10-25). On A8xx (CHIP >= A8XX, a
+  compile-time template check, so other GPUs are unchanged) GRAS_SC_BIN_CNTL.FORCE_BI_DIR_LRZ_DISABLE
+  is set in sysmem passes and in passes with LRZ disabled, as the Qualcomm driver does in his traces.
+  Added to the A8xx and Banners-AIO recipes (EXTRA_SCRIPT, last).
+
+The A722 values in patches/a710-720.py on this branch come from his patches/56-fd722-blob.py
+(same commit); see that script's docstring.

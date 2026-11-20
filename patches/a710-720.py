@@ -9,6 +9,12 @@ script replaces it with Vauzi-17/710's A722 regs (captured from real A722
 blob command streams as .rd traces, decoded with cffdump) and num_ccu = 2
 (Vauzi-17/710 5db89bd, tested on A720/A722 hardware).
 
+TEST BUILD (branch lab/vauzi-a722-lrz, 2026-11-20, not device-tested): register values and
+properties from Vauzi-17/710 unified patches/56-fd722-blob.py (0c610f96, 116 blob .rd traces):
+UCHE_CACHE_WAYS 0x00040004, PC_MODE_CNTL 0x1f1f, SP_UNKNOWN_AB01 0, no RB_RBP_CNTL write,
+highest_bank_bit 15, tile_align_h 16, has_lpac False. num_ccu stays 2 (his script sets 1;
+Mesa 8c589b89 set 2 for the A722 because 1 faults).
+
 Chip IDs:
   A722: 0x43020100 + wildcard 0xffff43020100
 
@@ -29,7 +35,7 @@ MARKER_END = "# END FD722_CUSTOM"
 CUSTOM_BLOCK = r'''# BEGIN FD722_CUSTOM
 
 a722_raw_magic_regs = [
-        [A6XXRegs.REG_A6XX_UCHE_CACHE_WAYS, 0x00000000],
+        [A6XXRegs.REG_A6XX_UCHE_CACHE_WAYS, 0x00040004],
         [A6XXRegs.REG_A6XX_TPL1_DBG_ECO_CNTL, 0x03000000],
         [A6XXRegs.REG_A6XX_TPL1_DBG_ECO_CNTL1, 0x00000700],
 
@@ -43,7 +49,7 @@ a722_raw_magic_regs = [
         [A6XXRegs.REG_A7XX_SP_HLSQ_DBG_ECO_CNTL, 0x00000000],
         [A6XXRegs.REG_A6XX_SP_DBG_ECO_CNTL, 0x11000000],
 
-        [A6XXRegs.REG_A6XX_PC_MODE_CNTL, 0x0000003f],
+        [A6XXRegs.REG_A6XX_PC_MODE_CNTL, 0x00001f1f],
         [A6XXRegs.REG_A6XX_PC_DBG_ECO_CNTL, 0x20100000],
         [A6XXRegs.REG_A7XX_PC_UNKNOWN_9E24, 0x01fc7f00],
 
@@ -54,7 +60,7 @@ a722_raw_magic_regs = [
         [A6XXRegs.REG_A7XX_SP_HLSQ_DBG_ECO_CNTL_1, 0x00000000],
         [A6XXRegs.REG_A7XX_SP_HLSQ_MODE_CNTL, 0x00000000],
 
-        [A6XXRegs.REG_A7XX_SP_UNKNOWN_AB01, 0x00000001],
+        [A6XXRegs.REG_A7XX_SP_UNKNOWN_AB01, 0x00000000],
         [A6XXRegs.REG_A7XX_SP_UNKNOWN_AB22, 0x00000000],
         [A6XXRegs.REG_A7XX_SP_UNKNOWN_B310, 0x00000000],
 
@@ -74,9 +80,7 @@ a722_raw_magic_regs = [
         [A6XXRegs.REG_A6XX_VPC_DBG_ECO_CNTL, 0x02000000],
         [A6XXRegs.REG_A6XX_UCHE_UNKNOWN_0E12, 0x03200000],
 
-        # Were magic_regs (RB_DBG_ECO_CNTL / RB_RBP_CNTL = 0) before Mesa 17ca6174.
-        [A6XXRegs.REG_A6XX_RB_RBP_CNTL,     0x0],
-        [A6XXRegs.REG_A6XX_RB_DBG_ECO_CNTL, 0x0],
+        [A6XXRegs.REG_A6XX_RB_DBG_ECO_CNTL, 0x00000000],
 ]
 
 add_gpus([
@@ -84,17 +88,19 @@ add_gpus([
         GPUId(chip_id=0xffff43020100, name="FD722"),
     ], A6xxGPUInfo(
         CHIP.A7XX,
-        [a7xx_base, a7xx_gen1],
+        [a7xx_base, a7xx_gen1, GPUProps(
+            has_lpac = False,
+        )],
         num_ccu = 2,
         tile_align_w = 64,
-        tile_align_h = 32,
+        tile_align_h = 16,
         tile_max_w = 1024,
         tile_max_h = 1024,
         num_vsc_pipes = 32,
         cs_shared_mem_size = 32 * 1024,
         wave_granularity = 2,
         fibers_per_sp = 128 * 2 * 16,
-        highest_bank_bit = 16,
+        highest_bank_bit = 15,
         raw_magic_regs = a722_raw_magic_regs,
     ))
 
