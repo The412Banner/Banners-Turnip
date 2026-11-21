@@ -130,12 +130,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`901c006`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/901c006e67bd5e467071c3643a95a618215b1020) |
-| **Commit date** | 2026-11-20 |
-| **Commit title** | freedreno/common: fix A8XX VPC position cache size typos |
-| **Build date** | 20261120 |
+| **Commit** | [`2967370`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29673701c432571838325a5092125df0184f84d1) |
+| **Commit date** | 2026-11-21 |
+| **Commit title** | freedreno/ir3: don't read past the end of user constant buffers |
+| **Build date** | 20261121 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261120-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261120-r4) |
+| **Release** | [v27.0.0-20261121](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261121) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -145,11 +145,11 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261121](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261121) | 2026-11-21 | [`2967370`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29673701c432571838325a5092125df0184f84d1) | freedreno/ir3: don't read past the end of user constant buffers | Vulkan 1.4.368 |
 | [v27.0.0-20261120-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261120-r4) | 2026-11-20 | [`901c006`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/901c006e67bd5e467071c3643a95a618215b1020) | freedreno/common: fix A8XX VPC position cache size typos | Vulkan 1.4.368 |
 | [v27.0.0-20261120-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261120-r3) | 2026-11-20 | [`3a47cb1`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3a47cb170f3a04caec7e9233781c980307473030) | tu/ci: Update a660 trace checksums | Vulkan 1.4.368 |
 | [v27.0.0-20261120-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261120-r2) | 2026-11-20 | [`af38c52`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/af38c52bc86f9393eea710ab9caf45d349a11d75) | radv: fix inherited pipeline statistics/occlusion queries with secondaries | Vulkan 1.4.368 |
 | [v27.0.0-20261120](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261120) | 2026-11-20 | [`05eb1dc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/05eb1dc97c0aa624e28e04033dabf9792a5f40f9) | mesa/st: Do not report multisampling for optional float formats | Vulkan 1.4.368 |
-| [v27.0.0-20261119-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261119-r4) | 2026-11-19 | [`cd38201`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/cd38201df6d9139ceeeb02e2fd0edd873de4ea10) | tu: Fix descriptor set alignment after descriptor pool reset | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
