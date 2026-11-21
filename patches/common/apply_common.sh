@@ -38,6 +38,9 @@ done
 # Every driver: Mesa MR 46551 (A8xx VPC cache group typos from d6007622); see the script.
 python3 "$here/mr46551_vpc_typos.py" || { echo "[common] mr46551_vpc_typos.py failed" >&2; exit 1; }
 
+# TEST branch only: BANNER_AS_ALWAYS acceleration-structure entry points (see the script).
+python3 "$here/as_procaddr_env.py" || { echo "[common] as_procaddr_env.py failed" >&2; exit 1; }
+
 # Assert the tree rather than trust the patches.
 # kgsl_syncobj_merge: Mesa carries the fix since 1da50a1b (MR 44838, 2026-10-08), which rewrote the
 # function around a tu_device parameter. A tree without it is older than this script supports.
