@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """TEST ONLY (branch test/doom-as-procaddr, 2026-11-21): with BANNER_AS_ALWAYS=1 in the
 environment, vkGetDeviceProcAddr also returns VK_KHR_acceleration_structure entry points when
-the app did not enable the extension, as long as the device supports it.
+the app did not enable the extension, as long as the device supports it, and Turnip creates
+its null acceleration structure (used for empty AS descriptor writes) even though the app did
+not enable the accelerationStructure feature.
 
 Why: DOOM: The Dark Ages turns ray tracing off on Turnip (no VK_KHR_ray_tracing_pipeline), so it
 does not enable VK_KHR_acceleration_structure, but its render setup still calls
@@ -55,3 +57,20 @@ p.write_text(s)
 if marker not in p.read_text():
     sys.exit("[as_procaddr] patch did not land")
 print("[as_procaddr] vk_device_get_proc_addr: BANNER_AS_ALWAYS fallback added")
+
+t = Path("src/freedreno/vulkan/tu_device.cc")
+ts = t.read_text()
+old_null = """   if (device->vk.enabled_features.accelerationStructure &&
+       device->vk.enabled_features.nullDescriptor) {
+      result = tu_init_null_accel_struct(device);"""
+new_null = """   if ((device->vk.enabled_features.accelerationStructure &&
+        device->vk.enabled_features.nullDescriptor) ||
+       (physical_device->vk.supported_extensions.KHR_acceleration_structure &&
+        debug_get_bool_option("BANNER_AS_ALWAYS", false))) {
+      result = tu_init_null_accel_struct(device);"""
+if ts.count(old_null) != 1:
+    sys.exit("[as_procaddr] tu_CreateDevice null accel struct block not found as expected; check Mesa")
+t.write_text(ts.replace(old_null, new_null))
+if 'debug_get_bool_option("BANNER_AS_ALWAYS"' not in t.read_text():
+    sys.exit("[as_procaddr] tu_device.cc patch did not land")
+print("[as_procaddr] tu_CreateDevice: null accel struct also with BANNER_AS_ALWAYS")
