@@ -241,7 +241,22 @@ tu_lazy_commit_submit_bind(struct tu_device *dev, void *submit,
 LC_CODE = r'''
 /* ---- TU_LAZY_COMMIT ---------------------------------------------------- */
 
-#define TU_LC_SHIFT 16
+/* commit granularity: TU_LAZY_COMMIT_SHIFT=12..16 (4 KiB..64 KiB), default 16 */
+static unsigned
+tu_lc_shift_get(void)
+{
+   static int shift = -1;
+   if (shift < 0) {
+      const char *e = os_get_option("TU_LAZY_COMMIT_SHIFT");
+      long v = e ? strtol(e, NULL, 10) : 16;
+      if (v < 12 || v > 16)
+         v = 16;
+      shift = (int)v;
+      fprintf(stderr, "TU_LAZY_COMMIT: commit granularity %u KB\n", 1u << (shift - 10));
+   }
+   return (unsigned)shift;
+}
+#define TU_LC_SHIFT tu_lc_shift_get()
 #define TU_LC_CHUNK (1ull << TU_LC_SHIFT)
 
 static uint64_t tu_lc_reserved_total, tu_lc_committed_total, tu_lc_next_log;
