@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261122](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261122) | 2026-11-22 | [`ede7373`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ede737316913a81386bb7caa93dce29634d40506) | intel/gen: Validate DPAS scoreboard RegDist annotations | Vulkan 1.4.368 |
 | [v27.0.0-20261121-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261121-r3) | 2026-11-21 | [`ef59438`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ef594386e28b9a01ab00d2190d5960d3eee8fe04) | dzn: Drop the unused vk_sync reset callback | Vulkan 1.4.368 |
 | [v27.0.0-20261121-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261121-r2) | 2026-11-21 | [`98fc8b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/98fc8b8f62a5a455f5353cbe19b510f8faf88947) | jay: Uniformize invocation index for readInvocation | Vulkan 1.4.368 |
 | [v27.0.0-20261121](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261121) | 2026-11-21 | [`2967370`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/29673701c432571838325a5092125df0184f84d1) | freedreno/ir3: don't read past the end of user constant buffers | Vulkan 1.4.368 |
