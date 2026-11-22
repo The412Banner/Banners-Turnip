@@ -857,4 +857,50 @@ edit("tu_acceleration_structure.cc", [
 """),
 ])
 
+# ---------------------------------------------------------------- TU_RQ_MAX_ITERS
+# TU_RQ_MAX_ITERS=<n>: end a ray query's traversal after n loop iterations (returns what it has),
+# so a malformed BVH cannot hang the GPU. Debug/safety option, default off.
+edit("tu_nir_lower_ray_query.cc", [
+    ('#include "tu_shader.h"\n',
+     '#include "tu_shader.h"\n#include "util/os_misc.h" /* TU_RQ_MAX_ITERS */\n#include <stdio.h>\n'),
+    ("""   nir_variable *incomplete = nir_local_variable_create(b->impl, glsl_bool_type(), "incomplete");
+   nir_store_var(b, incomplete, nir_imm_true(b), 0x1);
+
+   nir_loop *loop = nir_push_loop(b);
+   {
+      nir_loop_add_continue_construct(loop);
+""",
+     """   nir_variable *incomplete = nir_local_variable_create(b->impl, glsl_bool_type(), "incomplete");
+   nir_store_var(b, incomplete, nir_imm_true(b), 0x1);
+
+   static int rq_max_iters = -1; /* TU_RQ_MAX_ITERS */
+   if (rq_max_iters < 0) {
+      const char *e = os_get_option("TU_RQ_MAX_ITERS");
+      rq_max_iters = e ? atoi(e) : 0;
+      if (rq_max_iters > 0)
+         fprintf(stderr, "TU_RQ_MAX_ITERS: ray query traversal capped at %d iterations\\n", rq_max_iters);
+   }
+   nir_variable *rq_iters = NULL;
+   if (rq_max_iters > 0) {
+      rq_iters = nir_local_variable_create(b->impl, glsl_uint_type(), "rq_iters");
+      nir_store_var(b, rq_iters, nir_imm_int(b, 0), 0x1);
+   }
+
+   nir_loop *loop = nir_push_loop(b);
+   {
+      nir_loop_add_continue_construct(loop);
+
+      if (rq_iters) {
+         nir_def *it = nir_iadd_imm(b, nir_load_var(b, rq_iters), 1);
+         nir_store_var(b, rq_iters, it, 0x1);
+         nir_push_if(b, nir_uge_imm(b, it, rq_max_iters));
+         {
+            nir_store_var(b, incomplete, nir_imm_false(b), 0x1);
+            nir_jump(b, nir_jump_break);
+         }
+         nir_pop_if(b, NULL);
+      }
+"""),
+])
+
 print("lazy_commit.py: done")
