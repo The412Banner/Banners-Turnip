@@ -688,18 +688,20 @@ edit("tu_buffer.cc", [
          buffer->vk.device_address = mem->bo->iova + pBindInfos[i].memoryOffset;
 """,
      """      if (mem) {
-         if (mem->lazy_commit) { /* TU_LAZY_COMMIT */
+         buffer->bo = mem->bo;
+         buffer->vk.device_address = mem->bo->iova + pBindInfos[i].memoryOffset;
+         if (mem->lazy_commit) { /* TU_LAZY_COMMIT: address set first */
             VkResult r = tu_lazy_commit_range(dev, mem,
                                               pBindInfos[i].memoryOffset,
                                               buffer->vk.size);
             if (r != VK_SUCCESS) {
+               fprintf(stderr, "TU_LAZY_COMMIT: buffer bind of %llu KB could not be backed (%d)\n",
+                       (unsigned long long)(buffer->vk.size >> 10), r);
                if (status)
                   *status->pResult = r;
                return r;
             }
          }
-         buffer->bo = mem->bo;
-         buffer->vk.device_address = mem->bo->iova + pBindInfos[i].memoryOffset;
 """),
 ])
 
@@ -805,5 +807,39 @@ kgsl_bo_budget_init(void)
 ])
 
 print("lazy_commit.py: TU_BO cap/log done")
+
+# stdio for the buffer-bind warning
+edit("tu_buffer.cc", [
+    ('#include "tu_buffer.h"\n', '#include "tu_buffer.h"\n#include <stdio.h> /* TU_LAZY_COMMIT */\n'),
+])
+
+# ---------------------------------------------------------------- TU_AS_LBVH
+# TU_AS_LBVH=1: build every acceleration structure (also top-level) with LBVH instead of PLOC /
+# H-PLOC; LBVH has no inter-workgroup spin waits (PLOC hangs DOOM: The Dark Ages on an A750).
+edit("tu_acceleration_structure.cc", [
+    ('#include "util/u_hexdump.h"\n',
+     '#include "util/u_hexdump.h"\n#include "util/os_misc.h" /* TU_AS_LBVH */\n#include <stdio.h>\n'),
+    ("""tu_get_build_config(VkDevice device,
+                    struct vk_acceleration_structure_build_state *state)
+{
+}
+""",
+     """tu_get_build_config(VkDevice device,
+                    struct vk_acceleration_structure_build_state *state)
+{
+   static int force_lbvh = -1; /* TU_AS_LBVH */
+   if (force_lbvh < 0) {
+      const char *e = os_get_option("TU_AS_LBVH");
+      force_lbvh = e && *e && *e != '0';
+      if (force_lbvh)
+         fprintf(stderr, "TU_AS_LBVH: all acceleration structure builds use LBVH\\n");
+   }
+   if (force_lbvh &&
+       (state->config.internal_type == VK_INTERNAL_BUILD_TYPE_PLOC ||
+        state->config.internal_type == VK_INTERNAL_BUILD_TYPE_HPLOC))
+      state->config.internal_type = VK_INTERNAL_BUILD_TYPE_LBVH;
+}
+"""),
+])
 
 print("lazy_commit.py: done")
