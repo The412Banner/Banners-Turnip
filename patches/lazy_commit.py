@@ -301,8 +301,19 @@ tu_lc_init(struct tu_device *dev, struct tu_device_memory *mem,
 {
    mtx_init(&mem->lazy_mutex, mtx_plain);
    util_dynarray_init(&mem->lc_bos, NULL);
+   /* TU_LAZY_COMMIT_FAULT=1: unbound pages fault (kernel logs the address)
+    * instead of reading zero; for finding memory used without a bind. */
+   static int lc_fault = -1;
+   if (lc_fault < 0) {
+      const char *f = os_get_option("TU_LAZY_COMMIT_FAULT");
+      lc_fault = f && *f && *f != '0';
+      if (lc_fault)
+         fprintf(stderr, "TU_LAZY_COMMIT: unbound pages FAULT (debug)\n");
+   }
    VkResult result = tu_sparse_vma_init(dev, &mem->vk.base, &mem->lazy_vma,
-                                        &mem->iova, TU_SPARSE_VMA_MAP_ZERO,
+                                        &mem->iova,
+                                        lc_fault ? TU_SPARSE_VMA_NONE
+                                                 : TU_SPARSE_VMA_MAP_ZERO,
                                         size, align, 0);
    if (result != VK_SUCCESS) {
       util_dynarray_fini(&mem->lc_bos);
@@ -326,6 +337,9 @@ tu_lc_init(struct tu_device *dev, struct tu_device_memory *mem,
    mem->lc_property = prop;
    mem->lazy_commit = true;
    p_atomic_add(&tu_lc_reserved_total, vbo->size);
+   if (lc_fault)
+      fprintf(stderr, "TU_LAZY_COMMIT: range iova 0x%llx size %llu KB\n",
+              (unsigned long long)mem->iova, (unsigned long long)(vbo->size >> 10));
    return VK_SUCCESS;
 }
 
