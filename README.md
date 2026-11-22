@@ -130,12 +130,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`ede7373`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ede737316913a81386bb7caa93dce29634d40506) |
+| **Commit** | [`22c08cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/22c08cc53bd024a1a9f971c005a6fd862648eca6) |
 | **Commit date** | 2026-11-22 |
-| **Commit title** | intel/gen: Validate DPAS scoreboard RegDist annotations |
+| **Commit title** | nak/hw_tests: Add a basic test for TTU instructions |
 | **Build date** | 20261122 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261122](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261122) |
+| **Release** | [v27.0.0-20261122-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261122-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -145,9 +145,9 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261122-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261122-r2) | 2026-11-22 | [`22c08cc`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/22c08cc53bd024a1a9f971c005a6fd862648eca6) | nak/hw_tests: Add a basic test for TTU instructions | Vulkan 1.4.368 |
 | [v27.0.0-20261122](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261122) | 2026-11-22 | [`ede7373`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ede737316913a81386bb7caa93dce29634d40506) | intel/gen: Validate DPAS scoreboard RegDist annotations | Vulkan 1.4.368 |
 | [v27.0.0-20261121-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261121-r3) | 2026-11-21 | [`ef59438`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ef594386e28b9a01ab00d2190d5960d3eee8fe04) | dzn: Drop the unused vk_sync reset callback | Vulkan 1.4.368 |
-| [v27.0.0-20261121-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261121-r2) | 2026-11-21 | [`98fc8b8`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/98fc8b8f62a5a455f5353cbe19b510f8faf88947) | jay: Uniformize invocation index for readInvocation | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
