@@ -695,7 +695,7 @@ edit("tu_buffer.cc", [
                                               pBindInfos[i].memoryOffset,
                                               buffer->vk.size);
             if (r != VK_SUCCESS) {
-               fprintf(stderr, "TU_LAZY_COMMIT: buffer bind of %llu KB could not be backed (%d)\n",
+               fprintf(stderr, "TU_LAZY_COMMIT: buffer bind of %llu KB could not be backed (%d)\\n",
                        (unsigned long long)(buffer->vk.size >> 10), r);
                if (status)
                   *status->pResult = r;
