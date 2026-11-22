@@ -689,4 +689,107 @@ edit("tu_buffer.cc", [
 """),
 ])
 
+# ---------------------------------------------------------------- TU_BO_CAP_MB / TU_BO_LOG_MB
+# Count every real KGSL BO the driver allocates (app memory, lazy-commit chunks and the driver's
+# own BOs: shaders, descriptor pools, command streams, suballocators). TU_BO_CAP_MB=<n> refuses
+# new BOs beyond n MB (the app gets VK_ERROR_OUT_OF_DEVICE_MEMORY instead of Android killing other
+# apps); TU_BO_LOG_MB=<n> (default 8 when the cap is set) logs every BO of at least n MB with its
+# name and the running total, plus the total every 256 MB. Imported/exported dma-bufs are not
+# counted.
+edit("tu_knl.h", [
+    ("   bool lazy_commit : 1;\n",
+     "   bool lazy_commit : 1;\n"
+     "   /* TU_BO_CAP_MB: counted in the driver's BO total */\n"
+     "   bool budget_counted : 1;\n"),
+])
+
+edit("tu_knl_kgsl.cc", [
+    ('#include "util/u_debug.h"\n',
+     '#include "util/u_debug.h"\n#include "util/os_misc.h" /* TU_BO_CAP_MB */\n#include <stdio.h>\n'),
+    ("""/* TU_LAZY_COMMIT: bind part of a BO into part of a virtual range. */
+""",
+     """/* TU_BO_CAP_MB / TU_BO_LOG_MB: total of all counted KGSL BOs. */
+static uint64_t tu_kgsl_bo_total, tu_kgsl_bo_next_log;
+static int64_t tu_kgsl_bo_cap = -1, tu_kgsl_bo_logmin = -1;
+static uint32_t tu_kgsl_bo_refusals;
+
+static void
+kgsl_bo_budget_init(void)
+{
+   if (tu_kgsl_bo_cap >= 0)
+      return;
+   const char *c = os_get_option("TU_BO_CAP_MB");
+   const char *l = os_get_option("TU_BO_LOG_MB");
+   long cap = c ? strtol(c, NULL, 10) : 0;
+   long logmb = l ? strtol(l, NULL, 10) : (cap > 0 ? 8 : 0);
+   tu_kgsl_bo_logmin = logmb > 0 ? (int64_t)logmb << 20 : 0;
+   tu_kgsl_bo_cap = cap > 0 ? (int64_t)cap << 20 : 0;
+   if (cap > 0 || logmb > 0)
+      fprintf(stderr, "TU_BO: cap %ld MB, logging BOs of %ld MB and more\\n", cap, logmb);
+}
+
+/* TU_LAZY_COMMIT: bind part of a BO into part of a virtual range. */
+"""),
+    ("""   uint64_t kgsl_flags = 0;
+
+   if (mem_property & VK_MEMORY_PROPERTY_HOST_CACHED_BIT) {""",
+     """   kgsl_bo_budget_init(); /* TU_BO_CAP_MB */
+   if (tu_kgsl_bo_cap > 0 &&
+       p_atomic_read(&tu_kgsl_bo_total) + size > (uint64_t)tu_kgsl_bo_cap) {
+      uint32_t n = p_atomic_inc_return(&tu_kgsl_bo_refusals);
+      if (n <= 20 || n % 100 == 0)
+         fprintf(stderr, "TU_BO: refusing %llu KB '%s' at %llu MB (cap %lld MB, #%u)\\n",
+                 (unsigned long long)(size >> 10), name ? name : "?",
+                 (unsigned long long)(p_atomic_read(&tu_kgsl_bo_total) >> 20),
+                 (long long)(tu_kgsl_bo_cap >> 20), n);
+      return vk_errorf(dev, VK_ERROR_OUT_OF_DEVICE_MEMORY, "TU_BO_CAP_MB reached");
+   }
+
+   uint64_t kgsl_flags = 0;
+
+   if (mem_property & VK_MEMORY_PROPERTY_HOST_CACHED_BIT) {"""),
+    ("""   tu_dump_bo_init(dev, bo);
+
+   VkResult result = VK_SUCCESS;
+
+   if (lazy_vma) {""",
+     """   tu_dump_bo_init(dev, bo);
+
+   { /* TU_BO_CAP_MB / TU_BO_LOG_MB */
+      bo->budget_counted = true;
+      uint64_t total = p_atomic_add_return(&tu_kgsl_bo_total, mmapsize);
+      if (tu_kgsl_bo_logmin > 0 && mmapsize >= (uint64_t)tu_kgsl_bo_logmin)
+         fprintf(stderr, "TU_BO: +%llu KB '%s' total %llu MB\\n",
+                 (unsigned long long)(mmapsize >> 10), name ? name : "?",
+                 (unsigned long long)(total >> 20));
+      if (tu_kgsl_bo_logmin > 0 && total >= p_atomic_read(&tu_kgsl_bo_next_log)) {
+         p_atomic_set(&tu_kgsl_bo_next_log, (total / (256ull << 20) + 1) * (256ull << 20));
+         fprintf(stderr, "TU_BO: total %llu MB\\n", (unsigned long long)(total >> 20));
+      }
+   }
+
+   VkResult result = VK_SUCCESS;
+
+   if (lazy_vma) {"""),
+    ("""   if (bo->alias_handle)
+      kgsl_bo_destroy_alias(dev, bo);
+
+   struct kgsl_gpumem_free_id req = {
+      .id = bo->gem_handle
+   };
+""",
+     """   if (bo->alias_handle)
+      kgsl_bo_destroy_alias(dev, bo);
+
+   if (bo->budget_counted) /* TU_BO_CAP_MB */
+      p_atomic_add(&tu_kgsl_bo_total, -bo->size);
+
+   struct kgsl_gpumem_free_id req = {
+      .id = bo->gem_handle
+   };
+"""),
+])
+
+print("lazy_commit.py: TU_BO cap/log done")
+
 print("lazy_commit.py: done")
