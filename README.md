@@ -130,12 +130,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`99abc48`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99abc485322f68b1d94ce46b6fb950154f083d66) |
+| **Commit** | [`14d600c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14d600c7b21b7fb69cbca21e0a82348e825ab913) |
 | **Commit date** | 2026-11-24 |
-| **Commit title** | jay: promote divergent 32-bit shuffles to movi |
+| **Commit title** | ethosu: Allocate feature maps in SRAM |
 | **Build date** | 20261124 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261124](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261124) |
+| **Release** | [v27.0.0-20261124-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261124-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -145,9 +145,9 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261124-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261124-r2) | 2026-11-24 | [`14d600c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14d600c7b21b7fb69cbca21e0a82348e825ab913) | ethosu: Allocate feature maps in SRAM | Vulkan 1.4.368 |
 | [v27.0.0-20261124](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261124) | 2026-11-24 | [`99abc48`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99abc485322f68b1d94ce46b6fb950154f083d66) | jay: promote divergent 32-bit shuffles to movi | Vulkan 1.4.368 |
 | [v27.0.0-20261123-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261123-r2) | 2026-11-23 | [`ade68f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ade68f7f4f2a0aeccb0f7a629607f098562052a3) | microsoft/compiler: Don't ralloc_free() tess level variable | Vulkan 1.4.368 |
-| [v27.0.0-20261123](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261123) | 2026-11-23 | [`dd7dc90`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dd7dc906ff3e3688ba28cd95289efc8ae15a623a) | spirv: add a helper to determine the nir descriptor type | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---

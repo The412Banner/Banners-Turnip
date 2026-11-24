@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261124-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261124-r2) | 2026-11-24 | [`14d600c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14d600c7b21b7fb69cbca21e0a82348e825ab913) | ethosu: Allocate feature maps in SRAM | Vulkan 1.4.368 |
 | [v27.0.0-20261124](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261124) | 2026-11-24 | [`99abc48`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99abc485322f68b1d94ce46b6fb950154f083d66) | jay: promote divergent 32-bit shuffles to movi | Vulkan 1.4.368 |
 | [v27.0.0-20261123-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261123-r2) | 2026-11-23 | [`ade68f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ade68f7f4f2a0aeccb0f7a629607f098562052a3) | microsoft/compiler: Don't ralloc_free() tess level variable | Vulkan 1.4.368 |
 | [v27.0.0-20261123](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261123) | 2026-11-23 | [`dd7dc90`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/dd7dc906ff3e3688ba28cd95289efc8ae15a623a) | spirv: add a helper to determine the nir descriptor type | Vulkan 1.4.368 |
