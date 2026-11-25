@@ -130,12 +130,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`14d600c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14d600c7b21b7fb69cbca21e0a82348e825ab913) |
-| **Commit date** | 2026-11-24 |
-| **Commit title** | ethosu: Allocate feature maps in SRAM |
-| **Build date** | 20261124 |
+| **Commit** | [`4f29b71`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f29b71712ecfd92d73f280a710e8b0496e505c7) |
+| **Commit date** | 2026-11-25 |
+| **Commit title** | d3d12: Handle NULL fence in fence_finish |
+| **Build date** | 20261125 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261124-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261124-r2) |
+| **Release** | [v27.0.0-20261125](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261125) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -145,9 +145,9 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261125](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261125) | 2026-11-25 | [`4f29b71`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f29b71712ecfd92d73f280a710e8b0496e505c7) | d3d12: Handle NULL fence in fence_finish | Vulkan 1.4.368 |
 | [v27.0.0-20261124-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261124-r2) | 2026-11-24 | [`14d600c`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/14d600c7b21b7fb69cbca21e0a82348e825ab913) | ethosu: Allocate feature maps in SRAM | Vulkan 1.4.368 |
 | [v27.0.0-20261124](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261124) | 2026-11-24 | [`99abc48`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/99abc485322f68b1d94ce46b6fb950154f083d66) | jay: promote divergent 32-bit shuffles to movi | Vulkan 1.4.368 |
-| [v27.0.0-20261123-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261123-r2) | 2026-11-23 | [`ade68f7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ade68f7f4f2a0aeccb0f7a629607f098562052a3) | microsoft/compiler: Don't ralloc_free() tess level variable | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
