@@ -130,12 +130,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`79d58f0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79d58f09d7baf3e94571e6db1046789d1e609072) |
+| **Commit** | [`2cf3bd7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2cf3bd78b8d4c27663d8e8f0344a8b00b41b2e47) |
 | **Commit date** | 2026-11-26 |
-| **Commit title** | aco/tests: add tests for imageBuffer loads with access flags |
+| **Commit title** | tu: Point to tu_program_state instead of copying it |
 | **Build date** | 20261126 |
 | **Downloads** | X11 / AdrenoTools: 3 ZIPs · Bannerlator Wayland: 3 ZIPs · Linux runtime: 3 ZIPs |
-| **Release** | [v27.0.0-20261126-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261126-r2) |
+| **Release** | [v27.0.0-20261126-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261126-r3) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -145,9 +145,9 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261126-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261126-r3) | 2026-11-26 | [`2cf3bd7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2cf3bd78b8d4c27663d8e8f0344a8b00b41b2e47) | tu: Point to tu_program_state instead of copying it | Vulkan 1.4.368 |
 | [v27.0.0-20261126-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261126-r2) | 2026-11-26 | [`79d58f0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79d58f09d7baf3e94571e6db1046789d1e609072) | aco/tests: add tests for imageBuffer loads with access flags | Vulkan 1.4.368 |
 | [v27.0.0-20261126](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261126) | 2026-11-26 | [`edce88a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/edce88a39ed49284ad18b2745eb1b592fd5d0440) | nouveau/winsys: Deallocate CEL subchannel in fail path for nouveau_ws_video_context_init | Vulkan 1.4.368 |
-| [v27.0.0-20261125-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261125-r3) | 2026-11-25 | [`66e82ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/66e82ef1f618d147225a04c773991c404a67f82a) | amd/drm-shim: respect return_size for remaining info queries | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---
