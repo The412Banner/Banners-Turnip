@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261126](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261126) | 2026-11-25 | [`edce88a`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/edce88a39ed49284ad18b2745eb1b592fd5d0440) | nouveau/winsys: Deallocate CEL subchannel in fail path for nouveau_ws_video_context_init | Vulkan 1.4.368 |
 | [v27.0.0-20261125-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261125-r3) | 2026-11-25 | [`66e82ef`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/66e82ef1f618d147225a04c773991c404a67f82a) | amd/drm-shim: respect return_size for remaining info queries | Vulkan 1.4.368 |
 | [v27.0.0-20261125-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261125-r2) | 2026-11-25 | [`125a0af`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/125a0af8012322579154abd2becb66664cd2cf78) | etnaviv: Use tg4pcf for shadow gathers | Vulkan 1.4.368 |
 | [v27.0.0-20261125](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261125) | 2026-11-25 | [`4f29b71`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/4f29b71712ecfd92d73f280a710e8b0496e505c7) | d3d12: Handle NULL fence in fence_finish | Vulkan 1.4.368 |
