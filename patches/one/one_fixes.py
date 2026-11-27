@@ -6,7 +6,6 @@ after one_gpu_gates.py.
 All GPUs (generic code, no chip check):
   dd/tu/0001   barrier flushes kept at a suspended render pass chain
   dd/nir/0001  32-bit SSBO offset wrap
-  dd/scripts/process_heap_usage.py   memory budget counts the whole process
 Android, all Adreno (u_gralloc and vk_android.c are only built for -Dplatforms=android):
   dd/scripts/add_aimapper_gralloc.py   IMapper5 gralloc backend
   dd/scripts/add_ubwc_swapchain_usage.py   UBWC swapchain buffers
@@ -19,6 +18,9 @@ A722 only: disable_gmem (GMEM gives CCU write page faults on A722 in every Turni
 Not applied: dd/scripts/a8xx_sp_hysteresis.py (VS / PS hysteresis as the Qualcomm driver). Measured on an
 Adreno 830 (2026-11-05, Mesa 2008a72): DriverLab "card" scene 6 % slower with it, AIO 8 APIs no difference,
 no known bug it fixes; Mesa does not set these registers outside its ray-tracing workaround.
+Not applied since 2026-11-26: dd/scripts/process_heap_usage.py (memory budget counts the whole process).
+Mesa has it since a5b7ecdf (MR 46620, "tu: Track heap budget across instances"): one shared budget per
+GPU for the process (KGSL: one for all), and the script's anchors are gone.
 
 Every step must change the tree or find its change already in Mesa; anything else stops the
 build. Sources and authors: dd/SOURCE.md.
@@ -125,7 +127,6 @@ def main():
     for rel in ("tu/0001-tu-flush-before-suspended-render-pass-chain.patch",
                 "nir/0001-nir-lower-explicit-io-keep-32bit-offset-wrap.patch"):
         run_patch(rel)
-    run_script("scripts/process_heap_usage.py")
     run_script("scripts/add_aimapper_gralloc.py")
     run_script("scripts/add_ubwc_swapchain_usage.py")
     for rel in ("lrz/0001-tu-a8xx-lrz-reset-cntl-after-flush.patch",

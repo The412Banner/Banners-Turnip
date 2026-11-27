@@ -9,7 +9,7 @@ find `mesa_edit.py` and `aimapper/` the same way. Used with the authors' permiss
 |---|---|---|---|
 | tu/0001-tu-flush-before-suspended-render-pass-chain.patch | barrier flushes lost at a suspended render pass chain (UE5 Nanite / virtual shadow maps) | all | K11MCH1 |
 | nir/0001-nir-lower-explicit-io-keep-32bit-offset-wrap.patch | 32-bit SSBO offset wrap (vkd3d-proton UE5 Nanite) | all | K11MCH1 |
-| scripts/process_heap_usage.py | memory budget counts the whole process (D3D12 / DXGI) | all | Charles DuBose |
+| scripts/process_heap_usage.py | memory budget counts the whole process (D3D12 / DXGI) (**kept here but not applied** since 2026-11-26: in Mesa since a5b7ecdf, MR 46620) | all | Charles DuBose |
 | scripts/add_aimapper_gralloc.py + aimapper/u_gralloc_aimapper.c | IMapper5 stable-C gralloc backend | all (Android) | Leb-Sun |
 | scripts/add_ubwc_swapchain_usage.py | UBWC-compressed swapchain buffers | all (Android) | Leb-Sun |
 | lrz/0001-tu-a8xx-lrz-reset-cntl-after-flush.patch | LRZ controls reset after the end-of-pass flush (hang) | A8xx | Gustash |
