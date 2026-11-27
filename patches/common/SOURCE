@@ -36,6 +36,8 @@ a8xx-winnative/0001-0006 (Max / MaxsTechReview, WinNative-Emu/Drivers linux/patc
     tu_shader_cache_process_blob(), so Max's two MESA_SHADER_COMPUTE blob hunks are one
     io.bytes(&shader->mesh) case there. At fuzz 3 the old hunks landed outside any function.
     Everything else is Max's diff unchanged.
+    2026-11-26: Mesa 2cf3bd78 (MR 46775) made cmd->state.program a const pointer; the two uses
+    in tu_mesh_emit_program / the mesh FS draw state and one tu_cmd_buffer.h context line follow it.
   - 0002 wave32: a required subgroup size of 32 on A8XX's 64-wide waves (each half-wave is a
     subgroup), so vkd3d-proton accepts WaveSize(32) shaders.
   - 0003 cube-coord sanitize: a NaN/zero cube-map direction hangs A8XX; clamp NaN to 0 and turn the
