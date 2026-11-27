@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261127-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r2) | 2026-11-27 | [`fb34d01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb34d0117bcd87bb716268a4b3bd688b8e617fd3) | turnip/ci: stop tracking removed vkd3d expectation files | Vulkan 1.4.368 |
 | [v27.0.0-20261127](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127) | 2026-11-27 | [`3a7226f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3a7226f64c839cffb5be00d98e77687cd2aaac8a) | intel/gen: Fix byte-to-word source region validation | Vulkan 1.4.368 |
 | [v27.0.0-20261126-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261126-r3) | 2026-11-26 | [`2cf3bd7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2cf3bd78b8d4c27663d8e8f0344a8b00b41b2e47) | tu: Point to tu_program_state instead of copying it | Vulkan 1.4.368 |
 | [v27.0.0-20261126-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261126-r2) | 2026-11-26 | [`79d58f0`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/79d58f09d7baf3e94571e6db1046789d1e609072) | aco/tests: add tests for imageBuffer loads with access flags | Vulkan 1.4.368 |
