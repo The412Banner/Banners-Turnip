@@ -131,12 +131,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`ba14a35`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ba14a35fbc7ccd7fde33e5c1e5d872a50ace6759) |
+| **Commit** | [`1988f68`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1988f68d095bf04092003ea49db52e73825f4a13) |
 | **Commit date** | 2026-11-27 |
-| **Commit title** | ac/sdma,radv: add a SDMA 6.0 workaround to prevent GPU hangs with linear copies |
+| **Commit title** | microsoft/compiler: Avoid duplicating TCS atomics across HS split |
 | **Build date** | 20261127 |
-| **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 5 ZIPs · Linux runtime: 5 ZIPs |
-| **Release** | [v27.0.0-20261127-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r4) |
+| **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 3 ZIPs · Linux runtime: 3 ZIPs |
+| **Release** | [v27.0.0-20261127-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r5) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -146,11 +146,11 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261127-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r5) | 2026-11-27 | [`1988f68`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1988f68d095bf04092003ea49db52e73825f4a13) | microsoft/compiler: Avoid duplicating TCS atomics across HS split | Vulkan 1.4.368 |
 | [v27.0.0-20261127-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r4) | 2026-11-27 | [`ba14a35`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ba14a35fbc7ccd7fde33e5c1e5d872a50ace6759) | ac/sdma,radv: add a SDMA 6.0 workaround to prevent GPU hangs with linear copies | Vulkan 1.4.368 |
 | [v27.0.0-20261127-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r3) | 2026-11-27 | [`8972cf7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8972cf713c662e01eb8bb7855db0133b79f90292) | st/mesa: don't minify the layers when guessing the texture size | Vulkan 1.4.368 |
 | [v27.0.0-20261127-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r2) | 2026-11-27 | [`fb34d01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb34d0117bcd87bb716268a4b3bd688b8e617fd3) | turnip/ci: stop tracking removed vkd3d expectation files | Vulkan 1.4.368 |
 | [v27.0.0-20261127](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127) | 2026-11-27 | [`3a7226f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/3a7226f64c839cffb5be00d98e77687cd2aaac8a) | intel/gen: Fix byte-to-word source region validation | Vulkan 1.4.368 |
-| [v27.0.0-20261126-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261126-r3) | 2026-11-26 | [`2cf3bd7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/2cf3bd78b8d4c27663d8e8f0344a8b00b41b2e47) | tu: Point to tu_program_state instead of copying it | Vulkan 1.4.368 |
 <!-- RECENT_BUILDS_END -->
 
 ---

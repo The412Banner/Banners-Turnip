@@ -5,6 +5,7 @@ A complete log of every Banners-Turnip release — newest first. Each entry link
 <!-- BUILDS_TABLE_START -->
 | Tag | Date | Mesa Commit | Commit Title | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261127-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r5) | 2026-11-27 | [`1988f68`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1988f68d095bf04092003ea49db52e73825f4a13) | microsoft/compiler: Avoid duplicating TCS atomics across HS split | Vulkan 1.4.368 |
 | [v27.0.0-20261127-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r4) | 2026-11-27 | [`ba14a35`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ba14a35fbc7ccd7fde33e5c1e5d872a50ace6759) | ac/sdma,radv: add a SDMA 6.0 workaround to prevent GPU hangs with linear copies | Vulkan 1.4.368 |
 | [v27.0.0-20261127-r3](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r3) | 2026-11-27 | [`8972cf7`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/8972cf713c662e01eb8bb7855db0133b79f90292) | st/mesa: don't minify the layers when guessing the texture size | Vulkan 1.4.368 |
 | [v27.0.0-20261127-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r2) | 2026-11-27 | [`fb34d01`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/fb34d0117bcd87bb716268a4b3bd688b8e617fd3) | turnip/ci: stop tracking removed vkd3d expectation files | Vulkan 1.4.368 |
