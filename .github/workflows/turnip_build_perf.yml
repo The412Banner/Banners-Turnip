@@ -16,7 +16,10 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          sudo apt-get update
+          # The runner image lists Microsoft's apt repository; nothing here installs from it, and its
+          # 403 answers failed apt-get update before the build (2026-11-26, runs 45919322584, 45925554930).
+          { grep -rl packages.microsoft.com /etc/apt/sources.list.d/ 2>/dev/null || true; } | xargs -r sudo rm -f
+          sudo apt-get update || { sleep 15; sudo apt-get update; }
           sudo apt-get install -y ninja-build patchelf unzip flex bison git perl python3-pip glslang-tools curl zip patch
           pip3 install --break-system-packages meson mako
 
