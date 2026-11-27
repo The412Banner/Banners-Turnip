@@ -306,7 +306,8 @@ def main():
         + ")). The option itself is Mesa's, by Job Noorman. With other Turnip builds from after 2026-06-10, set "
         "`tu_enable_ssbo_emulation=true` yourself.",
         "- **Adreno 8xx VPC cache sizes** (" + link("patches/common/mr46551_vpc_typos.py") + ", Mesa "
-        "[MR 46551](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/46551) by Artem Peshkov, not merged yet): "
+        "[MR 46551](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/46551) by Artem Peshkov, in Mesa since "
+        "2026-11-20 as `901c006e`; the script now only checks that Mesa has it): "
         "corrects two typos in Mesa's new A8xx VPC cache groups (`d6007622`), one reported to hang every app on an "
         "Adreno 840 (A829, A830 / A831, A840, X2).",
     ])
@@ -328,6 +329,10 @@ def main():
         "\"update a8xx family configs\" commit above turns it on, and then subgroup math in compute shaders "
         "(subgroupAdd, shuffle, ballot, …) returns wrong results on an Adreno 830; with Mesa's value the same tests "
         "pass and speed is unchanged (Banners-Turnip, 2026-11-05).",
+        "patches/a825_entry.py": ": the Adreno 825 entry (*whitebelyash*, cache settings and offsets by *DVD*). "
+        "Added only while Mesa has no A825; once Mesa has its own ("
+        "[MR 46716](https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/46716), Artem Peshkov) the driver "
+        "uses Mesa's.",
     }
     a8_lines += [f"- {link(x)}{a8_script_notes.get(x, '')}" for x in a8_scripts]
     a8_lines += [
@@ -366,8 +371,9 @@ def main():
         + link("patches/one/one_gpu_gates.py") + " (Banners-Turnip) keeps the A8xx-wide changes on A8xx chips, so "
         "every other GPU behaves as in its own driver here. Compute shared memory is 32 KiB on every GPU.",
         "- **Every GPU:** **Every driver** above, plus from " + ddrv + " (copied unchanged, with permission): "
-        "render-pass barrier flushes kept (UE5 Nanite) and 32-bit SSBO offset wrap (*K11MCH1*); memory budget "
-        "counts the whole process (*Charles DuBose*).",
+        "render-pass barrier flushes kept (UE5 Nanite) and 32-bit SSBO offset wrap (*K11MCH1*). The memory budget "
+        "that counts the whole process (*Charles DuBose*) is in Mesa since `a5b7ecdf` (Valentine Burley), so every "
+        "driver has it.",
         "- **Every GPU on Android:** IMapper5 gralloc backend and UBWC-compressed swapchain buffers (*Leb-Sun*, "
         + ddrv + ").",
         "- **A6xx / A7xx:** as Standard plus the above.",
