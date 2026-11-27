@@ -37,7 +37,7 @@ env:
   DRIVER_NAME: Banners-One
   DRIVER_LABEL: "Banners-One (all SoC)"
   EXTRA_PATCH: patches/a8xx_gen8.patch
-  EXTRA_SCRIPT: patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py
+  EXTRA_SCRIPT: patches/a825_entry.py:patches/a710-720.py:patches/one/one_gpu_gates.py:patches/one/one_fixes.py
   META_DESC: "Banners-One (all SoC): one Turnip driver for Adreno A6xx, A7xx, A710/720/722 and A8xx, settings picked by chip ID at startup. Mesa main. KGSL build."
 
 jobs:
