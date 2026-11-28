@@ -131,12 +131,12 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 | :--- | :--- |
 | **Mesa version** | 27.0.0 |
 | **Vulkan version** | Vulkan 1.4.368 |
-| **Commit** | [`c2b0b18`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2b0b1805c947d69b1772777b50ab9a9614b09be) |
+| **Commit** | [`674c54f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/674c54fd70e3c9b969075da767601254f826a447) |
 | **Commit date** | 2026-11-28 |
-| **Commit title** | nir: Replace TCS invocation ID with zero for single output vertex |
+| **Commit title** | kk: Add sync workaround option for Doom 2016 |
 | **Build date** | 20261128 |
 | **Downloads** | X11 / AdrenoTools: 5 ZIPs · Bannerlator Wayland: 3 ZIPs · Linux runtime: 3 ZIPs |
-| **Release** | [v27.0.0-20261128](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261128) |
+| **Release** | [v27.0.0-20261128-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261128-r2) |
 <!-- LATEST_BUILD_END -->
 
 ---
@@ -146,6 +146,7 @@ The A8xx recipe above plus the A722 entry, in one driver that runs on every Adre
 <!-- RECENT_BUILDS_START -->
 | Tag | Date | Commit | Description | Vulkan |
 | :--- | :--- | :--- | :--- | :--- |
+| [v27.0.0-20261128-r2](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261128-r2) | 2026-11-28 | [`674c54f`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/674c54fd70e3c9b969075da767601254f826a447) | kk: Add sync workaround option for Doom 2016 | Vulkan 1.4.368 |
 | [v27.0.0-20261128](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261128) | 2026-11-28 | [`c2b0b18`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/c2b0b1805c947d69b1772777b50ab9a9614b09be) | nir: Replace TCS invocation ID with zero for single output vertex | Vulkan 1.4.368 |
 | [v27.0.0-20261127-r5](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r5) | 2026-11-27 | [`1988f68`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/1988f68d095bf04092003ea49db52e73825f4a13) | microsoft/compiler: Avoid duplicating TCS atomics across HS split | Vulkan 1.4.368 |
 | [v27.0.0-20261127-r4](https://github.com/The412Banner/Banners-Turnip/releases/tag/v27.0.0-20261127-r4) | 2026-11-27 | [`ba14a35`](https://gitlab.freedesktop.org/mesa/mesa/-/commit/ba14a35fbc7ccd7fde33e5c1e5d872a50ace6759) | ac/sdma,radv: add a SDMA 6.0 workaround to prevent GPU hangs with linear copies | Vulkan 1.4.368 |
